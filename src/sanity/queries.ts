@@ -211,6 +211,20 @@ export const allBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt des
   excerpt,
   publishedAt,
   categories,
+  author,
+  coverImage ${imageProjection}
+}`;
+
+export const blogPostsCountQuery = `count(*[_type == "blogPost"])`;
+
+export const pagedBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  categories,
+  author,
   coverImage ${imageProjection}
 }`;
 
@@ -226,6 +240,7 @@ export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]
   body,
   publishedAt,
   categories,
+  author,
   coverImage ${imageProjection},
   seo ${seoProjection}
 }`;

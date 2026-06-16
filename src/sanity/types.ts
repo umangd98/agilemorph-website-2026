@@ -219,12 +219,18 @@ export interface BlogPostSummary {
   excerpt?: string;
   publishedAt?: string;
   categories?: string[];
+  author?: string;
   coverImage?: SanityImageAsset;
 }
 
 export interface BlogPost extends BlogPostSummary {
   body?: unknown[];
   seo?: Seo;
+}
+
+export interface BlogPageData {
+  posts: BlogPostSummary[];
+  total: number;
 }
 
 export interface ServiceSlug {

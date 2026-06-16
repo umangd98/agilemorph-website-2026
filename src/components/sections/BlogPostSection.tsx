@@ -32,17 +32,24 @@ export function BlogPostSection({ post }: BlogPostSectionProps) {
           {post.title}
         </h1>
 
-        {post.publishedAt ? (
-          <time
-            dateTime={post.publishedAt}
-            className="mb-8 block font-body text-sm text-muted-foreground"
-          >
-            {new Date(post.publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
+        {post.publishedAt || post.author ? (
+          <div className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-body text-sm text-muted-foreground">
+            {post.publishedAt ? (
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            ) : null}
+            {post.author ? (
+              <>
+                {post.publishedAt ? <span aria-hidden="true">·</span> : null}
+                <span>By {post.author}</span>
+              </>
+            ) : null}
+          </div>
         ) : null}
 
         {post.coverImage ? (

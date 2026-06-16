@@ -37,6 +37,8 @@ export function TestimonialsSection({
   if (!items.length) return null;
 
   const testimonial = items[activeIndex];
+  if (!testimonial) return null;
+
   const companyLabel = testimonial.company ?? testimonial.role;
 
   const goToPrevious = () => {

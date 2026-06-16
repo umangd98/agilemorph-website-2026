@@ -280,6 +280,11 @@ async function fetchCategories() {
   return Object.fromEntries(categories.map((cat) => [cat.id, cat.name]));
 }
 
+async function fetchAuthors() {
+  const users = await wpFetch("/users?per_page=100");
+  return Object.fromEntries(users.map((user) => [user.id, user.name]));
+}
+
 async function fetchFeaturedImage(mediaId, { projectId, dataset, token, manifest }) {
   if (!mediaId) return undefined;
   try {
@@ -311,6 +316,7 @@ async function fetchFeaturedImage(mediaId, { projectId, dataset, token, manifest
 
 async function buildBlogPosts({ projectId, dataset, token, manifest }) {
   const categoryMap = await fetchCategories();
+  const authorMap = await fetchAuthors();
   const posts = await wpFetch("/posts?per_page=100&orderby=date&order=desc");
   const blogPosts = [];
 
@@ -324,6 +330,7 @@ async function buildBlogPosts({ projectId, dataset, token, manifest }) {
     const categories = (post.categories ?? [])
       .map((id) => categoryMap[id])
       .filter(Boolean);
+    const author = authorMap[post.author] ?? "Umang";
     const coverImage = await fetchFeaturedImage(post.featured_media, {
       projectId,
       dataset,
@@ -337,6 +344,7 @@ async function buildBlogPosts({ projectId, dataset, token, manifest }) {
       title,
       slug: { _type: "slug", current: slug },
       excerpt,
+      author,
       body,
       publishedAt: new Date(post.date).toISOString(),
       categories,
