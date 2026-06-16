@@ -10,9 +10,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "upload-media": "node scripts/upload-media.mjs",
+    "seed-content": "node scripts/seed-content.mjs",
+    "scrape-wordpress": "node scripts/scrape-wordpress.mjs"
   },
   "dependencies": {
+    "@portabletext/react": "^6.2.0",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.0.0",
     "lucide-react": "^1.18.0",
@@ -28,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "prettier": "^3.8.4",
