@@ -31,7 +31,7 @@ function hasImageAsset(
 ): image is SanityImageAsset & {
   asset: NonNullable<SanityImageAsset["asset"]>;
 } {
-  return Boolean(image?.asset?._ref);
+  return Boolean(image?.asset?._ref || image?.asset?._id || image?.asset?.url);
 }
 
 function ImagePlaceholder({

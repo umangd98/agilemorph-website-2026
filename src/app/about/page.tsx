@@ -1,0 +1,104 @@
+import type { Metadata } from "next";
+
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import {
+  AboutHeroSection,
+  CompanyStorySection,
+  FeaturedLogosSection,
+  FounderSection,
+  PageCtaSection,
+  ProcessSection,
+  StatsSection,
+  TestimonialsSection,
+  ValuesSection,
+} from "@/components/sections";
+import { seoToMetadata } from "@/lib/seo";
+import { sanityFetch } from "@/sanity/fetch";
+import { aboutPageQuery } from "@/sanity/queries";
+import type { AboutPage } from "@/sanity/types";
+
+const fallbackMetadata: Metadata = {
+  title: "About Us",
+  description:
+    "Empowering businesses with agile solutions, innovative technology, and a customer-first approach.",
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  const aboutPage = await sanityFetch<AboutPage | null>({
+    query: aboutPageQuery,
+    tags: ["aboutPage"],
+  });
+
+  return seoToMetadata(aboutPage?.seo, fallbackMetadata);
+}
+
+export default async function AboutPageRoute() {
+  const aboutPage = await sanityFetch<AboutPage | null>({
+    query: aboutPageQuery,
+    tags: ["aboutPage"],
+  });
+
+  if (!aboutPage) {
+    return (
+      <>
+        <Navbar />
+        <main className="flex flex-1 items-center justify-center px-6 py-24">
+          <p className="font-body text-muted-foreground">
+            About page content is not available yet. Add it in Sanity Studio.
+          </p>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1">
+        <AboutHeroSection
+          heading={aboutPage.hero.heading}
+          tagline={aboutPage.hero.tagline}
+          cta={aboutPage.hero.cta}
+        />
+        <CompanyStorySection
+          heading={aboutPage.about?.heading}
+          body={aboutPage.about?.body}
+          promiseHeading={aboutPage.about?.promiseHeading}
+          promise={aboutPage.about?.promise}
+          image={aboutPage.about?.image}
+        />
+        <ValuesSection values={aboutPage.values} />
+        <ProcessSection
+          heading={aboutPage.process?.heading}
+          subheading={aboutPage.process?.subheading}
+          steps={aboutPage.process?.steps}
+        />
+        <StatsSection items={aboutPage.stats} />
+        <PageCtaSection
+          heading={aboutPage.cta?.heading}
+          description={aboutPage.cta?.description}
+          button={aboutPage.cta?.button}
+        />
+        <FounderSection
+          eyebrow={aboutPage.founder?.eyebrow}
+          heading={aboutPage.founder?.heading}
+          name={aboutPage.founder?.name}
+          role={aboutPage.founder?.role}
+          bio={aboutPage.founder?.bio}
+          image={aboutPage.founder?.image}
+        />
+        <FeaturedLogosSection
+          heading={aboutPage.featuredLogos?.heading}
+          logos={aboutPage.featuredLogos?.logos}
+        />
+        <TestimonialsSection
+          heading={aboutPage.testimonials?.heading}
+          items={aboutPage.testimonials?.items}
+        />
+      </main>
+      <Footer />
+    </>
+  );
+}

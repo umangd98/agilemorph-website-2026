@@ -1,34 +1,28 @@
 import { defineField, defineType } from "sanity";
 
-export const heroSection = defineType({
-  name: "heroSection",
-  title: "Hero Section",
+export const companyValue = defineType({
+  name: "companyValue",
+  title: "Company Value",
   type: "object",
   fields: [
     defineField({
-      name: "heading",
-      title: "Heading",
+      name: "title",
+      title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "subheading",
-      title: "Subheading",
+      name: "description",
+      title: "Description",
       type: "text",
       rows: 3,
+      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "cta",
-      title: "Call to Action",
-      type: "ctaButton",
-    }),
-    defineField({
-      name: "image",
-      title: "Hero Image",
+      name: "icon",
+      title: "Icon",
       type: "image",
-      options: {
-        hotspot: true,
-      },
+      options: { hotspot: true },
       fields: [
         defineField({
           name: "alt",
@@ -38,4 +32,7 @@ export const heroSection = defineType({
       ],
     }),
   ],
+  preview: {
+    select: { title: "title" },
+  },
 });

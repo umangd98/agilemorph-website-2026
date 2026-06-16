@@ -1,0 +1,1060 @@
+#!/usr/bin/env node
+/**
+ * Seeds Sanity documents with scraped AgileMorph content.
+ * Usage: node scripts/seed-content.mjs
+ */
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const ROOT = join(__dirname, "..");
+const MANIFEST_PATH = join(__dirname, "media-manifest.json");
+const ENV_PATH = join(ROOT, ".env.local");
+
+function loadEnv() {
+  return Object.fromEntries(
+    readFileSync(ENV_PATH, "utf8")
+      .split("\n")
+      .filter((line) => line && !line.startsWith("#"))
+      .map((line) => {
+        const [key, ...rest] = line.split("=");
+        return [key.trim(), rest.join("=").trim()];
+      }),
+  );
+}
+
+function getAuthToken({ preferCli = false } = {}) {
+  const configPath = join(process.env.HOME, ".config/sanity/config.json");
+  const cliToken =
+    existsSync(configPath) &&
+    JSON.parse(readFileSync(configPath, "utf8")).authToken;
+
+  if (preferCli && cliToken) return cliToken;
+
+  const env = loadEnv();
+  if (env.SANITY_API_WRITE_TOKEN) return env.SANITY_API_WRITE_TOKEN;
+  if (cliToken) return cliToken;
+  if (env.SANITY_API_READ_TOKEN) return env.SANITY_API_READ_TOKEN;
+
+  throw new Error("No Sanity auth token found.");
+}
+
+function loadManifest() {
+  if (!existsSync(MANIFEST_PATH)) {
+    throw new Error("media-manifest.json not found. Run scripts/upload-media.mjs first.");
+  }
+  return JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+}
+
+function imageRef(manifest, key, alt = "") {
+  const asset = manifest[key];
+  if (!asset?.id) return undefined;
+  return {
+    _type: "image",
+    asset: { _type: "reference", _ref: asset.id },
+    alt,
+  };
+}
+
+function cta(label, href, openInNewTab = false) {
+  return { _type: "ctaButton", label, href, openInNewTab };
+}
+
+const PROCESS_STEPS = [
+  {
+    title: "Kickstart Your Journey With a Thoughtful Plan",
+    description:
+      "We start by understanding your goals and planning the steps to bring them to life.",
+    bullets: [
+      "Collaborative Sprint: Work closely with your team to identify project objectives and scope.",
+      "Intensive Planning: Focus on detailed planning and prioritization.",
+      "Successful Groundwork: Lay the foundation for a successful agile transformation.",
+    ],
+    imageKey: "2025/01/WeWork_Illustration01.svg",
+  },
+  {
+    title: "Innovate with every step forward.",
+    description:
+      "We build and refine your solution step by step, based on your feedback.",
+    bullets: [
+      "Iterative Development: Central to our process for continuous improvement.",
+      "Agile Principles: Embrace the agile manifesto to adapt and refine solutions.",
+      "Rapid Feedback Loops: Ensure every iteration aligns with your evolving needs.",
+    ],
+    imageKey: "2025/01/WeWork_Illustration02.svg",
+  },
+  {
+    title: "Agility at Its Best, Results Guaranteed",
+    description: "We deliver results quickly and adapt to your needs as they evolve.",
+    bullets: [
+      "Agile Principles: Leverage agile methodologies for prompt and efficient solutions.",
+      "Adaptability: Address changes and challenges with a flexible approach.",
+      "Seamless Evolution: Ensure the project evolves smoothly to meet milestones.",
+    ],
+    imageKey: "2025/01/WeWork_Illustration03.svg",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "Umang has consistently demonstrated leadership qualities and a great positive attitude in working with others in team settings. I'm very happy to recommend Umang for any leadership roles in the fields of engineering.",
+    name: "David Zaretsky",
+    role: "Snips Media & Northwestern University",
+    company: "Snips Media",
+    imageKey: "2025/01/SuccessStories_David-Zaretsky.png",
+  },
+  {
+    quote:
+      "It was a pleasure working alongside Umang and his team at AgileMorph Solutions. Our collaboration resulted in the development of an in-house software solution that had a profound impact on our operational efficiency at Dhaninfo.",
+    name: "Sarvesh Agrawal",
+    role: "CEO",
+    company: "Dhaninfo",
+  },
+  {
+    quote:
+      "Umang is a very dedicated, talented and hardworking coder. His passion for solving problems using computer science is unmatched.",
+    name: "Shashi Bhushan Kumar",
+    company: "Interview Kickstart",
+  },
+  {
+    quote:
+      "Umang and I worked together on a few projects, he consistently gave 100 percent effort to the team and played a significant role in the success of those projects.",
+    name: "Nikhil Shendge",
+    company: "Capgemini",
+  },
+  {
+    quote:
+      "Umang has a great potential to determine solutions for complex problems with perfect algorithms and data structures.",
+    name: "Nilesh Dhoble",
+    company: "Persistent Systems",
+  },
+  {
+    quote:
+      "Your commitment to learning and your ability to translate that knowledge into practical solutions left a lasting impression on me.",
+    name: "Ashish Tiwari",
+    company: "VNIT, India",
+  },
+  {
+    quote:
+      "AgileMorph Solutions' work made the client's permit application process smoother and hassle-free, resulting in time savings and error reduction.",
+    name: "Christopher Calkins",
+    company: "Digisist LLC",
+  },
+  {
+    quote:
+      "AgileMorph delivered good work and we have enjoyed working with them. Thorough and extremely helpful and flexible to our needs.",
+    name: "Retirement Planning Simplified",
+    company: "Matthews and Associates",
+  },
+];
+
+function buildProcessSteps(manifest) {
+  return PROCESS_STEPS.map((step) => ({
+    _type: "processStep",
+    title: step.title,
+    description: step.description,
+    bullets: step.bullets,
+    image: imageRef(manifest, step.imageKey, step.title),
+  }));
+}
+
+function buildTestimonials(manifest) {
+  return TESTIMONIALS.map((item) => ({
+    _type: "testimonial",
+    quote: item.quote,
+    name: item.name,
+    role: item.role,
+    company: item.company,
+    image: item.imageKey ? imageRef(manifest, item.imageKey, item.name) : undefined,
+  }));
+}
+
+function buildFeaturedLogos(manifest) {
+  const logoKeys = [
+    "2025/01/Logo-1.png",
+    "2025/01/Logo-2.png",
+    "2025/01/Logo-3.png",
+    "2025/01/Logo-4.png",
+    "2025/01/Logo-5.png",
+    "2025/01/Logo-6.png",
+    "2025/01/Logo-7.png",
+    "2025/01/Logo-8.png",
+    "2025/01/Logo-9.png",
+    "2025/01/Logo-10.png",
+    "2025/01/Logo-11.png",
+    "2025/01/Logo-12.png",
+    "2025/01/Logo-13.png",
+    "2025/01/Logo-14.png",
+    "2025/01/Logo-16.png",
+  ];
+
+  return logoKeys
+    .map((key, index) => imageRef(manifest, key, `Partner logo ${index + 1}`))
+    .filter(Boolean);
+}
+
+function buildHomepage(manifest) {
+  return {
+    _id: "homepage",
+    _type: "homepage",
+    hero: {
+      badge: "Next-Gen Digital Acceleration",
+      heading: "Let AI seamlessly elevate your brand.",
+      tagline:
+        "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
+      ctaPrimary: cta("Get in Touch", "/contact"),
+      ctaSecondary: cta("Explore Our Services", "/services/ai-automation"),
+      image: imageRef(manifest, "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png", "AgileMorph hero"),
+    },
+    process: {
+      heading: "The Way We Work",
+      subheading: "We empower businesses to thrive with innovative digital solutions.",
+      steps: buildProcessSteps(manifest),
+    },
+    services: {
+      eyebrow: "Our Expertise",
+      heading: "Discover Our Services",
+      cards: [
+        {
+          _type: "serviceCard",
+          title: "AI Automation",
+          description:
+            "We deliver powerful AI automation solutions designed specifically to streamline your workflow, eliminate manual tasks, and boost business growth.",
+          href: "/services/ai-automation",
+          icon: imageRef(manifest, "2025/01/Services_Icon_01.svg", "AI Automation"),
+        },
+        {
+          _type: "serviceCard",
+          title: "Web Development",
+          description:
+            "We design responsive web and mobile apps that captivate and engage users across all devices.",
+          href: "/services/website-development",
+          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Web Development"),
+        },
+        {
+          _type: "serviceCard",
+          title: "Digital Marketing",
+          description:
+            "Boost your online growth with our data-driven digital marketing, including SEO, content, and social media strategies.",
+          href: "/services/digital-marketing",
+          icon: imageRef(manifest, "2025/01/Services_Icon_03.svg", "Digital Marketing"),
+        },
+        {
+          _type: "serviceCard",
+          title: "Virtual Assistance",
+          description:
+            "We are dedicated to providing top-tier virtual assistant services that cater to businesses of all sizes.",
+          href: "/services/virtual-assistance",
+          icon: imageRef(manifest, "2025/01/Services_Icon_04.svg", "Virtual Assistance"),
+        },
+        {
+          _type: "serviceCard",
+          title: "Book Keeping",
+          description:
+            "We provide efficient, reliable, and automated solutions designed to meet your financial management needs.",
+          href: "/services/bookkeeping",
+          icon: imageRef(manifest, "2025/01/Services_Icon_05.svg", "Book Keeping"),
+        },
+        {
+          _type: "serviceCard",
+          title: "Customer Service",
+          description:
+            "Our dedicated team ensures your queries and concerns are addressed promptly and professionally.",
+          href: "/contact",
+          icon: imageRef(manifest, "2025/01/Services_Icon_06.svg", "Customer Service"),
+        },
+      ],
+    },
+    whyUs: {
+      heading: "Why AgileMorph is Your Ideal Partner?",
+      items: [
+        {
+          _type: "whyUsItem",
+          title: "Innovation",
+          description:
+            "Pioneering solutions that push boundaries and drive progress.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Professionalism",
+          description:
+            "Delivering quality with integrity and a commitment to excellence.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Expertise",
+          description:
+            "Leveraging deep knowledge to create impactful, tailored solutions.",
+        },
+      ],
+    },
+    stats: {
+      eyebrow: "Metrics That Matter",
+      heading: "Enjoy Tangible Results",
+      items: [
+        { _type: "stat", value: "100+", label: "Successful Projects" },
+        { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
+        { _type: "stat", value: "3+", label: "Years of experience" },
+        { _type: "stat", value: "5+", label: "Countries Represented by Our Talent" },
+        { _type: "stat", value: "10,000+", label: "Hours of dedication and counting" },
+        { _type: "stat", value: "100,000+", label: "Cups of coffee and counting" },
+      ],
+    },
+    featuredLogos: {
+      heading: "We've been featured on",
+      logos: buildFeaturedLogos(manifest),
+    },
+    testimonials: {
+      eyebrow: "Client Feedback",
+      heading: "Success Stories of Our Clients",
+      items: buildTestimonials(manifest).slice(0, 6),
+    },
+    seo: {
+      title: "AgileMorph Solutions - Custom Software Integration Services",
+      description:
+        "We revolutionize efficiency with AI Automation, craft impactful experiences through Web Development, and amplify influence via Digital Marketing.",
+      ogImage: imageRef(manifest, "2025/01/Herosection_Img.png", "AgileMorph"),
+    },
+  };
+}
+
+function buildAboutPage(manifest) {
+  return {
+    _id: "aboutPage",
+    _type: "aboutPage",
+    hero: {
+      heading: "About Us",
+      tagline:
+        "Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era. Where agility meets transformation—so your next breakthrough isn't trapped in \"someday.\"",
+      cta: cta("Explore Our Services", "/services/ai-automation"),
+    },
+    about: {
+      heading: "AgileMorph Solutions",
+      body:
+        "Agile because we sprint, iterate and out‑learn the market. Morph because we turn raw ideas into living, revenue‑ready systems that keep adapting as you grow. Born out of the AI research labs at Northwestern University, AgileMorph Solutions has become the execution partner for leaders who refuse to let operational chaos cap their growth.\n\nThe result? Marketing teams regain mornings, ops teams end days with zero backlog, and owners rediscover their excitement as the AI we build turns yesterday's messy workflows into today's autonomous engines. When you choose AgileMorph, you're not buying code—you're investing in a proven system that converts inefficiency into momentum and curiosity into measurable ROI.",
+      promiseHeading: "Our Promise",
+      promise:
+        "Whether you need a lightning‑fast landing page, a machine‑learning engine, or 100 tiny automations that quietly triple team capacity, we will deliver more, deliver earlier, and keep morphing until it feels like magic.",
+      image: imageRef(manifest, "2025/01/Frame.png", "AgileMorph team"),
+    },
+    values: [
+      {
+        _type: "companyValue",
+        title: "Dynamic Team",
+        description:
+          "A passionate team of tech enthusiasts, data specialists, and digital marketers committed to delivering impactful results.",
+        icon: imageRef(manifest, "2025/01/UsersThree.svg", "Dynamic Team"),
+      },
+      {
+        _type: "companyValue",
+        title: "Digital Empowerment",
+        description:
+          "Helping businesses of all sizes harness the potential of the digital era through agile and innovative solutions.",
+        icon: imageRef(manifest, "2025/01/HandFist.svg", "Digital Empowerment"),
+      },
+      {
+        _type: "companyValue",
+        title: "Quality-Driven Solutions",
+        description:
+          "Delivering high-quality, data-driven, and adaptable strategies to accelerate business growth and success.",
+        icon: imageRef(manifest, "2025/01/SealCheck.svg", "Quality-Driven Solutions"),
+      },
+      {
+        _type: "companyValue",
+        title: "Commitment to Innovation",
+        description:
+          "Staying ahead in the ever-changing digital landscape to provide cutting-edge solutions for modern challenges.",
+        icon: imageRef(manifest, "2025/01/Brain.svg", "Commitment to Innovation"),
+      },
+      {
+        _type: "companyValue",
+        title: "Tailored Partnerships",
+        description:
+          "Partnering with businesses to create meaningful impact and provide customized services that meet unique needs.",
+        icon: imageRef(manifest, "2025/01/Handshake.svg", "Tailored Partnerships"),
+      },
+      {
+        _type: "companyValue",
+        title: "Core Values",
+        description:
+          "Built on agility, adaptability, and customer-centricity, ensuring client satisfaction and long-term success.",
+        icon: imageRef(manifest, "2025/01/SketchLogo.svg", "Core Values"),
+      },
+    ],
+    process: {
+      heading: "The Way We Work",
+      subheading: "We empower businesses to thrive with innovative digital solutions.",
+      steps: buildProcessSteps(manifest),
+    },
+    stats: [
+      { _type: "stat", value: "100+", label: "Successful Projects" },
+      { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
+      { _type: "stat", value: "10k+", label: "Hours of dedication and counting" },
+      { _type: "stat", value: "5+", label: "Countries Represented by Our Talent" },
+    ],
+    cta: {
+      heading: "Transforming Ideas into Impactful Journeys",
+      description:
+        "Partner with AgileMorph to unlock your organization's potential. From startups to enterprises, we're here to drive your digital transformation.",
+      button: cta("Explore Our Services", "/services/ai-automation"),
+    },
+    founder: {
+      eyebrow: "Meet Our Founder",
+      heading: "Behind the Wonder - full ideas and Brilliant Breakthrough Innovations",
+      name: "Umang Dhandhania",
+      role: "CEO at AgileMorph",
+      bio:
+        "A Northwestern‑educated engineer renowned for turning complex business puzzles into clear, revenue‑lifting systems. Known for pairing analytical rigor with infectious energy, over the past decade he has guided more than 100 companies through streamlined launches, process overhauls, and market‑ready product builds that routinely beat timelines and KPIs.\n\nHis mission for AgileMorph is simple: give every ambitious team—regardless of size—the tools to move faster, think bigger, and compete on a global stage.\n\nWhen you work with AgileMorph, you're tapping into the curiosity of a researcher, the precision of an engineer, and the drive of a founder who lives to turn complexity into compounding growth.",
+      image: imageRef(manifest, "2025/03/umang.jpg", "Umang Dhandhania"),
+    },
+    featuredLogos: {
+      heading: "We've been featured on",
+      logos: buildFeaturedLogos(manifest),
+    },
+    testimonials: {
+      heading: "Success Stories of Our Clients",
+      items: buildTestimonials(manifest),
+    },
+    seo: {
+      title: "About Us - AgileMorph Solutions",
+      description:
+        "Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era.",
+      ogImage: imageRef(manifest, "2025/01/Frame.png", "About AgileMorph"),
+    },
+  };
+}
+
+function buildContactPage() {
+  return {
+    _id: "contactPage",
+    _type: "contactPage",
+    hero: {
+      heading: "Contact Us",
+      description:
+        "Whether you have a question, need assistance, or want to explore how AgileMorph Solutions can empower your business.",
+    },
+    phone: "+1 209-432-7765",
+    email: "info@theagilemorph.com",
+    linkedinUrl: "https://www.linkedin.com/company/agilemorph-solutions",
+    facebookUrl: "https://www.facebook.com/agilemorphsolutions",
+    faqs: [
+      {
+        _type: "faqItem",
+        question: "How can I get a quote for my project?",
+        answer:
+          "You can request a quote by filling out the contact form on our website or emailing us directly with your project details.",
+      },
+      {
+        _type: "faqItem",
+        question: "What services does AgileMorph Solutions offer?",
+        answer:
+          "We offer end-to-end digital solutions including AI Automation, Web & App Development, API Integrations, Cloud Deployments, and Digital Marketing.",
+      },
+      {
+        _type: "faqItem",
+        question: "Can I collaborate with AgileMorph on a long-term project?",
+        answer:
+          "Absolutely! We love building long-term partnerships and can scale with your business as your needs evolve.",
+      },
+      {
+        _type: "faqItem",
+        question: "How do you ensure project confidentiality?",
+        answer:
+          "We take confidentiality seriously. NDAs can be signed upon request, and we follow strict data security practices.",
+      },
+      {
+        _type: "faqItem",
+        question: "What if I encounter issues with the software you developed?",
+        answer:
+          "We offer a post-launch support window to fix any bugs or issues that arise after delivery.",
+      },
+      {
+        _type: "faqItem",
+        question: "Do you provide post-launch maintenance?",
+        answer:
+          "Yes. We provide ongoing maintenance packages to keep your systems running smoothly.",
+      },
+      {
+        _type: "faqItem",
+        question: "Do you work with international clients?",
+        answer:
+          "Yes, we work with clients across the globe and can accommodate different time zones.",
+      },
+    ],
+    seo: {
+      title: "Contact Us - AgileMorph Solutions",
+      description:
+        "Get in touch with AgileMorph Solutions for AI automation, web development, and digital marketing services.",
+    },
+  };
+}
+
+function buildServicePages(manifest) {
+  return [
+    {
+      _id: "servicePage-ai-automation",
+      _type: "servicePage",
+      title: "AI Automation Development",
+      slug: { _type: "slug", current: "ai-automation" },
+      tagline: "Transforming Your Vision into Intelligent Automation",
+      description:
+        "At AgileMorph Solutions, we deliver powerful AI automation solutions designed specifically to streamline your workflow, eliminate manual tasks, and boost business growth. Specializing in Zapier, n8n, and Make.com integrations, we transform complex business processes into seamless automated workflows.",
+      heroImage: imageRef(manifest, "2025/09/AI-Automation-Development-Services.jpg", "AI Automation"),
+      heroCta: cta("Start Your AI Journey", "/contact"),
+      capabilitiesHeading: "Our Automation Capabilities",
+      capabilities: [
+        {
+          _type: "capabilityItem",
+          title: "Predictive Analytics & Automation",
+          description:
+            "Utilize predictive triggers to proactively manage business processes, automate timely interventions, and strategically enhance decision-making capabilities.",
+          icon: "⚙️",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Custom Workflow Automations",
+          description:
+            "Tailor-made automation workflows for SMBs and e-commerce businesses, from lead generation and CRM enrichment to intelligent data scraping and predictive analytics.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Lead Generation Automation",
+          description:
+            "Automate your entire lead generation cycle, effortlessly capturing leads from multiple channels, nurturing prospects, and accelerating conversions.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "CRM & Data Enrichment",
+          description:
+            "Maximize your CRM efficiency with automated data enrichment, precise customer segmentation, and intelligent follow-up mechanisms.",
+          icon: "🛠️",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Intelligent Data Scraping",
+          description:
+            "Efficiently extract structured data from websites and marketplaces, enhancing your competitive insights, pricing strategies, and market analysis.",
+          icon: "⏳",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Eliminating Manual Tasks",
+          description:
+            "Automate repetitive tasks including data entry, scheduling, reporting, and follow-ups.",
+          icon: "📊",
+        },
+      ],
+      whyUsHeading: "Why Choose Us",
+      whyUs: [
+        {
+          _type: "whyUsItem",
+          title: "Expert Automation Team",
+          description: "Solving complex challenges with precision and ease.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Client-Focused",
+          description: "We focus on understanding your business needs and delivering tailored solutions.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Agile Methodology",
+          description: "We use agile methodologies to deliver results quickly and adapt to change.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "End-to-End Services",
+          description: "From concept to deployment and beyond, we support your automation journey.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Quality Assurance",
+          description: "Rigorous testing processes ensure reliable, production-ready automations.",
+        },
+      ],
+      technologiesHeading: "Automation Tools & Technologies",
+      technologies: [
+        "n8n",
+        "Zapier",
+        "Make.com",
+        "OpenAI",
+        "Google Cloud",
+        "AWS",
+        "Python",
+        "WordPress",
+        "Shopify",
+        "HubSpot",
+        "Pipedrive",
+        "Notion",
+        "SalesForce",
+      ].map((name) => ({ _type: "technologyItem", name })),
+      cta: {
+        heading: "Ready to Automate your Success?",
+        description: "Let's shape your business future with intelligent AI-driven automations.",
+        button: cta("Get in Touch", "/contact"),
+      },
+      seo: {
+        title: "AI Automation Development | AgileMorph Solutions",
+        description:
+          "Powerful AI automation solutions to streamline your workflow, eliminate manual tasks, and boost business growth.",
+      },
+    },
+    {
+      _id: "servicePage-website-development",
+      _type: "servicePage",
+      title: "Website Development",
+      slug: { _type: "slug", current: "website-development" },
+      tagline: "Transform Your Digital Presence with Custom Website Development",
+      description:
+        "At AgileMorph, we craft user-friendly websites designed to grow your business and enhance your online presence.",
+      heroImage: imageRef(manifest, "2025/03/Website-Design-and-Development.svg", "Website Development"),
+      heroCta: cta("Share Your Product Idea", "/contact"),
+      capabilitiesHeading: "Services We Can Help You With",
+      capabilities: [
+        {
+          _type: "capabilityItem",
+          title: "Website Optimization & Performance",
+          description:
+            "We prioritize the performance and speed of your website to ensure it delivers the best possible experience.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Custom Web Development",
+          description:
+            "We build fully customized websites designed to match your business goals, branding, and user needs.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "E-Commerce Solutions",
+          description:
+            "We develop powerful, user-friendly e-commerce platforms that drive sales and customer satisfaction.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Content Management Systems (CMS)",
+          description:
+            "Our CMS development services empower businesses to easily manage and update website content.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Web Application Development",
+          description:
+            "We develop custom web applications that are dynamic, responsive, and tailored to your business.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "UI/UX Design",
+          description:
+            "We create intuitive and visually compelling user interfaces that delight your customers.",
+        },
+      ],
+      whyUsHeading: "Why Choose Us",
+      whyUs: [
+        {
+          _type: "whyUsItem",
+          title: "Expert Developers",
+          description: "Our team of skilled web developers has extensive experience across modern stacks.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Custom-Tailored Solutions",
+          description: "We don't believe in one-size-fits-all. Every project is built for your unique needs.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "SEO-Optimized Websites",
+          description: "We develop websites with SEO best practices in mind from day one.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Agile Methodology",
+          description: "Utilizing agile project management for faster, more flexible delivery.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Ongoing Support",
+          description: "Our partnership doesn't end at launch—we provide continued support and maintenance.",
+        },
+      ],
+      technologiesHeading: "Technologies",
+      technologies: ["API", "JavaScript", "HTML", "PHP", "WordPress", "Joomla"].map((name) => ({
+        _type: "technologyItem",
+        name,
+      })),
+      cta: {
+        heading: "Ready to Build Your Website?",
+        description: "Let's create a digital presence that drives growth for your business.",
+        button: cta("Get in Touch", "/contact"),
+      },
+      seo: {
+        title: "Website Development - AgileMorph Solutions",
+        description:
+          "Custom website development services designed to grow your business and enhance your online presence.",
+      },
+    },
+    {
+      _id: "servicePage-digital-marketing",
+      _type: "servicePage",
+      title: "Digital Marketing Services",
+      slug: { _type: "slug", current: "digital-marketing" },
+      tagline: "Elevate Your Brand with Our Comprehensive Digital Marketing Solutions",
+      description:
+        "In today's digital world, AgileMorph Solutions boosts your brand with expert digital marketing services.",
+      heroImage: imageRef(manifest, "2025/03/Social-Media-Marketing.svg", "Digital Marketing"),
+      heroCta: cta("Get in Touch", "/contact"),
+      capabilitiesHeading: "Our Digital Marketing Services",
+      capabilities: [
+        {
+          _type: "capabilityItem",
+          title: "YouTube Marketing",
+          description:
+            "We've elevated our clients' YouTube presence through strategic content creation and optimization.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Search Engine Optimization (SEO)",
+          description:
+            "We've transformed our clients' online presence by driving significant organic traffic growth.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Pay-Per-Click (PPC) Advertising",
+          description:
+            "By developing hyper-targeted PPC campaigns, we've maximized ROI for our clients.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Social Media Marketing",
+          description:
+            "We've built strong, loyal communities for our clients across social media platforms.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Content Marketing",
+          description:
+            "Our content marketing efforts have set our clients apart as thought leaders in their industries.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Email Marketing",
+          description:
+            "With our personalized email marketing strategies, we've consistently boosted customer retention.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Website Design and Development",
+          description:
+            "We've designed and developed websites that captivate visitors and convert them into customers.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Analytics and Reporting",
+          description:
+            "We've empowered our clients to make informed decisions with comprehensive analytics and reporting.",
+        },
+      ],
+      whyUsHeading: "Why Choose Us",
+      whyUs: [
+        {
+          _type: "whyUsItem",
+          title: "Customized Strategies",
+          description: "Tailored marketing solutions that fit your specific needs.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Data-Driven Insights",
+          description: "Leverage analytics to refine and optimize your campaigns.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Experienced Team",
+          description: "Work with industry experts who are committed to your success.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "End-to-End Services",
+          description: "Comprehensive digital marketing services from strategy to execution.",
+        },
+      ],
+      technologiesHeading: "Technologies",
+      technologies: [
+        "Google Ads",
+        "Canva",
+        "YouTube",
+        "Google Search",
+        "Moz",
+        "Google Analytics",
+        "Semrush",
+        "Hootsuite",
+        "Ahrefs",
+      ].map((name) => ({ _type: "technologyItem", name })),
+      cta: {
+        heading: "Ready to Grow Your Brand?",
+        description: "Let's build a digital marketing strategy that delivers measurable results.",
+        button: cta("Get in Touch", "/contact"),
+      },
+      seo: {
+        title: "Digital Marketing Services - AgileMorph Solutions",
+        description:
+          "Comprehensive digital marketing services including SEO, PPC, social media, and content marketing.",
+      },
+    },
+    {
+      _id: "servicePage-virtual-assistance",
+      _type: "servicePage",
+      title: "Virtual Assistance Services",
+      slug: { _type: "slug", current: "virtual-assistance" },
+      tagline: "Maximize Efficiency with Our Comprehensive Virtual Assistant Solutions",
+      description:
+        "At AgileMorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.",
+      heroImage: imageRef(manifest, "2025/03/Administrative-Support.svg", "Virtual Assistance"),
+      heroCta: cta("Get in Touch", "/contact"),
+      capabilitiesHeading: "Our Virtual Assistance Services",
+      capabilities: [
+        {
+          _type: "capabilityItem",
+          title: "Content Creation and Management",
+          description:
+            "Content creation is an essential part of today's digital landscape—we handle it for you.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Administrative Support",
+          description:
+            "Our virtual assistant services handle tasks like email management, document organization, and data entry.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Customer Service",
+          description:
+            "Deliver exceptional customer experiences without adding to your in-house team.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Social Media Management",
+          description:
+            "Keeping up with social media demands can be time-consuming—we manage it for you.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Calendar and Scheduling",
+          description:
+            "Staying organized is crucial for running a successful business—we keep your schedule on track.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Research and Data Entry",
+          description:
+            "Need comprehensive research or reliable data entry services? Our team delivers accurate results.",
+        },
+      ],
+      whyUsHeading: "Why Choose Us",
+      whyUs: [
+        {
+          _type: "whyUsItem",
+          title: "Cost-Effective Solutions",
+          description: "Eliminate the overhead costs associated with hiring full-time staff.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Increased Business Productivity",
+          description: "Our virtual assistants take on daily tasks so you can focus on growth.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Expertise Across Industries",
+          description: "Our virtual assistants are experienced across a wide range of industries.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "24/7 Availability",
+          description: "With a global team, our services are available around the clock.",
+        },
+      ],
+      technologiesHeading: "Tools We Use",
+      technologies: ["Notion", "Google Workspace", "Slack", "Trello", "Asana"].map((name) => ({
+        _type: "technologyItem",
+        name,
+      })),
+      cta: {
+        heading: "Ready to Boost Your Productivity?",
+        description: "Let our virtual assistants handle the tasks so you can focus on what matters.",
+        button: cta("Get in Touch", "/contact"),
+      },
+      seo: {
+        title: "Virtual Assistance Services - AgileMorph Solutions",
+        description:
+          "Comprehensive virtual assistant services to streamline operations and boost productivity.",
+      },
+    },
+    {
+      _id: "servicePage-bookkeeping",
+      _type: "servicePage",
+      title: "Book keeping Services",
+      slug: { _type: "slug", current: "bookkeeping" },
+      tagline: "Efficient, Automated, and Accurate Financial Management",
+      description:
+        "At AgileMorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.",
+      heroImage: imageRef(manifest, "2025/03/Accurate-Bookkeeping.svg", "Bookkeeping"),
+      heroCta: cta("Get in Touch", "/contact"),
+      capabilitiesHeading: "Our Bookkeeping Services",
+      capabilities: [
+        {
+          _type: "capabilityItem",
+          title: "Cloud-Based Solutions",
+          description: "Access your financial data anytime, anywhere with our cloud-based bookkeeping.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Accurate Bookkeeping",
+          description:
+            "We specialize in providing accurate bookkeeping services that eliminate errors and save time.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Automated Bookkeeping",
+          description:
+            "Our approach to automated bookkeeping ensures your books are always up-to-date.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Expense Tracking & Reporting",
+          description:
+            "Managing expenses is crucial to maintaining profitability—we make it effortless.",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Payroll Management",
+          description:
+            "Integrate your payroll system with our bookkeeping services for seamless financial management.",
+        },
+      ],
+      whyUsHeading: "Why Choose Us",
+      whyUs: [
+        {
+          _type: "whyUsItem",
+          title: "Customized Solutions",
+          description: "Tailored to fit your business's unique requirements.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Automation",
+          description: "Reduce manual work and human error with our automated systems.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Accurate Financial Reporting",
+          description: "Stay on top of your finances with detailed reports.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Compliance",
+          description: "Ensure you meet all regulatory requirements with our compliant processes.",
+        },
+        {
+          _type: "whyUsItem",
+          title: "Cloud Accessibility",
+          description: "Manage your finances from anywhere, at any time.",
+        },
+      ],
+      technologiesHeading: "Technologies",
+      technologies: ["Bill", "QBO", "Xero"].map((name) => ({ _type: "technologyItem", name })),
+      cta: {
+        heading: "Ready to Simplify Your Finances?",
+        description: "Let us handle your bookkeeping so you can focus on growing your business.",
+        button: cta("Get in Touch", "/contact"),
+      },
+      seo: {
+        title: "Book keeping Services - AgileMorph Solutions",
+        description:
+          "Efficient, automated, and accurate bookkeeping services for businesses of all sizes.",
+      },
+    },
+  ];
+}
+
+function buildBlogPosts(manifest) {
+  return [
+    {
+      _id: "blogPost-newsletter-consistency",
+      _type: "blogPost",
+      title: "How to Stay Consistent with Newsletters Without Burning Out",
+      slug: { _type: "slug", current: "newsletter-consistency-without-burning-out" },
+      excerpt:
+        "Introduction: Why Newsletter Consistency is Harder Than It Looks. When I first started running a newsletter, I believed the hardest part would be writing.",
+      publishedAt: "2025-09-01T10:00:00.000Z",
+      categories: ["Business Process Optimization"],
+      coverImage: imageRef(manifest, "2025/09/Automated-Newsletter-Workflow.png", "Newsletter workflow"),
+    },
+    {
+      _id: "blogPost-intent-based-prospecting",
+      _type: "blogPost",
+      title: "The Future of Lead Generation: Why Intent-Based Prospecting Beats Volume Every Time",
+      slug: { _type: "slug", current: "intent-based-prospecting-beats-volume" },
+      excerpt:
+        "For years, B2B lead generation was treated as a numbers game. Buy a big list. Send thousands of emails.",
+      publishedAt: "2025-09-15T10:00:00.000Z",
+      categories: ["Artificial Intelligence", "Data Analytics"],
+      coverImage: imageRef(manifest, "2025/09/AI-Driven-Lead-Generation.png", "Lead generation"),
+    },
+    {
+      _id: "blogPost-crm-integrations",
+      _type: "blogPost",
+      title: "The Benefits of CRM Integrations for Your Business",
+      slug: { _type: "slug", current: "benefits-of-crm-integrations" },
+      excerpt:
+        "In today's fast-paced business environment, customer relationship management (CRM) tools have become essential for companies of all sizes.",
+      publishedAt: "2025-08-01T10:00:00.000Z",
+      categories: ["Customer Relationship Management (CRM)"],
+      coverImage: imageRef(manifest, "2025/09/Custom-Software-Integration-Services.jpg", "CRM integrations"),
+    },
+  ];
+}
+
+async function mutateDocuments({ projectId, dataset, token, documents }) {
+  const url = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      mutations: documents.map((doc) => ({
+        createOrReplace: doc,
+      })),
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Seed failed: ${response.status} ${text}`);
+  }
+}
+
+async function main() {
+  const env = loadEnv();
+  const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
+  const token = getAuthToken({ preferCli: true });
+  const manifest = loadManifest();
+
+  const documents = [
+    buildHomepage(manifest),
+    buildAboutPage(manifest),
+    buildContactPage(),
+    ...buildServicePages(manifest),
+    ...buildBlogPosts(manifest),
+  ];
+
+  console.log(`Seeding ${documents.length} documents...`);
+  await mutateDocuments({ projectId, dataset, token, documents });
+  console.log("Seed complete.");
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

@@ -1,132 +1,150 @@
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { SanityImage } from "@/components/SanityImage";
+import type { ProcessStep } from "@/sanity/types";
 
-const steps = [
-  {
-    number: "01",
-    title: "Kickstart Your Journey With a Thoughtful Plan",
-    body: "We start by understanding your goals and planning the steps to bring them to life.",
-    bullets: [
-      "Collaborative Sprint: Work closely with your team to identify project objectives and scope.",
-      "Intensive Planning: Focus on detailed planning and prioritization.",
-      "Successful Groundwork: Lay the foundation for a successful agile transformation.",
-    ],
-    imageBg: "from-primary/5 to-primary/10",
-    offsetClass: "md:mt-0",
-  },
-  {
-    number: "02",
-    title: "Innovate with every step forward.",
-    body: "We build and refine your solution step by step, based on your feedback.",
-    bullets: [
-      "Iterative Development: Central to our process for continuous improvement.",
-      "Agile Principles: Embrace the agile manifesto to adapt and refine solutions.",
-      "Rapid Feedback Loops: Ensure every iteration aligns with your evolving needs.",
-    ],
-    imageBg: "from-primary/10 to-primary/20",
-    offsetClass: "md:mt-16",
-  },
-  {
-    number: "03",
-    title: "Agility at Its Best, Results Guaranteed",
-    body: "We deliver results quickly and adapt to your needs as they evolve.",
-    bullets: [
-      "Rapid Delivery: Efficient approach for prompt results.",
-      "Adaptibility: Address changes with a flexible approach.",
-      "Seamless Evolution: Ensure the project evolves smoothly to meet milestones.",
-    ],
-    imageBg: "from-primary/20 to-primary/5",
-    offsetClass: "md:mt-32",
-  },
-] as const;
+type ProcessSectionProps = {
+  heading?: string;
+  subheading?: string;
+  steps?: ProcessStep[];
+};
+
+const OFFSET_CLASSES = ["lg:mt-0", "lg:mt-20", "lg:mt-40"] as const;
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M20 6 9 17l-5-5" />
     </svg>
   );
 }
 
-export function ProcessSection() {
+export function ProcessSection({
+  heading = "The Way We Work",
+  subheading = "We empower businesses to thrive with innovative digital solutions.",
+  steps = [],
+}: ProcessSectionProps) {
   return (
     <section
-      className="bg-background py-section max-sm:py-section-sm"
+      className="overflow-hidden bg-surface py-section max-sm:py-section-sm"
       aria-labelledby="process-heading"
     >
       <Container>
-        <AnimateOnScroll className="text-center mb-20">
+        <AnimateOnScroll className="mb-20 text-center">
+          <span className="mb-4 block font-body text-xs font-bold uppercase tracking-widest text-primary">
+            Our Process
+          </span>
           <h2
             id="process-heading"
-            className="font-heading text-4xl font-extrabold text-foreground sm:text-5xl mb-4"
+            className="mb-4 font-heading text-4xl font-extrabold text-foreground sm:text-5xl"
           >
-            The Way We Work
+            {heading}
           </h2>
-          <p className="font-body text-lg text-muted-foreground">
-            We empower businesses to thrive with innovative digital solutions.
-          </p>
+          {subheading ? (
+            <p className="mx-auto max-w-xl font-body text-lg text-muted-foreground">
+              {subheading}
+            </p>
+          ) : null}
         </AnimateOnScroll>
 
-        <div className="relative grid grid-cols-1 gap-8 md:grid-cols-3">
-          {/* Connector line (desktop) */}
+        {/* Connector line (desktop) */}
+        <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div
-            className="pointer-events-none absolute top-8 left-8 hidden w-[calc(100%-4rem)] h-px bg-border md:block"
+            className="pointer-events-none absolute left-[16.7%] top-14 hidden h-px w-[66.6%] bg-linear-to-r from-primary/20 via-primary/60 to-primary/20 lg:block"
             aria-hidden="true"
           />
 
-          {steps.map((step, i) => (
+          {steps.map((step, index) => (
             <AnimateOnScroll
-              key={step.number}
-              delay={i * 150}
-              className={`relative z-10 group ${step.offsetClass}`}
+              key={`${step.title}-${index}`}
+              delay={index * 120}
+              className={`relative z-10 ${OFFSET_CLASSES[index % OFFSET_CLASSES.length]}`}
             >
-              {/* Step number */}
-              <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-background font-heading text-lg font-bold text-primary shadow-xl shadow-primary/10">
-                {step.number}
+              {/* Step number badge */}
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary font-heading text-base font-extrabold text-white shadow-lg shadow-primary/30">
+                {String(index + 1).padStart(2, "0")}
               </div>
 
-              {/* Card */}
-              <div className="h-full rounded-2xl border border-border bg-background p-6 shadow-sm transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5">
-                {/* Image placeholder with gradient */}
-                <div
-                  className={`relative mb-6 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br ${step.imageBg} border border-border/50`}
-                >
-                  {/* SVG illustration placeholder */}
-                  <svg
-                    className="h-20 w-20 text-primary/30 transition-all duration-700 group-hover:text-primary/60"
-                    viewBox="0 0 80 80"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <circle cx="40" cy="40" r="30" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-                    <rect x="25" y="25" width="30" height="22" rx="3" stroke="currentColor" strokeWidth="2" />
-                    <path d="M30 55 L40 63 L50 55" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="40" cy="36" r="5" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                  <div className="absolute inset-0 rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-t from-primary/5 to-transparent" />
+              <div className="group h-full overflow-hidden rounded-2xl border border-border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+                {/* Illustration area */}
+                <div className="relative flex h-52 items-center justify-center overflow-hidden bg-linear-to-br from-primary/5 to-surface p-4">
+                  {step.image ? (
+                    <SanityImage
+                      image={step.image}
+                      alt={step.image.alt ?? step.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-contain p-6"
+                    />
+                  ) : (
+                    /* Animated placeholder */
+                    <div className="flex flex-col items-center gap-3 opacity-40">
+                      <svg className="h-16 w-16 text-primary" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" />
+                        <path d="M20 32l8 8 16-16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="font-body text-xs text-muted-foreground">
+                        Step {index + 1}
+                      </span>
+                    </div>
+                  )}
+                  {/* Subtle overlay gradient */}
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-8"
+                    style={{
+                      background:
+                        "linear-gradient(to top, var(--color-background), transparent)",
+                    }}
+                  />
                 </div>
 
-                <h3 className="mb-3 font-heading text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
-                  {step.title}
-                </h3>
-                <p className="mb-5 font-body text-sm text-muted-foreground leading-relaxed">
-                  {step.body}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="mb-2 font-heading text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-primary">
+                    {step.title}
+                  </h3>
+                  {step.description ? (
+                    <p className="mb-5 font-body text-sm leading-relaxed text-muted-foreground">
+                      {step.description}
+                    </p>
+                  ) : null}
 
-                <ul className="space-y-3">
-                  {step.bullets.map((bullet) => {
-                    const [bold, ...rest] = bullet.split(": ");
-                    return (
-                      <li key={bullet} className="flex items-start gap-2 font-body text-sm text-muted-foreground">
-                        <CheckIcon />
-                        <span>
-                          <strong className="font-semibold text-foreground">{bold}:</strong>{" "}
-                          {rest.join(": ")}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
+                  {step.bullets?.length ? (
+                    <ul className="space-y-2.5">
+                      {step.bullets.map((bullet) => {
+                        const [bold, ...rest] = bullet.split(": ");
+                        return (
+                          <li
+                            key={bullet}
+                            className="flex items-start gap-2 font-body text-sm text-muted-foreground"
+                          >
+                            <CheckIcon />
+                            <span>
+                              {rest.length > 0 ? (
+                                <>
+                                  <strong className="font-semibold text-foreground">
+                                    {bold}:
+                                  </strong>{" "}
+                                  {rest.join(": ")}
+                                </>
+                              ) : (
+                                bullet
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : null}
+                </div>
               </div>
             </AnimateOnScroll>
           ))}

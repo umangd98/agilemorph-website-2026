@@ -1,0 +1,1454 @@
+{
+  "wp-imports/feature-image.png": {
+    "id": "image-4a3db604c47da74f97be85efec45f7d2e7377e81-508x329-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4a3db604c47da74f97be85efec45f7d2e7377e81-508x329.png"
+  },
+  "wp-imports/AI-Driven-Lead-Generation.png": {
+    "id": "image-fec12140ac6517abc5b9e725b64eb74cc624b73d-443x354-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fec12140ac6517abc5b9e725b64eb74cc624b73d-443x354.png"
+  },
+  "wp-imports/15-1.jpg": {
+    "id": "image-b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656.jpg"
+  },
+  "wp-imports/26.jpg": {
+    "id": "image-f843d2ad5ad9d6435e908edc7640d422a2780fb2-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f843d2ad5ad9d6435e908edc7640d422a2780fb2-984x656.jpg"
+  },
+  "wp-imports/25.jpg": {
+    "id": "image-ce00881a4b381325589fb2d09aa073d3bb8d41bd-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ce00881a4b381325589fb2d09aa073d3bb8d41bd-984x656.jpg"
+  },
+  "wp-imports/24.jpg": {
+    "id": "image-bc0f2f13ab9101b16192cbac2a774341ee9d91ef-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bc0f2f13ab9101b16192cbac2a774341ee9d91ef-984x656.jpg"
+  },
+  "wp-imports/23.jpg": {
+    "id": "image-7a859442905f9b1dacb5e01aa1d9978fb08b2e6e-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7a859442905f9b1dacb5e01aa1d9978fb08b2e6e-984x656.jpg"
+  },
+  "wp-imports/22.jpg": {
+    "id": "image-9aa55153df619567e6d52ae5049d4aa473975c9b-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9aa55153df619567e6d52ae5049d4aa473975c9b-984x656.jpg"
+  },
+  "wp-imports/21.jpg": {
+    "id": "image-fb199c4864b7c133e339c3c550b5c5c210b7016f-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fb199c4864b7c133e339c3c550b5c5c210b7016f-984x656.jpg"
+  },
+  "wp-imports/20.jpg": {
+    "id": "image-a055375611b87ef3822a8901bd957f3641092c01-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a055375611b87ef3822a8901bd957f3641092c01-984x656.jpg"
+  },
+  "wp-imports/19.jpg": {
+    "id": "image-0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656.jpg"
+  },
+  "wp-imports/designer-0.png": {
+    "id": "image-5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430.png"
+  },
+  "wp-imports/17.jpg": {
+    "id": "image-1ca283bb471625e6cb06dca6bdff0aa5a5f0cf6e-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1ca283bb471625e6cb06dca6bdff0aa5a5f0cf6e-984x656.jpg"
+  },
+  "wp-imports/images-3.jpg": {
+    "id": "image-853d59e9174ebb8eac32b7c6b74f5741a989ed9a-246x205-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/853d59e9174ebb8eac32b7c6b74f5741a989ed9a-246x205.jpg"
+  },
+  "wp-imports/15.jpg": {
+    "id": "image-b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656.jpg"
+  },
+  "wp-imports/11.jpg": {
+    "id": "image-f5450fb8a223f65df1f062839f329ef87bfc0779-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f5450fb8a223f65df1f062839f329ef87bfc0779-984x656.jpg"
+  },
+  "wp-imports/images-4.jpg": {
+    "id": "image-8ff10e8300d46f1655512f9c5a073be9d00820a8-243x208-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8ff10e8300d46f1655512f9c5a073be9d00820a8-243x208.jpg"
+  },
+  "wp-imports/13.jpg": {
+    "id": "image-904742a376a1c502e0fd4df6de56e42ec48eaf10-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/904742a376a1c502e0fd4df6de56e42ec48eaf10-984x656.jpg"
+  },
+  "wp-imports/14.jpg": {
+    "id": "image-bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656.jpg"
+  },
+  "wp-imports/10.png": {
+    "id": "image-5b95dda25d4de5a41578ca468b0a9ec89cc8ca9c-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5b95dda25d4de5a41578ca468b0a9ec89cc8ca9c-450x300.png"
+  },
+  "wp-imports/9.png": {
+    "id": "image-bdeebd1f347639fbd28487345837e3ffa41413c1-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bdeebd1f347639fbd28487345837e3ffa41413c1-450x300.png"
+  },
+  "wp-imports/8.png": {
+    "id": "image-5e7a24759f27e4560f8a507402b2eef29450c4d8-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5e7a24759f27e4560f8a507402b2eef29450c4d8-450x300.png"
+  },
+  "wp-imports/7.png": {
+    "id": "image-4dcba8e1f6b7dc29f8fbbc43063dbc781e97cf0b-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4dcba8e1f6b7dc29f8fbbc43063dbc781e97cf0b-450x300.png"
+  },
+  "wp-imports/6.png": {
+    "id": "image-2e2b097af3b4720ad9a38d505b209d0dd25da021-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2e2b097af3b4720ad9a38d505b209d0dd25da021-450x300.png"
+  },
+  "wp-imports/5.png": {
+    "id": "image-809471f4fccda7f36c87f68c8ff20e6b5c209e51-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/809471f4fccda7f36c87f68c8ff20e6b5c209e51-450x300.png"
+  },
+  "wp-imports/4.png": {
+    "id": "image-d0954b7c1f151a2906b6f15430e97e428c3a64c4-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d0954b7c1f151a2906b6f15430e97e428c3a64c4-450x300.png"
+  },
+  "wp-imports/3.png": {
+    "id": "image-8afb493ff7b42e244ad7f99aaa67c6b79368dbd3-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8afb493ff7b42e244ad7f99aaa67c6b79368dbd3-450x300.png"
+  },
+  "wp-imports/2.png": {
+    "id": "image-93ea8699bbe2cf4fa97719b470fee2997ccf8e07-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/93ea8699bbe2cf4fa97719b470fee2997ccf8e07-450x300.png"
+  },
+  "wp-imports/1.png": {
+    "id": "image-7fc22925f0267e90df9d24cd80091d32a26e57cc-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7fc22925f0267e90df9d24cd80091d32a26e57cc-450x300.png"
+  },
+  "2025/01/Accurate-Bookkeeping.svg": {
+    "id": "image-34aa35df1b1bef83ef9107835995884cfe93280b-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/34aa35df1b1bef83ef9107835995884cfe93280b-360x360.svg"
+  },
+  "2025/01/Administrative-Support-1.svg": {
+    "id": "image-b8c972b0002f58506b71e37d030d77376c34a401-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b8c972b0002f58506b71e37d030d77376c34a401-360x360.svg"
+  },
+  "2025/01/Administrative-Support.svg": {
+    "id": "image-b8c972b0002f58506b71e37d030d77376c34a401-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b8c972b0002f58506b71e37d030d77376c34a401-360x360.svg"
+  },
+  "2025/01/Analytics-and-Reporting.svg": {
+    "id": "image-cd13853f1d8937884dfdc73a8efbb11a159672c3-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cd13853f1d8937884dfdc73a8efbb11a159672c3-360x360.svg"
+  },
+  "2025/01/ArrowRight-1.svg": {
+    "id": "image-279ec44073ffee91d1bb3a8704249634d3bbd610-28x28-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/279ec44073ffee91d1bb3a8704249634d3bbd610-28x28.svg"
+  },
+  "2025/01/ArrowRight.svg": {
+    "id": "image-bf2eb6a8193ffcfb1be111c1daafdf4c42c50818-28x28-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bf2eb6a8193ffcfb1be111c1daafdf4c42c50818-28x28.svg"
+  },
+  "2025/01/ArrowUpRight-1.svg": {
+    "id": "image-fb6bdc248e782ff89785a0cf73cff25f237de64a-22x22-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fb6bdc248e782ff89785a0cf73cff25f237de64a-22x22.svg"
+  },
+  "2025/01/ArrowUpRight-2.svg": {
+    "id": "image-c90540d41d3ab056925df6442ad068d26b645760-20x20-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c90540d41d3ab056925df6442ad068d26b645760-20x20.svg"
+  },
+  "2025/01/ArrowUpRight-3.svg": {
+    "id": "image-501cfc4c26b10e0f8590d1cedb9b776c552b4b6a-20x20-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/501cfc4c26b10e0f8590d1cedb9b776c552b4b6a-20x20.svg"
+  },
+  "2025/01/ArrowUpRight.svg": {
+    "id": "image-844dd1494857c8e4df1327329240d5ef4db3c36b-20x20-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/844dd1494857c8e4df1327329240d5ef4db3c36b-20x20.svg"
+  },
+  "2025/01/Automated-Bookkeeping.svg": {
+    "id": "image-6ee678c0709e8ec7cc83296873c1332e06a7581a-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6ee678c0709e8ec7cc83296873c1332e06a7581a-360x360.svg"
+  },
+  "2025/01/Automation-and-Integration.svg": {
+    "id": "image-0ce4559a26bae589d84d2ea5553cb937ca0be56c-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0ce4559a26bae589d84d2ea5553cb937ca0be56c-360x360.svg"
+  },
+  "2025/01/Brain.svg": {
+    "id": "image-7a606953be62b74fbe2b834275b00229ae8221f7-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7a606953be62b74fbe2b834275b00229ae8221f7-40x40.svg"
+  },
+  "2025/01/Calendar-and-Scheduling-1.svg": {
+    "id": "image-a405acecbe75f940940074d12eb9d19f30baaac6-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a405acecbe75f940940074d12eb9d19f30baaac6-360x360.svg"
+  },
+  "2025/01/Calendar-and-Scheduling.svg": {
+    "id": "image-a405acecbe75f940940074d12eb9d19f30baaac6-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a405acecbe75f940940074d12eb9d19f30baaac6-360x360.svg"
+  },
+  "2025/01/Cloud-Based-Solutions-1.svg": {
+    "id": "image-498419368beef3b4cf8bc69f6bc0957d056b3033-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/498419368beef3b4cf8bc69f6bc0957d056b3033-360x360.svg"
+  },
+  "2025/01/Cloud-Based-Solutions-2.svg": {
+    "id": "image-5205b63493aaa9c2119708904feb2092af811476-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5205b63493aaa9c2119708904feb2092af811476-360x360.svg"
+  },
+  "2025/01/Cloud-Based-Solutions.svg": {
+    "id": "image-83b5112cf3b03f466f16368de574ef9ab73f4856-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/83b5112cf3b03f466f16368de574ef9ab73f4856-360x360.svg"
+  },
+  "2025/01/Content-Creation-and-Management-1.svg": {
+    "id": "image-ac78495deffb448595190f4ac67c95317acfb6f0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ac78495deffb448595190f4ac67c95317acfb6f0-360x360.svg"
+  },
+  "2025/01/Content-Creation-and-Management.svg": {
+    "id": "image-ac78495deffb448595190f4ac67c95317acfb6f0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ac78495deffb448595190f4ac67c95317acfb6f0-360x360.svg"
+  },
+  "2025/01/Content-Marketing.svg": {
+    "id": "image-7ba8108a1b79ef2460c5294ed5fa14fa86652ea3-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7ba8108a1b79ef2460c5294ed5fa14fa86652ea3-360x360.svg"
+  },
+  "2025/01/Custom-API-Solutions.svg": {
+    "id": "image-295bc32293e7d03757417a2a51bd79ddd4bfb291-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/295bc32293e7d03757417a2a51bd79ddd4bfb291-360x360.svg"
+  },
+  "2025/01/Custom-CRM-Software-Development.svg": {
+    "id": "image-78126af7fbf4a812d723612c6aab990daf233ff2-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/78126af7fbf4a812d723612c6aab990daf233ff2-360x360.svg"
+  },
+  "2025/01/Custom-Software-Development-1.svg": {
+    "id": "image-b1d398b943d5d9f0cbc85de7962633cc65b74da0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b1d398b943d5d9f0cbc85de7962633cc65b74da0-360x360.svg"
+  },
+  "2025/01/Custom-Software-Development.svg": {
+    "id": "image-46cf48710d626a31db3ff3349f506e184a5b0405-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/46cf48710d626a31db3ff3349f506e184a5b0405-360x360.svg"
+  },
+  "2025/01/Customer-Service-1.svg": {
+    "id": "image-a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360.svg"
+  },
+  "2025/01/Customer-Service.svg": {
+    "id": "image-a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360.svg"
+  },
+  "2025/01/E-Learning-Platforms.svg": {
+    "id": "image-ccb38ee6bb2aaa4ebdf67262c77ed8523697e3b4-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ccb38ee6bb2aaa4ebdf67262c77ed8523697e3b4-360x360.svg"
+  },
+  "2025/01/Ellipse-11.svg": {
+    "id": "image-568f87c604267c5f9b6628b7466c143961ecf2f5-62x62-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/568f87c604267c5f9b6628b7466c143961ecf2f5-62x62.svg"
+  },
+  "2025/01/Email-Marketing.svg": {
+    "id": "image-a01bc769dc6fdad2eb302fa5b4d1f9bef3e8db90-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a01bc769dc6fdad2eb302fa5b4d1f9bef3e8db90-360x360.svg"
+  },
+  "2025/01/Enterprise-Application-Development-1.svg": {
+    "id": "image-fae780777f10d7d6d522af5bb4794b6428e9320e-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fae780777f10d7d6d522af5bb4794b6428e9320e-360x360.svg"
+  },
+  "2025/01/Enterprise-Application-Development.svg": {
+    "id": "image-cd2072e65a1ecb957f4757a50cc468eab303e606-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cd2072e65a1ecb957f4757a50cc468eab303e606-360x360.svg"
+  },
+  "2025/01/Envelope.svg": {
+    "id": "image-a43686c0277d7a2f1037c5172d47286d9a806399-27x26-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a43686c0277d7a2f1037c5172d47286d9a806399-27x26.svg"
+  },
+  "2025/01/Expense-Tracking-Reporting.svg": {
+    "id": "image-02981eea896303f46cd3704742c2533ee8657043-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/02981eea896303f46cd3704742c2533ee8657043-360x360.svg"
+  },
+  "2025/01/Footer_BG_Shape.png": {
+    "id": "image-ae59674780f15952aab5b94b8798c92ae30bf5e5-184x184-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ae59674780f15952aab5b94b8798c92ae30bf5e5-184x184.png"
+  },
+  "2025/01/Footer_Facebook.svg": {
+    "id": "image-0374e718f65dd8c26533d9c0bd8084e2770966d4-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0374e718f65dd8c26533d9c0bd8084e2770966d4-24x24.svg"
+  },
+  "2025/01/Footer_Instagram.svg": {
+    "id": "image-d4a94fa0833b140649085a0b2dd22b9538200c2b-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d4a94fa0833b140649085a0b2dd22b9538200c2b-24x24.svg"
+  },
+  "2025/01/Frame.png": {
+    "id": "image-26af95c11b1fa61fa5bfef4ed2ac157ec1e5d069-657x459-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/26af95c11b1fa61fa5bfef4ed2ac157ec1e5d069-657x459.png"
+  },
+  "2025/01/Group-1000004549.svg": {
+    "id": "image-19573b27bc218ca8d32dd6b60fd2d25d22092c96-74x44-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/19573b27bc218ca8d32dd6b60fd2d25d22092c96-74x44.svg"
+  },
+  "2025/01/Group-1000004550.svg": {
+    "id": "image-ef91fa7d350cbec44eb740536f5c020f807f3d2f-74x44-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ef91fa7d350cbec44eb740536f5c020f807f3d2f-74x44.svg"
+  },
+  "2025/01/Group-1000004553.png": {
+    "id": "image-945d8729811ec0dbc516d5396234a794d86076cc-369x74-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/945d8729811ec0dbc516d5396234a794d86076cc-369x74.png"
+  },
+  "2025/01/Group-1000004553.svg": {
+    "id": "image-c63d9df913bfe266c056931b612598521fbab0aa-369x74-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c63d9df913bfe266c056931b612598521fbab0aa-369x74.svg"
+  },
+  "2025/01/Group-1000004561.png": {
+    "id": "image-df0f607bc8cc1109b313d99d85a714b5d7923c4f-78x78-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/df0f607bc8cc1109b313d99d85a714b5d7923c4f-78x78.png"
+  },
+  "2025/01/Group-1000004562.png": {
+    "id": "image-ea79005ac13e14e0ebe21c8beaa6dc8543205375-78x78-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ea79005ac13e14e0ebe21c8beaa6dc8543205375-78x78.png"
+  },
+  "2025/01/Group-1000004563.png": {
+    "id": "image-05b0b84c9c46e4515ceca207f1c54794ca38ee22-78x78-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/05b0b84c9c46e4515ceca207f1c54794ca38ee22-78x78.png"
+  },
+  "2025/01/Group-1000004585.svg": {
+    "id": "image-fa54dfb1a5e0cd3ff0b83b26c1b689d8798b0512-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fa54dfb1a5e0cd3ff0b83b26c1b689d8798b0512-40x40.svg"
+  },
+  "2025/01/Group-1000004587.png": {
+    "id": "image-df27d7e24d220b240c9ebf990ef6861cc73ccd46-460x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/df27d7e24d220b240c9ebf990ef6861cc73ccd46-460x478.png"
+  },
+  "2025/01/Group-1000004666-1.png": {
+    "id": "image-eb29b7ab31fa399c5295f44a37c963d2344cbeda-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/eb29b7ab31fa399c5295f44a37c963d2344cbeda-104x104.png"
+  },
+  "2025/01/Group-1000004666-2.png": {
+    "id": "image-eefdc9429ff5344780ae80220d2cf2b5a54b5178-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/eefdc9429ff5344780ae80220d2cf2b5a54b5178-104x104.png"
+  },
+  "2025/01/Group-1000004666-3.png": {
+    "id": "image-76bbd826af4e36bc11fe7447ef6dd1a94ddcc5a9-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/76bbd826af4e36bc11fe7447ef6dd1a94ddcc5a9-104x104.png"
+  },
+  "2025/01/Group-1000004666-4.png": {
+    "id": "image-3e12b5416f0430099bbd58eedf1ae01a0b5544d4-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/3e12b5416f0430099bbd58eedf1ae01a0b5544d4-104x104.png"
+  },
+  "2025/01/Group-1000004666.png": {
+    "id": "image-f1e03c75e264a366f3de8cb143282949f84becc7-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f1e03c75e264a366f3de8cb143282949f84becc7-104x104.png"
+  },
+  "2025/01/Group-1000004678-1.png": {
+    "id": "image-0a63d33fb2b9dc685f7519d63837165ee28e63ab-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0a63d33fb2b9dc685f7519d63837165ee28e63ab-104x104.png"
+  },
+  "2025/01/Group-1000004678.png": {
+    "id": "image-d9d1b993599fe99fbd9d39fdbdf9eaadd491b1eb-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d9d1b993599fe99fbd9d39fdbdf9eaadd491b1eb-104x104.png"
+  },
+  "2025/01/Group-1000004697.svg": {
+    "id": "image-371dcf5aec35a4e0883838d0569329d9d1abcd6e-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/371dcf5aec35a4e0883838d0569329d9d1abcd6e-90x90.svg"
+  },
+  "2025/01/Group-1000004744.svg": {
+    "id": "image-e0a50125e9d8ee07ac4a102682a07214e961d5f0-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e0a50125e9d8ee07ac4a102682a07214e961d5f0-40x40.svg"
+  },
+  "2025/01/Group-1000004745.svg": {
+    "id": "image-ad9f40ff5443057f584afa9d447be6a27ce240ce-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ad9f40ff5443057f584afa9d447be6a27ce240ce-40x40.svg"
+  },
+  "2025/01/Group-1000004746.svg": {
+    "id": "image-559d604dd057d09da533fe950b74a0270804088e-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/559d604dd057d09da533fe950b74a0270804088e-40x40.svg"
+  },
+  "2025/01/Group-1000004747.svg": {
+    "id": "image-b2e2fd7a62cd9cd13c18d02064c1c2cf05ff9746-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b2e2fd7a62cd9cd13c18d02064c1c2cf05ff9746-40x40.svg"
+  },
+  "2025/01/Group-236.svg": {
+    "id": "image-a10c7b418c506d7ee11ea86b595ebf13d38edeed-71x71-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a10c7b418c506d7ee11ea86b595ebf13d38edeed-71x71.svg"
+  },
+  "2025/01/Group.png": {
+    "id": "image-e4a13af5cfa45834640b96975137dd4c54539fdb-1182x596-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e4a13af5cfa45834640b96975137dd4c54539fdb-1182x596.png"
+  },
+  "2025/01/Handshake.svg": {
+    "id": "image-83795f83072dc54e3d4a675d56eede4711647f46-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/83795f83072dc54e3d4a675d56eede4711647f46-40x40.svg"
+  },
+  "2025/01/Herosection_BG.png": {
+    "id": "image-66eae542a0a67af24d38a614ab06511e08a21280-1920x770-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/66eae542a0a67af24d38a614ab06511e08a21280-1920x770.png"
+  },
+  "2025/01/Herosection_Img.png": {
+    "id": "image-0b29efc652ef1a8e9328e7ef1561d51821b971d9-599x584-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0b29efc652ef1a8e9328e7ef1561d51821b971d9-599x584.png"
+  },
+  "2025/01/Herosection_Shape_Border.svg": {
+    "id": "image-11f6b7d63d642c0aa930e0cd26bb640aac44d99f-586x584-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/11f6b7d63d642c0aa930e0cd26bb640aac44d99f-586x584.svg"
+  },
+  "2025/01/Idealartner_Arrow_01.svg": {
+    "id": "image-51982b44d0a818754f532ebb10bce918afe51ca4-45x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/51982b44d0a818754f532ebb10bce918afe51ca4-45x40.svg"
+  },
+  "2025/01/Idealartner_Arrow_02.svg": {
+    "id": "image-6255e7964226657482a8e8df84107e813f72847d-21x43-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6255e7964226657482a8e8df84107e813f72847d-21x43.svg"
+  },
+  "2025/01/Idealartner_Arrow_03.svg": {
+    "id": "image-96f097cbeb54cec2fb6262bff158231db789bb96-45x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/96f097cbeb54cec2fb6262bff158231db789bb96-45x40.svg"
+  },
+  "2025/01/Idealartner_Icon_01.svg": {
+    "id": "image-71cbba2fb0d4ac861a2941b0143eeb782787b8a1-60x60-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/71cbba2fb0d4ac861a2941b0143eeb782787b8a1-60x60.svg"
+  },
+  "2025/01/Idealartner_Icon_02.svg": {
+    "id": "image-cc84fb7c286e30742cbd77a3e7e6dafeb209f7a0-60x60-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cc84fb7c286e30742cbd77a3e7e6dafeb209f7a0-60x60.svg"
+  },
+  "2025/01/Idealartner_Icon_03.svg": {
+    "id": "image-d3b05845d3045630c465c66035348213bc57d975-60x60-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d3b05845d3045630c465c66035348213bc57d975-60x60.svg"
+  },
+  "2025/01/Idealartner_Logo.svg": {
+    "id": "image-9ed2ea6fb628873314cabc16747a2fd5c61307ad-587x117-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9ed2ea6fb628873314cabc16747a2fd5c61307ad-587x117.svg"
+  },
+  "2025/01/Inventory-Management-Systems.svg": {
+    "id": "image-8b2e80dee7103655ce11a74fd8ed0b659c3357ad-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8b2e80dee7103655ce11a74fd8ed0b659c3357ad-360x360.svg"
+  },
+  "2025/01/Legacy-Application-Modernization-1.svg": {
+    "id": "image-293cc9dc5d9a4862e5a3de1ff4c1c39bbadd4193-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/293cc9dc5d9a4862e5a3de1ff4c1c39bbadd4193-360x360.svg"
+  },
+  "2025/01/Legacy-Application-Modernization.svg": {
+    "id": "image-10d6caa4221f2a30f1c5553397d260d8af4dcef4-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/10d6caa4221f2a30f1c5553397d260d8af4dcef4-360x360.svg"
+  },
+  "2025/01/Logo-1.png": {
+    "id": "image-51137289bbe3612c5d5151b0713c0506db936c6b-190x38-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/51137289bbe3612c5d5151b0713c0506db936c6b-190x38.png"
+  },
+  "2025/01/Logo-10.png": {
+    "id": "image-d4a621c68228a42b33518ee1edc84c679c5cf35a-145x38-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d4a621c68228a42b33518ee1edc84c679c5cf35a-145x38.png"
+  },
+  "2025/01/Logo-11.png": {
+    "id": "image-be246070e75b8ffcf2be4f0b7faa39d2f338460a-142x36-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/be246070e75b8ffcf2be4f0b7faa39d2f338460a-142x36.png"
+  },
+  "2025/01/Logo-12.png": {
+    "id": "image-5d802c448e94975f84426ca061e2e3adbf467b7a-168x37-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5d802c448e94975f84426ca061e2e3adbf467b7a-168x37.png"
+  },
+  "2025/01/Logo-13.png": {
+    "id": "image-9a690de50ae6739754da0579f9bd4c48a5b2f8ca-140x31-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9a690de50ae6739754da0579f9bd4c48a5b2f8ca-140x31.png"
+  },
+  "2025/01/Logo-14.png": {
+    "id": "image-d4a621c68228a42b33518ee1edc84c679c5cf35a-145x38-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d4a621c68228a42b33518ee1edc84c679c5cf35a-145x38.png"
+  },
+  "2025/01/Logo-16.png": {
+    "id": "image-5d802c448e94975f84426ca061e2e3adbf467b7a-168x37-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5d802c448e94975f84426ca061e2e3adbf467b7a-168x37.png"
+  },
+  "2025/01/Logo-2.png": {
+    "id": "image-6e42b5ed459e12435f102d0fe67d17085dff42ad-187x45-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6e42b5ed459e12435f102d0fe67d17085dff42ad-187x45.png"
+  },
+  "2025/01/Logo-3.png": {
+    "id": "image-1469ebd5a84e3e91367ab1d5848d904b45518cd6-161x42-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1469ebd5a84e3e91367ab1d5848d904b45518cd6-161x42.png"
+  },
+  "2025/01/Logo-4.png": {
+    "id": "image-e6e35d3788fe460bfb07e919d8130bfded837dbe-171x44-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e6e35d3788fe460bfb07e919d8130bfded837dbe-171x44.png"
+  },
+  "2025/01/Logo-5.png": {
+    "id": "image-fd04983c05020081eacfa89d0867fd87fa14b6e7-204x45-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fd04983c05020081eacfa89d0867fd87fa14b6e7-204x45.png"
+  },
+  "2025/01/Logo-6.png": {
+    "id": "image-bc77b680e45027b9375d1044313e2aa7a3611238-181x45-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bc77b680e45027b9375d1044313e2aa7a3611238-181x45.png"
+  },
+  "2025/01/Logo-7.png": {
+    "id": "image-70fc011f8d79d2c69a0e2957a6b0f0dc79a20f94-190x38-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/70fc011f8d79d2c69a0e2957a6b0f0dc79a20f94-190x38.png"
+  },
+  "2025/01/Logo-8.png": {
+    "id": "image-d5d7bdee5d748d425d96f63474a386a284ae6921-157x37-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d5d7bdee5d748d425d96f63474a386a284ae6921-157x37.png"
+  },
+  "2025/01/Logo-9.png": {
+    "id": "image-da1dce43faad7c782e431caf511dca74c53a328e-155x37-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/da1dce43faad7c782e431caf511dca74c53a328e-155x37.png"
+  },
+  "2025/01/Logo_Black.svg": {
+    "id": "image-ba0a59085a70db305d9e53bc61fddc2f13d824d4-256x51-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ba0a59085a70db305d9e53bc61fddc2f13d824d4-256x51.svg"
+  },
+  "2025/01/Logo_White.svg": {
+    "id": "image-226e21be30c375c3dbd005d2f4c4867660b2903d-369x74-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/226e21be30c375c3dbd005d2f4c4867660b2903d-369x74.svg"
+  },
+  "2025/01/Logo__14_-removebg-preview.png": {
+    "id": "image-5e7df27a81742dabe9bc544aecd50252d4f3faca-145x38-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5e7df27a81742dabe9bc544aecd50252d4f3faca-145x38.png"
+  },
+  "2025/01/Mask-group-2.png": {
+    "id": "image-e6f5a7783358aaa5b5615a771587e5f3ad8ab78d-438x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e6f5a7783358aaa5b5615a771587e5f3ad8ab78d-438x478.png"
+  },
+  "2025/01/Mask-group.png": {
+    "id": "image-9b5debeff68e3bcb7e5fe6034d8deefe797dccf7-478x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9b5debeff68e3bcb7e5fe6034d8deefe797dccf7-478x478.png"
+  },
+  "2025/01/Microsoft_Azure.svg-1.png": {
+    "id": "image-1f4fc062985c1fb30e34a46c1e97fc29af04025b-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1f4fc062985c1fb30e34a46c1e97fc29af04025b-104x104.png"
+  },
+  "2025/01/Microsoft_Azure.svg-2.png": {
+    "id": "image-cb5df8e2219f4a47971e0845dc99abaaea0461cf-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cb5df8e2219f4a47971e0845dc99abaaea0461cf-104x104.png"
+  },
+  "2025/01/Microsoft_Azure.svg-3.png": {
+    "id": "image-812ecafe8ae5e10a9802f0955a96a3c4b60b8293-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/812ecafe8ae5e10a9802f0955a96a3c4b60b8293-104x104.png"
+  },
+  "2025/01/Microsoft_Azure.svg-4.png": {
+    "id": "image-f52d5101e4804baff161ed273eda60bf212ef1b5-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f52d5101e4804baff161ed273eda60bf212ef1b5-104x104.png"
+  },
+  "2025/01/Mobile-Application-Development-1.svg": {
+    "id": "image-c99dbeeb578ef509652932ed7a77cb6cac311ab5-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c99dbeeb578ef509652932ed7a77cb6cac311ab5-360x360.svg"
+  },
+  "2025/01/Mobile-Application-Development.svg": {
+    "id": "image-82df07671bac4264127385862df08be28aedb8b9-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/82df07671bac4264127385862df08be28aedb8b9-360x360.svg"
+  },
+  "2025/01/Navbar_Dropdown.svg": {
+    "id": "image-52b0173609db798feab861ebd62066b7b28c3d7f-22x22-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/52b0173609db798feab861ebd62066b7b28c3d7f-22x22.svg"
+  },
+  "2025/01/Pay-Per-Click-PPC-Advertising.svg": {
+    "id": "image-5bd53c4415e0906165d0ecf460ee03e2a97b33cc-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5bd53c4415e0906165d0ecf460ee03e2a97b33cc-360x360.svg"
+  },
+  "2025/01/Payroll-Management.svg": {
+    "id": "image-989d1cbfec6d8899e1334531e11a0f9b75dd3d28-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/989d1cbfec6d8899e1334531e11a0f9b75dd3d28-360x360.svg"
+  },
+  "2025/01/PhoneCall.svg": {
+    "id": "image-fd91480e4e0e2337ba4514a8edf937308fc4a6d6-27x26-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fd91480e4e0e2337ba4514a8edf937308fc4a6d6-27x26.svg"
+  },
+  "2025/01/Rectangle-34624443.png": {
+    "id": "image-96adc9a798478e043ae8fce6a73a6837d5236e10-246x307-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/96adc9a798478e043ae8fce6a73a6837d5236e10-246x307.png"
+  },
+  "2025/01/Rectangle-34624443.svg": {
+    "id": "image-9b8470378c5a29b7c8830e2f9a794dbf846ffe41-246x307-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9b8470378c5a29b7c8830e2f9a794dbf846ffe41-246x307.svg"
+  },
+  "2025/01/Research-and-Data-Entry-1.svg": {
+    "id": "image-6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360.svg"
+  },
+  "2025/01/Research-and-Data-Entry.svg": {
+    "id": "image-6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360.svg"
+  },
+  "2025/01/SealCheck.svg": {
+    "id": "image-ea8d5a93d97fb0a5dd6b7d76e6bccf5ca9f1e604-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ea8d5a93d97fb0a5dd6b7d76e6bccf5ca9f1e604-40x40.svg"
+  },
+  "2025/01/Search-Engine-Optimization-SEO.svg": {
+    "id": "image-5819583807e1ca23e747e129dc75dd2bda3630e0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5819583807e1ca23e747e129dc75dd2bda3630e0-360x360.svg"
+  },
+  "2025/01/Services_Icon_01.svg": {
+    "id": "image-addf7ced55f57176c8e8dda052f710e32a6af3e5-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/addf7ced55f57176c8e8dda052f710e32a6af3e5-40x40.svg"
+  },
+  "2025/01/Services_Icon_02.svg": {
+    "id": "image-ec3d98e5d5c8bc198e7281b8b3e51c03dcf07055-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ec3d98e5d5c8bc198e7281b8b3e51c03dcf07055-40x40.svg"
+  },
+  "2025/01/Services_Icon_03.svg": {
+    "id": "image-7adb6d5ceb76cda38fca527e7c8cdd9d874e76ba-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7adb6d5ceb76cda38fca527e7c8cdd9d874e76ba-40x40.svg"
+  },
+  "2025/01/Services_Icon_04.svg": {
+    "id": "image-ee8a3bc86eaea9c20050879e04e364c7a6fff5e2-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ee8a3bc86eaea9c20050879e04e364c7a6fff5e2-40x40.svg"
+  },
+  "2025/01/Services_Icon_05.svg": {
+    "id": "image-993458052235be8e04a43d7d33d3df73f803d711-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/993458052235be8e04a43d7d33d3df73f803d711-40x40.svg"
+  },
+  "2025/01/Services_Icon_06.svg": {
+    "id": "image-5bbd4d90acbe29cd099c8e71d5c0e8bdd3ca4f3f-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5bbd4d90acbe29cd099c8e71d5c0e8bdd3ca4f3f-40x40.svg"
+  },
+  "2025/01/SketchLogo.svg": {
+    "id": "image-2932a5b27421c3347fd7b936052ad20346c43ddb-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2932a5b27421c3347fd7b936052ad20346c43ddb-40x40.svg"
+  },
+  "2025/01/Social-Media-Management-1.svg": {
+    "id": "image-e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360.svg"
+  },
+  "2025/01/Social-Media-Management.svg": {
+    "id": "image-e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360.svg"
+  },
+  "2025/01/Social-Media-Marketing.svg": {
+    "id": "image-23e3efffc7daa56ff7102d4dd512d17f393e7169-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/23e3efffc7daa56ff7102d4dd512d17f393e7169-360x360.svg"
+  },
+  "2025/01/SuccessStories_ArrowLeft.svg": {
+    "id": "image-9d86851a1cb33cd92794cf0f788cdb0d3773a545-28x28-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9d86851a1cb33cd92794cf0f788cdb0d3773a545-28x28.svg"
+  },
+  "2025/01/SuccessStories_ArrowRight.svg": {
+    "id": "image-95abcd05c57f626f9cc43c7db7a85cc4c793542b-28x28-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/95abcd05c57f626f9cc43c7db7a85cc4c793542b-28x28.svg"
+  },
+  "2025/01/SuccessStories_BG_Shape.png": {
+    "id": "image-405e585463635ef6d00f7aec6edc3ef3ee7571de-438x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/405e585463635ef6d00f7aec6edc3ef3ee7571de-438x478.png"
+  },
+  "2025/01/SuccessStories_BG_Shape.svg": {
+    "id": "image-0bb33664c56c14f2cac61d53818fb1948d1b8328-438x478-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0bb33664c56c14f2cac61d53818fb1948d1b8328-438x478.svg"
+  },
+  "2025/01/SuccessStories_David-Zaretsky.png": {
+    "id": "image-301614fbb852fd1ba2147a9e894aa29a233952f9-231x231-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/301614fbb852fd1ba2147a9e894aa29a233952f9-231x231.png"
+  },
+  "2025/01/SuccessStories_Logo_01.svg": {
+    "id": "image-661bb40be5eaa1e6646a4bf5cdf392d952326ea4-230x54-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/661bb40be5eaa1e6646a4bf5cdf392d952326ea4-230x54.svg"
+  },
+  "2025/01/SuccessStories_Logo_02.svg": {
+    "id": "image-98831c5a355c8040eb8479a6713369c2b3370da3-225x48-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/98831c5a355c8040eb8479a6713369c2b3370da3-225x48.svg"
+  },
+  "2025/01/SuccessStories_Logo_03.svg": {
+    "id": "image-37b8c9a734a6812cd2c195398b9a032bae3828d1-219x54-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/37b8c9a734a6812cd2c195398b9a032bae3828d1-219x54.svg"
+  },
+  "2025/01/SuccessStories_Logo_04.svg": {
+    "id": "image-c05f82ee5a34749f6cc9a9f74558a5ff45ede8c3-153x48-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c05f82ee5a34749f6cc9a9f74558a5ff45ede8c3-153x48.svg"
+  },
+  "2025/01/SuccessStories_Logo_05.svg": {
+    "id": "image-31d2eb739fccb0ba523a7c788b0f83db557e0922-223x54-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/31d2eb739fccb0ba523a7c788b0f83db557e0922-223x54.svg"
+  },
+  "2025/01/SuccessStories_Quote.svg": {
+    "id": "image-b4efa8489600ee2be4058d724f96436cbc6354e2-71x71-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b4efa8489600ee2be4058d724f96436cbc6354e2-71x71.svg"
+  },
+  "2025/01/UsersThree.svg": {
+    "id": "image-8028f1b2d42f934a06f5eaa6fb3d8dae491803c4-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8028f1b2d42f934a06f5eaa6fb3d8dae491803c4-40x40.svg"
+  },
+  "2025/01/Vector-2.png": {
+    "id": "image-0b6a8befb2a9ba3b4d168bc9314d971188bd2949-83x76-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0b6a8befb2a9ba3b4d168bc9314d971188bd2949-83x76.png"
+  },
+  "2025/01/Vector-4.png": {
+    "id": "image-d6a5f366a002dac5a1716378720734a45971efda-83x76-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d6a5f366a002dac5a1716378720734a45971efda-83x76.png"
+  },
+  "2025/01/Vector-5.png": {
+    "id": "image-aadef3dda23cea5d8a32e06e486e3cfec14f754e-83x76-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/aadef3dda23cea5d8a32e06e486e3cfec14f754e-83x76.png"
+  },
+  "2025/01/Vector-6.png": {
+    "id": "image-5cdc3b02a7de91b05cc2cc3aabbb0e8f33ecbd80-83x76-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5cdc3b02a7de91b05cc2cc3aabbb0e8f33ecbd80-83x76.png"
+  },
+  "2025/01/Vector-6.svg": {
+    "id": "image-bf7d491cbe4ca247bf79b42b09a7bdb264b81f9c-20x20-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bf7d491cbe4ca247bf79b42b09a7bdb264b81f9c-20x20.svg"
+  },
+  "2025/01/Vector.png": {
+    "id": "image-dd1120382bd576cf9d0a7235cfc9e908f588bbc0-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/dd1120382bd576cf9d0a7235cfc9e908f588bbc0-90x90.png"
+  },
+  "2025/01/Vector.svg": {
+    "id": "image-024dbf5035f3e707db66d02b8c20ebb818d1d329-21x21-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/024dbf5035f3e707db66d02b8c20ebb818d1d329-21x21.svg"
+  },
+  "2025/01/WeWork_Arrow.svg": {
+    "id": "image-7700003bb787c49335524151e71c5d8b5801e456-110x52-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7700003bb787c49335524151e71c5d8b5801e456-110x52.svg"
+  },
+  "2025/01/WeWork_Illustration01.svg": {
+    "id": "image-b3ffd2e6d78e2f135cccb33dba73827827a72b08-339x199-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b3ffd2e6d78e2f135cccb33dba73827827a72b08-339x199.svg"
+  },
+  "2025/01/WeWork_Illustration02.svg": {
+    "id": "image-115dab157f3b5f3875638632892e304e81f21b9a-274x219-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/115dab157f3b5f3875638632892e304e81f21b9a-274x219.svg"
+  },
+  "2025/01/WeWork_Illustration03.svg": {
+    "id": "image-f9349b3d3e350b7e3812e4d7e494b74f73bca92c-353x197-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f9349b3d3e350b7e3812e4d7e494b74f73bca92c-353x197.svg"
+  },
+  "2025/01/Web-Application-Development-1.svg": {
+    "id": "image-c5fc3907bd0d7a4641e9ae33c0d0e84f58b61726-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c5fc3907bd0d7a4641e9ae33c0d0e84f58b61726-360x360.svg"
+  },
+  "2025/01/Web-Application-Development.svg": {
+    "id": "image-e0c56a0b42c2cc534889c208495af384aebbdcb7-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e0c56a0b42c2cc534889c208495af384aebbdcb7-360x360.svg"
+  },
+  "2025/01/Website-Design-and-Development.svg": {
+    "id": "image-a96b612c0e1746e09a689a15e462fdd9684ff627-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a96b612c0e1746e09a689a15e462fdd9684ff627-360x360.svg"
+  },
+  "2025/01/YouTube-Marketing.svg": {
+    "id": "image-67e9ece1062f3dbb38b7c87a191732ed6983882b-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/67e9ece1062f3dbb38b7c87a191732ed6983882b-360x360.svg"
+  },
+  "2025/01/coding-0.svg": {
+    "id": "image-195948befd9516d3286012373afc2032ba9c2dc3-568x454-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/195948befd9516d3286012373afc2032ba9c2dc3-568x454.svg"
+  },
+  "2025/01/designer-0.png": {
+    "id": "image-5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430.png"
+  },
+  "2025/01/development-0.svg": {
+    "id": "image-31aa69832fec6b57cb54401716d0f53134850b31-656x457-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/31aa69832fec6b57cb54401716d0f53134850b31-656x457.svg"
+  },
+  "2025/01/fe_facebook.svg": {
+    "id": "image-0374e718f65dd8c26533d9c0bd8084e2770966d4-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0374e718f65dd8c26533d9c0bd8084e2770966d4-24x24.svg"
+  },
+  "2025/01/image-1.png": {
+    "id": "image-6dd5af6894a7e7bfe069498c6e5408207a583efc-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6dd5af6894a7e7bfe069498c6e5408207a583efc-104x104.png"
+  },
+  "2025/01/image-10-1.png": {
+    "id": "image-aad3af4250059649894c26c5ae855f76008cee6c-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/aad3af4250059649894c26c5ae855f76008cee6c-90x90.png"
+  },
+  "2025/01/image-11.png": {
+    "id": "image-e2ecaec9ff3d227f82c5f03dc0f1f7ec498c1d92-88x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e2ecaec9ff3d227f82c5f03dc0f1f7ec498c1d92-88x90.png"
+  },
+  "2025/01/image-12.png": {
+    "id": "image-8060c3e25174fbf54743aaa06287be3000a82665-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8060c3e25174fbf54743aaa06287be3000a82665-104x104.png"
+  },
+  "2025/01/image-2.png": {
+    "id": "image-2aaec63b9def3b8f02dd656a4527b5724f0575f8-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2aaec63b9def3b8f02dd656a4527b5724f0575f8-104x104.png"
+  },
+  "2025/01/image-3-1.png": {
+    "id": "image-73a96389e859f68861aab9608c77ffacc4101f6e-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/73a96389e859f68861aab9608c77ffacc4101f6e-104x104.png"
+  },
+  "2025/01/image-3.png": {
+    "id": "image-ec311f0dd47be5a30ea45382b882c2e038c1f472-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ec311f0dd47be5a30ea45382b882c2e038c1f472-90x90.png"
+  },
+  "2025/01/image-4-1.png": {
+    "id": "image-48ae79f0806178ec6abaab914e0908fa0457f036-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/48ae79f0806178ec6abaab914e0908fa0457f036-104x104.png"
+  },
+  "2025/01/image-4.png": {
+    "id": "image-8505b85bca9d68f2716cc613498fc1dfd4b6487c-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8505b85bca9d68f2716cc613498fc1dfd4b6487c-104x104.png"
+  },
+  "2025/01/image-5-1.png": {
+    "id": "image-ce7f3c760bd1fdfc1b29b4ef005b8833636b3662-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ce7f3c760bd1fdfc1b29b4ef005b8833636b3662-90x90.png"
+  },
+  "2025/01/image-5.png": {
+    "id": "image-0d2de41b927a100cccbe5109301d720506aea23b-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0d2de41b927a100cccbe5109301d720506aea23b-104x104.png"
+  },
+  "2025/01/image-6-1.png": {
+    "id": "image-2c1cc01757089847a5bd823bfefae8039b21614c-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2c1cc01757089847a5bd823bfefae8039b21614c-104x104.png"
+  },
+  "2025/01/image-6.png": {
+    "id": "image-f3dcffc3b97a75de1ff50d2198ab858ada04d6b3-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f3dcffc3b97a75de1ff50d2198ab858ada04d6b3-104x104.png"
+  },
+  "2025/01/image-7-1.png": {
+    "id": "image-67accfee148f1e945ca847cab08a098e2f874af8-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/67accfee148f1e945ca847cab08a098e2f874af8-90x90.png"
+  },
+  "2025/01/image-7-2.png": {
+    "id": "image-3a9941856f1635671cbcbfa2476eb22a45f4daf9-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/3a9941856f1635671cbcbfa2476eb22a45f4daf9-90x90.png"
+  },
+  "2025/01/image-7.png": {
+    "id": "image-e21016808e78fccf21e113633e9835a50d78620a-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e21016808e78fccf21e113633e9835a50d78620a-90x90.png"
+  },
+  "2025/01/image-8-1.png": {
+    "id": "image-2cae1c8f6ae90f0b71bda04e7df86392b8b0959a-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2cae1c8f6ae90f0b71bda04e7df86392b8b0959a-90x90.png"
+  },
+  "2025/01/image-8-2.png": {
+    "id": "image-6927647def6a1a052de9814b220a90f37072d248-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6927647def6a1a052de9814b220a90f37072d248-90x90.png"
+  },
+  "2025/01/image-8.png": {
+    "id": "image-7be5bde36fd387871c608a6e9844ba9e0e48c6a8-106x106-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7be5bde36fd387871c608a6e9844ba9e0e48c6a8-106x106.png"
+  },
+  "2025/01/image-9-1.png": {
+    "id": "image-cc73078c3c58660b33cc7a7fcef0a5e52b19796e-100x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cc73078c3c58660b33cc7a7fcef0a5e52b19796e-100x90.png"
+  },
+  "2025/01/image-9.png": {
+    "id": "image-a964f8ba851886a656cb9018ae1abfff47d8bb07-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a964f8ba851886a656cb9018ae1abfff47d8bb07-90x90.png"
+  },
+  "2025/01/image.png": {
+    "id": "image-6d31c31cb950d15af656507943112bd36ebbc126-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6d31c31cb950d15af656507943112bd36ebbc126-104x104.png"
+  },
+  "2025/01/image.svg": {
+    "id": "image-0b2657175403d6cd2088bc33add4cd24311ee6a9-231x231-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0b2657175403d6cd2088bc33add4cd24311ee6a9-231x231.svg"
+  },
+  "2025/01/mobilness-0.png": {
+    "id": "image-bfbe96ff0aa78383bf5879ac3c43b4d1e5967a81-591x403-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bfbe96ff0aa78383bf5879ac3c43b4d1e5967a81-591x403.png"
+  },
+  "2025/01/ri_linkedin-fill.svg": {
+    "id": "image-cc0e4f5257fb95e979a7cf0b747f06ae776a4c07-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cc0e4f5257fb95e979a7cf0b747f06ae776a4c07-24x24.svg"
+  },
+  "2025/01/umang-1.png": {
+    "id": "image-243ba686c031b4160610f11af505fbcd043a4337-500x500-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/243ba686c031b4160610f11af505fbcd043a4337-500x500.png"
+  },
+  "2025/01/umang-1.svg": {
+    "id": "image-6ae2380d2150ad7ddcf9151045561fb4e200fcb0-500x500-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6ae2380d2150ad7ddcf9151045561fb4e200fcb0-500x500.svg"
+  },
+  "2025/01/white-logo-3-1.png": {
+    "id": "image-04467121cab73c83bf346ea72823962c417d049f-438x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/04467121cab73c83bf346ea72823962c417d049f-438x478.png"
+  },
+  "2025/01/white-logo-3-2.png": {
+    "id": "image-41cbd01c5aab55ad9fad49c86ee1a70e93a2b725-184x184-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/41cbd01c5aab55ad9fad49c86ee1a70e93a2b725-184x184.png"
+  },
+  "2025/01/white-logo-3-4.png": {
+    "id": "image-41cbd01c5aab55ad9fad49c86ee1a70e93a2b725-184x184-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/41cbd01c5aab55ad9fad49c86ee1a70e93a2b725-184x184.png"
+  },
+  "2025/01/white-logo-3.png": {
+    "id": "image-8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495.png"
+  },
+  "2025/01/zapier-logo-svg-vector-1-1-1.png": {
+    "id": "image-1de9bd9463f1545261949eca9758e7c165f7d32c-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1de9bd9463f1545261949eca9758e7c165f7d32c-90x90.png"
+  },
+  "2025/01/zapier-logo-svg-vector-1-1.png": {
+    "id": "image-41d25a4836d2ef0d931b4c2503d35a25dd1924ff-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/41d25a4836d2ef0d931b4c2503d35a25dd1924ff-90x90.png"
+  },
+  "2025/01/zapier-logo-svg-vector-1-2.png": {
+    "id": "image-b7b71eac4f0606ea43b532d27ecc4ca0b25e7a43-90x90-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7b71eac4f0606ea43b532d27ecc4ca0b25e7a43-90x90.png"
+  },
+  "2025/01/zapier-logo-svg-vector-1.png": {
+    "id": "image-c9249bf38219f76717103dca77225c7dd42c7a52-104x104-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c9249bf38219f76717103dca77225c7dd42c7a52-104x104.png"
+  },
+  "2025/02/Group-1000004561-1.svg": {
+    "id": "image-cc2fbd1fcdc01288bb4eb5b870a8ab4495b831dd-78x78-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cc2fbd1fcdc01288bb4eb5b870a8ab4495b831dd-78x78.svg"
+  },
+  "2025/02/Group-1000004561.svg": {
+    "id": "image-cc2fbd1fcdc01288bb4eb5b870a8ab4495b831dd-78x78-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cc2fbd1fcdc01288bb4eb5b870a8ab4495b831dd-78x78.svg"
+  },
+  "2025/02/Group-1000004562.svg": {
+    "id": "image-a97911f64988b3fe3605c02c055d98be55dc8528-78x78-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a97911f64988b3fe3605c02c055d98be55dc8528-78x78.svg"
+  },
+  "2025/02/Group-1000004563.svg": {
+    "id": "image-eef2e3763acee2081cd833ac87cddefd24a61c78-78x78-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/eef2e3763acee2081cd833ac87cddefd24a61c78-78x78.svg"
+  },
+  "2025/02/Group-1000004578.png": {
+    "id": "image-86f7d2cdb13171e40146f2f8dac6c77e3d43c46a-599x584-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/86f7d2cdb13171e40146f2f8dac6c77e3d43c46a-599x584.png"
+  },
+  "2025/02/Logo-1-1.svg": {
+    "id": "image-7d1c6566bcef46f894aa14bda70ab991ab18ea7d-157x37-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7d1c6566bcef46f894aa14bda70ab991ab18ea7d-157x37.svg"
+  },
+  "2025/02/Logo-1.svg": {
+    "id": "image-36ef04ef765e18b8288397ed361145ea87b297ae-181x45-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/36ef04ef765e18b8288397ed361145ea87b297ae-181x45.svg"
+  },
+  "2025/02/Logo-2-1.svg": {
+    "id": "image-d061b3aa728db94c4459247a9c20d61291e30b7f-187x45-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d061b3aa728db94c4459247a9c20d61291e30b7f-187x45.svg"
+  },
+  "2025/02/Logo-2-2.svg": {
+    "id": "image-f34507ac51e79e0517a391e81ae93433a50b4eac-155x37-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f34507ac51e79e0517a391e81ae93433a50b4eac-155x37.svg"
+  },
+  "2025/02/Logo-2.svg": {
+    "id": "image-dd12000680b2a770399c0b66a256b6bfc2ad6af8-190x38-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/dd12000680b2a770399c0b66a256b6bfc2ad6af8-190x38.svg"
+  },
+  "2025/02/Logo-3-1.svg": {
+    "id": "image-032b16ec88bc3d624c33fb10c055f48486c163c3-145x38-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/032b16ec88bc3d624c33fb10c055f48486c163c3-145x38.svg"
+  },
+  "2025/02/Logo-3.svg": {
+    "id": "image-80e2c3127ba16bd813bcfd84ef21eb99afc0ea35-161x42-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/80e2c3127ba16bd813bcfd84ef21eb99afc0ea35-161x42.svg"
+  },
+  "2025/02/Logo-4-1.svg": {
+    "id": "image-10be079f4e17c95697ca46b3fa7cf9d3342de498-142x36-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/10be079f4e17c95697ca46b3fa7cf9d3342de498-142x36.svg"
+  },
+  "2025/02/Logo-4.svg": {
+    "id": "image-c37d5d8142703116566ec972ad2febeb3544f2e0-171x44-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c37d5d8142703116566ec972ad2febeb3544f2e0-171x44.svg"
+  },
+  "2025/02/Logo-5-1.svg": {
+    "id": "image-e31577066db8c315717ee4fc7c7e7cb3fdfc8423-168x37-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e31577066db8c315717ee4fc7c7e7cb3fdfc8423-168x37.svg"
+  },
+  "2025/02/Logo-5.svg": {
+    "id": "image-03e080fe100e93f7cd502da33d4339f89c3ebcbb-204x45-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/03e080fe100e93f7cd502da33d4339f89c3ebcbb-204x45.svg"
+  },
+  "2025/02/Logo-6.svg": {
+    "id": "image-838bbb00b85096d1ab26b7426e0b3184163c0fba-140x31-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/838bbb00b85096d1ab26b7426e0b3184163c0fba-140x31.svg"
+  },
+  "2025/02/Logo-7.svg": {
+    "id": "image-da32917b85a0c5dd91f32c138cf1858af3b51df0-190x38-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/da32917b85a0c5dd91f32c138cf1858af3b51df0-190x38.svg"
+  },
+  "2025/02/Logo.svg": {
+    "id": "image-dd12000680b2a770399c0b66a256b6bfc2ad6af8-190x38-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/dd12000680b2a770399c0b66a256b6bfc2ad6af8-190x38.svg"
+  },
+  "2025/02/Mask-group-1.png": {
+    "id": "image-8a5d1108d206c1618b474a5db325897d19071fbb-460x478-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8a5d1108d206c1618b474a5db325897d19071fbb-460x478.png"
+  },
+  "2025/02/Microsoft_Azure.svg-1.svg": {
+    "id": "image-c97533669495a1dd7d45966a40021ba6fc2353b1-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c97533669495a1dd7d45966a40021ba6fc2353b1-104x104.svg"
+  },
+  "2025/02/Microsoft_Azure.svg-2.svg": {
+    "id": "image-1a553de7acba6c3459ed473ef70f85b400eeec0b-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1a553de7acba6c3459ed473ef70f85b400eeec0b-104x104.svg"
+  },
+  "2025/02/Microsoft_Azure.svg-3.svg": {
+    "id": "image-53ccd98c211215048771c37ba08b101707e405e3-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/53ccd98c211215048771c37ba08b101707e405e3-104x104.svg"
+  },
+  "2025/02/Microsoft_Azure.svg-4.svg": {
+    "id": "image-cf4d55a00ab6ef753157a7db2ecae07800d37224-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cf4d55a00ab6ef753157a7db2ecae07800d37224-104x104.svg"
+  },
+  "2025/02/Microsoft_Azure.svg-5.svg": {
+    "id": "image-5a3f0386353b62b72b74aa112143e6cf580f39fb-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5a3f0386353b62b72b74aa112143e6cf580f39fb-104x104.svg"
+  },
+  "2025/02/Rectangle-34624443-3.svg": {
+    "id": "image-d828819e71dcade1e8298fab3d176444dad9aca1-246x307-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d828819e71dcade1e8298fab3d176444dad9aca1-246x307.svg"
+  },
+  "2025/02/Rectangle-scaled.jpg": {
+    "id": "image-d4d8886ac99ba6f232a05891f7762fe5c06230fa-2560x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d4d8886ac99ba6f232a05891f7762fe5c06230fa-2560x800.jpg"
+  },
+  "2025/02/image-1-1.svg": {
+    "id": "image-ed38fc24a0fb3efdc4cb60183f477c5121fde939-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ed38fc24a0fb3efdc4cb60183f477c5121fde939-90x90.svg"
+  },
+  "2025/02/image-1-2.svg": {
+    "id": "image-8cc3055be77cc8aafa86967924b6b0777dd73dcf-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8cc3055be77cc8aafa86967924b6b0777dd73dcf-104x104.svg"
+  },
+  "2025/02/image-1-3.svg": {
+    "id": "image-c22dc9f040a84e927a65f8a10d0f5f9638488c7d-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c22dc9f040a84e927a65f8a10d0f5f9638488c7d-104x104.svg"
+  },
+  "2025/02/image-1.svg": {
+    "id": "image-c009bbf555f2bd799a1706a8a5873d0fbd2eb7ed-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c009bbf555f2bd799a1706a8a5873d0fbd2eb7ed-90x90.svg"
+  },
+  "2025/02/image-10.svg": {
+    "id": "image-05013e94fbc05db7b736ddb250df2aef22f32e2d-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/05013e94fbc05db7b736ddb250df2aef22f32e2d-90x90.svg"
+  },
+  "2025/02/image-11.svg": {
+    "id": "image-cb799961f2b684c178476ec1c9a39ba5240ae9b7-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cb799961f2b684c178476ec1c9a39ba5240ae9b7-104x104.svg"
+  },
+  "2025/02/image-2-1.svg": {
+    "id": "image-aede8563a0d92d762a1ffc704659839c35fb6a6c-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/aede8563a0d92d762a1ffc704659839c35fb6a6c-90x90.svg"
+  },
+  "2025/02/image-2-2.svg": {
+    "id": "image-0f218edc20c04672da76c582b7ca2e85f20f2eb2-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0f218edc20c04672da76c582b7ca2e85f20f2eb2-90x90.svg"
+  },
+  "2025/02/image-2-3.svg": {
+    "id": "image-07dfdfdd9d1527d866c9c4f119b1d13883de9897-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/07dfdfdd9d1527d866c9c4f119b1d13883de9897-104x104.svg"
+  },
+  "2025/02/image-2.svg": {
+    "id": "image-be36255652a9690468386717db179254f02c40e1-88x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/be36255652a9690468386717db179254f02c40e1-88x90.svg"
+  },
+  "2025/02/image-3-1.svg": {
+    "id": "image-e4825ba3739ff86ddc0ff6d8ffe801596bbc731e-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e4825ba3739ff86ddc0ff6d8ffe801596bbc731e-90x90.svg"
+  },
+  "2025/02/image-3-2.svg": {
+    "id": "image-7a1f04cb1a35b88cd4b50e16a71d94dd7a208e73-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7a1f04cb1a35b88cd4b50e16a71d94dd7a208e73-90x90.svg"
+  },
+  "2025/02/image-3.svg": {
+    "id": "image-199d2bd29baaff3a4e81d26bded8ac33b1c7a343-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/199d2bd29baaff3a4e81d26bded8ac33b1c7a343-104x104.svg"
+  },
+  "2025/02/image-4-1.svg": {
+    "id": "image-4dfe90a3a73da79b8de1f7b7b2c98018f6407247-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4dfe90a3a73da79b8de1f7b7b2c98018f6407247-104x104.svg"
+  },
+  "2025/02/image-4.svg": {
+    "id": "image-bf3603bb28b09e7ab18225d500d26c588918b653-104x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bf3603bb28b09e7ab18225d500d26c588918b653-104x90.svg"
+  },
+  "2025/02/image-5-1.svg": {
+    "id": "image-2ebbd5da32c680258de1fb6e3290e1a059b6547a-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2ebbd5da32c680258de1fb6e3290e1a059b6547a-104x104.svg"
+  },
+  "2025/02/image-5.svg": {
+    "id": "image-abb1472ac15ac90688c823c0dc62aa44f649e47c-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/abb1472ac15ac90688c823c0dc62aa44f649e47c-90x90.svg"
+  },
+  "2025/02/image-6-1.svg": {
+    "id": "image-89cde8bfc0275744bc840ed89157ccbbbf065e5a-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/89cde8bfc0275744bc840ed89157ccbbbf065e5a-104x104.svg"
+  },
+  "2025/02/image-6.svg": {
+    "id": "image-aba8bfe38163e2aedf3af6d959855083e6e280b3-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/aba8bfe38163e2aedf3af6d959855083e6e280b3-90x90.svg"
+  },
+  "2025/02/image-7-1.svg": {
+    "id": "image-f5db62a7e93b46286f56b17d7098195eba9ce1c6-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f5db62a7e93b46286f56b17d7098195eba9ce1c6-90x90.svg"
+  },
+  "2025/02/image-7-2.svg": {
+    "id": "image-f66d41f1e558532d8b72d00a3fba7393992efec3-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f66d41f1e558532d8b72d00a3fba7393992efec3-90x90.svg"
+  },
+  "2025/02/image-7.svg": {
+    "id": "image-0b6c6db1f6251819c45cc07dc74cf8a009df75c1-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0b6c6db1f6251819c45cc07dc74cf8a009df75c1-90x90.svg"
+  },
+  "2025/02/image-8-1.svg": {
+    "id": "image-592c7d817c1f0cffc934a9a5ff9a8d1518ed9f3f-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/592c7d817c1f0cffc934a9a5ff9a8d1518ed9f3f-90x90.svg"
+  },
+  "2025/02/image-8-2.svg": {
+    "id": "image-c2a1a35b23b5b9c4c2dc2e4724fe95cdcbf5771d-106x106-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c2a1a35b23b5b9c4c2dc2e4724fe95cdcbf5771d-106x106.svg"
+  },
+  "2025/02/image-8.svg": {
+    "id": "image-ec0dee4a5ec5990bbf855d72515ff3f9bdf20ad7-100x71-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ec0dee4a5ec5990bbf855d72515ff3f9bdf20ad7-100x71.svg"
+  },
+  "2025/02/image-9-1.svg": {
+    "id": "image-ad04a5ebfc611e8bea27a5f3bc5d92a0964a51c5-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ad04a5ebfc611e8bea27a5f3bc5d92a0964a51c5-90x90.svg"
+  },
+  "2025/02/image-9-2.svg": {
+    "id": "image-b4b07927d115e70aeffca989808c4c3a63ca9f55-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b4b07927d115e70aeffca989808c4c3a63ca9f55-90x90.svg"
+  },
+  "2025/02/image-9.svg": {
+    "id": "image-2221f444fad5a6ffff369334b2fbb4cbe7a79dc2-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2221f444fad5a6ffff369334b2fbb4cbe7a79dc2-90x90.svg"
+  },
+  "2025/02/image.svg": {
+    "id": "image-170a077d4f1abe3baec6e8dae69249b374392adb-100x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/170a077d4f1abe3baec6e8dae69249b374392adb-100x90.svg"
+  },
+  "2025/02/white-logo-2.png": {
+    "id": "image-ad33659c33381eac40061641b81f19d65a13ad9f-1x1-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ad33659c33381eac40061641b81f19d65a13ad9f-1x1.png"
+  },
+  "2025/02/white-logo-3-3.png": {
+    "id": "image-8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495.png"
+  },
+  "2025/02/white-logo-3-5.png": {
+    "id": "image-8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8b8e46bcb61139dca79257cf664685e6e021c9f5-366x495.png"
+  },
+  "2025/02/white-logo-3.jpg": {
+    "id": "image-a45dc27792e3adcd9c47e8263e011dec5871f3a4-366x495-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a45dc27792e3adcd9c47e8263e011dec5871f3a4-366x495.jpg"
+  },
+  "2025/02/zapier-logo-svg-vector-1-1.svg": {
+    "id": "image-958cbd17347e78729b580cdac2fa2eb052aa448a-104x104-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/958cbd17347e78729b580cdac2fa2eb052aa448a-104x104.svg"
+  },
+  "2025/02/zapier-logo-svg-vector-1-2.svg": {
+    "id": "image-c7f27481c3ef4c49dfc0f815bd2bdaa72c106142-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c7f27481c3ef4c49dfc0f815bd2bdaa72c106142-90x90.svg"
+  },
+  "2025/02/zapier-logo-svg-vector-1.svg": {
+    "id": "image-bff83993b1a1a67b25b649c0c744b1df30d399c8-90x90-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bff83993b1a1a67b25b649c0c744b1df30d399c8-90x90.svg"
+  },
+  "2025/03/1.png": {
+    "id": "image-7fc22925f0267e90df9d24cd80091d32a26e57cc-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7fc22925f0267e90df9d24cd80091d32a26e57cc-450x300.png"
+  },
+  "2025/03/10.png": {
+    "id": "image-5b95dda25d4de5a41578ca468b0a9ec89cc8ca9c-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5b95dda25d4de5a41578ca468b0a9ec89cc8ca9c-450x300.png"
+  },
+  "2025/03/11.jpg": {
+    "id": "image-f5450fb8a223f65df1f062839f329ef87bfc0779-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f5450fb8a223f65df1f062839f329ef87bfc0779-984x656.jpg"
+  },
+  "2025/03/12.jpg": {
+    "id": "image-fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656.jpg"
+  },
+  "2025/03/13.jpg": {
+    "id": "image-904742a376a1c502e0fd4df6de56e42ec48eaf10-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/904742a376a1c502e0fd4df6de56e42ec48eaf10-984x656.jpg"
+  },
+  "2025/03/14.jpg": {
+    "id": "image-bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656.jpg"
+  },
+  "2025/03/15-1.jpg": {
+    "id": "image-b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656.jpg"
+  },
+  "2025/03/15.jpg": {
+    "id": "image-b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656.jpg"
+  },
+  "2025/03/16.jpg": {
+    "id": "image-dcf22e4f6a468bacfde18679de4c332c1422d363-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/dcf22e4f6a468bacfde18679de4c332c1422d363-984x656.jpg"
+  },
+  "2025/03/17.jpg": {
+    "id": "image-1ca283bb471625e6cb06dca6bdff0aa5a5f0cf6e-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/1ca283bb471625e6cb06dca6bdff0aa5a5f0cf6e-984x656.jpg"
+  },
+  "2025/03/18.jpg": {
+    "id": "image-5e25f249958023309990722e0e7991fe11a520dc-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5e25f249958023309990722e0e7991fe11a520dc-984x656.jpg"
+  },
+  "2025/03/19.jpg": {
+    "id": "image-0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656.jpg"
+  },
+  "2025/03/2.png": {
+    "id": "image-93ea8699bbe2cf4fa97719b470fee2997ccf8e07-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/93ea8699bbe2cf4fa97719b470fee2997ccf8e07-450x300.png"
+  },
+  "2025/03/20.jpg": {
+    "id": "image-a055375611b87ef3822a8901bd957f3641092c01-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a055375611b87ef3822a8901bd957f3641092c01-984x656.jpg"
+  },
+  "2025/03/21.jpg": {
+    "id": "image-fb199c4864b7c133e339c3c550b5c5c210b7016f-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fb199c4864b7c133e339c3c550b5c5c210b7016f-984x656.jpg"
+  },
+  "2025/03/22.jpg": {
+    "id": "image-9aa55153df619567e6d52ae5049d4aa473975c9b-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9aa55153df619567e6d52ae5049d4aa473975c9b-984x656.jpg"
+  },
+  "2025/03/23.jpg": {
+    "id": "image-7a859442905f9b1dacb5e01aa1d9978fb08b2e6e-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7a859442905f9b1dacb5e01aa1d9978fb08b2e6e-984x656.jpg"
+  },
+  "2025/03/24.jpg": {
+    "id": "image-bc0f2f13ab9101b16192cbac2a774341ee9d91ef-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bc0f2f13ab9101b16192cbac2a774341ee9d91ef-984x656.jpg"
+  },
+  "2025/03/25.jpg": {
+    "id": "image-ce00881a4b381325589fb2d09aa073d3bb8d41bd-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ce00881a4b381325589fb2d09aa073d3bb8d41bd-984x656.jpg"
+  },
+  "2025/03/26.jpg": {
+    "id": "image-f843d2ad5ad9d6435e908edc7640d422a2780fb2-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/f843d2ad5ad9d6435e908edc7640d422a2780fb2-984x656.jpg"
+  },
+  "2025/03/27.jpg": {
+    "id": "image-e34f08dfae6f55999e9c30fa627a134938f6b57e-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e34f08dfae6f55999e9c30fa627a134938f6b57e-984x656.jpg"
+  },
+  "2025/03/3.png": {
+    "id": "image-8afb493ff7b42e244ad7f99aaa67c6b79368dbd3-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8afb493ff7b42e244ad7f99aaa67c6b79368dbd3-450x300.png"
+  },
+  "2025/03/4.png": {
+    "id": "image-d0954b7c1f151a2906b6f15430e97e428c3a64c4-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d0954b7c1f151a2906b6f15430e97e428c3a64c4-450x300.png"
+  },
+  "2025/03/5.png": {
+    "id": "image-809471f4fccda7f36c87f68c8ff20e6b5c209e51-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/809471f4fccda7f36c87f68c8ff20e6b5c209e51-450x300.png"
+  },
+  "2025/03/6.png": {
+    "id": "image-2e2b097af3b4720ad9a38d505b209d0dd25da021-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2e2b097af3b4720ad9a38d505b209d0dd25da021-450x300.png"
+  },
+  "2025/03/7.png": {
+    "id": "image-4dcba8e1f6b7dc29f8fbbc43063dbc781e97cf0b-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4dcba8e1f6b7dc29f8fbbc43063dbc781e97cf0b-450x300.png"
+  },
+  "2025/03/8.png": {
+    "id": "image-5e7a24759f27e4560f8a507402b2eef29450c4d8-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5e7a24759f27e4560f8a507402b2eef29450c4d8-450x300.png"
+  },
+  "2025/03/9.png": {
+    "id": "image-bdeebd1f347639fbd28487345837e3ffa41413c1-450x300-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bdeebd1f347639fbd28487345837e3ffa41413c1-450x300.png"
+  },
+  "2025/03/Accurate-Bookkeeping.svg": {
+    "id": "image-34aa35df1b1bef83ef9107835995884cfe93280b-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/34aa35df1b1bef83ef9107835995884cfe93280b-360x360.svg"
+  },
+  "2025/03/Administrative-Support.svg": {
+    "id": "image-b8c972b0002f58506b71e37d030d77376c34a401-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b8c972b0002f58506b71e37d030d77376c34a401-360x360.svg"
+  },
+  "2025/03/Analytics-and-Reporting.svg": {
+    "id": "image-cd13853f1d8937884dfdc73a8efbb11a159672c3-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cd13853f1d8937884dfdc73a8efbb11a159672c3-360x360.svg"
+  },
+  "2025/03/Automated-Bookkeeping.svg": {
+    "id": "image-6ee678c0709e8ec7cc83296873c1332e06a7581a-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6ee678c0709e8ec7cc83296873c1332e06a7581a-360x360.svg"
+  },
+  "2025/03/Automation-and-Integration.svg": {
+    "id": "image-0ce4559a26bae589d84d2ea5553cb937ca0be56c-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0ce4559a26bae589d84d2ea5553cb937ca0be56c-360x360.svg"
+  },
+  "2025/03/Calendar-and-Scheduling.svg": {
+    "id": "image-a405acecbe75f940940074d12eb9d19f30baaac6-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a405acecbe75f940940074d12eb9d19f30baaac6-360x360.svg"
+  },
+  "2025/03/Cloud-Based-Solutions-1.svg": {
+    "id": "image-5205b63493aaa9c2119708904feb2092af811476-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5205b63493aaa9c2119708904feb2092af811476-360x360.svg"
+  },
+  "2025/03/Cloud-Based-Solutions-2.svg": {
+    "id": "image-83b5112cf3b03f466f16368de574ef9ab73f4856-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/83b5112cf3b03f466f16368de574ef9ab73f4856-360x360.svg"
+  },
+  "2025/03/Cloud-Based-Solutions.svg": {
+    "id": "image-498419368beef3b4cf8bc69f6bc0957d056b3033-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/498419368beef3b4cf8bc69f6bc0957d056b3033-360x360.svg"
+  },
+  "2025/03/Content-Creation-and-Management.svg": {
+    "id": "image-ac78495deffb448595190f4ac67c95317acfb6f0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ac78495deffb448595190f4ac67c95317acfb6f0-360x360.svg"
+  },
+  "2025/03/Content-Marketing.svg": {
+    "id": "image-7ba8108a1b79ef2460c5294ed5fa14fa86652ea3-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7ba8108a1b79ef2460c5294ed5fa14fa86652ea3-360x360.svg"
+  },
+  "2025/03/Custom-API-Solutions.svg": {
+    "id": "image-295bc32293e7d03757417a2a51bd79ddd4bfb291-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/295bc32293e7d03757417a2a51bd79ddd4bfb291-360x360.svg"
+  },
+  "2025/03/Custom-CRM-Software-Development.svg": {
+    "id": "image-78126af7fbf4a812d723612c6aab990daf233ff2-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/78126af7fbf4a812d723612c6aab990daf233ff2-360x360.svg"
+  },
+  "2025/03/Custom-Software-Development-1.svg": {
+    "id": "image-46cf48710d626a31db3ff3349f506e184a5b0405-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/46cf48710d626a31db3ff3349f506e184a5b0405-360x360.svg"
+  },
+  "2025/03/Custom-Software-Development.svg": {
+    "id": "image-b1d398b943d5d9f0cbc85de7962633cc65b74da0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b1d398b943d5d9f0cbc85de7962633cc65b74da0-360x360.svg"
+  },
+  "2025/03/Customer-Service.svg": {
+    "id": "image-a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a5366d18fe53a3d34c7f235bb7b08d9df23c33ae-360x360.svg"
+  },
+  "2025/03/E-Learning-Platforms.svg": {
+    "id": "image-ccb38ee6bb2aaa4ebdf67262c77ed8523697e3b4-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ccb38ee6bb2aaa4ebdf67262c77ed8523697e3b4-360x360.svg"
+  },
+  "2025/03/Email-Marketing.svg": {
+    "id": "image-a01bc769dc6fdad2eb302fa5b4d1f9bef3e8db90-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a01bc769dc6fdad2eb302fa5b4d1f9bef3e8db90-360x360.svg"
+  },
+  "2025/03/Enterprise-Application-Development-1.svg": {
+    "id": "image-cd2072e65a1ecb957f4757a50cc468eab303e606-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cd2072e65a1ecb957f4757a50cc468eab303e606-360x360.svg"
+  },
+  "2025/03/Enterprise-Application-Development.svg": {
+    "id": "image-fae780777f10d7d6d522af5bb4794b6428e9320e-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fae780777f10d7d6d522af5bb4794b6428e9320e-360x360.svg"
+  },
+  "2025/03/Expense-Tracking-Reporting.svg": {
+    "id": "image-02981eea896303f46cd3704742c2533ee8657043-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/02981eea896303f46cd3704742c2533ee8657043-360x360.svg"
+  },
+  "2025/03/Inventory-Management-Systems.svg": {
+    "id": "image-8b2e80dee7103655ce11a74fd8ed0b659c3357ad-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8b2e80dee7103655ce11a74fd8ed0b659c3357ad-360x360.svg"
+  },
+  "2025/03/Legacy-Application-Modernization-1.svg": {
+    "id": "image-10d6caa4221f2a30f1c5553397d260d8af4dcef4-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/10d6caa4221f2a30f1c5553397d260d8af4dcef4-360x360.svg"
+  },
+  "2025/03/Legacy-Application-Modernization.svg": {
+    "id": "image-293cc9dc5d9a4862e5a3de1ff4c1c39bbadd4193-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/293cc9dc5d9a4862e5a3de1ff4c1c39bbadd4193-360x360.svg"
+  },
+  "2025/03/Mobile-Application-Development-1.svg": {
+    "id": "image-82df07671bac4264127385862df08be28aedb8b9-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/82df07671bac4264127385862df08be28aedb8b9-360x360.svg"
+  },
+  "2025/03/Mobile-Application-Development.svg": {
+    "id": "image-c99dbeeb578ef509652932ed7a77cb6cac311ab5-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c99dbeeb578ef509652932ed7a77cb6cac311ab5-360x360.svg"
+  },
+  "2025/03/Pay-Per-Click-PPC-Advertising.svg": {
+    "id": "image-5bd53c4415e0906165d0ecf460ee03e2a97b33cc-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5bd53c4415e0906165d0ecf460ee03e2a97b33cc-360x360.svg"
+  },
+  "2025/03/Payroll-Management.svg": {
+    "id": "image-989d1cbfec6d8899e1334531e11a0f9b75dd3d28-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/989d1cbfec6d8899e1334531e11a0f9b75dd3d28-360x360.svg"
+  },
+  "2025/03/Research-and-Data-Entry.svg": {
+    "id": "image-6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6f9033e3ec53894b374e4d89cc2fc26e3a4796e1-360x360.svg"
+  },
+  "2025/03/Search-Engine-Optimization-SEO.svg": {
+    "id": "image-5819583807e1ca23e747e129dc75dd2bda3630e0-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5819583807e1ca23e747e129dc75dd2bda3630e0-360x360.svg"
+  },
+  "2025/03/Social-Media-Management.svg": {
+    "id": "image-e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e629f71dde34ffb48abe8f9ac0198aa4d74a9741-360x360.svg"
+  },
+  "2025/03/Social-Media-Marketing.svg": {
+    "id": "image-23e3efffc7daa56ff7102d4dd512d17f393e7169-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/23e3efffc7daa56ff7102d4dd512d17f393e7169-360x360.svg"
+  },
+  "2025/03/Web-Application-Development-1.svg": {
+    "id": "image-e0c56a0b42c2cc534889c208495af384aebbdcb7-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e0c56a0b42c2cc534889c208495af384aebbdcb7-360x360.svg"
+  },
+  "2025/03/Web-Application-Development.svg": {
+    "id": "image-c5fc3907bd0d7a4641e9ae33c0d0e84f58b61726-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c5fc3907bd0d7a4641e9ae33c0d0e84f58b61726-360x360.svg"
+  },
+  "2025/03/Website-Design-and-Development.svg": {
+    "id": "image-a96b612c0e1746e09a689a15e462fdd9684ff627-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a96b612c0e1746e09a689a15e462fdd9684ff627-360x360.svg"
+  },
+  "2025/03/YouTube-Marketing.svg": {
+    "id": "image-67e9ece1062f3dbb38b7c87a191732ed6983882b-360x360-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/67e9ece1062f3dbb38b7c87a191732ed6983882b-360x360.svg"
+  },
+  "2025/03/designer-0.png": {
+    "id": "image-5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5dbcc122663cb1542e00dbf28c985c055c201eb2-577x430.png"
+  },
+  "2025/03/images-3.jpg": {
+    "id": "image-853d59e9174ebb8eac32b7c6b74f5741a989ed9a-246x205-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/853d59e9174ebb8eac32b7c6b74f5741a989ed9a-246x205.jpg"
+  },
+  "2025/03/images-4.jpg": {
+    "id": "image-8ff10e8300d46f1655512f9c5a073be9d00820a8-243x208-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8ff10e8300d46f1655512f9c5a073be9d00820a8-243x208.jpg"
+  },
+  "2025/03/umang.jpg": {
+    "id": "image-18ed18f94b7ae55a5fc87ad48a71d278ffb2059a-896x1088-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/18ed18f94b7ae55a5fc87ad48a71d278ffb2059a-896x1088.jpg"
+  },
+  "2025/07/cropped-favicon.png": {
+    "id": "image-5f9ce6015f995053f96082a64b1ee018f2e8db34-512x512-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5f9ce6015f995053f96082a64b1ee018f2e8db34-512x512.png"
+  },
+  "2025/07/favicon.png": {
+    "id": "image-971cc9540ac4c6ce13568f34543114cd7440b7e2-510x480-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/971cc9540ac4c6ce13568f34543114cd7440b7e2-510x480.png"
+  },
+  "2025/09/12-1.jpg": {
+    "id": "image-fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656.jpg"
+  },
+  "2025/09/12.jpg": {
+    "id": "image-fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fbce46cf81443c97e68ca076d0c704eb2840f6b9-984x656.jpg"
+  },
+  "2025/09/AI-Automation-Development-Services.jpg": {
+    "id": "image-bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bff97544977c98c417cee178eb8f8b4ad77b2c67-984x656.jpg"
+  },
+  "2025/09/AI-Driven-Lead-Generation-1.png": {
+    "id": "image-a8e94cf8311a8898a4e422228addb8a492721384-441x442-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a8e94cf8311a8898a4e422228addb8a492721384-441x442.png"
+  },
+  "2025/09/AI-Driven-Lead-Generation.png": {
+    "id": "image-fec12140ac6517abc5b9e725b64eb74cc624b73d-443x354-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/fec12140ac6517abc5b9e725b64eb74cc624b73d-443x354.png"
+  },
+  "2025/09/Automated-Newsletter-Workflow.png": {
+    "id": "image-74ca953cb25b00d44dbf627af2c9e71e6ae24386-504x393-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/74ca953cb25b00d44dbf627af2c9e71e6ae24386-504x393.png"
+  },
+  "2025/09/Custom-Software-Integration-Services.jpg": {
+    "id": "image-0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0ed0ff4570481832f8c393b202d18f4baa123d9f-984x656.jpg"
+  },
+  "2025/09/Lead-Generation-Automation-Services-USA.png": {
+    "id": "image-66c1aaf9611027f1720300570a46b7608dee8d76-268x188-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/66c1aaf9611027f1720300570a46b7608dee8d76-268x188.png"
+  },
+  "2025/09/agilemorph.jpg": {
+    "id": "image-b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b7d093ca3a0ab348a4788c06636844832eddf7ae-984x656.jpg"
+  },
+  "2025/09/feature-image.png": {
+    "id": "image-4a3db604c47da74f97be85efec45f7d2e7377e81-508x329-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4a3db604c47da74f97be85efec45f7d2e7377e81-508x329.png"
+  },
+  "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png": {
+    "id": "image-66fed35b82437d9ff1f80de02808c9623ace9da6-1289x1221-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/66fed35b82437d9ff1f80de02808c9623ace9da6-1289x1221.png"
+  },
+  "elementor/screenshots/Elementor-post-screenshot_1720_2025-04-04-18-19-03_4b742ecc.png": {
+    "id": "image-b5ddc6fa1269b9373f872f14f7abdbc419b1aca0-1200x352-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b5ddc6fa1269b9373f872f14f7abdbc419b1aca0-1200x352.png"
+  },
+  "elementor/screenshots/Elementor-post-screenshot_72_2025-01-22-10-28-15_3b27bfcd.png": {
+    "id": "image-6bc7616ebf11e17646a23227ea87e4946d8aff78-1200x24-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6bc7616ebf11e17646a23227ea87e4946d8aff78-1200x24.png"
+  },
+  "2025/01/HandFist.svg": {
+    "id": "image-86606488b489042b9deb854615e9d53b86a2d747-40x40-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/86606488b489042b9deb854615e9d53b86a2d747-40x40.svg"
+  }
+}

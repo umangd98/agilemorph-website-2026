@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
-export const homepage = defineType({
-  name: "homepage",
-  title: "Homepage",
+export const aboutPage = defineType({
+  name: "aboutPage",
+  title: "About Page",
   type: "document",
   fields: [
     defineField({
@@ -10,11 +10,6 @@ export const homepage = defineType({
       title: "Hero",
       type: "object",
       fields: [
-        defineField({
-          name: "badge",
-          title: "Badge",
-          type: "string",
-        }),
         defineField({
           name: "heading",
           title: "Heading",
@@ -25,16 +20,11 @@ export const homepage = defineType({
           name: "tagline",
           title: "Tagline",
           type: "text",
-          rows: 4,
+          rows: 3,
         }),
         defineField({
-          name: "ctaPrimary",
-          title: "Primary CTA",
-          type: "ctaButton",
-        }),
-        defineField({
-          name: "ctaSecondary",
-          title: "Secondary CTA",
+          name: "cta",
+          title: "Call to Action",
           type: "ctaButton",
         }),
         defineField({
@@ -52,6 +42,54 @@ export const homepage = defineType({
         }),
       ],
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "about",
+      title: "Company Story",
+      type: "object",
+      fields: [
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "body",
+          title: "Body",
+          type: "text",
+          rows: 8,
+        }),
+        defineField({
+          name: "promiseHeading",
+          title: "Promise Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "promise",
+          title: "Promise",
+          type: "text",
+          rows: 4,
+        }),
+        defineField({
+          name: "image",
+          title: "Illustration",
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt Text",
+              type: "string",
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: "values",
+      title: "Company Values",
+      type: "array",
+      of: [{ type: "companyValue" }],
     }),
     defineField({
       name: "process",
@@ -78,49 +116,37 @@ export const homepage = defineType({
       ],
     }),
     defineField({
-      name: "services",
-      title: "Services Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "eyebrow",
-          title: "Eyebrow",
-          type: "string",
-        }),
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "cards",
-          title: "Service Cards",
-          type: "array",
-          of: [{ type: "serviceCard" }],
-        }),
-      ],
-    }),
-    defineField({
-      name: "whyUs",
-      title: "Why Us Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "items",
-          title: "Items",
-          type: "array",
-          of: [{ type: "whyUsItem" }],
-        }),
-      ],
-    }),
-    defineField({
       name: "stats",
-      title: "Stats Section",
+      title: "Statistics",
+      type: "array",
+      of: [{ type: "stat" }],
+    }),
+    defineField({
+      name: "cta",
+      title: "CTA Section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "text",
+          rows: 3,
+        }),
+        defineField({
+          name: "button",
+          title: "Button",
+          type: "ctaButton",
+        }),
+      ],
+    }),
+    defineField({
+      name: "founder",
+      title: "Founder",
       type: "object",
       fields: [
         defineField({
@@ -134,10 +160,33 @@ export const homepage = defineType({
           type: "string",
         }),
         defineField({
-          name: "items",
-          title: "Statistics",
-          type: "array",
-          of: [{ type: "stat" }],
+          name: "name",
+          title: "Name",
+          type: "string",
+        }),
+        defineField({
+          name: "role",
+          title: "Role",
+          type: "string",
+        }),
+        defineField({
+          name: "bio",
+          title: "Bio",
+          type: "text",
+          rows: 8,
+        }),
+        defineField({
+          name: "image",
+          title: "Photo",
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt Text",
+              type: "string",
+            }),
+          ],
         }),
       ],
     }),
@@ -173,14 +222,9 @@ export const homepage = defineType({
     }),
     defineField({
       name: "testimonials",
-      title: "Testimonials Section",
+      title: "Testimonials",
       type: "object",
       fields: [
-        defineField({
-          name: "eyebrow",
-          title: "Eyebrow",
-          type: "string",
-        }),
         defineField({
           name: "heading",
           title: "Heading",
@@ -188,7 +232,7 @@ export const homepage = defineType({
         }),
         defineField({
           name: "items",
-          title: "Testimonials",
+          title: "Items",
           type: "array",
           of: [{ type: "testimonial" }],
         }),
@@ -202,7 +246,7 @@ export const homepage = defineType({
   ],
   preview: {
     prepare() {
-      return { title: "Homepage" };
+      return { title: "About Page" };
     },
   },
 });

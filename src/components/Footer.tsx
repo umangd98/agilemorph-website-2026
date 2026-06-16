@@ -12,9 +12,10 @@ const quickLinks = [
 
 const serviceLinks = [
   { label: "AI Automation", href: "/services/ai-automation" },
-  { label: "Web Development", href: "/services/web-development" },
+  { label: "Website Development", href: "/services/website-development" },
   { label: "Digital Marketing", href: "/services/digital-marketing" },
   { label: "Virtual Assistance", href: "/services/virtual-assistance" },
+  { label: "Book Keeping", href: "/services/bookkeeping" },
 ];
 
 function LinkedInIcon() {
