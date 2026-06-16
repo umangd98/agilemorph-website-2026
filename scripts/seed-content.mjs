@@ -407,7 +407,7 @@ function buildAboutPage(manifest) {
       role: "CEO at AgileMorph",
       bio:
         "A Northwestern‑educated engineer renowned for turning complex business puzzles into clear, revenue‑lifting systems. Known for pairing analytical rigor with infectious energy, over the past decade he has guided more than 100 companies through streamlined launches, process overhauls, and market‑ready product builds that routinely beat timelines and KPIs.\n\nHis mission for AgileMorph is simple: give every ambitious team—regardless of size—the tools to move faster, think bigger, and compete on a global stage.\n\nWhen you work with AgileMorph, you're tapping into the curiosity of a researcher, the precision of an engineer, and the drive of a founder who lives to turn complexity into compounding growth.",
-      image: imageRef(manifest, "2025/03/umang.jpg", "Umang Dhandhania"),
+      image: imageRef(manifest, "2025/03/umang-founder.png", "Umang Dhandhania"),
     },
     featuredLogos: {
       heading: "We've been featured on",

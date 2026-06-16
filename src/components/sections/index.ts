@@ -17,3 +17,5 @@ export { ServiceCtaSection } from "./ServiceCtaSection";
 export { ContactSection } from "./ContactSection";
 export { BlogListSection } from "./BlogListSection";
 export { BlogPostSection } from "./BlogPostSection";
+
+export { AboutImpactSection } from "./AboutImpactSection";

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { SanityImage } from "@/components/SanityImage";

@@ -5,12 +5,10 @@ import { Navbar } from "@/components/Navbar";
 import {
   AboutHeroSection,
   CompanyStorySection,
-  FeaturedLogosSection,
   FounderSection,
-  PageCtaSection,
   ProcessSection,
-  StatsSection,
   TestimonialsSection,
+  AboutImpactSection,
   ValuesSection,
 } from "@/components/sections";
 import { seoToMetadata } from "@/lib/seo";
@@ -75,11 +73,11 @@ export default async function AboutPageRoute() {
           subheading={aboutPage.process?.subheading}
           steps={aboutPage.process?.steps}
         />
-        <StatsSection items={aboutPage.stats} />
-        <PageCtaSection
+        <AboutImpactSection
           heading={aboutPage.cta?.heading}
           description={aboutPage.cta?.description}
           button={aboutPage.cta?.button}
+          stats={aboutPage.stats}
         />
         <FounderSection
           eyebrow={aboutPage.founder?.eyebrow}
@@ -88,10 +86,6 @@ export default async function AboutPageRoute() {
           role={aboutPage.founder?.role}
           bio={aboutPage.founder?.bio}
           image={aboutPage.founder?.image}
-        />
-        <FeaturedLogosSection
-          heading={aboutPage.featuredLogos?.heading}
-          logos={aboutPage.featuredLogos?.logos}
         />
         <TestimonialsSection
           heading={aboutPage.testimonials?.heading}
