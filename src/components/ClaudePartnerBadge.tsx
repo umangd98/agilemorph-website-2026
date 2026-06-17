@@ -12,17 +12,18 @@ export function ClaudePartnerBadge({ className = "" }: ClaudePartnerBadgeProps) 
       href="https://www.anthropic.com/claude"
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center gap-3 rounded-full border border-border bg-background px-3.5 py-2 transition-colors duration-200 hover:border-slate-300 hover:shadow-sm ${className}`}
+      className={`group inline-flex items-center gap-3 rounded-full border border-[#d97757]/30 bg-[#d97757]/10 px-4 py-2 backdrop-blur-md transition-all duration-300 hover:border-[#d97757]/50 hover:bg-[#d97757]/15 ${className}`}
+      style={{ boxShadow: "0 0 20px rgba(217,119,87,0.12)" }}
       aria-label="Claude Services Partner — we design and build on Claude"
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#d97757] text-white">
-        <ClaudeLogo className="h-[18px] w-[18px]" />
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#d97757] text-white transition-colors group-hover:bg-[#c96a4d]">
+        <ClaudeLogo className="h-4 w-4" />
       </span>
-      <span className="flex min-w-0 flex-col justify-center gap-0.5 pr-0.5">
-        <span className="font-body text-sm font-semibold leading-none tracking-tight text-foreground">
+      <span className="flex min-w-0 flex-col justify-center gap-0.5">
+        <span className="font-body text-sm font-semibold leading-none tracking-tight text-white">
           Services Partner
         </span>
-        <span className="font-mono text-[11px] leading-tight text-muted-foreground">
+        <span className="font-mono text-[11px] leading-tight text-slate-400">
           We design and build on Claude
         </span>
       </span>
