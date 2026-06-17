@@ -13,6 +13,7 @@ import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { SanityImage } from "@/components/SanityImage";
 import {
+  PRIMARY_SERVICE_CAPABILITIES,
   PRIMARY_SERVICE_SLUG,
   serviceDisplayTitle,
   serviceHref,
@@ -80,7 +81,8 @@ export function ServicesSection({
 }: ServicesSectionProps) {
   const [showAdditional, setShowAdditional] = useState(false);
   const { primary, additional } = splitServicePages(pages);
-  const subServices = primary?.capabilities ?? [];
+  const subServices =
+    primary?.capabilities?.length ? primary.capabilities : [...PRIMARY_SERVICE_CAPABILITIES];
   const primaryHref = primary ? serviceHref(primary.slug) : serviceHref(PRIMARY_SERVICE_SLUG);
 
   return (
@@ -169,7 +171,7 @@ export function ServicesSection({
               </div>
 
               {subServices.length > 0 ? (
-                <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
                   {subServices.map((sub) => (
                     <Link
                       key={sub.title}

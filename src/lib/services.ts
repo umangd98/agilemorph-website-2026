@@ -4,6 +4,33 @@ import type { ServicePageListItem } from "@/sanity/types";
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
 
+export const PRIMARY_SERVICE_CAPABILITIES = [
+  {
+    title: "Content Pipelines",
+    description:
+      "Queued generation workflows for marketing content, structured for AEO and GEO visibility across search and AI surfaces.",
+    icon: "✍️",
+  },
+  {
+    title: "AI Agents",
+    description:
+      "Production-ready agents built on Claude, OpenClaw, Hermes, NemoClaw, and other leading model stacks.",
+    icon: "🤖",
+  },
+  {
+    title: "Custom MCP Servers",
+    description:
+      "Model Context Protocol integrations built directly into your apps so AI can access your tools, data, and workflows.",
+    icon: "🔌",
+  },
+  {
+    title: "Workflow Automation",
+    description:
+      "No-code and low-code pipelines with n8n, Make, and Zapier that connect your stack without custom engineering.",
+    icon: "⚡",
+  },
+] as const;
+
 const NAV_DESC_BY_SLUG: Record<string, string> = {
   "ai-automation": "Automate workflows with AI",
   "website-development": "High-performance web apps",

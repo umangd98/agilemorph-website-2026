@@ -503,47 +503,35 @@ function buildServicePages(manifest) {
         "At AgileMorph Solutions, we deliver powerful AI automation solutions designed specifically to streamline your workflow, eliminate manual tasks, and boost business growth. Specializing in Zapier, n8n, and Make.com integrations, we transform complex business processes into seamless automated workflows.",
       heroImage: imageRef(manifest, "2025/09/AI-Automation-Development-Services.jpg", "AI Automation"),
       heroCta: cta("Start Your AI Journey", "/contact"),
-      capabilitiesHeading: "Our Automation Capabilities",
+      capabilitiesHeading: "Core Capabilities",
       capabilities: [
         {
           _type: "capabilityItem",
-          title: "Predictive Analytics & Automation",
+          title: "Content Pipelines",
           description:
-            "Utilize predictive triggers to proactively manage business processes, automate timely interventions, and strategically enhance decision-making capabilities.",
-          icon: "⚙️",
+            "Queued generation workflows for marketing content, structured for AEO and GEO visibility across search and AI surfaces.",
+          icon: "✍️",
         },
         {
           _type: "capabilityItem",
-          title: "Custom Workflow Automations",
+          title: "AI Agents",
           description:
-            "Tailor-made automation workflows for SMBs and e-commerce businesses, from lead generation and CRM enrichment to intelligent data scraping and predictive analytics.",
+            "Production-ready agents built on Claude, OpenClaw, Hermes, NemoClaw, and other leading model stacks.",
+          icon: "🤖",
         },
         {
           _type: "capabilityItem",
-          title: "Lead Generation Automation",
+          title: "Custom MCP Servers",
           description:
-            "Automate your entire lead generation cycle, effortlessly capturing leads from multiple channels, nurturing prospects, and accelerating conversions.",
+            "Model Context Protocol integrations built directly into your apps so AI can access your tools, data, and workflows.",
+          icon: "🔌",
         },
         {
           _type: "capabilityItem",
-          title: "CRM & Data Enrichment",
+          title: "Workflow Automation",
           description:
-            "Maximize your CRM efficiency with automated data enrichment, precise customer segmentation, and intelligent follow-up mechanisms.",
-          icon: "🛠️",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Intelligent Data Scraping",
-          description:
-            "Efficiently extract structured data from websites and marketplaces, enhancing your competitive insights, pricing strategies, and market analysis.",
-          icon: "⏳",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Eliminating Manual Tasks",
-          description:
-            "Automate repetitive tasks including data entry, scheduling, reporting, and follow-ups.",
-          icon: "📊",
+            "No-code and low-code pipelines with n8n, Make, and Zapier that connect your stack without custom engineering.",
+          icon: "⚡",
         },
       ],
       whyUsHeading: "Why Choose Us",
