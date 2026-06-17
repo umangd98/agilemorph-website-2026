@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
+import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import { Navbar } from "@/components/Navbar";
 import {
   AboutHeroSection,
   CompanyStorySection,
   FounderSection,
+  PartnersSection,
   ProcessSection,
   TestimonialsSection,
   AboutImpactSection,
@@ -86,6 +88,14 @@ export default async function AboutPageRoute() {
           role={aboutPage.founder?.role}
           bio={aboutPage.founder?.bio}
           image={aboutPage.founder?.image}
+        />
+        <IntegrationsMarquee
+          heading={aboutPage.integrations?.heading}
+          items={aboutPage.integrations?.items}
+        />
+        <PartnersSection
+          heading={aboutPage.partners?.heading}
+          items={aboutPage.partners?.items}
         />
         <TestimonialsSection
           heading={aboutPage.testimonials?.heading}

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
+import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import { Navbar } from "@/components/Navbar";
 import {
   FeaturedLogosSection,
   HeroSection,
+  PartnersSection,
   ProcessSection,
   ServicesSection,
   StatsSection,
@@ -75,6 +77,14 @@ export default async function HomePage() {
           eyebrow={homepage.stats?.eyebrow}
           heading={homepage.stats?.heading}
           items={homepage.stats?.items}
+        />
+        <IntegrationsMarquee
+          heading={homepage.integrations?.heading}
+          items={homepage.integrations?.items}
+        />
+        <PartnersSection
+          heading={homepage.partners?.heading}
+          items={homepage.partners?.items}
         />
         <FeaturedLogosSection
           heading={homepage.featuredLogos?.heading}

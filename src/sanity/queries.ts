@@ -73,6 +73,19 @@ const seoProjection = `{
   ogImage ${imageProjection}
 }`;
 
+const partnerItemProjection = `{
+  name,
+  label,
+  url,
+  logo ${imageProjection}
+}`;
+
+const integrationItemProjection = `{
+  name,
+  url,
+  logo ${imageProjection}
+}`;
+
 export const homepageQuery = `*[_type == "homepage"][0]{
   _id,
   _type,
@@ -102,6 +115,14 @@ export const homepageQuery = `*[_type == "homepage"][0]{
     eyebrow,
     heading,
     items[] ${statProjection}
+  },
+  integrations {
+    heading,
+    items[] ${integrationItemProjection}
+  },
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
   },
   featuredLogos {
     heading,
@@ -150,6 +171,14 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     role,
     bio,
     image ${imageProjection}
+  },
+  integrations {
+    heading,
+    items[] ${integrationItemProjection}
+  },
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
   },
   featuredLogos {
     heading,

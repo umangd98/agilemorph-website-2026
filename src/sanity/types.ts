@@ -83,6 +83,29 @@ export interface CompanyValue {
   icon?: SanityImageAsset;
 }
 
+export interface PartnerItem {
+  name: string;
+  label?: string;
+  url?: string;
+  logo?: SanityImageAsset;
+}
+
+export interface PartnersSection {
+  heading?: string;
+  items?: PartnerItem[];
+}
+
+export interface IntegrationItem {
+  name: string;
+  url?: string;
+  logo?: SanityImageAsset;
+}
+
+export interface IntegrationsSection {
+  heading?: string;
+  items?: IntegrationItem[];
+}
+
 export interface HomepageHero {
   badge?: string;
   heading: string;
@@ -115,6 +138,8 @@ export interface Homepage {
     heading?: string;
     items?: Stat[];
   };
+  integrations?: IntegrationsSection;
+  partners?: PartnersSection;
   featuredLogos?: {
     heading?: string;
     logos?: SanityImageAsset[];
@@ -163,6 +188,8 @@ export interface AboutPage {
     bio?: string;
     image?: SanityImageAsset;
   };
+  integrations?: IntegrationsSection;
+  partners?: PartnersSection;
   featuredLogos?: {
     heading?: string;
     logos?: SanityImageAsset[];

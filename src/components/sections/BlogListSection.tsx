@@ -80,7 +80,7 @@ export function BlogListSection({
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
             <AnimateOnScroll key={post._id} delay={index * 80}>
-              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:border-primary/20 hover:shadow-lg">
+              <article className="hover-lift group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:border-primary/20 hover:shadow-lg">
                 {post.coverImage ? (
                   <div className="relative aspect-[16/10] overflow-hidden bg-background">
                     <SanityImage

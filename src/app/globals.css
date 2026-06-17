@@ -58,6 +58,16 @@
   50% { opacity: 0.4; }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -65,6 +75,37 @@
 
   body {
     @apply bg-background font-body text-foreground antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tight;
+    text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  h2 {
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+  }
+
+  h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  h4 {
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+
+  p {
+    line-height: 1.7;
   }
 
   ::selection {
@@ -73,6 +114,36 @@
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
   }
 }
 

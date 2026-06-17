@@ -6,6 +6,8 @@ import { contactPage } from "./contactPage";
 import { ctaButton } from "./ctaButton";
 import { faqItem } from "./faqItem";
 import { homepage } from "./homepage";
+import { integrationItem } from "./integrationItem";
+import { partnerItem } from "./partnerItem";
 import { processStep } from "./processStep";
 import { seo } from "./seo";
 import { serviceCard } from "./serviceCard";
@@ -27,6 +29,8 @@ export const schemaTypes = [
   technologyItem,
   faqItem,
   companyValue,
+  partnerItem,
+  integrationItem,
   homepage,
   aboutPage,
   servicePage,

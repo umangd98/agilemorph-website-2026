@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { urlForImage } from "@/sanity/image";
@@ -83,15 +83,47 @@ export function HeroSection({ hero }: HeroSectionProps) {
         }}
       />
 
-      {/* Radial glow — right */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 60% at 85% 45%, rgba(34,197,94,0.12) 0%, transparent 65%)",
-        }}
-      />
+      {/* ── Background image — absolutely fills the right half, fully blended ── */}
+      {heroImageUrl && (
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%]"
+          aria-hidden="true"
+          style={{
+            opacity: visible ? 0.55 : 0,
+            transition: "opacity 1.2s ease 200ms",
+          }}
+        >
+          <Image
+            src={heroImageUrl}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="object-cover object-center"
+            placeholder={lqip ? "blur" : "empty"}
+            blurDataURL={lqip}
+          />
+          {/* Heavy mask: fades left edge into bg, top, bottom, and right */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `
+                linear-gradient(to right,  #0f172a 0%,   rgba(15,23,42,0.85) 20%, rgba(15,23,42,0.3) 45%, transparent 65%),
+                linear-gradient(to bottom, #0f172a 0%,   transparent 18%,   transparent 82%, #0f172a 100%),
+                linear-gradient(to left,   #0f172a 0%,   transparent 18%)
+              `,
+            }}
+          />
+          {/* Extra green tint overlay so it blends with the section palette */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 70% at 70% 50%, rgba(34,197,94,0.08) 0%, transparent 70%)",
+            }}
+          />
+        </div>
+      )}
 
       <Container className="relative z-10 py-24 lg:py-32">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
@@ -113,7 +145,6 @@ export function HeroSection({ hero }: HeroSectionProps) {
                 id="hero-heading"
                 className="mb-6 font-heading text-5xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl"
               >
-                {/* Highlight last word in green */}
                 {hero.heading.split(" ").slice(0, -2).join(" ")}{" "}
                 <span className="text-primary">
                   {hero.heading.split(" ").slice(-2).join(" ")}
@@ -204,98 +235,10 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
           </div>
 
-          {/* ── Right: hero image ── */}
-          <AnimItem
-            visible={visible}
-            delay={200}
-            className="relative flex items-center justify-center"
-          >
-            {heroImageUrl ? (
-              <div className="relative w-full max-w-lg">
-                {/* Outer glow ring */}
-                <div
-                  className="absolute -inset-4 rounded-3xl opacity-30 blur-2xl"
-                  style={{ background: "rgba(34,197,94,0.25)" }}
-                  aria-hidden="true"
-                />
-
-                {/* Floating image container */}
-                <div
-                  className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
-                  style={{
-                    animation: "heroFloat 5s ease-in-out infinite",
-                    boxShadow:
-                      "0 0 0 1px rgba(34,197,94,0.15), 0 32px 64px rgba(0,0,0,0.6)",
-                  }}
-                >
-                  <Image
-                    src={heroImageUrl}
-                    alt={hero.image?.alt ?? hero.heading}
-                    width={600}
-                    height={585}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="h-auto w-full object-cover"
-                    placeholder={lqip ? "blur" : "empty"}
-                    blurDataURL={lqip}
-                  />
-
-                  {/* Overlay gradient to blend with dark bg */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(15,23,42,0.08) 0%, transparent 60%)",
-                    }}
-                  />
-                </div>
-
-                {/* Decorative corner dots */}
-                <div
-                  className="absolute -right-6 -top-6 h-24 w-24 opacity-40"
-                  aria-hidden="true"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(34,197,94,0.5) 1px, transparent 1px)",
-                    backgroundSize: "8px 8px",
-                  }}
-                />
-                <div
-                  className="absolute -bottom-6 -left-6 h-24 w-24 opacity-40"
-                  aria-hidden="true"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(34,197,94,0.5) 1px, transparent 1px)",
-                    backgroundSize: "8px 8px",
-                  }}
-                />
-              </div>
-            ) : (
-              /* Fallback: animated placeholder */
-              <div
-                className="flex h-80 w-full max-w-lg items-center justify-center rounded-2xl border border-white/10 bg-white/5"
-                style={{ animation: "heroFloat 5s ease-in-out infinite" }}
-              >
-                <div className="text-center">
-                  <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
-                    <Sparkles size={28} className="text-primary" />
-                  </div>
-                  <p className="font-body text-sm text-slate-400">
-                    Add hero image in Sanity Studio
-                  </p>
-                </div>
-              </div>
-            )}
-          </AnimItem>
+          {/* Right column — empty spacer so the grid still pushes content left */}
+          <div className="hidden lg:block" aria-hidden="true" />
         </div>
       </Container>
-
-      <style>{`
-        @keyframes heroFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-14px); }
-        }
-      `}</style>
     </section>
   );
 }

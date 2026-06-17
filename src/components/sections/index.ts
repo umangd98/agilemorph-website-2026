@@ -5,6 +5,7 @@ export { WhyUsSection } from "./WhyUsSection";
 export { StatsSection } from "./StatsSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { FeaturedLogosSection } from "./FeaturedLogosSection";
+export { PartnersSection } from "./PartnersSection";
 export { AboutHeroSection } from "./AboutHeroSection";
 export { CompanyStorySection } from "./CompanyStorySection";
 export { ValuesSection } from "./ValuesSection";

@@ -191,6 +191,42 @@ export const aboutPage = defineType({
       ],
     }),
     defineField({
+      name: "integrations",
+      title: "Integrations Marquee",
+      type: "object",
+      fields: [
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "items",
+          title: "Integration Tools",
+          type: "array",
+          of: [{ type: "integrationItem" }],
+        }),
+      ],
+    }),
+    defineField({
+      name: "partners",
+      title: "Partners Section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "items",
+          title: "Partners",
+          type: "array",
+          of: [{ type: "partnerItem" }],
+        }),
+      ],
+    }),
+    defineField({
       name: "featuredLogos",
       title: "Featured Logos",
       type: "object",

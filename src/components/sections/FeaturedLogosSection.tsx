@@ -32,7 +32,7 @@ export function FeaturedLogosSection({
         <div className="grid grid-cols-2 items-center gap-8 sm:grid-cols-3 md:grid-cols-5">
           {logos.map((logo, index) => (
             <AnimateOnScroll key={logo.asset?._ref ?? index} delay={index * 40}>
-              <div className="relative mx-auto h-12 w-full max-w-[140px] opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0">
+              <div className="hover-lift relative mx-auto h-12 w-full max-w-[140px] opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0">
                 <SanityImage
                   image={logo}
                   alt={logo.alt ?? `Partner logo ${index + 1}`}
