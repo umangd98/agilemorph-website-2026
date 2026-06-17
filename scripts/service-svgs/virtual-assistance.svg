@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060d1a"/>
+      <stop offset="0.5" stop-color="#0b1628"/>
+      <stop offset="1" stop-color="#0d1f2d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.1" r="0.55">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    @keyframes move {
+      0%,12%   { transform: translateX(0);   opacity:1; }
+      33%      { transform: translateX(220px); opacity:1; }
+      54%,66%  { transform: translateX(440px); opacity:1; }
+      80%      { transform: translateX(440px); opacity:.35; }
+      100%     { transform: translateX(0);     opacity:0; }
+    }
+    .travel { animation: move 6s ease-in-out infinite; }
+    .travel2 { animation: move 6s ease-in-out 3s infinite; }
+    @keyframes fadein { 0%{opacity:0;} 100%{opacity:1;} }
+    .col { animation: fadein .6s ease forwards; }
+  </style>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+
+  <!-- column headers -->
+  <g class="col">
+    <rect x="80"  y="100" width="200" height="48" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="180" y="130" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="bold" letter-spacing="1">TO DO</text>
+    <rect x="300" y="100" width="200" height="48" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="400" y="130" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="bold" letter-spacing="1">IN PROGRESS</text>
+    <rect x="520" y="100" width="200" height="48" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="620" y="130" text-anchor="middle" fill="#86efac" font-size="15" font-weight="bold" letter-spacing="1">DONE</text>
+  </g>
+
+  <!-- column bodies -->
+  <rect x="80"  y="166" width="200" height="324" rx="14" fill="#ffffff" fill-opacity="0.02" stroke="#ffffff" stroke-opacity="0.07" stroke-dasharray="6 6"/>
+  <rect x="300" y="166" width="200" height="324" rx="14" fill="#ffffff" fill-opacity="0.02" stroke="#ffffff" stroke-opacity="0.07" stroke-dasharray="6 6"/>
+  <rect x="520" y="166" width="200" height="324" rx="14" fill="#ffffff" fill-opacity="0.02" stroke="#ffffff" stroke-opacity="0.07" stroke-dasharray="6 6"/>
+
+  <!-- static done cards -->
+  <g opacity="0.85">
+    <rect x="540" y="320" width="160" height="74" rx="12" fill="#22c55e" fill-opacity="0.08" stroke="#22c55e" stroke-opacity="0.25"/>
+    <circle cx="566" cy="346" r="13" fill="#22c55e" fill-opacity="0.25"/>
+    <text x="566" y="351" text-anchor="middle" fill="#86efac" font-size="11" font-weight="bold">VA</text>
+    <text x="590" y="351" fill="#cbd5e1" font-size="13">Report sent</text>
+    <rect x="590" y="362" width="90" height="8" rx="4" fill="#ffffff" fill-opacity="0.1"/>
+  </g>
+
+  <!-- traveling card 1 -->
+  <g class="travel">
+    <rect x="96" y="190" width="168" height="78" rx="12" fill="#22c55e" fill-opacity="0.14" stroke="#22c55e" stroke-opacity="0.45"/>
+    <circle cx="124" cy="218" r="14" fill="#22c55e" fill-opacity="0.3"/>
+    <text x="124" y="223" text-anchor="middle" fill="#86efac" font-size="12" font-weight="bold">VA</text>
+    <text x="150" y="216" fill="#e2e8f0" font-size="14">Inbox triage</text>
+    <rect x="150" y="230" width="96" height="8" rx="4" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="150" y="244" width="64" height="8" rx="4" fill="#ffffff" fill-opacity="0.08"/>
+  </g>
+
+  <!-- traveling card 2 -->
+  <g class="travel2">
+    <rect x="96" y="300" width="168" height="78" rx="12" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e" stroke-opacity="0.4"/>
+    <circle cx="124" cy="328" r="14" fill="#22c55e" fill-opacity="0.3"/>
+    <text x="124" y="333" text-anchor="middle" fill="#86efac" font-size="12" font-weight="bold">VA</text>
+    <text x="150" y="326" fill="#e2e8f0" font-size="14">Schedule call</text>
+    <rect x="150" y="340" width="86" height="8" rx="4" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="150" y="354" width="58" height="8" rx="4" fill="#ffffff" fill-opacity="0.08"/>
+  </g>
+</svg>

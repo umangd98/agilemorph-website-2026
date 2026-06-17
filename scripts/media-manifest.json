@@ -1598,5 +1598,25 @@
   "testimonials/RPS-Logo-Detaled-Open-GREEN-768x557.png": {
     "id": "image-8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557-png",
     "url": "https://cdn.sanity.io/images/vs80pgpc/production/8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557.png"
+  },
+  "service-anim/ai-automation.svg": {
+    "id": "image-7b5325e38542cd63583ebc8d47edc667276026fa-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7b5325e38542cd63583ebc8d47edc667276026fa-800x600.svg"
+  },
+  "service-anim/website-development.svg": {
+    "id": "image-4555b48cfc150187bcf977e16b61eaed4374c4ab-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4555b48cfc150187bcf977e16b61eaed4374c4ab-800x600.svg"
+  },
+  "service-anim/digital-marketing.svg": {
+    "id": "image-19f8e73cd74e28562d338ef93ea719e4def23a8d-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/19f8e73cd74e28562d338ef93ea719e4def23a8d-800x600.svg"
+  },
+  "service-anim/virtual-assistance.svg": {
+    "id": "image-2f740877c5ff8a039a7d3a74f3c4f3c30b50095b-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2f740877c5ff8a039a7d3a74f3c4f3c30b50095b-800x600.svg"
+  },
+  "service-anim/bookkeeping.svg": {
+    "id": "image-bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600.svg"
   }
 }

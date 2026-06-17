@@ -61,6 +61,7 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
       <Navbar />
       <main className="flex-1">
         <ServiceHeroSection
+          slug={slug}
           title={servicePage.title}
           tagline={servicePage.tagline}
           description={servicePage.description}

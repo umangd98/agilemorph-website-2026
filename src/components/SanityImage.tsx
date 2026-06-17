@@ -26,7 +26,7 @@ type SanityImageFixedProps = SanityImageBaseProps & {
 
 type SanityImageProps = SanityImageFillProps | SanityImageFixedProps;
 
-function hasImageAsset(
+export function hasImageAsset(
   image?: SanityImageAsset,
 ): image is SanityImageAsset & {
   asset: NonNullable<SanityImageAsset["asset"]>;
