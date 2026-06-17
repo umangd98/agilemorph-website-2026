@@ -7,6 +7,7 @@ export { Footer } from "./Footer";
 export { Heading } from "./Heading";
 export { Logo } from "./Logo";
 export { Navbar } from "./Navbar";
+export { IntegrationsMarquee } from "./IntegrationsMarquee";
 export { SanityImage } from "./SanityImage";
 export { Section } from "./Section";
 export { SectionHeader } from "./SectionHeader";

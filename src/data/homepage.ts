@@ -120,51 +120,35 @@ export const featuredService = {
 
 export const services = [
   {
+    id: "content-pipelines",
+    title: "Content Pipelines",
+    description:
+      "Queued generation workflows for marketing content, structured for AEO and GEO visibility.",
+    href: "/services/ai-automation",
+    featured: false,
+  },
+  {
     id: "ai-agents",
     title: "AI Agents",
     description:
-      "Autonomous agents that classify, decide, and act across your tools and workflows.",
-    href: "/services/ai-agents",
+      "Production-ready agents built on Claude, OpenClaw, Hermes, NemoClaw, and other model stacks.",
+    href: "/services/ai-automation",
+    featured: true,
+  },
+  {
+    id: "mcp-servers",
+    title: "Custom MCP Servers",
+    description:
+      "Model Context Protocol integrations built directly into your apps and workflows.",
+    href: "/services/ai-automation",
     featured: false,
   },
   {
     id: "workflow-automation",
     title: "Workflow Automation",
     description:
-      "n8n, Make, and Zapier pipelines that eliminate repetitive operational tasks.",
-    href: "/services/workflow-automation",
-    featured: true,
-  },
-  {
-    id: "crm-lead",
-    title: "CRM & Lead Automation",
-    description:
-      "Capture, enrich, route, and follow up on every lead automatically.",
-    href: "/services/crm-lead-automation",
-    featured: false,
-  },
-  {
-    id: "ai-infra",
-    title: "AI Infrastructure",
-    description:
-      "Production-grade deployments, servers, integrations, and scalable AI architecture.",
-    href: "/services/ai-infrastructure",
-    featured: false,
-  },
-  {
-    id: "messaging",
-    title: "Messaging Automation",
-    description:
-      "WhatsApp, email, and chat automations that respond instantly and convert leads.",
-    href: "/services/messaging-automation",
-    featured: false,
-  },
-  {
-    id: "ai-audit",
-    title: "AI Audit",
-    description:
-      "A fixed-scope review that maps where AI saves the most time and money.",
-    href: "/services/ai-audit",
+      "No-code and low-code pipelines with n8n, Make, and Zapier that connect your stack.",
+    href: "/services/ai-automation",
     featured: false,
   },
 ];

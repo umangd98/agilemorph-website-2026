@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060d1a"/>
+      <stop offset="0.5" stop-color="#0b1628"/>
+      <stop offset="1" stop-color="#0d1f2d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.15" r="0.55">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes barUp { 0%{transform:scaleY(0);} 100%{transform:scaleY(1);} }
+    @keyframes pill { 0%{opacity:0;transform:translateY(10px);} 100%{opacity:1;transform:translateY(0);} }
+    @keyframes ping { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.5);opacity:.5;} }
+    .chartline { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2.6s ease-out infinite; }
+    .bar { transform-box: fill-box; transform-origin: bottom center; animation: barUp 1.4s ease-out forwards; }
+    .br1{animation-delay:.2s} .br2{animation-delay:.4s} .br3{animation-delay:.6s} .br4{animation-delay:.8s} .br5{animation-delay:1s}
+    .endpt { transform-box: fill-box; transform-origin: center; animation: ping 1.8s ease-in-out infinite; }
+    .pill { opacity:0; transform-box: fill-box; }
+    .p1{animation: pill .6s ease 1s infinite alternate} .p2{animation: pill .6s ease 1.4s infinite alternate}
+  </style>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+
+  <line x1="120" y1="180" x2="700" y2="180" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="120" y1="270" x2="700" y2="270" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="120" y1="360" x2="700" y2="360" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="120" y1="450" x2="700" y2="450" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5"/>
+
+  <g>
+    <rect class="bar br1" x="150" y="380" width="40" height="70" rx="6" fill="#22c55e" fill-opacity="0.18"/>
+    <rect class="bar br2" x="250" y="340" width="40" height="110" rx="6" fill="#22c55e" fill-opacity="0.2"/>
+    <rect class="bar br3" x="350" y="300" width="40" height="150" rx="6" fill="#22c55e" fill-opacity="0.22"/>
+    <rect class="bar br4" x="450" y="250" width="40" height="200" rx="6" fill="#22c55e" fill-opacity="0.26"/>
+    <rect class="bar br5" x="550" y="195" width="40" height="255" rx="6" fill="#22c55e" fill-opacity="0.3"/>
+  </g>
+
+  <path d="M120 410 L230 392 L340 350 L450 290 L560 220 L680 150 L680 450 L120 450 Z" fill="url(#area)"/>
+  <polyline class="chartline" points="120,410 230,392 340,350 450,290 560,220 680,150" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g class="endpt"><circle cx="680" cy="150" r="8" fill="#22c55e"/></g>
+
+  <g class="pill p1">
+    <rect x="150" y="100" width="170" height="46" rx="23" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e" stroke-opacity="0.4"/>
+    <text x="235" y="129" text-anchor="middle" fill="#86efac" font-size="17" font-weight="bold">Reach +120%</text>
+  </g>
+  <g class="pill p2">
+    <rect x="470" y="300" width="160" height="46" rx="23" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e" stroke-opacity="0.4"/>
+    <text x="550" y="329" text-anchor="middle" fill="#86efac" font-size="17" font-weight="bold">CTR &#8593; 3.2&#215;</text>
+  </g>
+</svg>

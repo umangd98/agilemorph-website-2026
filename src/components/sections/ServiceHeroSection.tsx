@@ -2,10 +2,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
-import { SanityImage } from "@/components/SanityImage";
+import { hasImageAsset } from "@/components/SanityImage";
+import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
+import { urlForImage } from "@/sanity/image";
 import type { CtaButton, SanityImageAsset } from "@/sanity/types";
 
 type ServiceHeroSectionProps = {
+  slug: string;
   title: string;
   tagline?: string;
   description?: string;
@@ -14,12 +17,21 @@ type ServiceHeroSectionProps = {
 };
 
 export function ServiceHeroSection({
+  slug,
   title,
   tagline,
   description,
   heroImage,
   heroCta,
 }: ServiceHeroSectionProps) {
+  const rawUrl = heroImage?.asset?.url;
+  const isSvg = Boolean(rawUrl && /\.svg(\?|$)/i.test(rawUrl));
+  const imageUrl = hasImageAsset(heroImage)
+    ? isSvg
+      ? rawUrl
+      : urlForImage(heroImage).auto("format").fit("max").url()
+    : undefined;
+
   return (
     <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="service-hero-heading">
       <Container>
@@ -51,18 +63,13 @@ export function ServiceHeroSection({
               </Link>
             ) : null}
           </div>
-          {heroImage ? (
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-surface">
-              <SanityImage
-                image={heroImage}
-                alt={heroImage.alt ?? title}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          ) : null}
+          <ServiceHeroMedia
+            slug={slug}
+            imageUrl={imageUrl}
+            alt={heroImage?.alt ?? title}
+            blurDataURL={heroImage?.lqip}
+            isSvg={isSvg}
+          />
         </div>
       </Container>
     </section>

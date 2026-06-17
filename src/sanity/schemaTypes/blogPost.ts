@@ -28,6 +28,11 @@ export const blogPost = defineType({
       rows: 3,
     }),
     defineField({
+      name: "author",
+      title: "Author",
+      type: "string",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "array",

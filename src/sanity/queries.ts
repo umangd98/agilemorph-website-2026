@@ -73,6 +73,19 @@ const seoProjection = `{
   ogImage ${imageProjection}
 }`;
 
+const partnerItemProjection = `{
+  name,
+  label,
+  url,
+  logo ${imageProjection}
+}`;
+
+const integrationItemProjection = `{
+  name,
+  url,
+  logo ${imageProjection}
+}`;
+
 export const homepageQuery = `*[_type == "homepage"][0]{
   _id,
   _type,
@@ -91,8 +104,7 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   },
   services {
     eyebrow,
-    heading,
-    cards[] ${serviceCardProjection}
+    heading
   },
   whyUs {
     heading,
@@ -102,6 +114,14 @@ export const homepageQuery = `*[_type == "homepage"][0]{
     eyebrow,
     heading,
     items[] ${statProjection}
+  },
+  integrations {
+    heading,
+    items[] ${integrationItemProjection}
+  },
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
   },
   featuredLogos {
     heading,
@@ -151,6 +171,14 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     bio,
     image ${imageProjection}
   },
+  integrations {
+    heading,
+    items[] ${integrationItemProjection}
+  },
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
+  },
   featuredLogos {
     heading,
     logos[] ${imageProjection}
@@ -185,6 +213,16 @@ export const servicePageQuery = `*[_type == "servicePage" && slug.current == $sl
   seo ${seoProjection}
 }`;
 
+export const allServicePagesListQuery = `*[_type == "servicePage" && defined(slug.current)] | order(title asc) {
+  _id,
+  title,
+  "slug": slug.current,
+  tagline,
+  description,
+  heroImage ${imageProjection},
+  capabilities[] ${capabilityItemProjection}
+}`;
+
 export const allServiceSlugsQuery = `*[_type == "servicePage" && defined(slug.current)]{
   "slug": slug.current
 }`;
@@ -211,6 +249,20 @@ export const allBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt des
   excerpt,
   publishedAt,
   categories,
+  author,
+  coverImage ${imageProjection}
+}`;
+
+export const blogPostsCountQuery = `count(*[_type == "blogPost"])`;
+
+export const pagedBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  categories,
+  author,
   coverImage ${imageProjection}
 }`;
 
@@ -226,6 +278,7 @@ export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]
   body,
   publishedAt,
   categories,
+  author,
   coverImage ${imageProjection},
   seo ${seoProjection}
 }`;

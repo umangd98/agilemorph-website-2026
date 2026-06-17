@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060d1a"/>
+      <stop offset="0.5" stop-color="#0b1628"/>
+      <stop offset="1" stop-color="#0d1f2d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.5">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    @keyframes rowin { 0%{opacity:0;transform:translateX(-20px);} 100%{opacity:1;transform:translateX(0);} }
+    @keyframes checkin { 0%{opacity:0;transform:scale(0);} 60%{transform:scale(1.25);} 100%{opacity:1;transform:scale(1);} }
+    @keyframes balp { 0%,100%{opacity:.85;} 50%{opacity:1;} }
+    .row { opacity:0; }
+    .r1{animation: rowin .6s ease .3s forwards} .r2{animation: rowin .6s ease .8s forwards} .r3{animation: rowin .6s ease 1.3s forwards}
+    .chk { opacity:0; transform-box: fill-box; transform-origin: center; }
+    .c1{animation: checkin .4s ease .7s forwards} .c2{animation: checkin .4s ease 1.2s forwards} .c3{animation: checkin .4s ease 1.7s forwards}
+    .balance { animation: balp 2.2s ease-in-out 1.9s infinite; }
+  </style>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+
+  <rect x="120" y="100" width="560" height="400" rx="22" fill="#0a1018" fill-opacity="0.85" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+
+  <text x="150" y="156" fill="#ffffff" font-size="22" font-weight="bold">Ledger</text>
+  <text x="650" y="156" text-anchor="end" fill="#64748b" font-size="15">Q2 2026</text>
+  <line x1="150" y1="176" x2="650" y2="176" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+
+  <!-- row 1 -->
+  <g class="row r1">
+    <rect x="150" y="200" width="500" height="56" rx="12" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.06"/>
+    <g class="chk c1"><circle cx="182" cy="228" r="14" fill="#22c55e" fill-opacity="0.22"/><path d="M175 228 l5 5 l9 -11" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="212" y="234" fill="#cbd5e1" font-size="16">Invoices</text>
+    <text x="630" y="234" text-anchor="end" fill="#22c55e" font-size="16" font-weight="bold" font-family="monospace">$12,400</text>
+  </g>
+  <!-- row 2 -->
+  <g class="row r2">
+    <rect x="150" y="268" width="500" height="56" rx="12" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.06"/>
+    <g class="chk c2"><circle cx="182" cy="296" r="14" fill="#22c55e" fill-opacity="0.22"/><path d="M175 296 l5 5 l9 -11" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="212" y="302" fill="#cbd5e1" font-size="16">Payroll</text>
+    <text x="630" y="302" text-anchor="end" fill="#22c55e" font-size="16" font-weight="bold" font-family="monospace">$8,200</text>
+  </g>
+  <!-- row 3 -->
+  <g class="row r3">
+    <rect x="150" y="336" width="500" height="56" rx="12" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.06"/>
+    <g class="chk c3"><circle cx="182" cy="364" r="14" fill="#22c55e" fill-opacity="0.22"/><path d="M175 364 l5 5 l9 -11" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="212" y="370" fill="#cbd5e1" font-size="16">Expenses</text>
+    <text x="630" y="370" text-anchor="end" fill="#22c55e" font-size="16" font-weight="bold" font-family="monospace">$3,150</text>
+  </g>
+
+  <!-- balance -->
+  <g class="balance">
+    <rect x="150" y="416" width="500" height="60" rx="14" fill="#22c55e" fill-opacity="0.12" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1.5"/>
+    <text x="178" y="453" fill="#e2e8f0" font-size="16" font-weight="bold">Balance</text>
+    <text x="624" y="455" text-anchor="end" fill="#22c55e" font-size="24" font-weight="bold" font-family="monospace">$23,750</text>
+  </g>
+</svg>

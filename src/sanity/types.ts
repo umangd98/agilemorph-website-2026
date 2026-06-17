@@ -83,6 +83,29 @@ export interface CompanyValue {
   icon?: SanityImageAsset;
 }
 
+export interface PartnerItem {
+  name: string;
+  label?: string;
+  url?: string;
+  logo?: SanityImageAsset;
+}
+
+export interface PartnersSection {
+  heading?: string;
+  items?: PartnerItem[];
+}
+
+export interface IntegrationItem {
+  name: string;
+  url?: string;
+  logo?: SanityImageAsset;
+}
+
+export interface IntegrationsSection {
+  heading?: string;
+  items?: IntegrationItem[];
+}
+
 export interface HomepageHero {
   badge?: string;
   heading: string;
@@ -104,7 +127,6 @@ export interface Homepage {
   services?: {
     eyebrow?: string;
     heading?: string;
-    cards?: ServiceCard[];
   };
   whyUs?: {
     heading?: string;
@@ -115,6 +137,8 @@ export interface Homepage {
     heading?: string;
     items?: Stat[];
   };
+  integrations?: IntegrationsSection;
+  partners?: PartnersSection;
   featuredLogos?: {
     heading?: string;
     logos?: SanityImageAsset[];
@@ -163,6 +187,8 @@ export interface AboutPage {
     bio?: string;
     image?: SanityImageAsset;
   };
+  integrations?: IntegrationsSection;
+  partners?: PartnersSection;
   featuredLogos?: {
     heading?: string;
     logos?: SanityImageAsset[];
@@ -172,6 +198,16 @@ export interface AboutPage {
     items?: Testimonial[];
   };
   seo?: Seo;
+}
+
+export interface ServicePageListItem {
+  _id: string;
+  title: string;
+  slug: string;
+  tagline?: string;
+  description?: string;
+  heroImage?: SanityImageAsset;
+  capabilities?: CapabilityItem[];
 }
 
 export interface ServicePage {
@@ -219,12 +255,18 @@ export interface BlogPostSummary {
   excerpt?: string;
   publishedAt?: string;
   categories?: string[];
+  author?: string;
   coverImage?: SanityImageAsset;
 }
 
 export interface BlogPost extends BlogPostSummary {
   body?: unknown[];
   seo?: Seo;
+}
+
+export interface BlogPageData {
+  posts: BlogPostSummary[];
+  total: number;
 }
 
 export interface ServiceSlug {

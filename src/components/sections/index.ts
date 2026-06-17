@@ -1,10 +1,12 @@
 export { HeroSection } from "./HeroSection";
 export { ProcessSection } from "./ProcessSection";
 export { ServicesSection } from "./ServicesSection";
+export { PricingSection } from "./PricingSection";
 export { WhyUsSection } from "./WhyUsSection";
 export { StatsSection } from "./StatsSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { FeaturedLogosSection } from "./FeaturedLogosSection";
+export { PartnersSection } from "./PartnersSection";
 export { AboutHeroSection } from "./AboutHeroSection";
 export { CompanyStorySection } from "./CompanyStorySection";
 export { ValuesSection } from "./ValuesSection";

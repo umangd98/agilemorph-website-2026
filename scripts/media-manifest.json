@@ -1454,5 +1454,169 @@
   "2025/03/umang-founder.png": {
     "id": "image-7ea9e2532d9456d21446f24eac9cf6066167b58c-843x1024-jpg",
     "url": "https://cdn.sanity.io/images/vs80pgpc/production/7ea9e2532d9456d21446f24eac9cf6066167b58c-843x1024.jpg"
+  },
+  "partners/anthropic.svg": {
+    "id": "image-d301a8c553d0c0fb2ec22d92c81e0f6c1c5d99d9-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d301a8c553d0c0fb2ec22d92c81e0f6c1c5d99d9-24x24.svg"
+  },
+  "partners/make.svg": {
+    "id": "image-cea06c989c3143b8927aae021e875a12ff5878ea-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
+  },
+  "partners/upwork.svg": {
+    "id": "image-c79d8fbddc515a671e6dcfb1ded95adf1c7d3d00-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c79d8fbddc515a671e6dcfb1ded95adf1c7d3d00-24x24.svg"
+  },
+  "partners/n8n.svg": {
+    "id": "image-cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
+  },
+  "partners/microsoft.svg": {
+    "id": "image-5b170117926ae5a5e451aa24676b5a124c2fa122-23x23-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5b170117926ae5a5e451aa24676b5a124c2fa122-23x23.svg"
+  },
+  "partners/zapier.svg": {
+    "id": "image-61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
+  },
+  "integrations/airtable.svg": {
+    "id": "image-0fbc72ae030e31ff1c2a8d8b869bbb3e1304ee3a-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0fbc72ae030e31ff1c2a8d8b869bbb3e1304ee3a-24x24.svg"
+  },
+  "integrations/n8n.svg": {
+    "id": "image-cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
+  },
+  "integrations/whatsapp.svg": {
+    "id": "image-df279fd6b2dd53e38cd892ee2436225c6f2a9f10-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/df279fd6b2dd53e38cd892ee2436225c6f2a9f10-24x24.svg"
+  },
+  "integrations/stripe.svg": {
+    "id": "image-6f74473d03eed2996e3ccc9251c02f832ab7039f-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6f74473d03eed2996e3ccc9251c02f832ab7039f-24x24.svg"
+  },
+  "integrations/shopify.svg": {
+    "id": "image-909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24.svg"
+  },
+  "integrations/make.svg": {
+    "id": "image-cea06c989c3143b8927aae021e875a12ff5878ea-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
+  },
+  "integrations/zapier.svg": {
+    "id": "image-61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
+  },
+  "integrations/jira.svg": {
+    "id": "image-24c594ad639134882ac4bedcd8c71fa06cd803d9-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/24c594ad639134882ac4bedcd8c71fa06cd803d9-24x24.svg"
+  },
+  "integrations/mailchimp.svg": {
+    "id": "image-a3e792d2942ead3945675e26a57c7068c43206d0-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/a3e792d2942ead3945675e26a57c7068c43206d0-24x24.svg"
+  },
+  "integrations/googlesheets.svg": {
+    "id": "image-ed891ad90db6d587269b995bf9f2fc333940846d-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/ed891ad90db6d587269b995bf9f2fc333940846d-24x24.svg"
+  },
+  "integrations/telegram.svg": {
+    "id": "image-db804d26ff470d6657864abbea7762ea5307e6c9-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/db804d26ff470d6657864abbea7762ea5307e6c9-24x24.svg"
+  },
+  "integrations/notion.svg": {
+    "id": "image-c6627b78969bde1036c89ffc117ecf76906143f8-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c6627b78969bde1036c89ffc117ecf76906143f8-24x24.svg"
+  },
+  "integrations/zoom.svg": {
+    "id": "image-2293a0639e5e559108eb518868478ce6ee888af5-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2293a0639e5e559108eb518868478ce6ee888af5-24x24.svg"
+  },
+  "integrations/calendly.svg": {
+    "id": "image-0c91c291ec3c1d06062b4d675410ff5e1da04992-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/0c91c291ec3c1d06062b4d675410ff5e1da04992-24x24.svg"
+  },
+  "integrations/facebook.svg": {
+    "id": "image-238f3376414117ca5b0a6ca00d675900f15e23f1-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/238f3376414117ca5b0a6ca00d675900f15e23f1-24x24.svg"
+  },
+  "integrations/discord.svg": {
+    "id": "image-54962efac37c68af8efc3af176e1a26279561cc3-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/54962efac37c68af8efc3af176e1a26279561cc3-24x24.svg"
+  },
+  "integrations/openai.svg": {
+    "id": "image-e8874003aab2c10285b304668a77067bdfd5efaa-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e8874003aab2c10285b304668a77067bdfd5efaa-24x24.svg"
+  },
+  "integrations/twilio.svg": {
+    "id": "image-3e546585d694cd2617e6a692800d84bc8a06dd78-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/3e546585d694cd2617e6a692800d84bc8a06dd78-24x24.svg"
+  },
+  "integrations/slack.svg": {
+    "id": "image-9f2e51308ab01db9168d9c68039b06fd2f2a227f-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9f2e51308ab01db9168d9c68039b06fd2f2a227f-24x24.svg"
+  },
+  "integrations/hubspot.svg": {
+    "id": "image-99316a8ad963b369099dedd6645ec6ac21767ca9-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/99316a8ad963b369099dedd6645ec6ac21767ca9-24x24.svg"
+  },
+  "integrations/asana.svg": {
+    "id": "image-6e201749b7ab2480ad76032fb6b1135456f79d75-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6e201749b7ab2480ad76032fb6b1135456f79d75-24x24.svg"
+  },
+  "integrations/miro.svg": {
+    "id": "image-d3de681f5b5422cdf619976953bd9264681602b7-24x24-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/d3de681f5b5422cdf619976953bd9264681602b7-24x24.svg"
+  },
+  "testimonials/david.jpeg": {
+    "id": "image-87adcfeccde2fbf70ae340b0ef3a6a060e4285a4-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/87adcfeccde2fbf70ae340b0ef3a6a060e4285a4-800x800.jpg"
+  },
+  "testimonials/sarvesh.jpeg": {
+    "id": "image-6fb6c40083073969667adfe31e9256e52dcdb772-500x500-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6fb6c40083073969667adfe31e9256e52dcdb772-500x500.jpg"
+  },
+  "testimonials/shashi.jpeg": {
+    "id": "image-bd11d2179b5ff907cdecacb5e8489efecad690c4-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bd11d2179b5ff907cdecacb5e8489efecad690c4-800x800.jpg"
+  },
+  "testimonials/nikhil.jpeg": {
+    "id": "image-3978252af2ec3a9fb6aeabb0772f2d4eb5eb64fe-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/3978252af2ec3a9fb6aeabb0772f2d4eb5eb64fe-800x800.jpg"
+  },
+  "testimonials/nilesh.jpeg": {
+    "id": "image-77efc3178095637751fee576dc38c8c230e89f1a-450x450-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/77efc3178095637751fee576dc38c8c230e89f1a-450x450.jpg"
+  },
+  "testimonials/ashish.jpeg": {
+    "id": "image-33d451b79436d8463bd1c141774224f7864a91d2-115x144-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/33d451b79436d8463bd1c141774224f7864a91d2-115x144.jpg"
+  },
+  "testimonials/chris.png": {
+    "id": "image-b6c16470928397cb805fb5d58c54611f8ccaf0db-500x500-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b6c16470928397cb805fb5d58c54611f8ccaf0db-500x500.png"
+  },
+  "testimonials/RPS-Logo-Detaled-Open-GREEN-768x557.png": {
+    "id": "image-8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557.png"
+  },
+  "service-anim/ai-automation.svg": {
+    "id": "image-7b5325e38542cd63583ebc8d47edc667276026fa-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/7b5325e38542cd63583ebc8d47edc667276026fa-800x600.svg"
+  },
+  "service-anim/website-development.svg": {
+    "id": "image-4555b48cfc150187bcf977e16b61eaed4374c4ab-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/4555b48cfc150187bcf977e16b61eaed4374c4ab-800x600.svg"
+  },
+  "service-anim/digital-marketing.svg": {
+    "id": "image-19f8e73cd74e28562d338ef93ea719e4def23a8d-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/19f8e73cd74e28562d338ef93ea719e4def23a8d-800x600.svg"
+  },
+  "service-anim/virtual-assistance.svg": {
+    "id": "image-2f740877c5ff8a039a7d3a74f3c4f3c30b50095b-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/2f740877c5ff8a039a7d3a74f3c4f3c30b50095b-800x600.svg"
+  },
+  "service-anim/bookkeeping.svg": {
+    "id": "image-bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600-svg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600.svg"
   }
 }

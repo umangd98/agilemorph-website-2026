@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import {
   CapabilitiesSection,
   ServiceCtaSection,
@@ -58,9 +58,10 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
 
   return (
     <>
-      <Navbar />
+      <SiteNavbar />
       <main className="flex-1">
         <ServiceHeroSection
+          slug={slug}
           title={servicePage.title}
           tagline={servicePage.tagline}
           description={servicePage.description}
@@ -85,7 +86,7 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
           button={servicePage.cta?.button}
         />
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }
