@@ -127,7 +127,6 @@ export interface Homepage {
   services?: {
     eyebrow?: string;
     heading?: string;
-    cards?: ServiceCard[];
   };
   whyUs?: {
     heading?: string;
@@ -199,6 +198,16 @@ export interface AboutPage {
     items?: Testimonial[];
   };
   seo?: Seo;
+}
+
+export interface ServicePageListItem {
+  _id: string;
+  title: string;
+  slug: string;
+  tagline?: string;
+  description?: string;
+  heroImage?: SanityImageAsset;
+  capabilities?: CapabilityItem[];
 }
 
 export interface ServicePage {

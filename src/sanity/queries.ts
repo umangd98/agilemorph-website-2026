@@ -104,8 +104,7 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   },
   services {
     eyebrow,
-    heading,
-    cards[] ${serviceCardProjection}
+    heading
   },
   whyUs {
     heading,
@@ -212,6 +211,16 @@ export const servicePageQuery = `*[_type == "servicePage" && slug.current == $sl
     button ${ctaProjection}
   },
   seo ${seoProjection}
+}`;
+
+export const allServicePagesListQuery = `*[_type == "servicePage" && defined(slug.current)] | order(title asc) {
+  _id,
+  title,
+  "slug": slug.current,
+  tagline,
+  description,
+  heroImage ${imageProjection},
+  capabilities[] ${capabilityItemProjection}
 }`;
 
 export const allServiceSlugsQuery = `*[_type == "servicePage" && defined(slug.current)]{

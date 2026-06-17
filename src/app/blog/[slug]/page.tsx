@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { BlogPostSection } from "@/components/sections/BlogPostSection";
 import { seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
@@ -52,11 +52,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <Navbar />
+      <SiteNavbar />
       <main className="flex-1">
         <BlogPostSection post={post} />
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

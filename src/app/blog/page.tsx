@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { BlogListSection } from "@/components/sections";
 import { sanityFetch } from "@/sanity/fetch";
 import { blogPostsCountQuery, pagedBlogPostsQuery } from "@/sanity/queries";
@@ -41,11 +41,11 @@ export default async function BlogPageRoute({
 
   return (
     <>
-      <Navbar />
+      <SiteNavbar />
       <main className="flex-1">
         <BlogListSection posts={posts} currentPage={currentPage} totalPages={totalPages} />
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

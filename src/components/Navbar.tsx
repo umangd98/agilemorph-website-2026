@@ -4,27 +4,41 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Menu, X, ArrowRight, Zap, Globe, TrendingUp, Users, BookOpen } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import type { ServiceNavLink } from "@/lib/services";
 
-const serviceLinks = [
-  { label: "AI Automation",        href: "/services/ai-automation",        icon: Zap,         desc: "Automate workflows with AI" },
-  { label: "Website Development",  href: "/services/website-development",  icon: Globe,       desc: "High-performance web apps" },
-  { label: "Digital Marketing",    href: "/services/digital-marketing",    icon: TrendingUp,  desc: "Grow your brand online" },
-  { label: "Virtual Assistance",   href: "/services/virtual-assistance",   icon: Users,       desc: "Dedicated remote support" },
-  { label: "Book Keeping",         href: "/services/bookkeeping",          icon: BookOpen,    desc: "Accurate financial records" },
-];
+const NAV_ICON_BY_SLUG: Record<string, LucideIcon> = {
+  "ai-automation": Zap,
+  "website-development": Globe,
+  "digital-marketing": TrendingUp,
+  "virtual-assistance": Users,
+  bookkeeping: BookOpen,
+};
 
-const navLinks = [
-  { label: "About",    href: "/about" },
-  { label: "Blogs",    href: "/blog" },
-  { label: "Pricing",  href: "/pricing" },
-  { label: "Services", href: "/services/ai-automation", children: serviceLinks },
-  { label: "Contact",  href: "/contact" },
+type NavbarProps = {
+  serviceLinks: ServiceNavLink[];
+};
+
+const baseNavLinks = [
+  { label: "About", href: "/about" },
+  { label: "Blogs", href: "/blog" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
-export function Navbar() {
+export function Navbar({ serviceLinks }: NavbarProps) {
+  const navLinks = [
+    ...baseNavLinks.slice(0, 3),
+    {
+      label: "Services",
+      href: serviceLinks[0]?.href ?? "/services/ai-automation",
+      children: serviceLinks,
+    },
+    baseNavLinks[3],
+  ];
   const [menuOpen, setMenuOpen]       = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled]       = useState(false);
@@ -121,7 +135,7 @@ export function Navbar() {
                       >
                         <div className="p-2">
                           {serviceLinks.map((child) => {
-                            const Icon = child.icon;
+                            const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
                             const childActive = pathname === child.href;
                             return (
                               <Link
@@ -283,7 +297,7 @@ export function Navbar() {
                     {servicesOpen && (
                       <div className="ml-2 mt-1 flex flex-col gap-0.5 border-l-2 border-primary/20 pl-3">
                         {serviceLinks.map((child) => {
-                          const Icon = child.icon;
+                          const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
                           return (
                             <Link
                               key={child.href}

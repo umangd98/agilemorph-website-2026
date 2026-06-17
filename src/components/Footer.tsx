@@ -10,13 +10,9 @@ const quickLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-const serviceLinks = [
-  { label: "AI Automation", href: "/services/ai-automation" },
-  { label: "Website Development", href: "/services/website-development" },
-  { label: "Digital Marketing", href: "/services/digital-marketing" },
-  { label: "Virtual Assistance", href: "/services/virtual-assistance" },
-  { label: "Book Keeping", href: "/services/bookkeeping" },
-];
+type FooterProps = {
+  serviceLinks: { label: string; href: string }[];
+};
 
 function LinkedInIcon() {
   return (
@@ -34,14 +30,13 @@ function TwitterIcon() {
   );
 }
 
-export function Footer() {
+export function Footer({ serviceLinks }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-surface border-t border-border">
       <Container className="pt-16 pb-6">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4 mb-16">
-          {/* Brand */}
           <div className="md:col-span-1">
             <Logo className="mb-6" />
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-8 max-w-xs">
@@ -66,7 +61,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-heading text-xs font-bold uppercase tracking-widest text-foreground mb-6">
               Quick Links
@@ -85,7 +79,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="font-heading text-xs font-bold uppercase tracking-widest text-foreground mb-6">
               Services
@@ -104,7 +97,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div>
             <h4 className="font-heading text-xs font-bold uppercase tracking-widest text-foreground mb-6">
               Newsletter
@@ -116,7 +108,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-border pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-xs text-muted-foreground">
             &copy; {year} AgileMorph Digital Accelerators. All rights reserved.

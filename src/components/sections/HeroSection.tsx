@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
+import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
 import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
@@ -156,29 +157,30 @@ export function HeroSection({ hero }: HeroSectionProps) {
           {/* ── Left: copy ── */}
           <div className="max-w-xl">
 
-            {/* Badge */}
-            {hero.badge && (
-              <AnimItem visible={visible} delay={0} className="mb-8">
-                <div className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 backdrop-blur-md"
-                  style={{ boxShadow: "0 0 20px rgba(34,197,94,0.12)" }}
-                >
-                  {/* Pulsing dot */}
-                  <span
-                    className="relative flex h-2 w-2"
+            {/* Badges */}
+            <AnimItem visible={visible} delay={0} className="mb-8">
+              <div className="flex flex-wrap items-center gap-3">
+                {hero.badge ? (
+                  <div
+                    className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 backdrop-blur-md"
+                    style={{ boxShadow: "0 0 20px rgba(34,197,94,0.12)" }}
                   >
-                    <span
-                      className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
-                      style={{ animation: "badge-pulse 2s ease-in-out infinite" }}
-                    />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                  </span>
-                  <Sparkles size={12} className="text-primary" />
-                  <span className="font-body text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                    {hero.badge}
-                  </span>
-                </div>
-              </AnimItem>
-            )}
+                    <span className="relative flex h-2 w-2">
+                      <span
+                        className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                        style={{ animation: "badge-pulse 2s ease-in-out infinite" }}
+                      />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                    </span>
+                    <Sparkles size={12} className="text-primary" />
+                    <span className="font-body text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                      {hero.badge}
+                    </span>
+                  </div>
+                ) : null}
+                <ClaudePartnerBadge />
+              </div>
+            </AnimItem>
 
             {/* Heading */}
             <AnimItem visible={visible} delay={100}>

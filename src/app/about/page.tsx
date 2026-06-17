@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import {
   AboutHeroSection,
   CompanyStorySection,
@@ -40,20 +40,20 @@ export default async function AboutPageRoute() {
   if (!aboutPage) {
     return (
       <>
-        <Navbar />
+        <SiteNavbar />
         <main className="flex flex-1 items-center justify-center px-6 py-24">
           <p className="font-body text-muted-foreground">
             About page content is not available yet. Add it in Sanity Studio.
           </p>
         </main>
-        <Footer />
+        <SiteFooter />
       </>
     );
   }
 
   return (
     <>
-      <Navbar />
+      <SiteNavbar />
       <main className="flex-1">
         <AboutHeroSection
           heading={aboutPage.hero.heading}
@@ -92,7 +92,7 @@ export default async function AboutPageRoute() {
           items={aboutPage.testimonials?.items}
         />
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }
