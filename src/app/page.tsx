@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import { Navbar } from "@/components/Navbar";
 import {
-  FeaturedLogosSection,
   HeroSection,
   PartnersSection,
   ProcessSection,
@@ -59,6 +58,16 @@ export default async function HomePage() {
 
       <main className="flex-1">
         <HeroSection hero={homepage.hero} />
+        {/* Partners strip — certified partnerships, directly under hero as social proof */}
+        <PartnersSection
+          heading={homepage.partners?.heading}
+          items={homepage.partners?.items}
+        />
+        {/* Integrations marquee — scrolling tool logos, just below partners */}
+        <IntegrationsMarquee
+          heading={homepage.integrations?.heading}
+          items={homepage.integrations?.items}
+        />
         <ProcessSection
           heading={homepage.process?.heading}
           subheading={homepage.process?.subheading}
@@ -77,18 +86,6 @@ export default async function HomePage() {
           eyebrow={homepage.stats?.eyebrow}
           heading={homepage.stats?.heading}
           items={homepage.stats?.items}
-        />
-        <IntegrationsMarquee
-          heading={homepage.integrations?.heading}
-          items={homepage.integrations?.items}
-        />
-        <PartnersSection
-          heading={homepage.partners?.heading}
-          items={homepage.partners?.items}
-        />
-        <FeaturedLogosSection
-          heading={homepage.featuredLogos?.heading}
-          logos={homepage.featuredLogos?.logos}
         />
         <TestimonialsSection
           eyebrow={homepage.testimonials?.eyebrow}

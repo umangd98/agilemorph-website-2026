@@ -27,6 +27,13 @@ function QuoteBadge() {
   );
 }
 
+function isLandscapeLogo(image?: Testimonial["image"]) {
+  const width = image?.dimensions?.width;
+  const height = image?.dimensions?.height;
+  if (width && height && width / height > 1.15) return true;
+  return Boolean(image?.alt?.toLowerCase().includes("logo"));
+}
+
 export function TestimonialsSection({
   eyebrow = "Client Feedback",
   heading = "Success Stories of Our Clients",
@@ -40,6 +47,7 @@ export function TestimonialsSection({
   if (!testimonial) return null;
 
   const companyLabel = testimonial.company ?? testimonial.role;
+  const logoImage = isLandscapeLogo(testimonial.image);
 
   const goToPrevious = () => {
     setActiveIndex((current) => (current === 0 ? items.length - 1 : current - 1));
@@ -78,13 +86,19 @@ export function TestimonialsSection({
             <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-12">
               <div className="relative shrink-0">
                 {testimonial.image ? (
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-primary/20 sm:h-40 sm:w-40">
+                  <div
+                    className={`relative overflow-hidden border-4 border-primary/20 ${
+                      logoImage
+                        ? "h-32 w-40 rounded-2xl bg-white sm:h-36 sm:w-44"
+                        : "h-32 w-32 rounded-full sm:h-40 sm:w-40"
+                    }`}
+                  >
                     <SanityImage
                       image={testimonial.image}
                       alt={testimonial.image.alt ?? testimonial.name}
                       fill
                       sizes="160px"
-                      className="object-cover"
+                      className={logoImage ? "!object-contain p-3" : "object-cover"}
                     />
                   </div>
                 ) : (

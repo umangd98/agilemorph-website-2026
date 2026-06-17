@@ -1566,5 +1566,37 @@
   "integrations/miro.svg": {
     "id": "image-d3de681f5b5422cdf619976953bd9264681602b7-24x24-svg",
     "url": "https://cdn.sanity.io/images/vs80pgpc/production/d3de681f5b5422cdf619976953bd9264681602b7-24x24.svg"
+  },
+  "testimonials/david.jpeg": {
+    "id": "image-87adcfeccde2fbf70ae340b0ef3a6a060e4285a4-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/87adcfeccde2fbf70ae340b0ef3a6a060e4285a4-800x800.jpg"
+  },
+  "testimonials/sarvesh.jpeg": {
+    "id": "image-6fb6c40083073969667adfe31e9256e52dcdb772-500x500-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6fb6c40083073969667adfe31e9256e52dcdb772-500x500.jpg"
+  },
+  "testimonials/shashi.jpeg": {
+    "id": "image-bd11d2179b5ff907cdecacb5e8489efecad690c4-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/bd11d2179b5ff907cdecacb5e8489efecad690c4-800x800.jpg"
+  },
+  "testimonials/nikhil.jpeg": {
+    "id": "image-3978252af2ec3a9fb6aeabb0772f2d4eb5eb64fe-800x800-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/3978252af2ec3a9fb6aeabb0772f2d4eb5eb64fe-800x800.jpg"
+  },
+  "testimonials/nilesh.jpeg": {
+    "id": "image-77efc3178095637751fee576dc38c8c230e89f1a-450x450-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/77efc3178095637751fee576dc38c8c230e89f1a-450x450.jpg"
+  },
+  "testimonials/ashish.jpeg": {
+    "id": "image-33d451b79436d8463bd1c141774224f7864a91d2-115x144-jpg",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/33d451b79436d8463bd1c141774224f7864a91d2-115x144.jpg"
+  },
+  "testimonials/chris.png": {
+    "id": "image-b6c16470928397cb805fb5d58c54611f8ccaf0db-500x500-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/b6c16470928397cb805fb5d58c54611f8ccaf0db-500x500.png"
+  },
+  "testimonials/RPS-Logo-Detaled-Open-GREEN-768x557.png": {
+    "id": "image-8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557-png",
+    "url": "https://cdn.sanity.io/images/vs80pgpc/production/8963e540e1e8dc1b09b87341f806d9cc6b819309-768x557.png"
   }
 }
