@@ -13,7 +13,9 @@ export function LightAnimShell({ children, label, active = true }: LightAnimShel
       role="img"
       aria-label={label}
       style={{
-        boxShadow: active ? "inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 24px rgba(34,197,94,0.06)" : undefined,
+        boxShadow: active
+          ? "inset 0 1px 0 color-mix(in srgb, var(--color-background) 80%, white), 0 4px 24px color-mix(in srgb, var(--color-primary) 6%, transparent)"
+          : undefined,
         transition: "box-shadow 0.4s ease",
       }}
     >
@@ -22,7 +24,7 @@ export function LightAnimShell({ children, label, active = true }: LightAnimShel
         aria-hidden
         style={{
           backgroundImage:
-            "linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px)",
+            "linear-gradient(color-mix(in srgb, var(--color-primary) 4%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 4%, transparent) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />

@@ -41,7 +41,10 @@ const serviceCardProjection = `{
 const whyUsItemProjection = `{
   title,
   description,
-  icon ${imageProjection}
+  icon ${imageProjection},
+  highlights,
+  animationType,
+  animationLabels
 }`;
 
 const capabilityItemProjection = `{

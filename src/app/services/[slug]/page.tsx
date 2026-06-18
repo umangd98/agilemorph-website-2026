@@ -10,6 +10,10 @@ import {
   ServiceWhyUsSection,
   TechnologiesSection,
 } from "@/components/sections";
+import {
+  getAiAutomationSubService,
+  getAiAutomationSubServiceSlugs,
+} from "@/data/ai-automation-services";
 import { seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
 import { allServiceSlugsQuery, servicePageQuery } from "@/sanity/queries";
@@ -20,18 +24,35 @@ type ServicePageProps = {
 };
 
 export async function generateStaticParams() {
-  const slugs = await sanityFetch<ServiceSlug[]>({
-    query: allServiceSlugsQuery,
-    tags: ["servicePage"],
-  });
+  const [slugs, subSlugs] = await Promise.all([
+    sanityFetch<ServiceSlug[]>({
+      query: allServiceSlugsQuery,
+      tags: ["servicePage"],
+    }),
+    Promise.resolve(getAiAutomationSubServiceSlugs()),
+  ]);
 
-  return slugs.map(({ slug }) => ({ slug }));
+  const slugSet = new Set([
+    ...(slugs ?? []).map(({ slug }) => slug),
+    ...subSlugs,
+  ]);
+
+  return [...slugSet].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
+  const subService = getAiAutomationSubService(slug);
+
+  if (subService) {
+    return seoToMetadata(subService.seo, {
+      title: subService.title,
+      description: subService.description,
+    });
+  }
+
   const servicePage = await sanityFetch<ServicePage | null>({
     query: servicePageQuery,
     params: { slug },
@@ -46,6 +67,39 @@ export async function generateMetadata({
 
 export default async function ServicePageRoute({ params }: ServicePageProps) {
   const { slug } = await params;
+  const subService = getAiAutomationSubService(slug);
+
+  if (subService) {
+    return (
+      <>
+        <SiteNavbar />
+        <main className="flex-1">
+          <ServiceHeroSection
+            slug={slug}
+            title={subService.title}
+            tagline={subService.tagline}
+            description={subService.description}
+            heroCta={subService.heroCta}
+          />
+          <CapabilitiesSection
+            heading={subService.capabilitiesHeading}
+            capabilities={subService.capabilities}
+          />
+          <ServiceWhyUsSection
+            heading={subService.whyUsHeading}
+            items={subService.whyUs}
+          />
+          <ServiceCtaSection
+            heading={subService.cta.heading}
+            description={subService.cta.description}
+            button={subService.cta.button}
+          />
+        </main>
+        <SiteFooter />
+      </>
+    );
+  }
+
   const servicePage = await sanityFetch<ServicePage | null>({
     query: servicePageQuery,
     params: { slug },
