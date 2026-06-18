@@ -20,7 +20,7 @@ export function DigitalMarketingAnim() {
         .dm-pill-2 { animation: dm-pill-in 0.5s ease 1.4s both infinite; animation-direction: alternate; }
       `}</style>
 
-      <div className="relative w-full max-w-sm">
+      <div className="relative mx-auto w-full max-w-sm">
         <svg viewBox="0 0 300 160" className="w-full" aria-hidden>
           <defs>
             <linearGradient id="dmGrad" x1="0%" y1="0%" x2="0%" y2="100%">

@@ -4,6 +4,8 @@ import { Globe, Sparkles, TrendingUp, Zap } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 
+import { pathToHub, polarToXY } from "@/lib/diagram-geometry";
+
 type ServiceId = "ai" | "web" | "marketing";
 
 type Service = {
@@ -19,35 +21,15 @@ type Service = {
   path: string;
 };
 
-/** 320×320 coordinate system */
 const CX = 160;
-const CY = 156;
-const ORBIT_R = 98;
-const VIEW = 320;
+const CY = 160;
+const ORBIT_R = 92;
+const VIEW_W = 320;
+const VIEW_H = 360;
 
-function polarToXY(angleDeg: number, radius = ORBIT_R) {
-  const rad = ((angleDeg - 90) * Math.PI) / 180;
-  return {
-    x: CX + radius * Math.cos(rad),
-    y: CY + radius * Math.sin(rad),
-  };
-}
-
-function pathToHub(x: number, y: number) {
-  const dx = CX - x;
-  const dy = CY - y;
-  const len = Math.hypot(dx, dy) || 1;
-  const inset = 36;
-  const start = { x: x + (dx / len) * inset, y: y + (dy / len) * inset };
-  const end = { x: CX - (dx / len) * 28, y: CY - (dy / len) * 28 };
-  const mx = (start.x + end.x) / 2 + (dy / len) * 8;
-  const my = (start.y + end.y) / 2 - (dx / len) * 8;
-  return `M ${start.x} ${start.y} Q ${mx} ${my} ${end.x} ${end.y}`;
-}
-
-const aiPos = polarToXY(-90);
-const webPos = polarToXY(150);
-const marketingPos = polarToXY(30);
+const aiPos = polarToXY(CX, CY, ORBIT_R, 0);
+const webPos = polarToXY(CX, CY, ORBIT_R, 240);
+const marketingPos = polarToXY(CX, CY, ORBIT_R, 120);
 
 const SERVICES: Service[] = [
   {
@@ -60,7 +42,7 @@ const SERVICES: Service[] = [
     accent: "#22c55e",
     x: aiPos.x,
     y: aiPos.y,
-    path: pathToHub(aiPos.x, aiPos.y),
+    path: pathToHub(aiPos.x, aiPos.y, CX, CY),
   },
   {
     id: "web",
@@ -72,7 +54,7 @@ const SERVICES: Service[] = [
     accent: "#06b6d4",
     x: webPos.x,
     y: webPos.y,
-    path: pathToHub(webPos.x, webPos.y),
+    path: pathToHub(webPos.x, webPos.y, CX, CY),
   },
   {
     id: "marketing",
@@ -84,12 +66,24 @@ const SERVICES: Service[] = [
     accent: "#a78bfa",
     x: marketingPos.x,
     y: marketingPos.y,
-    path: pathToHub(marketingPos.x, marketingPos.y),
+    path: pathToHub(marketingPos.x, marketingPos.y, CX, CY),
   },
 ];
 
 const CYCLE_MS = 4500;
-const NODE_SIZE = "h-14 w-14 sm:h-16 sm:w-16";
+const NODE_SIZE = "h-12 w-12 sm:h-14 sm:w-14";
+
+function useParallaxEnabled() {
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+    const update = () => setEnabled(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return enabled;
+}
 
 type HeroDigitalAccelAnimProps = {
   visible?: boolean;
@@ -129,24 +123,24 @@ function DiagramNode({
             "aria-pressed": lit,
           }
         : { "aria-hidden": true })}
-      className={`absolute focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${isHub ? "pointer-events-none" : ""}`}
+      className={`absolute -translate-x-1/2 -translate-y-1/2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${isHub ? "pointer-events-none" : "min-h-[44px] min-w-[44px]"}`}
       style={{
-        left: `${(x / VIEW) * 100}%`,
-        top: `${(y / VIEW) * 100}%`,
+        left: `${(x / VIEW_W) * 100}%`,
+        top: `${(y / VIEW_H) * 100}%`,
         zIndex: lit ? 10 : isHub ? 5 : 1,
       }}
     >
       <div
-        className="hero-node-float"
+        className="hero-node-float flex flex-col items-center"
         style={{
           animationDelay: `${delay}s`,
           filter: lit ? `drop-shadow(0 0 14px ${accent}55)` : undefined,
           transition: "filter 0.35s ease, transform 0.35s cubic-bezier(.22,1,.36,1)",
-          transform: `translate(-50%, -50%) scale(${lit && !isHub ? 1.06 : 1})`,
+          transform: `scale(${lit && !isHub ? 1.06 : 1})`,
         }}
       >
         <div
-          className={`relative flex ${NODE_SIZE} items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300`}
+          className={`relative flex ${NODE_SIZE} shrink-0 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300`}
           style={{
             borderColor: lit ? `${accent}88` : "rgba(255,255,255,0.14)",
             background: lit ? `${accent}22` : "rgba(255,255,255,0.05)",
@@ -159,13 +153,13 @@ function DiagramNode({
                 className="hero-hub-glow pointer-events-none absolute inset-0 rounded-full"
                 style={{ background: `radial-gradient(circle, ${accent}35 0%, transparent 70%)` }}
               />
-              <div className="hero-scan-line pointer-events-none absolute inset-x-3 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-              <Sparkles className="relative h-6 w-6 text-primary sm:h-7 sm:w-7" strokeWidth={1.5} />
+              <div className="hero-scan-line pointer-events-none absolute inset-x-2 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent sm:inset-x-3" />
+              <Sparkles className="relative h-5 w-5 text-primary sm:h-6 sm:w-6" strokeWidth={1.5} />
             </>
           ) : (
             Icon && (
               <Icon
-                className="h-5 w-5 sm:h-6 sm:w-6"
+                className="h-5 w-5 sm:h-5 sm:w-5"
                 style={{ color: lit ? accent : "rgba(148,163,184,0.9)" }}
                 strokeWidth={1.75}
               />
@@ -179,13 +173,13 @@ function DiagramNode({
             />
           )}
         </div>
+        <span
+          className="mt-1.5 max-w-[4.5rem] text-center font-heading text-[9px] font-bold leading-tight tracking-wide sm:max-w-24 sm:text-[10px]"
+          style={{ color: lit || isHub ? "#fff" : "rgba(148,163,184,0.85)" }}
+        >
+          {label}
+        </span>
       </div>
-      <p
-        className="pointer-events-none absolute left-0 top-0 max-w-[5.5rem] -translate-x-1/2 translate-y-[calc(2rem+0.35rem)] text-center font-heading text-[10px] font-bold leading-tight tracking-wide sm:max-w-24 sm:translate-y-[calc(2.25rem+0.35rem)] sm:text-[11px]"
-        style={{ color: lit || isHub ? "#fff" : "rgba(148,163,184,0.85)" }}
-      >
-        {label}
-      </p>
     </Wrapper>
   );
 }
@@ -197,8 +191,9 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
   const [cycleProgress, setCycleProgress] = useState(0);
   const cycleStart = useRef(Date.now());
   const rafRef = useRef<number>(0);
+  const parallaxEnabled = useParallaxEnabled();
 
-  const activeService = SERVICES.find((s) => s.id === active) ?? SERVICES[0];
+  const activeService = SERVICES.find((s) => s.id === active) ?? SERVICES[0]!;
 
   const advanceCycle = useCallback(() => {
     setActive((prev) => {
@@ -224,13 +219,17 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
     return () => cancelAnimationFrame(rafRef.current);
   }, [hovering, active, advanceCycle]);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setParallax({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 12,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 12,
-    });
-  }, []);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!parallaxEnabled) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      setParallax({
+        x: ((e.clientX - rect.left) / rect.width - 0.5) * 12,
+        y: ((e.clientY - rect.top) / rect.height - 0.5) * 12,
+      });
+    },
+    [parallaxEnabled],
+  );
 
   const selectService = (id: ServiceId) => {
     setActive(id);
@@ -240,7 +239,7 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
 
   return (
     <div
-      className="relative mx-auto w-full max-w-md lg:max-w-none"
+      className="relative mx-auto w-full max-w-lg lg:max-w-none"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         setHovering(false);
@@ -314,23 +313,25 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
           className="pointer-events-none absolute rounded-full blur-3xl"
           aria-hidden
           style={{
-            left: `${((CX - 128) / VIEW) * 100}%`,
-            top: `${((CY - 128) / VIEW) * 100}%`,
-            width: `${(256 / VIEW) * 100}%`,
-            height: `${(256 / VIEW) * 100}%`,
+            left: `${((CX - 128) / VIEW_W) * 100}%`,
+            top: `${((CY - 128) / VIEW_H) * 100}%`,
+            width: `${(256 / VIEW_W) * 100}%`,
+            height: `${(256 / VIEW_H) * 100}%`,
             background: `radial-gradient(circle, ${activeService.accent}22 0%, transparent 70%)`,
             transition: "background 0.6s ease",
           }}
         />
 
         <div
-          className="relative aspect-square w-full"
+          className="relative mx-auto aspect-[320/360] w-full max-h-[min(72vw,380px)] lg:max-h-none"
           style={{
-            transform: `translate(${parallax.x * 0.5}px, ${parallax.y * 0.5}px)`,
+            transform: parallaxEnabled
+              ? `translate(${parallax.x * 0.5}px, ${parallax.y * 0.5}px)`
+              : undefined,
             transition: "transform 0.2s ease-out",
           }}
         >
-          <svg viewBox={`0 0 ${VIEW} ${VIEW}`} className="h-full w-full" aria-hidden>
+          <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} className="h-full w-full" aria-hidden preserveAspectRatio="xMidYMid meet">
             <defs>
               {SERVICES.map((s) => (
                 <linearGradient key={`grad-${s.id}`} id={`path-grad-${s.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -386,7 +387,6 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
             })}
           </svg>
 
-          {/* Hub — same circle + label structure as service nodes */}
           <DiagramNode
             x={CX}
             y={CY}
@@ -415,15 +415,15 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
           ))}
         </div>
 
-        <div className="border-t border-white/8 bg-black/20 px-5 py-4 backdrop-blur-sm">
-          <div className="mb-3 flex items-center gap-2">
+        <div className="border-t border-white/8 bg-black/20 px-4 py-3 backdrop-blur-sm sm:px-5 sm:py-4">
+          <div className="mb-3 flex items-center gap-1.5 sm:gap-2">
             {SERVICES.map((s) => {
               const lit = active === s.id;
               return (
                 <button
                   key={s.id}
                   type="button"
-                  className="relative flex-1 overflow-hidden rounded-full py-1.5 text-center font-body text-[10px] font-semibold uppercase tracking-wider transition-colors duration-300 sm:text-[11px]"
+                  className="relative min-h-[44px] flex-1 overflow-hidden rounded-full py-2 text-center font-body text-[9px] font-semibold uppercase tracking-wider transition-colors duration-300 sm:text-[11px]"
                   style={{
                     color: lit ? "#fff" : "rgba(148,163,184,0.7)",
                     background: lit ? `${s.accent}18` : "rgba(255,255,255,0.04)",
@@ -453,7 +453,7 @@ export function HeroDigitalAccelAnim({ visible = true }: HeroDigitalAccelAnimPro
           </div>
 
           <div key={active} className="hero-card-swap">
-            <p className="font-body text-[13px] leading-relaxed text-slate-300">
+            <p className="font-body text-xs leading-relaxed text-slate-300 sm:text-[13px]">
               {activeService.description}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">

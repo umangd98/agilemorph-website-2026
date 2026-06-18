@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { SanityImage } from "@/components/SanityImage";
+import { WhyUsInteractive } from "@/components/why-us-animations";
 import type { TechnologyItem, WhyUsItem } from "@/sanity/types";
 
 type TechnologiesSectionProps = {
@@ -70,20 +71,9 @@ export function ServiceWhyUsSection({
           </h2>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, index) => (
-            <AnimateOnScroll key={`${item.title}-${index}`} delay={index * 60}>
-              <article className="h-full rounded-2xl border border-border bg-background p-6 shadow-sm">
-                <h3 className="mb-3 font-heading text-xl font-bold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="font-body text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </article>
-            </AnimateOnScroll>
-          ))}
-        </div>
+        <AnimateOnScroll delay={120}>
+          <WhyUsInteractive items={items} />
+        </AnimateOnScroll>
       </Container>
     </section>
   );

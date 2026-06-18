@@ -32,7 +32,7 @@ export function BookkeepingAnim() {
         .bk-balance { animation: bk-balance-count 2s ease 1.8s both infinite; }
       `}</style>
 
-      <div className="w-full max-w-sm rounded-xl border border-white/10 bg-[#0a1018]/80 p-4">
+      <div className="mx-auto w-full max-w-sm rounded-xl border border-white/10 bg-[#0a1018]/80 p-4">
         <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
           <span className="font-heading text-xs font-bold text-white">Ledger</span>
           <span className="font-body text-[10px] text-slate-500">Q2 2026</span>

@@ -10,6 +10,7 @@ type SanityImageBaseProps = {
   sizes?: string;
   priority?: boolean;
   placeholderLabel?: string;
+  onError?: () => void;
 };
 
 type SanityImageFillProps = SanityImageBaseProps & {
@@ -61,6 +62,7 @@ export function SanityImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
   placeholderLabel = "Image placeholder — add in Sanity Studio",
+  onError,
   ...layoutProps
 }: SanityImageProps) {
   if (!hasImageAsset(image)) {
@@ -81,10 +83,9 @@ export function SanityImage({
     );
   }
 
-  const imageUrl = urlForImage(image)
-    .auto("format")
-    .fit("max")
-    .url();
+  const imageUrl =
+    image.asset?.url ??
+    urlForImage(image).auto("format").fit("max").url();
 
   const imageAlt = alt ?? image.alt ?? placeholderLabel;
   const blurDataURL = image.lqip;
@@ -99,6 +100,7 @@ export function SanityImage({
         priority={priority}
         placeholder={blurDataURL ? "blur" : "empty"}
         blurDataURL={blurDataURL}
+        onError={onError}
         className={`object-cover ${className}`}
       />
     );
@@ -114,6 +116,7 @@ export function SanityImage({
       priority={priority}
       placeholder={blurDataURL ? "blur" : "empty"}
       blurDataURL={blurDataURL}
+      onError={onError}
       className={className}
     />
   );

@@ -245,7 +245,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
           </div>
 
-          <AnimItem visible={visible} delay={400} className="hidden lg:block">
+          <AnimItem visible={visible} delay={400} className="mt-8 lg:mt-0">
             <HeroDigitalAccelAnim visible={visible} />
           </AnimItem>
         </div>

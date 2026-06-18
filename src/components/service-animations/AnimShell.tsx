@@ -8,7 +8,7 @@ type AnimShellProps = {
 export function AnimShell({ children, label }: AnimShellProps) {
   return (
     <div
-      className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10"
+      className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-3xl border border-white/10"
       style={{ background: "linear-gradient(145deg, #060d1a 0%, #0b1628 50%, #0d1f2d 100%)" }}
       role="img"
       aria-label={label}
@@ -27,7 +27,7 @@ export function AnimShell({ children, label }: AnimShellProps) {
         aria-hidden
         style={{ background: "radial-gradient(circle, rgba(34,197,94,0.25), transparent 70%)" }}
       />
-      <div className="relative z-10 flex h-full w-full items-center justify-center p-6 sm:p-8">
+      <div className="relative z-10 flex h-full w-full min-h-0 items-center justify-center p-4 sm:p-6 md:p-8">
         {children}
       </div>
     </div>
