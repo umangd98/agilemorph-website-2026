@@ -200,7 +200,6 @@ function buildHomepage(manifest) {
     _id: "homepage",
     _type: "homepage",
     hero: {
-      badge: "Next-Gen Digital Acceleration",
       heading: "Let AI seamlessly elevate your brand.",
       tagline:
         "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
