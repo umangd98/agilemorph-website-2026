@@ -6,6 +6,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildAiAutomationSubServicePages } from "./ai-automation-sub-services.mjs";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -40,6 +41,7 @@ function getAuthToken({ preferCli = false } = {}) {
   throw new Error("No Sanity auth token found.");
 }
 
+
 function loadManifest() {
   if (!existsSync(MANIFEST_PATH)) {
     throw new Error("media-manifest.json not found. Run scripts/upload-media.mjs first.");
@@ -59,6 +61,23 @@ function imageRef(manifest, key, alt = "") {
 
 function cta(label, href, openInNewTab = false) {
   return { _type: "ctaButton", label, href, openInNewTab };
+}
+
+function whyUsItem({
+  title,
+  description,
+  animationType = "generic",
+  highlights = [],
+  animationLabels = [],
+}) {
+  return {
+    _type: "whyUsItem",
+    title,
+    description,
+    animationType,
+    ...(highlights.length ? { highlights } : {}),
+    ...(animationLabels.length ? { animationLabels } : {}),
+  };
 }
 
 const PROCESS_STEPS = [
@@ -200,7 +219,6 @@ function buildHomepage(manifest) {
     _id: "homepage",
     _type: "homepage",
     hero: {
-      badge: "Next-Gen Digital Acceleration",
       heading: "Let AI seamlessly elevate your brand.",
       tagline:
         "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
@@ -214,7 +232,7 @@ function buildHomepage(manifest) {
       steps: buildProcessSteps(manifest),
     },
     services: {
-      eyebrow: "Our Expertise",
+      eyebrow: "What We Do",
       heading: "Discover Our Services",
       cards: [
         {
@@ -270,24 +288,29 @@ function buildHomepage(manifest) {
     whyUs: {
       heading: "Why AgileMorph is Your Ideal Partner?",
       items: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Innovation",
           description:
             "Pioneering solutions that push boundaries and drive progress.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "innovation",
+          highlights: ["Future-ready", "Bold ideas"],
+          animationLabels: ["AI", "Web", "Auto"],
+        }),
+        whyUsItem({
           title: "Professionalism",
           description:
             "Delivering quality with integrity and a commitment to excellence.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "professionalism",
+          highlights: ["Trusted delivery", "On every project"],
+        }),
+        whyUsItem({
           title: "Expertise",
           description:
             "Leveraging deep knowledge to create impactful, tailored solutions.",
-        },
+          animationType: "expertise",
+          highlights: ["Deep domain knowledge", "Tailored solutions"],
+          animationLabels: ["Strategy", "Build", "Scale"],
+        }),
       ],
     },
     stats: {
@@ -500,67 +523,87 @@ function buildServicePages(manifest) {
       slug: { _type: "slug", current: "ai-automation" },
       tagline: "Transforming Your Vision into Intelligent Automation",
       description:
-        "At AgileMorph Solutions, we deliver powerful AI automation solutions designed specifically to streamline your workflow, eliminate manual tasks, and boost business growth. Specializing in Zapier, n8n, and Make.com integrations, we transform complex business processes into seamless automated workflows.",
+        "We design, build, and run AI systems that remove manual work from your business. Agents that act, workflows that never sleep, and infrastructure built to scale. From first audit to live production.",
       heroImage: imageRef(manifest, "2025/09/AI-Automation-Development-Services.jpg", "AI Automation"),
       heroCta: cta("Start Your AI Journey", "/contact"),
       capabilitiesHeading: "Core Capabilities",
       capabilities: [
         {
           _type: "capabilityItem",
-          title: "Content Pipelines",
-          description:
-            "Queued generation workflows for marketing content, structured for AEO and GEO visibility across search and AI surfaces.",
-          icon: "✍️",
-        },
-        {
-          _type: "capabilityItem",
           title: "AI Agents",
           description:
-            "Production-ready agents built on Claude, OpenClaw, Hermes, NemoClaw, and other leading model stacks.",
-          icon: "🤖",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Custom MCP Servers",
-          description:
-            "Model Context Protocol integrations built directly into your apps so AI can access your tools, data, and workflows.",
-          icon: "🔌",
+            "Autonomous agents that classify, decide, and act across your tools.",
+          icon: "⬡",
         },
         {
           _type: "capabilityItem",
           title: "Workflow Automation",
+          description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
+          icon: "⟳",
+        },
+        {
+          _type: "capabilityItem",
+          title: "CRM & Lead Automation",
+          description: "Capture, enrich, route, and follow up on every lead automatically.",
+          icon: "◎",
+        },
+        {
+          _type: "capabilityItem",
+          title: "MCP & AI Infrastructure",
+          description: "Self-hosted pipelines, MCP servers, and production-grade deployments.",
+          icon: "⧉",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Messaging Automation",
+          description: "WhatsApp, email, and chat automations that respond and convert.",
+          icon: "✉",
+        },
+        {
+          _type: "capabilityItem",
+          title: "AI Audit",
           description:
-            "No-code and low-code pipelines with n8n, Make, and Zapier that connect your stack without custom engineering.",
-          icon: "⚡",
+            "A fixed-scope review that maps where AI saves you the most time and money.",
+          icon: "◷",
         },
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Expert Automation Team",
           description: "Solving complex challenges with precision and ease.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "expertise",
+          highlights: ["AI specialists", "Production-ready"],
+        }),
+        whyUsItem({
           title: "Client-Focused",
-          description: "We focus on understanding your business needs and delivering tailored solutions.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "We focus on understanding your business needs and delivering tailored solutions.",
+          animationType: "partnership",
+          highlights: ["Aligned goals", "Transparent process"],
+          animationLabels: ["Discover", "Build", "Grow"],
+        }),
+        whyUsItem({
           title: "Agile Methodology",
-          description: "We use agile methodologies to deliver results quickly and adapt to change.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "We use agile methodologies to deliver results quickly and adapt to change.",
+          animationType: "innovation",
+          highlights: ["Fast iteration", "Adapt to change"],
+        }),
+        whyUsItem({
           title: "End-to-End Services",
-          description: "From concept to deployment and beyond, we support your automation journey.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "From concept to deployment and beyond, we support your automation journey.",
+          animationType: "generic",
+          highlights: ["Full lifecycle", "Ongoing support"],
+        }),
+        whyUsItem({
           title: "Quality Assurance",
-          description: "Rigorous testing processes ensure reliable, production-ready automations.",
-        },
+          description:
+            "Rigorous testing processes ensure reliable, production-ready automations.",
+          animationType: "professionalism",
+          highlights: ["Rigorous testing", "Reliable delivery"],
+        }),
       ],
       technologiesHeading: "Automation Tools & Technologies",
       technologies: [
@@ -596,7 +639,7 @@ function buildServicePages(manifest) {
       slug: { _type: "slug", current: "website-development" },
       tagline: "Transform Your Digital Presence with Custom Website Development",
       description:
-        "At AgileMorph, we craft user-friendly websites designed to grow your business and enhance your online presence.",
+        "Python, Django, FastAPI, and React builds that hold up in production.",
       heroImage: imageRef(manifest, "2025/03/Website-Design-and-Development.svg", "Website Development"),
       heroCta: cta("Share Your Product Idea", "/contact"),
       capabilitiesHeading: "Services We Can Help You With",
@@ -640,31 +683,41 @@ function buildServicePages(manifest) {
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Expert Developers",
-          description: "Our team of skilled web developers has extensive experience across modern stacks.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Our team of skilled web developers has extensive experience across modern stacks.",
+          animationType: "expertise",
+          highlights: ["Modern stacks", "Proven experience"],
+          animationLabels: ["Design", "Build", "Launch"],
+        }),
+        whyUsItem({
           title: "Custom-Tailored Solutions",
-          description: "We don't believe in one-size-fits-all. Every project is built for your unique needs.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "We don't believe in one-size-fits-all. Every project is built for your unique needs.",
+          animationType: "generic",
+          highlights: ["Tailored builds", "Your goals first"],
+        }),
+        whyUsItem({
           title: "SEO-Optimized Websites",
           description: "We develop websites with SEO best practices in mind from day one.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "innovation",
+          highlights: ["SEO-first", "Performance focused"],
+        }),
+        whyUsItem({
           title: "Agile Methodology",
-          description: "Utilizing agile project management for faster, more flexible delivery.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Utilizing agile project management for faster, more flexible delivery.",
+          animationType: "partnership",
+          highlights: ["Flexible delivery", "Collaborative"],
+        }),
+        whyUsItem({
           title: "Ongoing Support",
-          description: "Our partnership doesn't end at launch—we provide continued support and maintenance.",
-        },
+          description:
+            "Our partnership doesn't end at launch—we provide continued support and maintenance.",
+          animationType: "professionalism",
+          highlights: ["Post-launch care", "Long-term support"],
+        }),
       ],
       technologiesHeading: "Technologies",
       technologies: ["API", "JavaScript", "HTML", "PHP", "WordPress", "Joomla"].map((name) => ({
@@ -688,8 +741,7 @@ function buildServicePages(manifest) {
       title: "Digital Marketing Services",
       slug: { _type: "slug", current: "digital-marketing" },
       tagline: "Elevate Your Brand with Our Comprehensive Digital Marketing Solutions",
-      description:
-        "In today's digital world, AgileMorph Solutions boosts your brand with expert digital marketing services.",
+      description: "SEO, content, and social strategy driven by data, not guesswork.",
       heroImage: imageRef(manifest, "2025/03/Social-Media-Marketing.svg", "Digital Marketing"),
       heroCta: cta("Get in Touch", "/contact"),
       capabilitiesHeading: "Our Digital Marketing Services",
@@ -745,26 +797,32 @@ function buildServicePages(manifest) {
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Customized Strategies",
           description: "Tailored marketing solutions that fit your specific needs.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "generic",
+          highlights: ["Tailored plans", "Your audience"],
+        }),
+        whyUsItem({
           title: "Data-Driven Insights",
           description: "Leverage analytics to refine and optimize your campaigns.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "expertise",
+          highlights: ["Analytics-led", "Measurable ROI"],
+        }),
+        whyUsItem({
           title: "Experienced Team",
           description: "Work with industry experts who are committed to your success.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "professionalism",
+          highlights: ["Industry experts", "Proven results"],
+        }),
+        whyUsItem({
           title: "End-to-End Services",
-          description: "Comprehensive digital marketing services from strategy to execution.",
-        },
+          description:
+            "Comprehensive digital marketing services from strategy to execution.",
+          animationType: "partnership",
+          highlights: ["Strategy to execution", "Full funnel"],
+          animationLabels: ["Plan", "Launch", "Scale"],
+        }),
       ],
       technologiesHeading: "Technologies",
       technologies: [
@@ -796,7 +854,7 @@ function buildServicePages(manifest) {
       slug: { _type: "slug", current: "virtual-assistance" },
       tagline: "Maximize Efficiency with Our Comprehensive Virtual Assistant Solutions",
       description:
-        "At AgileMorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.",
+        "Trained assistants who handle the operational load you shouldn't.",
       heroImage: imageRef(manifest, "2025/03/Administrative-Support.svg", "Virtual Assistance"),
       heroCta: cta("Get in Touch", "/contact"),
       capabilitiesHeading: "Our Virtual Assistance Services",
@@ -840,26 +898,34 @@ function buildServicePages(manifest) {
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Cost-Effective Solutions",
-          description: "Eliminate the overhead costs associated with hiring full-time staff.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Eliminate the overhead costs associated with hiring full-time staff.",
+          animationType: "generic",
+          highlights: ["Lower overhead", "Flexible staffing"],
+        }),
+        whyUsItem({
           title: "Increased Business Productivity",
-          description: "Our virtual assistants take on daily tasks so you can focus on growth.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Our virtual assistants take on daily tasks so you can focus on growth.",
+          animationType: "innovation",
+          highlights: ["More focus", "Less busywork"],
+        }),
+        whyUsItem({
           title: "Expertise Across Industries",
-          description: "Our virtual assistants are experienced across a wide range of industries.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Our virtual assistants are experienced across a wide range of industries.",
+          animationType: "expertise",
+          highlights: ["Cross-industry", "Skilled VAs"],
+        }),
+        whyUsItem({
           title: "24/7 Availability",
           description: "With a global team, our services are available around the clock.",
-        },
+          animationType: "partnership",
+          highlights: ["Global team", "Always on"],
+          animationLabels: ["Morning", "Day", "Night"],
+        }),
       ],
       technologiesHeading: "Tools We Use",
       technologies: ["Notion", "Google Workspace", "Slack", "Trello", "Asana"].map((name) => ({
@@ -884,7 +950,7 @@ function buildServicePages(manifest) {
       slug: { _type: "slug", current: "bookkeeping" },
       tagline: "Efficient, Automated, and Accurate Financial Management",
       description:
-        "At AgileMorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.",
+        "Reliable, partly automated financial management you can trust.",
       heroImage: imageRef(manifest, "2025/03/Accurate-Bookkeeping.svg", "Bookkeeping"),
       heroCta: cta("Get in Touch", "/contact"),
       capabilitiesHeading: "Our Bookkeeping Services",
@@ -921,31 +987,38 @@ function buildServicePages(manifest) {
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [
-        {
-          _type: "whyUsItem",
+        whyUsItem({
           title: "Customized Solutions",
           description: "Tailored to fit your business's unique requirements.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "generic",
+          highlights: ["Tailored workflows", "Your business"],
+        }),
+        whyUsItem({
           title: "Automation",
           description: "Reduce manual work and human error with our automated systems.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "innovation",
+          highlights: ["Less manual work", "Fewer errors"],
+        }),
+        whyUsItem({
           title: "Accurate Financial Reporting",
           description: "Stay on top of your finances with detailed reports.",
-        },
-        {
-          _type: "whyUsItem",
+          animationType: "expertise",
+          highlights: ["Accurate reports", "Clear visibility"],
+          animationLabels: ["Record", "Reconcile", "Report"],
+        }),
+        whyUsItem({
           title: "Compliance",
-          description: "Ensure you meet all regulatory requirements with our compliant processes.",
-        },
-        {
-          _type: "whyUsItem",
+          description:
+            "Ensure you meet all regulatory requirements with our compliant processes.",
+          animationType: "professionalism",
+          highlights: ["Compliant processes", "Audit-ready"],
+        }),
+        whyUsItem({
           title: "Cloud Accessibility",
           description: "Manage your finances from anywhere, at any time.",
-        },
+          animationType: "partnership",
+          highlights: ["Cloud-based", "Anywhere access"],
+        }),
       ],
       technologiesHeading: "Technologies",
       technologies: ["Bill", "QBO", "Xero"].map((name) => ({ _type: "technologyItem", name })),
@@ -960,6 +1033,7 @@ function buildServicePages(manifest) {
           "Efficient, automated, and accurate bookkeeping services for businesses of all sizes.",
       },
     },
+    ...buildAiAutomationSubServicePages(manifest, { cta, whyUsItem, imageRef }),
   ];
 }
 

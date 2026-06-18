@@ -8,6 +8,8 @@ import type { LucideIcon } from "lucide-react";
 
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
 import type { ServiceNavLink } from "@/lib/services";
 
 const NAV_ICON_BY_SLUG: Record<string, LucideIcon> = {
@@ -43,6 +45,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled]       = useState(false);
   const pathname  = usePathname();
+  const { resolvedTheme } = useTheme();
   const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -66,32 +69,22 @@ export function Navbar({ serviceLinks }: NavbarProps) {
   // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false); setServicesOpen(false); }, [pathname]);
 
-  const isHome    = pathname === "/";
-  const darkMode  = isHome && !scrolled;  // transparent dark navbar on hero
+  const isHome = pathname === "/";
+  const heroAtTop = isHome && !scrolled;
+  // Dark transparent nav only on homepage hero when site theme is dark
+  const darkMode = heroAtTop && resolvedTheme === "dark";
 
   return (
     <>
       <header
-        className="sticky top-0 z-50 transition-all duration-500"
-        style={{
-          background: darkMode
-            ? "rgba(15,23,42,0.75)"
-            : "rgba(255,255,255,0.96)",
-          borderBottom: darkMode
-            ? "1px solid rgba(255,255,255,0.08)"
-            : "1px solid rgba(226,232,240,0.8)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          boxShadow: scrolled
-            ? "0 2px 24px rgba(15,23,42,0.08)"
-            : "none",
-        }}
+        className={`site-header sticky top-0 z-50 transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
+        data-header={darkMode ? "inverse" : undefined}
       >
         <Container>
           <nav className="flex h-[68px] items-center justify-between" aria-label="Main navigation">
 
             {/* Logo */}
-            <Logo variant={darkMode ? "light" : "dark"} />
+            <Logo onDarkSurface={darkMode} priority />
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 md:flex">
@@ -112,7 +105,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                               : "bg-primary/8 text-primary"
                             : darkMode
                             ? "text-slate-300 hover:bg-white/8 hover:text-white"
-                            : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
+                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                       >
                         {link.label}
@@ -145,7 +138,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                                 className={`group flex items-center gap-3 rounded-xl px-3 py-3 transition-all duration-150 ${
                                   childActive
                                     ? "bg-primary/8 text-primary"
-                                    : "text-foreground hover:bg-slate-50"
+                                    : "text-foreground hover:bg-muted"
                                 }`}
                               >
                                 <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
@@ -194,7 +187,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                             : "bg-primary/8 text-primary"
                           : darkMode
                           ? "text-slate-300 hover:bg-white/8 hover:text-white"
-                          : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       }`}
                     >
                       {link.label}
@@ -207,8 +200,9 @@ export function Navbar({ serviceLinks }: NavbarProps) {
               })}
             </ul>
 
-            {/* CTA */}
-            <div className="hidden items-center gap-3 md:flex">
+            {/* CTA + theme */}
+            <div className="hidden items-center gap-2 md:flex">
+              <ThemeToggle inverse={darkMode} />
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95"
@@ -222,12 +216,14 @@ export function Navbar({ serviceLinks }: NavbarProps) {
             </div>
 
             {/* Mobile toggle */}
+            <div className="flex items-center gap-1 md:hidden">
+              <ThemeToggle inverse={darkMode} />
             <button
               type="button"
               className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
                 darkMode
                   ? "text-white hover:bg-white/10"
-                  : "text-foreground hover:bg-slate-100"
+                  : "text-foreground hover:bg-muted"
               }`}
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
@@ -235,6 +231,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
+            </div>
           </nav>
         </Container>
       </header>
@@ -264,15 +261,18 @@ export function Navbar({ serviceLinks }: NavbarProps) {
         >
           {/* Panel header */}
           <div className="flex h-[68px] items-center justify-between border-b border-border px-5">
-            <Logo variant="dark" />
+            <Logo />
+            <div className="flex items-center gap-1">
+              <ThemeToggle />
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-slate-100"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
             >
               <X size={18} />
             </button>
+            </div>
           </div>
 
           {/* Nav items */}
@@ -286,7 +286,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                     <button
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
-                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-body text-sm font-semibold text-foreground transition-colors hover:bg-slate-50"
+                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-body text-sm font-semibold text-foreground transition-colors hover:bg-muted"
                     >
                       {link.label}
                       <ChevronDown
@@ -323,7 +323,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                   className={`rounded-xl px-4 py-3 font-body text-sm font-semibold transition-colors ${
                     isActive
                       ? "bg-primary/8 text-primary"
-                      : "text-foreground hover:bg-slate-50"
+                      : "text-foreground hover:bg-muted"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >

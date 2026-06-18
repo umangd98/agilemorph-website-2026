@@ -14,11 +14,13 @@ const ENV_PATH = join(ROOT, ".env.local");
 
 const PARTNERS = [
   {
-    name: "Anthropic",
-    label: "SERVICES PARTNER",
-    url: "https://www.anthropic.com",
-    slug: "anthropic",
-    color: "191919",
+    name: "Claude",
+    label: "SERVICE PARTNER",
+    url: "https://www.anthropic.com/claude",
+    slug: "claude",
+    filename: "claude.svg",
+    logoUrl:
+      "https://cdn.sanity.io/images/3vo0fmfa/production/dbe5cc5c41928eda005dae550786bd4766019d1e-256x257.svg",
   },
   {
     name: "Make.com",
@@ -29,7 +31,7 @@ const PARTNERS = [
   },
   {
     name: "Upwork",
-    label: "TOP RATED PLUS",
+    label: "TOP RATED",
     url: "https://www.upwork.com",
     slug: "upwork",
     color: "6FDA44",

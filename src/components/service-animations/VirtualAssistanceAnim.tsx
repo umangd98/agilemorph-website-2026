@@ -24,7 +24,7 @@ export function VirtualAssistanceAnim() {
         .va-card-2 { animation: va-card-move 6s ease-in-out 4s infinite; }
       `}</style>
 
-      <div className="w-full max-w-sm">
+      <div className="mx-auto w-full max-w-sm">
         <div className="mb-3 grid grid-cols-3 gap-2">
           {COLUMNS.map((col) => (
             <div

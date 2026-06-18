@@ -54,10 +54,20 @@ export interface ServiceCard {
   icon?: SanityImageAsset;
 }
 
+export type WhyUsAnimationType =
+  | "innovation"
+  | "professionalism"
+  | "expertise"
+  | "partnership"
+  | "generic";
+
 export interface WhyUsItem {
   title: string;
   description: string;
   icon?: SanityImageAsset;
+  highlights?: string[];
+  animationType?: WhyUsAnimationType;
+  animationLabels?: string[];
 }
 
 export interface CapabilityItem {

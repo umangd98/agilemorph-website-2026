@@ -27,7 +27,7 @@ export function AiAutomationAnim() {
         .ai-chip-2 { animation: ai-chip-in 0.6s ease 0.6s both; }
       `}</style>
 
-      <div className="relative w-full max-w-sm">
+      <div className="relative mx-auto w-full max-w-sm">
         <div className="mb-6 flex items-center justify-between gap-2">
           {[
             { label: "Trigger", sub: "Webhook" },

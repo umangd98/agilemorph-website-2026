@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeScript } from "@/components/ThemeScript";
+
 const headingFont = Montserrat({
   variable: "--font-heading-var",
   subsets: ["latin"],
@@ -31,8 +34,14 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${headingFont.variable} ${bodyFont.variable} h-full`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <head>
+        <ThemeScript />
+      </head>
+      <body className="flex min-h-full flex-col">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

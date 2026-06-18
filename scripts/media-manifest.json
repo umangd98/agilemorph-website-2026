@@ -1618,5 +1618,13 @@
   "service-anim/bookkeeping.svg": {
     "id": "image-bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600-svg",
     "url": "https://cdn.sanity.io/images/vs80pgpc/production/bce4ad9d372685eea5b7bff6ef7eaca407d1a2a8-800x600.svg"
+  },
+  "partners/claude.svg": {
+    "id": "image-dbe5cc5c41928eda005dae550786bd4766019d1e-256x257-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/dbe5cc5c41928eda005dae550786bd4766019d1e-256x257.svg"
+  },
+  "brand/logo-primary.png": {
+    "id": "image-0806a4827f7fc8c2094f7e38fe9970966357c470-331x66-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/0806a4827f7fc8c2094f7e38fe9970966357c470-331x66.png"
   }
 }

@@ -15,9 +15,8 @@ export function StatsSection({
 }: StatsSectionProps) {
   return (
     <section
-      className="relative overflow-hidden py-section max-sm:py-section-sm"
+      className="relative overflow-hidden bg-footer py-section max-sm:py-section-sm"
       aria-labelledby="stats-heading"
-      style={{ background: "#0f172a" }}
     >
       {/* Background grid */}
       <div

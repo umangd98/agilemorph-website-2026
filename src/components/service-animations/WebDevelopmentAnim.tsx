@@ -40,7 +40,7 @@ export function WebDevelopmentAnim() {
         .web-block-3 { animation: web-block-in 0.4s ease 2.4s both; }
       `}</style>
 
-      <div className="w-full max-w-sm overflow-hidden rounded-xl border border-white/10 bg-[#0a1018] shadow-2xl">
+      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-white/10 bg-[#0a1018] shadow-2xl">
         <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />

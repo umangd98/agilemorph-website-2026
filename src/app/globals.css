@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
  * Design tokens — single source of truth.
  * Edit the @theme block to retheme the entire site.
@@ -40,6 +42,37 @@
   /* Section spacing */
   --spacing-section: 7.5rem;
   --spacing-section-sm: 4rem;
+}
+
+:root {
+  --header-bg: #ffffff;
+  --header-border: rgba(226, 232, 240, 0.8);
+  --header-shadow: 0 2px 24px rgba(15, 23, 42, 0.08);
+  --scrollbar-track: #f8fafc;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+}
+
+.dark {
+  --color-background: #0a0f1a;
+  --color-surface: #111827;
+  --color-footer: #060d1a;
+  --color-foreground: #f1f5f9;
+  --color-muted-foreground: #94a3b8;
+  --color-border: #1e293b;
+  --color-muted: #1a2332;
+  --header-bg: rgba(10, 15, 26, 0.92);
+  --header-border: rgba(255, 255, 255, 0.08);
+  --header-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  --scrollbar-track: #111827;
+  --scrollbar-thumb: #334155;
+  --scrollbar-thumb-hover: #475569;
+}
+
+.dark header[data-header="inverse"] {
+  --header-bg: rgba(15, 23, 42, 0.75);
+  --header-border: rgba(255, 255, 255, 0.08);
+  --header-shadow: none;
 }
 
 @keyframes fadeInUp {
@@ -91,6 +124,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -165,10 +203,21 @@
   .marquee-row:hover .marquee-track {
     animation-play-state: paused;
   }
+
+  .site-header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .site-header--scrolled {
+    box-shadow: var(--header-shadow);
+  }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f8fafc; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }

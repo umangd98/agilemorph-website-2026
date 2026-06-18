@@ -21,7 +21,7 @@ export function ClaudePartnerBadge({ className = "" }: ClaudePartnerBadgeProps) 
       </span>
       <span className="flex min-w-0 flex-col justify-center gap-0.5">
         <span className="font-body text-sm font-semibold leading-none tracking-tight text-white">
-          Services Partner
+          Claude Service Partner
         </span>
         <span className="font-mono text-[11px] leading-tight text-slate-400">
           We design and build on Claude
