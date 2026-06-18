@@ -1,0 +1,42 @@
+{
+  "backupDate": "2026-06-18T09:37:06.402Z",
+  "scope": "AgileMorph site content only",
+  "sanityCloudProject": "chronoseconds",
+  "sanityProjectId": "vs80pgpc",
+  "studioTitle": "AgileMorph",
+  "dataset": "production",
+  "documentTypes": [
+    "homepage",
+    "aboutPage",
+    "contactPage",
+    "servicePage",
+    "blogPost"
+  ],
+  "documentCounts": {
+    "homepage": 1,
+    "aboutPage": 3,
+    "contactPage": 1,
+    "servicePage": 5,
+    "blogPost": 124
+  },
+  "totalDocuments": 134,
+  "totalAssets": 70,
+  "files": {
+    "contentExport": "agilemorph-content.tar.gz",
+    "completeExport": "agilemorph-complete.tar.gz",
+    "schema": "schema/"
+  },
+  "excludedTypes": [
+    "accessoriesPage",
+    "accessory",
+    "brand",
+    "brandsPage",
+    "homePage",
+    "model",
+    "quoteRequest",
+    "repairPage",
+    "sellPage",
+    "serviceRequest",
+    "watchListing"
+  ]
+}
