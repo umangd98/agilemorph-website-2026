@@ -3,22 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Menu, X, ArrowRight, Zap, Globe, TrendingUp, Users, BookOpen } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
-import type { ServiceNavLink } from "@/lib/services";
-
-const NAV_ICON_BY_SLUG: Record<string, LucideIcon> = {
-  "ai-automation": Zap,
-  "website-development": Globe,
-  "digital-marketing": TrendingUp,
-  "virtual-assistance": Users,
-  bookkeeping: BookOpen,
-};
+import { getServiceIcon, type ServiceNavLink } from "@/lib/services";
 
 type NavbarProps = {
   serviceLinks: ServiceNavLink[];
@@ -128,7 +119,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                       >
                         <div className="p-2">
                           {serviceLinks.map((child) => {
-                            const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
+                            const Icon = getServiceIcon(child.slug);
                             const childActive = pathname === child.href;
                             return (
                               <Link
@@ -297,7 +288,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                     {servicesOpen && (
                       <div className="ml-2 mt-1 flex flex-col gap-0.5 border-l-2 border-primary/20 pl-3">
                         {serviceLinks.map((child) => {
-                          const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
+                          const Icon = getServiceIcon(child.slug);
                           return (
                             <Link
                               key={child.href}

@@ -1,15 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
-import { HeroDigitalAccelAnim } from "@/components/hero-animations/HeroDigitalAccelAnim";
+import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
 type HeroSectionProps = { hero: HomepageHero };
+
+/** Matches the hero section background gradient stops for seamless image compositing. */
+const HERO_BG = {
+  deep: "#060d1a",
+  mid: "#0b1628",
+  teal: "#0d1f2d",
+  base: "#071019",
+} as const;
 
 function useEntrance() {
   const [visible, setVisible] = useState(false);
@@ -72,6 +81,12 @@ function StarRating() {
 export function HeroSection({ hero }: HeroSectionProps) {
   const visible = useEntrance();
 
+  const heroImageUrl = hero.image?.asset
+    ? urlForImage(hero.image).width(1200).auto("format").quality(90).url()
+    : null;
+  const lqip = hero.image?.lqip;
+  const heroImageAlt = hero.image?.alt ?? "";
+
   const words = hero.heading.split(" ");
   const headingMain = words.slice(0, -2).join(" ");
   const headingAccent = words.slice(-2).join(" ");
@@ -81,7 +96,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
       className="relative flex min-h-screen items-center overflow-hidden"
       aria-labelledby="hero-heading"
       style={{
-        background: "linear-gradient(145deg, #060d1a 0%, #0b1628 40%, #0d1f2d 70%, #071019 100%)",
+        background: `linear-gradient(145deg, ${HERO_BG.deep} 0%, ${HERO_BG.mid} 40%, ${HERO_BG.teal} 70%, ${HERO_BG.base} 100%)`,
       }}
     >
       <div
@@ -123,8 +138,71 @@ export function HeroSection({ hero }: HeroSectionProps) {
         }}
       />
 
+      {heroImageUrl ? (
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%]"
+          aria-hidden={!heroImageAlt}
+          style={{
+            opacity: visible ? 1 : 0,
+            transition: "opacity 1.4s ease 300ms",
+          }}
+        >
+          {/* Same gradient base as section so image edges never show a different tone */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(145deg, ${HERO_BG.deep} 0%, ${HERO_BG.mid} 40%, ${HERO_BG.teal} 70%, ${HERO_BG.base} 100%)`,
+            }}
+          />
+
+          <Image
+            src={heroImageUrl}
+            alt={heroImageAlt}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="object-cover object-[68%_center] opacity-[0.52] mix-blend-soft-light saturate-[0.85] contrast-[1.05]"
+            placeholder={lqip ? "blur" : "empty"}
+            blurDataURL={lqip}
+          />
+
+          {/* Composite masks tuned to hero gradient stops */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `
+                linear-gradient(to right, ${HERO_BG.deep} 0%, ${HERO_BG.deep}e6 12%, ${HERO_BG.mid}cc 28%, ${HERO_BG.teal}66 48%, transparent 68%),
+                linear-gradient(to bottom, ${HERO_BG.deep} 0%, transparent 14%, transparent 86%, ${HERO_BG.base} 100%),
+                linear-gradient(to left, ${HERO_BG.base} 0%, ${HERO_BG.teal}99 8%, transparent 24%)
+              `,
+            }}
+          />
+
+          {/* On-brand green wash aligned with top-left orb */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 75% 65% at 70% 42%, rgba(34,197,94,0.08) 0%, transparent 72%)",
+            }}
+          />
+
+          {/* Grid continuity over the image area */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
+              backgroundSize: "56px 56px",
+              maskImage:
+                "linear-gradient(to right, transparent 35%, black 55%, black 100%)",
+            }}
+          />
+        </div>
+      ) : null}
+
       <Container className="relative z-10 py-28 lg:py-36">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div className="max-w-xl">
             <AnimItem visible={visible} delay={0} className="mb-8">
               <ClaudePartnerBadge />
@@ -211,32 +289,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
 
             <AnimItem visible={visible} delay={460} className="mt-12">
-              <div className="flex flex-wrap items-center gap-0">
-                {[
-                  { value: "50+", label: "Happy Clients" },
-                  { value: "3+", label: "Years Experience" },
-                ].map(({ value, label }, i) => (
-                  <div key={label} className="flex items-center">
-                    {i > 0 && <div className="mx-5 h-8 w-px bg-white/10" />}
-                    <div className="flex flex-col">
-                      <span
-                        className="font-heading text-2xl font-extrabold leading-none"
-                        style={{
-                          background: "linear-gradient(135deg, #4ade80, #22c55e)",
-                          WebkitBackgroundClip: "text",
-                          backgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                        }}
-                      >
-                        {value}
-                      </span>
-                      <span className="mt-0.5 font-body text-xs text-slate-500">{label}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-5 flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <StarRating />
                 <span className="font-body text-xs font-semibold text-slate-400">
                   4.9 · Rated by clients worldwide
@@ -245,9 +298,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
           </div>
 
-          <AnimItem visible={visible} delay={400} className="mt-8 lg:mt-0">
-            <HeroDigitalAccelAnim visible={visible} />
-          </AnimItem>
+          <div className="hidden lg:block" aria-hidden="true" />
         </div>
       </Container>
 
@@ -255,7 +306,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-24"
         aria-hidden="true"
         style={{
-          background: "linear-gradient(to bottom, transparent, #060d1a)",
+          background: `linear-gradient(to bottom, transparent, ${HERO_BG.deep})`,
         }}
       />
     </section>

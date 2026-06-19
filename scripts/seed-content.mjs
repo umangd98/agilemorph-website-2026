@@ -314,8 +314,8 @@ function buildHomepage(manifest) {
       ],
     },
     stats: {
-      eyebrow: "Metrics That Matter",
-      heading: "Enjoy Tangible Results",
+      eyebrow: "By The Numbers",
+      heading: "Results You Can Measure",
       items: [
         { _type: "stat", value: "100+", label: "Successful Projects" },
         { _type: "stat", value: "50+", label: "Satisfied clients and growing" },

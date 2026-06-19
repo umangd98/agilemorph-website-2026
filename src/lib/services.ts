@@ -1,3 +1,13 @@
+import {
+  BookOpen,
+  Bot,
+  Globe,
+  TrendingUp,
+  Users,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+
 import { sanityFetch } from "@/sanity/fetch";
 import { allServicePagesListQuery } from "@/sanity/queries";
 import type { ServicePageListItem } from "@/sanity/types";
@@ -76,6 +86,19 @@ export type ServiceNavLink = {
   href: string;
   desc: string;
 };
+
+const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
+  "ai-automation": Zap,
+  "web-development": Globe,
+  "website-development": Globe,
+  "digital-marketing": TrendingUp,
+  "virtual-assistance": Users,
+  bookkeeping: BookOpen,
+};
+
+export function getServiceIcon(slug: string): LucideIcon {
+  return SERVICE_ICON_BY_SLUG[slug] ?? Bot;
+}
 
 export function serviceHref(slug: string) {
   return `/services/${slug}`;

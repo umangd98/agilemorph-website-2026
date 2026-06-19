@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bot, Sparkles } from "lucide-react";
+import { Bot, Sparkles } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { SanityImage } from "@/components/SanityImage";
 import {
+  getServiceIcon,
   PRIMARY_SERVICE_CAPABILITIES,
   resolveCapabilityHref,
   serviceDisplayTitle,
@@ -28,39 +28,24 @@ function AdditionalServiceCard({
   service: ServicePageListItem;
   index: number;
 }) {
+  const Icon = getServiceIcon(service.slug);
+
   return (
     <AnimateOnScroll delay={index * 60} className="h-full">
       <Link
         href={serviceHref(service.slug)}
-        className="hover-lift group flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-colors hover:border-primary/20"
+        className="hover-lift group flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-colors hover:border-primary/30 hover:bg-primary/5 hover:shadow-md"
       >
-        {service.heroImage ? (
-          <div className="relative mb-5 h-10 w-10 transition-transform duration-300 group-hover:scale-110">
-            <SanityImage
-              image={service.heroImage}
-              alt={service.heroImage.alt ?? service.title}
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain"
-            />
-          </div>
-        ) : (
-          <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-muted-foreground">
-            <Bot size={18} />
-          </span>
-        )}
+        <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30 group-hover:bg-primary/15">
+          <Icon size={18} aria-hidden />
+        </span>
 
-        <h3 className="mb-2 font-heading text-lg font-bold text-foreground">
+        <h3 className="mb-2 font-heading text-lg font-bold text-foreground transition-colors group-hover:text-primary">
           {serviceDisplayTitle(service.title)}
         </h3>
-        <p className="mb-5 flex-1 font-body text-sm leading-relaxed text-muted-foreground">
+        <p className="flex-1 font-body text-sm leading-relaxed text-muted-foreground">
           {service.description}
         </p>
-
-        <span className="inline-flex items-center gap-2 font-body text-sm font-semibold text-primary transition-all group-hover:gap-3">
-          Explore
-          <ArrowRight size={14} />
-        </span>
       </Link>
     </AnimateOnScroll>
   );
@@ -81,9 +66,9 @@ function AiAutomationGrid({
             <Link
               key={sub.title}
               href={resolveCapabilityHref(sub)}
-              className="group flex flex-col bg-background p-7 transition-colors duration-200 hover:bg-primary/5"
+              className="hover-lift group flex flex-col bg-background p-7 transition-colors duration-200 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md"
             >
-              <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary transition-colors group-hover:border-primary/30 group-hover:bg-primary/15">
+              <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30 group-hover:bg-primary/15">
                 {sub.icon ? (
                   <span className="text-lg leading-none" aria-hidden>
                     {sub.icon}
@@ -92,16 +77,12 @@ function AiAutomationGrid({
                   <Bot size={18} />
                 )}
               </span>
-              <h4 className="mb-2 font-heading text-lg font-semibold text-foreground">
+              <h4 className="mb-2 font-heading text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                 {sub.title}
               </h4>
-              <p className="mb-4 flex-1 font-body text-sm text-muted-foreground">
+              <p className="flex-1 font-body text-sm text-muted-foreground">
                 {sub.description}
               </p>
-              <span className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-primary opacity-90 transition-all group-hover:gap-2.5 group-hover:opacity-100">
-                Explore
-                <ArrowRight size={14} />
-              </span>
             </Link>
           ))}
         </div>

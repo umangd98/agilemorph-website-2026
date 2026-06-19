@@ -5,9 +5,6 @@ import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { SanityImage, hasImageAsset } from "@/components/SanityImage";
-import { getInitials } from "@/lib/seo";
-import { urlForImage } from "@/sanity/image";
 import type { Testimonial } from "@/sanity/types";
 
 type TestimonialsSectionProps = {
@@ -30,86 +27,14 @@ function useReducedMotion() {
   return reduced;
 }
 
-function isLandscapeLogo(image?: Testimonial["image"]) {
-  const width = image?.dimensions?.width;
-  const height = image?.dimensions?.height;
-  if (width && height && width / height > 1.15) return true;
-  return Boolean(image?.alt?.toLowerCase().includes("logo"));
-}
-
 function StarRating() {
   return (
-    <div className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+    <div className="flex items-center justify-center gap-0.5" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <Star key={i} size={14} className="fill-amber-400 text-amber-400" aria-hidden />
       ))}
     </div>
   );
-}
-
-type TestimonialPhotoProps = {
-  image?: Testimonial["image"];
-  name: string;
-  variant?: "hero" | "thumb";
-  priority?: boolean;
-  className?: string;
-};
-
-function TestimonialPhoto({
-  image,
-  name,
-  variant = "hero",
-  priority = false,
-  className = "",
-}: TestimonialPhotoProps) {
-  const [failed, setFailed] = useState(false);
-  const logoImage = isLandscapeLogo(image);
-  const hero = variant === "hero";
-
-  useEffect(() => {
-    setFailed(false);
-  }, [image?.asset?._ref, image?.asset?._id, image?.asset?.url]);
-
-  const frameClass = hero
-    ? logoImage
-      ? "h-36 w-44 rounded-2xl sm:h-40 sm:w-48"
-      : "h-36 w-36 rounded-full sm:h-44 sm:w-44"
-    : logoImage
-      ? "h-11 w-14 rounded-lg"
-      : "h-11 w-11 rounded-full";
-
-  if (!hasImageAsset(image) || failed) {
-    return (
-      <div
-        className={`flex shrink-0 items-center justify-center border-2 border-primary/25 bg-primary/10 font-heading font-bold text-primary shadow-inner ${frameClass} ${hero ? "text-2xl sm:text-3xl" : "text-xs"} ${className}`}
-        aria-hidden={failed}
-      >
-        {getInitials(name)}
-      </div>
-    );
-  }
-
-  return (
-    <div
-      className={`relative shrink-0 overflow-hidden border-2 border-primary/20 bg-white shadow-lg shadow-primary/10 ${frameClass} ${className}`}
-    >
-      <SanityImage
-        image={image}
-        alt={image.alt ?? name}
-        fill
-        sizes={hero ? "(max-width: 640px) 144px, 176px" : "44px"}
-        priority={priority}
-        onError={() => setFailed(true)}
-        className={logoImage ? "object-contain! p-2 sm:p-3" : "object-cover"}
-      />
-    </div>
-  );
-}
-
-function preloadTestimonialImage(image?: Testimonial["image"]) {
-  if (!hasImageAsset(image) || typeof window === "undefined") return;
-  const img = new window.Image();
-  img.src = urlForImage(image).width(320).auto("format").fit("max").url();
 }
 
 export function TestimonialsSection({
@@ -140,13 +65,6 @@ export function TestimonialsSection({
 
   const goToPrevious = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
   const goToNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
-
-  useEffect(() => {
-    if (!count) return;
-    preloadTestimonialImage(items[activeIndex]?.image);
-    preloadTestimonialImage(items[(activeIndex + 1) % count]?.image);
-    preloadTestimonialImage(items[(activeIndex - 1 + count) % count]?.image);
-  }, [activeIndex, count, items]);
 
   useEffect(() => {
     if (paused || reducedMotion || count <= 1) return;
@@ -215,7 +133,7 @@ export function TestimonialsSection({
 
         <AnimateOnScroll>
           <div
-            className="relative mx-auto max-w-5xl"
+            className="relative mx-auto max-w-4xl"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             onFocusCapture={() => setPaused(true)}
@@ -242,36 +160,18 @@ export function TestimonialsSection({
                 ) : null}
               </div>
 
-              <div className="grid gap-8 p-6 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12 lg:p-12">
-                <div key={`photo-${activeIndex}`} className="testimonial-enter flex flex-col items-center gap-4 lg:items-start">
-                  <div className="relative">
-                    <div
-                      className="absolute -inset-3 rounded-full bg-primary/10 blur-xl"
-                      aria-hidden
-                    />
-                    <TestimonialPhoto
-                      image={testimonial.image}
-                      name={testimonial.name}
-                      variant="hero"
-                      priority={activeIndex === 0}
-                    />
-                    <div
-                      className="absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-background bg-primary text-white shadow-lg"
-                      aria-hidden
-                    >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
-                  </div>
-
+              <div className="p-6 sm:p-10 lg:p-12">
+                <div
+                  key={`copy-${activeIndex}`}
+                  className="testimonial-enter mx-auto flex max-w-2xl flex-col items-center text-center"
+                >
                   <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
                   </p>
-                </div>
 
-                <div key={`copy-${activeIndex}`} className="testimonial-enter flex min-w-0 flex-col text-center lg:text-left">
-                  <StarRating />
+                  <div className="mt-4">
+                    <StarRating />
+                  </div>
 
                   <blockquote className="mt-4 font-body text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
                     <span className="text-primary/40" aria-hidden>
@@ -283,7 +183,7 @@ export function TestimonialsSection({
                     </span>
                   </blockquote>
 
-                  <footer className="mt-6 border-t border-border pt-6">
+                  <footer className="mt-6 w-full border-t border-border pt-6">
                     <p className="font-heading text-xl font-bold text-foreground sm:text-2xl">
                       {testimonial.name}
                     </p>
@@ -298,9 +198,18 @@ export function TestimonialsSection({
 
               {count > 1 ? (
                 <div className="border-t border-border bg-muted/40 px-4 py-4 sm:px-8">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center justify-center gap-4 sm:gap-6">
+                    <button
+                      type="button"
+                      onClick={goToPrevious}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
+                      aria-label="Previous testimonial"
+                    >
+                      <ArrowLeft size={18} />
+                    </button>
+
                     <div
-                      className="-mx-1 flex items-center gap-2 overflow-x-auto pb-1 snap-x snap-mandatory sm:mx-0 sm:flex-wrap sm:overflow-visible sm:pb-0"
+                      className="flex items-center gap-2"
                       role="tablist"
                       aria-label="Client testimonials"
                     >
@@ -314,49 +223,24 @@ export function TestimonialsSection({
                             aria-selected={active}
                             aria-label={`Show testimonial from ${item.name}`}
                             onClick={() => goTo(index)}
-                            className={`flex shrink-0 snap-start items-center gap-2 rounded-full border px-2 py-1.5 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-3 ${
+                            className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                               active
-                                ? "border-primary bg-primary/10 shadow-sm"
-                                : "border-transparent bg-background/80 hover:border-border"
+                                ? "w-8 bg-primary"
+                                : "w-2.5 bg-border hover:bg-primary/40"
                             }`}
-                          >
-                            <TestimonialPhoto
-                              image={item.image}
-                              name={item.name}
-                              variant="thumb"
-                              priority={index === 0}
-                              className={active ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : "opacity-80"}
-                            />
-                            <span
-                              className={`hidden max-w-[8rem] truncate font-body text-xs font-semibold sm:block ${
-                                active ? "text-foreground" : "text-muted-foreground"
-                              }`}
-                            >
-                              {item.name.split(" ")[0]}
-                            </span>
-                          </button>
+                          />
                         );
                       })}
                     </div>
 
-                    <div className="flex items-center justify-center gap-3 sm:justify-end">
-                      <button
-                        type="button"
-                        onClick={goToPrevious}
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
-                        aria-label="Previous testimonial"
-                      >
-                        <ArrowLeft size={18} />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={goToNext}
-                        className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/25 transition-colors hover:bg-primary-dark"
-                        aria-label="Next testimonial"
-                      >
-                        <ArrowRight size={18} />
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={goToNext}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/25 transition-colors hover:bg-primary-dark"
+                      aria-label="Next testimonial"
+                    >
+                      <ArrowRight size={18} />
+                    </button>
                   </div>
                 </div>
               ) : null}
