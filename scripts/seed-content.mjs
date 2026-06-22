@@ -223,7 +223,7 @@ function buildHomepage(manifest) {
       tagline:
         "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
       ctaPrimary: cta("Get in Touch", "/contact"),
-      ctaSecondary: cta("Explore Our Services", "/services/ai-automation"),
+      ctaSecondary: cta("Explore Our Services", "/services"),
       image: imageRef(manifest, "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png", "AgileMorph hero"),
     },
     process: {
@@ -327,7 +327,7 @@ function buildAboutPage(manifest) {
       heading: "About Us",
       tagline:
         "Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era. Where agility meets transformation—so your next breakthrough isn't trapped in \"someday.\"",
-      cta: cta("Explore Our Services", "/services/ai-automation"),
+      cta: cta("Explore Our Services", "/services"),
     },
     about: {
       heading: "AgileMorph Solutions",
@@ -397,7 +397,7 @@ function buildAboutPage(manifest) {
       heading: "Transforming Ideas into Impactful Journeys",
       description:
         "Partner with AgileMorph to unlock your organization's potential. From startups to enterprises, we're here to drive your digital transformation.",
-      button: cta("Explore Our Services", "/services/ai-automation"),
+      button: cta("Explore Our Services", "/services"),
     },
     founder: {
       eyebrow: "Meet Our Founder",

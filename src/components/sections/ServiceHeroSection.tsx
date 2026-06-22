@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { CtaAction } from "@/components/CtaAction";
+import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
 import { urlForImage } from "@/sanity/image";
@@ -14,6 +15,7 @@ type ServiceHeroSectionProps = {
   description?: string;
   heroImage?: SanityImageAsset;
   heroCta?: CtaButton;
+  useEcosystemVisual?: boolean;
 };
 
 export function ServiceHeroSection({
@@ -23,6 +25,7 @@ export function ServiceHeroSection({
   description,
   heroImage,
   heroCta,
+  useEcosystemVisual = false,
 }: ServiceHeroSectionProps) {
   const rawUrl = heroImage?.asset?.url;
   const isSvg = Boolean(rawUrl && /\.svg(\?|$)/i.test(rawUrl));
@@ -64,13 +67,17 @@ export function ServiceHeroSection({
             ) : null}
           </div>
           <div className="min-w-0">
-            <ServiceHeroMedia
-              slug={slug}
-              imageUrl={imageUrl}
-              alt={heroImage?.alt ?? title}
-              blurDataURL={heroImage?.lqip}
-              isSvg={isSvg}
-            />
+            {useEcosystemVisual ? (
+              <HeroEcosystemVisual visible />
+            ) : (
+              <ServiceHeroMedia
+                slug={slug}
+                imageUrl={imageUrl}
+                alt={heroImage?.alt ?? title}
+                blurDataURL={heroImage?.lqip}
+                isSvg={isSvg}
+              />
+            )}
           </div>
         </div>
       </Container>

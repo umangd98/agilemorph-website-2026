@@ -28,7 +28,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
     ...baseNavLinks.slice(0, 3),
     {
       label: "Services",
-      href: serviceLinks[0]?.href ?? "/services/ai-automation",
+      href: serviceLinks[0]?.href ?? "/services",
       children: serviceLinks,
     },
     baseNavLinks[3],

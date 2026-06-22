@@ -16,10 +16,15 @@ export function WhyUsSection({
 
   return (
     <section
-      className="overflow-hidden bg-background py-section max-sm:py-section-sm"
+      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
       aria-labelledby="why-us-heading"
     >
-      <Container>
+      <div
+        className="pointer-events-none absolute inset-0 section-ambient-glow"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
         <AnimateOnScroll className="mb-10">
           <h2
             id="why-us-heading"

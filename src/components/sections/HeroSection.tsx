@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
 import { CtaAction } from "@/components/CtaAction";
-import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
+import { HeroShowcaseVisual } from "@/components/hero-animations/HeroShowcaseVisual";
+import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
 type HeroSectionProps = { hero: HomepageHero };
@@ -73,15 +74,25 @@ function StarRating() {
 export function HeroSection({ hero }: HeroSectionProps) {
   const visible = useEntrance();
 
+  const heroImageUrl = hero.image?.asset
+    ? urlForImage(hero.image).width(900).auto("format").quality(85).url()
+    : null;
+  const heroImageAlt = hero.image?.alt ?? "";
+
   const words = hero.heading.split(" ");
   const headingMain = words.slice(0, -2).join(" ");
   const headingAccent = words.slice(-2).join(" ");
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-x-clip bg-background"
+      className="relative flex min-h-screen items-center overflow-hidden bg-background"
       aria-labelledby="hero-heading"
     >
+      <div
+        className="hero-ambient-glow pointer-events-none absolute inset-0 z-0"
+        aria-hidden="true"
+      />
+
       <div
         className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full"
         aria-hidden="true"
@@ -115,9 +126,9 @@ export function HeroSection({ hero }: HeroSectionProps) {
         aria-hidden="true"
       />
 
-      <Container className="relative z-10 py-24 sm:py-28 lg:py-32 xl:py-36">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] xl:gap-10">
-          <div className="min-w-0 max-w-2xl">
+      <Container className="relative z-10 py-28 lg:py-36">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div className="max-w-xl">
             <AnimItem visible={visible} delay={0} className="mb-8">
               <ClaudePartnerBadge />
             </AnimItem>
@@ -187,18 +198,22 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
           </div>
 
-          <AnimItem
-            visible={visible}
-            delay={400}
-            className="hidden w-full min-w-0 lg:block lg:self-center"
-          >
-            <HeroEcosystemVisual visible={visible} />
-          </AnimItem>
+          {heroImageUrl ? (
+            <AnimItem visible={visible} delay={400} className="mt-8 hidden lg:block lg:mt-0">
+              <HeroShowcaseVisual
+                imageUrl={heroImageUrl}
+                alt={heroImageAlt}
+                visible={visible}
+              />
+            </AnimItem>
+          ) : (
+            <div className="hidden lg:block" aria-hidden="true" />
+          )}
         </div>
       </Container>
 
       <div
-        className="hero-bottom-fade pointer-events-none absolute bottom-0 left-0 right-0 h-24"
+        className="hero-bottom-fade pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-24"
         aria-hidden="true"
       />
     </section>

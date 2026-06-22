@@ -396,7 +396,7 @@ export function PricingSection() {
                 />
               </CalendlyBookButton>
               <Link
-                href="/services/ai-automation"
+                href="/services"
                 className="inline-flex items-center rounded-full border border-border px-6 py-3 font-body text-sm text-foreground transition-colors hover:border-primary/30 hover:bg-muted/50"
               >
                 See what we build

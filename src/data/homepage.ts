@@ -2,7 +2,7 @@ export const heroData = {
   heading: "Let AI seamlessly elevate your brand.",
   body: "We put AI at the core of how your business operates, with",
   highlightTags: [
-    { label: "AI Automation", href: "/services/ai-automation" },
+    { label: "AI Automation", href: "/services" },
     { label: "Website", href: "/services/website-development" },
     { label: "AI Agents", href: "/services/ai-agents" },
   ],

@@ -135,6 +135,7 @@ export function getServiceIcon(slug: string): LucideIcon {
 }
 
 export function serviceHref(slug: string) {
+  if (slug === PRIMARY_SERVICE_SLUG) return "/services";
   return `/services/${slug}`;
 }
 

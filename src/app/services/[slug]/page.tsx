@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -10,7 +10,6 @@ import {
   ServiceWhyUsSection,
   TechnologiesSection,
 } from "@/components/sections";
-import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
 import {
   getAiAutomationSubService,
   getAiAutomationSubServiceSlugs,
@@ -18,7 +17,6 @@ import {
 import {
   getServiceLabel,
   isExcludedServiceSlug,
-  PRIMARY_SERVICE_CAPABILITIES,
   PRIMARY_SERVICE_SLUG,
 } from "@/lib/services";
 import { seoToMetadata } from "@/lib/seo";
@@ -42,7 +40,7 @@ export async function generateStaticParams() {
   const slugSet = new Set([
     ...(slugs ?? [])
       .map(({ slug }) => slug)
-      .filter((slug) => !isExcludedServiceSlug(slug)),
+      .filter((slug) => !isExcludedServiceSlug(slug) && slug !== PRIMARY_SERVICE_SLUG),
     ...subSlugs,
   ]);
 
@@ -56,6 +54,10 @@ export async function generateMetadata({
 
   if (isExcludedServiceSlug(slug)) {
     return { title: "Not Found" };
+  }
+
+  if (slug === PRIMARY_SERVICE_SLUG) {
+    redirect("/services");
   }
 
   const subService = getAiAutomationSubService(slug);
@@ -84,6 +86,10 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
 
   if (isExcludedServiceSlug(slug)) {
     notFound();
+  }
+
+  if (slug === PRIMARY_SERVICE_SLUG) {
+    redirect("/services");
   }
 
   const subService = getAiAutomationSubService(slug);
@@ -129,7 +135,6 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
     notFound();
   }
 
-  const isAiAutomation = slug === PRIMARY_SERVICE_SLUG;
   const pageTitle = getServiceLabel(slug, servicePage.title);
 
   return (
@@ -144,17 +149,10 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
           heroImage={servicePage.heroImage}
           heroCta={servicePage.heroCta}
         />
-        {isAiAutomation ? (
-          <AiAutomationCapabilitiesGrid
-            heading={servicePage.capabilitiesHeading ?? "Core Capabilities"}
-            capabilities={PRIMARY_SERVICE_CAPABILITIES}
-          />
-        ) : (
-          <CapabilitiesSection
-            heading={servicePage.capabilitiesHeading}
-            capabilities={servicePage.capabilities}
-          />
-        )}
+        <CapabilitiesSection
+          heading={servicePage.capabilitiesHeading}
+          capabilities={servicePage.capabilities}
+        />
         <ServiceWhyUsSection
           heading={servicePage.whyUsHeading}
           items={servicePage.whyUs}

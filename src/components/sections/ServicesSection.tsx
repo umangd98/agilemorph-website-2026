@@ -114,10 +114,15 @@ export function ServicesSection({
 
   return (
     <section
-      className="bg-surface py-section max-sm:py-section-sm"
+      className="relative overflow-hidden bg-surface py-section max-sm:py-section-sm"
       aria-labelledby="services-heading"
     >
-      <Container>
+      <div
+        className="pointer-events-none absolute inset-0 section-ambient-glow"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
         <AnimateOnScroll>
           <div className="mb-14 text-center md:mb-16">
             {eyebrow ? (

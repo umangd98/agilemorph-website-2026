@@ -67,10 +67,15 @@ export function PartnersSection({
 
   return (
     <section
-      className="overflow-hidden border-y border-border bg-surface py-section-sm"
+      className="relative overflow-hidden border-y border-border bg-surface py-section-sm"
       aria-labelledby="partners-heading"
     >
-      <Container>
+      <div
+        className="pointer-events-none absolute inset-0 section-ambient-glow opacity-70"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
         <AnimateOnScroll className="mb-10 text-center">
           <p className="mb-3 font-body text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
             {heading}
