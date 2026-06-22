@@ -21,7 +21,6 @@ const SERVICE_PAGE_MAP = [
   { wpSlug: "website-development", sanitySlug: "website-development", wpId: 2462, title: "Website Development" },
   { wpSlug: "digital-marketing-services", sanitySlug: "digital-marketing", wpId: 2571, title: "Digital Marketing Services" },
   { wpSlug: "virtual-assistance-services", sanitySlug: "virtual-assistance", wpId: 2554, title: "Virtual Assistance Services" },
-  { wpSlug: "book-keeping-services", sanitySlug: "bookkeeping", wpId: 2528, title: "Book keeping Services" },
 ];
 
 function loadEnv() {
@@ -374,7 +373,6 @@ async function buildServicePagesFromWp(manifest) {
       "website-development": "2025/03/Website-Design-and-Development.svg",
       "digital-marketing": "2025/03/Social-Media-Marketing.svg",
       "virtual-assistance": "2025/03/Administrative-Support.svg",
-      bookkeeping: "2025/03/Accurate-Bookkeeping.svg",
     };
 
     servicePages.push({

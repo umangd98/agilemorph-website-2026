@@ -3,7 +3,7 @@ export const heroData = {
   body: "We put AI at the core of how your business operates, with",
   highlightTags: [
     { label: "AI Automation", href: "/services/ai-automation" },
-    { label: "Web Development", href: "/services/web-development" },
+    { label: "Website", href: "/services/website-development" },
     { label: "AI Agents", href: "/services/ai-agents" },
   ],
   bodySuffix:
@@ -171,13 +171,6 @@ export const servicesCallout = {
 
 export const additionalServices = [
   {
-    id: "web-dev",
-    title: "Web Development",
-    description:
-      "Python, Django, FastAPI, and React builds that hold up in production.",
-    href: "/services/web-development",
-  },
-  {
     id: "digital-marketing",
     title: "Digital Marketing",
     description: "SEO, content, and social strategy driven by data, not guesswork.",
@@ -190,9 +183,10 @@ export const additionalServices = [
     href: "/services/virtual-assistance",
   },
   {
-    id: "bookkeeping",
-    title: "Bookkeeping",
-    description: "Reliable, partially automated financial management you can trust.",
-    href: "/services/bookkeeping",
+    id: "website",
+    title: "Website",
+    description:
+      "Python, Django, FastAPI, and React builds that hold up in production.",
+    href: "/services/website-development",
   },
 ];

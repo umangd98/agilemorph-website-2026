@@ -1,9 +1,9 @@
 import { Navbar } from "@/components/Navbar";
-import { getServicePages, toServiceNavLink } from "@/lib/services";
+import { buildServiceNavLinks, getServicePages } from "@/lib/services";
 
 export async function SiteNavbar() {
   const pages = await getServicePages();
-  const serviceLinks = pages.map(toServiceNavLink);
+  const serviceLinks = buildServiceNavLinks(pages);
 
   return <Navbar serviceLinks={serviceLinks} />;
 }

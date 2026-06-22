@@ -21,7 +21,7 @@ import type { Homepage } from "@/sanity/types";
 const fallbackMetadata: Metadata = {
   title: "AGILEMORPH | Digital Accelerators",
   description:
-    "We revolutionize efficiency with AI Automation, craft impactful experiences through Web Development, and amplify influence via Digital Marketing.",
+    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {

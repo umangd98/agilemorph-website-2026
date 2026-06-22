@@ -10,10 +10,17 @@ import {
   ServiceWhyUsSection,
   TechnologiesSection,
 } from "@/components/sections";
+import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
 import {
   getAiAutomationSubService,
   getAiAutomationSubServiceSlugs,
 } from "@/data/ai-automation-services";
+import {
+  getServiceLabel,
+  isExcludedServiceSlug,
+  PRIMARY_SERVICE_CAPABILITIES,
+  PRIMARY_SERVICE_SLUG,
+} from "@/lib/services";
 import { seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
 import { allServiceSlugsQuery, servicePageQuery } from "@/sanity/queries";
@@ -33,7 +40,9 @@ export async function generateStaticParams() {
   ]);
 
   const slugSet = new Set([
-    ...(slugs ?? []).map(({ slug }) => slug),
+    ...(slugs ?? [])
+      .map(({ slug }) => slug)
+      .filter((slug) => !isExcludedServiceSlug(slug)),
     ...subSlugs,
   ]);
 
@@ -44,6 +53,11 @@ export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  if (isExcludedServiceSlug(slug)) {
+    return { title: "Not Found" };
+  }
+
   const subService = getAiAutomationSubService(slug);
 
   if (subService) {
@@ -60,13 +74,18 @@ export async function generateMetadata({
   });
 
   return seoToMetadata(servicePage?.seo, {
-    title: servicePage?.title ?? "Service",
+    title: getServiceLabel(slug, servicePage?.title ?? "Service"),
     description: servicePage?.description,
   });
 }
 
 export default async function ServicePageRoute({ params }: ServicePageProps) {
   const { slug } = await params;
+
+  if (isExcludedServiceSlug(slug)) {
+    notFound();
+  }
+
   const subService = getAiAutomationSubService(slug);
 
   if (subService) {
@@ -110,22 +129,32 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
     notFound();
   }
 
+  const isAiAutomation = slug === PRIMARY_SERVICE_SLUG;
+  const pageTitle = getServiceLabel(slug, servicePage.title);
+
   return (
     <>
       <SiteNavbar />
       <main className="flex-1">
         <ServiceHeroSection
           slug={slug}
-          title={servicePage.title}
+          title={pageTitle}
           tagline={servicePage.tagline}
           description={servicePage.description}
           heroImage={servicePage.heroImage}
           heroCta={servicePage.heroCta}
         />
-        <CapabilitiesSection
-          heading={servicePage.capabilitiesHeading}
-          capabilities={servicePage.capabilities}
-        />
+        {isAiAutomation ? (
+          <AiAutomationCapabilitiesGrid
+            heading={servicePage.capabilitiesHeading ?? "Core Capabilities"}
+            capabilities={PRIMARY_SERVICE_CAPABILITIES}
+          />
+        ) : (
+          <CapabilitiesSection
+            heading={servicePage.capabilitiesHeading}
+            capabilities={servicePage.capabilities}
+          />
+        )}
         <ServiceWhyUsSection
           heading={servicePage.whyUsHeading}
           items={servicePage.whyUs}
