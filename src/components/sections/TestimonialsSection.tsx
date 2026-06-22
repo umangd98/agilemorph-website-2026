@@ -108,12 +108,8 @@ export function TestimonialsSection({
       `}</style>
 
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 section-ambient-glow"
         aria-hidden
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 15% 20%, rgba(34,197,94,0.08) 0%, transparent 55%), radial-gradient(ellipse 60% 45% at 85% 75%, rgba(6,182,212,0.06) 0%, transparent 50%)",
-        }}
       />
 
       <Container className="relative">

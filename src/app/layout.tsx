@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} h-full`}
+      className={`${headingFont.variable} ${bodyFont.variable} dark h-full`}
       suppressHydrationWarning
     >
       <head>

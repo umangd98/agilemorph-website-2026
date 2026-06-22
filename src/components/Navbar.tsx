@@ -62,20 +62,20 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
   const isHome = pathname === "/";
   const heroAtTop = isHome && !scrolled;
-  // Dark transparent nav only on homepage hero when site theme is dark
-  const darkMode = heroAtTop && resolvedTheme === "dark";
+  const isDarkTheme = resolvedTheme === "dark";
+  const inverseHeader = heroAtTop;
 
   return (
     <>
       <header
         className={`site-header sticky top-0 z-50 transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
-        data-header={darkMode ? "inverse" : undefined}
+        data-header={inverseHeader ? "inverse" : undefined}
       >
         <Container>
           <nav className="flex h-[68px] items-center justify-between" aria-label="Main navigation">
 
             {/* Logo */}
-            <Logo onDarkSurface={darkMode} priority />
+            <Logo priority />
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 md:flex">
@@ -91,10 +91,10 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                         aria-expanded={servicesOpen}
                         className={`flex items-center gap-1.5 rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
                           servicesOpen
-                            ? darkMode
+                            ? isDarkTheme
                               ? "bg-white/10 text-white"
                               : "bg-primary/8 text-primary"
-                            : darkMode
+                            : isDarkTheme
                             ? "text-slate-300 hover:bg-white/8 hover:text-white"
                             : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
@@ -173,10 +173,10 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                       href={link.href}
                       className={`relative rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
                         isActive
-                          ? darkMode
+                          ? isDarkTheme
                             ? "bg-white/12 text-white"
                             : "bg-primary/8 text-primary"
-                          : darkMode
+                          : isDarkTheme
                           ? "text-slate-300 hover:bg-white/8 hover:text-white"
                           : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       }`}
@@ -193,7 +193,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
             {/* CTA + theme */}
             <div className="hidden items-center gap-2 md:flex">
-              <ThemeToggle inverse={darkMode} />
+              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95"
@@ -208,11 +208,11 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
             {/* Mobile toggle */}
             <div className="flex items-center gap-1 md:hidden">
-              <ThemeToggle inverse={darkMode} />
+              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
             <button
               type="button"
               className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
-                darkMode
+                isDarkTheme
                   ? "text-white hover:bg-white/10"
                   : "text-foreground hover:bg-muted"
               }`}

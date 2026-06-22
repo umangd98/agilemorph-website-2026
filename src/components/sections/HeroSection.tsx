@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
-import { HERO_BG, HERO_GRID_STYLE, HERO_SECTION_BG, HeroImagePanel } from "@/components/hero-animations/HeroImagePanel";
+import { HeroShowcaseVisual } from "@/components/hero-animations/HeroShowcaseVisual";
 import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
@@ -61,7 +61,7 @@ function StarRating() {
         <defs>
           <linearGradient id="hero-star-partial">
             <stop offset="90%" stopColor="#facc15" />
-            <stop offset="90%" stopColor="#334155" />
+            <stop offset="90%" stopColor="var(--color-muted-foreground)" />
           </linearGradient>
         </defs>
         <path d={starPath} fill="url(#hero-star-partial)" />
@@ -74,9 +74,8 @@ export function HeroSection({ hero }: HeroSectionProps) {
   const visible = useEntrance();
 
   const heroImageUrl = hero.image?.asset
-    ? urlForImage(hero.image).width(1200).auto("format").quality(90).url()
+    ? urlForImage(hero.image).width(900).auto("format").quality(85).url()
     : null;
-  const lqip = hero.image?.lqip;
   const heroImageAlt = hero.image?.alt ?? "";
 
   const words = hero.heading.split(" ");
@@ -85,17 +84,14 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-screen items-center overflow-hidden bg-background"
       aria-labelledby="hero-heading"
-      style={{
-        background: HERO_SECTION_BG,
-      }}
     >
       <div
         className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full"
         aria-hidden="true"
         style={{
-          background: "radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 65%)",
+          background: `radial-gradient(circle, var(--hero-orb-green) 0%, transparent 65%)`,
           filter: "blur(60px)",
           animation: "hero-orb 9s ease-in-out infinite",
         }}
@@ -104,7 +100,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
         className="pointer-events-none absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full"
         aria-hidden="true"
         style={{
-          background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 65%)",
+          background: `radial-gradient(circle, var(--hero-orb-cyan) 0%, transparent 65%)`,
           filter: "blur(70px)",
           animation: "hero-orb-2 11s ease-in-out infinite",
         }}
@@ -113,26 +109,15 @@ export function HeroSection({ hero }: HeroSectionProps) {
         className="pointer-events-none absolute right-[15%] top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full"
         aria-hidden="true"
         style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 65%)",
+          background: `radial-gradient(circle, var(--hero-orb-violet) 0%, transparent 65%)`,
           filter: "blur(80px)",
           animation: "hero-orb 14s ease-in-out infinite reverse",
         }}
       />
 
-      {heroImageUrl ? (
-        <HeroImagePanel
-          imageUrl={heroImageUrl}
-          alt={heroImageAlt}
-          lqip={lqip}
-          visible={visible}
-        />
-      ) : null}
-
-      {/* Grid on top of image so both halves share the same texture */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1]"
+        className="site-grid-pattern pointer-events-none absolute inset-0 z-[1]"
         aria-hidden="true"
-        style={HERO_GRID_STYLE}
       />
 
       <Container className="relative z-10 py-28 lg:py-36">
@@ -145,7 +130,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             <AnimItem visible={visible} delay={100}>
               <h1
                 id="hero-heading"
-                className="mb-7 font-heading text-5xl font-extrabold leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
+                className="mb-7 font-heading text-5xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]"
               >
                 {headingMain && (
                   <>
@@ -153,25 +138,13 @@ export function HeroSection({ hero }: HeroSectionProps) {
                     <br />
                   </>
                 )}
-                <span
-                  style={{
-                    background: "linear-gradient(135deg, #4ade80 0%, #22c55e 30%, #10b981 65%, #06b6d4 100%)",
-                    backgroundSize: "200% auto",
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    color: "transparent",
-                    animation: "text-shine 5s linear infinite",
-                  }}
-                >
-                  {headingAccent}
-                </span>
+                <span className="text-accent-gradient">{headingAccent}</span>
               </h1>
             </AnimItem>
 
             {hero.tagline && (
               <AnimItem visible={visible} delay={200} className="mb-10">
-                <p className="font-body text-[1.08rem] leading-relaxed text-slate-300/90">
+                <p className="font-body text-[1.08rem] leading-relaxed text-muted-foreground">
                   {hero.tagline}
                 </p>
               </AnimItem>
@@ -184,21 +157,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                     href={hero.ctaPrimary.href}
                     target={hero.ctaPrimary.openInNewTab ? "_blank" : undefined}
                     rel={hero.ctaPrimary.openInNewTab ? "noopener noreferrer" : undefined}
-                    className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 font-body text-sm font-bold text-white transition-all duration-300 active:scale-95"
-                    style={{
-                      background: "linear-gradient(135deg, #22c55e 0%, #16a34a 60%, #15803d 100%)",
-                      boxShadow: "0 8px 32px rgba(34,197,94,0.35), 0 2px 8px rgba(34,197,94,0.2)",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow =
-                        "0 12px 40px rgba(34,197,94,0.5), 0 4px 12px rgba(34,197,94,0.3)";
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow =
-                        "0 8px 32px rgba(34,197,94,0.35), 0 2px 8px rgba(34,197,94,0.2)";
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    }}
+                    className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-[0_8px_32px_rgba(34,197,94,0.35)] transition-all duration-300 hover:bg-primary-dark hover:shadow-[0_12px_40px_rgba(34,197,94,0.5)] active:scale-95"
                   >
                     <span
                       className="pointer-events-none absolute inset-0 -translate-x-full skew-x-12 bg-white/15 transition-transform duration-500 group-hover:translate-x-full"
@@ -213,7 +172,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                     href={hero.ctaSecondary.href}
                     target={hero.ctaSecondary.openInNewTab ? "_blank" : undefined}
                     rel={hero.ctaSecondary.openInNewTab ? "noopener noreferrer" : undefined}
-                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-body text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 active:scale-95"
+                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-border bg-muted/60 px-8 py-4 font-body text-sm font-bold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 active:scale-95 dark:border-[var(--glass-border)] dark:bg-[var(--glass-bg)]"
                   >
                     <Play size={13} className="fill-current opacity-80" />
                     {hero.ctaSecondary.label}
@@ -225,23 +184,30 @@ export function HeroSection({ hero }: HeroSectionProps) {
             <AnimItem visible={visible} delay={460} className="mt-12">
               <div className="flex items-center gap-2">
                 <StarRating />
-                <span className="font-body text-xs font-semibold text-slate-400">
+                <span className="font-body text-xs font-semibold text-muted-foreground">
                   4.9 · Rated by clients worldwide
                 </span>
               </div>
             </AnimItem>
           </div>
 
-          <div className="hidden lg:block" aria-hidden="true" />
+          {heroImageUrl ? (
+            <AnimItem visible={visible} delay={400} className="mt-8 hidden lg:block lg:mt-0">
+              <HeroShowcaseVisual
+                imageUrl={heroImageUrl}
+                alt={heroImageAlt}
+                visible={visible}
+              />
+            </AnimItem>
+          ) : (
+            <div className="hidden lg:block" aria-hidden="true" />
+          )}
         </div>
       </Container>
 
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-24"
+        className="hero-bottom-fade pointer-events-none absolute bottom-0 left-0 right-0 h-24"
         aria-hidden="true"
-        style={{
-          background: `linear-gradient(to bottom, transparent, ${HERO_BG.deep})`,
-        }}
       />
     </section>
   );

@@ -27,7 +27,7 @@ export function ServiceHeroMedia({
   }
 
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-[#0b1628]">
+    <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-surface">
       {isSvg ? (
         // Animated SVGs only play their embedded CSS when served as a raw
         // <img> src — Next/Image would optimize/rasterize and freeze them.

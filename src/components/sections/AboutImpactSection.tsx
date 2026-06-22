@@ -56,7 +56,7 @@ export function AboutImpactSection({
                 {button ? (
                   <Link
                     href={button.href}
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 font-body text-sm font-bold text-foreground shadow-lg transition-all hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-full bg-background px-7 py-3 font-body text-sm font-bold text-foreground shadow-lg transition-all hover:-translate-y-0.5"
                   >
                     {button.label}
                     <ArrowUpRight size={16} />

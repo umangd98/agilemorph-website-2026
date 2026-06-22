@@ -18,26 +18,8 @@ export function StatsSection({
       className="relative overflow-hidden bg-footer py-section max-sm:py-section-sm"
       aria-labelledby="stats-heading"
     >
-      {/* Background grid */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px)`,
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      {/* Center glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(34,197,94,0.10) 0%, transparent 65%)",
-        }}
-      />
+      <div className="stats-section-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="stats-section-glow pointer-events-none absolute inset-0" aria-hidden="true" />
 
       <Container className="relative z-10">
         <AnimateOnScroll className="mb-16 text-center">
@@ -48,7 +30,7 @@ export function StatsSection({
           ) : null}
           <h2
             id="stats-heading"
-            className="font-heading text-4xl font-extrabold text-white sm:text-5xl"
+            className="font-heading text-4xl font-extrabold text-foreground sm:text-5xl"
           >
             {heading}
           </h2>
@@ -61,11 +43,11 @@ export function StatsSection({
               delay={index * 60}
               className="h-full"
             >
-              <div className="group flex h-full min-h-[7.5rem] flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10">
+              <div className="group flex h-full min-h-[7.5rem] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-muted/50 p-5 text-center backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10">
                 <span className="font-heading text-3xl font-extrabold text-primary sm:text-4xl">
                   {stat.value}
                 </span>
-                <span className="line-clamp-2 max-w-[10rem] font-body text-[10px] font-bold uppercase leading-snug tracking-widest text-slate-400">
+                <span className="line-clamp-2 max-w-[10rem] font-body text-[10px] font-bold uppercase leading-snug tracking-widest text-muted-foreground">
                   {stat.label}
                 </span>
               </div>
