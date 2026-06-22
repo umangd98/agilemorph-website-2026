@@ -95,7 +95,16 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   hero {
     badge,
     heading,
-    tagline,
+    headingAccent,
+    tagline[]{
+      ...,
+      markDefs[]{
+        ...,
+        _type == "link" => {
+          href
+        }
+      }
+    },
     ctaPrimary ${ctaProjection},
     ctaSecondary ${ctaProjection},
     image ${imageProjection}

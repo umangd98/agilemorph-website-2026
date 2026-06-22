@@ -30,6 +30,17 @@ export const CHEVRON_ARMS = [
   { d: "M 48 482 L 293 340 L 538 482", delay: 1.15 },
 ] as const;
 
+/** Chevron rows ordered top → bottom for sequential rise-in animation. */
+export const CHEVRON_ROWS = [
+  { id: "row-top", armIndices: [0], delay: 0 },
+  { id: "row-upper", armIndices: [1], delay: 0.18 },
+  { id: "row-sides", armIndices: [2, 3], delay: 0.32 },
+  { id: "row-mid", armIndices: [4], delay: 0.48 },
+  { id: "row-lower", armIndices: [5], delay: 0.64 },
+  { id: "row-base", armIndices: [7], delay: 0.8 },
+  { id: "row-tip", armIndices: [6], delay: 0.96 },
+] as const;
+
 export const CHEVRON_PULSE_PATHS = [
   "M 1 171 L 293 2 L 585 171",
   "M 1 311 L 293 144 L 585 311",
@@ -47,6 +58,10 @@ export const CHEVRON_NODES = [
   { cx: 218, cy: 582 },
   { cx: 367, cy: 582 },
 ] as const;
+
+/** Simplified chevron silhouette for photo clipping (outer boundary). */
+export const CHEVRON_INTERIOR_CLIP =
+  "M293 2 L585 171 L585 311 L538 482 L367 582 L293 538 L218 582 L48 482 L1 366 L1 311 L1 171 Z";
 
 /** Slightly inset clip path (~6%) so photo edges stay inside the frame. */
 export const CHEVRON_CLIP_TRANSFORM = "translate(293 292) scale(0.94) translate(-293 -292)";

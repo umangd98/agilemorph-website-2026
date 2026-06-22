@@ -9,6 +9,7 @@ import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
 import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { CtaAction } from "@/components/CtaAction";
 import { HeroShowcaseVisual } from "@/components/hero-animations/HeroShowcaseVisual";
+import { HeroTagline } from "@/components/sections/HeroTagline";
 import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
@@ -79,10 +80,10 @@ export function HeroSection({ hero }: HeroSectionProps) {
     ? urlForImage(hero.image).width(900).auto("format").quality(85).url()
     : null;
   const heroImageAlt = hero.image?.alt ?? "";
-
-  const words = hero.heading.split(" ");
-  const headingMain = words.slice(0, -2).join(" ");
-  const headingAccent = words.slice(-2).join(" ");
+  const headingLines = hero.heading
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
 
   return (
     <section
@@ -92,7 +93,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
       <PageHeroBackground tall />
 
       <Container className="relative z-10 py-28 lg:py-36">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-16 overflow-visible lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
           <div className="max-w-xl">
             <AnimItem visible={visible} delay={0} className="mb-8">
               <ClaudePartnerBadge />
@@ -103,23 +104,26 @@ export function HeroSection({ hero }: HeroSectionProps) {
                 id="hero-heading"
                 className="mb-7 font-heading text-5xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]"
               >
-                {headingMain && (
+                {headingLines.map((line, index) => (
+                  <span key={line}>
+                    {index > 0 ? <br /> : null}
+                    {line}
+                  </span>
+                ))}
+                {hero.headingAccent ? (
                   <>
-                    {headingMain}
                     <br />
+                    <span className="text-accent-gradient">{hero.headingAccent}</span>
                   </>
-                )}
-                <span className="text-accent-gradient">{headingAccent}</span>
+                ) : null}
               </h1>
             </AnimItem>
 
-            {hero.tagline && (
+            {hero.tagline?.length ? (
               <AnimItem visible={visible} delay={200} className="mb-10">
-                <p className="font-body text-[1.08rem] leading-relaxed text-muted-foreground">
-                  {hero.tagline}
-                </p>
+                <HeroTagline value={hero.tagline} />
               </AnimItem>
-            )}
+            ) : null}
 
             <AnimItem visible={visible} delay={320}>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -164,7 +168,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
           </div>
 
           {heroImageUrl ? (
-            <AnimItem visible={visible} delay={400} className="mt-8 hidden lg:block lg:mt-0">
+            <AnimItem
+              visible={visible}
+              delay={400}
+              className="mt-8 hidden overflow-visible lg:mt-0 lg:flex lg:justify-end"
+            >
               <HeroShowcaseVisual
                 imageUrl={heroImageUrl}
                 alt={heroImageAlt}

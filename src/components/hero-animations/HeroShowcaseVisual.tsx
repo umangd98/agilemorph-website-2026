@@ -1,13 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
+import { useTheme } from "@/components/ThemeProvider";
 import {
   CHEVRON_ARMS,
   CHEVRON_CLIP_TRANSFORM,
-  CHEVRON_FRAME_FILL,
+  CHEVRON_INTERIOR_CLIP,
   CHEVRON_NODES,
-  CHEVRON_PULSE_PATHS,
+  CHEVRON_ROWS,
 } from "@/components/hero-animations/hero-chevron-paths";
 
 const AMBIENT_PARTICLES = [
@@ -16,9 +17,6 @@ const AMBIENT_PARTICLES = [
   { cx: 140, cy: 420, r: 1.2, delay: 0.8 },
   { cx: 460, cy: 460, r: 1.8, delay: 1.2 },
   { cx: 293, cy: 280, r: 1, delay: 0.6 },
-  { cx: 420, cy: 220, r: 1.4, delay: 1.5 },
-  { cx: 180, cy: 180, r: 1.6, delay: 0.2 },
-  { cx: 520, cy: 380, r: 1.1, delay: 1.8 },
 ] as const;
 
 function useReducedMotion() {
@@ -33,91 +31,56 @@ function useReducedMotion() {
   return reduced;
 }
 
-function useParallaxEnabled() {
-  const [enabled, setEnabled] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
-    const update = () => setEnabled(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return enabled;
-}
-
 type HeroShowcaseVisualProps = {
   imageUrl?: string | null;
   alt?: string;
-  visible: boolean;
+  visible?: boolean;
 };
 
 export function HeroShowcaseVisual({
   imageUrl,
-  alt = "",
-  visible,
+  alt = "Team collaborating with AI-powered digital tools, framed by an animated upward chevron",
+  visible = true,
 }: HeroShowcaseVisualProps) {
-  const reducedMotion = useReducedMotion();
-  const parallaxEnabled = useParallaxEnabled();
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const uid = useId().replace(/:/g, "");
-  const clipId = `heroChevronClip-${uid}`;
-  const strokeGradId = `hero-chevron-stroke-${uid}`;
-  const fillGradId = `hero-chevron-fill-${uid}`;
-  const glowFilterId = `hero-chevron-glow-${uid}`;
-  const holoGradId = `hero-holo-${uid}`;
+  const { resolvedTheme } = useTheme();
+  const reducedMotion = useReducedMotion();
+  const isDark = resolvedTheme === "dark";
+  const shouldAnimate = visible && !reducedMotion;
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!parallaxEnabled || reducedMotion) return;
-      const rect = e.currentTarget.getBoundingClientRect();
-      setTilt({
-        x: ((e.clientX - rect.left) / rect.width - 0.5) * 14,
-        y: ((e.clientY - rect.top) / rect.height - 0.5) * 14,
-      });
-    },
-    [parallaxEnabled, reducedMotion],
-  );
+  const clipId = `${uid}-chevron-clip`;
+  const strokeGradId = `${uid}-stroke`;
+  const fillGradId = `${uid}-fill`;
+  const holoGradId = `${uid}-holo`;
+  const glowFilterId = `${uid}-glow-filter`;
+  const edgeVignetteId = `${uid}-vignette-edge`;
+  const topVignetteId = `${uid}-vignette-top`;
 
-  const ariaLabel =
-    alt ||
-    "Team collaborating with AI-powered digital tools, framed by an animated upward chevron";
-
-  const motion = !reducedMotion;
+  const edgeVignetteOpacity = isDark ? 0.32 : 0.08;
+  const topVignetteOpacity = isDark ? 0.18 : 0.04;
 
   return (
     <div
-      className={`relative ml-auto aspect-square w-[min(88vw,360px)] shrink-0 xl:w-[400px] ${
-        visible && motion ? "hero-showcase-in" : visible ? "opacity-100" : "opacity-0"
+      className={`relative ml-auto aspect-square w-full max-w-[min(100%,520px)] lg:max-w-none lg:w-[118%] lg:max-w-[720px] xl:max-w-[820px] 2xl:max-w-[900px] ${
+        shouldAnimate ? "hero-showcase-in" : visible ? "opacity-100" : "opacity-0"
       }`}
       role="img"
-      aria-label={ariaLabel}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+      aria-label={alt}
     >
-      {motion && (
+      {shouldAnimate ? (
         <>
           <div
-            className="hero-showcase-orb-a pointer-events-none absolute -left-8 top-1/4 h-32 w-32 rounded-full"
+            className="hero-showcase-orb-a pointer-events-none absolute -left-10 top-1/4 h-40 w-40 rounded-full"
             aria-hidden
           />
           <div
-            className="hero-showcase-orb-b pointer-events-none absolute -right-6 bottom-1/4 h-40 w-40 rounded-full"
+            className="hero-showcase-orb-b pointer-events-none absolute -right-10 bottom-1/4 h-48 w-48 rounded-full"
             aria-hidden
           />
         </>
-      )}
+      ) : null}
 
-      <div
-        className="hero-showcase-stage relative h-full overflow-hidden rounded-3xl bg-background shadow-[0_24px_80px_rgba(0,0,0,0.35)] dark:shadow-[0_24px_80px_rgba(0,0,0,0.5)]"
-        style={{
-          transform:
-            parallaxEnabled && motion
-              ? `perspective(900px) rotateY(${tilt.x * 0.35}deg) rotateX(${-tilt.y * 0.35}deg)`
-              : undefined,
-          transition: "transform 0.25s ease-out",
-        }}
-      >
-        <div className={`relative z-[2] h-full ${motion ? "hero-chevron-float" : ""}`}>
+      <div className={`relative h-full ${shouldAnimate ? "hero-chevron-float" : ""}`}>
           <svg
             viewBox="0 0 586 584"
             className="h-full w-full"
@@ -126,61 +89,46 @@ export function HeroShowcaseVisual({
           >
             <defs>
               <clipPath id={clipId}>
-                <path d={CHEVRON_FRAME_FILL} transform={CHEVRON_CLIP_TRANSFORM} />
+                <path d={CHEVRON_INTERIOR_CLIP} transform={CHEVRON_CLIP_TRANSFORM} />
               </clipPath>
+
               <linearGradient id={strokeGradId} x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#06b6d4">
-                  {motion && (
-                    <animate
-                      attributeName="stop-color"
-                      values="#06b6d4;#22c55e;#4ade80;#06b6d4"
-                      dur="5s"
-                      repeatCount="indefinite"
-                    />
-                  )}
-                </stop>
-                <stop offset="50%" stopColor="#4ade80">
-                  {motion && (
-                    <animate
-                      attributeName="stop-color"
-                      values="#4ade80;#06b6d4;#22c55e;#4ade80"
-                      dur="5s"
-                      repeatCount="indefinite"
-                    />
-                  )}
-                </stop>
-                <stop offset="100%" stopColor="#22c55e">
-                  {motion && (
-                    <animate
-                      attributeName="stop-color"
-                      values="#22c55e;#4ade80;#06b6d4;#22c55e"
-                      dur="5s"
-                      repeatCount="indefinite"
-                    />
-                  )}
-                </stop>
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="50%" stopColor="#4ade80" />
+                <stop offset="100%" stopColor="#22c55e" />
               </linearGradient>
+
               <linearGradient id={fillGradId} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0A9D86" stopOpacity="0.16" />
-                <stop offset="50%" stopColor="#5FD06A" stopOpacity="0.1" />
-                <stop offset="100%" stopColor="#22c55e" stopOpacity="0.07" />
+                <stop offset="0%" stopColor="#0A9D86" stopOpacity="0.12" />
+                <stop offset="50%" stopColor="#5FD06A" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#22c55e" stopOpacity="0.05" />
               </linearGradient>
+
               <linearGradient id={holoGradId} x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#22c55e" stopOpacity="0" />
-                <stop offset="45%" stopColor="#4ade80" stopOpacity="0.35" />
-                <stop offset="55%" stopColor="#06b6d4" stopOpacity="0.25" />
+                <stop offset="45%" stopColor="#4ade80" stopOpacity="0.28" />
+                <stop offset="55%" stopColor="#06b6d4" stopOpacity="0.2" />
                 <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
               </linearGradient>
-              <radialGradient id={`${uid}-vignette-r`} cx="50%" cy="38%" r="65%">
-                <stop offset="25%" stopColor="var(--color-background)" stopOpacity="0" />
-                <stop offset="100%" stopColor="var(--color-background)" stopOpacity="0.85" />
+
+              <radialGradient id={edgeVignetteId} cx="50%" cy="42%" r="68%">
+                <stop offset="30%" stopColor="var(--color-background)" stopOpacity="0" />
+                <stop
+                  offset="100%"
+                  stopColor="var(--color-background)"
+                  stopOpacity={edgeVignetteOpacity}
+                />
               </radialGradient>
-              <linearGradient id={`${uid}-vignette-b`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--color-background)" stopOpacity="0.55" />
-                <stop offset="22%" stopColor="var(--color-background)" stopOpacity="0" />
-                <stop offset="72%" stopColor="var(--color-footer)" stopOpacity="0" />
-                <stop offset="100%" stopColor="var(--color-footer)" stopOpacity="0.7" />
+
+              <linearGradient id={topVignetteId} x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="0%"
+                  stopColor="var(--color-background)"
+                  stopOpacity={topVignetteOpacity}
+                />
+                <stop offset="40%" stopColor="var(--color-background)" stopOpacity="0" />
               </linearGradient>
+
               <filter id={glowFilterId} x="-30%" y="-30%" width="160%" height="160%">
                 <feGaussianBlur stdDeviation="5" result="blur" />
                 <feMerge>
@@ -190,29 +138,36 @@ export function HeroShowcaseVisual({
               </filter>
             </defs>
 
+            {/* Sanity cover image inside chevron clip */}
             {imageUrl ? (
               <g clipPath={`url(#${clipId})`}>
-                <image
-                  href={imageUrl}
-                  x="-32"
-                  y="-32"
-                  width="650"
-                  height="648"
-                  preserveAspectRatio="xMidYMid slice"
-                  className={motion ? "hero-showcase-photo" : undefined}
-                />
-                {motion && (
+                <foreignObject
+                  x="0"
+                  y="0"
+                  width="586"
+                  height="584"
+                  xmlns="http://www.w3.org/1999/xhtml"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imageUrl}
+                    alt=""
+                    className={`h-full w-full object-cover object-center ${shouldAnimate ? "hero-showcase-photo-static" : ""}`}
+                    style={{ display: "block", width: "100%", height: "100%" }}
+                  />
+                </foreignObject>
+                <rect width="586" height="584" fill={`url(#${fillGradId})`} opacity={isDark ? 0.06 : 0.05} />
+                <rect width="586" height="584" fill={`url(#${edgeVignetteId})`} />
+                <rect width="586" height="584" fill={`url(#${topVignetteId})`} />
+                {shouldAnimate ? (
                   <rect
                     width="586"
                     height="584"
                     fill={`url(#${holoGradId})`}
                     className="hero-holo-sweep"
                   />
-                )}
-                <rect width="586" height="584" fill={`url(#${fillGradId})`} opacity="0.3" />
-                <rect width="586" height="584" fill={`url(#${uid}-vignette-r)`} />
-                <rect width="586" height="584" fill={`url(#${uid}-vignette-b)`} />
-                {motion && (
+                ) : null}
+                {shouldAnimate ? (
                   <rect
                     width="586"
                     height="584"
@@ -220,159 +175,119 @@ export function HeroShowcaseVisual({
                     opacity="0.05"
                     className="hero-showcase-scan"
                   />
-                )}
+                ) : null}
               </g>
-            ) : null}
+            ) : (
+              <g clipPath={`url(#${clipId})`}>
+                <rect width="586" height="584" fill={`url(#${fillGradId})`} />
+              </g>
+            )}
 
-            {motion &&
-              AMBIENT_PARTICLES.map(({ cx, cy, r, delay }) => (
+            {shouldAnimate
+              ? AMBIENT_PARTICLES.map(({ cx, cy, r, delay }) => (
+                  <circle
+                    key={`${cx}-${cy}`}
+                    cx={cx}
+                    cy={cy}
+                    r={r}
+                    fill="#4ade80"
+                    className="hero-showcase-particle"
+                    style={{ animationDelay: `${delay}s` }}
+                  />
+                ))
+              : null}
+
+            {/* Chevron rows rise in from bottom, top row first */}
+            {CHEVRON_ROWS.map((row) => (
+              <g
+                key={row.id}
+                className={shouldAnimate ? "hero-chevron-row" : undefined}
+                style={shouldAnimate ? { animationDelay: `${row.delay}s` } : undefined}
+              >
+                {row.armIndices.map((armIndex) => {
+                  const arm = CHEVRON_ARMS[armIndex];
+                  const strokeWidth = 2.5;
+                  return (
+                    <g key={arm.d}>
+                      {shouldAnimate ? (
+                        <path
+                          d={arm.d}
+                          fill="none"
+                          stroke={`url(#${strokeGradId})`}
+                          strokeWidth={strokeWidth + 6}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          opacity="0.2"
+                          filter={`url(#${glowFilterId})`}
+                          className="hero-chevron-glow"
+                          style={{ animationDelay: `${row.delay + 0.15}s` }}
+                        />
+                      ) : null}
+                      <path
+                        d={arm.d}
+                        fill="none"
+                        stroke={`url(#${strokeGradId})`}
+                        strokeWidth={strokeWidth}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={shouldAnimate ? "hero-chevron-segment" : undefined}
+                        style={
+                          shouldAnimate
+                            ? {
+                                animationDelay: `${row.delay + 0.1}s, ${row.delay + 1.5}s`,
+                              }
+                            : undefined
+                        }
+                      />
+                      {shouldAnimate ? (
+                        <path
+                          d={arm.d}
+                          fill="none"
+                          stroke={`url(#${strokeGradId})`}
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          opacity="0.45"
+                          className="hero-stroke-energy"
+                          style={{ animationDelay: `${row.delay + 1.4}s` }}
+                        />
+                      ) : null}
+                    </g>
+                  );
+                })}
+              </g>
+            ))}
+
+            {CHEVRON_NODES.map((node, index) => {
+              const nodeRadius = 2.5;
+              return (
+              <g key={`${node.cx}-${node.cy}`}>
+                {shouldAnimate ? (
+                  <circle
+                    cx={node.cx}
+                    cy={node.cy}
+                    r={nodeRadius + 4}
+                    fill="none"
+                    stroke="#4ade80"
+                    strokeWidth="1"
+                    opacity="0.35"
+                    className="hero-chevron-node-ring"
+                    style={{ animationDelay: `${0.55 + index * 0.1}s` }}
+                  />
+                ) : null}
                 <circle
-                  key={`${cx}-${cy}`}
-                  cx={cx}
-                  cy={cy}
-                  r={r}
+                  cx={node.cx}
+                  cy={node.cy}
+                  r={nodeRadius}
                   fill="#4ade80"
-                  className="hero-showcase-particle"
-                  style={{ animationDelay: `${delay}s` }}
-                />
-              ))}
-
-            <path d={CHEVRON_FRAME_FILL} fill={`url(#${fillGradId})`} opacity="0.45" />
-
-            {CHEVRON_ARMS.map(({ d }) => (
-              <path
-                key={`glow-${d}`}
-                d={d}
-                fill="none"
-                stroke={`url(#${strokeGradId})`}
-                strokeWidth="6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                opacity="0.18"
-                filter={`url(#${glowFilterId})`}
-                className={motion ? "hero-chevron-glow" : undefined}
-              />
-            ))}
-
-            {CHEVRON_ARMS.map(({ d, delay }) => (
-              <path
-                key={`energy-${d}`}
-                d={d}
-                fill="none"
-                stroke={`url(#${strokeGradId})`}
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                opacity="0.45"
-                className={motion ? "hero-stroke-energy" : undefined}
-                style={motion ? { animationDelay: `${1.6 + delay}s` } : undefined}
-              />
-            ))}
-
-            {CHEVRON_ARMS.map(({ d, delay }) => (
-              <path
-                key={d}
-                d={d}
-                fill="none"
-                stroke={`url(#${strokeGradId})`}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={motion ? "hero-chevron-segment" : undefined}
-                style={
-                  motion ? { animationDelay: `${delay}s`, animationFillMode: "both" } : undefined
-                }
-              />
-            ))}
-
-            {CHEVRON_NODES.map(({ cx, cy }, i) => (
-              <g key={`${cx}-${cy}`}>
-                {motion && (
-                  <>
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r={14}
-                      fill="none"
-                      stroke="#22c55e"
-                      strokeWidth="0.75"
-                      className="hero-node-spark"
-                      style={{ animationDelay: `${1.4 + i * 0.15}s` }}
-                    />
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r={8}
-                      fill="none"
-                      stroke="#4ade80"
-                      strokeWidth="1"
-                      opacity="0.35"
-                      className="hero-chevron-node-ring"
-                      style={{ animationDelay: `${1.2 + i * 0.1}s` }}
-                    />
-                  </>
-                )}
-                <circle
-                  cx={cx}
-                  cy={cy}
-                  r={4}
-                  fill="#22c55e"
-                  filter={`url(#${glowFilterId})`}
-                  className={motion ? "hero-chevron-node" : undefined}
-                  style={motion ? { animationDelay: `${1.2 + i * 0.1}s` } : undefined}
+                  className={shouldAnimate ? "hero-chevron-node" : undefined}
+                  style={
+                    shouldAnimate ? { animationDelay: `${0.45 + index * 0.08}s` } : undefined
+                  }
                 />
               </g>
-            ))}
-
-            {motion &&
-              CHEVRON_ARMS.map((arm, i) => (
-                <g key={`pulse-group-${arm.d}`}>
-                  <circle r={4} fill="#4ade80" filter={`url(#${glowFilterId})`}>
-                    <animateMotion
-                      dur={`${2.8 + i * 0.35}s`}
-                      repeatCount="indefinite"
-                      path={arm.d}
-                      begin={`${i * 0.45}s`}
-                    />
-                  </circle>
-                  <circle r={2.5} fill="#06b6d4" opacity="0.85">
-                    <animateMotion
-                      dur={`${3.6 + i * 0.4}s`}
-                      repeatCount="indefinite"
-                      path={arm.d}
-                      begin={`${i * 0.45 + 1.4}s`}
-                    />
-                  </circle>
-                </g>
-              ))}
-
-            {motion &&
-              CHEVRON_PULSE_PATHS.map((path, i) => (
-                <circle
-                  key={`comet-${path}`}
-                  r={6}
-                  fill="#fff"
-                  opacity="0.9"
-                  filter={`url(#${glowFilterId})`}
-                >
-                  <animateMotion
-                    dur={`${4.2 + i}s`}
-                    repeatCount="indefinite"
-                    path={path}
-                    begin={`${i * 1.1}s`}
-                  />
-                  <animate
-                    attributeName="opacity"
-                    values="0;0.9;0.9;0"
-                    keyTimes="0;0.1;0.9;1"
-                    dur={`${4.2 + i}s`}
-                    repeatCount="indefinite"
-                    begin={`${i * 1.1}s`}
-                  />
-                </circle>
-              ))}
+            );})}
           </svg>
-        </div>
       </div>
     </div>
   );

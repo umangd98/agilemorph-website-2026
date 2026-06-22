@@ -63,6 +63,29 @@ function cta(label, href, openInNewTab = false) {
   return { _type: "ctaButton", label, href, openInNewTab };
 }
 
+function heroTaglineBlock(segments) {
+  const markDefs = [];
+  const children = segments.map((segment, index) => {
+    const key = `span${index}`;
+    if (typeof segment === "string") {
+      return { _type: "span", _key: key, text: segment, marks: [] };
+    }
+    const linkKey = `link${markDefs.length}`;
+    markDefs.push({ _key: linkKey, _type: "link", href: segment.href });
+    return { _type: "span", _key: key, text: segment.text, marks: [linkKey] };
+  });
+
+  return [
+    {
+      _type: "block",
+      _key: "heroTagline",
+      style: "normal",
+      markDefs,
+      children,
+    },
+  ];
+}
+
 function whyUsItem({
   title,
   description,
@@ -219,9 +242,19 @@ function buildHomepage(manifest) {
     _id: "homepage",
     _type: "homepage",
     hero: {
-      heading: "Let AI seamlessly elevate your brand.",
-      tagline:
-        "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
+      heading: "Cut the Overhead.\nReclaim Your Time.",
+      headingAccent: "Let AI Handle the Execution",
+      tagline: heroTaglineBlock([
+        "Bring absolute order to your operations with end-to-end ",
+        { text: "AI business automation", href: "/services" },
+        ". We architect your entire digital ecosystem, from integrating intelligent ",
+        { text: "AI agents", href: "/services/ai-agents" },
+        " to smart ",
+        { text: "automated content flow", href: "/services/digital-marketing" },
+        ". By upgrading your complete ",
+        { text: "business processes", href: "/services/workflow-automation" },
+        " from the ground up, we eliminate daily firefighting so you can lead with clarity.",
+      ]),
       ctaPrimary: cta("Get in Touch", "/contact"),
       ctaSecondary: cta("Explore Our Services", "/services"),
       image: imageRef(manifest, "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png", "AgileMorph hero"),

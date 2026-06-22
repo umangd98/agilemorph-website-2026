@@ -234,8 +234,10 @@ header[data-header="inverse"] {
   .hero-chevron-glow,
   .hero-chevron-node,
   .hero-chevron-node-ring,
+  .hero-chevron-row,
   .hero-showcase-in,
   .hero-showcase-photo,
+  .hero-showcase-photo-static,
   .hero-holo-sweep,
   .hero-showcase-scan,
   .hero-showcase-particle,
@@ -252,6 +254,17 @@ header[data-header="inverse"] {
     opacity: 1;
     stroke-dashoffset: 0;
     transform: none;
+  }
+}
+
+@keyframes hero-chevron-row-rise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -341,6 +354,13 @@ header[data-header="inverse"] {
   to   { transform: rotate(360deg); }
 }
 
+.hero-chevron-row {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: hero-chevron-row-rise 0.9s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
 .hero-chevron-segment {
   stroke-dasharray: 900;
   animation:
@@ -385,6 +405,16 @@ header[data-header="inverse"] {
   background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 70%);
   filter: blur(28px);
   animation: hero-showcase-orb-drift 9s ease-in-out infinite reverse;
+}
+
+@keyframes hero-showcase-photo-static-in {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
+}
+
+.hero-showcase-photo-static {
+  transform-origin: center;
+  animation: hero-showcase-photo-static-in 1s cubic-bezier(.22, 1, .36, 1) 0.35s both;
 }
 
 .hero-showcase-photo {
