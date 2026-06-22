@@ -70,10 +70,19 @@ export interface WhyUsItem {
   animationLabels?: string[];
 }
 
+export interface EfficiencyCalculatorContent {
+  heading?: string;
+  description?: string;
+  disclaimer?: string;
+  ctaLabel?: string;
+}
+
 export interface CapabilityItem {
   title: string;
   description: string;
   icon?: string;
+  slug?: string;
+  featured?: boolean;
   image?: SanityImageAsset;
 }
 
@@ -159,6 +168,7 @@ export interface Homepage {
   whyUs?: {
     heading?: string;
     items?: WhyUsItem[];
+    efficiencyCalculator?: EfficiencyCalculatorContent;
   };
   stats?: {
     eyebrow?: string;

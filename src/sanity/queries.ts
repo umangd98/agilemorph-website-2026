@@ -120,7 +120,13 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   },
   whyUs {
     heading,
-    items[] ${whyUsItemProjection}
+    items[] ${whyUsItemProjection},
+    efficiencyCalculator {
+      heading,
+      description,
+      disclaimer,
+      ctaLabel
+    }
   },
   stats {
     eyebrow,

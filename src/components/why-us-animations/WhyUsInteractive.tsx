@@ -1,132 +1,146 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { WhyUsItem } from "@/sanity/types";
 
+import { getWhyUsAnim } from "./registry";
 import { WhyUsIcon } from "./WhyUsIcon";
 
 type WhyUsInteractiveProps = {
   items: WhyUsItem[];
 };
 
-export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
+const AUTO_CYCLE_MS = 4500;
 
+export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
   const pillars = useMemo(
     () =>
       items.map((item, index) => ({
         item,
-        index,
         step: String(index + 1).padStart(2, "0"),
       })),
     [items],
   );
 
-  const active = pillars[activeIndex] ?? pillars[0];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const pausedRef = useRef(false);
 
-  if (!items.length || !active) return null;
+  const pauseAutoCycle = useCallback(() => {
+    pausedRef.current = true;
+  }, []);
 
-  const highlights = active.item.highlights ?? [];
+  useEffect(() => {
+    if (pillars.length <= 1) return;
 
-  const selectIndex = (index: number) => setActiveIndex(index);
+    const timer = window.setInterval(() => {
+      if (pausedRef.current) return;
+      setActiveIndex((current) => (current + 1) % pillars.length);
+    }, AUTO_CYCLE_MS);
+
+    return () => window.clearInterval(timer);
+  }, [pillars.length]);
+
+  if (!items.length) return null;
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-sm">
-      <style>{`
-        @keyframes why-fade-in {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @media (prefers-reduced-motion: no-preference) {
-          .why-content-swap { animation: why-fade-in 0.35s ease-out both; }
-        }
-      `}</style>
-      <div className="border-b border-border bg-background px-4 py-4 sm:px-6">
-        <div className="-mx-1 flex items-center gap-2 overflow-x-auto pb-1 snap-x snap-mandatory sm:mx-0 sm:gap-3 sm:overflow-visible sm:pb-0">
-          {pillars.map((p, i) => {
-            const lit = activeIndex === i;
-            return (
-              <button
-                key={i}
-                type="button"
-                className={`group flex min-h-[44px] min-w-[4.5rem] shrink-0 snap-start items-center gap-2 rounded-xl border px-3 py-2.5 text-left transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:min-w-0 sm:flex-1 sm:gap-3 sm:px-4 sm:py-3 ${
-                  lit
-                    ? "border-primary bg-primary/10 shadow-[0_4px_20px_color-mix(in_srgb,var(--color-primary)_12%,transparent)]"
-                    : "border-border bg-background hover:border-primary/20 hover:bg-primary/5"
-                }`}
-                onClick={() => selectIndex(i)}
-                aria-pressed={lit}
-                aria-label={`${p.item.title}: ${p.item.description}`}
-              >
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-xs font-bold transition-colors duration-300 sm:h-9 sm:w-9 sm:text-sm ${
-                    lit ? "bg-primary text-background" : "bg-muted text-muted-foreground"
-                  }`}
-                >
-                  {p.step}
-                </span>
-                <span className="hidden min-w-0 sm:block">
-                  <span
-                    className={`block truncate font-heading text-sm font-bold ${
-                      lit ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {p.item.title}
-                  </span>
-                </span>
-                <span className="ml-auto sm:hidden">
-                  <WhyUsIcon item={p.item} size="sm" />
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+    <div
+      className="relative flex h-full flex-col gap-2.5"
+      onMouseLeave={() => {
+        pausedRef.current = false;
+      }}
+    >
+      <div
+        className="pointer-events-none absolute left-5 top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-primary/50"
+        aria-hidden
+      />
 
-      <div className="grid grid-cols-1 gap-6 p-5 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div key={activeIndex} className="why-content-swap">
-          <div className="mb-3 flex items-center gap-3">
-            <WhyUsIcon item={active.item} size="md" />
-            <div>
-              <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                Pillar {active.step}
-              </p>
-              <h3 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
-                {active.item.title}
-              </h3>
-            </div>
-          </div>
-          <p className="max-w-2xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {active.item.description}
-          </p>
-          {highlights.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {highlights.map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 font-body text-xs font-semibold text-primary"
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+      {pillars.map((pillar, index) => {
+        const isActive = index === activeIndex;
+        const Anim = getWhyUsAnim(pillar.item.animationType);
 
-        {pillars.length > 1 ? (
+        return (
           <button
+            key={pillar.item.title}
             type="button"
-            className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-4 py-2 font-body text-sm font-semibold text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary sm:w-auto lg:w-auto"
-            onClick={() => selectIndex((activeIndex + 1) % pillars.length)}
-            aria-label="Next pillar"
+            onClick={() => {
+              pauseAutoCycle();
+              setActiveIndex(index);
+            }}
+            onMouseEnter={() => {
+              pauseAutoCycle();
+              setActiveIndex(index);
+            }}
+            onFocus={() => {
+              pauseAutoCycle();
+              setActiveIndex(index);
+            }}
+            aria-pressed={isActive}
+            className={`group relative flex flex-1 items-center gap-4 overflow-hidden rounded-2xl border px-4 py-3 text-left shadow-sm transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-5 ${
+              isActive
+                ? "z-10 translate-x-1 border-primary/35 bg-primary/5 shadow-lg shadow-primary/10"
+                : "border-border bg-surface hover:border-primary/20 hover:bg-primary/3 hover:translate-x-0.5"
+            }`}
           >
-            Next
-            <ArrowRight size={14} />
+            <span
+              className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-heading text-sm font-bold transition-all duration-500 ${
+                isActive
+                  ? "scale-110 bg-primary text-background shadow-md shadow-primary/30"
+                  : "bg-primary/10 text-primary group-hover:bg-primary/15"
+              }`}
+            >
+              {pillar.step}
+              {isActive ? (
+                <span
+                  className="absolute inset-0 animate-ping rounded-xl bg-primary/30 motion-reduce:animate-none"
+                  aria-hidden
+                />
+              ) : null}
+            </span>
+
+            <div className="relative z-10 min-w-0 flex-1">
+              <h3
+                className={`font-heading text-base font-bold leading-snug transition-colors duration-300 ${
+                  isActive ? "text-foreground" : "text-foreground/90"
+                }`}
+              >
+                {pillar.item.title}
+              </h3>
+              <p
+                className={`mt-1 font-body text-sm leading-relaxed transition-all duration-500 ${
+                  isActive ? "text-muted-foreground" : "text-muted-foreground/80 line-clamp-2"
+                }`}
+              >
+                {pillar.item.description}
+              </p>
+            </div>
+
+            <div className="relative z-10 hidden shrink-0 sm:block">
+              {isActive ? (
+                <div className="h-[4.5rem] w-[6.5rem] overflow-hidden rounded-xl border border-primary/25 bg-background shadow-inner">
+                  <div className="h-full w-full origin-top-left scale-[0.42]">
+                    <Anim
+                      active
+                      title={pillar.item.title}
+                      labels={pillar.item.animationLabels}
+                      highlights={pillar.item.highlights}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <WhyUsIcon item={pillar.item} size="sm" className="opacity-35 transition-opacity group-hover:opacity-55" />
+              )}
+            </div>
+
+            <span
+              className={`pointer-events-none absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-primary transition-opacity duration-500 ${
+                isActive ? "opacity-100" : "opacity-0"
+              }`}
+              aria-hidden
+            />
           </button>
-        ) : null}
-      </div>
+        );
+      })}
     </div>
   );
 }

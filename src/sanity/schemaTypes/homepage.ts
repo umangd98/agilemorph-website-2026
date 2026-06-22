@@ -152,6 +152,35 @@ export const homepage = defineType({
           type: "array",
           of: [{ type: "whyUsItem" }],
         }),
+        defineField({
+          name: "efficiencyCalculator",
+          title: "Efficiency Calculator",
+          type: "object",
+          fields: [
+            defineField({
+              name: "heading",
+              title: "Heading",
+              type: "string",
+            }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 2,
+            }),
+            defineField({
+              name: "disclaimer",
+              title: "Disclaimer",
+              type: "text",
+              rows: 2,
+            }),
+            defineField({
+              name: "ctaLabel",
+              title: "CTA Label",
+              type: "string",
+            }),
+          ],
+        }),
       ],
     }),
     defineField({

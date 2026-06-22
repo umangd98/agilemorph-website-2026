@@ -41,11 +41,12 @@ export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
 
 export const PRIMARY_SERVICE_CAPABILITIES = [
   {
-    title: "AI Agents",
-    slug: "ai-agents",
+    title: "AI Automation",
+    slug: "ai-automation",
     description:
-      "Autonomous agents that classify, decide, and act across your tools.",
-    icon: "⬡",
+      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+    icon: "⚡",
+    featured: true,
   },
   {
     title: "Workflow Automation",

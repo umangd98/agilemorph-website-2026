@@ -321,6 +321,14 @@ function buildHomepage(manifest) {
           animationLabels: ["Strategy", "Build", "Scale"],
         }),
       ],
+      efficiencyCalculator: {
+        heading: "Estimate your efficiency gain",
+        description:
+          "Adjust the sliders to see how much manual work AI automation could take off your team's plate.",
+        disclaimer:
+          "Estimates based on typical automation outcomes. Book a discovery call for a scoped audit tailored to your operations.",
+        ctaLabel: "Book a discovery call",
+      },
     },
     stats: {
       eyebrow: "By The Numbers",

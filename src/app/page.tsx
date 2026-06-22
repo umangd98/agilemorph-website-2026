@@ -85,6 +85,7 @@ export default async function HomePage() {
         <WhyUsSection
           heading={homepage.whyUs?.heading}
           items={homepage.whyUs?.items}
+          efficiencyCalculator={homepage.whyUs?.efficiencyCalculator}
         />
         <StatsSection
           eyebrow={homepage.stats?.eyebrow}
