@@ -542,6 +542,13 @@ function buildServicePages(manifest) {
             "A fixed-scope review that maps where AI saves you the most time and money.",
           icon: "◷",
         },
+        {
+          _type: "capabilityItem",
+          title: "Shopify Automation",
+          description:
+            "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+          icon: "🛍",
+        },
       ],
       whyUsHeading: "Why Choose Us",
       whyUs: [

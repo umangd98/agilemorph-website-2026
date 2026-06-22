@@ -34,6 +34,7 @@ export const AI_AUTOMATION_SUB_SLUGS = [
   "mcp-ai-infrastructure",
   "messaging-automation",
   "ai-audit",
+  "shopify-automation",
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
@@ -77,6 +78,13 @@ export const PRIMARY_SERVICE_CAPABILITIES = [
       "A fixed-scope review that maps where AI saves you the most time and money.",
     icon: "◷",
   },
+  {
+    title: "Shopify Automation",
+    slug: "shopify-automation",
+    description:
+      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+    icon: "🛍",
+  },
 ] as const;
 
 const NAV_DESC_BY_SLUG: Record<string, string> = {
@@ -87,6 +95,7 @@ const NAV_DESC_BY_SLUG: Record<string, string> = {
   "mcp-ai-infrastructure": "Self-hosted AI infrastructure",
   "messaging-automation": "WhatsApp, email, and chat automation",
   "ai-audit": "Find where AI pays off",
+  "shopify-automation": "Orders, inventory, and store flows",
   "website-development": "High-performance web apps",
   "digital-marketing": "Grow your brand online",
   "virtual-assistance": "Dedicated remote support",
@@ -100,6 +109,7 @@ const SERVICE_LABEL_BY_SLUG: Record<string, string> = {
   "mcp-ai-infrastructure": "MCP & AI Infrastructure",
   "messaging-automation": "Messaging Automation",
   "ai-audit": "AI Audit",
+  "shopify-automation": "Shopify Automation",
   "digital-marketing": "Digital Marketing",
   "virtual-assistance": "Virtual Assistance",
   "website-development": "Website",

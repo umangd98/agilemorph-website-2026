@@ -39,8 +39,8 @@ export function FounderSection({
           ) : null}
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <AnimateOnScroll delay={150} className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+          <AnimateOnScroll delay={150} className="order-2 min-w-0 lg:order-1">
             {name ? (
               <h3 className="mb-2 font-heading text-3xl font-extrabold text-foreground">
                 {name}
@@ -61,7 +61,7 @@ export function FounderSection({
           </AnimateOnScroll>
 
           {image ? (
-            <AnimateOnScroll className="order-1 lg:order-2">
+            <AnimateOnScroll className="order-1 min-w-0 lg:order-2">
               <div className="relative mx-auto aspect-3/4 w-full max-w-md overflow-hidden rounded-3xl border border-border bg-background shadow-lg">
                 <SanityImage
                   image={image}

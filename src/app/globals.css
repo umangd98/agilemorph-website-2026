@@ -47,9 +47,13 @@
   /* Section spacing */
   --spacing-section: 7.5rem;
   --spacing-section-sm: 4rem;
+
+  /* Layout */
+  /* Moved to :root to avoid tailwind v4 token conflicts */
 }
 
 :root {
+  --container-max: 80rem;
   --header-bg: rgba(255, 255, 255, 0.92);
   --header-border: rgba(226, 232, 240, 0.85);
   --header-shadow: 0 2px 24px rgba(15, 23, 42, 0.08);
@@ -571,7 +575,23 @@ header[data-header="inverse"] {
   }
 }
 
-/* Scrollbar */
+/* Layout — prevent horizontal bleed from grids, marquees, and hero visuals */
+html {
+  overflow-x: clip;
+  width: 100%;
+}
+
+body {
+  overflow-x: clip;
+  width: 100%;
+  min-width: 0;
+}
+
+main {
+  min-width: 0;
+  overflow-x: clip;
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }

@@ -35,8 +35,8 @@ export function ServiceHeroSection({
   return (
     <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="service-hero-heading">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+          <div className="min-w-0">
             {tagline ? (
               <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
                 {tagline}
@@ -63,13 +63,15 @@ export function ServiceHeroSection({
               </Link>
             ) : null}
           </div>
-          <ServiceHeroMedia
-            slug={slug}
-            imageUrl={imageUrl}
-            alt={heroImage?.alt ?? title}
-            blurDataURL={heroImage?.lqip}
-            isSvg={isSvg}
-          />
+          <div className="min-w-0">
+            <ServiceHeroMedia
+              slug={slug}
+              imageUrl={imageUrl}
+              alt={heroImage?.alt ?? title}
+              blurDataURL={heroImage?.lqip}
+              isSvg={isSvg}
+            />
+          </div>
         </div>
       </Container>
     </section>

@@ -67,7 +67,7 @@ export function PartnersSection({
 
   return (
     <section
-      className="border-y border-border bg-surface py-section-sm"
+      className="overflow-hidden border-y border-border bg-surface py-section-sm"
       aria-labelledby="partners-heading"
     >
       <Container>

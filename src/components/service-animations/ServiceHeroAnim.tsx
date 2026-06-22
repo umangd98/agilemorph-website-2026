@@ -7,6 +7,7 @@ import type { ComponentType } from "react";
 
 const ANIMATIONS: Record<string, ComponentType> = {
   "ai-automation": AiAutomationAnim,
+  "shopify-automation": AiAutomationAnim,
   "website-development": WebDevelopmentAnim,
   "digital-marketing": DigitalMarketingAnim,
   "virtual-assistance": VirtualAssistanceAnim,

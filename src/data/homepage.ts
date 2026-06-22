@@ -162,6 +162,14 @@ export const services = [
     href: "/services/ai-audit",
     featured: false,
   },
+  {
+    id: "shopify-automation",
+    title: "Shopify Automation",
+    description:
+      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+    href: "/services/shopify-automation",
+    featured: false,
+  },
 ];
 
 export const servicesCallout = {

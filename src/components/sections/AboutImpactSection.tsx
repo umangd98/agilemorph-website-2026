@@ -45,8 +45,8 @@ export function AboutImpactSection({
               />
             </div>
 
-            <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-              <div>
+            <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+              <div className="min-w-0">
                 <h2 id="about-impact-heading" className="mb-6 font-heading text-4xl font-extrabold italic sm:text-5xl">
                   {heading}
                 </h2>
@@ -64,7 +64,7 @@ export function AboutImpactSection({
                 ) : null}
               </div>
 
-              <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12">
+              <div className="min-w-0 grid grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12">
                 {stats.slice(0, 4).map((item, index) => (
                   <div key={`${item.label}-${index}`} className="relative text-center">
                     <span className="block font-heading text-5xl font-extrabold">{item.value}</span>

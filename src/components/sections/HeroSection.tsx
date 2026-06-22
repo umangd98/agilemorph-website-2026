@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
-import { HeroShowcaseVisual } from "@/components/hero-animations/HeroShowcaseVisual";
-import { urlForImage } from "@/sanity/image";
+import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import type { HomepageHero } from "@/sanity/types";
 
 type HeroSectionProps = { hero: HomepageHero };
@@ -73,11 +72,6 @@ function StarRating() {
 export function HeroSection({ hero }: HeroSectionProps) {
   const visible = useEntrance();
 
-  const heroImageUrl = hero.image?.asset
-    ? urlForImage(hero.image).width(900).auto("format").quality(85).url()
-    : null;
-  const heroImageAlt = hero.image?.alt ?? "";
-
   const words = hero.heading.split(" ");
   const headingMain = words.slice(0, -2).join(" ");
   const headingAccent = words.slice(-2).join(" ");
@@ -120,9 +114,9 @@ export function HeroSection({ hero }: HeroSectionProps) {
         aria-hidden="true"
       />
 
-      <Container className="relative z-10 py-28 lg:py-36">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          <div className="max-w-xl">
+      <Container className="relative z-10 py-24 sm:py-28 lg:py-32 xl:py-36">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+          <div className="min-w-0 max-w-2xl">
             <AnimItem visible={visible} delay={0} className="mb-8">
               <ClaudePartnerBadge />
             </AnimItem>
@@ -191,17 +185,13 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
           </div>
 
-          {heroImageUrl ? (
-            <AnimItem visible={visible} delay={400} className="mt-8 hidden lg:block lg:mt-0">
-              <HeroShowcaseVisual
-                imageUrl={heroImageUrl}
-                alt={heroImageAlt}
-                visible={visible}
-              />
-            </AnimItem>
-          ) : (
-            <div className="hidden lg:block" aria-hidden="true" />
-          )}
+          <AnimItem
+            visible={visible}
+            delay={400}
+            className="hidden w-full min-w-0 lg:flex lg:items-center lg:justify-center"
+          >
+            <HeroEcosystemVisual visible={visible} />
+          </AnimItem>
         </div>
       </Container>
 

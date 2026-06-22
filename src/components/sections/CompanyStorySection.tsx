@@ -21,8 +21,8 @@ export function CompanyStorySection({
   return (
     <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="company-story-heading">
       <Container>
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
-          <AnimateOnScroll>
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
+          <AnimateOnScroll className="min-w-0">
             {heading ? (
               <h2
                 id="company-story-heading"
@@ -53,7 +53,7 @@ export function CompanyStorySection({
           </AnimateOnScroll>
 
           {image ? (
-            <AnimateOnScroll delay={150}>
+            <AnimateOnScroll delay={150} className="min-w-0">
               <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-border bg-background p-6">
                 <SanityImage
                   image={image}

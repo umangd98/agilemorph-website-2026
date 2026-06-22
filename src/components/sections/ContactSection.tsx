@@ -31,8 +31,8 @@ export function ContactSection({
   return (
     <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="contact-heading">
       <Container>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <AnimateOnScroll>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+          <AnimateOnScroll className="min-w-0">
             <h1 id="contact-heading" className="mb-4 font-heading text-5xl font-extrabold text-foreground">
               {heading}
             </h1>
