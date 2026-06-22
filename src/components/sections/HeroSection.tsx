@@ -1,24 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
+import { HERO_BG, HERO_GRID_STYLE, HERO_SECTION_BG, HeroImagePanel } from "@/components/hero-animations/HeroImagePanel";
 import { urlForImage } from "@/sanity/image";
 import type { HomepageHero } from "@/sanity/types";
 
 type HeroSectionProps = { hero: HomepageHero };
-
-/** Matches the hero section background gradient stops for seamless image compositing. */
-const HERO_BG = {
-  deep: "#060d1a",
-  mid: "#0b1628",
-  teal: "#0d1f2d",
-  base: "#071019",
-} as const;
 
 function useEntrance() {
   const [visible, setVisible] = useState(false);
@@ -96,14 +88,14 @@ export function HeroSection({ hero }: HeroSectionProps) {
       className="relative flex min-h-screen items-center overflow-hidden"
       aria-labelledby="hero-heading"
       style={{
-        background: `linear-gradient(145deg, ${HERO_BG.deep} 0%, ${HERO_BG.mid} 40%, ${HERO_BG.teal} 70%, ${HERO_BG.base} 100%)`,
+        background: HERO_SECTION_BG,
       }}
     >
       <div
         className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full"
         aria-hidden="true"
         style={{
-          background: "radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 65%)",
           filter: "blur(60px)",
           animation: "hero-orb 9s ease-in-out infinite",
         }}
@@ -127,79 +119,21 @@ export function HeroSection({ hero }: HeroSectionProps) {
         }}
       />
 
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
-        }}
-      />
-
       {heroImageUrl ? (
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[58%]"
-          aria-hidden={!heroImageAlt}
-          style={{
-            opacity: visible ? 1 : 0,
-            transition: "opacity 1.4s ease 300ms",
-          }}
-        >
-          {/* Same gradient base as section so image edges never show a different tone */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(145deg, ${HERO_BG.deep} 0%, ${HERO_BG.mid} 40%, ${HERO_BG.teal} 70%, ${HERO_BG.base} 100%)`,
-            }}
-          />
-
-          <Image
-            src={heroImageUrl}
-            alt={heroImageAlt}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover object-[68%_center] opacity-[0.52] mix-blend-soft-light saturate-[0.85] contrast-[1.05]"
-            placeholder={lqip ? "blur" : "empty"}
-            blurDataURL={lqip}
-          />
-
-          {/* Composite masks tuned to hero gradient stops */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                linear-gradient(to right, ${HERO_BG.deep} 0%, ${HERO_BG.deep}e6 12%, ${HERO_BG.mid}cc 28%, ${HERO_BG.teal}66 48%, transparent 68%),
-                linear-gradient(to bottom, ${HERO_BG.deep} 0%, transparent 14%, transparent 86%, ${HERO_BG.base} 100%),
-                linear-gradient(to left, ${HERO_BG.base} 0%, ${HERO_BG.teal}99 8%, transparent 24%)
-              `,
-            }}
-          />
-
-          {/* On-brand green wash aligned with top-left orb */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 75% 65% at 70% 42%, rgba(34,197,94,0.08) 0%, transparent 72%)",
-            }}
-          />
-
-          {/* Grid continuity over the image area */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-              backgroundSize: "56px 56px",
-              maskImage:
-                "linear-gradient(to right, transparent 35%, black 55%, black 100%)",
-            }}
-          />
-        </div>
+        <HeroImagePanel
+          imageUrl={heroImageUrl}
+          alt={heroImageAlt}
+          lqip={lqip}
+          visible={visible}
+        />
       ) : null}
+
+      {/* Grid on top of image so both halves share the same texture */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        aria-hidden="true"
+        style={HERO_GRID_STYLE}
+      />
 
       <Container className="relative z-10 py-28 lg:py-36">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">

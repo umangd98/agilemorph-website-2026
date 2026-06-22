@@ -121,6 +121,66 @@
   100% { background-position: 200% center; }
 }
 
+@keyframes hero-image-drift {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50%       { transform: scale(1.06) translate(-1.5%, -1%); }
+}
+
+@keyframes hero-image-glow {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
+}
+
+@keyframes hero-scan-sweep {
+  0%   { transform: translateY(-120%); opacity: 0; }
+  20%  { opacity: 0.5; }
+  80%  { opacity: 0.5; }
+  100% { transform: translateY(calc(100vh + 120%)); opacity: 0; }
+}
+
+@keyframes hero-circuit-draw {
+  from { stroke-dashoffset: 140; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes hero-packet-travel {
+  0%   { offset-distance: 0%; opacity: 0; transform: scale(0.6); }
+  6%   { opacity: 1; transform: scale(1); }
+  94%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; transform: scale(0.4); }
+}
+
+.hero-image-drift {
+  animation: hero-image-drift 20s ease-in-out infinite;
+}
+
+.hero-image-glow {
+  animation: hero-image-glow 6s ease-in-out infinite;
+}
+
+.hero-image-scan {
+  animation: hero-scan-sweep 4s ease-in-out infinite;
+}
+
+.hero-circuit-path {
+  stroke-dasharray: 140;
+  animation: hero-circuit-draw 3.5s ease-in-out infinite alternate;
+}
+
+.hero-packet {
+  animation: hero-packet-travel 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-drift,
+  .hero-image-glow,
+  .hero-image-scan,
+  .hero-circuit-path,
+  .hero-packet {
+    animation: none !important;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
