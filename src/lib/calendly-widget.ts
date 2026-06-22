@@ -85,7 +85,12 @@ export async function openCalendlyPopup(url = CALENDLY_DISCOVERY_URL) {
 export function isCalendlyBookingHref(href: string) {
   return (
     href === "/contact#book" ||
+    href === "/contact" ||
     href === CALENDLY_DISCOVERY_URL ||
     /^https:\/\/calendly\.com\//i.test(href)
   );
+}
+
+export function isCalendlyBookingCta(cta: { href: string; label?: string }) {
+  return isCalendlyBookingHref(cta.href) || /get in touch/i.test(cta.label ?? "");
 }

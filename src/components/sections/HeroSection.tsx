@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { CtaAction } from "@/components/CtaAction";
 import { HeroShowcaseVisual } from "@/components/hero-animations/HeroShowcaseVisual";
 import { urlForImage } from "@/sanity/image";
@@ -88,43 +89,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
       className="relative flex min-h-screen items-center overflow-hidden bg-background"
       aria-labelledby="hero-heading"
     >
-      <div
-        className="hero-ambient-glow pointer-events-none absolute inset-0 z-0"
-        aria-hidden="true"
-      />
-
-      <div
-        className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle, var(--hero-orb-green) 0%, transparent 65%)`,
-          filter: "blur(60px)",
-          animation: "hero-orb 9s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle, var(--hero-orb-cyan) 0%, transparent 65%)`,
-          filter: "blur(70px)",
-          animation: "hero-orb-2 11s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute right-[15%] top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle, var(--hero-orb-violet) 0%, transparent 65%)`,
-          filter: "blur(80px)",
-          animation: "hero-orb 14s ease-in-out infinite reverse",
-        }}
-      />
-
-      <div
-        className="site-grid-pattern pointer-events-none absolute inset-0 z-[1]"
-        aria-hidden="true"
-      />
+      <PageHeroBackground tall />
 
       <Container className="relative z-10 py-28 lg:py-36">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
@@ -211,11 +176,6 @@ export function HeroSection({ hero }: HeroSectionProps) {
           )}
         </div>
       </Container>
-
-      <div
-        className="hero-bottom-fade pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-24"
-        aria-hidden="true"
-      />
     </section>
   );
 }

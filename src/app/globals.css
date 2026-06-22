@@ -141,6 +141,18 @@ header[data-header="inverse"] {
   100% { background-position: 200% 0; }
 }
 
+@keyframes page-hero-gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes page-hero-glow-drift {
+  0% { opacity: 0.75; transform: scale(1) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1.04) translate(1.5%, -1%); }
+  100% { opacity: 0.8; transform: scale(1.02) translate(-1%, 0.5%); }
+}
+
 @keyframes hero-orb {
   0%, 100% { transform: scale(1) translateY(0px); opacity: 0.7; }
   50%       { transform: scale(1.12) translateY(-20px); opacity: 1; }
@@ -231,7 +243,11 @@ header[data-header="inverse"] {
   .hero-node-spark,
   .hero-showcase-orb-a,
   .hero-showcase-orb-b,
-  .hero-showcase-stage::before {
+  .hero-showcase-stage::before,
+  .hero-ambient-glow,
+  .page-hero-gradient-mesh,
+  .page-hero-gradient-glow,
+  .page-hero-orb {
     animation: none !important;
     opacity: 1;
     stroke-dashoffset: 0;
@@ -447,6 +463,25 @@ header[data-header="inverse"] {
     text-rendering: optimizeLegibility;
   }
 
+  button:not(:disabled),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  label[for],
+  select {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [type="button"]:disabled,
+  [type="submit"]:disabled,
+  [type="reset"]:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
   html.dark body {
     background-image:
       linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -548,11 +583,34 @@ header[data-header="inverse"] {
       radial-gradient(ellipse 90% 70% at 12% 18%, var(--section-glow-green) 0%, transparent 58%),
       radial-gradient(ellipse 75% 60% at 88% 82%, var(--section-glow-cyan) 0%, transparent 52%),
       linear-gradient(
-        165deg,
+        125deg,
         var(--hero-gradient-mint) 0%,
-        var(--color-background) 48%,
-        var(--hero-gradient-teal) 100%
+        var(--color-background) 38%,
+        var(--hero-gradient-teal) 72%,
+        color-mix(in srgb, var(--color-primary) 6%, var(--color-background)) 100%
       );
+    background-size: 100% 100%, 100% 100%, 280% 280%;
+    animation: page-hero-gradient-flow 18s ease-in-out infinite;
+  }
+
+  .page-hero-gradient-mesh {
+    background: linear-gradient(
+      125deg,
+      var(--hero-gradient-mint) 0%,
+      var(--color-background) 32%,
+      var(--hero-gradient-teal) 58%,
+      color-mix(in srgb, var(--color-primary) 7%, var(--color-background)) 82%,
+      var(--color-background) 100%
+    );
+    background-size: 280% 280%;
+    animation: page-hero-gradient-flow 16s ease-in-out infinite;
+  }
+
+  .page-hero-gradient-glow {
+    background:
+      radial-gradient(ellipse 75% 55% at 18% 22%, var(--section-glow-green) 0%, transparent 58%),
+      radial-gradient(ellipse 65% 50% at 82% 72%, var(--section-glow-cyan) 0%, transparent 52%);
+    animation: page-hero-glow-drift 14s ease-in-out infinite;
   }
 
   .hero-bottom-fade {

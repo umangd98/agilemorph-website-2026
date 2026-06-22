@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { CtaAction } from "@/components/CtaAction";
 import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
@@ -36,8 +37,13 @@ export function ServiceHeroSection({
     : undefined;
 
   return (
-    <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="service-hero-heading">
-      <Container>
+    <section
+      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
+      aria-labelledby="service-hero-heading"
+    >
+      <PageHeroBackground />
+
+      <Container className="relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0">
             {tagline ? (

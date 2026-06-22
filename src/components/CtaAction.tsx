@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import { CalendlyBookButton } from "@/components/CalendlyBookButton";
-import { isCalendlyBookingHref } from "@/lib/calendly-widget";
+import { isCalendlyBookingCta } from "@/lib/calendly-widget";
 import { externalLinkProps } from "@/lib/links";
 import type { CtaButton } from "@/sanity/types";
 
@@ -15,7 +15,7 @@ type CtaActionProps = {
 } & Omit<ComponentPropsWithoutRef<"button">, "type" | "children">;
 
 export function CtaAction({ cta, className, children, ...buttonProps }: CtaActionProps) {
-  if (isCalendlyBookingHref(cta.href)) {
+  if (isCalendlyBookingCta(cta)) {
     return (
       <CalendlyBookButton className={className} url={cta.href} {...buttonProps}>
         {children}

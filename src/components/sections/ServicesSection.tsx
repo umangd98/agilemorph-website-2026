@@ -57,7 +57,7 @@ function AdditionalServicesPanel({ services }: { services: ServicePageListItem[]
     >
       <button
         type="button"
-        className="mb-6 flex w-full items-center gap-4 text-left transition-colors hover:text-foreground max-sm:cursor-pointer [@media(hover:hover)]:cursor-default"
+        className="mb-6 flex w-full cursor-pointer items-center gap-4 text-left transition-colors hover:text-foreground"
         aria-expanded={expanded}
         aria-controls="additional-services-panel"
         onClick={() => setOpen((value) => !value)}
