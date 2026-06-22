@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
@@ -194,16 +195,13 @@ export function Navbar({ serviceLinks }: NavbarProps) {
             {/* CTA + theme */}
             <div className="hidden items-center gap-2 md:flex">
               <ThemeToggle inverse={isDarkTheme && inverseHeader} />
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95"
-              >
+              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95">
                 Get in Touch
                 <ArrowRight
                   size={14}
                   className="transition-transform duration-200 group-hover:translate-x-0.5"
                 />
-              </Link>
+              </CalendlyBookButton>
             </div>
 
             {/* Mobile toggle */}
@@ -326,14 +324,13 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
           {/* CTA at bottom */}
           <div className="border-t border-border p-5">
-            <Link
-              href="/contact"
+            <CalendlyBookButton
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95"
-              onClick={() => setMenuOpen(false)}
+              onBook={() => setMenuOpen(false)}
             >
               Get in Touch
               <ArrowRight size={14} />
-            </Link>
+            </CalendlyBookButton>
           </div>
         </div>
       </div>

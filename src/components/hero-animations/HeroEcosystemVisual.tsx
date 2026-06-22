@@ -8,6 +8,7 @@ import {
   ADDITIONAL_SERVICE_PILLS,
   ECOSYSTEM_CENTER,
   ECOSYSTEM_VIEWBOX,
+  ECOSYSTEM_VIEWBOX_CROP,
   PACKET_PATHS,
   RADAR_MAX_RADIUS,
 } from "@/components/hero-animations/hero-ecosystem-paths";
@@ -161,12 +162,12 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
   const layerOpacity = staticFrame ? 1 : undefined;
 
   return (
-    <div className="relative mx-auto aspect-[750/720] w-full max-w-[min(100%,28rem)] overflow-hidden lg:max-w-full xl:max-w-full">
+    <div className="relative w-full min-w-0 pt-2 lg:pt-4 lg:-mr-2 xl:-mr-4">
       <svg
         ref={svgRef}
-        viewBox={`0 0 ${ECOSYSTEM_VIEWBOX.width} ${ECOSYSTEM_VIEWBOX.height}`}
+        viewBox={`${ECOSYSTEM_VIEWBOX_CROP.x} ${ECOSYSTEM_VIEWBOX_CROP.y} ${ECOSYSTEM_VIEWBOX_CROP.width} ${ECOSYSTEM_VIEWBOX_CROP.height}`}
         preserveAspectRatio="xMidYMid meet"
-        className="h-full w-full overflow-hidden"
+        className="h-auto w-full aspect-[640/720]"
         role="img"
         aria-label="AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website"
       >
@@ -370,7 +371,7 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
 
       <div
         ref={finalLabelRef}
-        className="pointer-events-none absolute bottom-2 left-1/2 w-full max-w-md -translate-x-1/2 text-center font-body text-[10px] font-bold tracking-[0.12em] text-primary sm:text-xs sm:tracking-[0.14em]"
+        className="pointer-events-none mt-4 text-center font-body text-[10px] font-bold tracking-[0.12em] text-primary sm:mt-5 sm:text-xs sm:tracking-[0.14em]"
         style={{ opacity: staticFrame ? 1 : 0 }}
       >
         AGILEMORPH&apos;S INTEGRATED AI ECOSYSTEM

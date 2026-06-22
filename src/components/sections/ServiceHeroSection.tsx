@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
+import { CtaAction } from "@/components/CtaAction";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
 import { urlForImage } from "@/sanity/image";
@@ -54,13 +54,13 @@ export function ServiceHeroSection({
               </p>
             ) : null}
             {heroCta ? (
-              <Link
-                href={heroCta.href}
+              <CtaAction
+                cta={heroCta}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-xl shadow-primary/25 transition-all hover:bg-primary-dark"
               >
                 {heroCta.label}
                 <ArrowRight size={16} />
-              </Link>
+              </CtaAction>
             ) : null}
           </div>
           <div className="min-w-0">

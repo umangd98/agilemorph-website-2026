@@ -51,7 +51,7 @@ function AdditionalServicesPanel({ services }: { services: ServicePageListItem[]
 
   return (
     <div
-      className="group/additional mt-14"
+      className="group/additional mt-10 border-t border-border pt-10"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

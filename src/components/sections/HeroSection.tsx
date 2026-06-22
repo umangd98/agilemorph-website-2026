@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
+import { CtaAction } from "@/components/CtaAction";
 import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import type { HomepageHero } from "@/sanity/types";
 
@@ -78,7 +79,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden bg-background"
+      className="relative flex min-h-screen items-center overflow-x-clip bg-background"
       aria-labelledby="hero-heading"
     >
       <div
@@ -115,7 +116,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
       />
 
       <Container className="relative z-10 py-24 sm:py-28 lg:py-32 xl:py-36">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] xl:gap-10">
           <div className="min-w-0 max-w-2xl">
             <AnimItem visible={visible} delay={0} className="mb-8">
               <ClaudePartnerBadge />
@@ -146,11 +147,9 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
             <AnimItem visible={visible} delay={320}>
               <div className="flex flex-col gap-3 sm:flex-row">
-                {hero.ctaPrimary && (
-                  <Link
-                    href={hero.ctaPrimary.href}
-                    target={hero.ctaPrimary.openInNewTab ? "_blank" : undefined}
-                    rel={hero.ctaPrimary.openInNewTab ? "noopener noreferrer" : undefined}
+                {hero.ctaPrimary ? (
+                  <CtaAction
+                    cta={hero.ctaPrimary}
                     className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-[0_8px_32px_rgba(34,197,94,0.35)] transition-all duration-300 hover:bg-primary-dark hover:shadow-[0_12px_40px_rgba(34,197,94,0.5)] active:scale-95"
                   >
                     <span
@@ -158,9 +157,12 @@ export function HeroSection({ hero }: HeroSectionProps) {
                       aria-hidden="true"
                     />
                     {hero.ctaPrimary.label}
-                    <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </Link>
-                )}
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5"
+                    />
+                  </CtaAction>
+                ) : null}
                 {hero.ctaSecondary && (
                   <Link
                     href={hero.ctaSecondary.href}
@@ -188,7 +190,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
           <AnimItem
             visible={visible}
             delay={400}
-            className="hidden w-full min-w-0 lg:flex lg:items-center lg:justify-center"
+            className="hidden w-full min-w-0 lg:block lg:self-center"
           >
             <HeroEcosystemVisual visible={visible} />
           </AnimItem>

@@ -1,192 +1,92 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 import type { WhyUsItem } from "@/sanity/types";
 
-import { getWhyUsAnim } from "./registry";
 import { WhyUsIcon } from "./WhyUsIcon";
-
-const CYCLE_MS = 5000;
 
 type WhyUsInteractiveProps = {
   items: WhyUsItem[];
 };
 
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const handler = () => setReduced(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return reduced;
-}
-
 export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hovering, setHovering] = useState(false);
-  const [cycleProgress, setCycleProgress] = useState(0);
-  const cycleStart = useRef(Date.now());
-  const rafRef = useRef<number>(0);
-  const reducedMotion = useReducedMotion();
 
   const pillars = useMemo(
     () =>
       items.map((item, index) => ({
         item,
         index,
-        Anim: getWhyUsAnim(item.animationType),
         step: String(index + 1).padStart(2, "0"),
       })),
     [items],
   );
 
   const active = pillars[activeIndex] ?? pillars[0];
-  const ActiveAnim = active?.Anim;
 
-  const advanceCycle = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % items.length);
-    cycleStart.current = Date.now();
-    setCycleProgress(0);
-  }, [items.length]);
-
-  useEffect(() => {
-    if (hovering || reducedMotion || items.length <= 1) return;
-
-    const tick = () => {
-      const elapsed = Date.now() - cycleStart.current;
-      const progress = Math.min(elapsed / CYCLE_MS, 1);
-      setCycleProgress(progress);
-      if (progress >= 1) advanceCycle();
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [hovering, activeIndex, advanceCycle, reducedMotion, items.length]);
-
-  const selectIndex = (index: number) => {
-    setActiveIndex(index);
-    cycleStart.current = Date.now();
-    setCycleProgress(0);
-  };
-
-  if (!items.length || !active || !ActiveAnim) return null;
+  if (!items.length || !active) return null;
 
   const highlights = active.item.highlights ?? [];
+
+  const selectIndex = (index: number) => setActiveIndex(index);
 
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-sm">
       <style>{`
-        @keyframes why-stage-in {
-          from { opacity: 0; transform: translateY(14px) scale(0.96); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes why-fade-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes why-detail-in {
-          from { opacity: 0; transform: translateX(8px); }
-          to { opacity: 1; transform: translateX(0); }
+        @media (prefers-reduced-motion: no-preference) {
+          .why-content-swap { animation: why-fade-in 0.35s ease-out both; }
         }
-        .why-stage-swap { animation: why-stage-in 0.5s cubic-bezier(.22,1,.36,1) both; }
-        .why-detail-swap { animation: why-detail-in 0.4s cubic-bezier(.22,1,.36,1) both; }
       `}</style>
-
       <div className="border-b border-border bg-background px-4 py-4 sm:px-6">
         <div className="-mx-1 flex items-center gap-2 overflow-x-auto pb-1 snap-x snap-mandatory sm:mx-0 sm:gap-3 sm:overflow-visible sm:pb-0">
           {pillars.map((p, i) => {
             const lit = activeIndex === i;
-            const done = i < activeIndex;
             return (
-              <div key={i} className="flex shrink-0 snap-start items-center gap-2 sm:min-w-0 sm:flex-1 sm:gap-3">
-                <button
-                  type="button"
-                  className={`group flex min-h-[44px] min-w-[4.5rem] items-center gap-2 rounded-xl border px-3 py-2.5 text-left transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:min-w-0 sm:flex-1 sm:gap-3 sm:px-4 sm:py-3 ${
-                    lit
-                      ? "border-primary bg-primary/10 shadow-[0_4px_20px_color-mix(in_srgb,var(--color-primary)_12%,transparent)]"
-                      : "border-border bg-background"
+              <button
+                key={i}
+                type="button"
+                className={`group flex min-h-[44px] min-w-[4.5rem] shrink-0 snap-start items-center gap-2 rounded-xl border px-3 py-2.5 text-left transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:min-w-0 sm:flex-1 sm:gap-3 sm:px-4 sm:py-3 ${
+                  lit
+                    ? "border-primary bg-primary/10 shadow-[0_4px_20px_color-mix(in_srgb,var(--color-primary)_12%,transparent)]"
+                    : "border-border bg-background hover:border-primary/20 hover:bg-primary/5"
+                }`}
+                onClick={() => selectIndex(i)}
+                aria-pressed={lit}
+                aria-label={`${p.item.title}: ${p.item.description}`}
+              >
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-xs font-bold transition-colors duration-300 sm:h-9 sm:w-9 sm:text-sm ${
+                    lit ? "bg-primary text-background" : "bg-muted text-muted-foreground"
                   }`}
-                  onMouseEnter={() => {
-                    setHovering(true);
-                    selectIndex(i);
-                  }}
-                  onMouseLeave={() => setHovering(false)}
-                  onFocus={() => {
-                    setHovering(true);
-                    selectIndex(i);
-                  }}
-                  onBlur={() => setHovering(false)}
-                  onClick={() => selectIndex(i)}
-                  aria-pressed={lit}
-                  aria-label={`${p.item.title}: ${p.item.description}`}
                 >
+                  {p.step}
+                </span>
+                <span className="hidden min-w-0 sm:block">
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-xs font-bold transition-colors duration-300 sm:h-9 sm:w-9 sm:text-sm ${
-                      lit || done
-                        ? "bg-primary text-background"
-                        : "bg-muted text-muted-foreground"
+                    className={`block truncate font-heading text-sm font-bold ${
+                      lit ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
-                    {p.step}
+                    {p.item.title}
                   </span>
-                  <span className="min-w-0 hidden sm:block">
-                    <span
-                      className={`block truncate font-heading text-sm font-bold ${
-                        lit ? "text-foreground" : "text-muted-foreground"
-                      }`}
-                    >
-                      {p.item.title}
-                    </span>
-                  </span>
-                  <span className="ml-auto sm:hidden">
-                    <WhyUsIcon item={p.item} size="sm" />
-                  </span>
-                </button>
-                {i < pillars.length - 1 && (
-                  <div className="relative hidden h-0.5 w-6 shrink-0 overflow-hidden rounded-full bg-border sm:block lg:w-10">
-                    <div
-                      className="absolute inset-y-0 left-0 rounded-full bg-primary transition-all duration-500"
-                      style={{
-                        width: i < activeIndex ? "100%" : i === activeIndex ? `${cycleProgress * 100}%` : "0%",
-                      }}
-                      aria-hidden
-                    />
-                  </div>
-                )}
-              </div>
+                </span>
+                <span className="ml-auto sm:hidden">
+                  <WhyUsIcon item={p.item} size="sm" />
+                </span>
+              </button>
             );
           })}
         </div>
       </div>
 
-      <div className="relative border-b border-border bg-background p-5 sm:p-8">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in srgb, var(--color-primary) 7%, transparent) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          key={activeIndex}
-          className="why-stage-swap relative mx-auto flex aspect-[16/10] min-h-[180px] w-full max-w-2xl max-h-48 sm:max-h-56 lg:max-h-72"
-        >
-          <div className="h-full w-full">
-            <ActiveAnim
-              active
-              title={active.item.title}
-              labels={active.item.animationLabels ?? undefined}
-              highlights={highlights}
-            />
-          </div>
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 gap-6 p-5 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div key={activeIndex} className="why-detail-swap">
+        <div key={activeIndex} className="why-content-swap">
           <div className="mb-3 flex items-center gap-3">
             <WhyUsIcon item={active.item} size="md" />
             <div>
@@ -215,7 +115,7 @@ export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
           )}
         </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-end">
+        {pillars.length > 1 ? (
           <button
             type="button"
             className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-4 py-2 font-body text-sm font-semibold text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary sm:w-auto lg:w-auto"
@@ -225,16 +125,7 @@ export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
             Next
             <ArrowRight size={14} />
           </button>
-          {!hovering && !reducedMotion && items.length > 1 && (
-            <div className="h-1 flex-1 overflow-hidden rounded-full bg-border lg:w-32 lg:flex-none">
-              <div
-                className="h-full rounded-full bg-primary transition-[width] duration-100"
-                style={{ width: `${cycleProgress * 100}%` }}
-                aria-hidden
-              />
-            </div>
-          )}
-        </div>
+        ) : null}
       </div>
     </div>
   );

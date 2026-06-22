@@ -8,7 +8,7 @@ export const heroData = {
   ],
   bodySuffix:
     "that handle the decisions your team shouldn't have to make twice.",
-  ctaPrimary: { label: "Get in Touch", href: "/contact" },
+  ctaPrimary: { label: "Get in Touch", href: "/contact#book" },
   ctaSecondary: { label: "Explore Our Services", href: "/services" },
   imagePlaceholder: "Hero — AI-themed team at a digital table",
 };

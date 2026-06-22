@@ -15,5 +15,12 @@ export const ADDITIONAL_SERVICE_PILLS = [
 ] as const;
 
 export const ECOSYSTEM_VIEWBOX = { width: 750, height: 720 } as const;
+/** Tighter crop so diagram fills the rendered area instead of floating in empty grid space */
+export const ECOSYSTEM_VIEWBOX_CROP = {
+  x: 55,
+  y: 0,
+  width: 640,
+  height: 720,
+} as const;
 export const ECOSYSTEM_CENTER = { x: 375, y: 350 } as const;
 export const RADAR_MAX_RADIUS = 200;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "@/components/Container";
 
 function CheckIcon() {
@@ -387,16 +388,13 @@ export function PricingSection() {
               <span className="text-primary">discovery audit.</span>
             </h2>
             <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:bg-primary-dark"
-              >
+              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:bg-primary-dark">
                 Book a discovery call
                 <ArrowRight
                   size={15}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </Link>
+              </CalendlyBookButton>
               <Link
                 href="/services/ai-automation"
                 className="inline-flex items-center rounded-full border border-border px-6 py-3 font-body text-sm text-foreground transition-colors hover:border-primary/30 hover:bg-muted/50"
