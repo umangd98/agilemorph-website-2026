@@ -54,18 +54,23 @@ export function SubServiceFinalCta({ cta, siblings, currentSlug }: SubServiceFin
         {otherServices.length > 0 ? (
           <nav
             aria-label="Other AI automation services"
-            className="mt-8 flex flex-wrap justify-center gap-2"
+            className="mt-8"
           >
-            {otherServices.map((item, index) => (
-              <AnimateOnScroll key={item.slug} delay={index * 35}>
-                <Link
-                  href={serviceHref(item.slug)}
-                  className="inline-block rounded-full border border-border bg-background px-4 py-2 font-body text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/35 hover:text-primary"
-                >
-                  {item.title}
-                </Link>
-              </AnimateOnScroll>
-            ))}
+            <p className="mb-3 text-center font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground lg:hidden">
+              Other services
+            </p>
+            <div className="services-mobile-chips -mx-1 flex gap-2 px-1 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0">
+              {otherServices.map((item, index) => (
+                <AnimateOnScroll key={item.slug} delay={index * 35}>
+                  <Link
+                    href={serviceHref(item.slug)}
+                    className="inline-block shrink-0 snap-start rounded-full border border-border bg-background px-4 py-2 font-body text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/35 hover:text-primary"
+                  >
+                    {item.title}
+                  </Link>
+                </AnimateOnScroll>
+              ))}
+            </div>
           </nav>
         ) : null}
       </Container>

@@ -805,7 +805,7 @@ header[data-header="inverse"] {
     }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
     .sub-service-hero-item {
       animation: sub-service-hero-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
@@ -821,7 +821,13 @@ header[data-header="inverse"] {
   }
 
   .sub-service-stat-value-lg {
-    font-size: clamp(1.875rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  @media (min-width: 640px) {
+    .sub-service-stat-value-lg {
+      font-size: clamp(1.875rem, 3vw, 2.5rem);
+    }
   }
 
   .sub-service-stat-value-md {
@@ -869,7 +875,7 @@ header[data-header="inverse"] {
     }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
     .sub-service-flow-card {
       animation: sub-service-flow-float 6s ease-in-out infinite;
     }
@@ -879,6 +885,24 @@ header[data-header="inverse"] {
         border-color 0.35s ease,
         box-shadow 0.35s ease,
         transform 0.35s ease;
+    }
+  }
+
+  .services-mobile-chips {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .services-mobile-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    .services-mobile-chips {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
     }
   }
 

@@ -28,7 +28,7 @@ export function SubServiceHeroSection({
       <Container>
         <ServiceBreadcrumb title={title} />
 
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-14">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-14">
           <SubServiceHeroIntro
             pageKey={pageKey}
             tagline={tagline}

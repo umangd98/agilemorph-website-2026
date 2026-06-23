@@ -21,7 +21,7 @@ export function SubServiceProcessSection({ steps = [] }: SubServiceProcessSectio
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <AnimateOnScroll key={step.title} delay={index * 50}>
-              <article className="h-full rounded-2xl border border-border bg-surface p-6">
+              <article className="h-full rounded-2xl border border-border bg-surface p-5 sm:p-6">
                 <p className="font-heading text-2xl font-extrabold tracking-tight text-primary/35 sm:text-3xl">
                   {String(index + 1).padStart(2, "0")}
                 </p>

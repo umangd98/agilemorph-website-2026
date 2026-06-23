@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
@@ -6,6 +7,11 @@ import { CtaAction } from "@/components/CtaAction";
 import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
+import {
+  AI_AUTOMATION_SUB_SLUGS,
+  getServiceLabel,
+  serviceHref,
+} from "@/lib/services";
 import { urlForImage } from "@/sanity/image";
 import type { CtaButton, SanityImageAsset } from "@/sanity/types";
 
@@ -18,6 +24,27 @@ type ServiceHeroSectionProps = {
   heroCta?: CtaButton;
   useEcosystemVisual?: boolean;
 };
+
+function ServiceHeroMobileChips() {
+  return (
+    <div className="mt-8 lg:hidden">
+      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Explore specializations
+      </p>
+      <div className="services-mobile-chips -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+        {AI_AUTOMATION_SUB_SLUGS.map((subSlug) => (
+          <Link
+            key={subSlug}
+            href={serviceHref(subSlug)}
+            className="shrink-0 snap-start rounded-full border border-border bg-background px-3.5 py-2 font-body text-xs font-semibold text-foreground transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary active:bg-primary/12"
+          >
+            {getServiceLabel(subSlug, subSlug)}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function ServiceHeroSection({
   slug,
@@ -44,7 +71,7 @@ export function ServiceHeroSection({
       <PageHeroBackground />
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0">
             {tagline ? (
               <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
@@ -53,12 +80,12 @@ export function ServiceHeroSection({
             ) : null}
             <h1
               id="service-hero-heading"
-              className="mb-6 font-heading text-5xl font-extrabold text-foreground sm:text-6xl"
+              className="mb-6 font-heading text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl"
             >
               {title}
             </h1>
             {description ? (
-              <p className="mb-8 max-w-2xl font-body text-lg leading-relaxed text-muted-foreground">
+              <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {description}
               </p>
             ) : null}
@@ -71,8 +98,9 @@ export function ServiceHeroSection({
                 <ArrowRight size={16} />
               </CtaAction>
             ) : null}
+            {useEcosystemVisual ? <ServiceHeroMobileChips /> : null}
           </div>
-          <div className="min-w-0">
+          <div className={`min-w-0 ${useEcosystemVisual ? "hidden lg:block" : ""}`}>
             {useEcosystemVisual ? (
               <HeroEcosystemVisual visible />
             ) : (

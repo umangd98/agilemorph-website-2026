@@ -5,6 +5,7 @@ import { Fragment, useEffect, useRef } from "react";
 import gsap from "gsap";
 
 import { parseFlowStepItems } from "@/components/sections/sub-service/sub-service-typography";
+import { useRichAnimations } from "@/hooks/useRichAnimations";
 import type { FlowStep } from "@/sanity/types";
 
 type SubServiceFlowVisualProps = {
@@ -14,12 +15,12 @@ type SubServiceFlowVisualProps = {
 
 export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const richAnimations = useRichAnimations();
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root || !flow.length) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const nodes = gsap.utils.toArray<HTMLElement>(root.querySelectorAll("[data-flow-node]"));
     const labelCards = gsap.utils.toArray<HTMLElement>(
       root.querySelectorAll("[data-flow-label-card]"),
@@ -34,7 +35,7 @@ export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProp
       gsap.set(pulses, { scaleX: 1, scaleY: 1 });
     };
 
-    if (reduced) {
+    if (!richAnimations) {
       showAll();
       return;
     }
@@ -106,7 +107,7 @@ export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProp
       labelCards.forEach((card) => card.classList.remove("sub-service-flow-node-active"));
       showAll();
     };
-  }, [pageKey, flow]);
+  }, [pageKey, flow, richAnimations]);
 
   if (!flow.length) return null;
 
@@ -129,7 +130,7 @@ export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProp
                 >
                   <p className="sub-service-flow-label">{step.label}</p>
                 </div>
-                <ul className="flex flex-wrap justify-center gap-1.5 px-0.5">
+                <ul className="flex flex-wrap justify-start gap-1.5 px-0.5 sm:justify-center">
                   {items.map((item) => (
                     <li key={item}>
                       <span

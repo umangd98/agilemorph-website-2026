@@ -17,6 +17,7 @@ import {
   type GraphNode,
   type GraphNodeType,
 } from "@/components/hero-animations/hero-ecosystem-graph";
+import { useRichAnimations } from "@/hooks/useRichAnimations";
 import { serviceHref } from "@/lib/services";
 
 type ZoneInfo = { slug: string; label: string };
@@ -24,18 +25,6 @@ type ZoneInfo = { slug: string; label: string };
 type ServicesEcosystemGraphProps = {
   visible?: boolean;
 };
-
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return reduced;
-}
 
 function nodeRectClass(type: GraphNodeType) {
   if (type === "base") return "graph-node-rect graph-node-rect-base";
@@ -165,8 +154,8 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
   const uid = useId().replace(/:/g, "");
   const svgRef = useRef<SVGSVGElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const reducedMotion = useReducedMotion();
-  const staticFrame = reducedMotion;
+  const richAnimations = useRichAnimations();
+  const staticFrame = !richAnimations;
   const [activeZone, setActiveZone] = useState<ZoneInfo | null>(null);
 
   const handleZoneActivate = useCallback((zone: ZoneInfo) => {
@@ -185,7 +174,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
   );
 
   useEffect(() => {
-    if (!visible || reducedMotion || !svgRef.current) return;
+    if (!visible || !richAnimations || !svgRef.current) return;
 
     const root = svgRef.current;
     const particleCleanups: Array<() => void> = [];
@@ -330,7 +319,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
       timelineRef.current = null;
       particleCleanups.forEach((cleanup) => cleanup());
     };
-  }, [visible, reducedMotion, uid]);
+  }, [visible, richAnimations, uid]);
 
   return (
     <div className="relative w-full min-w-0">

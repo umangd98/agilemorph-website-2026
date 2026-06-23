@@ -8,27 +8,35 @@ type AnimateOnScrollProps = {
   delay?: number;
 };
 
+function useSkipScrollAnimation() {
+  const [skip, setSkip] = useState(true);
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    setSkip(reduced || mobile);
+  }, []);
+
+  return skip;
+}
+
 export function AnimateOnScroll({
   children,
   className = "",
   delay = 0,
 }: AnimateOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const skipAnimation = useSkipScrollAnimation();
   const [visible, setVisible] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    if (reducedMotion) {
+    if (skipAnimation) {
       setVisible(true);
       return;
     }
+
+    const el = ref.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -42,16 +50,18 @@ export function AnimateOnScroll({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reducedMotion]);
+  }, [skipAnimation]);
+
+  const showContent = skipAnimation || visible;
 
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: reducedMotion
+        opacity: showContent ? 1 : 0,
+        transform: showContent ? "translateY(0)" : "translateY(24px)",
+        transition: skipAnimation
           ? undefined
           : `opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
       }}

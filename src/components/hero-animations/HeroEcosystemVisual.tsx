@@ -22,6 +22,7 @@ import {
   type EcosystemServiceZone,
 } from "@/components/hero-animations/hero-ecosystem-paths";
 import { serviceHref } from "@/lib/services";
+import { useRichAnimations } from "@/hooks/useRichAnimations";
 
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -42,18 +43,6 @@ const INTERACTIVE_ZONE_ORDER: readonly string[] = [
   "shopify-automation",
   "ai-agents",
 ];
-
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return reduced;
-}
 
 function EcosystemHitLink({
   zone,
@@ -149,8 +138,8 @@ export function HeroEcosystemVisual({
   const packetsRef = useRef<SVGGElement>(null);
   const finalLabelRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const reducedMotion = useReducedMotion();
-  const staticFrame = reducedMotion || interactive;
+  const richAnimations = useRichAnimations();
+  const staticFrame = !richAnimations || interactive;
   const [activeZone, setActiveZone] = useState<ZoneInfo | null>(null);
 
   const handleZoneActivate = useCallback((zone: ZoneInfo) => {
@@ -168,7 +157,7 @@ export function HeroEcosystemVisual({
   ).filter((zone): zone is (typeof ECOSYSTEM_SERVICE_ZONES)[number] => Boolean(zone));
 
   useEffect(() => {
-    if (!visible || reducedMotion || !svgRef.current) return;
+    if (!visible || !richAnimations || !svgRef.current) return;
 
     const root = svgRef.current;
     const q = <T extends Element>(sel: string) => root.querySelector<T>(sel);
@@ -308,7 +297,7 @@ export function HeroEcosystemVisual({
       };
     }
 
-    if (!reducedMotion) {
+    if (!richAnimations) {
       const packetStart = setTimeout(() => {
         for (let i = 0; i < 4; i++) {
           packetTimers.push(setTimeout(createPacket, i * 700));
@@ -331,7 +320,7 @@ export function HeroEcosystemVisual({
       tl.kill();
       timelineRef.current = null;
     };
-  }, [visible, reducedMotion, uid, interactive]);
+  }, [visible, richAnimations, uid, interactive]);
 
   const layerOpacity = staticFrame ? 1 : undefined;
   const ariaLabel = interactive

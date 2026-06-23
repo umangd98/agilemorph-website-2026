@@ -25,7 +25,7 @@ export function SubServiceFeaturesSection({
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {capabilities.map((item, index) => (
             <AnimateOnScroll key={`${item.title}-${index}`} delay={index * 60}>
-              <article className="hover-lift h-full rounded-2xl border border-border bg-background p-6 shadow-sm">
+              <article className="hover-lift h-full rounded-2xl border border-border bg-background p-5 shadow-sm sm:p-6">
                 {item.icon ? (
                   <span
                     className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-primary/15 bg-primary/8 text-lg text-primary"
