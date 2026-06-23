@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import type { WhyUsItem } from "@/sanity/types";
 
 import { getWhyUsAnim } from "./registry";
@@ -17,6 +18,22 @@ type PillarData = {
   item: WhyUsItem;
   step: string;
 };
+
+function WhyUsMobileSlide({ pillar }: { pillar: PillarData }) {
+  return (
+    <div className="flex h-full min-h-[168px] flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm">
+      <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-heading text-sm font-bold text-background shadow-md shadow-primary/25">
+        {pillar.step}
+      </span>
+      <h3 className="font-heading text-lg font-bold leading-snug text-foreground">
+        {pillar.item.title}
+      </h3>
+      <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-muted-foreground">
+        {pillar.item.description}
+      </p>
+    </div>
+  );
+}
 
 function WhyUsPillar({
   pillar,
@@ -49,7 +66,7 @@ function WhyUsPillar({
         onActivate(index);
       }}
       aria-pressed={isActive}
-      className={`group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border px-4 py-3 text-left shadow-sm transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-5 ${
+      className={`group relative flex h-full w-full items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left shadow-sm transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-5 sm:py-5 ${
         isActive
           ? "z-10 translate-x-1 border-primary/35 bg-primary/5 shadow-lg shadow-primary/10"
           : "border-border bg-surface hover:border-primary/20 hover:bg-primary/3 hover:translate-x-0.5"
@@ -81,16 +98,18 @@ function WhyUsPillar({
         </h3>
         <p
           className={`mt-1 font-body text-sm leading-relaxed transition-all duration-500 ${
-            isActive ? "text-muted-foreground" : "text-muted-foreground/80 line-clamp-2"
+            isActive
+              ? "text-muted-foreground"
+              : "text-muted-foreground/80 line-clamp-2 md:line-clamp-none"
           }`}
         >
           {pillar.item.description}
         </p>
       </div>
 
-      <div className="relative z-10 hidden shrink-0 md:block">
+      <div className="relative z-10 hidden h-[4.5rem] w-[6.5rem] shrink-0 items-center justify-center md:flex">
         {isActive ? (
-          <div className="h-[4.5rem] w-[6.5rem] overflow-hidden rounded-xl border border-primary/25 bg-background shadow-inner">
+          <div className="h-full w-full overflow-hidden rounded-xl border border-primary/25 bg-background shadow-inner">
             <div className="h-full w-full origin-top-left scale-[0.42]">
               <Anim
                 active
@@ -151,26 +170,44 @@ export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
 
   return (
     <div
-      className="relative flex h-full flex-col gap-2.5"
+      className="relative h-full"
       onMouseLeave={() => {
         pausedRef.current = false;
       }}
     >
-      <div
-        className="pointer-events-none absolute left-5 top-8 bottom-8 hidden w-px bg-gradient-to-b from-primary/50 via-primary/20 to-primary/50 md:block"
-        aria-hidden
-      />
-
-      {pillars.map((pillar, index) => (
-        <WhyUsPillar
-          key={pillar.item.title}
-          pillar={pillar}
-          index={index}
-          isActive={index === activeIndex}
-          onActivate={setActiveIndex}
-          onPause={pauseAutoCycle}
+      <div className="hidden h-full md:block">
+        <div
+          className="pointer-events-none absolute left-5 top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-primary/50"
+          aria-hidden
         />
-      ))}
+
+        <div className="relative flex h-full min-h-0 flex-col gap-3">
+          {pillars.map((pillar, index) => (
+            <div key={pillar.item.title} className="flex min-h-0 flex-1">
+              <WhyUsPillar
+                pillar={pillar}
+                index={index}
+                isActive={index === activeIndex}
+                onActivate={setActiveIndex}
+                onPause={pauseAutoCycle}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <MobileAutoCarousel
+        ariaLabel="Why choose AgileMorph"
+        desktopClassName="hidden"
+        mobileTrackClassName="px-0.5"
+        mobileSlideClassName="w-full shrink-0 snap-center px-0.5"
+        autoMs={AUTO_CYCLE_MS}
+        mobileChildren={pillars.map((pillar) => (
+          <WhyUsMobileSlide key={pillar.item.title} pillar={pillar} />
+        ))}
+      >
+        {null}
+      </MobileAutoCarousel>
     </div>
   );
 }

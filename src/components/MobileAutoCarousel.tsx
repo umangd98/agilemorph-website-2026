@@ -35,6 +35,10 @@ type MobileAutoCarouselProps = {
   autoMs?: number;
   /** When set, carousel slides use these instead of `children` (e.g. always-expanded cards). */
   mobileChildren?: ReactNode;
+  /** Classes applied to each mobile slide wrapper. Default: full-width snap slide. */
+  mobileSlideClassName?: string;
+  /** Classes applied to the mobile scroll track (e.g. gap, padding). */
+  mobileTrackClassName?: string;
 };
 
 export function MobileAutoCarousel({
@@ -44,6 +48,8 @@ export function MobileAutoCarousel({
   className = "",
   autoMs = AUTO_MS,
   mobileChildren,
+  mobileSlideClassName = "w-full shrink-0 snap-center",
+  mobileTrackClassName = "",
 }: MobileAutoCarouselProps) {
   const desktopSlides = Children.toArray(children).filter(isValidElement);
   const mobileSlides = Children.toArray(mobileChildren ?? children).filter(isValidElement);
@@ -182,13 +188,13 @@ export function MobileAutoCarousel({
         <div ref={viewportRef} className="overflow-hidden">
           <div
             ref={scrollRef}
-            className="flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className={`flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${mobileTrackClassName}`}
             aria-live="polite"
           >
           {mobileSlides.map((slide, index) => (
             <div
               key={slide.key ?? index}
-              className="w-full shrink-0 snap-center"
+              className={mobileSlideClassName}
               role="group"
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${count}`}

@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
+import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { PRIMARY_SERVICE_SLUG, resolveCapabilityHref } from "@/lib/services";
 import type { CapabilityItem } from "@/sanity/types";
 
@@ -32,11 +33,17 @@ function splitCapabilities(capabilities: readonly CapabilityItem[]) {
   return { featured, secondary };
 }
 
-function FeaturedLeadCard({ capability }: { capability: CapabilityWithMeta }) {
+function FeaturedLeadCard({
+  capability,
+  className = "",
+}: {
+  capability: CapabilityWithMeta;
+  className?: string;
+}) {
   return (
     <Link
       href={resolveCapabilityHref(capability)}
-      className="group flex flex-col gap-5 border-b border-border bg-primary/4 p-5 transition-colors duration-200 hover:bg-primary/7 sm:p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8"
+      className={`group flex flex-col gap-5 bg-primary/4 p-5 transition-colors duration-200 hover:bg-primary/7 sm:p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8 ${className}`}
     >
       <div className="flex min-w-0 items-start gap-3.5 sm:items-center sm:gap-4 md:gap-5">
         <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/12 text-xl text-primary transition-transform duration-200 group-hover:scale-105 sm:h-12 sm:w-12 sm:text-2xl md:flex">
@@ -71,27 +78,30 @@ function SecondaryCapabilityCard({
   layout = "grid",
 }: {
   capability: CapabilityWithMeta;
-  layout?: "grid" | "list";
+  layout?: "grid" | "carousel";
 }) {
-  if (layout === "list") {
+  if (layout === "carousel") {
     return (
       <Link
         href={resolveCapabilityHref(capability)}
-        className="group flex items-center justify-between gap-4 border-b border-border bg-background px-5 py-4 transition-colors duration-200 last:border-b-0 hover:bg-primary/4 active:bg-primary/5"
+        className="group flex h-full min-h-[156px] flex-col justify-between rounded-2xl border border-border bg-background p-5 shadow-sm transition-colors duration-200 hover:border-primary/30 active:bg-primary/5"
       >
-        <div className="min-w-0 flex-1">
-          <h3 className="font-heading text-sm font-semibold text-foreground transition-colors group-hover:text-primary sm:text-base">
+        <div className="min-w-0">
+          <h3 className="font-heading text-base font-bold text-foreground transition-colors group-hover:text-primary">
             {capability.title}
           </h3>
-          <p className="mt-1 font-body text-xs leading-relaxed text-muted-foreground sm:text-sm">
+          <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
             {capability.description}
           </p>
         </div>
-        <ArrowRight
-          size={16}
-          className="shrink-0 text-muted-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:text-primary"
-          aria-hidden
-        />
+        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+          Learn more
+          <ArrowRight
+            size={14}
+            className="transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </span>
       </Link>
     );
   }
@@ -109,6 +119,16 @@ function SecondaryCapabilityCard({
   );
 }
 
+function SpecializationsHeading({ className = "" }: { className?: string }) {
+  return (
+    <p
+      className={`font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs ${className}`}
+    >
+      Specializations
+    </p>
+  );
+}
+
 function CapabilitiesGrid({ capabilities }: { capabilities: readonly CapabilityItem[] }) {
   const { featured, secondary } = splitCapabilities(capabilities);
 
@@ -117,35 +137,54 @@ function CapabilitiesGrid({ capabilities }: { capabilities: readonly CapabilityI
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-sm sm:rounded-3xl">
-      <FeaturedLeadCard capability={featured} />
-
-      <div className="border-b border-border px-5 py-2.5 sm:px-8 sm:py-3">
-        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
-          Specializations
-        </p>
+    <>
+      {/* Mobile: lead card only */}
+      <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-sm md:hidden">
+        <FeaturedLeadCard capability={featured} />
       </div>
 
-      <div className="md:hidden">
-        {secondary.map((capability) => (
-          <SecondaryCapabilityCard
-            key={capability.title}
-            capability={capability}
-            layout="list"
-          />
-        ))}
-      </div>
+      {/* Mobile: specializations carousel — outside parent card */}
+      {secondary.length > 0 ? (
+        <div className="mt-8 md:hidden">
+          <SpecializationsHeading className="mb-4" />
+          <MobileAutoCarousel
+            ariaLabel="AI automation specializations"
+            desktopClassName="hidden"
+            mobileTrackClassName="gap-3"
+            mobileSlideClassName="w-full shrink-0 snap-center"
+            autoMs={4500}
+            mobileChildren={secondary.map((capability) => (
+              <SecondaryCapabilityCard
+                key={capability.title}
+                capability={capability}
+                layout="carousel"
+              />
+            ))}
+          >
+            {null}
+          </MobileAutoCarousel>
+        </div>
+      ) : null}
 
-      <div className="hidden gap-px bg-border md:grid md:grid-cols-2 lg:grid-cols-3">
-        {secondary.map((capability) => (
-          <SecondaryCapabilityCard
-            key={capability.title}
-            capability={capability}
-            layout="grid"
-          />
-        ))}
+      {/* Desktop: unified card with grid */}
+      <div className="hidden overflow-hidden rounded-2xl border border-border bg-background shadow-sm sm:rounded-3xl md:block">
+        <FeaturedLeadCard capability={featured} className="border-b border-border" />
+
+        <div className="border-b border-border px-8 py-3">
+          <SpecializationsHeading />
+        </div>
+
+        <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+          {secondary.map((capability) => (
+            <SecondaryCapabilityCard
+              key={capability.title}
+              capability={capability}
+              layout="grid"
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

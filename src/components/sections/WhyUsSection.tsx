@@ -39,7 +39,9 @@ export function WhyUsSection({
 
         <AnimateOnScroll delay={120}>
           <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-6">
-            <WhyUsInteractive items={items} />
+            <div className="flex h-full min-h-0 flex-col">
+              <WhyUsInteractive items={items} />
+            </div>
             <EfficiencyCalculator
               content={efficiencyCalculator}
               className="h-full min-h-[28rem] lg:min-h-0"
