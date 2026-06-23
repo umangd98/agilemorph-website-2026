@@ -9,7 +9,7 @@ import {
 
 import { sanityFetch } from "@/sanity/fetch";
 import { allServicePagesListQuery } from "@/sanity/queries";
-import type { ServicePageListItem } from "@/sanity/types";
+import type { ServicePage, ServicePageListItem } from "@/sanity/types";
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
 
@@ -38,6 +38,13 @@ export const AI_AUTOMATION_SUB_SLUGS = [
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
+
+export function isSubServicePage(page: Pick<ServicePage, "layout" | "slug">) {
+  return (
+    page.layout === "subService" ||
+    AI_AUTOMATION_SUB_SLUGS.includes(page.slug as AiAutomationSubSlug)
+  );
+}
 
 export const PRIMARY_SERVICE_CAPABILITIES = [
   {

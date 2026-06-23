@@ -248,13 +248,58 @@ export interface ServicePageListItem {
   capabilities?: CapabilityItem[];
 }
 
+export type ServicePageLayout = "standard" | "subService";
+
+export interface FlowStep {
+  label: string;
+  text: string;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface UseCaseItem {
+  title: string;
+  description: string;
+}
+
+export interface ServiceHeadline {
+  before?: string;
+  highlight?: string;
+  after?: string;
+}
+
+export interface ServicePricing {
+  headline?: string;
+  detail?: string;
+}
+
+export interface SubServicePageSummary {
+  title: string;
+  slug: string;
+}
+
 export interface ServicePage {
   _id: string;
   _type: "servicePage";
   title: string;
   slug: string;
+  layout?: ServicePageLayout;
   tagline?: string;
   description?: string;
+  headline?: ServiceHeadline;
+  flow?: FlowStep[];
+  stats?: StatItem[];
+  whyTitle?: string;
+  whyHighlight?: string;
+  whyText?: string;
+  checks?: string[];
+  useCases?: UseCaseItem[];
+  pricing?: ServicePricing;
+  faq?: FaqItem[];
+  processSteps?: ProcessStep[];
   heroImage?: SanityImageAsset;
   heroCta?: CtaButton;
   capabilitiesHeading?: string;

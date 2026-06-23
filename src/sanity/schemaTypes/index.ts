@@ -5,6 +5,7 @@ import { companyValue } from "./companyValue";
 import { contactPage } from "./contactPage";
 import { ctaButton } from "./ctaButton";
 import { faqItem } from "./faqItem";
+import { flowStep } from "./flowStep";
 import { homepage } from "./homepage";
 import { integrationItem } from "./integrationItem";
 import { partnerItem } from "./partnerItem";
@@ -13,8 +14,10 @@ import { seo } from "./seo";
 import { serviceCard } from "./serviceCard";
 import { servicePage } from "./servicePage";
 import { stat } from "./stat";
+import { statItem } from "./statItem";
 import { technologyItem } from "./technologyItem";
 import { testimonial } from "./testimonial";
+import { useCaseItem } from "./useCaseItem";
 import { whyUsItem } from "./whyUsItem";
 
 export const schemaTypes = [
@@ -28,6 +31,9 @@ export const schemaTypes = [
   capabilityItem,
   technologyItem,
   faqItem,
+  flowStep,
+  statItem,
+  useCaseItem,
   companyValue,
   partnerItem,
   integrationItem,

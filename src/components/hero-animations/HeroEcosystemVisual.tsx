@@ -1,23 +1,47 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 import {
   ADDITIONAL_SERVICE_PILLS,
   ECOSYSTEM_CENTER,
+  ECOSYSTEM_SERVICE_ZONES,
   ECOSYSTEM_VIEWBOX,
   ECOSYSTEM_VIEWBOX_CROP,
   PACKET_PATHS,
   RADAR_MAX_RADIUS,
+  type EcosystemServiceZone,
 } from "@/components/hero-animations/hero-ecosystem-paths";
+import { serviceHref } from "@/lib/services";
 
 gsap.registerPlugin(MotionPathPlugin);
 
+type ZoneInfo = { slug: string; label: string };
+
 type HeroEcosystemVisualProps = {
   visible?: boolean;
+  interactive?: boolean;
 };
+
+const INTERACTIVE_ZONE_ORDER: readonly string[] = [
+  "ai-automation",
+  "workflow-automation",
+  "messaging-automation",
+  "mcp-ai-infrastructure",
+  "crm-lead-automation",
+  "ai-audit",
+  "shopify-automation",
+  "ai-agents",
+];
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -31,13 +55,117 @@ function useReducedMotion() {
   return reduced;
 }
 
-export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps) {
+function EcosystemHitLink({
+  zone,
+  onActivate,
+  onDeactivate,
+}: {
+  zone: EcosystemServiceZone;
+  onActivate: (zone: ZoneInfo) => void;
+  onDeactivate: () => void;
+}) {
+  const { hit } = zone;
+  return (
+    <a
+      href={serviceHref(zone.slug)}
+      className="ecosystem-zone-link outline-none"
+      aria-label={`${zone.label} — view service`}
+      onMouseEnter={() => onActivate({ slug: zone.slug, label: zone.label })}
+      onMouseLeave={onDeactivate}
+      onFocus={() => onActivate({ slug: zone.slug, label: zone.label })}
+      onBlur={onDeactivate}
+    >
+      <rect
+        x={hit.x}
+        y={hit.y}
+        width={hit.width}
+        height={hit.height}
+        rx={hit.rx ?? 8}
+        fill="transparent"
+        className="ecosystem-hit-rect"
+      />
+      <rect
+        x={hit.x}
+        y={hit.y}
+        width={hit.width}
+        height={hit.height}
+        rx={hit.rx ?? 8}
+        fill="var(--color-primary)"
+        fillOpacity={0}
+        stroke="var(--color-primary)"
+        strokeWidth={2}
+        className="ecosystem-hit-highlight pointer-events-none"
+        aria-hidden
+      />
+    </a>
+  );
+}
+
+function EcosystemPillLink({
+  slug,
+  label,
+  x,
+  onActivate,
+  onDeactivate,
+  children,
+}: {
+  slug: string;
+  label: string;
+  x: number;
+  onActivate: (zone: ZoneInfo) => void;
+  onDeactivate: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={serviceHref(slug)}
+      className="ecosystem-zone-link outline-none"
+      aria-label={`${label} — view service`}
+      onMouseEnter={() => onActivate({ slug, label })}
+      onMouseLeave={onDeactivate}
+      onFocus={() => onActivate({ slug, label })}
+      onBlur={onDeactivate}
+    >
+      <g transform={`translate(${x}, 660)`}>
+        {children}
+        <rect
+          width={150}
+          height={32}
+          rx={16}
+          fill="transparent"
+          className="ecosystem-hit-rect"
+        />
+      </g>
+    </a>
+  );
+}
+
+export function HeroEcosystemVisual({
+  visible = true,
+  interactive = false,
+}: HeroEcosystemVisualProps) {
   const uid = useId().replace(/:/g, "");
   const svgRef = useRef<SVGSVGElement>(null);
   const packetsRef = useRef<SVGGElement>(null);
   const finalLabelRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const reducedMotion = useReducedMotion();
-  const staticFrame = reducedMotion;
+  const staticFrame = reducedMotion || interactive;
+  const [activeZone, setActiveZone] = useState<ZoneInfo | null>(null);
+
+  const handleZoneActivate = useCallback((zone: ZoneInfo) => {
+    setActiveZone(zone);
+    if (interactive) timelineRef.current?.timeScale(0.2);
+  }, [interactive]);
+
+  const handleZoneDeactivate = useCallback(() => {
+    setActiveZone(null);
+    if (interactive) timelineRef.current?.timeScale(1);
+  }, [interactive]);
+
+  const orderedZones = INTERACTIVE_ZONE_ORDER.map((id) =>
+    ECOSYSTEM_SERVICE_ZONES.find((zone) => zone.id === id),
+  ).filter((zone): zone is (typeof ECOSYSTEM_SERVICE_ZONES)[number] => Boolean(zone));
 
   useEffect(() => {
     if (!visible || reducedMotion || !svgRef.current) return;
@@ -64,55 +192,74 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
     const additionalStrip = q<SVGGElement>('[data-layer="additional"]');
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    timelineRef.current = tl;
 
     gsap.set(root.querySelector('[data-layer="chevrons"]'), {
       scale: 0.8,
       transformOrigin: "center center",
     });
 
-    tl.to(chevMid, { strokeWidth: 12, duration: 0.8, yoyo: true, repeat: 1 })
-      .to(chevTop, { y: -20, opacity: 0.3, duration: 0.5 }, "expand")
-      .to(chevBot, { y: 20, opacity: 0.3, duration: 0.5 }, "expand")
-      .to(coreMatrix, { opacity: 1, scale: 1.05, duration: 0.8 }, "expand");
-
-    if (nodes) {
-      tl.to(
-        nodes.querySelectorAll("circle"),
-        { scale: 1.2, duration: 1, repeat: -1, yoyo: true, stagger: 0.2 },
-        "expand",
+    if (interactive) {
+      tl.set(
+        [
+          pipelineLayer,
+          crmLayer,
+          foundationLayer,
+          messagingLayer,
+          auditLayer,
+          coreMatrix,
+          additionalStrip,
+          radarSweep,
+        ],
+        { opacity: 1 },
       );
+      if (leadProgress) gsap.set(leadProgress, { width: 100 });
+      if (finalLabel) gsap.set(finalLabel, { opacity: 1 });
+    } else {
+      tl.to(chevMid, { strokeWidth: 12, duration: 0.8, yoyo: true, repeat: 1 })
+        .to(chevTop, { y: -20, opacity: 0.3, duration: 0.5 }, "expand")
+        .to(chevBot, { y: 20, opacity: 0.3, duration: 0.5 }, "expand")
+        .to(coreMatrix, { opacity: 1, scale: 1.05, duration: 0.8 }, "expand");
+
+      if (nodes) {
+        tl.to(
+          nodes.querySelectorAll("circle"),
+          { scale: 1.2, duration: 1, repeat: -1, yoyo: true, stagger: 0.2 },
+          "expand",
+        );
+      }
+
+      tl.to(pipelineLayer, { opacity: 1, duration: 1 }, "phase2")
+        .from(mainPipe, { strokeDasharray: "0, 1000", duration: 1.5 }, "phase2")
+        .from(pipelineIcons, { y: 20, opacity: 0, stagger: 0.2, duration: 0.5 }, "-=1");
+
+      tl.to(crmLayer, { opacity: 1, duration: 0.8 }, "phase3")
+        .to(leadProgress, { width: 100, duration: 2, ease: "none" }, "phase3");
+
+      tl.to(foundationLayer, { opacity: 1, y: 500, duration: 1, startAt: { y: 530 } }, "phase4");
+
+      tl.to(messagingLayer, { opacity: 1, duration: 1 }, "phase5").from(
+        messagingPaths,
+        { strokeDashoffset: 500, strokeDasharray: 500, duration: 1.5 },
+        "phase5",
+      );
+
+      tl.to(auditLayer, { opacity: 1, scale: 1, duration: 0.8, startAt: { scale: 0.8 } }, "phase5b");
+
+      tl.to(
+        radarSweep,
+        {
+          opacity: 1,
+          attr: { r: RADAR_MAX_RADIUS },
+          duration: 3,
+          repeat: -1,
+          ease: "sine.inOut",
+        },
+        "final",
+      )
+        .to(finalLabel, { opacity: 1, duration: 1 }, "final")
+        .to(additionalStrip, { opacity: 1, y: 0, duration: 0.8, startAt: { y: 12 } }, "final");
     }
-
-    tl.to(pipelineLayer, { opacity: 1, duration: 1 }, "phase2")
-      .from(mainPipe, { strokeDasharray: "0, 1000", duration: 1.5 }, "phase2")
-      .from(pipelineIcons, { y: 20, opacity: 0, stagger: 0.2, duration: 0.5 }, "-=1");
-
-    tl.to(crmLayer, { opacity: 1, duration: 0.8 }, "phase3")
-      .to(leadProgress, { width: 100, duration: 2, ease: "none" }, "phase3");
-
-    tl.to(foundationLayer, { opacity: 1, y: 500, duration: 1, startAt: { y: 530 } }, "phase4");
-
-    tl.to(messagingLayer, { opacity: 1, duration: 1 }, "phase5").from(
-      messagingPaths,
-      { strokeDashoffset: 500, strokeDasharray: 500, duration: 1.5 },
-      "phase5",
-    );
-
-    tl.to(auditLayer, { opacity: 1, scale: 1, duration: 0.8, startAt: { scale: 0.8 } }, "phase5b");
-
-    tl.to(
-      radarSweep,
-      {
-        opacity: 1,
-        attr: { r: RADAR_MAX_RADIUS },
-        duration: 3,
-        repeat: -1,
-        ease: "sine.inOut",
-      },
-      "final",
-    )
-      .to(finalLabel, { opacity: 1, duration: 1 }, "final")
-      .to(additionalStrip, { opacity: 1, y: 0, duration: 0.8, startAt: { y: 12 } }, "final");
 
     const packetContainer = packetsRef.current;
     const packetTimers: ReturnType<typeof setTimeout>[] = [];
@@ -142,34 +289,75 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
       });
     }
 
-    const packetStart = setTimeout(() => {
-      for (let i = 0; i < 8; i++) {
-        packetTimers.push(setTimeout(createPacket, i * 500));
-      }
-    }, 3000);
+    if (!interactive) {
+      const packetStart = setTimeout(() => {
+        for (let i = 0; i < 8; i++) {
+          packetTimers.push(setTimeout(createPacket, i * 500));
+        }
+      }, 3000);
+
+      return () => {
+        clearTimeout(packetStart);
+        packetTimers.forEach(clearTimeout);
+        tl.kill();
+        timelineRef.current = null;
+        activePackets.forEach((el) => {
+          gsap.killTweensOf(el);
+          el.remove();
+        });
+      };
+    }
+
+    if (!reducedMotion) {
+      const packetStart = setTimeout(() => {
+        for (let i = 0; i < 4; i++) {
+          packetTimers.push(setTimeout(createPacket, i * 700));
+        }
+      }, 500);
+
+      return () => {
+        clearTimeout(packetStart);
+        packetTimers.forEach(clearTimeout);
+        tl.kill();
+        timelineRef.current = null;
+        activePackets.forEach((el) => {
+          gsap.killTweensOf(el);
+          el.remove();
+        });
+      };
+    }
 
     return () => {
-      clearTimeout(packetStart);
-      packetTimers.forEach(clearTimeout);
       tl.kill();
-      activePackets.forEach((el) => {
-        gsap.killTweensOf(el);
-        el.remove();
-      });
+      timelineRef.current = null;
     };
-  }, [visible, reducedMotion, uid]);
+  }, [visible, reducedMotion, uid, interactive]);
 
   const layerOpacity = staticFrame ? 1 : undefined;
+  const ariaLabel = interactive
+    ? "Interactive AgileMorph service ecosystem — select a region to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
+    : "AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website";
 
   return (
     <div className="relative w-full min-w-0 pt-2 lg:pt-4 lg:-mr-2 xl:-mr-4">
+      {interactive && activeZone ? (
+        <div
+          className="pointer-events-none absolute left-1/2 top-2 z-10 -translate-x-1/2 rounded-full border border-primary/25 bg-background/95 px-4 py-1.5 font-body text-xs font-semibold text-primary shadow-sm backdrop-blur-sm sm:text-sm"
+          role="status"
+          aria-live="polite"
+        >
+          {activeZone.label}
+          <span className="ml-1.5 font-normal text-muted-foreground">· View service →</span>
+        </div>
+      ) : null}
+
       <svg
         ref={svgRef}
         viewBox={`${ECOSYSTEM_VIEWBOX_CROP.x} ${ECOSYSTEM_VIEWBOX_CROP.y} ${ECOSYSTEM_VIEWBOX_CROP.width} ${ECOSYSTEM_VIEWBOX_CROP.height}`}
         preserveAspectRatio="xMidYMid meet"
-        className="h-auto w-full aspect-[640/720]"
+        className={`h-auto w-full aspect-[640/720] ${interactive ? "ecosystem-interactive" : ""}`}
         role="img"
-        aria-label="AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website"
+        aria-label={ariaLabel}
       >
         <defs>
           <pattern id={`grid-${uid}`} width="40" height="40" patternUnits="userSpaceOnUse">
@@ -351,22 +539,66 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
           opacity={layerOpacity ?? 0}
           transform={staticFrame ? "translate(0, 0)" : "translate(0, 12)"}
         >
-          {ADDITIONAL_SERVICE_PILLS.map((pill) => (
-            <g key={pill.label} transform={`translate(${pill.x}, 660)`}>
-              <rect width="150" height="32" rx="16" fill="var(--color-background)" stroke="var(--color-border)" />
-              <text
-                x="75"
-                y="20"
-                textAnchor="middle"
-                fill="var(--color-muted-foreground)"
-                fontSize="10"
-                fontWeight="600"
+          {ADDITIONAL_SERVICE_PILLS.map((pill) =>
+            interactive ? (
+              <EcosystemPillLink
+                key={pill.slug}
+                slug={pill.slug}
+                label={pill.label}
+                x={pill.x}
+                onActivate={handleZoneActivate}
+                onDeactivate={handleZoneDeactivate}
               >
-                {pill.label}
-              </text>
-            </g>
-          ))}
+                <rect
+                  width="150"
+                  height="32"
+                  rx="16"
+                  fill="var(--color-background)"
+                  stroke="var(--color-border)"
+                  className="ecosystem-pill-bg"
+                />
+                <text
+                  x="75"
+                  y="20"
+                  textAnchor="middle"
+                  fill="var(--color-muted-foreground)"
+                  fontSize="10"
+                  fontWeight="600"
+                  className="ecosystem-pill-label pointer-events-none"
+                >
+                  {pill.label}
+                </text>
+              </EcosystemPillLink>
+            ) : (
+              <g key={pill.slug} transform={`translate(${pill.x}, 660)`}>
+                <rect width="150" height="32" rx="16" fill="var(--color-background)" stroke="var(--color-border)" />
+                <text
+                  x="75"
+                  y="20"
+                  textAnchor="middle"
+                  fill="var(--color-muted-foreground)"
+                  fontSize="10"
+                  fontWeight="600"
+                >
+                  {pill.label}
+                </text>
+              </g>
+            ),
+          )}
         </g>
+
+        {interactive ? (
+          <g data-layer="interactive-hits">
+            {orderedZones.map((zone) => (
+              <EcosystemHitLink
+                key={zone.id}
+                zone={zone}
+                onActivate={handleZoneActivate}
+                onDeactivate={handleZoneDeactivate}
+              />
+            ))}
+          </g>
+        ) : null}
       </svg>
 
       <div
@@ -374,7 +606,9 @@ export function HeroEcosystemVisual({ visible = true }: HeroEcosystemVisualProps
         className="pointer-events-none mt-4 text-center font-body text-[10px] font-bold tracking-[0.12em] text-primary sm:mt-5 sm:text-xs sm:tracking-[0.14em]"
         style={{ opacity: staticFrame ? 1 : 0 }}
       >
-        AGILEMORPH&apos;S INTEGRATED AI ECOSYSTEM
+        {interactive
+          ? "AGILEMORPH SERVICE ECOSYSTEM"
+          : "AGILEMORPH'S INTEGRATED AI ECOSYSTEM"}
       </div>
     </div>
   );

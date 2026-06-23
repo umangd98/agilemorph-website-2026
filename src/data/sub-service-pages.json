@@ -1,0 +1,1723 @@
+[
+  {
+    "_id": "servicePage-ai-agents",
+    "_type": "servicePage",
+    "title": "AI Agents",
+    "slug": "ai-agents",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "We build autonomous AI agents that read context, make decisions, and take action across your tools without a human in the loop. Classification, routing, drafting, and execution, running the moment work arrives.",
+    "headline": {
+      "before": "Agents that don't just answer. They ",
+      "highlight": "act",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Trigger",
+        "text": "New message / event"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Agent",
+        "text": "Claude classifies + decides"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Action",
+        "text": "Updates CRM, replies, routes"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "<2s",
+        "label": "Decision latency"
+      },
+      {
+        "_type": "statItem",
+        "value": "95%+",
+        "label": "Classification accuracy"
+      },
+      {
+        "_type": "statItem",
+        "value": "24/7",
+        "label": "Always-on operation"
+      },
+      {
+        "_type": "statItem",
+        "value": "0",
+        "label": "Manual triage needed"
+      }
+    ],
+    "whyTitle": "Where an agent beats a workflow",
+    "whyHighlight": "beats",
+    "whyText": "A standard automation follows fixed rules. An agent reasons. When the input is messy, ambiguous, or human, an agent decides what to do, the way a trained team member would, at a fraction of the cost.",
+    "checks": [
+      "Reads unstructured input: emails, chats, documents, voice notes",
+      "Classifies intent and urgency, then routes to the right path",
+      "Drafts and sends context-aware replies for your approval or fully autonomously",
+      "Calls your tools directly: CRM, calendar, databases, payment systems",
+      "Escalates edge cases to a human with full context attached"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Inbound lead qualification",
+        "description": "Agent reads the enquiry, scores it, and books or routes it."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Support triage",
+        "description": "Tickets classified and answered or escalated automatically."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Document processing",
+        "description": "Invoices, contracts, and forms parsed into structured data."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Inbox management",
+        "description": "High-volume inboxes sorted, drafted, and prioritized."
+      }
+    ],
+    "pricing": {
+      "headline": "Agent builds typically start at a 5–10 day scoped engagement",
+      "detail": "Most production agents land in the 5–15 day range depending on tool integrations and approval gates. We quote a fixed scope after a short discovery call."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "What models do you use?",
+        "answer": "We work with Claude, GPT, and Gemini, chosen per task. Classification, drafting, and reasoning each have a best-fit model and we route accordingly."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Will the agent act without my approval?",
+        "answer": "Your choice. We can run fully autonomous, or hold every action behind a one-click approval until you trust it."
+      },
+      {
+        "_type": "faqItem",
+        "question": "How do you prevent mistakes?",
+        "answer": "Confidence thresholds, human-in-the-loop fallbacks, and full logging. Low-confidence cases always escalate with context."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Intent Classification",
+        "description": "Every inbound message tagged by type, urgency, and next action in real time.",
+        "icon": "⬡"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Smart Drafting",
+        "description": "Replies and summaries written in your voice, grounded in your own data.",
+        "icon": "✎"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Tool Execution",
+        "description": "Agents that write to your systems, not just read from them.",
+        "icon": "⤳"
+      }
+    ],
+    "whyUsHeading": "Where an agent beats a workflow",
+    "whyUs": [
+      {
+        "title": "Unstructured input",
+        "description": "Reads unstructured input: emails, chats, documents, and voice notes.",
+        "highlights": [
+          "Emails & chats",
+          "Documents",
+          "Voice notes"
+        ]
+      },
+      {
+        "title": "Smart routing",
+        "description": "Classifies intent and urgency, then routes to the right path automatically.",
+        "highlights": [
+          "Intent detection",
+          "Priority routing"
+        ]
+      },
+      {
+        "title": "Context-aware replies",
+        "description": "Drafts and sends context-aware replies for your approval or fully autonomously.",
+        "highlights": [
+          "Your voice",
+          "Human-in-the-loop optional"
+        ]
+      },
+      {
+        "title": "Direct tool access",
+        "description": "Calls your tools directly: CRM, calendar, databases, and payment systems.",
+        "highlights": [
+          "CRM & calendar",
+          "Databases",
+          "Payments"
+        ]
+      },
+      {
+        "title": "Human escalation",
+        "description": "Escalates edge cases to a human with full context attached.",
+        "highlights": [
+          "Full context",
+          "Confidence thresholds"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "AI Agents | AgileMorph Solutions",
+      "description": "Autonomous AI agents that classify, decide, and act across your tools without a human in the loop."
+    }
+  },
+  {
+    "_id": "servicePage-workflow-automation",
+    "_type": "servicePage",
+    "title": "Workflow Automation",
+    "slug": "workflow-automation",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "We turn the manual processes draining your team into reliable automated pipelines. Built on n8n, Make, and Zapier, connected to the tools you already use, monitored so they keep running.",
+    "headline": {
+      "before": "The repetitive work, ",
+      "highlight": "gone",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Source",
+        "text": "Form / app / sheet"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Pipeline",
+        "text": "Transform + enrich"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Destination",
+        "text": "CRM / DB / Slack"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "40%+",
+        "label": "Time reclaimed"
+      },
+      {
+        "_type": "statItem",
+        "value": "100+",
+        "label": "Integrations supported"
+      },
+      {
+        "_type": "statItem",
+        "value": "0",
+        "label": "Copy-paste tasks"
+      },
+      {
+        "_type": "statItem",
+        "value": "24/7",
+        "label": "Hands-off running"
+      }
+    ],
+    "whyTitle": "Automation that survives contact with reality",
+    "whyHighlight": "reality",
+    "whyText": "Plenty of automations work in a demo and break in week two. We build with error handling, retries, logging, and alerts from day one, so the pipeline keeps working when an API changes or data comes in messy.",
+    "checks": [
+      "Self-hosted n8n for full control and no per-task billing surprises",
+      "Error handling and retries so one bad record doesn't stop everything",
+      "Alerting when something needs a human, instead of silent failure",
+      "Clean documentation so your team can see exactly what runs and when",
+      "Certified n8n partner team building it"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Lead-to-CRM sync",
+        "description": "New leads enriched and pushed to your CRM instantly."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Reporting automation",
+        "description": "Daily and weekly reports compiled and delivered automatically."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Data scraping",
+        "description": "Structured data pulled from sites and marketplaces on schedule."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Onboarding flows",
+        "description": "New customers walked through setup without manual steps."
+      }
+    ],
+    "pricing": {
+      "headline": "Most workflow builds run 3–8 days per process",
+      "detail": "Simple single-process automations start small; multi-step pipelines with enrichment and error handling scale from there. Fixed scope, quoted up front."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "n8n, Make, or Zapier — which?",
+        "answer": "Depends on volume, control needs, and budget. We're a certified n8n partner and usually recommend self-hosted n8n for serious volume, but we build on all three."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Do I own the automation?",
+        "answer": "Yes. Self-hosted builds live on your infrastructure. You keep full access and we hand over documentation."
+      },
+      {
+        "_type": "faqItem",
+        "question": "What if it breaks?",
+        "answer": "We build in alerting and offer monitoring retainers so issues get caught and fixed before they cost you."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Process Mapping",
+        "description": "We document the manual flow first, then automate the version worth keeping.",
+        "icon": "⟳"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Reliable Pipelines",
+        "description": "Retries, logging, and fallbacks built in, not bolted on later.",
+        "icon": "⛭"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Data Sync",
+        "description": "Keep your tools in agreement without manual exports and imports.",
+        "icon": "▦"
+      }
+    ],
+    "whyUsHeading": "Automation that survives contact with reality",
+    "whyUs": [
+      {
+        "title": "Self-hosted n8n",
+        "description": "Self-hosted n8n for full control and no per-task billing surprises.",
+        "highlights": [
+          "Full control",
+          "No per-task billing"
+        ]
+      },
+      {
+        "title": "Error handling",
+        "description": "Error handling and retries so one bad record doesn't stop everything.",
+        "highlights": [
+          "Retries",
+          "Graceful failures"
+        ]
+      },
+      {
+        "title": "Proactive alerting",
+        "description": "Alerting when something needs a human, instead of silent failure.",
+        "highlights": [
+          "Real-time alerts",
+          "No silent failures"
+        ]
+      },
+      {
+        "title": "Clear documentation",
+        "description": "Clean documentation so your team can see exactly what runs and when.",
+        "highlights": [
+          "Runbooks",
+          "Team visibility"
+        ]
+      },
+      {
+        "title": "Certified n8n partner",
+        "description": "Certified n8n partner team building production-ready pipelines.",
+        "highlights": [
+          "Certified partner",
+          "Production-ready"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "Workflow Automation | AgileMorph Solutions",
+      "description": "n8n, Make, and Zapier pipelines that eliminate repetitive work and keep running reliably."
+    }
+  },
+  {
+    "_id": "servicePage-crm-lead-automation",
+    "_type": "servicePage",
+    "title": "CRM & Lead Automation",
+    "slug": "crm-lead-automation",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "Stop losing leads to slow manual handling. We automate the full cycle: capture from any channel, enrich with real data, route to the right person, and trigger follow-up before the lead goes cold.",
+    "headline": {
+      "before": "Every lead captured, enriched, and ",
+      "highlight": "followed up",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Capture",
+        "text": "Web / ads / inbox"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Enrich",
+        "text": "Apollo / Lusha / verify"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Route",
+        "text": "CRM + follow-up"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "<60s",
+        "label": "Lead response time"
+      },
+      {
+        "_type": "statItem",
+        "value": "3x",
+        "label": "Faster qualification"
+      },
+      {
+        "_type": "statItem",
+        "value": "100%",
+        "label": "Leads logged"
+      },
+      {
+        "_type": "statItem",
+        "value": "0",
+        "label": "Leads forgotten"
+      }
+    ],
+    "whyTitle": "Speed-to-lead is the whole game",
+    "whyHighlight": "game",
+    "whyText": "A lead contacted in the first five minutes converts far better than one contacted an hour later. We close that gap to seconds: the moment a lead arrives, it's enriched, scored, assigned, and followed up, without anyone touching it.",
+    "checks": [
+      "Capture leads from forms, ads, email, chat, and LinkedIn into one place",
+      "Enrich with verified contact data via Apollo, Lusha, and NeverBounce",
+      "Score and segment automatically so reps work the best leads first",
+      "Trigger instant first-touch follow-up by email or message",
+      "Sync cleanly to HubSpot, Pipedrive, Salesforce, or your CRM of choice"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Speed-to-lead",
+        "description": "First contact triggered within seconds of a new lead."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Enriched lead lists",
+        "description": "Daily verified, enriched CSV or CRM delivery."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Pipeline hygiene",
+        "description": "Stale deals flagged, duplicates merged automatically."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Re-engagement",
+        "description": "Dormant leads re-activated on a schedule."
+      }
+    ],
+    "pricing": {
+      "headline": "Lead automation engagements typically start at 4–8 days",
+      "detail": "Scope depends on the number of channels, your CRM, and enrichment depth. We quote a fixed price after mapping your current funnel."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "Which CRMs do you support?",
+        "answer": "HubSpot, Pipedrive, Salesforce, and most others with an API. We've built production flows on all three."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Where does enrichment data come from?",
+        "answer": "Apollo, Lusha, and similar providers, with NeverBounce verification so you're not paying for bad contacts."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Can you fix our messy existing CRM?",
+        "answer": "Yes. Deduplication, field cleanup, and re-segmentation are common first steps before automation goes live."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Multi-Channel Capture",
+        "description": "One pipeline for leads from every source you run.",
+        "icon": "◎"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Data Enrichment",
+        "description": "Turn a name and email into a full, verified profile.",
+        "icon": "⊕"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Smart Routing",
+        "description": "The right lead to the right rep, instantly and by rule.",
+        "icon": "⇲"
+      }
+    ],
+    "whyUsHeading": "Speed-to-lead is the whole game",
+    "whyUs": [
+      {
+        "title": "Every channel",
+        "description": "Capture leads from forms, ads, email, chat, and LinkedIn into one place.",
+        "highlights": [
+          "Forms & ads",
+          "Email & chat",
+          "LinkedIn"
+        ]
+      },
+      {
+        "title": "Verified enrichment",
+        "description": "Enrich with verified contact data via Apollo, Lusha, and NeverBounce.",
+        "highlights": [
+          "Apollo & Lusha",
+          "Email verification"
+        ]
+      },
+      {
+        "title": "Automatic scoring",
+        "description": "Score and segment automatically so reps work the best leads first.",
+        "highlights": [
+          "Lead scoring",
+          "Smart segments"
+        ]
+      },
+      {
+        "title": "Instant follow-up",
+        "description": "Trigger instant first-touch follow-up by email or message.",
+        "highlights": [
+          "Seconds, not hours",
+          "Multi-channel"
+        ]
+      },
+      {
+        "title": "CRM sync",
+        "description": "Sync cleanly to HubSpot, Pipedrive, Salesforce, or your CRM of choice.",
+        "highlights": [
+          "HubSpot",
+          "Pipedrive",
+          "Salesforce"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "CRM & Lead Automation | AgileMorph Solutions",
+      "description": "Capture, enrich, route, and follow up on every lead automatically before they go cold."
+    }
+  },
+  {
+    "_id": "servicePage-mcp-ai-infrastructure",
+    "_type": "servicePage",
+    "title": "MCP & AI Infrastructure",
+    "slug": "mcp-ai-infrastructure",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "For teams past the prototype stage. We build self-hosted pipelines, MCP servers, and deployed systems that connect AI directly to your data and tools, securely, observably, and built to scale.",
+    "headline": {
+      "before": "Production-grade AI ",
+      "highlight": "infrastructure",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Data",
+        "text": "Your DB / files / APIs"
+      },
+      {
+        "_type": "flowStep",
+        "label": "MCP Server",
+        "text": "Secure tool layer"
+      },
+      {
+        "_type": "flowStep",
+        "label": "AI",
+        "text": "Models query + act"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "100%",
+        "label": "Self-hosted control"
+      },
+      {
+        "_type": "statItem",
+        "value": "Full",
+        "label": "Observability built in"
+      },
+      {
+        "_type": "statItem",
+        "value": "SOC-ready",
+        "label": "Security practices"
+      },
+      {
+        "_type": "statItem",
+        "value": "∞",
+        "label": "Scales with you"
+      }
+    ],
+    "whyTitle": "When a no-code tool isn't enough",
+    "whyHighlight": "enough",
+    "whyText": "No-code platforms hit a ceiling: cost per task, data privacy, custom logic, and volume. When you cross it, you need real infrastructure. We build MCP servers and self-hosted pipelines that give AI safe, structured access to your systems, on infrastructure you own.",
+    "checks": [
+      "MCP servers that expose your data and tools to AI models safely",
+      "Self-hosted deployments on AWS or DigitalOcean, under your control",
+      "Observability with Langfuse so you can see every call, cost, and failure",
+      "PII handling and local redaction to keep sensitive data off third-party clouds",
+      "Built to scale from first user to high volume without a rebuild"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Natural-language data search",
+        "description": "Ask your database questions in plain English."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Secure AI access",
+        "description": "Models that query internal data without exposing it."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Cost + quality monitoring",
+        "description": "Track token spend and output quality per workflow."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Custom AI pipelines",
+        "description": "Multi-stage model orchestration for complex tasks."
+      }
+    ],
+    "pricing": {
+      "headline": "Infrastructure engagements are scoped per project, typically multi-week",
+      "detail": "These are senior builds. We scope precisely after a technical discovery and quote a fixed plan with milestones."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "What is MCP?",
+        "answer": "Model Context Protocol — a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Where is it hosted?",
+        "answer": "Your infrastructure: AWS, DigitalOcean, or your existing cloud. You own and control it."
+      },
+      {
+        "_type": "faqItem",
+        "question": "How do you keep our data private?",
+        "answer": "Local PII redaction with tools like Microsoft Presidio, self-hosting, and keeping sensitive data out of third-party model calls entirely where required."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "MCP Servers",
+        "description": "A clean, governed bridge between your systems and any AI model.",
+        "icon": "⧉"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Self-Hosted Deploys",
+        "description": "Pipelines on your cloud, with no per-task surprise billing.",
+        "icon": "⚙"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Observability",
+        "description": "Langfuse tracing so nothing the AI does is a black box.",
+        "icon": "◴"
+      }
+    ],
+    "whyUsHeading": "When a no-code tool isn't enough",
+    "whyUs": [
+      {
+        "title": "Governed MCP access",
+        "description": "MCP servers that expose your data and tools to AI models safely.",
+        "highlights": [
+          "Secure access",
+          "Governed tools"
+        ]
+      },
+      {
+        "title": "Your infrastructure",
+        "description": "Self-hosted deployments on AWS or DigitalOcean, under your control.",
+        "highlights": [
+          "AWS",
+          "DigitalOcean"
+        ]
+      },
+      {
+        "title": "Full observability",
+        "description": "Observability with Langfuse so you can see every call, cost, and failure.",
+        "highlights": [
+          "Langfuse tracing",
+          "Cost visibility"
+        ]
+      },
+      {
+        "title": "PII handling",
+        "description": "PII handling and local redaction to keep sensitive data off third-party clouds.",
+        "highlights": [
+          "Local redaction",
+          "Privacy-first"
+        ]
+      },
+      {
+        "title": "Built to scale",
+        "description": "Built to scale from first user to high volume without a rebuild.",
+        "highlights": [
+          "Production-grade",
+          "Scales with you"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "MCP & AI Infrastructure | AgileMorph Solutions",
+      "description": "Self-hosted pipelines, MCP servers, and production-grade AI deployments you control."
+    }
+  },
+  {
+    "_id": "servicePage-messaging-automation",
+    "_type": "servicePage",
+    "title": "Messaging Automation",
+    "slug": "messaging-automation",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "We automate the channels your customers actually use. WhatsApp, email, and chat, with AI that reads, classifies, and responds in real time, captures structured data, and routes anything that needs a human.",
+    "headline": {
+      "before": "Conversations that run ",
+      "highlight": "themselves",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Inbound",
+        "text": "WhatsApp / email / chat"
+      },
+      {
+        "_type": "flowStep",
+        "label": "AI",
+        "text": "Classify + extract + reply"
+      },
+      {
+        "_type": "flowStep",
+        "label": "System",
+        "text": "Logged to Airtable / CRM"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "<5s",
+        "label": "Reply time"
+      },
+      {
+        "_type": "statItem",
+        "value": "24/7",
+        "label": "Always responding"
+      },
+      {
+        "_type": "statItem",
+        "value": "100%",
+        "label": "Conversations logged"
+      },
+      {
+        "_type": "statItem",
+        "value": "0",
+        "label": "Missed messages"
+      }
+    ],
+    "whyTitle": "Built on real production pipelines",
+    "whyHighlight": "production",
+    "whyText": "This isn't theory. We run live WhatsApp-to-database pipelines today: messages classified by AI, structured into records, and synced automatically, on self-hosted infrastructure with buffering and two-path routing for reliability.",
+    "checks": [
+      "WhatsApp automation via Whapi and self-hosted n8n, no platform lock-in",
+      "AI classification of every message by type, intent, and urgency",
+      "Structured data extraction straight into Airtable, a CRM, or a database",
+      "Buffered, multi-path architecture so nothing is dropped under load",
+      "Human handoff with full context when a conversation needs it"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Dealer / order intake",
+        "description": "Inbound messages parsed into structured deal records."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Lead capture on WhatsApp",
+        "description": "Enquiries qualified and logged without manual entry."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Booking + scheduling",
+        "description": "Appointments handled conversationally end to end."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Broadcast + follow-up",
+        "description": "Targeted outbound that respects each customer's history."
+      }
+    ],
+    "pricing": {
+      "headline": "Messaging builds typically run 5–12 days",
+      "detail": "Cost depends on channels, classification complexity, and where data needs to land. Fixed scope after a discovery call."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "Is WhatsApp automation allowed?",
+        "answer": "Yes, via approved API providers like Whapi. We build within platform rules so your number stays safe."
+      },
+      {
+        "_type": "faqItem",
+        "question": "What happens to the data?",
+        "answer": "It's structured and synced to wherever you want it: Airtable, a CRM, or your database. You own all of it."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Can a human still step in?",
+        "answer": "Always. Anything the AI isn't confident about is handed to a person with the full conversation attached."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "WhatsApp Pipelines",
+        "description": "Production WhatsApp automation, classified and logged in real time.",
+        "icon": "✉"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "AI Replies",
+        "description": "Context-aware responses in your voice, on your terms.",
+        "icon": "⌯"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Data Capture",
+        "description": "Every conversation turned into clean, structured records.",
+        "icon": "▤"
+      }
+    ],
+    "whyUsHeading": "Built on real production pipelines",
+    "whyUs": [
+      {
+        "title": "WhatsApp automation",
+        "description": "WhatsApp automation via Whapi and self-hosted n8n, no platform lock-in.",
+        "highlights": [
+          "Whapi",
+          "Self-hosted n8n"
+        ]
+      },
+      {
+        "title": "AI classification",
+        "description": "AI classification of every message by type, intent, and urgency.",
+        "highlights": [
+          "Intent detection",
+          "Urgency scoring"
+        ]
+      },
+      {
+        "title": "Structured extraction",
+        "description": "Structured data extraction straight into Airtable, a CRM, or a database.",
+        "highlights": [
+          "Airtable",
+          "CRM sync"
+        ]
+      },
+      {
+        "title": "Reliable architecture",
+        "description": "Buffered, multi-path architecture so nothing is dropped under load.",
+        "highlights": [
+          "Buffered queues",
+          "Multi-path routing"
+        ]
+      },
+      {
+        "title": "Human handoff",
+        "description": "Human handoff with full context when a conversation needs it.",
+        "highlights": [
+          "Full context",
+          "Seamless escalation"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "Messaging Automation | AgileMorph Solutions",
+      "description": "WhatsApp, email, and chat automations that respond, convert, and log every conversation."
+    }
+  },
+  {
+    "_id": "servicePage-ai-audit",
+    "_type": "servicePage",
+    "title": "AI Audit",
+    "slug": "ai-audit",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "Before you spend on automation, know what's worth automating. Our fixed-scope AI Audit maps your processes, identifies the highest-ROI opportunities, and gives you a prioritized, costed roadmap you can act on, with or without us.",
+    "headline": {
+      "before": "Find out exactly where AI ",
+      "highlight": "pays off",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Discover",
+        "text": "Map your processes"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Analyze",
+        "text": "Score ROI + effort"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Deliver",
+        "text": "Prioritized roadmap"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "Fixed",
+        "label": "Scope + price"
+      },
+      {
+        "_type": "statItem",
+        "value": "1 week",
+        "label": "Typical turnaround"
+      },
+      {
+        "_type": "statItem",
+        "value": "ROI-ranked",
+        "label": "Every opportunity"
+      },
+      {
+        "_type": "statItem",
+        "value": "Yours",
+        "label": "To keep + act on"
+      }
+    ],
+    "whyTitle": "Clarity before spend",
+    "whyHighlight": "spend",
+    "whyText": "Most automation money is wasted on the wrong things first. The audit removes the guesswork: a clear, honest map of where AI saves you the most time and money, ranked by effort and return, so your first project is the one that pays for the rest.",
+    "checks": [
+      "A structured review of your real workflows, not a generic checklist",
+      "Every opportunity scored by time saved, cost, and implementation effort",
+      "A prioritized roadmap: what to automate first, second, and later",
+      "Honest calls on what is not worth automating yet",
+      "A document your team owns and can act on with any provider"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "First-time automation",
+        "description": "Know where to start before you commit budget."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Stalled AI efforts",
+        "description": "Diagnose why past attempts didn't stick."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Tool consolidation",
+        "description": "Find overlap and waste across your current stack."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Board-ready case",
+        "description": "A costed plan you can take to decision-makers."
+      }
+    ],
+    "pricing": {
+      "headline": "Fixed-fee engagement, typically delivered within a week",
+      "detail": "One flat price, one clear deliverable. If you move forward on a build with us, the audit fee is credited toward it."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "What do I actually get?",
+        "answer": "A written roadmap: your mapped processes, ranked automation opportunities with ROI and effort scores, and a recommended sequence."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Do I have to build with you afterward?",
+        "answer": "No. The roadmap is yours to act on however you like. If you do build with us, the audit fee is credited."
+      },
+      {
+        "_type": "faqItem",
+        "question": "How long does it take?",
+        "answer": "Most audits are delivered within a week of the discovery call."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Process Mapping",
+        "description": "We document how work actually flows today, end to end.",
+        "icon": "◷"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "ROI Scoring",
+        "description": "Each opportunity ranked by return against effort.",
+        "icon": "⊿"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Action Roadmap",
+        "description": "A sequenced plan, not a vague list of ideas.",
+        "icon": "▣"
+      }
+    ],
+    "whyUsHeading": "Clarity before spend",
+    "whyUs": [
+      {
+        "title": "Real workflow review",
+        "description": "A structured review of your real workflows, not a generic checklist.",
+        "highlights": [
+          "Your processes",
+          "Not generic"
+        ]
+      },
+      {
+        "title": "ROI scoring",
+        "description": "Every opportunity scored by time saved, cost, and implementation effort.",
+        "highlights": [
+          "Time saved",
+          "Effort vs return"
+        ]
+      },
+      {
+        "title": "Prioritized roadmap",
+        "description": "A prioritized roadmap: what to automate first, second, and later.",
+        "highlights": [
+          "Sequenced plan",
+          "Clear priorities"
+        ]
+      },
+      {
+        "title": "Honest recommendations",
+        "description": "Honest calls on what is not worth automating yet.",
+        "highlights": [
+          "No overselling",
+          "Practical advice"
+        ]
+      },
+      {
+        "title": "Yours to keep",
+        "description": "A document your team owns and can act on with any provider.",
+        "highlights": [
+          "You own it",
+          "Provider-agnostic"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "AI Audit | AgileMorph Solutions",
+      "description": "A fixed-scope review that maps where AI saves you the most time and money."
+    }
+  },
+  {
+    "_id": "servicePage-shopify-automation",
+    "_type": "servicePage",
+    "title": "Shopify Automation",
+    "slug": "shopify-automation",
+    "layout": "subService",
+    "tagline": "AI Automation",
+    "description": "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+    "headline": {
+      "before": "Shopify ops that run ",
+      "highlight": "on autopilot",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Order",
+        "text": "Shopify webhook"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Pipeline",
+        "text": "Route + enrich"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Fulfill",
+        "text": "CRM / 3PL / notify"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "0",
+        "label": "Manual order routing"
+      },
+      {
+        "_type": "statItem",
+        "value": "Real-time",
+        "label": "Inventory sync"
+      },
+      {
+        "_type": "statItem",
+        "value": "24/7",
+        "label": "Customer updates"
+      },
+      {
+        "_type": "statItem",
+        "value": "100%",
+        "label": "Webhook reliability"
+      }
+    ],
+    "whyTitle": "Built for real Shopify operations",
+    "whyHighlight": "operations",
+    "whyText": "Shopify stores generate a constant stream of orders, inventory changes, and customer events. We automate the handoffs between Shopify, your warehouse, CRM, and support tools so nothing slips through when volume spikes.",
+    "checks": [
+      "Connect to Shopify Admin GraphQL for products, orders, inventory, and customers",
+      "Pipelines on n8n, Make, or self-hosted infrastructure you control",
+      "Bridge Shopify with CRM, ERP, shipping, and support tools automatically",
+      "Retries, logging, and alerts so failed webhooks don't silently break ops",
+      "Production experience shipping Shopify automations alongside AI workflows"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Order routing",
+        "description": "Route orders to the right warehouse or fulfillment partner automatically."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Inventory sync",
+        "description": "Keep stock aligned across Shopify, warehouses, and marketplaces."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Customer notifications",
+        "description": "Shipping, returns, and post-purchase messages on autopilot."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Returns handling",
+        "description": "Structured return flows logged to your CRM and support stack."
+      }
+    ],
+    "pricing": {
+      "headline": "Shopify automation builds typically run 5–10 days",
+      "detail": "Scope depends on integrations, order volume, and fulfillment complexity. Fixed price after mapping your current ops flow."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "Which Shopify plans do you support?",
+        "answer": "Any plan with API access. We use the Admin GraphQL API for reliable, scalable integrations."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Can you connect to our 3PL or ERP?",
+        "answer": "Yes. We bridge Shopify with shipping, warehouse, CRM, and ERP systems via API or middleware."
+      },
+      {
+        "_type": "faqItem",
+        "question": "What if a webhook fails?",
+        "answer": "We build retries, dead-letter queues, and alerting so failures are caught and replayed automatically."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery",
+        "description": "A short call to understand your process, tools, and goals."
+      },
+      {
+        "_type": "processStep",
+        "title": "Scope & Quote",
+        "description": "A fixed scope and price. No open-ended billing surprises."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build",
+        "description": "Iterative delivery with rapid feedback loops and your approval."
+      },
+      {
+        "_type": "processStep",
+        "title": "Launch & Support",
+        "description": "Go live with monitoring and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Order & Fulfillment Flows",
+        "description": "Route orders, update statuses, and trigger fulfillment without manual handoffs.",
+        "icon": "🛍"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Inventory Sync",
+        "description": "Keep stock levels aligned across Shopify, warehouses, and your other tools.",
+        "icon": "▦"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Customer Notifications",
+        "description": "Automated emails and messages for shipping, returns, and post-purchase follow-up.",
+        "icon": "✉"
+      }
+    ],
+    "whyUsHeading": "Built for real Shopify operations",
+    "whyUs": [
+      {
+        "title": "Admin API integrations",
+        "description": "Connect to Shopify Admin GraphQL for products, orders, inventory, and customers.",
+        "highlights": [
+          "Orders",
+          "Inventory",
+          "Customers"
+        ]
+      },
+      {
+        "title": "Workflow tooling",
+        "description": "Pipelines on n8n, Make, or self-hosted infrastructure you control.",
+        "highlights": [
+          "n8n",
+          "Make",
+          "Self-hosted"
+        ]
+      },
+      {
+        "title": "Cross-stack sync",
+        "description": "Bridge Shopify with CRM, ERP, shipping, and support tools automatically.",
+        "highlights": [
+          "CRM sync",
+          "ERP ready"
+        ]
+      },
+      {
+        "title": "Error handling",
+        "description": "Retries, logging, and alerts so failed webhooks don't silently break ops.",
+        "highlights": [
+          "Retries",
+          "Alerts"
+        ]
+      },
+      {
+        "title": "Production experience",
+        "description": "We've shipped Shopify automations alongside our broader AI automation work.",
+        "highlights": [
+          "Production-ready",
+          "Proven stack"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools & Technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "n8n"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Make.com"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Zapier"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Shopify"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "HubSpot"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Pipedrive"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery",
+        "openInNewTab": true
+      }
+    },
+    "seo": {
+      "title": "Shopify Automation | AgileMorph Solutions",
+      "description": "Automate orders, inventory, fulfillment, and customer flows across your Shopify store."
+    }
+  }
+]

@@ -5,6 +5,10 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
+import { ServicesEcosystemGraph } from "@/components/hero-animations/ServicesEcosystemGraph";
+import { ECOSYSTEM_QUICK_JUMP_SERVICES } from "@/components/hero-animations/hero-ecosystem-graph";
+import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import {
   getServiceIcon,
   getServiceLabel,
@@ -27,6 +31,7 @@ function ServiceCatalogCard({
   slug,
   featured = false,
   delay = 0,
+  layout = "grid",
 }: {
   href: string;
   title: string;
@@ -34,8 +39,40 @@ function ServiceCatalogCard({
   slug: string;
   featured?: boolean;
   delay?: number;
+  layout?: "grid" | "carousel";
 }) {
   const Icon = getServiceIcon(slug);
+
+  if (layout === "carousel") {
+    return (
+      <Link
+        href={href}
+        className="group flex h-full min-h-[168px] flex-col justify-between rounded-2xl border border-border bg-background p-5 shadow-sm transition-all duration-300 hover:border-primary/30 hover:bg-primary/4 active:bg-primary/5"
+      >
+        <div className="flex min-w-0 gap-3">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary">
+            <Icon size={18} aria-hidden />
+          </span>
+          <div className="min-w-0">
+            <h3 className="font-heading text-base font-bold text-foreground transition-colors group-hover:text-primary">
+              {title}
+            </h3>
+            <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+              {description}
+            </p>
+          </div>
+        </div>
+        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+          Learn more
+          <ArrowRight
+            size={14}
+            className="transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </span>
+      </Link>
+    );
+  }
 
   return (
     <AnimateOnScroll delay={delay}>
@@ -90,6 +127,27 @@ function ServiceCatalogCard({
   );
 }
 
+function QuickJumpChips() {
+  return (
+    <div className="mt-6 lg:hidden">
+      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Quick jump
+      </p>
+      <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {ECOSYSTEM_QUICK_JUMP_SERVICES.map((service) => (
+          <Link
+            key={service.slug}
+            href={serviceHref(service.slug)}
+            className="shrink-0 rounded-full border border-border bg-background px-3.5 py-2 font-body text-xs font-semibold text-foreground transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary active:bg-primary/12"
+          >
+            {service.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
   const { primary: primaryPage, additional } = splitServicePages(pages);
   const primaryCapability = PRIMARY_SERVICE_CAPABILITIES.find(
@@ -109,28 +167,41 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
   return (
     <>
       <section
-        className="relative overflow-hidden border-b border-border bg-surface py-section max-sm:py-section-sm"
+        className="relative overflow-x-clip border-b border-border bg-surface py-section max-sm:py-section-sm"
         aria-labelledby="services-catalog-heading"
       >
+        <PageHeroBackground />
         <div className="pointer-events-none absolute inset-0 section-ambient-glow" aria-hidden />
-        <Container className="relative">
-          <AnimateOnScroll className="mx-auto max-w-3xl text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
-              <Sparkles size={12} aria-hidden />
-              What we do
-            </span>
-            <h1
-              id="services-catalog-heading"
-              className="font-heading text-4xl font-extrabold text-foreground sm:text-5xl"
-            >
-              Services built for{" "}
-              <span className="text-primary">modern operations</span>
-            </h1>
-            <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
-              AI automation is our core practice — supported by marketing, virtual assistance,
-              and web development when you need the full stack.
-            </p>
-          </AnimateOnScroll>
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <AnimateOnScroll className="min-w-0 text-center lg:text-left">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
+                <Sparkles size={12} aria-hidden />
+                What we do
+              </span>
+              <h1
+                id="services-catalog-heading"
+                className="font-heading text-4xl font-extrabold text-foreground sm:text-5xl"
+              >
+                Services built for{" "}
+                <span className="text-primary">modern operations</span>
+              </h1>
+              <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
+                AI automation is our core practice — supported by marketing, virtual assistance,
+                and web development when you need the full stack.
+              </p>
+              <p className="mt-3 font-body text-sm text-primary/90">
+                Tap any node in the ecosystem to explore a service.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={80} className="min-w-0">
+              <div className="mx-auto w-full max-w-md lg:max-w-none">
+                <ServicesEcosystemGraph visible />
+                <QuickJumpChips />
+              </div>
+            </AnimateOnScroll>
+          </div>
         </Container>
       </section>
 
@@ -159,7 +230,24 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
                 </p>
               </AnimateOnScroll>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <MobileAutoCarousel
+                ariaLabel="AI automation specializations"
+                desktopClassName="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-3"
+                className="md:contents"
+                mobileTrackClassName="gap-0"
+                mobileSlideClassName="w-full shrink-0 snap-center"
+                autoMs={4500}
+                mobileChildren={aiSpecializations.map((capability) => (
+                  <ServiceCatalogCard
+                    key={capability.slug}
+                    href={resolveCapabilityHref(capability)}
+                    slug={capability.slug}
+                    title={capability.title}
+                    description={capability.description}
+                    layout="carousel"
+                  />
+                ))}
+              >
                 {aiSpecializations.map((capability, index) => (
                   <ServiceCatalogCard
                     key={capability.slug}
@@ -170,7 +258,7 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
                     delay={80 + index * 50}
                   />
                 ))}
-              </div>
+              </MobileAutoCarousel>
             </div>
           ) : null}
         </Container>
@@ -192,7 +280,24 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
               </p>
             </AnimateOnScroll>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <MobileAutoCarousel
+              ariaLabel="General services"
+              desktopClassName="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-3"
+              className="md:contents"
+              mobileTrackClassName="gap-0"
+              mobileSlideClassName="w-full shrink-0 snap-center"
+              autoMs={4500}
+              mobileChildren={additional.map((service) => (
+                <ServiceCatalogCard
+                  key={service._id}
+                  href={serviceHref(service.slug)}
+                  slug={service.slug}
+                  title={getServiceLabel(service.slug, service.title)}
+                  description={service.description ?? ""}
+                  layout="carousel"
+                />
+              ))}
+            >
               {additional.map((service, index) => (
                 <ServiceCatalogCard
                   key={service._id}
@@ -203,7 +308,7 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
                   delay={80 + index * 50}
                 />
               ))}
-            </div>
+            </MobileAutoCarousel>
           </Container>
         </section>
       ) : null}
