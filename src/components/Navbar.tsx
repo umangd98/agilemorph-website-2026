@@ -69,7 +69,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
   return (
     <>
       <header
-        className={`site-header sticky top-0 z-50 transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
+        className={`site-header sticky top-0 z-[100] transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
         data-header={inverseHeader ? "inverse" : undefined}
       >
         <Container>

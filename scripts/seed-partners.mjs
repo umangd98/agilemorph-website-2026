@@ -59,6 +59,14 @@ const PARTNERS = [
     color: "FF4A00",
     filename: "zapier.svg",
   },
+  {
+    name: "Shopify",
+    label: "PARTNER",
+    url: "https://www.shopify.com/partners",
+    slug: "shopify",
+    filename: "shopify-partner.svg",
+    logoUrl: "https://www.vectorlogo.zone/logos/shopify/shopify-icon.svg",
+  },
 ];
 
 function loadEnv() {
@@ -96,10 +104,30 @@ function saveManifest(manifest) {
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
 }
 
-async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
+function getCachedAsset(manifest, manifestKey, projectId) {
+  const entry = manifest[manifestKey];
+  if (!entry?.id) return null;
+  if (entry.url && !entry.url.includes(`/${projectId}/`)) {
+    return null;
+  }
+  return entry;
+}
+
+async function uploadFromUrl({
+  url,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+  forceRefresh = false,
+}) {
   const manifestKey = `partners/${filename}`;
-  if (manifest[manifestKey]?.id) {
-    return manifest[manifestKey];
+  if (!forceRefresh) {
+    const cached = getCachedAsset(manifest, manifestKey, projectId);
+    if (cached?.id) {
+      return cached;
+    }
   }
 
   const response = await fetch(url);
@@ -179,6 +207,7 @@ async function main() {
       dataset,
       token,
       manifest,
+      forceRefresh: partner.forceRefresh === true,
     });
 
     items.push({

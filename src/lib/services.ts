@@ -173,6 +173,71 @@ export function sortAdditionalServicePages(pages: ServicePageListItem[]) {
   });
 }
 
+export type FooterServiceLink = {
+  label: string;
+  href: string;
+  nested?: boolean;
+};
+
+export type FooterServiceGroups = {
+  primary: FooterServiceLink | null;
+  aiAutomationSubs: FooterServiceLink[];
+  additional: FooterServiceLink[];
+};
+
+export function buildFooterServiceGroups(pages: ServicePageListItem[]): FooterServiceGroups {
+  const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
+
+  const primaryPage =
+    pages.find((page) => page.slug === PRIMARY_SERVICE_SLUG) ?? pages[0] ?? null;
+
+  const primary = primaryPage
+    ? {
+        label: getServiceLabel(primaryPage.slug, primaryPage.title),
+        href: serviceHref(primaryPage.slug),
+      }
+    : null;
+
+  const aiAutomationSubs = AI_AUTOMATION_SUB_SLUGS.map((slug) => {
+    const page = pageBySlug.get(slug);
+    return {
+      label: page ? getServiceLabel(page.slug, page.title) : SERVICE_LABEL_BY_SLUG[slug] ?? slug,
+      href: serviceHref(slug),
+    };
+  });
+
+  const { additional } = splitServicePages(pages);
+  const additionalLinks = additional.map((page) => ({
+    label: getServiceLabel(page.slug, page.title),
+    href: serviceHref(page.slug),
+  }));
+
+  return { primary, aiAutomationSubs, additional: additionalLinks };
+}
+
+export function buildFooterServiceLinks(pages: ServicePageListItem[]): FooterServiceLink[] {
+  const { primary, aiAutomationSubs, additional } = buildFooterServiceGroups(pages);
+  const links: FooterServiceLink[] = [];
+
+  if (primary) {
+    links.push(primary);
+  }
+
+  for (const link of aiAutomationSubs) {
+    links.push({ ...link, nested: true });
+  }
+
+  if (additional.length) {
+    links.push({ label: "—", href: "#", nested: false });
+  }
+
+  for (const link of additional) {
+    links.push(link);
+  }
+
+  return links;
+}
+
 export function buildServiceNavLinks(pages: ServicePageListItem[]): ServiceNavLink[] {
   const { primary, additional } = splitServicePages(pages);
   const links: ServiceNavLink[] = [];

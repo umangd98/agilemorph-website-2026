@@ -591,10 +591,8 @@ header[data-header="inverse"] {
   }
 
   .site-header {
-    background: var(--header-bg);
+    background: var(--color-background);
     border-bottom: 1px solid var(--header-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
   }
 
   .site-header--scrolled {

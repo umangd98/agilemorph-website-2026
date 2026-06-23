@@ -1461,23 +1461,23 @@
   },
   "partners/make.svg": {
     "id": "image-cea06c989c3143b8927aae021e875a12ff5878ea-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
   },
   "partners/upwork.svg": {
     "id": "image-c79d8fbddc515a671e6dcfb1ded95adf1c7d3d00-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c79d8fbddc515a671e6dcfb1ded95adf1c7d3d00-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/c79d8fbddc515a671e6dcfb1ded95adf1c7d3d00-24x24.svg"
   },
   "partners/n8n.svg": {
     "id": "image-cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
   },
   "partners/microsoft.svg": {
     "id": "image-5b170117926ae5a5e451aa24676b5a124c2fa122-23x23-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/5b170117926ae5a5e451aa24676b5a124c2fa122-23x23.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/5b170117926ae5a5e451aa24676b5a124c2fa122-23x23.svg"
   },
   "partners/zapier.svg": {
     "id": "image-61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
   },
   "integrations/airtable.svg": {
     "id": "image-0fbc72ae030e31ff1c2a8d8b869bbb3e1304ee3a-24x24-svg",
@@ -1626,5 +1626,13 @@
   "brand/logo-primary.png": {
     "id": "image-0806a4827f7fc8c2094f7e38fe9970966357c470-331x66-png",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/0806a4827f7fc8c2094f7e38fe9970966357c470-331x66.png"
+  },
+  "partners/shopify.svg": {
+    "id": "image-909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24.svg"
+  },
+  "partners/shopify-partner.svg": {
+    "id": "image-7a2f4c6b49e6cf41cf86501c02bc30aeb02409df-64x64-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/7a2f4c6b49e6cf41cf86501c02bc30aeb02409df-64x64.svg"
   }
 }
