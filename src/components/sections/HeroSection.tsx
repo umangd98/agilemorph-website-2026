@@ -102,7 +102,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             <AnimItem visible={visible} delay={100}>
               <h1
                 id="hero-heading"
-                className="mb-7 font-heading text-5xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]"
+                className="mb-7 font-heading text-4xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]"
               >
                 {headingLines.map((line, index) => (
                   <span key={line}>

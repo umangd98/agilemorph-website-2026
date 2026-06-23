@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { Modal } from "@/components/Modal";
 import type { Testimonial } from "@/sanity/types";
 
 type TestimonialsSectionProps = {
@@ -45,6 +46,7 @@ export function TestimonialsSection({
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [cycleProgress, setCycleProgress] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const cycleStart = useRef(Date.now());
   const rafRef = useRef<number>(0);
   const reducedMotion = useReducedMotion();
@@ -82,6 +84,10 @@ export function TestimonialsSection({
   }, [paused, reducedMotion, count, activeIndex, goTo]);
 
   useEffect(() => {
+    setModalOpen(false);
+  }, [activeIndex]);
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") goToPrevious();
       if (event.key === "ArrowRight") goToNext();
@@ -96,7 +102,7 @@ export function TestimonialsSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-surface py-section max-sm:py-section-sm"
+      className="relative isolate z-0 overflow-hidden bg-surface py-section max-sm:py-section-sm"
       aria-labelledby="testimonials-heading"
     >
       <style>{`
@@ -157,30 +163,41 @@ export function TestimonialsSection({
               </div>
 
               <div className="p-6 sm:p-10 lg:p-12">
-                <div
+                <button
+                  type="button"
                   key={`copy-${activeIndex}`}
-                  className="testimonial-enter mx-auto flex max-w-2xl flex-col items-center text-center"
+                  onClick={() => setModalOpen(true)}
+                  className="testimonial-enter mx-auto flex w-full max-w-2xl cursor-pointer flex-col items-center text-center transition-opacity hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  aria-label={`Read full story from ${testimonial.name}`}
                 >
                   <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+                    {count <= 5 ? (
+                      <>
+                        {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+                      </>
+                    ) : (
+                      "Client story"
+                    )}
                   </p>
 
                   <div className="mt-4">
                     <StarRating />
                   </div>
 
-                  <blockquote className="mt-4 font-body text-base leading-relaxed text-foreground sm:text-lg lg:text-xl">
+                  <blockquote className="mt-4 max-h-24 w-full overflow-hidden font-body text-base leading-relaxed text-foreground sm:max-h-28 sm:text-lg">
                     <span className="text-primary/40" aria-hidden>
                       &ldquo;
                     </span>
-                    {testimonial.quote}
+                    <span className="line-clamp-4">{testimonial.quote}</span>
                     <span className="text-primary/40" aria-hidden>
                       &rdquo;
                     </span>
                   </blockquote>
 
-                  <footer className="mt-6 w-full border-t border-border pt-6">
-                    <p className="font-heading text-xl font-bold text-foreground sm:text-2xl">
+                  <p className="mt-3 font-body text-xs font-semibold text-primary">Read full story</p>
+
+                  <footer className="mt-6 w-full border-t border-border pt-5">
+                    <p className="font-heading text-lg font-bold text-foreground sm:text-xl">
                       {testimonial.name}
                     </p>
                     {companyLabel ? (
@@ -189,7 +206,7 @@ export function TestimonialsSection({
                       </p>
                     ) : null}
                   </footer>
-                </div>
+                </button>
               </div>
 
               {count > 1 ? (
@@ -198,41 +215,50 @@ export function TestimonialsSection({
                     <button
                       type="button"
                       onClick={goToPrevious}
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary sm:h-11 sm:w-11"
                       aria-label="Previous testimonial"
                     >
                       <ArrowLeft size={18} />
                     </button>
 
-                    <div
-                      className="flex items-center gap-2"
-                      role="tablist"
-                      aria-label="Client testimonials"
-                    >
-                      {items.map((item, index) => {
-                        const active = index === activeIndex;
-                        return (
-                          <button
-                            key={`${item.name}-${index}`}
-                            type="button"
-                            role="tab"
-                            aria-selected={active}
-                            aria-label={`Show testimonial from ${item.name}`}
-                            onClick={() => goTo(index)}
-                            className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
-                              active
-                                ? "w-8 bg-primary"
-                                : "w-2.5 bg-border hover:bg-primary/40"
-                            }`}
-                          />
-                        );
-                      })}
-                    </div>
+                    {count <= 5 ? (
+                      <div
+                        className="flex items-center gap-2"
+                        role="tablist"
+                        aria-label="Client testimonials"
+                      >
+                        {items.map((item, index) => {
+                          const active = index === activeIndex;
+                          return (
+                            <button
+                              key={`${item.name}-${index}`}
+                              type="button"
+                              role="tab"
+                              aria-selected={active}
+                              aria-label={`Show testimonial from ${item.name}`}
+                              onClick={() => goTo(index)}
+                              className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+                                active
+                                  ? "w-7 bg-primary"
+                                  : "w-2 bg-border hover:bg-primary/40"
+                              }`}
+                            />
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p
+                        className="min-w-[4.5rem] text-center font-body text-xs font-semibold tabular-nums text-muted-foreground"
+                        aria-live="polite"
+                      >
+                        {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+                      </p>
+                    )}
 
                     <button
                       type="button"
                       onClick={goToNext}
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/25 transition-colors hover:bg-primary-dark"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/25 transition-colors hover:bg-primary-dark sm:h-11 sm:w-11"
                       aria-label="Next testimonial"
                     >
                       <ArrowRight size={18} />
@@ -244,6 +270,28 @@ export function TestimonialsSection({
           </div>
         </AnimateOnScroll>
       </Container>
+
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={testimonial.name}
+      >
+        <div className="mb-4">
+          <StarRating />
+        </div>
+        <blockquote className="font-body text-base leading-relaxed text-foreground sm:text-lg">
+          <span className="text-primary/40" aria-hidden>
+            &ldquo;
+          </span>
+          {testimonial.quote}
+          <span className="text-primary/40" aria-hidden>
+            &rdquo;
+          </span>
+        </blockquote>
+        {companyLabel ? (
+          <p className="mt-6 font-body text-sm font-medium text-muted-foreground">{companyLabel}</p>
+        ) : null}
+      </Modal>
     </section>
   );
 }

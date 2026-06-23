@@ -3,6 +3,11 @@
  * Used by scripts/seed-content.mjs when seeding Sanity servicePage documents.
  */
 
+import {
+  SUB_SERVICE_PROCESS_STEPS,
+  SUB_SERVICE_RICH_FIELDS_BY_SLUG,
+} from "./sub-service-rich-fields.mjs";
+
 export const AI_AUTOMATION_SUB_SERVICES = [
   {
     id: "ai-agents",
@@ -480,47 +485,67 @@ export function buildAiAutomationSubServicePages(manifest, { cta, whyUsItem, ima
     "AI Automation",
   );
 
-  return AI_AUTOMATION_SUB_SERVICES.map((service) => ({
-    _id: `servicePage-${service.id}`,
-    _type: "servicePage",
-    title: service.title,
-    slug: { _type: "slug", current: service.slug },
-    tagline: service.tagline,
-    description: service.description,
-    heroImage,
-    heroCta: cta(service.heroCta.label, service.heroCta.href, true),
-    capabilitiesHeading: service.capabilitiesHeading,
-    capabilities: service.capabilities.map((capability) => ({
-      _type: "capabilityItem",
-      title: capability.title,
-      description: capability.description,
-      icon: capability.icon,
-    })),
-    whyUsHeading: service.whyUsHeading,
-    whyUs: service.whyUs.map((item) =>
-      whyUsItem({
-        title: item.title,
-        description: item.description,
-        animationType: "generic",
-        highlights: item.highlights,
-      }),
-    ),
-    technologiesHeading: "Tools & Technologies",
-    technologies: [
-      "n8n",
-      "Make.com",
-      "Zapier",
-      "Shopify",
-      "Claude",
-      "OpenAI",
-      "HubSpot",
-      "Pipedrive",
-    ].map((name) => ({ _type: "technologyItem", name })),
-    cta: {
-      heading: service.cta.heading,
-      description: service.cta.description,
-      button: cta(service.cta.button.label, service.cta.button.href, true),
-    },
-    seo: service.seo,
-  }));
+  return AI_AUTOMATION_SUB_SERVICES.map((service) => {
+    const rich = SUB_SERVICE_RICH_FIELDS_BY_SLUG[service.slug];
+
+    return {
+      _id: `servicePage-${service.id}`,
+      _type: "servicePage",
+      layout: "subService",
+      title: service.title,
+      slug: { _type: "slug", current: service.slug },
+      tagline: service.tagline,
+      description: service.description,
+      headline: rich?.headline,
+      flow: rich?.flow?.map((step) => ({ _type: "flowStep", ...step })),
+      stats: rich?.stats?.map((stat) => ({ _type: "statItem", ...stat })),
+      whyTitle: rich?.whyTitle,
+      whyHighlight: rich?.whyHighlight,
+      whyText: rich?.whyText,
+      checks: rich?.checks,
+      useCases: rich?.useCases?.map((item) => ({ _type: "useCaseItem", ...item })),
+      pricing: rich?.pricing,
+      faq: rich?.faq?.map((item) => ({ _type: "faqItem", ...item })),
+      processSteps: SUB_SERVICE_PROCESS_STEPS.map((step) => ({
+        _type: "processStep",
+        title: step.title,
+        description: step.description,
+      })),
+      heroImage,
+      heroCta: cta(service.heroCta.label, service.heroCta.href, true),
+      capabilitiesHeading: service.capabilitiesHeading,
+      capabilities: service.capabilities.map((capability) => ({
+        _type: "capabilityItem",
+        title: capability.title,
+        description: capability.description,
+        icon: capability.icon,
+      })),
+      whyUsHeading: service.whyUsHeading,
+      whyUs: service.whyUs.map((item) =>
+        whyUsItem({
+          title: item.title,
+          description: item.description,
+          animationType: "generic",
+          highlights: item.highlights,
+        }),
+      ),
+      technologiesHeading: "Tools & Technologies",
+      technologies: [
+        "n8n",
+        "Make.com",
+        "Zapier",
+        "Shopify",
+        "Claude",
+        "OpenAI",
+        "HubSpot",
+        "Pipedrive",
+      ].map((name) => ({ _type: "technologyItem", name })),
+      cta: {
+        heading: service.cta.heading,
+        description: service.cta.description,
+        button: cta(service.cta.button.label, service.cta.button.href, true),
+      },
+      seo: service.seo,
+    };
+  });
 }

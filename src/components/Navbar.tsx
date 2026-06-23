@@ -28,7 +28,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
     ...baseNavLinks.slice(0, 3),
     {
       label: "Services",
-      href: serviceLinks[0]?.href ?? "/services",
+      href: "/services",
       children: serviceLinks,
     },
     baseNavLinks[3],
@@ -69,7 +69,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
   return (
     <>
       <header
-        className={`site-header sticky top-0 z-50 transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
+        className={`site-header sticky top-0 z-[100] transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
         data-header={inverseHeader ? "inverse" : undefined}
       >
         <Container>
@@ -81,31 +81,45 @@ export function Navbar({ serviceLinks }: NavbarProps) {
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 md:flex">
               {navLinks.map((link) => {
-                const isActive = pathname.startsWith(link.href);
+                const isServices = "children" in link;
+                const isActive = isServices
+                  ? pathname.startsWith("/services")
+                  : pathname.startsWith(link.href);
 
-                if ("children" in link) {
+                if (isServices) {
                   return (
                     <li key={link.href} className="relative" ref={dropdownRef}>
-                      <button
-                        type="button"
-                        onClick={() => setServicesOpen((v) => !v)}
-                        aria-expanded={servicesOpen}
-                        className={`flex items-center gap-1.5 rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
-                          servicesOpen
+                      <div
+                        className={`flex items-center rounded-lg transition-all duration-200 ${
+                          servicesOpen || isActive
                             ? isDarkTheme
                               ? "bg-white/10 text-white"
                               : "bg-primary/8 text-primary"
                             : isDarkTheme
-                            ? "text-slate-300 hover:bg-white/8 hover:text-white"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                              ? "text-slate-300 hover:bg-white/8 hover:text-white"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                       >
-                        {link.label}
-                        <ChevronDown
-                          size={13}
-                          className={`mt-px opacity-70 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
+                        <Link
+                          href={link.href}
+                          onClick={() => setServicesOpen(false)}
+                          className="rounded-l-lg px-4 py-2 font-body text-sm font-medium"
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setServicesOpen((v) => !v)}
+                          aria-expanded={servicesOpen}
+                          aria-label="Toggle services menu"
+                          className="rounded-r-lg px-2 py-2"
+                        >
+                          <ChevronDown
+                            size={13}
+                            className={`mt-px opacity-70 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                      </div>
 
                       {/* Dropdown */}
                       <div
@@ -267,22 +281,39 @@ export function Navbar({ serviceLinks }: NavbarProps) {
           {/* Nav items */}
           <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
             {navLinks.map((link) => {
-              const isActive = pathname.startsWith(link.href);
+              const isServices = "children" in link;
+              const isActive = isServices
+                ? pathname.startsWith("/services")
+                : pathname.startsWith(link.href);
 
-              if ("children" in link) {
+              if (isServices) {
                 return (
                   <div key={link.href}>
-                    <button
-                      type="button"
-                      onClick={() => setServicesOpen((v) => !v)}
-                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-body text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-                    >
-                      {link.label}
-                      <ChevronDown
-                        size={14}
-                        className={`text-muted-foreground transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className={`flex-1 rounded-xl px-4 py-3 font-body text-sm font-semibold transition-colors ${
+                          isActive
+                            ? "bg-primary/8 text-primary"
+                            : "text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setServicesOpen((v) => !v)}
+                        aria-expanded={servicesOpen}
+                        aria-label="Toggle services menu"
+                        className="flex h-11 w-11 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted"
+                      >
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    </div>
                     {servicesOpen && (
                       <div className="ml-2 mt-1 flex flex-col gap-0.5 border-l-2 border-primary/20 pl-3">
                         {serviceLinks.map((child) => {

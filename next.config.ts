@@ -10,16 +10,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
-    ],
-  },
-  async redirects() {
-    return [
       {
-        source: "/services/ai-automation",
-        destination: "/services",
-        permanent: true,
+        protocol: "https",
+        hostname: "cdn.simpleicons.org",
       },
-    ];
+    ],
   },
 };
 

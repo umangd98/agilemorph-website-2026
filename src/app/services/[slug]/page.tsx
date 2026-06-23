@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import { SubServicePageLayout } from "@/components/sections/sub-service/SubServicePageLayout";
 import {
   CapabilitiesSection,
   ServiceCtaSection,
@@ -10,41 +11,25 @@ import {
   ServiceWhyUsSection,
   TechnologiesSection,
 } from "@/components/sections";
-import {
-  getAiAutomationSubService,
-  getAiAutomationSubServiceSlugs,
-} from "@/data/ai-automation-services";
+import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
+import { getAllServiceSlugs, getServicePage, getSubServiceSiblings } from "@/lib/get-service-page";
 import {
   getServiceLabel,
   isExcludedServiceSlug,
+  isSubServicePage,
+  PRIMARY_SERVICE_CAPABILITIES,
   PRIMARY_SERVICE_SLUG,
 } from "@/lib/services";
 import { seoToMetadata } from "@/lib/seo";
-import { sanityFetch } from "@/sanity/fetch";
-import { allServiceSlugsQuery, servicePageQuery } from "@/sanity/queries";
-import type { ServicePage, ServiceSlug } from "@/sanity/types";
+import type { ServicePage } from "@/sanity/types";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  const [slugs, subSlugs] = await Promise.all([
-    sanityFetch<ServiceSlug[]>({
-      query: allServiceSlugsQuery,
-      tags: ["servicePage"],
-    }),
-    Promise.resolve(getAiAutomationSubServiceSlugs()),
-  ]);
-
-  const slugSet = new Set([
-    ...(slugs ?? [])
-      .map(({ slug }) => slug)
-      .filter((slug) => !isExcludedServiceSlug(slug) && slug !== PRIMARY_SERVICE_SLUG),
-    ...subSlugs,
-  ]);
-
-  return [...slugSet].map((slug) => ({ slug }));
+  const slugs = await getAllServiceSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -56,24 +41,7 @@ export async function generateMetadata({
     return { title: "Not Found" };
   }
 
-  if (slug === PRIMARY_SERVICE_SLUG) {
-    redirect("/services");
-  }
-
-  const subService = getAiAutomationSubService(slug);
-
-  if (subService) {
-    return seoToMetadata(subService.seo, {
-      title: subService.title,
-      description: subService.description,
-    });
-  }
-
-  const servicePage = await sanityFetch<ServicePage | null>({
-    query: servicePageQuery,
-    params: { slug },
-    tags: ["servicePage", `servicePage:${slug}`],
-  });
+  const servicePage = await getServicePage(slug);
 
   return seoToMetadata(servicePage?.seo, {
     title: getServiceLabel(slug, servicePage?.title ?? "Service"),
@@ -88,53 +56,73 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
     notFound();
   }
 
-  if (slug === PRIMARY_SERVICE_SLUG) {
-    redirect("/services");
+  const servicePage = await getServicePage(slug);
+
+  if (!servicePage) {
+    notFound();
   }
 
-  const subService = getAiAutomationSubService(slug);
+  if (slug === PRIMARY_SERVICE_SLUG) {
+    return renderPrimaryServicePage(servicePage);
+  }
 
-  if (subService) {
+  if (isSubServicePage(servicePage)) {
+    const siblings = await getSubServiceSiblings();
+
     return (
       <>
         <SiteNavbar />
         <main className="flex-1">
-          <ServiceHeroSection
-            slug={slug}
-            title={subService.title}
-            tagline={subService.tagline}
-            description={subService.description}
-            heroCta={subService.heroCta}
-          />
-          <CapabilitiesSection
-            heading={subService.capabilitiesHeading}
-            capabilities={subService.capabilities}
-          />
-          <ServiceWhyUsSection
-            heading={subService.whyUsHeading}
-            items={subService.whyUs}
-          />
-          <ServiceCtaSection
-            heading={subService.cta.heading}
-            description={subService.cta.description}
-            button={subService.cta.button}
-          />
+          <SubServicePageLayout page={servicePage} siblings={siblings} />
         </main>
         <SiteFooter />
       </>
     );
   }
 
-  const servicePage = await sanityFetch<ServicePage | null>({
-    query: servicePageQuery,
-    params: { slug },
-    tags: ["servicePage", `servicePage:${slug}`],
-  });
+  return renderStandardServicePage(slug, servicePage);
+}
 
-  if (!servicePage) {
-    notFound();
-  }
+function renderPrimaryServicePage(servicePage: ServicePage) {
+  const pageTitle = getServiceLabel(PRIMARY_SERVICE_SLUG, servicePage.title);
 
+  return (
+    <>
+      <SiteNavbar />
+      <main className="flex-1">
+        <ServiceHeroSection
+          slug={PRIMARY_SERVICE_SLUG}
+          title={pageTitle}
+          tagline={servicePage.tagline}
+          description={servicePage.description}
+          heroImage={servicePage.heroImage}
+          heroCta={servicePage.heroCta}
+          useEcosystemVisual
+        />
+        <AiAutomationCapabilitiesGrid
+          heading={servicePage.capabilitiesHeading ?? "Core Capabilities"}
+          capabilities={PRIMARY_SERVICE_CAPABILITIES}
+        />
+        <ServiceWhyUsSection
+          heading={servicePage.whyUsHeading}
+          items={servicePage.whyUs}
+        />
+        <TechnologiesSection
+          heading={servicePage.technologiesHeading}
+          technologies={servicePage.technologies}
+        />
+        <ServiceCtaSection
+          heading={servicePage.cta?.heading}
+          description={servicePage.cta?.description}
+          button={servicePage.cta?.button}
+        />
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
+
+function renderStandardServicePage(slug: string, servicePage: ServicePage) {
   const pageTitle = getServiceLabel(slug, servicePage.title);
 
   return (

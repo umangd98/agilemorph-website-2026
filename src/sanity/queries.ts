@@ -16,6 +16,26 @@ const statProjection = `{
   label
 }`;
 
+const flowStepProjection = `{
+  label,
+  text
+}`;
+
+const statItemProjection = `{
+  value,
+  label
+}`;
+
+const useCaseItemProjection = `{
+  title,
+  description
+}`;
+
+const subServiceProcessStepProjection = `{
+  title,
+  description
+}`;
+
 const testimonialProjection = `{
   quote,
   name,
@@ -213,8 +233,27 @@ export const servicePageQuery = `*[_type == "servicePage" && slug.current == $sl
   _type,
   title,
   "slug": slug.current,
+  layout,
   tagline,
   description,
+  headline {
+    before,
+    highlight,
+    after
+  },
+  flow[] ${flowStepProjection},
+  stats[] ${statItemProjection},
+  whyTitle,
+  whyHighlight,
+  whyText,
+  checks,
+  useCases[] ${useCaseItemProjection},
+  pricing {
+    headline,
+    detail
+  },
+  faq[] ${faqItemProjection},
+  processSteps[] ${subServiceProcessStepProjection},
   heroImage ${imageProjection},
   heroCta ${ctaProjection},
   capabilitiesHeading,
@@ -229,6 +268,11 @@ export const servicePageQuery = `*[_type == "servicePage" && slug.current == $sl
     button ${ctaProjection}
   },
   seo ${seoProjection}
+}`;
+
+export const subServicePagesListQuery = `*[_type == "servicePage" && layout == "subService"] | order(title asc) {
+  title,
+  "slug": slug.current
 }`;
 
 export const allServicePagesListQuery = `*[_type == "servicePage" && defined(slug.current)] | order(title asc) {

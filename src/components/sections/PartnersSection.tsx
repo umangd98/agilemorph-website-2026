@@ -2,8 +2,30 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { SanityImage } from "@/components/SanityImage";
 import type { PartnerItem } from "@/sanity/types";
+
+const SHOPIFY_PARTNER: PartnerItem = {
+  name: "Shopify",
+  label: "PARTNER",
+  url: "https://www.shopify.com/partners",
+  logo: {
+    _type: "image",
+    alt: "Shopify logo",
+    asset: {
+      _type: "sanity.imageAsset",
+      url: "https://cdn.simpleicons.org/shopify/96BF48",
+    },
+  },
+};
+
+function withShopifyPartner(items: PartnerItem[]): PartnerItem[] {
+  if (items.some((item) => item.name.toLowerCase() === "shopify")) {
+    return items;
+  }
+  return [...items, SHOPIFY_PARTNER];
+}
 
 type PartnersSectionProps = {
   heading?: string;
@@ -12,9 +34,9 @@ type PartnersSectionProps = {
 
 function PartnerCard({ partner, index }: { partner: PartnerItem; index: number }) {
   const content = (
-    <div className="hover-lift group flex h-full min-h-[88px] items-center gap-4 rounded-xl border border-border bg-background px-5 py-4 shadow-sm transition-all duration-300 hover:border-primary/25 hover:shadow-md">
+    <div className="hover-lift group flex h-full min-h-[108px] flex-col items-center justify-center gap-2.5 rounded-xl border border-border bg-background px-3 py-4 text-center shadow-sm transition-all duration-300 hover:border-primary/25 hover:shadow-md sm:min-h-[116px] sm:gap-3 sm:px-4 sm:py-5">
       {partner.logo ? (
-        <div className="relative h-10 w-10 shrink-0">
+        <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
           <SanityImage
             image={partner.logo}
             alt={partner.logo.alt ?? partner.name}
@@ -24,16 +46,16 @@ function PartnerCard({ partner, index }: { partner: PartnerItem; index: number }
           />
         </div>
       ) : (
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted font-heading text-sm font-bold text-foreground">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted font-heading text-sm font-bold text-foreground sm:h-10 sm:w-10">
           {partner.name.charAt(0)}
         </div>
       )}
-      <div className="min-w-0">
-        <p className="truncate font-heading text-sm font-bold tracking-tight text-foreground sm:text-base">
+      <div className="min-w-0 w-full">
+        <p className="font-heading text-xs font-bold leading-tight tracking-tight text-foreground sm:text-sm">
           {partner.name}
         </p>
         {partner.label ? (
-          <p className="mt-0.5 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-[11px]">
+          <p className="mt-1 font-body text-[9px] font-semibold uppercase leading-snug tracking-[0.12em] text-muted-foreground sm:text-[10px]">
             {partner.label}
           </p>
         ) : null}
@@ -63,7 +85,9 @@ export function PartnersSection({
   heading = "Certified & Partnered With",
   items = [],
 }: PartnersSectionProps) {
-  if (!items.length) return null;
+  const partners = withShopifyPartner(items);
+
+  if (!partners.length) return null;
 
   return (
     <section
@@ -85,11 +109,14 @@ export function PartnersSection({
           </h2>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {items.map((partner, index) => (
+        <MobileAutoCarousel
+          ariaLabel="Certified and partnered companies"
+          desktopClassName="gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 sm:gap-4"
+        >
+          {partners.map((partner, index) => (
             <PartnerCard key={`${partner.name}-${index}`} partner={partner} index={index} />
           ))}
-        </div>
+        </MobileAutoCarousel>
       </Container>
     </section>
   );

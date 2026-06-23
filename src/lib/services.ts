@@ -9,7 +9,7 @@ import {
 
 import { sanityFetch } from "@/sanity/fetch";
 import { allServicePagesListQuery } from "@/sanity/queries";
-import type { ServicePageListItem } from "@/sanity/types";
+import type { ServicePage, ServicePageListItem } from "@/sanity/types";
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
 
@@ -38,6 +38,13 @@ export const AI_AUTOMATION_SUB_SLUGS = [
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
+
+export function isSubServicePage(page: Pick<ServicePage, "layout" | "slug">) {
+  return (
+    page.layout === "subService" ||
+    AI_AUTOMATION_SUB_SLUGS.includes(page.slug as AiAutomationSubSlug)
+  );
+}
 
 export const PRIMARY_SERVICE_CAPABILITIES = [
   {
@@ -136,7 +143,6 @@ export function getServiceIcon(slug: string): LucideIcon {
 }
 
 export function serviceHref(slug: string) {
-  if (slug === PRIMARY_SERVICE_SLUG) return "/services";
   return `/services/${slug}`;
 }
 
@@ -171,6 +177,71 @@ export function sortAdditionalServicePages(pages: ServicePageListItem[]) {
     if (bIndex !== -1) return 1;
     return getServiceLabel(a.slug, a.title).localeCompare(getServiceLabel(b.slug, b.title));
   });
+}
+
+export type FooterServiceLink = {
+  label: string;
+  href: string;
+  nested?: boolean;
+};
+
+export type FooterServiceGroups = {
+  primary: FooterServiceLink | null;
+  aiAutomationSubs: FooterServiceLink[];
+  additional: FooterServiceLink[];
+};
+
+export function buildFooterServiceGroups(pages: ServicePageListItem[]): FooterServiceGroups {
+  const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
+
+  const primaryPage =
+    pages.find((page) => page.slug === PRIMARY_SERVICE_SLUG) ?? pages[0] ?? null;
+
+  const primary = primaryPage
+    ? {
+        label: getServiceLabel(primaryPage.slug, primaryPage.title),
+        href: serviceHref(primaryPage.slug),
+      }
+    : null;
+
+  const aiAutomationSubs = AI_AUTOMATION_SUB_SLUGS.map((slug) => {
+    const page = pageBySlug.get(slug);
+    return {
+      label: page ? getServiceLabel(page.slug, page.title) : SERVICE_LABEL_BY_SLUG[slug] ?? slug,
+      href: serviceHref(slug),
+    };
+  });
+
+  const { additional } = splitServicePages(pages);
+  const additionalLinks = additional.map((page) => ({
+    label: getServiceLabel(page.slug, page.title),
+    href: serviceHref(page.slug),
+  }));
+
+  return { primary, aiAutomationSubs, additional: additionalLinks };
+}
+
+export function buildFooterServiceLinks(pages: ServicePageListItem[]): FooterServiceLink[] {
+  const { primary, aiAutomationSubs, additional } = buildFooterServiceGroups(pages);
+  const links: FooterServiceLink[] = [];
+
+  if (primary) {
+    links.push(primary);
+  }
+
+  for (const link of aiAutomationSubs) {
+    links.push({ ...link, nested: true });
+  }
+
+  if (additional.length) {
+    links.push({ label: "—", href: "#", nested: false });
+  }
+
+  for (const link of additional) {
+    links.push(link);
+  }
+
+  return links;
 }
 
 export function buildServiceNavLinks(pages: ServicePageListItem[]): ServiceNavLink[] {
