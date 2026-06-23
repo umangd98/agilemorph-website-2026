@@ -246,7 +246,7 @@ function buildHomepage(manifest) {
       headingAccent: "Let AI Handle the Execution",
       tagline: heroTaglineBlock([
         "Bring absolute order to your operations with end-to-end ",
-        { text: "AI business automation", href: "/services" },
+        { text: "AI business automation", href: "/services/ai-automation" },
         ". We architect your entire digital ecosystem, from integrating intelligent ",
         { text: "AI agents", href: "/services/ai-agents" },
         " to smart ",

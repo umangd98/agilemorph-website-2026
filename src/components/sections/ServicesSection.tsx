@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
 import {
   getServiceLabel,
@@ -21,26 +21,35 @@ type ServicesSectionProps = {
   pages?: ServicePageListItem[];
 };
 
-function AdditionalServiceCard({ service, compact = false }: { service: ServicePageListItem; compact?: boolean }) {
-  if (compact) {
+function GeneralServiceCard({
+  service,
+  layout = "grid",
+}: {
+  service: ServicePageListItem;
+  layout?: "grid" | "carousel";
+}) {
+  if (layout === "carousel") {
     return (
       <Link
         href={serviceHref(service.slug)}
-        className="group flex items-center justify-between gap-4 rounded-xl border border-border bg-background px-4 py-4 shadow-sm transition-colors hover:border-primary/30 hover:bg-primary/5 active:bg-primary/5"
+        className="group flex h-full min-h-[148px] flex-col justify-between rounded-2xl border border-border bg-background p-5 shadow-sm transition-colors duration-200 hover:border-primary/30 active:bg-primary/5"
       >
-        <div className="min-w-0 flex-1">
-          <h3 className="font-heading text-sm font-bold text-foreground transition-colors group-hover:text-primary sm:text-base">
+        <div className="min-w-0">
+          <h3 className="font-heading text-base font-bold text-foreground transition-colors group-hover:text-primary">
             {getServiceLabel(service.slug, service.title)}
           </h3>
-          <p className="mt-1 font-body text-xs leading-relaxed text-muted-foreground sm:text-sm">
+          <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
             {service.description}
           </p>
         </div>
-        <ArrowRight
-          size={16}
-          className="shrink-0 text-muted-foreground/50 transition-all group-hover:translate-x-0.5 group-hover:text-primary"
-          aria-hidden
-        />
+        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+          Learn more
+          <ArrowRight
+            size={14}
+            className="transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </span>
       </Link>
     );
   }
@@ -56,78 +65,48 @@ function AdditionalServiceCard({ service, compact = false }: { service: ServiceP
       <p className="flex-1 font-body text-sm leading-relaxed text-muted-foreground">
         {service.description}
       </p>
+      <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+        Learn more
+        <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+      </span>
     </Link>
   );
 }
 
-function AdditionalServicesPanel({ services }: { services: ServicePageListItem[] }) {
-  const [hovered, setHovered] = useState(false);
-  const [open, setOpen] = useState(false);
-  const expanded = hovered || open;
+function GeneralServicesSection({ services }: { services: ServicePageListItem[] }) {
+  if (!services.length) return null;
 
   return (
-    <div
-      className="group/additional mt-8 border-t border-border pt-8 sm:mt-10 sm:pt-10"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <button
-        type="button"
-        className="mb-5 flex w-full cursor-pointer flex-col gap-2 text-left sm:mb-6 sm:flex-row sm:items-center sm:gap-4"
-        aria-expanded={expanded}
-        aria-controls="additional-services-panel"
-        onClick={() => setOpen((value) => !value)}
-      >
-        <div className="flex w-full items-center justify-between gap-3 sm:contents">
-          <h3 className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover/additional:text-foreground sm:text-sm">
-            Additional Services
-          </h3>
-          <span className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-            {!expanded ? (
-              <span className="font-body text-[11px] text-muted-foreground sm:text-xs">
-                <span className="[@media(hover:hover)]:hidden">Tap to expand</span>
-                <span className="hidden [@media(hover:hover)]:inline">Hover to explore</span>
-              </span>
-            ) : (
-              <span className="font-body text-[11px] text-muted-foreground sm:hidden sm:text-xs">
-                Tap to collapse
-              </span>
-            )}
-            <ChevronDown
-              size={16}
-              className={`text-muted-foreground transition-transform duration-300 ${
-                expanded ? "rotate-180 text-primary" : ""
-              }`}
-              aria-hidden
-            />
-          </span>
+    <div className="mt-10 sm:mt-12">
+      <AnimateOnScroll>
+        <div className="mb-5 sm:mb-6">
+          <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
+            General Services
+          </p>
+          <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Beyond AI automation, we help you grow, operate, and ship with dedicated supporting
+            services.
+          </p>
         </div>
-        <span className="hidden h-px flex-1 bg-border sm:block" aria-hidden />
-      </button>
+      </AnimateOnScroll>
 
-      <div
-        id="additional-services-panel"
-        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-          expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-        }`}
-      >
-        <div className="min-h-0 overflow-hidden">
-          {expanded ? (
-            <>
-              <div className="flex flex-col gap-3 pb-1 md:hidden">
-                {services.map((service) => (
-                  <AdditionalServiceCard key={service._id} service={service} compact />
-                ))}
-              </div>
-              <div className="hidden gap-5 pb-1 md:grid md:grid-cols-2 lg:grid-cols-3">
-                {services.map((service) => (
-                  <AdditionalServiceCard key={service._id} service={service} />
-                ))}
-              </div>
-            </>
-          ) : null}
-        </div>
-      </div>
+      <AnimateOnScroll delay={80}>
+        <MobileAutoCarousel
+          ariaLabel="General services"
+          desktopClassName="hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
+          className="md:contents"
+          mobileTrackClassName="gap-0"
+          mobileSlideClassName="w-full shrink-0 snap-center"
+          autoMs={4500}
+          mobileChildren={services.map((service) => (
+            <GeneralServiceCard key={service._id} service={service} layout="carousel" />
+          ))}
+        >
+          {services.map((service) => (
+            <GeneralServiceCard key={service._id} service={service} layout="grid" />
+          ))}
+        </MobileAutoCarousel>
+      </AnimateOnScroll>
     </div>
   );
 }
@@ -174,8 +153,8 @@ export function ServicesSection({
               })}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl px-2 font-body text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:px-0 sm:text-base">
-              AI automation is the engine of everything we build. Supporting services keep the
-              rest of your operation moving in the same direction.
+              AI automation is our core practice — plus digital marketing, virtual assistance, and
+              web development to keep your whole operation moving forward.
             </p>
           </div>
         </AnimateOnScroll>
@@ -185,7 +164,7 @@ export function ServicesSection({
           embedded
         />
 
-        {additional.length > 0 ? <AdditionalServicesPanel services={additional} /> : null}
+        {additional.length > 0 ? <GeneralServicesSection services={additional} /> : null}
       </Container>
     </section>
   );
