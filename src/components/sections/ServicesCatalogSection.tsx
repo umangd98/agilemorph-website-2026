@@ -127,9 +127,30 @@ function ServiceCatalogCard({
   );
 }
 
+function AllServicesList() {
+  return (
+    <div className="mt-6">
+      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground lg:text-left">
+        All services
+      </p>
+      <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
+        {ECOSYSTEM_QUICK_JUMP_SERVICES.map((service) => (
+          <Link
+            key={service.slug}
+            href={serviceHref(service.slug)}
+            className="rounded-full border border-border bg-background/80 px-3 py-1.5 font-body text-xs font-medium text-foreground/90 transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary"
+          >
+            {service.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function QuickJumpChips() {
   return (
-    <div className="mt-6 lg:hidden">
+    <div className="mt-5 lg:hidden">
       <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
         Quick jump
       </p>
@@ -173,7 +194,7 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
         <PageHeroBackground />
         <div className="pointer-events-none absolute inset-0 section-ambient-glow" aria-hidden />
         <Container className="relative z-10">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10 xl:gap-14">
             <AnimateOnScroll className="min-w-0 text-center lg:text-left">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
                 <Sparkles size={12} aria-hidden />
@@ -187,16 +208,18 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
                 <span className="text-primary">modern operations</span>
               </h1>
               <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
-                AI automation is our core practice — supported by marketing, virtual assistance,
-                and web development when you need the full stack.
+                AI automation is our core practice — with seven specializations plus
+                marketing, virtual assistance, and web development when you need the full
+                stack.
               </p>
               <p className="mt-3 font-body text-sm text-primary/90">
                 Tap any node in the ecosystem to explore a service.
               </p>
+              <AllServicesList />
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={80} className="min-w-0">
-              <div className="mx-auto w-full max-w-md lg:max-w-none">
+              <div className="mx-auto w-full max-w-lg lg:max-w-none xl:max-w-2xl">
                 <ServicesEcosystemGraph visible />
                 <QuickJumpChips />
               </div>

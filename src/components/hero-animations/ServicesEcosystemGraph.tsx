@@ -7,6 +7,7 @@ import {
   AI_AUTOMATION_ZONE,
   CIRCUIT_PATHS,
   GRAPH_CENTER,
+  GRAPH_ECOSYSTEM_LABEL_Y,
   GRAPH_EDGES,
   GRAPH_NODES,
   GRAPH_PILLS,
@@ -138,7 +139,7 @@ function GraphPillLink({
       onFocus={() => onActivate({ slug: pill.slug, label: pill.label })}
       onBlur={onDeactivate}
     >
-      <g transform={`translate(${pill.x}, 718)`} style={{ opacity: staticFrame ? 1 : 0 }} data-layer="pill">
+      <g transform={`translate(${pill.x}, ${pill.y})`} style={{ opacity: staticFrame ? 1 : 0 }} data-layer="pill">
         <rect
           width={150}
           height={32}
@@ -313,7 +314,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
     tl.to('[data-layer="pill"]', { opacity: 1, duration: 0.8 }, "phase7");
     tl.to(`#ecosystem-label-${uid}`, {
       opacity: 1,
-      attr: { y: 740 },
+      attr: { y: GRAPH_ECOSYSTEM_LABEL_Y },
       duration: 1,
       ease: "power2.out",
     }, "phase7");
@@ -348,7 +349,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
         ref={svgRef}
         viewBox={GRAPH_VIEWBOX}
         preserveAspectRatio="xMidYMid meet"
-        className="services-ecosystem-graph aspect-square h-auto w-full"
+        className="services-ecosystem-graph aspect-[800/880] h-auto w-full min-h-[360px] sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[580px]"
         role="img"
         aria-label="Interactive AgileMorph service ecosystem graph — select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
       >
@@ -483,7 +484,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
         <text
           id={`ecosystem-label-${uid}`}
           x={400}
-          y={760}
+          y={GRAPH_ECOSYSTEM_LABEL_Y}
           textAnchor="middle"
           className="graph-ecosystem-label"
           style={{ opacity: staticFrame ? 1 : 0 }}

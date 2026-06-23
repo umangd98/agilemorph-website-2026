@@ -31,9 +31,10 @@ export type GraphPill = {
   label: string;
   slug: string;
   x: number;
+  y: number;
 };
 
-export const GRAPH_VIEWBOX = "0 0 800 800" as const;
+export const GRAPH_VIEWBOX = "0 0 800 880" as const;
 
 export const GRAPH_CENTER = { x: 400, y: 300 } as const;
 
@@ -195,10 +196,13 @@ export const GRAPH_EDGES: readonly GraphEdge[] = [
 ] as const;
 
 export const GRAPH_PILLS: readonly GraphPill[] = [
-  { label: "Digital Marketing", slug: "digital-marketing", x: 100 },
-  { label: "Virtual Assistance", slug: "virtual-assistance", x: 325 },
-  { label: "Website", slug: "website-development", x: 550 },
+  { label: "Digital Marketing", slug: "digital-marketing", x: 100, y: 718 },
+  { label: "Virtual Assistance", slug: "virtual-assistance", x: 325, y: 718 },
+  { label: "Website", slug: "website-development", x: 550, y: 718 },
 ] as const;
+
+/** Bottom caption — sits below service pills */
+export const GRAPH_ECOSYSTEM_LABEL_Y = 812 as const;
 
 /** Deterministic decorative circuit paths (no random per mount) */
 export const CIRCUIT_PATHS = [
@@ -242,12 +246,12 @@ export const ECOSYSTEM_QUICK_JUMP_SERVICES = [
 export function getNodeDimensions(type: GraphNodeType) {
   switch (type) {
     case "core":
-      return { w: 120, h: 60, rx: 10 };
+      return { w: 132, h: 66, rx: 10 };
     case "base":
-      return { w: 300, h: 80, rx: 4 };
+      return { w: 320, h: 86, rx: 4 };
     case "audit":
-      return { w: 100, h: 52, rx: 8 };
+      return { w: 108, h: 56, rx: 8 };
     default:
-      return { w: 90, h: 50, rx: 6 };
+      return { w: 98, h: 54, rx: 6 };
   }
 }

@@ -628,14 +628,14 @@ header[data-header="inverse"] {
   }
 
   .graph-node-text {
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
     fill: var(--color-foreground);
     text-anchor: middle;
   }
 
   .graph-sub-text {
-    font-size: 8px;
+    font-size: 9px;
     fill: var(--color-muted-foreground);
     text-anchor: middle;
   }
@@ -662,10 +662,10 @@ header[data-header="inverse"] {
   }
 
   .graph-ecosystem-label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.12em;
-    fill: var(--color-foreground);
+    letter-spacing: 0.14em;
+    fill: var(--color-muted-foreground);
   }
 
   .graph-radar-ring {
@@ -675,9 +675,9 @@ header[data-header="inverse"] {
   }
 
   .graph-pill-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
-    fill: var(--color-muted-foreground);
+    fill: var(--color-foreground);
   }
 
   .graph-zone-link:hover .graph-node-rect,
