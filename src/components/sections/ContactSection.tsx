@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, CalendarDays, Mail, Phone } from "lucide-react";
 
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import {
+  CALENDLY_DISCOVERY_DESCRIPTION,
+  CALENDLY_DISCOVERY_TITLE,
+} from "@/lib/calendly";
+import { openCalendlyPopup } from "@/lib/calendly-widget";
 import type { FaqItem } from "@/sanity/types";
 
 type ContactSectionProps = {
@@ -28,11 +34,16 @@ export function ContactSection({
 }: ContactSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  useEffect(() => {
+    if (window.location.hash !== "#book") return;
+    void openCalendlyPopup();
+  }, []);
+
   return (
     <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="contact-heading">
       <Container>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <AnimateOnScroll>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+          <AnimateOnScroll className="min-w-0">
             <h1 id="contact-heading" className="mb-4 font-heading text-5xl font-extrabold text-foreground">
               {heading}
             </h1>
@@ -131,34 +142,68 @@ export function ContactSection({
             </form>
           </AnimateOnScroll>
 
-          {faqs.length ? (
-            <AnimateOnScroll delay={150}>
-              <h2 className="mb-6 font-heading text-2xl font-bold text-foreground">FAQs</h2>
-              <div className="space-y-3">
-                {faqs.map((faq, index) => {
-                  const isOpen = openIndex === index;
-                  return (
-                    <div key={faq.question} className="rounded-xl border border-border bg-surface">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between px-5 py-4 text-left font-heading text-base font-semibold text-foreground"
-                        onClick={() => setOpenIndex(isOpen ? null : index)}
-                        aria-expanded={isOpen}
-                      >
-                        {faq.question}
-                        <span className="text-primary">{isOpen ? "−" : "+"}</span>
-                      </button>
-                      {isOpen ? (
-                        <div className="border-t border-border px-5 py-4 font-body text-sm leading-relaxed text-muted-foreground">
-                          {faq.answer}
-                        </div>
-                      ) : null}
-                    </div>
-                  );
-                })}
+          <AnimateOnScroll delay={150} className="min-w-0">
+            <div id="book" className="scroll-mt-28">
+              <div className="mb-6 flex items-start gap-3">
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <CalendarDays size={18} />
+                </div>
+                <div>
+                  <h2 className="font-heading text-2xl font-bold text-foreground">
+                    Book a discovery call
+                  </h2>
+                  <p className="mt-1 font-body text-sm font-semibold text-primary">
+                    {CALENDLY_DISCOVERY_TITLE}
+                  </p>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+                    {CALENDLY_DISCOVERY_DESCRIPTION}
+                  </p>
+                </div>
               </div>
-            </AnimateOnScroll>
-          ) : null}
+
+              <div className="rounded-2xl border border-border bg-surface p-8 text-center">
+                <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95">
+                  Book a slot
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5"
+                  />
+                </CalendlyBookButton>
+                <p className="mt-4 font-body text-xs text-muted-foreground">
+                  Opens the Calendly booking screen in a popup.
+                </p>
+              </div>
+            </div>
+
+            {faqs.length ? (
+              <div className="mt-12">
+                <h2 className="mb-6 font-heading text-2xl font-bold text-foreground">FAQs</h2>
+                <div className="space-y-3">
+                  {faqs.map((faq, index) => {
+                    const isOpen = openIndex === index;
+                    return (
+                      <div key={faq.question} className="rounded-xl border border-border bg-surface">
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-between px-5 py-4 text-left font-heading text-base font-semibold text-foreground"
+                          onClick={() => setOpenIndex(isOpen ? null : index)}
+                          aria-expanded={isOpen}
+                        >
+                          {faq.question}
+                          <span className="text-primary">{isOpen ? "−" : "+"}</span>
+                        </button>
+                        {isOpen ? (
+                          <div className="border-t border-border px-5 py-4 font-body text-sm leading-relaxed text-muted-foreground">
+                            {faq.answer}
+                          </div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+          </AnimateOnScroll>
         </div>
       </Container>
     </section>

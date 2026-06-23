@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { CtaAction } from "@/components/CtaAction";
 import type { CtaButton } from "@/sanity/types";
 
 type ServiceCtaSectionProps = {
@@ -33,13 +33,13 @@ export function ServiceCtaSection({
             </p>
           ) : null}
           {button ? (
-            <Link
-              href={button.href}
+            <CtaAction
+              cta={button}
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-xl shadow-primary/25 transition-all hover:bg-primary-dark"
             >
               {button.label}
               <ArrowRight size={16} />
-            </Link>
+            </CtaAction>
           ) : null}
         </AnimateOnScroll>
       </Container>

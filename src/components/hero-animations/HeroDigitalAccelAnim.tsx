@@ -46,9 +46,9 @@ const SERVICES: Service[] = [
   },
   {
     id: "web",
-    label: "Web Development",
+    label: "Website",
     short: "Web",
-    description: "Lightning-fast, responsive sites and apps built for conversion.",
+    description: "Production-grade sites and apps built with Python, Django, FastAPI, and React.",
     metrics: ["<2s load", "Mobile-first"],
     icon: Globe,
     accent: "#06b6d4",

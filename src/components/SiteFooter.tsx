@@ -1,12 +1,12 @@
 import { Footer } from "@/components/Footer";
-import { getServicePages, toServiceNavLink } from "@/lib/services";
+import { buildServiceNavLinks, getServicePages } from "@/lib/services";
 
 export async function SiteFooter() {
   const pages = await getServicePages();
-  const serviceLinks = pages.map((page) => {
-    const nav = toServiceNavLink(page);
-    return { label: nav.label, href: nav.href };
-  });
+  const serviceLinks = buildServiceNavLinks(pages).map(({ label, href }) => ({
+    label,
+    href,
+  }));
 
   return <Footer serviceLinks={serviceLinks} />;
 }

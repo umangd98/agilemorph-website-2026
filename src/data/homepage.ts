@@ -2,13 +2,13 @@ export const heroData = {
   heading: "Let AI seamlessly elevate your brand.",
   body: "We put AI at the core of how your business operates, with",
   highlightTags: [
-    { label: "AI Automation", href: "/services/ai-automation" },
-    { label: "Web Development", href: "/services/web-development" },
+    { label: "AI Automation", href: "/services" },
+    { label: "Website", href: "/services/website-development" },
     { label: "AI Agents", href: "/services/ai-agents" },
   ],
   bodySuffix:
     "that handle the decisions your team shouldn't have to make twice.",
-  ctaPrimary: { label: "Get in Touch", href: "/contact" },
+  ctaPrimary: { label: "Get in Touch", href: "/contact#book" },
   ctaSecondary: { label: "Explore Our Services", href: "/services" },
   imagePlaceholder: "Hero — AI-themed team at a digital table",
 };
@@ -162,6 +162,14 @@ export const services = [
     href: "/services/ai-audit",
     featured: false,
   },
+  {
+    id: "shopify-automation",
+    title: "Shopify Automation",
+    description:
+      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+    href: "/services/shopify-automation",
+    featured: false,
+  },
 ];
 
 export const servicesCallout = {
@@ -170,13 +178,6 @@ export const servicesCallout = {
 };
 
 export const additionalServices = [
-  {
-    id: "web-dev",
-    title: "Web Development",
-    description:
-      "Python, Django, FastAPI, and React builds that hold up in production.",
-    href: "/services/web-development",
-  },
   {
     id: "digital-marketing",
     title: "Digital Marketing",
@@ -190,9 +191,10 @@ export const additionalServices = [
     href: "/services/virtual-assistance",
   },
   {
-    id: "bookkeeping",
-    title: "Bookkeeping",
-    description: "Reliable, partially automated financial management you can trust.",
-    href: "/services/bookkeeping",
+    id: "website",
+    title: "Website",
+    description:
+      "Python, Django, FastAPI, and React builds that hold up in production.",
+    href: "/services/website-development",
   },
 ];

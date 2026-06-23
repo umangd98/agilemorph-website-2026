@@ -252,10 +252,15 @@ export function ProcessSection({
 
   return (
     <section
-      className="overflow-hidden bg-surface py-section max-sm:py-section-sm"
+      className="relative overflow-hidden bg-surface py-section max-sm:py-section-sm"
       aria-labelledby="process-heading"
     >
-      <Container>
+      <div
+        className="pointer-events-none absolute inset-0 section-ambient-glow"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
         <AnimateOnScroll className="mb-16 text-center md:mb-20">
           <span className="mb-4 block font-body text-xs font-bold uppercase tracking-widest text-primary">
             Our Process

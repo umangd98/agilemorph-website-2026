@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "@/components/Container";
 
 function CheckIcon() {
@@ -52,7 +53,7 @@ function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`relative bg-[#141414] p-8 transition-colors duration-200 hover:bg-[#1c1c1c] sm:p-8 ${
+      className={`relative bg-card p-8 transition-colors duration-200 hover:bg-card-hover sm:p-8 ${
         featured ? "z-[1] outline outline-[1.5px] outline-primary/40" : ""
       }`}
     >
@@ -62,30 +63,30 @@ function PricingCard({
         </span>
       ) : null}
 
-      <h3 className="font-heading text-lg font-bold text-white">{name}</h3>
+      <h3 className="font-heading text-lg font-bold text-foreground">{name}</h3>
       <div className="mt-1 font-heading text-2xl font-extrabold text-primary sm:text-[1.45rem]">
         {price}
       </div>
       {limitedNote ? (
-        <p className="mt-1.5 font-body text-xs italic text-slate-400">{limitedNote}</p>
+        <p className="mt-1.5 font-body text-xs italic text-muted-foreground">{limitedNote}</p>
       ) : null}
       {timeline ? (
-        <p className={`font-body text-xs text-slate-400 ${limitedNote ? "mt-2" : "mt-1"}`}>
+        <p className={`font-body text-xs text-muted-foreground ${limitedNote ? "mt-2" : "mt-1"}`}>
           {timeline}
         </p>
       ) : null}
-      <p className="mb-6 mt-3 font-body text-sm italic leading-relaxed text-slate-400">
+      <p className="mb-6 mt-3 font-body text-sm italic leading-relaxed text-muted-foreground">
         {tagline}
       </p>
 
-      <p className="mb-3 font-body text-[0.63rem] font-semibold uppercase tracking-widest text-slate-500">
+      <p className="mb-3 font-body text-[0.63rem] font-semibold uppercase tracking-widest text-muted-foreground/80">
         Deliverables
       </p>
       <ul className="mb-6 list-none space-y-0">
         {deliverables.map((item) => (
           <li
             key={item}
-            className="flex items-start gap-2.5 border-b border-white/[0.07] py-1.5 font-body text-sm text-slate-300 last:border-0"
+            className="flex items-start gap-2.5 border-b border-border py-1.5 font-body text-sm text-muted-foreground last:border-0"
           >
             <CheckIcon />
             <span>{item}</span>
@@ -94,11 +95,11 @@ function PricingCard({
       </ul>
 
       {paymentNote ? (
-        <div className="rounded-lg border border-white/[0.07] bg-white/[0.035] px-4 py-3.5">
-          <strong className="mb-1 block font-body text-[0.7rem] font-medium uppercase tracking-wider text-slate-400">
+        <div className="rounded-lg border border-border bg-muted/50 px-4 py-3.5">
+          <strong className="mb-1 block font-body text-[0.7rem] font-medium uppercase tracking-wider text-muted-foreground">
             {paymentLabel}
           </strong>
-          <p className="font-body text-xs leading-relaxed text-slate-500">{paymentNote}</p>
+          <p className="font-body text-xs leading-relaxed text-muted-foreground/80">{paymentNote}</p>
         </div>
       ) : null}
     </div>
@@ -124,7 +125,7 @@ function RetainerCard({
 }: RetainerCardProps) {
   return (
     <div
-      className={`relative bg-[#141414] p-8 transition-colors duration-200 hover:bg-[#1c1c1c] ${
+      className={`relative bg-card p-8 transition-colors duration-200 hover:bg-card-hover ${
         featured ? "z-[1] outline outline-[1.5px] outline-primary/40" : ""
       }`}
     >
@@ -134,24 +135,24 @@ function RetainerCard({
         </span>
       ) : null}
 
-      <h3 className="font-heading text-base font-bold text-white">{name}</h3>
+      <h3 className="font-heading text-base font-bold text-foreground">{name}</h3>
       <div className="mt-1 font-heading text-3xl font-extrabold leading-none text-primary">
         {price}
-        <span className="ml-0.5 font-body text-base font-normal text-slate-400">/mo</span>
+        <span className="ml-0.5 font-body text-base font-normal text-muted-foreground">/mo</span>
       </div>
-      <p className="mt-1 font-body text-xs text-slate-400">{hours}</p>
-      <p className="mb-6 mt-3 font-body text-sm italic leading-relaxed text-slate-400">
+      <p className="mt-1 font-body text-xs text-muted-foreground">{hours}</p>
+      <p className="mb-6 mt-3 font-body text-sm italic leading-relaxed text-muted-foreground">
         {tagline}
       </p>
 
-      <p className="mb-3 font-body text-[0.63rem] font-semibold uppercase tracking-widest text-slate-500">
+      <p className="mb-3 font-body text-[0.63rem] font-semibold uppercase tracking-widest text-muted-foreground/80">
         What&apos;s included
       </p>
       <ul className="list-none space-y-0">
         {items.map((item) => (
           <li
             key={item}
-            className="flex items-start gap-2.5 border-b border-white/[0.07] py-1.5 font-body text-sm text-slate-300 last:border-0"
+            className="flex items-start gap-2.5 border-b border-border py-1.5 font-body text-sm text-muted-foreground last:border-0"
           >
             <CheckIcon />
             <span>{item}</span>
@@ -167,7 +168,7 @@ const PROJECT_TIERS: (Omit<PricingCardProps, "price"> & { price: ReactNode })[] 
     name: "Discovery audit",
     price: (
       <>
-        <span className="mr-1.5 font-body text-base font-normal text-slate-500 line-through">
+        <span className="mr-1.5 font-body text-base font-normal text-muted-foreground/80 line-through">
           $500
         </span>
         <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 align-middle font-body text-xs font-semibold uppercase tracking-wide text-primary">
@@ -301,13 +302,7 @@ const HOW_STEPS = [
 
 export function PricingSection() {
   return (
-    <div
-      className="text-white"
-      style={{
-        background:
-          "linear-gradient(145deg, #060d1a 0%, #0b1628 40%, #0d1f2d 70%, #071019 100%)",
-      }}
-    >
+    <div className="bg-background text-foreground">
       {/* Hero */}
       <Container className="py-24 sm:py-28 lg:py-32">
         <AnimateOnScroll>
@@ -319,7 +314,7 @@ export function PricingSection() {
             <br />
             Predictable outcomes.
           </h1>
-          <p className="max-w-xl font-body text-base leading-relaxed text-slate-400">
+          <p className="max-w-xl font-body text-base leading-relaxed text-muted-foreground">
             Every engagement begins with a discovery audit. From there, you choose a fixed-scope
             project or an ongoing retainer — both structured around delivery, not hours.
           </p>
@@ -329,10 +324,10 @@ export function PricingSection() {
       {/* Project pricing */}
       <Container className="pb-16 sm:pb-20">
         <AnimateOnScroll delay={80}>
-          <p className="mb-9 border-b border-white/[0.07] pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-slate-500">
+          <p className="mb-9 border-b border-border pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-muted-foreground/80">
             Project pricing — four fixed-scope tiers
           </p>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
             {PROJECT_TIERS.map((tier) => (
               <PricingCard key={tier.name} {...tier} />
             ))}
@@ -343,14 +338,14 @@ export function PricingSection() {
       {/* Retainer pricing */}
       <Container className="pb-16 sm:pb-20">
         <AnimateOnScroll delay={100}>
-          <p className="mb-3 border-b border-white/[0.07] pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-slate-500">
+          <p className="mb-3 border-b border-border pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-muted-foreground/80">
             Retainer pricing — three monthly tiers
           </p>
-          <p className="mb-8 max-w-xl font-body text-sm leading-relaxed text-slate-400">
+          <p className="mb-8 max-w-xl font-body text-sm leading-relaxed text-muted-foreground">
             Month-to-month engagements structured around output, not seat time. Each tier reflects a
             different level of operational involvement.
           </p>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-3">
             {RETAINER_TIERS.map((tier) => (
               <RetainerCard key={tier.name} {...tier} />
             ))}
@@ -361,20 +356,20 @@ export function PricingSection() {
       {/* How engagements work */}
       <Container className="pb-16 sm:pb-20">
         <AnimateOnScroll delay={120}>
-          <p className="mb-9 border-b border-white/[0.07] pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-slate-500">
+          <p className="mb-9 border-b border-border pb-4 font-body text-[0.68rem] font-medium uppercase tracking-[0.14em] text-muted-foreground/80">
             How engagements work
           </p>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
             {HOW_STEPS.map((item) => (
               <div
                 key={item.step}
-                className="bg-[#141414] p-7 transition-colors duration-200 hover:bg-[#1c1c1c]"
+                className="bg-card p-7 transition-colors duration-200 hover:bg-card-hover"
               >
                 <p className="mb-4 font-heading text-xs font-bold uppercase tracking-widest text-primary">
                   {item.step}
                 </p>
-                <h3 className="mb-2 font-heading text-base font-bold text-white">{item.title}</h3>
-                <p className="font-body text-sm leading-relaxed text-slate-400">
+                <h3 className="mb-2 font-heading text-base font-bold text-foreground">{item.title}</h3>
+                <p className="font-body text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>
@@ -386,26 +381,23 @@ export function PricingSection() {
       {/* CTA band */}
       <Container className="pb-24 sm:pb-28">
         <AnimateOnScroll delay={140}>
-          <div className="flex flex-col items-start justify-between gap-8 rounded-2xl border border-white/[0.13] bg-[#141414] p-8 sm:flex-row sm:items-center sm:p-12">
-            <h2 className="max-w-md font-heading text-2xl font-bold leading-snug text-white sm:text-3xl">
+          <div className="flex flex-col items-start justify-between gap-8 rounded-2xl border border-border bg-card p-8 sm:flex-row sm:items-center sm:p-12">
+            <h2 className="max-w-md font-heading text-2xl font-bold leading-snug text-foreground sm:text-3xl">
               Start with a free
               <br />
               <span className="text-primary">discovery audit.</span>
             </h2>
             <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:bg-primary-dark"
-              >
+              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:bg-primary-dark">
                 Book a discovery call
                 <ArrowRight
                   size={15}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </Link>
+              </CalendlyBookButton>
               <Link
-                href="/services/ai-automation"
-                className="inline-flex items-center rounded-full border border-white/[0.13] px-6 py-3 font-body text-sm text-white transition-colors hover:border-white/25 hover:bg-white/[0.04]"
+                href="/services"
+                className="inline-flex items-center rounded-full border border-border px-6 py-3 font-body text-sm text-foreground transition-colors hover:border-primary/30 hover:bg-muted/50"
               >
                 See what we build
               </Link>

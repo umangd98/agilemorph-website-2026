@@ -20,10 +20,10 @@ export function ClaudePartnerBadge({ className = "" }: ClaudePartnerBadgeProps) 
         <ClaudeLogo className="h-4 w-4" />
       </span>
       <span className="flex min-w-0 flex-col justify-center gap-0.5">
-        <span className="font-body text-sm font-semibold leading-none tracking-tight text-white">
+        <span className="font-body text-sm font-semibold leading-none tracking-tight text-foreground">
           Claude Service Partner
         </span>
-        <span className="font-mono text-[11px] leading-tight text-slate-400">
+        <span className="font-mono text-[11px] leading-tight text-muted-foreground">
           We design and build on Claude
         </span>
       </span>

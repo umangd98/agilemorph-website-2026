@@ -1,7 +1,9 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
+import { CtaAction } from "@/components/CtaAction";
+import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
 import { urlForImage } from "@/sanity/image";
@@ -14,6 +16,7 @@ type ServiceHeroSectionProps = {
   description?: string;
   heroImage?: SanityImageAsset;
   heroCta?: CtaButton;
+  useEcosystemVisual?: boolean;
 };
 
 export function ServiceHeroSection({
@@ -23,6 +26,7 @@ export function ServiceHeroSection({
   description,
   heroImage,
   heroCta,
+  useEcosystemVisual = false,
 }: ServiceHeroSectionProps) {
   const rawUrl = heroImage?.asset?.url;
   const isSvg = Boolean(rawUrl && /\.svg(\?|$)/i.test(rawUrl));
@@ -33,10 +37,15 @@ export function ServiceHeroSection({
     : undefined;
 
   return (
-    <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="service-hero-heading">
-      <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
+    <section
+      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
+      aria-labelledby="service-hero-heading"
+    >
+      <PageHeroBackground />
+
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+          <div className="min-w-0">
             {tagline ? (
               <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
                 {tagline}
@@ -54,22 +63,28 @@ export function ServiceHeroSection({
               </p>
             ) : null}
             {heroCta ? (
-              <Link
-                href={heroCta.href}
+              <CtaAction
+                cta={heroCta}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-xl shadow-primary/25 transition-all hover:bg-primary-dark"
               >
                 {heroCta.label}
                 <ArrowRight size={16} />
-              </Link>
+              </CtaAction>
             ) : null}
           </div>
-          <ServiceHeroMedia
-            slug={slug}
-            imageUrl={imageUrl}
-            alt={heroImage?.alt ?? title}
-            blurDataURL={heroImage?.lqip}
-            isSvg={isSvg}
-          />
+          <div className="min-w-0">
+            {useEcosystemVisual ? (
+              <HeroEcosystemVisual visible />
+            ) : (
+              <ServiceHeroMedia
+                slug={slug}
+                imageUrl={imageUrl}
+                alt={heroImage?.alt ?? title}
+                blurDataURL={heroImage?.lqip}
+                isSvg={isSvg}
+              />
+            )}
+          </div>
         </div>
       </Container>
     </section>

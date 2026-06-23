@@ -20,7 +20,6 @@ const SERVICES = [
   { slug: "website-development", label: "Website Development" },
   { slug: "digital-marketing", label: "Digital Marketing" },
   { slug: "virtual-assistance", label: "Virtual Assistance" },
-  { slug: "bookkeeping", label: "Bookkeeping" },
 ];
 
 function loadEnv() {

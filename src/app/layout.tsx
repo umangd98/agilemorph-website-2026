@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | AgileMorph",
   },
   description:
-    "We revolutionize efficiency with AI Automation, craft impactful experiences through Web Development, and amplify influence via Digital Marketing.",
+    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} h-full`}
+      className={`${headingFont.variable} ${bodyFont.variable} dark h-full`}
       suppressHydrationWarning
     >
       <head>

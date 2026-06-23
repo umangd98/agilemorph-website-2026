@@ -6,7 +6,6 @@ type SectionHeaderProps = {
   align?: "left" | "center";
   className?: string;
   headingClassName?: string;
-  lightMode?: boolean;
 };
 
 export function SectionHeader({
@@ -17,29 +16,24 @@ export function SectionHeader({
   align = "center",
   className = "",
   headingClassName = "",
-  lightMode = false,
 }: SectionHeaderProps) {
   const alignClass = align === "center" ? "text-center items-center" : "items-start";
-  const textColor = lightMode ? "text-white" : "text-foreground";
-  const mutedColor = lightMode ? "text-white/70" : "text-muted-foreground";
 
   return (
     <div className={`flex flex-col gap-3 ${alignClass} ${className}`}>
       {eyebrow ? (
-        <span
-          className={`font-body text-xs font-semibold uppercase tracking-widest ${lightMode ? "text-primary" : "text-accent"}`}
-        >
+        <span className="font-body text-xs font-semibold uppercase tracking-widest text-primary">
           {eyebrow}
         </span>
       ) : null}
       <h2
         id={id}
-        className={`font-heading font-bold tracking-tight ${textColor} ${headingClassName}`}
+        className={`font-heading font-bold tracking-tight text-foreground ${headingClassName}`}
       >
         {heading}
       </h2>
       {subheading ? (
-        <p className={`font-body max-w-2xl text-base leading-relaxed ${mutedColor}`}>
+        <p className="font-body max-w-2xl text-base leading-relaxed text-muted-foreground">
           {subheading}
         </p>
       ) : null}

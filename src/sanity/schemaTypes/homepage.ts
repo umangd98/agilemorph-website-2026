@@ -18,14 +18,50 @@ export const homepage = defineType({
         defineField({
           name: "heading",
           title: "Heading",
-          type: "string",
+          type: "text",
+          rows: 3,
+          description: "Main heading lines. Use a new line for each line break.",
           validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: "headingAccent",
+          title: "Heading Accent",
+          type: "string",
+          description: "Optional final line rendered with the accent gradient.",
         }),
         defineField({
           name: "tagline",
           title: "Tagline",
-          type: "text",
-          rows: 4,
+          type: "array",
+          of: [
+            {
+              type: "block",
+              styles: [{ title: "Normal", value: "normal" }],
+              lists: [],
+              marks: {
+                decorators: [],
+                annotations: [
+                  {
+                    name: "link",
+                    type: "object",
+                    title: "Link",
+                    fields: [
+                      defineField({
+                        name: "href",
+                        title: "URL",
+                        type: "url",
+                        validation: (rule) =>
+                          rule.uri({
+                            allowRelative: true,
+                            scheme: ["http", "https", "mailto", "tel"],
+                          }),
+                      }),
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
         }),
         defineField({
           name: "ctaPrimary",
@@ -115,6 +151,35 @@ export const homepage = defineType({
           title: "Items",
           type: "array",
           of: [{ type: "whyUsItem" }],
+        }),
+        defineField({
+          name: "efficiencyCalculator",
+          title: "Efficiency Calculator",
+          type: "object",
+          fields: [
+            defineField({
+              name: "heading",
+              title: "Heading",
+              type: "string",
+            }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 2,
+            }),
+            defineField({
+              name: "disclaimer",
+              title: "Disclaimer",
+              type: "text",
+              rows: 2,
+            }),
+            defineField({
+              name: "ctaLabel",
+              title: "CTA Label",
+              type: "string",
+            }),
+          ],
         }),
       ],
     }),

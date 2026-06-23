@@ -1,8 +1,31 @@
+import {
+  Bot,
+  Globe,
+  TrendingUp,
+  Users,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+
 import { sanityFetch } from "@/sanity/fetch";
 import { allServicePagesListQuery } from "@/sanity/queries";
 import type { ServicePageListItem } from "@/sanity/types";
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
+
+export const EXCLUDED_SERVICE_SLUGS = ["bookkeeping"] as const;
+
+export const ADDITIONAL_SERVICE_SLUGS = [
+  "digital-marketing",
+  "virtual-assistance",
+  "website-development",
+] as const;
+
+export type AdditionalServiceSlug = (typeof ADDITIONAL_SERVICE_SLUGS)[number];
+
+export function isExcludedServiceSlug(slug: string) {
+  return EXCLUDED_SERVICE_SLUGS.includes(slug as (typeof EXCLUDED_SERVICE_SLUGS)[number]);
+}
 
 export const AI_AUTOMATION_SUB_SLUGS = [
   "ai-agents",
@@ -11,17 +34,19 @@ export const AI_AUTOMATION_SUB_SLUGS = [
   "mcp-ai-infrastructure",
   "messaging-automation",
   "ai-audit",
+  "shopify-automation",
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
 
 export const PRIMARY_SERVICE_CAPABILITIES = [
   {
-    title: "AI Agents",
-    slug: "ai-agents",
+    title: "AI Automation",
+    slug: "ai-automation",
     description:
-      "Autonomous agents that classify, decide, and act across your tools.",
-    icon: "⬡",
+      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+    icon: "⚡",
+    featured: true,
   },
   {
     title: "Workflow Automation",
@@ -54,6 +79,13 @@ export const PRIMARY_SERVICE_CAPABILITIES = [
       "A fixed-scope review that maps where AI saves you the most time and money.",
     icon: "◷",
   },
+  {
+    title: "Shopify Automation",
+    slug: "shopify-automation",
+    description:
+      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+    icon: "🛍",
+  },
 ] as const;
 
 const NAV_DESC_BY_SLUG: Record<string, string> = {
@@ -64,10 +96,24 @@ const NAV_DESC_BY_SLUG: Record<string, string> = {
   "mcp-ai-infrastructure": "Self-hosted AI infrastructure",
   "messaging-automation": "WhatsApp, email, and chat automation",
   "ai-audit": "Find where AI pays off",
+  "shopify-automation": "Orders, inventory, and store flows",
   "website-development": "High-performance web apps",
   "digital-marketing": "Grow your brand online",
   "virtual-assistance": "Dedicated remote support",
-  bookkeeping: "Accurate financial records",
+};
+
+const SERVICE_LABEL_BY_SLUG: Record<string, string> = {
+  "ai-automation": "AI Automation",
+  "ai-agents": "AI Agents",
+  "workflow-automation": "Workflow Automation",
+  "crm-lead-automation": "CRM & Lead Automation",
+  "mcp-ai-infrastructure": "MCP & AI Infrastructure",
+  "messaging-automation": "Messaging Automation",
+  "ai-audit": "AI Audit",
+  "shopify-automation": "Shopify Automation",
+  "digital-marketing": "Digital Marketing",
+  "virtual-assistance": "Virtual Assistance",
+  "website-development": "Website",
 };
 
 export type ServiceNavLink = {
@@ -77,7 +123,20 @@ export type ServiceNavLink = {
   desc: string;
 };
 
+const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
+  "ai-automation": Zap,
+  "web-development": Globe,
+  "website-development": Globe,
+  "digital-marketing": TrendingUp,
+  "virtual-assistance": Users,
+};
+
+export function getServiceIcon(slug: string): LucideIcon {
+  return SERVICE_ICON_BY_SLUG[slug] ?? Bot;
+}
+
 export function serviceHref(slug: string) {
+  if (slug === PRIMARY_SERVICE_SLUG) return "/services";
   return `/services/${slug}`;
 }
 
@@ -86,20 +145,47 @@ export function capabilityHref(slug: string) {
 }
 
 export function serviceDisplayTitle(title: string) {
-  return title
-    .replace(/\s+Development$/i, "")
-    .replace(/\s+Services$/i, "")
-    .replace(/^Book keeping/i, "Bookkeeping");
+  return title.replace(/\s+Development$/i, "").replace(/\s+Services$/i, "");
+}
+
+export function getServiceLabel(slug: string, title: string) {
+  return SERVICE_LABEL_BY_SLUG[slug] ?? serviceDisplayTitle(title);
 }
 
 export function toServiceNavLink(page: ServicePageListItem): ServiceNavLink {
-  const label = serviceDisplayTitle(page.title);
+  const label = getServiceLabel(page.slug, page.title);
   return {
     slug: page.slug,
     label,
     href: serviceHref(page.slug),
     desc: NAV_DESC_BY_SLUG[page.slug] ?? page.tagline ?? page.description ?? "",
   };
+}
+
+export function sortAdditionalServicePages(pages: ServicePageListItem[]) {
+  return [...pages].sort((a, b) => {
+    const aIndex = ADDITIONAL_SERVICE_SLUGS.indexOf(a.slug as AdditionalServiceSlug);
+    const bIndex = ADDITIONAL_SERVICE_SLUGS.indexOf(b.slug as AdditionalServiceSlug);
+    if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+    if (aIndex !== -1) return -1;
+    if (bIndex !== -1) return 1;
+    return getServiceLabel(a.slug, a.title).localeCompare(getServiceLabel(b.slug, b.title));
+  });
+}
+
+export function buildServiceNavLinks(pages: ServicePageListItem[]): ServiceNavLink[] {
+  const { primary, additional } = splitServicePages(pages);
+  const links: ServiceNavLink[] = [];
+
+  if (primary) {
+    links.push(toServiceNavLink(primary));
+  }
+
+  for (const page of sortAdditionalServicePages(additional)) {
+    links.push(toServiceNavLink(page));
+  }
+
+  return links;
 }
 
 export function sortServicePages(pages: ServicePageListItem[]) {
@@ -121,16 +207,20 @@ export async function getServicePages() {
     tags: ["servicePage"],
   });
 
-  return sortServicePages(pages ?? []);
+  return sortServicePages(
+    (pages ?? []).filter((page) => !isExcludedServiceSlug(page.slug)),
+  );
 }
 
 export function splitServicePages(pages: ServicePageListItem[]) {
   const primary =
     pages.find((page) => page.slug === PRIMARY_SERVICE_SLUG) ?? pages[0];
-  const additional = pages.filter(
-    (page) =>
-      page.slug !== primary?.slug &&
-      !AI_AUTOMATION_SUB_SLUGS.includes(page.slug as AiAutomationSubSlug),
+  const additional = sortAdditionalServicePages(
+    pages.filter(
+      (page) =>
+        page.slug !== primary?.slug &&
+        !AI_AUTOMATION_SUB_SLUGS.includes(page.slug as AiAutomationSubSlug),
+    ),
   );
 
   return { primary, additional };

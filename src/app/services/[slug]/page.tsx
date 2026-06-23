@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -14,6 +14,11 @@ import {
   getAiAutomationSubService,
   getAiAutomationSubServiceSlugs,
 } from "@/data/ai-automation-services";
+import {
+  getServiceLabel,
+  isExcludedServiceSlug,
+  PRIMARY_SERVICE_SLUG,
+} from "@/lib/services";
 import { seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
 import { allServiceSlugsQuery, servicePageQuery } from "@/sanity/queries";
@@ -33,7 +38,9 @@ export async function generateStaticParams() {
   ]);
 
   const slugSet = new Set([
-    ...(slugs ?? []).map(({ slug }) => slug),
+    ...(slugs ?? [])
+      .map(({ slug }) => slug)
+      .filter((slug) => !isExcludedServiceSlug(slug) && slug !== PRIMARY_SERVICE_SLUG),
     ...subSlugs,
   ]);
 
@@ -44,6 +51,15 @@ export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  if (isExcludedServiceSlug(slug)) {
+    return { title: "Not Found" };
+  }
+
+  if (slug === PRIMARY_SERVICE_SLUG) {
+    redirect("/services");
+  }
+
   const subService = getAiAutomationSubService(slug);
 
   if (subService) {
@@ -60,13 +76,22 @@ export async function generateMetadata({
   });
 
   return seoToMetadata(servicePage?.seo, {
-    title: servicePage?.title ?? "Service",
+    title: getServiceLabel(slug, servicePage?.title ?? "Service"),
     description: servicePage?.description,
   });
 }
 
 export default async function ServicePageRoute({ params }: ServicePageProps) {
   const { slug } = await params;
+
+  if (isExcludedServiceSlug(slug)) {
+    notFound();
+  }
+
+  if (slug === PRIMARY_SERVICE_SLUG) {
+    redirect("/services");
+  }
+
   const subService = getAiAutomationSubService(slug);
 
   if (subService) {
@@ -110,13 +135,15 @@ export default async function ServicePageRoute({ params }: ServicePageProps) {
     notFound();
   }
 
+  const pageTitle = getServiceLabel(slug, servicePage.title);
+
   return (
     <>
       <SiteNavbar />
       <main className="flex-1">
         <ServiceHeroSection
           slug={slug}
-          title={servicePage.title}
+          title={pageTitle}
           tagline={servicePage.tagline}
           description={servicePage.description}
           heroImage={servicePage.heroImage}

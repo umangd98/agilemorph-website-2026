@@ -3,22 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Menu, X, ArrowRight, Zap, Globe, TrendingUp, Users, BookOpen } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
-import type { ServiceNavLink } from "@/lib/services";
-
-const NAV_ICON_BY_SLUG: Record<string, LucideIcon> = {
-  "ai-automation": Zap,
-  "website-development": Globe,
-  "digital-marketing": TrendingUp,
-  "virtual-assistance": Users,
-  bookkeeping: BookOpen,
-};
+import { getServiceIcon, type ServiceNavLink } from "@/lib/services";
 
 type NavbarProps = {
   serviceLinks: ServiceNavLink[];
@@ -36,7 +28,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
     ...baseNavLinks.slice(0, 3),
     {
       label: "Services",
-      href: serviceLinks[0]?.href ?? "/services/ai-automation",
+      href: serviceLinks[0]?.href ?? "/services",
       children: serviceLinks,
     },
     baseNavLinks[3],
@@ -71,20 +63,20 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
   const isHome = pathname === "/";
   const heroAtTop = isHome && !scrolled;
-  // Dark transparent nav only on homepage hero when site theme is dark
-  const darkMode = heroAtTop && resolvedTheme === "dark";
+  const isDarkTheme = resolvedTheme === "dark";
+  const inverseHeader = heroAtTop;
 
   return (
     <>
       <header
         className={`site-header sticky top-0 z-50 transition-all duration-500 ${scrolled ? "site-header--scrolled" : ""}`}
-        data-header={darkMode ? "inverse" : undefined}
+        data-header={inverseHeader ? "inverse" : undefined}
       >
         <Container>
           <nav className="flex h-[68px] items-center justify-between" aria-label="Main navigation">
 
             {/* Logo */}
-            <Logo onDarkSurface={darkMode} priority />
+            <Logo priority />
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 md:flex">
@@ -100,10 +92,10 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                         aria-expanded={servicesOpen}
                         className={`flex items-center gap-1.5 rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
                           servicesOpen
-                            ? darkMode
+                            ? isDarkTheme
                               ? "bg-white/10 text-white"
                               : "bg-primary/8 text-primary"
-                            : darkMode
+                            : isDarkTheme
                             ? "text-slate-300 hover:bg-white/8 hover:text-white"
                             : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
@@ -128,7 +120,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                       >
                         <div className="p-2">
                           {serviceLinks.map((child) => {
-                            const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
+                            const Icon = getServiceIcon(child.slug);
                             const childActive = pathname === child.href;
                             return (
                               <Link
@@ -182,10 +174,10 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                       href={link.href}
                       className={`relative rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
                         isActive
-                          ? darkMode
+                          ? isDarkTheme
                             ? "bg-white/12 text-white"
                             : "bg-primary/8 text-primary"
-                          : darkMode
+                          : isDarkTheme
                           ? "text-slate-300 hover:bg-white/8 hover:text-white"
                           : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       }`}
@@ -202,26 +194,23 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
             {/* CTA + theme */}
             <div className="hidden items-center gap-2 md:flex">
-              <ThemeToggle inverse={darkMode} />
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95"
-              >
+              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
+              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95">
                 Get in Touch
                 <ArrowRight
                   size={14}
                   className="transition-transform duration-200 group-hover:translate-x-0.5"
                 />
-              </Link>
+              </CalendlyBookButton>
             </div>
 
             {/* Mobile toggle */}
             <div className="flex items-center gap-1 md:hidden">
-              <ThemeToggle inverse={darkMode} />
+              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
             <button
               type="button"
               className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
-                darkMode
+                isDarkTheme
                   ? "text-white hover:bg-white/10"
                   : "text-foreground hover:bg-muted"
               }`}
@@ -297,7 +286,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
                     {servicesOpen && (
                       <div className="ml-2 mt-1 flex flex-col gap-0.5 border-l-2 border-primary/20 pl-3">
                         {serviceLinks.map((child) => {
-                          const Icon = NAV_ICON_BY_SLUG[child.slug] ?? Zap;
+                          const Icon = getServiceIcon(child.slug);
                           return (
                             <Link
                               key={child.href}
@@ -335,14 +324,13 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
           {/* CTA at bottom */}
           <div className="border-t border-border p-5">
-            <Link
-              href="/contact"
+            <CalendlyBookButton
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95"
-              onClick={() => setMenuOpen(false)}
+              onBook={() => setMenuOpen(false)}
             >
               Get in Touch
               <ArrowRight size={14} />
-            </Link>
+            </CalendlyBookButton>
           </div>
         </div>
       </div>

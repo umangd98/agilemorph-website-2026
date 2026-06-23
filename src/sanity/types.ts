@@ -70,10 +70,19 @@ export interface WhyUsItem {
   animationLabels?: string[];
 }
 
+export interface EfficiencyCalculatorContent {
+  heading?: string;
+  description?: string;
+  disclaimer?: string;
+  ctaLabel?: string;
+}
+
 export interface CapabilityItem {
   title: string;
   description: string;
   icon?: string;
+  slug?: string;
+  featured?: boolean;
   image?: SanityImageAsset;
 }
 
@@ -116,10 +125,28 @@ export interface IntegrationsSection {
   items?: IntegrationItem[];
 }
 
+export interface PortableTextBlock {
+  _type: string;
+  _key?: string;
+  style?: string;
+  children?: Array<{
+    _type?: string;
+    _key?: string;
+    text?: string;
+    marks?: string[];
+  }>;
+  markDefs?: Array<{
+    _key?: string;
+    _type?: string;
+    href?: string;
+  }>;
+}
+
 export interface HomepageHero {
   badge?: string;
   heading: string;
-  tagline?: string;
+  headingAccent?: string;
+  tagline?: PortableTextBlock[];
   ctaPrimary?: CtaButton;
   ctaSecondary?: CtaButton;
   image?: SanityImageAsset;
@@ -141,6 +168,7 @@ export interface Homepage {
   whyUs?: {
     heading?: string;
     items?: WhyUsItem[];
+    efficiencyCalculator?: EfficiencyCalculatorContent;
   };
   stats?: {
     eyebrow?: string;

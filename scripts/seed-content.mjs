@@ -63,6 +63,29 @@ function cta(label, href, openInNewTab = false) {
   return { _type: "ctaButton", label, href, openInNewTab };
 }
 
+function heroTaglineBlock(segments) {
+  const markDefs = [];
+  const children = segments.map((segment, index) => {
+    const key = `span${index}`;
+    if (typeof segment === "string") {
+      return { _type: "span", _key: key, text: segment, marks: [] };
+    }
+    const linkKey = `link${markDefs.length}`;
+    markDefs.push({ _key: linkKey, _type: "link", href: segment.href });
+    return { _type: "span", _key: key, text: segment.text, marks: [linkKey] };
+  });
+
+  return [
+    {
+      _type: "block",
+      _key: "heroTagline",
+      style: "normal",
+      markDefs,
+      children,
+    },
+  ];
+}
+
 function whyUsItem({
   title,
   description,
@@ -219,11 +242,21 @@ function buildHomepage(manifest) {
     _id: "homepage",
     _type: "homepage",
     hero: {
-      heading: "Let AI seamlessly elevate your brand.",
-      tagline:
-        "We revolutionize efficiency with AI Automation to maximize impact, craft impactful experiences through Web Development with user‑friendly platforms, and amplify influence via Digital Marketing to extend reach.",
+      heading: "Cut the Overhead.\nReclaim Your Time.",
+      headingAccent: "Let AI Handle the Execution",
+      tagline: heroTaglineBlock([
+        "Bring absolute order to your operations with end-to-end ",
+        { text: "AI business automation", href: "/services" },
+        ". We architect your entire digital ecosystem, from integrating intelligent ",
+        { text: "AI agents", href: "/services/ai-agents" },
+        " to smart ",
+        { text: "automated content flow", href: "/services/digital-marketing" },
+        ". By upgrading your complete ",
+        { text: "business processes", href: "/services/workflow-automation" },
+        " from the ground up, we eliminate daily firefighting so you can lead with clarity.",
+      ]),
       ctaPrimary: cta("Get in Touch", "/contact"),
-      ctaSecondary: cta("Explore Our Services", "/services/ai-automation"),
+      ctaSecondary: cta("Explore Our Services", "/services"),
       image: imageRef(manifest, "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png", "AgileMorph hero"),
     },
     process: {
@@ -232,25 +265,9 @@ function buildHomepage(manifest) {
       steps: buildProcessSteps(manifest),
     },
     services: {
-      eyebrow: "What We Do",
+      eyebrow: "Our Expertise",
       heading: "Discover Our Services",
       cards: [
-        {
-          _type: "serviceCard",
-          title: "AI Automation",
-          description:
-            "We deliver powerful AI automation solutions designed specifically to streamline your workflow, eliminate manual tasks, and boost business growth.",
-          href: "/services/ai-automation",
-          icon: imageRef(manifest, "2025/01/Services_Icon_01.svg", "AI Automation"),
-        },
-        {
-          _type: "serviceCard",
-          title: "Web Development",
-          description:
-            "We design responsive web and mobile apps that captivate and engage users across all devices.",
-          href: "/services/website-development",
-          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Web Development"),
-        },
         {
           _type: "serviceCard",
           title: "Digital Marketing",
@@ -269,19 +286,11 @@ function buildHomepage(manifest) {
         },
         {
           _type: "serviceCard",
-          title: "Book Keeping",
+          title: "Website",
           description:
-            "We provide efficient, reliable, and automated solutions designed to meet your financial management needs.",
-          href: "/services/bookkeeping",
-          icon: imageRef(manifest, "2025/01/Services_Icon_05.svg", "Book Keeping"),
-        },
-        {
-          _type: "serviceCard",
-          title: "Customer Service",
-          description:
-            "Our dedicated team ensures your queries and concerns are addressed promptly and professionally.",
-          href: "/contact",
-          icon: imageRef(manifest, "2025/01/Services_Icon_06.svg", "Customer Service"),
+            "Python, Django, FastAPI, and React builds that hold up in production.",
+          href: "/services/website-development",
+          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Website"),
         },
       ],
     },
@@ -312,10 +321,18 @@ function buildHomepage(manifest) {
           animationLabels: ["Strategy", "Build", "Scale"],
         }),
       ],
+      efficiencyCalculator: {
+        heading: "Estimate your efficiency gain",
+        description:
+          "Adjust the sliders to see how much manual work AI automation could take off your team's plate.",
+        disclaimer:
+          "Estimates based on typical automation outcomes. Book a discovery call for a scoped audit tailored to your operations.",
+        ctaLabel: "Book a discovery call",
+      },
     },
     stats: {
-      eyebrow: "Metrics That Matter",
-      heading: "Enjoy Tangible Results",
+      eyebrow: "By The Numbers",
+      heading: "Results You Can Measure",
       items: [
         { _type: "stat", value: "100+", label: "Successful Projects" },
         { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
@@ -351,7 +368,7 @@ function buildAboutPage(manifest) {
       heading: "About Us",
       tagline:
         "Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era. Where agility meets transformation—so your next breakthrough isn't trapped in \"someday.\"",
-      cta: cta("Explore Our Services", "/services/ai-automation"),
+      cta: cta("Explore Our Services", "/services"),
     },
     about: {
       heading: "AgileMorph Solutions",
@@ -421,7 +438,7 @@ function buildAboutPage(manifest) {
       heading: "Transforming Ideas into Impactful Journeys",
       description:
         "Partner with AgileMorph to unlock your organization's potential. From startups to enterprises, we're here to drive your digital transformation.",
-      button: cta("Explore Our Services", "/services/ai-automation"),
+      button: cta("Explore Our Services", "/services"),
     },
     founder: {
       eyebrow: "Meet Our Founder",
@@ -473,7 +490,7 @@ function buildContactPage() {
         _type: "faqItem",
         question: "What services does AgileMorph Solutions offer?",
         answer:
-          "We offer end-to-end digital solutions including AI Automation, Web & App Development, API Integrations, Cloud Deployments, and Digital Marketing.",
+          "We offer AI Automation (AI Agents, Workflow Automation, CRM & Lead Automation, MCP & AI Infrastructure, Messaging Automation, and AI Audit), plus Digital Marketing, Virtual Assistance, and Website development.",
       },
       {
         _type: "faqItem",
@@ -565,6 +582,13 @@ function buildServicePages(manifest) {
           description:
             "A fixed-scope review that maps where AI saves you the most time and money.",
           icon: "◷",
+        },
+        {
+          _type: "capabilityItem",
+          title: "Shopify Automation",
+          description:
+            "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
+          icon: "🛍",
         },
       ],
       whyUsHeading: "Why Choose Us",
@@ -941,96 +965,6 @@ function buildServicePages(manifest) {
         title: "Virtual Assistance Services - AgileMorph Solutions",
         description:
           "Comprehensive virtual assistant services to streamline operations and boost productivity.",
-      },
-    },
-    {
-      _id: "servicePage-bookkeeping",
-      _type: "servicePage",
-      title: "Book keeping Services",
-      slug: { _type: "slug", current: "bookkeeping" },
-      tagline: "Efficient, Automated, and Accurate Financial Management",
-      description:
-        "Reliable, partly automated financial management you can trust.",
-      heroImage: imageRef(manifest, "2025/03/Accurate-Bookkeeping.svg", "Bookkeeping"),
-      heroCta: cta("Get in Touch", "/contact"),
-      capabilitiesHeading: "Our Bookkeeping Services",
-      capabilities: [
-        {
-          _type: "capabilityItem",
-          title: "Cloud-Based Solutions",
-          description: "Access your financial data anytime, anywhere with our cloud-based bookkeeping.",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Accurate Bookkeeping",
-          description:
-            "We specialize in providing accurate bookkeeping services that eliminate errors and save time.",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Automated Bookkeeping",
-          description:
-            "Our approach to automated bookkeeping ensures your books are always up-to-date.",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Expense Tracking & Reporting",
-          description:
-            "Managing expenses is crucial to maintaining profitability—we make it effortless.",
-        },
-        {
-          _type: "capabilityItem",
-          title: "Payroll Management",
-          description:
-            "Integrate your payroll system with our bookkeeping services for seamless financial management.",
-        },
-      ],
-      whyUsHeading: "Why Choose Us",
-      whyUs: [
-        whyUsItem({
-          title: "Customized Solutions",
-          description: "Tailored to fit your business's unique requirements.",
-          animationType: "generic",
-          highlights: ["Tailored workflows", "Your business"],
-        }),
-        whyUsItem({
-          title: "Automation",
-          description: "Reduce manual work and human error with our automated systems.",
-          animationType: "innovation",
-          highlights: ["Less manual work", "Fewer errors"],
-        }),
-        whyUsItem({
-          title: "Accurate Financial Reporting",
-          description: "Stay on top of your finances with detailed reports.",
-          animationType: "expertise",
-          highlights: ["Accurate reports", "Clear visibility"],
-          animationLabels: ["Record", "Reconcile", "Report"],
-        }),
-        whyUsItem({
-          title: "Compliance",
-          description:
-            "Ensure you meet all regulatory requirements with our compliant processes.",
-          animationType: "professionalism",
-          highlights: ["Compliant processes", "Audit-ready"],
-        }),
-        whyUsItem({
-          title: "Cloud Accessibility",
-          description: "Manage your finances from anywhere, at any time.",
-          animationType: "partnership",
-          highlights: ["Cloud-based", "Anywhere access"],
-        }),
-      ],
-      technologiesHeading: "Technologies",
-      technologies: ["Bill", "QBO", "Xero"].map((name) => ({ _type: "technologyItem", name })),
-      cta: {
-        heading: "Ready to Simplify Your Finances?",
-        description: "Let us handle your bookkeeping so you can focus on growing your business.",
-        button: cta("Get in Touch", "/contact"),
-      },
-      seo: {
-        title: "Book keeping Services - AgileMorph Solutions",
-        description:
-          "Efficient, automated, and accurate bookkeeping services for businesses of all sizes.",
       },
     },
     ...buildAiAutomationSubServicePages(manifest, { cta, whyUsItem, imageRef }),

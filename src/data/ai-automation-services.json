@@ -506,5 +506,91 @@
       "title": "AI Audit | AgileMorph Solutions",
       "description": "A fixed-scope review that maps where AI saves you the most time and money."
     }
+  },
+  {
+    "id": "shopify-automation",
+    "slug": "shopify-automation",
+    "title": "Shopify Automation",
+    "tagline": "AI Automation",
+    "description": "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+    "heroCta": {
+      "label": "Book a Discovery Call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery"
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "title": "Order & Fulfillment Flows",
+        "description": "Route orders, update statuses, and trigger fulfillment without manual handoffs.",
+        "icon": "🛍"
+      },
+      {
+        "title": "Inventory Sync",
+        "description": "Keep stock levels aligned across Shopify, warehouses, and your other tools.",
+        "icon": "▦"
+      },
+      {
+        "title": "Customer Notifications",
+        "description": "Automated emails and messages for shipping, returns, and post-purchase follow-up.",
+        "icon": "✉"
+      }
+    ],
+    "whyUsHeading": "Built for real Shopify operations",
+    "whyUs": [
+      {
+        "title": "Admin API integrations",
+        "description": "Connect to Shopify Admin GraphQL for products, orders, inventory, and customers.",
+        "highlights": [
+          "Orders",
+          "Inventory",
+          "Customers"
+        ]
+      },
+      {
+        "title": "Workflow tooling",
+        "description": "Pipelines on n8n, Make, or self-hosted infrastructure you control.",
+        "highlights": [
+          "n8n",
+          "Make",
+          "Self-hosted"
+        ]
+      },
+      {
+        "title": "Cross-stack sync",
+        "description": "Bridge Shopify with CRM, ERP, shipping, and support tools automatically.",
+        "highlights": [
+          "CRM sync",
+          "ERP ready"
+        ]
+      },
+      {
+        "title": "Error handling",
+        "description": "Retries, logging, and alerts so failed webhooks don't silently break ops.",
+        "highlights": [
+          "Retries",
+          "Alerts"
+        ]
+      },
+      {
+        "title": "Production experience",
+        "description": "We've shipped Shopify automations alongside our broader AI automation work.",
+        "highlights": [
+          "Production-ready",
+          "Proven stack"
+        ]
+      }
+    ],
+    "cta": {
+      "heading": "Ready to automate this?",
+      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "button": {
+        "label": "Book Your Call",
+        "href": "https://calendly.com/agilemorph/15-minute-discovery"
+      }
+    },
+    "seo": {
+      "title": "Shopify Automation | AgileMorph Solutions",
+      "description": "Automate orders, inventory, fulfillment, and customer flows across your Shopify store."
+    }
   }
 ]

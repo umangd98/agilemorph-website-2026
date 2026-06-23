@@ -34,7 +34,7 @@ export function Footer({ serviceLinks }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-surface border-t border-border">
+    <footer className="border-t border-border bg-footer">
       <Container className="pt-16 pb-6">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4 mb-16">
           <div className="md:col-span-1">
