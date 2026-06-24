@@ -12,6 +12,16 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
 const MANIFEST_PATH = join(__dirname, "media-manifest.json");
 const ENV_PATH = join(ROOT, ".env.local");
+const HOMEPAGE_STATS_PATH = join(ROOT, "src/data/homepage-stats.json");
+
+function loadHomepageStats() {
+  const data = JSON.parse(readFileSync(HOMEPAGE_STATS_PATH, "utf8"));
+  return {
+    eyebrow: data.eyebrow,
+    heading: data.heading,
+    items: data.items.map((item) => ({ _type: "stat", ...item })),
+  };
+}
 
 function loadEnv() {
   return Object.fromEntries(
@@ -41,10 +51,11 @@ function getAuthToken({ preferCli = false } = {}) {
   throw new Error("No Sanity auth token found.");
 }
 
-
 function loadManifest() {
   if (!existsSync(MANIFEST_PATH)) {
-    throw new Error("media-manifest.json not found. Run scripts/upload-media.mjs first.");
+    throw new Error(
+      "media-manifest.json not found. Run scripts/upload-media.mjs first.",
+    );
   }
   return JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
 }
@@ -128,7 +139,8 @@ const PROCESS_STEPS = [
   },
   {
     title: "Agility at Its Best, Results Guaranteed",
-    description: "We deliver results quickly and adapt to your needs as they evolve.",
+    description:
+      "We deliver results quickly and adapt to your needs as they evolve.",
     bullets: [
       "Agile Principles: Leverage agile methodologies for prompt and efficient solutions.",
       "Adaptability: Address changes and challenges with a flexible approach.",
@@ -209,7 +221,9 @@ function buildTestimonials(manifest) {
     name: item.name,
     role: item.role,
     company: item.company,
-    image: item.imageKey ? imageRef(manifest, item.imageKey, item.name) : undefined,
+    image: item.imageKey
+      ? imageRef(manifest, item.imageKey, item.name)
+      : undefined,
   }));
 }
 
@@ -257,11 +271,16 @@ function buildHomepage(manifest) {
       ]),
       ctaPrimary: cta("Get in Touch", "/contact"),
       ctaSecondary: cta("Explore Our Services", "/services"),
-      image: imageRef(manifest, "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png", "AgileMorph hero"),
+      image: imageRef(
+        manifest,
+        "2026/06/ChatGPT-Image-May-28-2026-04_56_56-PM.png",
+        "AgileMorph hero",
+      ),
     },
     process: {
       heading: "The Way We Work",
-      subheading: "We empower businesses to thrive with innovative digital solutions.",
+      subheading:
+        "We empower businesses to thrive with innovative digital solutions.",
       steps: buildProcessSteps(manifest),
     },
     services: {
@@ -274,7 +293,11 @@ function buildHomepage(manifest) {
           description:
             "Boost your online growth with our data-driven digital marketing, including SEO, content, and social media strategies.",
           href: "/services/digital-marketing",
-          icon: imageRef(manifest, "2025/01/Services_Icon_03.svg", "Digital Marketing"),
+          icon: imageRef(
+            manifest,
+            "2025/01/Services_Icon_03.svg",
+            "Digital Marketing",
+          ),
         },
         {
           _type: "serviceCard",
@@ -282,7 +305,11 @@ function buildHomepage(manifest) {
           description:
             "We are dedicated to providing top-tier virtual assistant services that cater to businesses of all sizes.",
           href: "/services/virtual-assistance",
-          icon: imageRef(manifest, "2025/01/Services_Icon_04.svg", "Virtual Assistance"),
+          icon: imageRef(
+            manifest,
+            "2025/01/Services_Icon_04.svg",
+            "Virtual Assistance",
+          ),
         },
         {
           _type: "serviceCard",
@@ -330,18 +357,7 @@ function buildHomepage(manifest) {
         ctaLabel: "Book a discovery call",
       },
     },
-    stats: {
-      eyebrow: "By The Numbers",
-      heading: "Results You Can Measure",
-      items: [
-        { _type: "stat", value: "100+", label: "Successful Projects" },
-        { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
-        { _type: "stat", value: "3+", label: "Years of experience" },
-        { _type: "stat", value: "5+", label: "Countries Represented by Our Talent" },
-        { _type: "stat", value: "10,000+", label: "Hours of dedication and counting" },
-        { _type: "stat", value: "100,000+", label: "Cups of coffee and counting" },
-      ],
-    },
+    stats: loadHomepageStats(),
     featuredLogos: {
       heading: "We've been featured on",
       logos: buildFeaturedLogos(manifest),
@@ -367,13 +383,12 @@ function buildAboutPage(manifest) {
     hero: {
       heading: "About Us",
       tagline:
-        "Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era. Where agility meets transformation—so your next breakthrough isn't trapped in \"someday.\"",
+        'Empowering businesses with agile solutions, innovative technology, and a customer-first approach to thrive in the digital era. Where agility meets transformation—so your next breakthrough isn\'t trapped in "someday."',
       cta: cta("Explore Our Services", "/services"),
     },
     about: {
       heading: "AgileMorph Solutions",
-      body:
-        "Agile because we sprint, iterate and out‑learn the market. Morph because we turn raw ideas into living, revenue‑ready systems that keep adapting as you grow. Born out of the AI research labs at Northwestern University, AgileMorph Solutions has become the execution partner for leaders who refuse to let operational chaos cap their growth.\n\nThe result? Marketing teams regain mornings, ops teams end days with zero backlog, and owners rediscover their excitement as the AI we build turns yesterday's messy workflows into today's autonomous engines. When you choose AgileMorph, you're not buying code—you're investing in a proven system that converts inefficiency into momentum and curiosity into measurable ROI.",
+      body: "Agile because we sprint, iterate and out‑learn the market. Morph because we turn raw ideas into living, revenue‑ready systems that keep adapting as you grow. Born out of the AI research labs at Northwestern University, AgileMorph Solutions has become the execution partner for leaders who refuse to let operational chaos cap their growth.\n\nThe result? Marketing teams regain mornings, ops teams end days with zero backlog, and owners rediscover their excitement as the AI we build turns yesterday's messy workflows into today's autonomous engines. When you choose AgileMorph, you're not buying code—you're investing in a proven system that converts inefficiency into momentum and curiosity into measurable ROI.",
       promiseHeading: "Our Promise",
       promise:
         "Whether you need a lightning‑fast landing page, a machine‑learning engine, or 100 tiny automations that quietly triple team capacity, we will deliver more, deliver earlier, and keep morphing until it feels like magic.",
@@ -399,21 +414,33 @@ function buildAboutPage(manifest) {
         title: "Quality-Driven Solutions",
         description:
           "Delivering high-quality, data-driven, and adaptable strategies to accelerate business growth and success.",
-        icon: imageRef(manifest, "2025/01/SealCheck.svg", "Quality-Driven Solutions"),
+        icon: imageRef(
+          manifest,
+          "2025/01/SealCheck.svg",
+          "Quality-Driven Solutions",
+        ),
       },
       {
         _type: "companyValue",
         title: "Commitment to Innovation",
         description:
           "Staying ahead in the ever-changing digital landscape to provide cutting-edge solutions for modern challenges.",
-        icon: imageRef(manifest, "2025/01/Brain.svg", "Commitment to Innovation"),
+        icon: imageRef(
+          manifest,
+          "2025/01/Brain.svg",
+          "Commitment to Innovation",
+        ),
       },
       {
         _type: "companyValue",
         title: "Tailored Partnerships",
         description:
           "Partnering with businesses to create meaningful impact and provide customized services that meet unique needs.",
-        icon: imageRef(manifest, "2025/01/Handshake.svg", "Tailored Partnerships"),
+        icon: imageRef(
+          manifest,
+          "2025/01/Handshake.svg",
+          "Tailored Partnerships",
+        ),
       },
       {
         _type: "companyValue",
@@ -425,14 +452,23 @@ function buildAboutPage(manifest) {
     ],
     process: {
       heading: "The Way We Work",
-      subheading: "We empower businesses to thrive with innovative digital solutions.",
+      subheading:
+        "We empower businesses to thrive with innovative digital solutions.",
       steps: buildProcessSteps(manifest),
     },
     stats: [
       { _type: "stat", value: "100+", label: "Successful Projects" },
       { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
-      { _type: "stat", value: "10k+", label: "Hours of dedication and counting" },
-      { _type: "stat", value: "5+", label: "Countries Represented by Our Talent" },
+      {
+        _type: "stat",
+        value: "10k+",
+        label: "Hours of dedication and counting",
+      },
+      {
+        _type: "stat",
+        value: "5+",
+        label: "Countries Represented by Our Talent",
+      },
     ],
     cta: {
       heading: "Transforming Ideas into Impactful Journeys",
@@ -442,12 +478,16 @@ function buildAboutPage(manifest) {
     },
     founder: {
       eyebrow: "Meet Our Founder",
-      heading: "Behind the Wonder - full ideas and Brilliant Breakthrough Innovations",
+      heading:
+        "Behind the Wonder - full ideas and Brilliant Breakthrough Innovations",
       name: "Umang Dhandhania",
       role: "CEO at AgileMorph",
-      bio:
-        "A Northwestern‑educated engineer renowned for turning complex business puzzles into clear, revenue‑lifting systems. Known for pairing analytical rigor with infectious energy, over the past decade he has guided more than 100 companies through streamlined launches, process overhauls, and market‑ready product builds that routinely beat timelines and KPIs.\n\nHis mission for AgileMorph is simple: give every ambitious team—regardless of size—the tools to move faster, think bigger, and compete on a global stage.\n\nWhen you work with AgileMorph, you're tapping into the curiosity of a researcher, the precision of an engineer, and the drive of a founder who lives to turn complexity into compounding growth.",
-      image: imageRef(manifest, "2025/03/umang-founder.png", "Umang Dhandhania"),
+      bio: "A Northwestern‑educated engineer renowned for turning complex business puzzles into clear, revenue‑lifting systems. Known for pairing analytical rigor with infectious energy, over the past decade he has guided more than 100 companies through streamlined launches, process overhauls, and market‑ready product builds that routinely beat timelines and KPIs.\n\nHis mission for AgileMorph is simple: give every ambitious team—regardless of size—the tools to move faster, think bigger, and compete on a global stage.\n\nWhen you work with AgileMorph, you're tapping into the curiosity of a researcher, the precision of an engineer, and the drive of a founder who lives to turn complexity into compounding growth.",
+      image: imageRef(
+        manifest,
+        "2025/03/umang-founder.png",
+        "Umang Dhandhania",
+      ),
     },
     featuredLogos: {
       heading: "We've been featured on",
@@ -541,7 +581,11 @@ function buildServicePages(manifest) {
       tagline: "Transforming Your Vision into Intelligent Automation",
       description:
         "We design, build, and run AI systems that remove manual work from your business. Agents that act, workflows that never sleep, and infrastructure built to scale. From first audit to live production.",
-      heroImage: imageRef(manifest, "2025/09/AI-Automation-Development-Services.jpg", "AI Automation"),
+      heroImage: imageRef(
+        manifest,
+        "2025/09/AI-Automation-Development-Services.jpg",
+        "AI Automation",
+      ),
       heroCta: cta("Start Your AI Journey", "/contact"),
       capabilitiesHeading: "Core Capabilities",
       capabilities: [
@@ -555,25 +599,29 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "Workflow Automation",
-          description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
+          description:
+            "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
           icon: "⟳",
         },
         {
           _type: "capabilityItem",
           title: "CRM & Lead Automation",
-          description: "Capture, enrich, route, and follow up on every lead automatically.",
+          description:
+            "Capture, enrich, route, and follow up on every lead automatically.",
           icon: "◎",
         },
         {
           _type: "capabilityItem",
           title: "MCP & AI Infrastructure",
-          description: "Self-hosted pipelines, MCP servers, and production-grade deployments.",
+          description:
+            "Self-hosted pipelines, MCP servers, and production-grade deployments.",
           icon: "⧉",
         },
         {
           _type: "capabilityItem",
           title: "Messaging Automation",
-          description: "WhatsApp, email, and chat automations that respond and convert.",
+          description:
+            "WhatsApp, email, and chat automations that respond and convert.",
           icon: "✉",
         },
         {
@@ -647,7 +695,8 @@ function buildServicePages(manifest) {
       ].map((name) => ({ _type: "technologyItem", name })),
       cta: {
         heading: "Ready to Automate your Success?",
-        description: "Let's shape your business future with intelligent AI-driven automations.",
+        description:
+          "Let's shape your business future with intelligent AI-driven automations.",
         button: cta("Get in Touch", "/contact"),
       },
       seo: {
@@ -661,10 +710,15 @@ function buildServicePages(manifest) {
       _type: "servicePage",
       title: "Website Development",
       slug: { _type: "slug", current: "website-development" },
-      tagline: "Transform Your Digital Presence with Custom Website Development",
+      tagline:
+        "Transform Your Digital Presence with Custom Website Development",
       description:
         "Python, Django, FastAPI, and React builds that hold up in production.",
-      heroImage: imageRef(manifest, "2025/03/Website-Design-and-Development.svg", "Website Development"),
+      heroImage: imageRef(
+        manifest,
+        "2025/03/Website-Design-and-Development.svg",
+        "Website Development",
+      ),
       heroCta: cta("Share Your Product Idea", "/contact"),
       capabilitiesHeading: "Services We Can Help You With",
       capabilities: [
@@ -724,7 +778,8 @@ function buildServicePages(manifest) {
         }),
         whyUsItem({
           title: "SEO-Optimized Websites",
-          description: "We develop websites with SEO best practices in mind from day one.",
+          description:
+            "We develop websites with SEO best practices in mind from day one.",
           animationType: "innovation",
           highlights: ["SEO-first", "Performance focused"],
         }),
@@ -744,13 +799,21 @@ function buildServicePages(manifest) {
         }),
       ],
       technologiesHeading: "Technologies",
-      technologies: ["API", "JavaScript", "HTML", "PHP", "WordPress", "Joomla"].map((name) => ({
+      technologies: [
+        "API",
+        "JavaScript",
+        "HTML",
+        "PHP",
+        "WordPress",
+        "Joomla",
+      ].map((name) => ({
         _type: "technologyItem",
         name,
       })),
       cta: {
         heading: "Ready to Build Your Website?",
-        description: "Let's create a digital presence that drives growth for your business.",
+        description:
+          "Let's create a digital presence that drives growth for your business.",
         button: cta("Get in Touch", "/contact"),
       },
       seo: {
@@ -764,9 +827,15 @@ function buildServicePages(manifest) {
       _type: "servicePage",
       title: "Digital Marketing Services",
       slug: { _type: "slug", current: "digital-marketing" },
-      tagline: "Elevate Your Brand with Our Comprehensive Digital Marketing Solutions",
-      description: "SEO, content, and social strategy driven by data, not guesswork.",
-      heroImage: imageRef(manifest, "2025/03/Social-Media-Marketing.svg", "Digital Marketing"),
+      tagline:
+        "Elevate Your Brand with Our Comprehensive Digital Marketing Solutions",
+      description:
+        "SEO, content, and social strategy driven by data, not guesswork.",
+      heroImage: imageRef(
+        manifest,
+        "2025/03/Social-Media-Marketing.svg",
+        "Digital Marketing",
+      ),
       heroCta: cta("Get in Touch", "/contact"),
       capabilitiesHeading: "Our Digital Marketing Services",
       capabilities: [
@@ -823,19 +892,22 @@ function buildServicePages(manifest) {
       whyUs: [
         whyUsItem({
           title: "Customized Strategies",
-          description: "Tailored marketing solutions that fit your specific needs.",
+          description:
+            "Tailored marketing solutions that fit your specific needs.",
           animationType: "generic",
           highlights: ["Tailored plans", "Your audience"],
         }),
         whyUsItem({
           title: "Data-Driven Insights",
-          description: "Leverage analytics to refine and optimize your campaigns.",
+          description:
+            "Leverage analytics to refine and optimize your campaigns.",
           animationType: "expertise",
           highlights: ["Analytics-led", "Measurable ROI"],
         }),
         whyUsItem({
           title: "Experienced Team",
-          description: "Work with industry experts who are committed to your success.",
+          description:
+            "Work with industry experts who are committed to your success.",
           animationType: "professionalism",
           highlights: ["Industry experts", "Proven results"],
         }),
@@ -862,7 +934,8 @@ function buildServicePages(manifest) {
       ].map((name) => ({ _type: "technologyItem", name })),
       cta: {
         heading: "Ready to Grow Your Brand?",
-        description: "Let's build a digital marketing strategy that delivers measurable results.",
+        description:
+          "Let's build a digital marketing strategy that delivers measurable results.",
         button: cta("Get in Touch", "/contact"),
       },
       seo: {
@@ -876,10 +949,15 @@ function buildServicePages(manifest) {
       _type: "servicePage",
       title: "Virtual Assistance Services",
       slug: { _type: "slug", current: "virtual-assistance" },
-      tagline: "Maximize Efficiency with Our Comprehensive Virtual Assistant Solutions",
+      tagline:
+        "Maximize Efficiency with Our Comprehensive Virtual Assistant Solutions",
       description:
         "Trained assistants who handle the operational load you shouldn't.",
-      heroImage: imageRef(manifest, "2025/03/Administrative-Support.svg", "Virtual Assistance"),
+      heroImage: imageRef(
+        manifest,
+        "2025/03/Administrative-Support.svg",
+        "Virtual Assistance",
+      ),
       heroCta: cta("Get in Touch", "/contact"),
       capabilitiesHeading: "Our Virtual Assistance Services",
       capabilities: [
@@ -945,20 +1023,28 @@ function buildServicePages(manifest) {
         }),
         whyUsItem({
           title: "24/7 Availability",
-          description: "With a global team, our services are available around the clock.",
+          description:
+            "With a global team, our services are available around the clock.",
           animationType: "partnership",
           highlights: ["Global team", "Always on"],
           animationLabels: ["Morning", "Day", "Night"],
         }),
       ],
       technologiesHeading: "Tools We Use",
-      technologies: ["Notion", "Google Workspace", "Slack", "Trello", "Asana"].map((name) => ({
+      technologies: [
+        "Notion",
+        "Google Workspace",
+        "Slack",
+        "Trello",
+        "Asana",
+      ].map((name) => ({
         _type: "technologyItem",
         name,
       })),
       cta: {
         heading: "Ready to Boost Your Productivity?",
-        description: "Let our virtual assistants handle the tasks so you can focus on what matters.",
+        description:
+          "Let our virtual assistants handle the tasks so you can focus on what matters.",
         button: cta("Get in Touch", "/contact"),
       },
       seo: {
@@ -977,23 +1063,35 @@ function buildBlogPosts(manifest) {
       _id: "blogPost-newsletter-consistency",
       _type: "blogPost",
       title: "How to Stay Consistent with Newsletters Without Burning Out",
-      slug: { _type: "slug", current: "newsletter-consistency-without-burning-out" },
+      slug: {
+        _type: "slug",
+        current: "newsletter-consistency-without-burning-out",
+      },
       excerpt:
         "Introduction: Why Newsletter Consistency is Harder Than It Looks. When I first started running a newsletter, I believed the hardest part would be writing.",
       publishedAt: "2025-09-01T10:00:00.000Z",
       categories: ["Business Process Optimization"],
-      coverImage: imageRef(manifest, "2025/09/Automated-Newsletter-Workflow.png", "Newsletter workflow"),
+      coverImage: imageRef(
+        manifest,
+        "2025/09/Automated-Newsletter-Workflow.png",
+        "Newsletter workflow",
+      ),
     },
     {
       _id: "blogPost-intent-based-prospecting",
       _type: "blogPost",
-      title: "The Future of Lead Generation: Why Intent-Based Prospecting Beats Volume Every Time",
+      title:
+        "The Future of Lead Generation: Why Intent-Based Prospecting Beats Volume Every Time",
       slug: { _type: "slug", current: "intent-based-prospecting-beats-volume" },
       excerpt:
         "For years, B2B lead generation was treated as a numbers game. Buy a big list. Send thousands of emails.",
       publishedAt: "2025-09-15T10:00:00.000Z",
       categories: ["Artificial Intelligence", "Data Analytics"],
-      coverImage: imageRef(manifest, "2025/09/AI-Driven-Lead-Generation.png", "Lead generation"),
+      coverImage: imageRef(
+        manifest,
+        "2025/09/AI-Driven-Lead-Generation.png",
+        "Lead generation",
+      ),
     },
     {
       _id: "blogPost-crm-integrations",
@@ -1004,7 +1102,11 @@ function buildBlogPosts(manifest) {
         "In today's fast-paced business environment, customer relationship management (CRM) tools have become essential for companies of all sizes.",
       publishedAt: "2025-08-01T10:00:00.000Z",
       categories: ["Customer Relationship Management (CRM)"],
-      coverImage: imageRef(manifest, "2025/09/Custom-Software-Integration-Services.jpg", "CRM integrations"),
+      coverImage: imageRef(
+        manifest,
+        "2025/09/Custom-Software-Integration-Services.jpg",
+        "CRM integrations",
+      ),
     },
   ];
 }

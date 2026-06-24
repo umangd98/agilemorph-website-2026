@@ -14,6 +14,7 @@ import {
 } from "@/components/sections";
 import { seoToMetadata } from "@/lib/seo";
 import { getServicePages } from "@/lib/services";
+import { statsSection } from "@/data/homepage";
 import { sanityFetch } from "@/sanity/fetch";
 import { homepageQuery } from "@/sanity/queries";
 import type { Homepage } from "@/sanity/types";
@@ -88,9 +89,9 @@ export default async function HomePage() {
           efficiencyCalculator={homepage.whyUs?.efficiencyCalculator}
         />
         <StatsSection
-          eyebrow={homepage.stats?.eyebrow}
-          heading={homepage.stats?.heading}
-          items={homepage.stats?.items}
+          eyebrow={statsSection.eyebrow}
+          heading={statsSection.heading}
+          items={statsSection.items}
         />
         <TestimonialsSection
           eyebrow={homepage.testimonials?.eyebrow}

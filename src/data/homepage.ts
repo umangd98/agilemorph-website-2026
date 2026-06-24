@@ -70,14 +70,16 @@ export const valueProps = [
   },
 ];
 
-export const stats = [
-  { value: "100+", label: "Successful Projects" },
-  { value: "50+", label: "Satisfied clients and growing" },
-  { value: "3+", label: "Years of experience" },
-  { value: "5+", label: "Countries Represented by Our Talent" },
-  { value: "10,000+", label: "Hours of dedication and counting" },
-  { value: "100,000+", label: "Cups of coffee and counting" },
-];
+import homepageStats from "@/data/homepage-stats.json";
+import type { Stat } from "@/sanity/types";
+
+export const stats = homepageStats.items as Stat[];
+
+export const statsSection = {
+  eyebrow: homepageStats.eyebrow,
+  heading: homepageStats.heading,
+  items: stats,
+};
 
 export const testimonials = [
   {
