@@ -14,6 +14,7 @@
     "upload-media": "node scripts/upload-media.mjs",
     "seed-content": "node scripts/seed-content.mjs",
     "patch-pricing-page": "node scripts/patch-pricing-page.mjs",
+    "patch-ai-automation-capabilities": "node scripts/patch-ai-automation-capabilities.mjs",
     "scrape-wordpress": "node scripts/scrape-wordpress.mjs"
   },
   "dependencies": {
