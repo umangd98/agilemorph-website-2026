@@ -17,7 +17,6 @@ import {
   getServiceLabel,
   isExcludedServiceSlug,
   isSubServicePage,
-  PRIMARY_SERVICE_CAPABILITIES,
   PRIMARY_SERVICE_SLUG,
 } from "@/lib/services";
 import { seoToMetadata } from "@/lib/seo";
@@ -101,7 +100,7 @@ function renderPrimaryServicePage(servicePage: ServicePage) {
         />
         <AiAutomationCapabilitiesGrid
           heading={servicePage.capabilitiesHeading ?? "Core Capabilities"}
-          capabilities={PRIMARY_SERVICE_CAPABILITIES}
+          capabilities={servicePage.capabilities ?? []}
         />
         <ServiceWhyUsSection
           heading={servicePage.whyUsHeading}

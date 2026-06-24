@@ -9,7 +9,7 @@ import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
 import {
   getServiceLabel,
-  PRIMARY_SERVICE_CAPABILITIES,
+  getPrimaryServiceCapabilities,
   serviceHref,
   splitServicePages,
 } from "@/lib/services";
@@ -117,6 +117,7 @@ export function ServicesSection({
   pages = [],
 }: ServicesSectionProps) {
   const { additional } = splitServicePages(pages);
+  const capabilities = getPrimaryServiceCapabilities(pages);
 
   return (
     <section
@@ -160,7 +161,7 @@ export function ServicesSection({
         </AnimateOnScroll>
 
         <AiAutomationCapabilitiesGrid
-          capabilities={PRIMARY_SERVICE_CAPABILITIES}
+          capabilities={capabilities}
           embedded
         />
 

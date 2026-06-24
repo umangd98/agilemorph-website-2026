@@ -25,6 +25,18 @@ export const capabilityItem = defineType({
       description: "Optional emoji or short label for the capability icon.",
     }),
     defineField({
+      name: "slug",
+      title: "Link Slug",
+      type: "string",
+      description: "Service page slug for capability links, e.g. workflow-automation",
+    }),
+    defineField({
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "image",
       title: "Icon Image",
       type: "image",

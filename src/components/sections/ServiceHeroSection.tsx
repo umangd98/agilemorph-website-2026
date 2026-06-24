@@ -1,10 +1,12 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { CtaAction } from "@/components/CtaAction";
-import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
 import {
@@ -14,6 +16,19 @@ import {
 } from "@/lib/services";
 import { urlForImage } from "@/sanity/image";
 import type { CtaButton, SanityImageAsset } from "@/sanity/types";
+
+const HeroEcosystemVisual = dynamic(
+  () =>
+    import("@/components/hero-animations/HeroEcosystemVisual").then((mod) => ({
+      default: mod.HeroEcosystemVisual,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="aspect-square w-full max-w-lg animate-pulse rounded-2xl bg-muted/60" />
+    ),
+  },
+);
 
 type ServiceHeroSectionProps = {
   slug: string;

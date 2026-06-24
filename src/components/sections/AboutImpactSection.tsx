@@ -64,11 +64,11 @@ export function AboutImpactSection({
                 ) : null}
               </div>
 
-              <div className="min-w-0 grid grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-12">
+              <div className="min-w-0 grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8 lg:gap-y-12">
                 {stats.slice(0, 4).map((item, index) => (
                   <div key={`${item.label}-${index}`} className="relative text-center">
-                    <span className="block font-heading text-5xl font-extrabold">{item.value}</span>
-                    <span className="mt-2 block font-body text-2xs uppercase tracking-wider text-white/85 sm:text-xs">
+                    <span className="block font-heading text-4xl font-extrabold sm:text-5xl">{item.value}</span>
+                    <span className="mt-2 block font-body text-xs uppercase tracking-wider text-white/85">
                       {item.label}
                     </span>
                   </div>

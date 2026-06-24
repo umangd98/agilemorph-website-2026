@@ -11,27 +11,31 @@ import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
 import { getServiceIcon, type ServiceNavLink } from "@/lib/services";
+import type { NavLink } from "@/sanity/types";
 
 type NavbarProps = {
   serviceLinks: ServiceNavLink[];
+  navLinks?: NavLink[];
 };
 
-const baseNavLinks = [
+const defaultNavLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Blogs", href: "/blog" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
-] as const;
+];
 
-export function Navbar({ serviceLinks }: NavbarProps) {
-  const navLinks = [
-    ...baseNavLinks.slice(0, 3),
-    {
-      label: "Services",
-      href: "/services",
-      children: serviceLinks,
-    },
-    baseNavLinks[3],
+type NavItem = NavLink & { children?: ServiceNavLink[] };
+
+export function Navbar({ serviceLinks, navLinks = defaultNavLinks }: NavbarProps) {
+  const links = navLinks.length > 0 ? navLinks : defaultNavLinks;
+  const contactLink = links.find((link) => link.href === "/contact") ?? links[links.length - 1];
+  const linksBeforeServices = links.filter((link) => link.href !== contactLink?.href);
+
+  const navItems: NavItem[] = [
+    ...linksBeforeServices,
+    { label: "Services", href: "/services", children: serviceLinks },
+    ...(contactLink ? [contactLink] : []),
   ];
   const [menuOpen, setMenuOpen]       = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -80,7 +84,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
             {/* Desktop links */}
             <ul className="hidden items-center gap-1 md:flex">
-              {navLinks.map((link) => {
+              {navItems.map((link) => {
                 const isServices = "children" in link;
                 const isActive = isServices
                   ? pathname.startsWith("/services")
@@ -280,7 +284,7 @@ export function Navbar({ serviceLinks }: NavbarProps) {
 
           {/* Nav items */}
           <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
-            {navLinks.map((link) => {
+            {navItems.map((link) => {
               const isServices = "children" in link;
               const isActive = isServices
                 ? pathname.startsWith("/services")

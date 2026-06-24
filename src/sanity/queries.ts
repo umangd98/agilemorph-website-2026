@@ -71,6 +71,8 @@ const capabilityItemProjection = `{
   title,
   description,
   icon,
+  slug,
+  featured,
   image ${imageProjection}
 }`;
 
@@ -304,20 +306,137 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
   seo ${seoProjection}
 }`;
 
-export const allBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt desc) {
+export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]{
   _id,
   title,
   "slug": slug.current,
   excerpt,
+  body,
   publishedAt,
   categories,
   author,
-  coverImage ${imageProjection}
+  coverImage ${imageProjection},
+  seo ${seoProjection}
 }`;
 
-export const blogPostsCountQuery = `count(*[_type == "blogPost"])`;
+const pricingProjectTierProjection = `{
+  name,
+  price,
+  priceStrikethrough,
+  priceBadge,
+  limitedNote,
+  timeline,
+  tagline,
+  deliverables,
+  paymentLabel,
+  paymentNote,
+  featured,
+  featuredLabel
+}`;
 
-export const pagedBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+const pricingRetainerTierProjection = `{
+  name,
+  price,
+  hours,
+  tagline,
+  items,
+  featured
+}`;
+
+const pricingEngagementStepProjection = `{
+  step,
+  title,
+  description
+}`;
+
+const navLinkProjection = `{
+  label,
+  href
+}`;
+
+const socialLinkProjection = `{
+  label,
+  url,
+  platform
+}`;
+
+export const pricingPageQuery = `*[_type == "pricingPage"][0]{
+  _id,
+  _type,
+  hero {
+    eyebrow,
+    heading,
+    description
+  },
+  projectSection {
+    label,
+    tiers[] ${pricingProjectTierProjection}
+  },
+  retainerSection {
+    label,
+    description,
+    tiers[] ${pricingRetainerTierProjection}
+  },
+  engagementSection {
+    label,
+    steps[] ${pricingEngagementStepProjection}
+  },
+  cta {
+    heading,
+    headingAccent,
+    primaryCta ${ctaProjection},
+    secondaryCta ${ctaProjection}
+  },
+  seo ${seoProjection}
+}`;
+
+export const blogIndexPageQuery = `*[_type == "blogIndexPage"][0]{
+  _id,
+  _type,
+  eyebrow,
+  heading,
+  description,
+  seo ${seoProjection}
+}`;
+
+export const servicesIndexPageQuery = `*[_type == "servicesIndexPage"][0]{
+  _id,
+  _type,
+  hero {
+    eyebrow,
+    heading,
+    description
+  },
+  cta {
+    heading,
+    description,
+    button ${ctaProjection}
+  },
+  seo ${seoProjection}
+}`;
+
+export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
+  _id,
+  _type,
+  siteTitle,
+  siteDescription,
+  navLinks[] ${navLinkProjection},
+  footerQuickLinks[] ${navLinkProjection},
+  socialLinks[] ${socialLinkProjection},
+  newsletterHeading,
+  newsletterDescription
+}`;
+
+const blogPostSearchFilter = `$term == "" || (
+  lower(title) match "*" + lower($term) + "*" ||
+  lower(excerpt) match "*" + lower($term) + "*" ||
+  lower(author) match "*" + lower($term) + "*" ||
+  count((categories)[lower(@) match "*" + lower($term) + "*"]) > 0
+)`;
+
+export const blogPostsCountQuery = `count(*[_type == "blogPost" && (${blogPostSearchFilter})])`;
+
+export const pagedBlogPostsQuery = `*[_type == "blogPost" && (${blogPostSearchFilter})] | order(publishedAt desc) [$start...$end] {
   _id,
   title,
   "slug": slug.current,
@@ -330,17 +449,4 @@ export const pagedBlogPostsQuery = `*[_type == "blogPost"] | order(publishedAt d
 
 export const allBlogSlugsQuery = `*[_type == "blogPost" && defined(slug.current)]{
   "slug": slug.current
-}`;
-
-export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]{
-  _id,
-  title,
-  "slug": slug.current,
-  excerpt,
-  body,
-  publishedAt,
-  categories,
-  author,
-  coverImage ${imageProjection},
-  seo ${seoProjection}
 }`;

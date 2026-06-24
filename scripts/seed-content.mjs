@@ -12,14 +12,24 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
 const MANIFEST_PATH = join(__dirname, "media-manifest.json");
 const ENV_PATH = join(ROOT, ".env.local");
-const HOMEPAGE_STATS_PATH = join(ROOT, "src/data/homepage-stats.json");
+const HOMEPAGE_STATS = {
+  eyebrow: "Metrics That Matter",
+  heading: "Enjoy Tangible Results",
+  items: [
+    { value: "180+", label: "Projects Delivered" },
+    { value: "100+", label: "Clients Across 4 Continents" },
+    { value: "500K+", label: "Hours Saved via Automation" },
+    { value: "98%", label: "Client Retention Rate" },
+    { value: "15+", label: "AI Agents Built and Deployed" },
+    { value: "4+", label: "Years Building AI Systems" },
+  ],
+};
 
 function loadHomepageStats() {
-  const data = JSON.parse(readFileSync(HOMEPAGE_STATS_PATH, "utf8"));
   return {
-    eyebrow: data.eyebrow,
-    heading: data.heading,
-    items: data.items.map((item) => ({ _type: "stat", ...item })),
+    eyebrow: HOMEPAGE_STATS.eyebrow,
+    heading: HOMEPAGE_STATS.heading,
+    items: HOMEPAGE_STATS.items.map((item) => ({ _type: "stat", ...item })),
   };
 }
 
@@ -591,14 +601,17 @@ function buildServicePages(manifest) {
       capabilities: [
         {
           _type: "capabilityItem",
-          title: "AI Agents",
+          title: "AI Automation",
+          slug: "ai-automation",
+          featured: true,
           description:
-            "Autonomous agents that classify, decide, and act across your tools.",
-          icon: "⬡",
+            "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+          icon: "⚡",
         },
         {
           _type: "capabilityItem",
           title: "Workflow Automation",
+          slug: "workflow-automation",
           description:
             "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
           icon: "⟳",
@@ -606,6 +619,7 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "CRM & Lead Automation",
+          slug: "crm-lead-automation",
           description:
             "Capture, enrich, route, and follow up on every lead automatically.",
           icon: "◎",
@@ -613,6 +627,7 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "MCP & AI Infrastructure",
+          slug: "mcp-ai-infrastructure",
           description:
             "Self-hosted pipelines, MCP servers, and production-grade deployments.",
           icon: "⧉",
@@ -620,6 +635,7 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "Messaging Automation",
+          slug: "messaging-automation",
           description:
             "WhatsApp, email, and chat automations that respond and convert.",
           icon: "✉",
@@ -627,6 +643,7 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "AI Audit",
+          slug: "ai-audit",
           description:
             "A fixed-scope review that maps where AI saves you the most time and money.",
           icon: "◷",
@@ -634,6 +651,7 @@ function buildServicePages(manifest) {
         {
           _type: "capabilityItem",
           title: "Shopify Automation",
+          slug: "shopify-automation",
           description:
             "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
           icon: "🛍",
@@ -1111,6 +1129,267 @@ function buildBlogPosts(manifest) {
   ];
 }
 
+function buildPricingPage() {
+  return {
+    _id: "pricingPage",
+    _type: "pricingPage",
+    hero: {
+      eyebrow: "Pricing",
+      heading: "Straightforward engagements.\nPredictable outcomes.",
+      description:
+        "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer — both structured around delivery, not hours.",
+    },
+    projectSection: {
+      label: "Project pricing — four fixed-scope tiers",
+      tiers: [
+        {
+          _type: "pricingProjectTier",
+          name: "Discovery audit",
+          price: "Free",
+          priceStrikethrough: "$500",
+          priceBadge: "Free",
+          limitedNote: "Limited time — book before spots fill.",
+          timeline: "1–2 days",
+          tagline:
+            "Understand exactly what to build before committing to the build.",
+          deliverables: [
+            "Current-state workflow map",
+            "Prioritized bottleneck analysis",
+            "Recommended automation architecture",
+            "Written scope for the build phase",
+            "60-min walkthrough session with the founder",
+          ],
+          paymentNote:
+            "Free for a limited time. Normally $500, credited toward your build invoice if you proceed.",
+        },
+        {
+          _type: "pricingProjectTier",
+          name: "Single workflow",
+          price: "$3K – $8K",
+          timeline: "2–6 weeks",
+          tagline:
+            "One focused automation — scoped, built, and handed over production-ready.",
+          deliverables: [
+            "Workflow architecture document",
+            "Production build in n8n, Make, or Zapier",
+            "Integrations with your existing tools and CRM",
+            "Error handling, monitoring, and retry logic",
+            "Operator runbook and 30-day post-launch support",
+          ],
+          paymentNote: "50% at kickoff, 50% at production launch.",
+        },
+        {
+          _type: "pricingProjectTier",
+          name: "Connected systems build",
+          price: "$8K – $20K",
+          timeline: "4–10 weeks",
+          tagline:
+            "Multiple workflows operating as one cohesive system across your stack.",
+          featured: true,
+          deliverables: [
+            "Full operational architecture and data model",
+            "3–8 workflows sharing a common data layer",
+            "CRM integration and contact data design",
+            "Custom API integrations and webhook handlers",
+            "Observability, alerting, and error management",
+            "60 days post-launch support",
+          ],
+          paymentNote:
+            "40% at kickoff, 30% at mid-build review, 30% at launch.",
+        },
+        {
+          _type: "pricingProjectTier",
+          name: "AI platform build",
+          price: "$20K+",
+          timeline: "2–5 months",
+          tagline:
+            "Custom AI infrastructure — agents, internal tools, or a full operations rebuild.",
+          deliverables: [
+            "Custom LLM agents built on Claude or GPT-4",
+            "MCP server setup and AI tool infrastructure",
+            "Full-stack development — Django, FastAPI, React",
+            "Cloud deployment on AWS or DigitalOcean",
+            "10+ connected workflows across teams",
+            "90-day post-launch support and optimization",
+          ],
+          paymentNote:
+            "Milestone-based. Typically 3–4 payment gates tied to delivery checkpoints.",
+        },
+      ],
+    },
+    retainerSection: {
+      label: "Retainer pricing — three monthly tiers",
+      description:
+        "Month-to-month engagements structured around output, not seat time. Each tier reflects a different level of operational involvement.",
+      tiers: [
+        {
+          _type: "pricingRetainerTier",
+          name: "Maintain",
+          price: "$2K",
+          hours: "~8 hrs/month",
+          tagline: "Your automations stay healthy and your team stays unblocked.",
+          items: [
+            "Workflow monitoring and uptime checks",
+            "Credential rotations and API updates",
+            "Monthly health-check report",
+            "Up to 2 small enhancements per month",
+          ],
+        },
+        {
+          _type: "pricingRetainerTier",
+          name: "Iterate",
+          price: "$5K",
+          hours: "~20 hrs/month",
+          tagline:
+            "Active improvement across your stack each month, not just upkeep.",
+          featured: true,
+          items: [
+            "Everything in Maintain",
+            "Quarterly ops review and roadmap session",
+            "2–4 new workflows delivered per month",
+            "Direct Slack or email channel with the team",
+            "Same-business-day response on production issues",
+          ],
+        },
+        {
+          _type: "pricingRetainerTier",
+          name: "Embed",
+          price: "$10K",
+          hours: "~40 hrs/month",
+          tagline: "AgileMorph operates as part of your team, not alongside it.",
+          items: [
+            "Everything in Iterate",
+            "Weekly working sessions with the team",
+            "Continuous workflow delivery capacity",
+            "CRM and tooling implementation included",
+            "On-call coverage for business-critical workflows",
+          ],
+        },
+      ],
+    },
+    engagementSection: {
+      label: "How engagements work",
+      steps: [
+        {
+          _type: "pricingEngagementStep",
+          step: "Step 01",
+          title: "Discovery first",
+          description:
+            "Every engagement starts with a paid audit. We map your current operations, identify the highest-leverage automation opportunities, and produce a written scope. You know exactly what you're getting before any build begins.",
+        },
+        {
+          _type: "pricingEngagementStep",
+          step: "Step 02",
+          title: "Fixed scope, defined delivery",
+          description:
+            "The scope document from discovery becomes the contract. Deliverables, timelines, and payment milestones are agreed upfront. There are no change orders for work that falls within the original scope.",
+        },
+        {
+          _type: "pricingEngagementStep",
+          step: "Step 03",
+          title: "Handed over, not dependent",
+          description:
+            "Every build includes full documentation and a runbook your team can operate. The goal is that you understand what we've built. Ongoing support is an option, not a requirement for the system to function.",
+        },
+      ],
+    },
+    cta: {
+      heading: "Start with a free\ndiscovery audit.",
+      headingAccent: "discovery audit.",
+      primaryCta: cta("Book a discovery call", "/contact#book"),
+      secondaryCta: cta("See what we build", "/services"),
+    },
+    seo: {
+      title: "Pricing — AgileMorph Solutions",
+      description:
+        "Straightforward engagements and predictable outcomes. Fixed-scope project pricing and monthly retainer tiers for AI automation and digital operations.",
+    },
+  };
+}
+
+function buildBlogIndexPage() {
+  return {
+    _id: "blogIndexPage",
+    _type: "blogIndexPage",
+    eyebrow: "Startups, Design, Technology",
+    heading: "AgileMorph Blogs",
+    description:
+      "View the latest stories, insights and our development experiences.",
+    seo: {
+      title: "Blog",
+      description:
+        "View the latest stories, insights and development experiences from AgileMorph.",
+    },
+  };
+}
+
+function buildServicesIndexPage() {
+  return {
+    _id: "servicesIndexPage",
+    _type: "servicesIndexPage",
+    hero: {
+      eyebrow: "What we do",
+      heading: "Services built for modern operations",
+      description:
+        "AI automation is our core practice — with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
+    },
+    cta: {
+      heading: "Not sure where to start?",
+      description:
+        "Book a discovery call and we'll map the highest-impact automation and supporting services for your team.",
+      button: cta("Get in Touch", "/contact#book"),
+    },
+    seo: {
+      title: "Services | AgileMorph Solutions",
+      description:
+        "Explore AgileMorph services — AI automation, agents, workflow integrations, digital marketing, virtual assistance, and web development.",
+    },
+  };
+}
+
+function buildSiteSettings() {
+  return {
+    _id: "siteSettings",
+    _type: "siteSettings",
+    siteTitle: "AGILEMORPH | Digital Accelerators",
+    siteDescription:
+      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
+    navLinks: [
+      { _type: "navLink", label: "About", href: "/about" },
+      { _type: "navLink", label: "Blogs", href: "/blog" },
+      { _type: "navLink", label: "Pricing", href: "/pricing" },
+      { _type: "navLink", label: "Contact", href: "/contact" },
+    ],
+    footerQuickLinks: [
+      { _type: "navLink", label: "About Us", href: "/about" },
+      { _type: "navLink", label: "Contact Us", href: "/contact" },
+    ],
+    socialLinks: [
+      {
+        _type: "socialLink",
+        label: "LinkedIn",
+        url: "https://www.linkedin.com/company/agilemorph/",
+        platform: "linkedin",
+      },
+      {
+        _type: "socialLink",
+        label: "Instagram",
+        url: "https://www.instagram.com/agilemorph/",
+        platform: "instagram",
+      },
+      {
+        _type: "socialLink",
+        label: "Facebook",
+        url: "https://www.facebook.com/agilemorph",
+        platform: "facebook",
+      },
+    ],
+    newsletterHeading: "Stay in the loop",
+    newsletterDescription:
+      "Get insights on AI automation, digital operations, and product delivery.",
+  };
+}
+
 async function mutateDocuments({ projectId, dataset, token, documents }) {
   const url = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(url, {
@@ -1143,6 +1422,10 @@ async function main() {
     buildHomepage(manifest),
     buildAboutPage(manifest),
     buildContactPage(),
+    buildPricingPage(),
+    buildBlogIndexPage(),
+    buildServicesIndexPage(),
+    buildSiteSettings(),
     ...buildServicePages(manifest),
     ...buildBlogPosts(manifest),
   ];

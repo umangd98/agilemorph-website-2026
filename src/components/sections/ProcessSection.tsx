@@ -276,7 +276,7 @@ export function ProcessSection({
           ) : null}
         </AnimateOnScroll>
 
-        <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-start lg:gap-6 xl:gap-8">
+        <div className="relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:items-start lg:gap-6 xl:gap-8">
           <div
             className="pointer-events-none absolute left-[16.7%] top-6 hidden h-px w-[66.6%] bg-linear-to-r from-transparent via-primary/35 to-transparent lg:block"
             aria-hidden

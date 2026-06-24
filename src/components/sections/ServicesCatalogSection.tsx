@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import dynamic from "next/dynamic";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
-import { ServicesEcosystemGraph } from "@/components/hero-animations/ServicesEcosystemGraph";
 import { ECOSYSTEM_QUICK_JUMP_SERVICES } from "@/components/hero-animations/hero-ecosystem-graph";
 import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { PageHeroBackground } from "@/components/PageHeroBackground";
@@ -13,14 +13,30 @@ import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomation
 import {
   getServiceIcon,
   getServiceLabel,
-  PRIMARY_SERVICE_CAPABILITIES,
+  getPrimaryServiceCapabilities,
   serviceHref,
   splitServicePages,
 } from "@/lib/services";
 import type { ServicePageListItem } from "@/sanity/types";
 
+const ServicesEcosystemGraph = dynamic(
+  () =>
+    import("@/components/hero-animations/ServicesEcosystemGraph").then((mod) => ({
+      default: mod.ServicesEcosystemGraph,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="aspect-square w-full animate-pulse rounded-2xl bg-muted/40" />
+    ),
+  },
+);
+
 type ServicesCatalogSectionProps = {
   pages: ServicePageListItem[];
+  heroEyebrow?: string;
+  heroHeading?: string;
+  heroDescription?: string;
 };
 
 function ServiceCatalogCard({
@@ -141,22 +157,41 @@ function AllServicesList() {
   );
 }
 
-function CatalogHeroCopy() {
+function CatalogHeroCopy({
+  eyebrow = "What we do",
+  heading = "Services built for modern operations",
+  description = "AI automation is our core practice — with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
+}: {
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+}) {
+  const headingParts = heading.includes("modern operations")
+    ? heading.split("modern operations")
+    : [heading];
+
   return (
     <>
       <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
         <Sparkles size={12} aria-hidden />
-        What we do
+        {eyebrow}
       </span>
       <h1
         id="services-catalog-heading"
         className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl lg:text-5xl"
       >
-        Services built for <span className="text-primary">modern operations</span>
+        {headingParts.length > 1 ? (
+          <>
+            {headingParts[0]}
+            <span className="text-primary">modern operations</span>
+            {headingParts[1]}
+          </>
+        ) : (
+          heading
+        )}
       </h1>
       <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
-        AI automation is our core practice — with seven specializations plus marketing,
-        virtual assistance, and web development when you need the full stack.
+        {description}
       </p>
       <p className="mt-3 hidden font-body text-sm text-primary/90 lg:block">
         Tap any node in the ecosystem to explore a service.
@@ -168,8 +203,14 @@ function CatalogHeroCopy() {
   );
 }
 
-export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
+export function ServicesCatalogSection({
+  pages,
+  heroEyebrow,
+  heroHeading,
+  heroDescription,
+}: ServicesCatalogSectionProps) {
   const { additional } = splitServicePages(pages);
+  const capabilities = getPrimaryServiceCapabilities(pages);
 
   return (
     <>
@@ -183,7 +224,11 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
           {/* Mobile hero: text + quick jump only */}
           <div className="lg:hidden">
             <AnimateOnScroll className="min-w-0 text-center">
-              <CatalogHeroCopy />
+              <CatalogHeroCopy
+                eyebrow={heroEyebrow}
+                heading={heroHeading}
+                description={heroDescription}
+              />
               <QuickJumpChips className="mt-6" />
             </AnimateOnScroll>
           </div>
@@ -191,7 +236,11 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
           {/* Desktop hero: two-column with graph */}
           <div className="hidden items-center gap-10 lg:grid lg:grid-cols-[0.95fr_1.05fr] xl:gap-14">
             <AnimateOnScroll className="min-w-0 text-left">
-              <CatalogHeroCopy />
+              <CatalogHeroCopy
+                eyebrow={heroEyebrow}
+                heading={heroHeading}
+                description={heroDescription}
+              />
               <AllServicesList />
             </AnimateOnScroll>
 
@@ -213,7 +262,7 @@ export function ServicesCatalogSection({ pages }: ServicesCatalogSectionProps) {
           </AnimateOnScroll>
 
           <AiAutomationCapabilitiesGrid
-            capabilities={PRIMARY_SERVICE_CAPABILITIES}
+            capabilities={capabilities}
             embedded
           />
         </Container>

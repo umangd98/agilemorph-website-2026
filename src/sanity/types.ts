@@ -355,3 +355,113 @@ export interface BlogPageData {
 export interface ServiceSlug {
   slug: string;
 }
+
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+export type SocialPlatform = "linkedin" | "instagram" | "facebook" | "custom";
+
+export interface SocialLink {
+  label: string;
+  url: string;
+  platform?: SocialPlatform;
+}
+
+export interface PricingProjectTier {
+  name: string;
+  price: string;
+  priceStrikethrough?: string;
+  priceBadge?: string;
+  limitedNote?: string;
+  timeline?: string;
+  tagline: string;
+  deliverables: string[];
+  paymentLabel?: string;
+  paymentNote?: string;
+  featured?: boolean;
+  featuredLabel?: string;
+}
+
+export interface PricingRetainerTier {
+  name: string;
+  price: string;
+  hours: string;
+  tagline: string;
+  items: string[];
+  featured?: boolean;
+}
+
+export interface PricingEngagementStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export interface PricingPage {
+  _id: string;
+  _type: "pricingPage";
+  hero: {
+    eyebrow?: string;
+    heading: string;
+    description?: string;
+  };
+  projectSection?: {
+    label?: string;
+    tiers?: PricingProjectTier[];
+  };
+  retainerSection?: {
+    label?: string;
+    description?: string;
+    tiers?: PricingRetainerTier[];
+  };
+  engagementSection?: {
+    label?: string;
+    steps?: PricingEngagementStep[];
+  };
+  cta?: {
+    heading?: string;
+    headingAccent?: string;
+    primaryCta?: CtaButton;
+    secondaryCta?: CtaButton;
+  };
+  seo?: Seo;
+}
+
+export interface BlogIndexPage {
+  _id: string;
+  _type: "blogIndexPage";
+  eyebrow?: string;
+  heading: string;
+  description?: string;
+  seo?: Seo;
+}
+
+export interface ServicesIndexPage {
+  _id: string;
+  _type: "servicesIndexPage";
+  hero?: {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+  };
+  cta?: {
+    heading?: string;
+    description?: string;
+    button?: CtaButton;
+  };
+  seo?: Seo;
+}
+
+export interface SiteSettings {
+  _id: string;
+  _type: "siteSettings";
+  siteTitle?: string;
+  siteDescription?: string;
+  navLinks?: NavLink[];
+  footerQuickLinks?: NavLink[];
+  socialLinks?: SocialLink[];
+  newsletterHeading?: string;
+  newsletterDescription?: string;
+}

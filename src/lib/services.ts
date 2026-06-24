@@ -1,3 +1,4 @@
+import { cache } from "react";
 import {
   Bot,
   Globe,
@@ -45,55 +46,6 @@ export function isSubServicePage(page: Pick<ServicePage, "layout" | "slug">) {
     AI_AUTOMATION_SUB_SLUGS.includes(page.slug as AiAutomationSubSlug)
   );
 }
-
-export const PRIMARY_SERVICE_CAPABILITIES = [
-  {
-    title: "AI Automation",
-    slug: "ai-automation",
-    description:
-      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
-    icon: "⚡",
-    featured: true,
-  },
-  {
-    title: "Workflow Automation",
-    slug: "workflow-automation",
-    description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
-    icon: "⟳",
-  },
-  {
-    title: "CRM & Lead Automation",
-    slug: "crm-lead-automation",
-    description: "Capture, enrich, route, and follow up on every lead automatically.",
-    icon: "◎",
-  },
-  {
-    title: "MCP & AI Infrastructure",
-    slug: "mcp-ai-infrastructure",
-    description: "Self-hosted pipelines, MCP servers, and production-grade deployments.",
-    icon: "⧉",
-  },
-  {
-    title: "Messaging Automation",
-    slug: "messaging-automation",
-    description: "WhatsApp, email, and chat automations that respond and convert.",
-    icon: "✉",
-  },
-  {
-    title: "AI Audit",
-    slug: "ai-audit",
-    description:
-      "A fixed-scope review that maps where AI saves you the most time and money.",
-    icon: "◷",
-  },
-  {
-    title: "Shopify Automation",
-    slug: "shopify-automation",
-    description:
-      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
-    icon: "🛍",
-  },
-] as const;
 
 const NAV_DESC_BY_SLUG: Record<string, string> = {
   "ai-automation": "Automate workflows with AI",
@@ -273,6 +225,10 @@ export function sortServicePages(pages: ServicePageListItem[]) {
 }
 
 export async function getServicePages() {
+  return getServicePagesCached();
+}
+
+export const getServicePagesCached = cache(async () => {
   const pages = await sanityFetch<ServicePageListItem[]>({
     query: allServicePagesListQuery,
     tags: ["servicePage"],
@@ -281,6 +237,11 @@ export async function getServicePages() {
   return sortServicePages(
     (pages ?? []).filter((page) => !isExcludedServiceSlug(page.slug)),
   );
+});
+
+export function getPrimaryServiceCapabilities(pages: ServicePageListItem[]) {
+  const primary = pages.find((page) => page.slug === PRIMARY_SERVICE_SLUG);
+  return primary?.capabilities ?? [];
 }
 
 export function splitServicePages(pages: ServicePageListItem[]) {
@@ -303,10 +264,15 @@ export function resolveCapabilityHref(
 ) {
   if (capability.slug) return capabilityHref(capability.slug);
 
-  const match = PRIMARY_SERVICE_CAPABILITIES.find(
-    (item) => item.title === capability.title,
+  const normalizedTitle = capability.title.toLowerCase();
+  if (normalizedTitle.includes("ai automation")) {
+    return serviceHref(PRIMARY_SERVICE_SLUG);
+  }
+
+  const subMatch = AI_AUTOMATION_SUB_SLUGS.find((slug) =>
+    normalizedTitle.includes(slug.replace(/-/g, " ")),
   );
-  if (match) return capabilityHref(match.slug);
+  if (subMatch) return capabilityHref(subMatch);
 
   return serviceHref(fallbackSlug);
 }
