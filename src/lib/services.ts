@@ -1,9 +1,14 @@
 import { cache } from "react";
 import {
   Bot,
+  ClipboardCheck,
   Globe,
+  MessageSquare,
+  Server,
+  ShoppingBag,
   TrendingUp,
   Users,
+  Workflow,
   Zap,
   type LucideIcon,
 } from "lucide-react";
@@ -84,8 +89,21 @@ export type ServiceNavLink = {
   desc: string;
 };
 
+export type ServiceNavGroups = {
+  primary: ServiceNavLink | null;
+  aiAutomationSubs: ServiceNavLink[];
+  additional: ServiceNavLink[];
+};
+
 const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
   "ai-automation": Zap,
+  "ai-agents": Bot,
+  "workflow-automation": Workflow,
+  "crm-lead-automation": Users,
+  "mcp-ai-infrastructure": Server,
+  "messaging-automation": MessageSquare,
+  "ai-audit": ClipboardCheck,
+  "shopify-automation": ShoppingBag,
   "web-development": Globe,
   "website-development": Globe,
   "digital-marketing": TrendingUp,
@@ -199,18 +217,38 @@ export function buildFooterServiceLinks(pages: ServicePageListItem[]): FooterSer
 }
 
 export function buildServiceNavLinks(pages: ServicePageListItem[]): ServiceNavLink[] {
-  const { primary, additional } = splitServicePages(pages);
+  const { primary, additional } = buildServiceNavGroups(pages);
   const links: ServiceNavLink[] = [];
 
   if (primary) {
-    links.push(toServiceNavLink(primary));
+    links.push(primary);
   }
 
-  for (const page of sortAdditionalServicePages(additional)) {
-    links.push(toServiceNavLink(page));
-  }
-
+  links.push(...additional);
   return links;
+}
+
+export function buildServiceNavGroups(pages: ServicePageListItem[]): ServiceNavGroups {
+  const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
+  const { primary, additional } = splitServicePages(pages);
+
+  const primaryLink = primary ? toServiceNavLink(primary) : null;
+
+  const aiAutomationSubs = AI_AUTOMATION_SUB_SLUGS.map((slug) => {
+    const page = pageBySlug.get(slug);
+    if (page) return toServiceNavLink(page);
+
+    return {
+      slug,
+      label: SERVICE_LABEL_BY_SLUG[slug] ?? slug,
+      href: serviceHref(slug),
+      desc: NAV_DESC_BY_SLUG[slug] ?? "",
+    };
+  });
+
+  const additionalLinks = sortAdditionalServicePages(additional).map(toServiceNavLink);
+
+  return { primary: primaryLink, aiAutomationSubs, additional: additionalLinks };
 }
 
 export function sortServicePages(pages: ServicePageListItem[]) {

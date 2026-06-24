@@ -7,6 +7,7 @@ import {
   CompanyStorySection,
   FounderSection,
   ProcessSection,
+  TeamLeadsSection,
   TestimonialsSection,
   AboutImpactSection,
   ValuesSection,
@@ -79,6 +80,7 @@ export default async function AboutPageRoute() {
           button={aboutPage.cta?.button}
           stats={aboutPage.stats}
         />
+        <TeamLeadsSection />
         <FounderSection
           eyebrow={aboutPage.founder?.eyebrow}
           heading={aboutPage.founder?.heading}

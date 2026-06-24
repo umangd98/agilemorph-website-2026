@@ -3,23 +3,13 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { SanityImage } from "@/components/SanityImage";
-import type { CtaButton, SanityImageAsset, Stat } from "@/sanity/types";
+import type { CtaButton, Stat } from "@/sanity/types";
 
 type AboutImpactSectionProps = {
   heading?: string;
   description?: string;
   button?: CtaButton;
   stats?: Stat[];
-};
-
-const RIGHT_PATTERN: SanityImageAsset = {
-  _type: "image",
-  asset: {
-    _type: "reference",
-    _ref: "image-945d8729811ec0dbc516d5396234a794d86076cc-369x74-png",
-  },
-  alt: "Decorative pattern",
 };
 
 export function AboutImpactSection({
@@ -35,16 +25,6 @@ export function AboutImpactSection({
       <Container>
         <AnimateOnScroll>
           <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-r from-[#0ba6a6] to-[#57cf5a] p-8 text-white shadow-xl sm:p-12 lg:p-16">
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-72 opacity-20 lg:block">
-              <SanityImage
-                image={RIGHT_PATTERN}
-                alt=""
-                fill
-                sizes="288px"
-                className="object-cover object-right"
-              />
-            </div>
-
             <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
               <div className="min-w-0">
                 <h2 id="about-impact-heading" className="mb-6 font-heading text-4xl font-extrabold italic sm:text-5xl">

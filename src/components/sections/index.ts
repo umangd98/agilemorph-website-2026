@@ -10,6 +10,7 @@ export { AboutHeroSection } from "./AboutHeroSection";
 export { CompanyStorySection } from "./CompanyStorySection";
 export { ValuesSection } from "./ValuesSection";
 export { FounderSection } from "./FounderSection";
+export { TeamLeadsSection } from "./TeamLeadsSection";
 export { PageCtaSection } from "./PageCtaSection";
 export { ServiceHeroSection } from "./ServiceHeroSection";
 export { CapabilitiesSection } from "./CapabilitiesSection";

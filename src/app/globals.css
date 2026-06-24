@@ -697,6 +697,65 @@ header[data-header="inverse"] {
     fill: var(--color-primary);
   }
 
+  @keyframes ai-pipeline-flow {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    88% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes ai-hub-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    50% {
+      transform: scale(1.04);
+      opacity: 1;
+    }
+  }
+
+  .ai-pipeline-dot {
+    offset-rotate: 0deg;
+    animation: ai-pipeline-flow 2.6s ease-in-out infinite;
+  }
+
+  .ai-pipeline-dot-1 {
+    offset-path: path("M 46 8 L 140 44");
+  }
+
+  .ai-pipeline-dot-2 {
+    offset-path: path("M 140 8 L 140 44");
+    animation-delay: 0.35s;
+  }
+
+  .ai-pipeline-dot-3 {
+    offset-path: path("M 234 8 L 140 44");
+    animation-delay: 0.7s;
+  }
+
+  .ai-hub-ring {
+    animation: ai-hub-pulse 2.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-pipeline-dot,
+    .ai-hub-ring {
+      animation: none;
+    }
+  }
+
   .sub-service-faq summary::-webkit-details-marker {
     display: none;
   }

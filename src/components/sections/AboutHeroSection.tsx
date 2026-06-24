@@ -40,9 +40,6 @@ export function AboutHeroSection({
 
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-5 inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
-            About AgileMorph
-          </span>
           <h1
             id="about-hero-heading"
             className="mb-6 font-heading text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl"
