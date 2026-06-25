@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 
 import { useTheme } from "@/components/ThemeProvider";
@@ -148,12 +149,16 @@ export function HeroShowcaseVisual({
                   height="584"
                   xmlns="http://www.w3.org/1999/xhtml"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={imageUrl}
                     alt=""
+                    width={586}
+                    height={584}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 720px"
                     className={`h-full w-full object-cover object-center ${shouldAnimate ? "hero-showcase-photo-static" : ""}`}
                     style={{ display: "block", width: "100%", height: "100%" }}
+                    unoptimized={/\.svg(\?|$)/i.test(imageUrl)}
                   />
                 </foreignObject>
                 <rect width="586" height="584" fill={`url(#${fillGradId})`} opacity={isDark ? 0.06 : 0.05} />

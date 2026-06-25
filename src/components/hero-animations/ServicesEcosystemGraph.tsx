@@ -24,6 +24,10 @@ type ZoneInfo = { slug: string; label: string };
 
 type ServicesEcosystemGraphProps = {
   visible?: boolean;
+  /** Show the full graph immediately — no phased GSAP reveal */
+  static?: boolean;
+  /** Tighter sizing for service hero column */
+  compact?: boolean;
 };
 
 function nodeRectClass(type: GraphNodeType) {
@@ -150,23 +154,30 @@ function GraphPillLink({
   );
 }
 
-export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGraphProps) {
+export function ServicesEcosystemGraph({
+  visible = true,
+  static: staticDisplay = false,
+  compact = false,
+}: ServicesEcosystemGraphProps) {
   const uid = useId().replace(/:/g, "");
   const svgRef = useRef<SVGSVGElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const richAnimations = useRichAnimations();
-  const staticFrame = !richAnimations;
+  const staticFrame = !richAnimations || staticDisplay;
   const [activeZone, setActiveZone] = useState<ZoneInfo | null>(null);
 
-  const handleZoneActivate = useCallback((zone: ZoneInfo) => {
-    setActiveZone(zone);
-    timelineRef.current?.timeScale(0.2);
-  }, []);
+  const handleZoneActivate = useCallback(
+    (zone: ZoneInfo) => {
+      setActiveZone(zone);
+      if (!staticFrame) timelineRef.current?.timeScale(0.2);
+    },
+    [staticFrame],
+  );
 
   const handleZoneDeactivate = useCallback(() => {
     setActiveZone(null);
-    timelineRef.current?.timeScale(1);
-  }, []);
+    if (!staticFrame) timelineRef.current?.timeScale(1);
+  }, [staticFrame]);
 
   const nodeById = useCallback(
     (id: string) => GRAPH_NODES.find((node) => node.id === id),
@@ -174,7 +185,7 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
   );
 
   useEffect(() => {
-    if (!visible || !richAnimations || !svgRef.current) return;
+    if (!visible || !richAnimations || staticDisplay || !svgRef.current) return;
 
     const root = svgRef.current;
     const particleCleanups: Array<() => void> = [];
@@ -319,10 +330,10 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
       timelineRef.current = null;
       particleCleanups.forEach((cleanup) => cleanup());
     };
-  }, [visible, richAnimations, uid]);
+  }, [visible, richAnimations, staticDisplay, uid]);
 
   return (
-    <div className="relative w-full min-w-0">
+    <div className={`relative w-full min-w-0 ${compact ? "overflow-visible" : ""}`}>
       {activeZone ? (
         <div
           className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full border border-primary/25 bg-background/95 px-4 py-1.5 font-body text-xs font-semibold text-primary shadow-sm backdrop-blur-sm sm:text-sm"
@@ -338,7 +349,11 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
         ref={svgRef}
         viewBox={GRAPH_VIEWBOX}
         preserveAspectRatio="xMidYMid meet"
-        className="services-ecosystem-graph aspect-[800/880] h-auto w-full min-h-[360px] sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[580px]"
+        className={
+          compact
+            ? "services-ecosystem-graph aspect-[800/880] h-auto w-full max-w-full origin-top scale-[0.88]"
+            : "services-ecosystem-graph aspect-[800/880] h-auto w-full min-h-[360px] sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[580px]"
+        }
         role="img"
         aria-label="Interactive AgileMorph service ecosystem graph — select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
       >
@@ -433,16 +448,18 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
             <use href={`#chevron-${uid}`} x={-40} y={-15} width={80} height={40} fill="#94A3B8" />
             <use href={`#chevron-${uid}`} x={-40} y={0} width={80} height={40} fill="#64748B" />
           </g>
-          <circle
-            id={`core-pulse-${uid}`}
-            cx={GRAPH_CENTER.x}
-            cy={GRAPH_CENTER.y}
-            r={40}
-            fill="none"
-            stroke="var(--color-primary)"
-            strokeWidth={2}
-            opacity={staticFrame ? 0.4 : 0}
-          />
+          {!staticFrame ? (
+            <circle
+              id={`core-pulse-${uid}`}
+              cx={GRAPH_CENTER.x}
+              cy={GRAPH_CENTER.y}
+              r={40}
+              fill="none"
+              stroke="var(--color-primary)"
+              strokeWidth={2}
+              opacity={0}
+            />
+          ) : null}
         </g>
 
         <g id="nodes-layer">
@@ -476,19 +493,21 @@ export function ServicesEcosystemGraph({ visible = true }: ServicesEcosystemGrap
           y={GRAPH_ECOSYSTEM_LABEL_Y}
           textAnchor="middle"
           className="graph-ecosystem-label"
-          style={{ opacity: staticFrame ? 1 : 0 }}
+          style={{ opacity: staticFrame && !compact ? 1 : 0 }}
         >
           AGILEMORPH SERVICE ECOSYSTEM
         </text>
 
-        <circle
-          id={`radar-ring-${uid}`}
-          cx={400}
-          cy={350}
-          r={staticFrame ? 200 : 0}
-          className="graph-radar-ring"
-          style={{ opacity: staticFrame ? 0.2 : 0 }}
-        />
+        {!staticFrame ? (
+          <circle
+            id={`radar-ring-${uid}`}
+            cx={400}
+            cy={350}
+            r={0}
+            className="graph-radar-ring"
+            style={{ opacity: 0 }}
+          />
+        ) : null}
       </svg>
     </div>
   );

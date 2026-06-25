@@ -4,31 +4,7 @@ import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { NewsletterForm } from "./NewsletterForm";
 import type { FooterServiceGroups } from "@/lib/services";
-
-const quickLinks = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-];
-
-const socialLinks = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/agilemorph/",
-    Icon: LinkedInIcon,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/agilemorph/",
-    Icon: InstagramIcon,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/agilemorph",
-    Icon: FacebookIcon,
-  },
-] as const;
+import type { NavLink, SocialLink, SocialPlatform } from "@/sanity/types";
 
 const emptyServiceGroups: FooterServiceGroups = {
   primary: null,
@@ -36,8 +12,25 @@ const emptyServiceGroups: FooterServiceGroups = {
   additional: [],
 };
 
+function socialIconForPlatform(platform?: SocialPlatform) {
+  switch (platform) {
+    case "linkedin":
+      return LinkedInIcon;
+    case "instagram":
+      return InstagramIcon;
+    case "facebook":
+      return FacebookIcon;
+    default:
+      return LinkedInIcon;
+  }
+}
+
 type FooterProps = {
   serviceGroups?: FooterServiceGroups;
+  quickLinks?: NavLink[];
+  socialLinks?: SocialLink[];
+  newsletterHeading?: string;
+  newsletterDescription?: string;
 };
 
 const footerLinkClass =
@@ -137,7 +130,13 @@ function FooterServices({ groups }: { groups: FooterServiceGroups }) {
   );
 }
 
-export function Footer({ serviceGroups = emptyServiceGroups }: FooterProps) {
+export function Footer({
+  serviceGroups = emptyServiceGroups,
+  quickLinks = [],
+  socialLinks = [],
+  newsletterHeading = "Newsletter",
+  newsletterDescription = "Stay updated with the latest in digital acceleration.",
+}: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
@@ -151,18 +150,21 @@ export function Footer({ serviceGroups = emptyServiceGroups }: FooterProps) {
               AI‑driven ecosystems.
             </p>
             <div className="flex gap-2.5">
-              {socialLinks.map(({ Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary"
-                >
-                  <Icon />
-                </a>
-              ))}
+              {socialLinks.map((link) => {
+                const Icon = socialIconForPlatform(link.platform);
+                return (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    aria-label={link.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary"
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -176,9 +178,9 @@ export function Footer({ serviceGroups = emptyServiceGroups }: FooterProps) {
           </div>
 
           <div className="lg:col-span-3">
-            <FooterSectionHeading>Newsletter</FooterSectionHeading>
+            <FooterSectionHeading>{newsletterHeading}</FooterSectionHeading>
             <p className="mb-5 font-body text-sm leading-relaxed text-muted-foreground">
-              Stay updated with the latest in digital acceleration.
+              {newsletterDescription}
             </p>
             <NewsletterForm />
           </div>

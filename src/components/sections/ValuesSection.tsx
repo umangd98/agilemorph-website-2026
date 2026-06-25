@@ -15,7 +15,7 @@ function ValueIcon({ value }: { value: CompanyValue }) {
 
   return (
     <div
-      className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10"
+      className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 transition-colors group-hover:border-primary/30 group-hover:bg-primary/15"
       aria-hidden="true"
     >
       <SanityImage
@@ -44,7 +44,7 @@ export function ValuesSection({
         <AnimateOnScroll className="mb-12 text-center">
           <h2
             id="values-heading"
-            className="font-heading text-4xl font-extrabold text-foreground"
+            className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl"
           >
             {heading}
           </h2>
@@ -53,7 +53,7 @@ export function ValuesSection({
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value, index) => (
             <AnimateOnScroll key={`${value.title}-${index}`} delay={index * 80}>
-              <article className="h-full rounded-2xl border border-border bg-surface p-6 shadow-sm">
+              <article className="group h-full rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg hover:shadow-primary/5">
                 <ValueIcon value={value} />
                 <h3 className="mb-3 font-heading text-xl font-bold text-foreground">
                   {value.title}

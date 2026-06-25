@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import { NetlifyContactFormDetector } from "@/components/NetlifyContactFormDetector";
 import { ContactSection } from "@/components/sections";
 import { seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
@@ -44,6 +45,7 @@ export default async function ContactPageRoute() {
 
   return (
     <>
+      <NetlifyContactFormDetector />
       <SiteNavbar />
       <main className="flex-1">
         <ContactSection

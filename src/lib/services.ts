@@ -1,15 +1,23 @@
+import { cache } from "react";
 import {
   Bot,
+  ClipboardCheck,
   Globe,
+  MessageSquare,
+  Server,
+  ShoppingBag,
   TrendingUp,
   Users,
+  Workflow,
   Zap,
   type LucideIcon,
 } from "lucide-react";
 
+import { AI_AUTOMATION_CAPABILITIES_FALLBACK } from "@/data/ai-automation-capabilities-fallback";
+
 import { sanityFetch } from "@/sanity/fetch";
 import { allServicePagesListQuery } from "@/sanity/queries";
-import type { ServicePage, ServicePageListItem } from "@/sanity/types";
+import type { CapabilityItem, ServicePage, ServicePageListItem } from "@/sanity/types";
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
 
@@ -46,55 +54,6 @@ export function isSubServicePage(page: Pick<ServicePage, "layout" | "slug">) {
   );
 }
 
-export const PRIMARY_SERVICE_CAPABILITIES = [
-  {
-    title: "AI Automation",
-    slug: "ai-automation",
-    description:
-      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
-    icon: "⚡",
-    featured: true,
-  },
-  {
-    title: "Workflow Automation",
-    slug: "workflow-automation",
-    description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
-    icon: "⟳",
-  },
-  {
-    title: "CRM & Lead Automation",
-    slug: "crm-lead-automation",
-    description: "Capture, enrich, route, and follow up on every lead automatically.",
-    icon: "◎",
-  },
-  {
-    title: "MCP & AI Infrastructure",
-    slug: "mcp-ai-infrastructure",
-    description: "Self-hosted pipelines, MCP servers, and production-grade deployments.",
-    icon: "⧉",
-  },
-  {
-    title: "Messaging Automation",
-    slug: "messaging-automation",
-    description: "WhatsApp, email, and chat automations that respond and convert.",
-    icon: "✉",
-  },
-  {
-    title: "AI Audit",
-    slug: "ai-audit",
-    description:
-      "A fixed-scope review that maps where AI saves you the most time and money.",
-    icon: "◷",
-  },
-  {
-    title: "Shopify Automation",
-    slug: "shopify-automation",
-    description:
-      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
-    icon: "🛍",
-  },
-] as const;
-
 const NAV_DESC_BY_SLUG: Record<string, string> = {
   "ai-automation": "Automate workflows with AI",
   "ai-agents": "Autonomous agents that act",
@@ -130,8 +89,21 @@ export type ServiceNavLink = {
   desc: string;
 };
 
+export type ServiceNavGroups = {
+  primary: ServiceNavLink | null;
+  aiAutomationSubs: ServiceNavLink[];
+  additional: ServiceNavLink[];
+};
+
 const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
   "ai-automation": Zap,
+  "ai-agents": Bot,
+  "workflow-automation": Workflow,
+  "crm-lead-automation": Users,
+  "mcp-ai-infrastructure": Server,
+  "messaging-automation": MessageSquare,
+  "ai-audit": ClipboardCheck,
+  "shopify-automation": ShoppingBag,
   "web-development": Globe,
   "website-development": Globe,
   "digital-marketing": TrendingUp,
@@ -245,18 +217,38 @@ export function buildFooterServiceLinks(pages: ServicePageListItem[]): FooterSer
 }
 
 export function buildServiceNavLinks(pages: ServicePageListItem[]): ServiceNavLink[] {
-  const { primary, additional } = splitServicePages(pages);
+  const { primary, additional } = buildServiceNavGroups(pages);
   const links: ServiceNavLink[] = [];
 
   if (primary) {
-    links.push(toServiceNavLink(primary));
+    links.push(primary);
   }
 
-  for (const page of sortAdditionalServicePages(additional)) {
-    links.push(toServiceNavLink(page));
-  }
-
+  links.push(...additional);
   return links;
+}
+
+export function buildServiceNavGroups(pages: ServicePageListItem[]): ServiceNavGroups {
+  const pageBySlug = new Map(pages.map((page) => [page.slug, page]));
+  const { primary, additional } = splitServicePages(pages);
+
+  const primaryLink = primary ? toServiceNavLink(primary) : null;
+
+  const aiAutomationSubs = AI_AUTOMATION_SUB_SLUGS.map((slug) => {
+    const page = pageBySlug.get(slug);
+    if (page) return toServiceNavLink(page);
+
+    return {
+      slug,
+      label: SERVICE_LABEL_BY_SLUG[slug] ?? slug,
+      href: serviceHref(slug),
+      desc: NAV_DESC_BY_SLUG[slug] ?? "",
+    };
+  });
+
+  const additionalLinks = sortAdditionalServicePages(additional).map(toServiceNavLink);
+
+  return { primary: primaryLink, aiAutomationSubs, additional: additionalLinks };
 }
 
 export function sortServicePages(pages: ServicePageListItem[]) {
@@ -273,6 +265,10 @@ export function sortServicePages(pages: ServicePageListItem[]) {
 }
 
 export async function getServicePages() {
+  return getServicePagesCached();
+}
+
+export const getServicePagesCached = cache(async () => {
   const pages = await sanityFetch<ServicePageListItem[]>({
     query: allServicePagesListQuery,
     tags: ["servicePage"],
@@ -281,6 +277,40 @@ export async function getServicePages() {
   return sortServicePages(
     (pages ?? []).filter((page) => !isExcludedServiceSlug(page.slug)),
   );
+});
+
+export { AI_AUTOMATION_CAPABILITIES_FALLBACK };
+
+const MIN_AI_AUTOMATION_CAPABILITIES = 7;
+
+function isCompleteAiAutomationCapabilities(
+  capabilities: CapabilityItem[] | undefined,
+): capabilities is CapabilityItem[] {
+  if (!capabilities || capabilities.length < MIN_AI_AUTOMATION_CAPABILITIES) {
+    return false;
+  }
+
+  return capabilities.some(
+    (item) =>
+      item.featured === true ||
+      item.slug === PRIMARY_SERVICE_SLUG ||
+      item.title.toLowerCase().includes("ai automation"),
+  );
+}
+
+export function resolveAiAutomationCapabilities(
+  capabilities?: CapabilityItem[],
+): CapabilityItem[] {
+  if (isCompleteAiAutomationCapabilities(capabilities)) {
+    return capabilities;
+  }
+
+  return AI_AUTOMATION_CAPABILITIES_FALLBACK;
+}
+
+export function getPrimaryServiceCapabilities(pages: ServicePageListItem[]) {
+  const primary = pages.find((page) => page.slug === PRIMARY_SERVICE_SLUG);
+  return resolveAiAutomationCapabilities(primary?.capabilities);
 }
 
 export function splitServicePages(pages: ServicePageListItem[]) {
@@ -303,10 +333,20 @@ export function resolveCapabilityHref(
 ) {
   if (capability.slug) return capabilityHref(capability.slug);
 
-  const match = PRIMARY_SERVICE_CAPABILITIES.find(
+  const match = AI_AUTOMATION_CAPABILITIES_FALLBACK.find(
     (item) => item.title === capability.title,
   );
-  if (match) return capabilityHref(match.slug);
+  if (match?.slug) return capabilityHref(match.slug);
+
+  const normalizedTitle = capability.title.toLowerCase();
+  if (normalizedTitle.includes("ai automation")) {
+    return serviceHref(PRIMARY_SERVICE_SLUG);
+  }
+
+  const subMatch = AI_AUTOMATION_SUB_SLUGS.find((slug) =>
+    normalizedTitle.includes(slug.replace(/-/g, " ")),
+  );
+  if (subMatch) return capabilityHref(subMatch);
 
   return serviceHref(fallbackSlug);
 }

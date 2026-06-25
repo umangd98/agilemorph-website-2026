@@ -1,10 +1,12 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { CtaAction } from "@/components/CtaAction";
-import { HeroEcosystemVisual } from "@/components/hero-animations/HeroEcosystemVisual";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
 import {
@@ -14,6 +16,19 @@ import {
 } from "@/lib/services";
 import { urlForImage } from "@/sanity/image";
 import type { CtaButton, SanityImageAsset } from "@/sanity/types";
+
+const AiAutomationHeroVisual = dynamic(
+  () =>
+    import("@/components/hero-animations/AiAutomationHeroVisual").then((mod) => ({
+      default: mod.AiAutomationHeroVisual,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="aspect-[4/3] w-full animate-pulse rounded-3xl bg-muted/60" />
+    ),
+  },
+);
 
 type ServiceHeroSectionProps = {
   slug: string;
@@ -65,7 +80,7 @@ export function ServiceHeroSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
+      className="relative bg-background py-section max-sm:py-section-sm"
       aria-labelledby="service-hero-heading"
     >
       <PageHeroBackground />
@@ -102,7 +117,7 @@ export function ServiceHeroSection({
           </div>
           <div className={`min-w-0 ${useEcosystemVisual ? "hidden lg:block" : ""}`}>
             {useEcosystemVisual ? (
-              <HeroEcosystemVisual visible />
+              <AiAutomationHeroVisual compact />
             ) : (
               <ServiceHeroMedia
                 slug={slug}

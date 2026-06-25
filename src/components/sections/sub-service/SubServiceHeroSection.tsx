@@ -1,8 +1,24 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
 import { Container } from "@/components/Container";
 import { ServiceBreadcrumb } from "@/components/sections/sub-service/ServiceBreadcrumb";
-import { SubServiceFlowVisual } from "@/components/sections/sub-service/SubServiceFlowVisual";
 import { SubServiceHeroIntro } from "@/components/sections/sub-service/SubServiceHeroIntro";
 import type { CtaButton, FlowStep, ServiceHeadline } from "@/sanity/types";
+
+const SubServiceFlowVisual = dynamic(
+  () =>
+    import("@/components/sections/sub-service/SubServiceFlowVisual").then((mod) => ({
+      default: mod.SubServiceFlowVisual,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="aspect-[4/3] w-full animate-pulse rounded-2xl bg-muted/60" />
+    ),
+  },
+);
 
 type SubServiceHeroSectionProps = {
   pageKey: string;

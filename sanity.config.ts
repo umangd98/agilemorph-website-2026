@@ -7,7 +7,15 @@ import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schemaTypes } from "./src/sanity/schemaTypes";
 
-const singletonTypes = new Set(["homepage", "aboutPage", "contactPage"]);
+const singletonTypes = new Set([
+  "homepage",
+  "aboutPage",
+  "contactPage",
+  "pricingPage",
+  "blogIndexPage",
+  "servicesIndexPage",
+  "siteSettings",
+]);
 
 export default defineConfig({
   name: "agilemorph-site",
@@ -52,6 +60,42 @@ export default defineConfig({
                   .schemaType("contactPage")
                   .documentId("contactPage")
                   .title("Contact Page"),
+              ),
+            S.listItem()
+              .title("Pricing Page")
+              .id("pricingPage")
+              .child(
+                S.document()
+                  .schemaType("pricingPage")
+                  .documentId("pricingPage")
+                  .title("Pricing Page"),
+              ),
+            S.listItem()
+              .title("Blog Index Page")
+              .id("blogIndexPage")
+              .child(
+                S.document()
+                  .schemaType("blogIndexPage")
+                  .documentId("blogIndexPage")
+                  .title("Blog Index Page"),
+              ),
+            S.listItem()
+              .title("Services Index Page")
+              .id("servicesIndexPage")
+              .child(
+                S.document()
+                  .schemaType("servicesIndexPage")
+                  .documentId("servicesIndexPage")
+                  .title("Services Index Page"),
+              ),
+            S.listItem()
+              .title("Site Settings")
+              .id("siteSettings")
+              .child(
+                S.document()
+                  .schemaType("siteSettings")
+                  .documentId("siteSettings")
+                  .title("Site Settings"),
               ),
             S.divider(),
             S.documentTypeListItem("servicePage").title("Service Pages"),

@@ -15,9 +15,11 @@ export async function sanityFetch<T>({
   revalidate = 60,
   tags = [],
 }: SanityFetchOptions): Promise<T> {
+  const isDev = process.env.NODE_ENV === "development";
+
   return client.fetch<T>(query, params, {
     next: {
-      revalidate: tags.length > 0 ? undefined : revalidate,
+      revalidate: tags.length > 0 ? (isDev ? 0 : 3600) : revalidate,
       tags,
     },
   });

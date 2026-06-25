@@ -9,8 +9,8 @@ type StatsSectionProps = {
 };
 
 export function StatsSection({
-  eyebrow = "By The Numbers",
-  heading = "Results You Can Measure",
+  eyebrow = "Metrics That Matter",
+  heading = "Enjoy Tangible Results",
   items = [],
 }: StatsSectionProps) {
   return (
@@ -43,11 +43,11 @@ export function StatsSection({
               delay={index * 60}
               className="h-full"
             >
-              <div className="group flex h-full min-h-[7.5rem] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-muted/50 p-5 text-center backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10">
-                <span className="font-heading text-3xl font-extrabold text-primary sm:text-4xl">
+              <div className="group flex h-full min-h-[8.5rem] flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted/50 p-5 text-center backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 sm:min-h-[9rem]">
+                <span className="font-heading text-3xl font-extrabold leading-none text-primary sm:text-4xl">
                   {stat.value}
                 </span>
-                <span className="line-clamp-2 max-w-[10rem] font-body text-[10px] font-bold uppercase leading-snug tracking-widest text-muted-foreground">
+                <span className="max-w-[10.5rem] font-body text-xs font-semibold leading-snug text-muted-foreground sm:max-w-[11.5rem] sm:text-sm">
                   {stat.label}
                 </span>
               </div>

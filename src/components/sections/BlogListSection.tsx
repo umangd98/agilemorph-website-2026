@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
-import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { BlogSearch } from "@/components/BlogSearch";
+import { Container } from "@/components/Container";
 import { SanityImage } from "@/components/SanityImage";
 import type { BlogPostSummary } from "@/sanity/types";
 
@@ -12,6 +14,7 @@ type BlogListSectionProps = {
   posts?: BlogPostSummary[];
   currentPage?: number;
   totalPages?: number;
+  searchQuery?: string;
 };
 
 function getPageNumbers(currentPage: number, totalPages: number): (number | "ellipsis")[] {
@@ -43,8 +46,19 @@ function getPageNumbers(currentPage: number, totalPages: number): (number | "ell
   return result;
 }
 
-function pageHref(page: number) {
-  return page === 1 ? "/blog" : `/blog?page=${page}`;
+function pageHref(page: number, searchQuery?: string) {
+  const params = new URLSearchParams();
+
+  if (searchQuery) {
+    params.set("q", searchQuery);
+  }
+
+  if (page > 1) {
+    params.set("page", String(page));
+  }
+
+  const qs = params.toString();
+  return qs ? `/blog?${qs}` : "/blog";
 }
 
 export function BlogListSection({
@@ -54,9 +68,11 @@ export function BlogListSection({
   posts = [],
   currentPage = 1,
   totalPages = 1,
+  searchQuery = "",
 }: BlogListSectionProps) {
   const pageNumbers = getPageNumbers(currentPage, totalPages);
   const showPagination = totalPages > 1;
+  const hasSearchQuery = searchQuery.length > 0;
 
   return (
     <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="blog-heading">
@@ -67,7 +83,7 @@ export function BlogListSection({
               {eyebrow}
             </p>
           ) : null}
-          <h1 id="blog-heading" className="mb-4 font-heading text-5xl font-extrabold text-foreground">
+          <h1 id="blog-heading" className="mb-4 font-heading text-4xl font-extrabold text-foreground sm:text-5xl">
             {heading}
           </h1>
           {description ? (
@@ -77,7 +93,31 @@ export function BlogListSection({
           ) : null}
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <AnimateOnScroll className="mb-10">
+          <Suspense
+            fallback={
+              <div className="h-[46px] max-w-xl animate-pulse rounded-xl border border-border bg-surface" />
+            }
+          >
+            <BlogSearch initialQuery={searchQuery} />
+          </Suspense>
+        </AnimateOnScroll>
+
+        {posts.length === 0 ? (
+          <AnimateOnScroll>
+            <div className="rounded-2xl border border-dashed border-border bg-surface px-6 py-12 text-center">
+              <p className="font-heading text-xl font-bold text-foreground">
+                {hasSearchQuery ? "No posts match your search" : "No posts yet"}
+              </p>
+              <p className="mt-2 font-body text-sm text-muted-foreground">
+                {hasSearchQuery
+                  ? `We couldn't find any posts for “${searchQuery}”. Try different keywords.`
+                  : "Check back soon for new stories and insights."}
+              </p>
+            </div>
+          </AnimateOnScroll>
+        ) : (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
             <AnimateOnScroll key={post._id} delay={index * 80}>
               <article className="hover-lift group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:border-primary/20 hover:shadow-lg">
@@ -129,7 +169,8 @@ export function BlogListSection({
               </article>
             </AnimateOnScroll>
           ))}
-        </div>
+          </div>
+        )}
 
         {showPagination ? (
           <nav
@@ -138,13 +179,13 @@ export function BlogListSection({
           >
             {currentPage > 1 ? (
               <Link
-                href={pageHref(currentPage - 1)}
-                className="inline-flex min-w-24 items-center justify-center rounded-lg border border-border bg-surface px-4 py-2 font-body text-sm font-medium text-foreground transition-colors hover:border-primary/20 hover:text-primary"
+                href={pageHref(currentPage - 1, searchQuery)}
+                className="inline-flex min-w-20 items-center justify-center rounded-lg border border-border bg-surface px-3 py-2 font-body text-sm font-medium text-foreground transition-colors hover:border-primary/20 hover:text-primary sm:min-w-24 sm:px-4"
               >
                 Previous
               </Link>
             ) : (
-              <span className="inline-flex min-w-24 cursor-not-allowed items-center justify-center rounded-lg border border-border bg-surface px-4 py-2 font-body text-sm font-medium text-muted-foreground opacity-60">
+              <span className="inline-flex min-w-20 cursor-not-allowed items-center justify-center rounded-lg border border-border bg-surface px-3 py-2 font-body text-sm font-medium text-muted-foreground opacity-60 sm:min-w-24 sm:px-4">
                 Previous
               </span>
             )}
@@ -161,7 +202,7 @@ export function BlogListSection({
               ) : (
                 <Link
                   key={page}
-                  href={pageHref(page)}
+                  href={pageHref(page, searchQuery)}
                   aria-current={page === currentPage ? "page" : undefined}
                   className={
                     page === currentPage
@@ -176,13 +217,13 @@ export function BlogListSection({
 
             {currentPage < totalPages ? (
               <Link
-                href={pageHref(currentPage + 1)}
-                className="inline-flex min-w-24 items-center justify-center rounded-lg border border-border bg-surface px-4 py-2 font-body text-sm font-medium text-foreground transition-colors hover:border-primary/20 hover:text-primary"
+                href={pageHref(currentPage + 1, searchQuery)}
+                className="inline-flex min-w-20 items-center justify-center rounded-lg border border-border bg-surface px-3 py-2 font-body text-sm font-medium text-foreground transition-colors hover:border-primary/20 hover:text-primary sm:min-w-24 sm:px-4"
               >
                 Next
               </Link>
             ) : (
-              <span className="inline-flex min-w-24 cursor-not-allowed items-center justify-center rounded-lg border border-border bg-surface px-4 py-2 font-body text-sm font-medium text-muted-foreground opacity-60">
+              <span className="inline-flex min-w-20 cursor-not-allowed items-center justify-center rounded-lg border border-border bg-surface px-3 py-2 font-body text-sm font-medium text-muted-foreground opacity-60 sm:min-w-24 sm:px-4">
                 Next
               </span>
             )}

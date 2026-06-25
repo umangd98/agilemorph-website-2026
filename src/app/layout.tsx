@@ -4,12 +4,13 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
+import { getSiteSettings } from "@/lib/get-site-settings";
 
 const headingFont = Montserrat({
   variable: "--font-heading-var",
   subsets: ["latin"],
   display: "swap",
-  weight: ["600", "700", "800", "900"],
+  weight: ["600", "700"],
 });
 
 const bodyFont = Inter({
@@ -18,14 +19,19 @@ const bodyFont = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "AGILEMORPH | Digital Accelerators",
-    template: "%s | AgileMorph",
-  },
-  description:
-    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await getSiteSettings();
+
+  return {
+    title: {
+      default: siteSettings?.siteTitle ?? "AGILEMORPH | Digital Accelerators",
+      template: "%s | AgileMorph",
+    },
+    description:
+      siteSettings?.siteDescription ??
+      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
+  };
+}
 
 export default function RootLayout({
   children,
