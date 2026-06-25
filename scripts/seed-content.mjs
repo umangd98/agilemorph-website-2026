@@ -610,7 +610,7 @@ function buildContactPage() {
     seo: {
       title: "Contact Us - AgileMorph Solutions",
       description:
-        "Get in touch with AgileMorph Solutions for AI automation, web development, and digital marketing services.",
+        "Get in touch with AgileMorph Solutions for AI automation, Website Development, and digital marketing services.",
     },
   };
 }
@@ -782,7 +782,7 @@ function buildServicePages(manifest) {
         },
         {
           _type: "capabilityItem",
-          title: "Custom Web Development",
+          title: "Custom Website Development",
           description:
             "We build fully customized websites designed to match your business goals, branding, and user needs.",
         },
@@ -850,18 +850,15 @@ function buildServicePages(manifest) {
           highlights: ["Post-launch care", "Long-term support"],
         }),
       ],
-      technologiesHeading: "Technologies",
+      technologiesHeading: "Technologies that power our solutions",
       technologies: [
-        "API",
-        "JavaScript",
-        "HTML",
-        "PHP",
-        "WordPress",
-        "Joomla",
-      ].map((name) => ({
-        _type: "technologyItem",
-        name,
-      })),
+        ["JavaScript", "integrations/javascript.svg"],
+        ["HTML", "integrations/html5.svg"],
+        ["PHP", "integrations/php.svg"],
+        ["WordPress", "integrations/wordpress.svg"],
+        ["Joomla", "integrations/joomla.svg"],
+        ["API", "integrations/openapi.svg"],
+      ].map(([name, logoKey]) => techItem(manifest, name, logoKey)),
       cta: {
         heading: "Ready To Build Your Website?",
         description:
@@ -972,18 +969,18 @@ function buildServicePages(manifest) {
           animationLabels: ["Plan", "Launch", "Scale"],
         }),
       ],
-      technologiesHeading: "Technologies",
+      technologiesHeading: "Technologies that power our solutions",
       technologies: [
-        "Google Ads",
-        "Canva",
-        "YouTube",
-        "Google Search",
-        "Moz",
-        "Google Analytics",
-        "Semrush",
-        "Hootsuite",
-        "Ahrefs",
-      ].map((name) => ({ _type: "technologyItem", name })),
+        ["Google Ads", "integrations/googleads.svg"],
+        ["Canva", "integrations/canva.svg"],
+        ["YouTube", "integrations/youtube.svg"],
+        ["Google Search", "integrations/google.svg"],
+        ["Moz", "integrations/moz.svg"],
+        ["Google Analytics", "integrations/googleanalytics.svg"],
+        ["Semrush", "integrations/semrush.svg"],
+        ["Hootsuite", "integrations/hootsuite.svg"],
+        ["Ahrefs", "integrations/ahrefs.svg"],
+      ].map(([name, logoKey]) => techItem(manifest, name, logoKey)),
       cta: {
         heading: "Ready To Grow Your Brand?",
         description:
@@ -1082,17 +1079,14 @@ function buildServicePages(manifest) {
           animationLabels: ["Morning", "Day", "Night"],
         }),
       ],
-      technologiesHeading: "Tools We Use",
+      technologiesHeading: "Technologies that power our solutions",
       technologies: [
-        "Notion",
-        "Google Workspace",
-        "Slack",
-        "Trello",
-        "Asana",
-      ].map((name) => ({
-        _type: "technologyItem",
-        name,
-      })),
+        ["Notion", "integrations/notion.svg"],
+        ["Google Workspace", "integrations/googleworkspace.svg"],
+        ["Slack", "integrations/slack.svg"],
+        ["Trello", "integrations/trello.svg"],
+        ["Asana", "integrations/asana.svg"],
+      ].map(([name, logoKey]) => techItem(manifest, name, logoKey)),
       cta: {
         heading: "Ready To Boost Your Productivity?",
         description:
@@ -1365,7 +1359,7 @@ function buildServicesIndexPage() {
       eyebrow: "What We Do",
       heading: "Services Built For Modern Operations",
       description:
-        "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
+        "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and Website Development when you need the full stack.",
     },
     cta: {
       heading: "Not Sure Where To Start?",
@@ -1376,7 +1370,7 @@ function buildServicesIndexPage() {
     seo: {
       title: "Services | AgileMorph Solutions",
       description:
-        "Explore AgileMorph services, AI automation, agents, workflow integrations, digital marketing, virtual assistance, and web development.",
+        "Explore AgileMorph services, AI automation, agents, workflow integrations, digital marketing, virtual assistance, and Website Development.",
     },
   };
 }

@@ -123,7 +123,14 @@ export function capabilityHref(slug: string) {
 }
 
 export function serviceDisplayTitle(title: string) {
-  return title.replace(/\s+Development$/i, "").replace(/\s+Services$/i, "");
+  const normalized = title.trim();
+  if (/^website development$/i.test(normalized)) {
+    return "Website Development";
+  }
+  if (/^ai automation development$/i.test(normalized)) {
+    return "AI Automation";
+  }
+  return normalized.replace(/\s+Services$/i, "");
 }
 
 export function getServiceLabel(slug: string, title: string) {

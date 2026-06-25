@@ -193,7 +193,7 @@ async function main() {
   await patchDocument(dataset, projectId, token, "contactPage", { discoveryCall });
   await patchDocument(dataset, projectId, token, "servicesIndexPage", {
     "hero.description":
-      "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
+      "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and Website Development when you need the full stack.",
   });
 
   if (technologies.length) {

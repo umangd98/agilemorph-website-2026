@@ -357,7 +357,7 @@ Automate the operational load behind your Shopify store, order routing, inventor
 Custom website and web application development. Python, Django, FastAPI, and React builds that hold up in production.
 
 **Capabilities:**
-- Custom Web Development (fully customized to match your business goals)
+- Custom Website Development (fully customized to match your business goals)
 - Website Optimization & Performance
 - E-Commerce Solutions
 - Content Management Systems (CMS)
@@ -637,7 +637,7 @@ Notion, Asana, Trello, Jira, Miro
 **Observability:**
 Langfuse
 
-**Web Development:**
+**Website Development:**
 Python, Django, FastAPI, React, JavaScript, WordPress
 
 **Marketing:**

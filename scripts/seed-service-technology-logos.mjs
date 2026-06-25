@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Uploads technology logos and patches servicePage-ai-automation technologies.
+ * Uploads technology logos and patches service page technology lists.
  * Usage: node scripts/seed-service-technology-logos.mjs
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -11,21 +11,66 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
 const MANIFEST_PATH = join(__dirname, "media-manifest.json");
 const ENV_PATH = join(ROOT, ".env.local");
+const ASSETS_DIR = join(__dirname, "assets", "integrations");
 
-const TECHNOLOGIES = [
-  { name: "n8n", filename: "n8n.svg", url: "https://cdn.simpleicons.org/n8n/EA4B71" },
-  { name: "Zapier", filename: "zapier.svg", url: "https://cdn.simpleicons.org/zapier/FF4A00" },
-  { name: "Make.com", filename: "make.svg", url: "https://cdn.simpleicons.org/make/6D00CC" },
-  { name: "OpenAI", filename: "openai.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg" },
-  { name: "Google Cloud", filename: "googlecloud.svg", url: "https://cdn.simpleicons.org/googlecloud/4285F4" },
-  { name: "AWS", filename: "aws.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" },
-  { name: "Python", filename: "python.svg", url: "https://cdn.simpleicons.org/python/3776AB" },
-  { name: "WordPress", filename: "wordpress.svg", url: "https://cdn.simpleicons.org/wordpress/21759B" },
-  { name: "Shopify", filename: "shopify.svg", url: "https://cdn.simpleicons.org/shopify/96BF48" },
-  { name: "HubSpot", filename: "hubspot.svg", url: "https://cdn.simpleicons.org/hubspot/FF7A59" },
-  { name: "Pipedrive", filename: "pipedrive.svg", url: "https://cdn.simpleicons.org/pipedrive/017737" },
-  { name: "Notion", filename: "notion.svg", url: "https://cdn.simpleicons.org/notion/000000" },
-  { name: "Salesforce", filename: "salesforce.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/salesforce.svg" },
+const SERVICE_PAGES = [
+  {
+    id: "servicePage-ai-automation",
+    heading: "Technologies that power our solutions",
+    technologies: [
+      { name: "n8n", filename: "n8n.svg", url: "https://cdn.simpleicons.org/n8n/EA4B71" },
+      { name: "Zapier", filename: "zapier.svg", url: "https://cdn.simpleicons.org/zapier/FF4A00" },
+      { name: "Make.com", filename: "make.svg", url: "https://cdn.simpleicons.org/make/6D00CC" },
+      { name: "OpenAI", filename: "openai.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg" },
+      { name: "Google Cloud", filename: "googlecloud.svg", url: "https://cdn.simpleicons.org/googlecloud/4285F4" },
+      { name: "AWS", filename: "aws.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" },
+      { name: "Python", filename: "python.svg", url: "https://cdn.simpleicons.org/python/3776AB" },
+      { name: "WordPress", filename: "wordpress.svg", url: "https://cdn.simpleicons.org/wordpress/21759B" },
+      { name: "Shopify", filename: "shopify.svg", url: "https://cdn.simpleicons.org/shopify/96BF48" },
+      { name: "HubSpot", filename: "hubspot.svg", url: "https://cdn.simpleicons.org/hubspot/FF7A59" },
+      { name: "Pipedrive", filename: "pipedrive.svg", url: "https://cdn.worldvectorlogo.com/logos/pipedrive.svg" },
+      { name: "Notion", filename: "notion.svg", url: "https://cdn.simpleicons.org/notion/000000" },
+      { name: "Salesforce", filename: "salesforce.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/salesforce.svg" },
+    ],
+  },
+  {
+    id: "servicePage-website-development",
+    heading: "Technologies that power our solutions",
+    technologies: [
+      { name: "JavaScript", filename: "javascript.svg", url: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+      { name: "HTML", filename: "html5.svg", url: "https://cdn.simpleicons.org/html5/E34F26" },
+      { name: "PHP", filename: "php.svg", url: "https://cdn.simpleicons.org/php/777BB4" },
+      { name: "WordPress", filename: "wordpress.svg", url: "https://cdn.simpleicons.org/wordpress/21759B" },
+      { name: "Joomla", filename: "joomla.svg", url: "https://cdn.simpleicons.org/joomla/5091CD" },
+      { name: "API", filename: "openapi.svg", url: "https://cdn.simpleicons.org/openapiinitiative/6BA539" },
+    ],
+  },
+  {
+    id: "servicePage-digital-marketing",
+    heading: "Technologies that power our solutions",
+    technologies: [
+      { name: "Google Ads", filename: "googleads.svg", url: "https://cdn.simpleicons.org/googleads/4285F4" },
+      { name: "Canva", filename: "canva.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg" },
+      { name: "YouTube", filename: "youtube.svg", url: "https://cdn.simpleicons.org/youtube/FF0000" },
+      { name: "Google Search", filename: "google.svg", url: "https://cdn.simpleicons.org/google/4285F4" },
+      { name: "Moz", filename: "moz.svg", localPath: "moz.svg" },
+      { name: "Google Analytics", filename: "googleanalytics.svg", url: "https://cdn.simpleicons.org/googleanalytics/E37400" },
+      { name: "Semrush", filename: "semrush.svg", url: "https://cdn.simpleicons.org/semrush/FF642D" },
+      { name: "Hootsuite", filename: "hootsuite.svg", url: "https://cdn.simpleicons.org/hootsuite/FF4C46" },
+      { name: "Ahrefs", filename: "ahrefs.svg", localPath: "ahrefs.svg" },
+    ],
+  },
+  {
+    id: "servicePage-virtual-assistance",
+    heading: "Technologies that power our solutions",
+    technologies: [
+      { name: "Notion", filename: "notion.svg", url: "https://cdn.simpleicons.org/notion/000000" },
+      { name: "Google Workspace", filename: "googleworkspace.svg", localPath: "googleworkspace.svg" },
+      { name: "Slack", filename: "slack.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" },
+      { name: "Trello", filename: "trello.svg", url: "https://cdn.simpleicons.org/trello/0052CC" },
+      { name: "Asana", filename: "asana.svg", url: "https://cdn.simpleicons.org/asana/F06A6A" },
+    ],
+  },
 ];
 
 function loadEnv() {
@@ -61,6 +106,38 @@ function saveManifest(manifest) {
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
 }
 
+async function uploadFromLocal({ localPath, filename, projectId, dataset, token, manifest }) {
+  const manifestKey = `integrations/${filename}`;
+  const cached = manifest[manifestKey];
+  if (cached?.id && cached?.url?.includes(`${projectId}/${dataset}`)) {
+    return cached;
+  }
+
+  const filePath = join(ASSETS_DIR, localPath);
+  const buffer = readFileSync(filePath);
+
+  const uploadResponse = await fetch(
+    `https://${projectId}.api.sanity.io/v2021-06-07/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "image/svg+xml",
+      },
+      body: buffer,
+    },
+  );
+
+  if (!uploadResponse.ok) {
+    throw new Error(`Upload failed: ${await uploadResponse.text()}`);
+  }
+
+  const json = await uploadResponse.json();
+  const asset = { id: json.document._id, url: json.document.url };
+  manifest[manifestKey] = asset;
+  return asset;
+}
+
 async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
   const manifestKey = `integrations/${filename}`;
   const cached = manifest[manifestKey];
@@ -93,25 +170,29 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   return asset;
 }
 
-async function main() {
-  const env = loadEnv();
-  const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const dataset = env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
-  const token = getAuthToken();
-  const manifest = loadManifest();
-
+async function buildTechnologyItems(tools, { projectId, dataset, token, manifest }) {
   const technologies = [];
-  for (const tool of TECHNOLOGIES) {
+
+  for (const tool of tools) {
     let asset = null;
     try {
-      asset = await uploadFromUrl({
-        url: tool.url,
-        filename: tool.filename,
-        projectId,
-        dataset,
-        token,
-        manifest,
-      });
+      asset = tool.localPath
+        ? await uploadFromLocal({
+            localPath: tool.localPath,
+            filename: tool.filename,
+            projectId,
+            dataset,
+            token,
+            manifest,
+          })
+        : await uploadFromUrl({
+            url: tool.url,
+            filename: tool.filename,
+            projectId,
+            dataset,
+            token,
+            manifest,
+          });
       console.log(`  ✓ ${tool.name}`);
     } catch (err) {
       console.warn(`  ✗ ${tool.name}: ${err.message}`);
@@ -132,8 +213,10 @@ async function main() {
     technologies.push(item);
   }
 
-  saveManifest(manifest);
+  return technologies;
+}
 
+async function patchServicePage({ id, heading, technologies, projectId, dataset, token }) {
   const patchUrl = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(patchUrl, {
     method: "POST",
@@ -145,9 +228,9 @@ async function main() {
       mutations: [
         {
           patch: {
-            id: "servicePage-ai-automation",
+            id,
             set: {
-              technologiesHeading: "Technologies that power our solutions",
+              technologiesHeading: heading,
               technologies,
             },
           },
@@ -157,10 +240,39 @@ async function main() {
   });
 
   if (!response.ok) {
-    throw new Error(`Patch failed: ${await response.text()}`);
+    throw new Error(`Patch failed for ${id}: ${await response.text()}`);
   }
 
-  console.log("\nPatched servicePage-ai-automation technologies.");
+  console.log(`Patched ${id}`);
+}
+
+async function main() {
+  const env = loadEnv();
+  const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
+  const token = getAuthToken();
+  const manifest = loadManifest();
+
+  for (const page of SERVICE_PAGES) {
+    console.log(`\n${page.id}:`);
+    const technologies = await buildTechnologyItems(page.technologies, {
+      projectId,
+      dataset,
+      token,
+      manifest,
+    });
+    await patchServicePage({
+      id: page.id,
+      heading: page.heading,
+      technologies,
+      projectId,
+      dataset,
+      token,
+    });
+  }
+
+  saveManifest(manifest);
+  console.log("\nDone.");
 }
 
 main().catch((err) => {

@@ -1074,14 +1074,14 @@ header[data-header="inverse"] {
 
 /* Layout - prevent horizontal bleed from grids, marquees, and hero visuals */
 html {
-  overflow-x: clip;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  overflow-x: clip;
   width: 100%;
   min-width: 0;
+  overflow-x: hidden;
 }
 
 main {

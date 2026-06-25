@@ -1553,7 +1553,7 @@
   },
   "integrations/slack.svg": {
     "id": "image-9f2e51308ab01db9168d9c68039b06fd2f2a227f-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/9f2e51308ab01db9168d9c68039b06fd2f2a227f-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/9f2e51308ab01db9168d9c68039b06fd2f2a227f-24x24.svg"
   },
   "integrations/hubspot.svg": {
     "id": "image-99316a8ad963b369099dedd6645ec6ac21767ca9-24x24-svg",
@@ -1561,7 +1561,7 @@
   },
   "integrations/asana.svg": {
     "id": "image-6e201749b7ab2480ad76032fb6b1135456f79d75-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/6e201749b7ab2480ad76032fb6b1135456f79d75-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/6e201749b7ab2480ad76032fb6b1135456f79d75-24x24.svg"
   },
   "integrations/miro.svg": {
     "id": "image-d3de681f5b5422cdf619976953bd9264681602b7-24x24-svg",
@@ -1666,5 +1666,73 @@
   "team-leads/umang-dhandhania.png": {
     "id": "image-8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560-png",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560.png"
+  },
+  "integrations/javascript.svg": {
+    "id": "image-5a6d04be12b2f84db5e0af088f05dd9782312f3c-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/5a6d04be12b2f84db5e0af088f05dd9782312f3c-24x24.svg"
+  },
+  "integrations/html5.svg": {
+    "id": "image-4a792f8ebf2ca69601f2d4d17bc15b0dd905856c-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/4a792f8ebf2ca69601f2d4d17bc15b0dd905856c-24x24.svg"
+  },
+  "integrations/php.svg": {
+    "id": "image-e2d9d00c974314c6c3ce5b0050e0dba145644b68-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/e2d9d00c974314c6c3ce5b0050e0dba145644b68-24x24.svg"
+  },
+  "integrations/joomla.svg": {
+    "id": "image-6963ae0a7c4698681af8bf5d7cac1553ea60e59c-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/6963ae0a7c4698681af8bf5d7cac1553ea60e59c-24x24.svg"
+  },
+  "integrations/openapi.svg": {
+    "id": "image-24c0795b49324fbef2af630e60d57481a333b56e-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/24c0795b49324fbef2af630e60d57481a333b56e-24x24.svg"
+  },
+  "integrations/googleads.svg": {
+    "id": "image-38671541dfac2f87752e0db8eed4e0d38dfe38ec-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/38671541dfac2f87752e0db8eed4e0d38dfe38ec-24x24.svg"
+  },
+  "integrations/youtube.svg": {
+    "id": "image-8dc3002252c60b2f4f2c44863cf921e9d9c6e6ff-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8dc3002252c60b2f4f2c44863cf921e9d9c6e6ff-24x24.svg"
+  },
+  "integrations/google.svg": {
+    "id": "image-0b25e4ac013da801cbd11e38dd3b592f29c2e2f6-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/0b25e4ac013da801cbd11e38dd3b592f29c2e2f6-24x24.svg"
+  },
+  "integrations/googleanalytics.svg": {
+    "id": "image-e3b7a698974673845d4dcb47d5b12454bf44fd66-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/e3b7a698974673845d4dcb47d5b12454bf44fd66-24x24.svg"
+  },
+  "integrations/semrush.svg": {
+    "id": "image-8a70aef84152190370b77d70cbb81389b0e10e09-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8a70aef84152190370b77d70cbb81389b0e10e09-24x24.svg"
+  },
+  "integrations/hootsuite.svg": {
+    "id": "image-407f1c53e59884eb9c8c452d9e65cac030290319-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/407f1c53e59884eb9c8c452d9e65cac030290319-24x24.svg"
+  },
+  "integrations/trello.svg": {
+    "id": "image-33c6110eaa93ead26cb8acb6e7896345355c9603-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/33c6110eaa93ead26cb8acb6e7896345355c9603-24x24.svg"
+  },
+  "integrations/pipedrive.svg": {
+    "id": "image-1a18203742b92ac63d056d5d3edb424bedde4572-2500x571-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/1a18203742b92ac63d056d5d3edb424bedde4572-2500x571.svg"
+  },
+  "integrations/canva.svg": {
+    "id": "image-1c66a9dc40ca0959b8c374240da6efe5618086a7-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/1c66a9dc40ca0959b8c374240da6efe5618086a7-24x24.svg"
+  },
+  "integrations/moz.svg": {
+    "id": "image-7d78be6935042998ea27d9a2428e66a60b81a75b-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/7d78be6935042998ea27d9a2428e66a60b81a75b-24x24.svg"
+  },
+  "integrations/ahrefs.svg": {
+    "id": "image-407b968dc431000ab3dd38650d35e7e961ff7ced-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/407b968dc431000ab3dd38650d35e7e961ff7ced-24x24.svg"
+  },
+  "integrations/googleworkspace.svg": {
+    "id": "image-29389ddaeaaad4316c310143e09ffe3c151f7052-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/29389ddaeaaad4316c310143e09ffe3c151f7052-24x24.svg"
   }
 }

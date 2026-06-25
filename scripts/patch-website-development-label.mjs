@@ -88,6 +88,23 @@ async function main() {
     },
   ];
 
+  const websiteDevPage = await fetchDocument({
+    projectId,
+    dataset,
+    token,
+    id: "servicePage-website-development",
+  });
+
+  if (websiteDevPage?.capabilities?.length) {
+    const capabilities = websiteDevPage.capabilities.map((item) =>
+      item?.title === "Custom Web Development"
+        ? { ...item, title: "Custom Website Development" }
+        : item,
+    );
+
+    mutations[0].patch.set.capabilities = capabilities;
+  }
+
   if (homepage?.services?.cards?.length) {
     mutations.push({
       patch: {
