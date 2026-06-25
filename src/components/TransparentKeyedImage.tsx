@@ -75,57 +75,44 @@ function keyOutFakeTransparency(imageData: ImageData) {
   return imageData;
 }
 
-function processPortrait(url: string) {
-  return new Promise<string>(async (resolve, reject) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        reject(new Error(`Failed to fetch image: ${response.status}`));
-        return;
-      }
+async function processPortrait(url: string) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch image: ${response.status}`);
+  }
 
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const img = new Image();
-      img.decoding = "async";
+  const blob = await response.blob();
+  const blobUrl = URL.createObjectURL(blob);
 
-      img.onload = () => {
-        try {
-          const scale = Math.min(1, MAX_PROCESS_WIDTH / img.naturalWidth);
-          const width = Math.max(1, Math.round(img.naturalWidth * scale));
-          const height = Math.max(1, Math.round(img.naturalHeight * scale));
-          const canvas = document.createElement("canvas");
-          canvas.width = width;
-          canvas.height = height;
+  try {
+    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const element = new Image();
+      element.decoding = "async";
+      element.onload = () => resolve(element);
+      element.onerror = () => reject(new Error(`Failed to decode image: ${url}`));
+      element.src = blobUrl;
+    });
 
-          const ctx = canvas.getContext("2d");
-          if (!ctx) {
-            reject(new Error("Canvas unavailable"));
-            return;
-          }
+    const scale = Math.min(1, MAX_PROCESS_WIDTH / img.naturalWidth);
+    const width = Math.max(1, Math.round(img.naturalWidth * scale));
+    const height = Math.max(1, Math.round(img.naturalHeight * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
 
-          ctx.drawImage(img, 0, 0, width, height);
-          const imageData = ctx.getImageData(0, 0, width, height);
-          keyOutFakeTransparency(imageData);
-          ctx.putImageData(imageData, 0, 0);
-          resolve(canvas.toDataURL("image/png"));
-        } catch (error) {
-          reject(error);
-        } finally {
-          URL.revokeObjectURL(blobUrl);
-        }
-      };
-
-      img.onerror = () => {
-        URL.revokeObjectURL(blobUrl);
-        reject(new Error(`Failed to decode image: ${url}`));
-      };
-
-      img.src = blobUrl;
-    } catch (error) {
-      reject(error);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      throw new Error("Canvas unavailable");
     }
-  });
+
+    ctx.drawImage(img, 0, 0, width, height);
+    const imageData = ctx.getImageData(0, 0, width, height);
+    keyOutFakeTransparency(imageData);
+    ctx.putImageData(imageData, 0, 0);
+    return canvas.toDataURL("image/png");
+  } finally {
+    URL.revokeObjectURL(blobUrl);
+  }
 }
 
 type TransparentKeyedImageProps = {

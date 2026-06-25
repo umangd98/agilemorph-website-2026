@@ -1,10 +1,10 @@
 "use client";
 
 import { Loader2, Search, X } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
+import { useBlogListParams } from "@/hooks/useBlogListParams";
 
 const DEBOUNCE_MS = 300;
 
@@ -13,11 +13,9 @@ type BlogSearchProps = {
 };
 
 export function BlogSearch({ initialQuery = "" }: BlogSearchProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { searchParams, replaceParams, isPending } = useBlogListParams();
   const [query, setQuery] = useState(initialQuery);
   const debouncedQuery = useDebouncedValue(query, DEBOUNCE_MS);
-  const [isPending, startTransition] = useTransition();
   const pendingUrlQueryRef = useRef<string | null>(null);
 
   useEffect(() => {
@@ -40,22 +38,8 @@ export function BlogSearch({ initialQuery = "" }: BlogSearchProps) {
     }
 
     pendingUrlQueryRef.current = nextQuery;
-
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (nextQuery) {
-      params.set("q", nextQuery);
-    } else {
-      params.delete("q");
-    }
-
-    params.delete("page");
-
-    const qs = params.toString();
-    startTransition(() => {
-      router.replace(qs ? `/blog?${qs}` : "/blog", { scroll: false });
-    });
-  }, [debouncedQuery, router, searchParams]);
+    replaceParams({ q: nextQuery || null });
+  }, [debouncedQuery, replaceParams, searchParams]);
 
   const showSpinner = query.trim() !== debouncedQuery.trim() || isPending;
 
