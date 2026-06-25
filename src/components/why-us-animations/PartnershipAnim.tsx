@@ -11,7 +11,7 @@ export function PartnershipAnim({
   const milestones = ((labels?.length ? labels : DEFAULT_MILESTONES) ?? []).slice(0, 3);
 
   return (
-    <LightAnimShell label={`${title} — aligned collaboration`} active={active}>
+    <LightAnimShell label={`${title}, aligned collaboration`} active={active}>
       <style>{`
         @keyframes part-handshake {
           0%, 100% { transform: translateY(0); }

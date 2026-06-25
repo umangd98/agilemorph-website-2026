@@ -131,7 +131,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -152,7 +152,7 @@
         "icon": "⤳"
       }
     ],
-    "whyUsHeading": "Where an agent beats a workflow",
+    "whyUsHeading": "Where An Agent Beats A Workflow",
     "whyUs": [
       {
         "title": "Unstructured input",
@@ -233,7 +233,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -337,7 +337,7 @@
     "faq": [
       {
         "_type": "faqItem",
-        "question": "n8n, Make, or Zapier — which?",
+        "question": "n8n, Make, or Zapier, which?",
         "answer": "Depends on volume, control needs, and budget. We're a certified n8n partner and usually recommend self-hosted n8n for serious volume, but we build on all three."
       },
       {
@@ -378,7 +378,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -399,7 +399,7 @@
         "icon": "▦"
       }
     ],
-    "whyUsHeading": "Automation that survives contact with reality",
+    "whyUsHeading": "Automation That Survives Contact With Reality",
     "whyUs": [
       {
         "title": "Self-hosted n8n",
@@ -478,7 +478,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -623,7 +623,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -644,7 +644,7 @@
         "icon": "⇲"
       }
     ],
-    "whyUsHeading": "Speed-to-lead is the whole game",
+    "whyUsHeading": "Speed-To-Lead Is The Whole Game",
     "whyUs": [
       {
         "title": "Every channel",
@@ -725,7 +725,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -830,7 +830,7 @@
       {
         "_type": "faqItem",
         "question": "What is MCP?",
-        "answer": "Model Context Protocol — a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
+        "answer": "Model Context Protocol, a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
       },
       {
         "_type": "faqItem",
@@ -870,7 +870,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -891,7 +891,7 @@
         "icon": "◴"
       }
     ],
-    "whyUsHeading": "When a no-code tool isn't enough",
+    "whyUsHeading": "When A No-Code Tool Isn't Enough",
     "whyUs": [
       {
         "title": "Governed MCP access",
@@ -970,7 +970,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -1115,7 +1115,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -1136,7 +1136,7 @@
         "icon": "▤"
       }
     ],
-    "whyUsHeading": "Built on real production pipelines",
+    "whyUsHeading": "Built On Real Production Pipelines",
     "whyUs": [
       {
         "title": "WhatsApp automation",
@@ -1215,7 +1215,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -1360,7 +1360,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -1381,7 +1381,7 @@
         "icon": "▣"
       }
     ],
-    "whyUsHeading": "Clarity before spend",
+    "whyUsHeading": "Clarity Before Spend",
     "whyUs": [
       {
         "title": "Real workflow review",
@@ -1460,7 +1460,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",
@@ -1480,7 +1480,7 @@
     "slug": "shopify-automation",
     "layout": "subService",
     "tagline": "AI Automation",
-    "description": "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+    "description": "We automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.",
     "headline": {
       "before": "Shopify ops that run ",
       "highlight": "on autopilot",
@@ -1605,7 +1605,7 @@
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's included",
+    "capabilitiesHeading": "What's Included",
     "capabilities": [
       {
         "_type": "capabilityItem",
@@ -1626,7 +1626,7 @@
         "icon": "✉"
       }
     ],
-    "whyUsHeading": "Built for real Shopify operations",
+    "whyUsHeading": "Built For Real Shopify Operations",
     "whyUs": [
       {
         "title": "Admin API integrations",
@@ -1707,7 +1707,7 @@
       }
     ],
     "cta": {
-      "heading": "Ready to automate this?",
+      "heading": "Ready To Automate This?",
       "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       "button": {
         "label": "Book Your Call",

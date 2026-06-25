@@ -11,7 +11,7 @@ type WhyUsSectionProps = {
 };
 
 export function WhyUsSection({
-  heading = "Why AgileMorph is Your Ideal Partner?",
+  heading = "Why AgileMorph Is Your Ideal Partner?",
   items = [],
   efficiencyCalculator,
 }: WhyUsSectionProps) {

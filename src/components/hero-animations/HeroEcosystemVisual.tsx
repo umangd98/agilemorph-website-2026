@@ -58,7 +58,7 @@ function EcosystemHitLink({
     <a
       href={serviceHref(zone.slug)}
       className="ecosystem-zone-link outline-none"
-      aria-label={`${zone.label} — view service`}
+      aria-label={`${zone.label}, view service`}
       onMouseEnter={() => onActivate({ slug: zone.slug, label: zone.label })}
       onMouseLeave={onDeactivate}
       onFocus={() => onActivate({ slug: zone.slug, label: zone.label })}
@@ -109,7 +109,7 @@ function EcosystemPillLink({
     <a
       href={serviceHref(slug)}
       className="ecosystem-zone-link outline-none"
-      aria-label={`${label} — view service`}
+      aria-label={`${label}, view service`}
       onMouseEnter={() => onActivate({ slug, label })}
       onMouseLeave={onDeactivate}
       onFocus={() => onActivate({ slug, label })}
@@ -324,7 +324,7 @@ export function HeroEcosystemVisual({
 
   const layerOpacity = staticFrame ? 1 : undefined;
   const ariaLabel = interactive
-    ? "Interactive AgileMorph service ecosystem — select a region to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
+    ? "Interactive AgileMorph service ecosystem, select a region to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
     : "AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website";
 
   return (

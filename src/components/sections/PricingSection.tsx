@@ -277,7 +277,7 @@ export function PricingSection({ page }: PricingSectionProps) {
                   ))
                 ) : (
                   <>
-                    Start with a free
+                    Start With A Free
                     <br />
                     <span className="text-primary">discovery audit.</span>
                   </>

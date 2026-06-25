@@ -81,6 +81,13 @@ const technologyItemProjection = `{
   logo ${imageProjection}
 }`;
 
+const teamLeadItemProjection = `{
+  name,
+  role,
+  bio,
+  image ${imageProjection}
+}`;
+
 const faqItemProjection = `{
   question,
   answer
@@ -197,11 +204,22 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     subheading,
     steps[] ${processStepProjection}
   },
-  stats[] ${statProjection},
+  stats {
+    eyebrow,
+    heading,
+    items[] ${statProjection}
+  },
   cta {
     heading,
     description,
     button ${ctaProjection}
+  },
+  teamLeads {
+    eyebrow,
+    heading,
+    subheading,
+    cardFooter,
+    members[] ${teamLeadItemProjection}
   },
   founder {
     eyebrow,
@@ -302,6 +320,14 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
   email,
   linkedinUrl,
   facebookUrl,
+  discoveryCall {
+    title,
+    subtitle,
+    description,
+    availabilityNote,
+    bullets,
+    ctaLabel
+  },
   faqs[] ${faqItemProjection},
   seo ${seoProjection}
 }`;
@@ -434,9 +460,11 @@ const blogPostSearchFilter = `$term == "" || (
   count((categories)[lower(@) match "*" + lower($term) + "*"]) > 0
 )`;
 
-export const blogPostsCountQuery = `count(*[_type == "blogPost" && (${blogPostSearchFilter})])`;
+const blogPostCategoryFilter = `$category == "" || $category in categories`;
 
-export const pagedBlogPostsQuery = `*[_type == "blogPost" && (${blogPostSearchFilter})] | order(publishedAt desc) [$start...$end] {
+const blogPostListFilter = `(${blogPostSearchFilter}) && (${blogPostCategoryFilter})`;
+
+const blogPostSummaryProjection = `{
   _id,
   title,
   "slug": slug.current,
@@ -446,6 +474,14 @@ export const pagedBlogPostsQuery = `*[_type == "blogPost" && (${blogPostSearchFi
   author,
   coverImage ${imageProjection}
 }`;
+
+export const blogCategoriesQuery = `array::unique(*[_type == "blogPost"].categories[]) | order(@ asc)`;
+
+export const blogPostsCountQuery = `count(*[_type == "blogPost" && (${blogPostListFilter})])`;
+
+export function buildPagedBlogPostsQuery(orderBy: string) {
+  return `*[_type == "blogPost" && (${blogPostListFilter})] | order(${orderBy}) [$start...$end] ${blogPostSummaryProjection}`;
+}
 
 export const allBlogSlugsQuery = `*[_type == "blogPost" && defined(slug.current)]{
   "slug": slug.current

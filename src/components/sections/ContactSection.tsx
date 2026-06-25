@@ -16,13 +16,11 @@ import {
 import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import {
-  CALENDLY_DISCOVERY_DESCRIPTION,
-  CALENDLY_DISCOVERY_TITLE,
-} from "@/lib/calendly";
 import { openCalendlyPopup } from "@/lib/calendly-widget";
 import { CONTACT_FORM_NAME, submitNetlifyForm } from "@/lib/netlify-forms";
-import type { FaqItem } from "@/sanity/types";
+import type { ContactPage, FaqItem } from "@/sanity/types";
+
+type DiscoveryCallContent = NonNullable<ContactPage["discoveryCall"]>;
 
 type ContactSectionProps = {
   heading: string;
@@ -31,7 +29,23 @@ type ContactSectionProps = {
   email?: string;
   linkedinUrl?: string;
   facebookUrl?: string;
+  discoveryCall?: DiscoveryCallContent;
   faqs?: FaqItem[];
+};
+
+const defaultDiscoveryCall: Required<DiscoveryCallContent> = {
+  title: "Book A Discovery Call",
+  subtitle: "15 Minute Discovery with Umang Dhandhania",
+  description:
+    "Pick a time that works for you. We'll discuss your goals and whether AgileMorph is the right fit.",
+  availabilityNote:
+    "We take on only 5 new client projects each month. Spots are limited, so book early if timing matters.",
+  bullets: [
+    "15-minute video call with our team",
+    "Discuss goals, scope, and fit",
+    "Leave with clear next steps",
+  ],
+  ctaLabel: "Book A Slot",
 };
 
 const inputClassName =
@@ -107,20 +121,53 @@ function ContactMethodCard({
       {...(external
         ? { target: "_blank", rel: "noopener noreferrer" }
         : undefined)}
-      className="group flex h-full items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:border-primary/35 hover:bg-mint/40"
+      className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:border-primary/35 hover:bg-mint/40"
     >
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
         {icon}
       </span>
-      <span className="min-w-0">
+      <span className="min-w-0 flex-1">
         <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
           {label}
         </span>
-        <span className="mt-1 block truncate font-body text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <span className="mt-1 flex min-h-9 items-center font-body text-sm font-semibold leading-5 text-foreground transition-colors group-hover:text-primary">
           {value}
         </span>
       </span>
     </a>
+  );
+}
+
+function ContactSocialCard({
+  linkedinUrl,
+  facebookUrl,
+}: {
+  linkedinUrl?: string;
+  facebookUrl?: string;
+}) {
+  return (
+    <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <Share2 size={18} />
+      </span>
+      <div className="min-w-0 flex-1">
+        <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
+          Follow us
+        </span>
+        <div className="mt-1 flex min-h-9 flex-wrap items-center gap-2">
+          {linkedinUrl ? (
+            <SocialButton href={linkedinUrl} label="LinkedIn">
+              <LinkedInIcon />
+            </SocialButton>
+          ) : null}
+          {facebookUrl ? (
+            <SocialButton href={facebookUrl} label="Facebook">
+              <FacebookIcon />
+            </SocialButton>
+          ) : null}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -139,7 +186,7 @@ function SocialButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
     >
       {children}
     </a>
@@ -169,8 +216,11 @@ export function ContactSection({
   email,
   linkedinUrl,
   facebookUrl,
+  discoveryCall,
   faqs = [],
 }: ContactSectionProps) {
+  const booking = { ...defaultDiscoveryCall, ...discoveryCall };
+  const bookingBullets = booking.bullets?.length ? booking.bullets : defaultDiscoveryCall.bullets;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
@@ -226,7 +276,7 @@ export function ContactSection({
       <Container className="relative">
         <AnimateOnScroll className="mx-auto max-w-3xl text-center">
           <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
-            Get in touch
+            Get In Touch
           </p>
           <h1
             id="contact-heading"
@@ -244,7 +294,7 @@ export function ContactSection({
         <div className="mt-10 space-y-8 sm:mt-12 lg:space-y-10">
           {(phone || email || hasSocial) && (
             <AnimateOnScroll delay={80}>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
                 {phone ? (
                   <ContactMethodCard
                     href={`tel:${phone.replace(/\s/g, "")}`}
@@ -262,28 +312,10 @@ export function ContactSection({
                   />
                 ) : null}
                 {hasSocial ? (
-                  <div className="flex h-full items-center gap-4 rounded-2xl border border-border bg-surface p-5 md:col-span-2 xl:col-span-1">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Share2 size={18} />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        Follow us
-                      </span>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {linkedinUrl ? (
-                          <SocialButton href={linkedinUrl} label="LinkedIn">
-                            <LinkedInIcon />
-                          </SocialButton>
-                        ) : null}
-                        {facebookUrl ? (
-                          <SocialButton href={facebookUrl} label="Facebook">
-                            <FacebookIcon />
-                          </SocialButton>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <ContactSocialCard
+                    linkedinUrl={linkedinUrl}
+                    facebookUrl={facebookUrl}
+                  />
                 ) : null}
               </div>
             </AnimateOnScroll>
@@ -294,7 +326,7 @@ export function ContactSection({
               <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
                 <SectionCardHeader
                   icon={<MessageSquare size={18} />}
-                  title="Send a message"
+                  title="Send A Message"
                   subtitle="We typically respond within one business day."
                 />
 
@@ -439,21 +471,23 @@ export function ContactSection({
               >
                 <SectionCardHeader
                   icon={<CalendarDays size={18} />}
-                  title="Book a discovery call"
-                  subtitle={CALENDLY_DISCOVERY_TITLE}
+                  title={booking.title}
+                  subtitle={booking.subtitle}
                 />
 
                 <div className="flex flex-1 flex-col space-y-5 px-6 py-6 sm:px-7 sm:py-7">
                   <p className="font-body text-sm leading-relaxed text-muted-foreground">
-                    {CALENDLY_DISCOVERY_DESCRIPTION}
+                    {booking.description}
                   </p>
 
+                  {booking.availabilityNote ? (
+                    <p className="rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 font-body text-sm font-medium text-foreground">
+                      {booking.availabilityNote}
+                    </p>
+                  ) : null}
+
                   <ul className="space-y-3">
-                    {[
-                      "15-minute video call with our team",
-                      "Discuss goals, scope, and fit",
-                      "Leave with clear next steps",
-                    ].map((item) => (
+                    {bookingBullets.map((item) => (
                       <li
                         key={item}
                         className="flex items-start gap-2.5 font-body text-sm text-foreground"
@@ -466,7 +500,7 @@ export function ContactSection({
 
                   <div className="mt-auto border-t border-primary/10 pt-5">
                     <CalendlyBookButton className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark active:scale-[0.99]">
-                      Book a slot
+                      {booking.ctaLabel}
                       <ArrowRight
                         size={15}
                         className="transition-transform duration-200 group-hover:translate-x-0.5"

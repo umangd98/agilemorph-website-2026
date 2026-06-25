@@ -24,6 +24,7 @@ import { siteSettings } from "./siteSettings";
 import { socialLink } from "./socialLink";
 import { stat } from "./stat";
 import { statItem } from "./statItem";
+import { teamLeadItem } from "./teamLeadItem";
 import { technologyItem } from "./technologyItem";
 import { testimonial } from "./testimonial";
 import { useCaseItem } from "./useCaseItem";
@@ -39,6 +40,7 @@ export const schemaTypes = [
   whyUsItem,
   capabilityItem,
   technologyItem,
+  teamLeadItem,
   faqItem,
   flowStep,
   statItem,

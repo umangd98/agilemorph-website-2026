@@ -14,7 +14,7 @@ export function SubServiceUseCasesSection({ useCases = [] }: SubServiceUseCasesS
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-usecases-heading" className="sub-service-section-title">
-            Common <span className="text-gradient">use cases</span>
+            Common <span className="text-gradient">Use Cases</span>
           </h2>
         </AnimateOnScroll>
 

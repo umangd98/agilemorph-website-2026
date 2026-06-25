@@ -7,18 +7,28 @@ type SubServiceFeaturesSectionProps = {
   capabilities?: CapabilityItem[];
 };
 
+function splitHeadingForGradient(heading: string) {
+  const words = heading.trim().split(/\s+/);
+  const highlight = words.pop() ?? heading;
+  const before = words.join(" ");
+  return { before, highlight };
+}
+
 export function SubServiceFeaturesSection({
-  heading = "What's included",
+  heading = "What's Included",
   capabilities = [],
 }: SubServiceFeaturesSectionProps) {
   if (!capabilities.length) return null;
+
+  const { before, highlight } = splitHeadingForGradient(heading);
 
   return (
     <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="sub-features-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-features-heading" className="sub-service-section-title">
-            What&apos;s <span className="text-gradient">included</span>
+            {before ? `${before} ` : null}
+            <span className="text-gradient">{highlight}</span>
           </h2>
         </AnimateOnScroll>
 

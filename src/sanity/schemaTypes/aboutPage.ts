@@ -117,9 +117,26 @@ export const aboutPage = defineType({
     }),
     defineField({
       name: "stats",
-      title: "Statistics",
-      type: "array",
-      of: [{ type: "stat" }],
+      title: "Stats Section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "eyebrow",
+          title: "Eyebrow",
+          type: "string",
+        }),
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "items",
+          title: "Statistics",
+          type: "array",
+          of: [{ type: "stat" }],
+        }),
+      ],
     }),
     defineField({
       name: "cta",
@@ -141,6 +158,41 @@ export const aboutPage = defineType({
           name: "button",
           title: "Button",
           type: "ctaButton",
+        }),
+      ],
+    }),
+    defineField({
+      name: "teamLeads",
+      title: "Team Leads",
+      type: "object",
+      fields: [
+        defineField({
+          name: "eyebrow",
+          title: "Eyebrow",
+          type: "string",
+        }),
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "subheading",
+          title: "Subheading",
+          type: "text",
+          rows: 2,
+        }),
+        defineField({
+          name: "cardFooter",
+          title: "Card Footer Label",
+          type: "string",
+          description: "Small label shown at the bottom of each team card.",
+        }),
+        defineField({
+          name: "members",
+          title: "Members",
+          type: "array",
+          of: [{ type: "teamLeadItem" }],
         }),
       ],
     }),

@@ -92,7 +92,7 @@ function GeneralServicesSection({ services }: { services: ServicePageListItem[] 
 
       <AnimateOnScroll delay={80}>
         <MobileAutoCarousel
-          ariaLabel="General services"
+          ariaLabel="General Services"
           desktopClassName="hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
           className="md:contents"
           mobileTrackClassName="gap-0"
@@ -154,7 +154,7 @@ export function ServicesSection({
               })}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl px-2 font-body text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:px-0 sm:text-base">
-              AI automation is our core practice — plus digital marketing, virtual assistance, and
+              AI automation is our core practice, plus digital marketing, virtual assistance, and
               web development to keep your whole operation moving forward.
             </p>
           </div>

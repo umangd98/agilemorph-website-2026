@@ -14,7 +14,7 @@ export function GenericAnim({
   ];
 
   return (
-    <LightAnimShell label={`${title} — key strengths`} active={active}>
+    <LightAnimShell label={`${title}, key strengths`} active={active}>
       <style>{`
         @keyframes gen-pulse {
           0%, 100% { transform: scale(1); opacity: 0.85; }

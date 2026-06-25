@@ -87,22 +87,22 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden bg-background"
+      className="relative flex min-h-[90vh] items-center overflow-hidden bg-background"
       aria-labelledby="hero-heading"
     >
       <PageHeroBackground tall />
 
-      <Container className="relative z-10 py-28 lg:py-36">
+      <Container className="relative z-10 py-12 lg:py-16">
         <div className="grid grid-cols-1 items-center gap-16 overflow-visible lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
           <div className="max-w-xl">
-            <AnimItem visible={visible} delay={0} className="mb-8">
+            <AnimItem visible={visible} delay={0} className="mb-5">
               <ClaudePartnerBadge />
             </AnimItem>
 
             <AnimItem visible={visible} delay={100}>
               <h1
                 id="hero-heading"
-                className="mb-7 font-heading text-4xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-6xl lg:text-[4.5rem]"
+                className="mb-4 font-heading text-4xl font-extrabold leading-[1.06] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               >
                 {headingLines.map((line, index) => (
                   <span key={line}>
@@ -120,7 +120,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </AnimItem>
 
             {hero.tagline?.length ? (
-              <AnimItem visible={visible} delay={200} className="mb-10">
+              <AnimItem visible={visible} delay={200} className="mb-6">
                 <HeroTagline value={hero.tagline} />
               </AnimItem>
             ) : null}
@@ -157,7 +157,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               </div>
             </AnimItem>
 
-            <AnimItem visible={visible} delay={460} className="mt-12">
+            <AnimItem visible={visible} delay={460} className="mt-8">
               <div className="flex items-center gap-2">
                 <StarRating />
                 <span className="font-body text-xs font-semibold text-muted-foreground">

@@ -1485,7 +1485,7 @@
   },
   "integrations/n8n.svg": {
     "id": "image-cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/cf8d0419eac1e8c6a253cb72e99c429388336e58-24x24.svg"
   },
   "integrations/whatsapp.svg": {
     "id": "image-df279fd6b2dd53e38cd892ee2436225c6f2a9f10-24x24-svg",
@@ -1497,15 +1497,15 @@
   },
   "integrations/shopify.svg": {
     "id": "image-909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/909eb8a822b2309b8bd8257a9b3a2e4dcb8bf0f8-24x24.svg"
   },
   "integrations/make.svg": {
     "id": "image-cea06c989c3143b8927aae021e875a12ff5878ea-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/cea06c989c3143b8927aae021e875a12ff5878ea-24x24.svg"
   },
   "integrations/zapier.svg": {
     "id": "image-61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/61db855d1ee81ac1348d253f4ab6f1e301ecf771-24x24.svg"
   },
   "integrations/jira.svg": {
     "id": "image-24c594ad639134882ac4bedcd8c71fa06cd803d9-24x24-svg",
@@ -1525,7 +1525,7 @@
   },
   "integrations/notion.svg": {
     "id": "image-c6627b78969bde1036c89ffc117ecf76906143f8-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/c6627b78969bde1036c89ffc117ecf76906143f8-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/c6627b78969bde1036c89ffc117ecf76906143f8-24x24.svg"
   },
   "integrations/zoom.svg": {
     "id": "image-2293a0639e5e559108eb518868478ce6ee888af5-24x24-svg",
@@ -1545,7 +1545,7 @@
   },
   "integrations/openai.svg": {
     "id": "image-e8874003aab2c10285b304668a77067bdfd5efaa-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/e8874003aab2c10285b304668a77067bdfd5efaa-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/e8874003aab2c10285b304668a77067bdfd5efaa-24x24.svg"
   },
   "integrations/twilio.svg": {
     "id": "image-3e546585d694cd2617e6a692800d84bc8a06dd78-24x24-svg",
@@ -1557,7 +1557,7 @@
   },
   "integrations/hubspot.svg": {
     "id": "image-99316a8ad963b369099dedd6645ec6ac21767ca9-24x24-svg",
-    "url": "https://cdn.sanity.io/images/vs80pgpc/production/99316a8ad963b369099dedd6645ec6ac21767ca9-24x24.svg"
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/99316a8ad963b369099dedd6645ec6ac21767ca9-24x24.svg"
   },
   "integrations/asana.svg": {
     "id": "image-6e201749b7ab2480ad76032fb6b1135456f79d75-24x24-svg",
@@ -1634,5 +1634,37 @@
   "partners/shopify-partner.svg": {
     "id": "image-7a2f4c6b49e6cf41cf86501c02bc30aeb02409df-64x64-svg",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/7a2f4c6b49e6cf41cf86501c02bc30aeb02409df-64x64.svg"
+  },
+  "integrations/googlecloud.svg": {
+    "id": "image-dab446c7c8b9c40178d4a8cb7822b1cc489a8bbc-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/dab446c7c8b9c40178d4a8cb7822b1cc489a8bbc-24x24.svg"
+  },
+  "integrations/aws.svg": {
+    "id": "image-8236f3c6e7729b04e5684edd834d2b9bcfb820ed-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8236f3c6e7729b04e5684edd834d2b9bcfb820ed-24x24.svg"
+  },
+  "integrations/python.svg": {
+    "id": "image-e4700b549ed17538ce582627ad1638f04023ef0c-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/e4700b549ed17538ce582627ad1638f04023ef0c-24x24.svg"
+  },
+  "integrations/wordpress.svg": {
+    "id": "image-26c906773b34b8d0dc2f2aa30429394ee4092055-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/26c906773b34b8d0dc2f2aa30429394ee4092055-24x24.svg"
+  },
+  "integrations/salesforce.svg": {
+    "id": "image-fdad1fd1730575989adde64ce0a3ec16c4aaa70f-24x24-svg",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/fdad1fd1730575989adde64ce0a3ec16c4aaa70f-24x24.svg"
+  },
+  "team-leads/muskan-agrawal.png": {
+    "id": "image-b8269897971df5641a071786a12a661efc9d9d0e-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/b8269897971df5641a071786a12a661efc9d9d0e-480x560.png"
+  },
+  "team-leads/kaustumbh-jaiswal.png": {
+    "id": "image-9181b39327db1768dc5f45f2aa7bb4bbd829a9b6-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/9181b39327db1768dc5f45f2aa7bb4bbd829a9b6-480x560.png"
+  },
+  "team-leads/umang-dhandhania.png": {
+    "id": "image-8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560.png"
   }
 }

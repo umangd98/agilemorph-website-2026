@@ -17,8 +17,22 @@ type SubServiceFinalCtaProps = {
   currentSlug: string;
 };
 
+const DEFAULT_CTA_HEADING = "Ready To Automate This?";
+
+function splitCtaHeadingForGradient(heading: string) {
+  const words = heading.trim().split(/\s+/);
+  if (words.length <= 2) {
+    return { before: "", highlight: heading };
+  }
+  const highlight = words.slice(-2).join(" ");
+  const before = words.slice(0, -2).join(" ");
+  return { before, highlight };
+}
+
 export function SubServiceFinalCta({ cta, siblings, currentSlug }: SubServiceFinalCtaProps) {
   const otherServices = siblings.filter((item) => item.slug !== currentSlug);
+  const resolvedHeading = cta?.heading ?? DEFAULT_CTA_HEADING;
+  const { before, highlight } = splitCtaHeadingForGradient(resolvedHeading);
 
   return (
     <section className="bg-background pb-section max-sm:pb-section-sm" aria-labelledby="sub-final-cta-heading">
@@ -26,7 +40,8 @@ export function SubServiceFinalCta({ cta, siblings, currentSlug }: SubServiceFin
         <AnimateOnScroll>
           <div className="rounded-3xl border border-border bg-surface px-6 py-12 text-center sm:px-10 sm:py-14">
             <h2 id="sub-final-cta-heading" className="sub-service-section-title">
-              Ready to <span className="text-gradient">automate this?</span>
+              {before ? `${before} ` : null}
+              <span className="text-gradient">{highlight}</span>
             </h2>
             {cta?.description ? (
               <p className="sub-service-body mx-auto mt-4 max-w-xl">{cta.description}</p>

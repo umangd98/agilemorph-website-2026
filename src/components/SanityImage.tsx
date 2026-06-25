@@ -61,7 +61,7 @@ export function SanityImage({
   className = "",
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
-  placeholderLabel = "Image placeholder — add in Sanity Studio",
+  placeholderLabel = "Image placeholder, add in Sanity Studio",
   onError,
   ...layoutProps
 }: SanityImageProps) {

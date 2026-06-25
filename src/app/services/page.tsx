@@ -13,7 +13,7 @@ import type { ServicesIndexPage } from "@/sanity/types";
 const fallbackMetadata: Metadata = {
   title: "Services | AgileMorph Solutions",
   description:
-    "Explore AgileMorph services — AI automation, agents, workflow integrations, digital marketing, virtual assistance, and web development.",
+    "Explore AgileMorph services: AI automation, agents, workflow integrations, digital marketing, virtual assistance, and web development.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -45,12 +45,12 @@ export default async function ServicesPageRoute() {
           heroDescription={servicesIndex?.hero?.description}
         />
         <PageCtaSection
-          heading={servicesIndex?.cta?.heading ?? "Not sure where to start?"}
+          heading={servicesIndex?.cta?.heading ?? "Not Sure Where To Start?"}
           description={
             servicesIndex?.cta?.description ??
             "Book a discovery call and we'll map the highest-impact automation and supporting services for your team."
           }
-          button={servicesIndex?.cta?.button ?? { label: "Get in Touch", href: "/contact#book" }}
+          button={servicesIndex?.cta?.button ?? { label: "Get In Touch", href: "/contact#book" }}
         />
       </main>
       <SiteFooter />

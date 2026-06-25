@@ -181,7 +181,7 @@ async function main() {
   saveManifest(manifest);
 
   const integrations = {
-    heading: "We integrate with 500+ platforms seamlessly",
+    heading: "We Integrate With 500+ Platforms Seamlessly",
     items,
   };
 

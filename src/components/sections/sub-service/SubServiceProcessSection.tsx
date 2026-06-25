@@ -14,7 +14,7 @@ export function SubServiceProcessSection({ steps = [] }: SubServiceProcessSectio
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-process-heading" className="sub-service-section-title">
-            How we <span className="text-gradient">work</span>
+            How We <span className="text-gradient">Work</span>
           </h2>
         </AnimateOnScroll>
 

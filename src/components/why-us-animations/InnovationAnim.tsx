@@ -12,7 +12,7 @@ export function InnovationAnim({
   const positions = [95, 140, 185];
 
   return (
-    <LightAnimShell label={`${title} — ideas becoming solutions`} active={active}>
+    <LightAnimShell label={`${title}, ideas becoming solutions`} active={active}>
       <style>{`
         @keyframes inno-glow {
           0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-primary) 30%, transparent)); }

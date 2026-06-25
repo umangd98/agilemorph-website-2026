@@ -18,7 +18,7 @@ export function ExpertiseAnim({
   }));
 
   return (
-    <LightAnimShell label={`${title} — deep knowledge layers`} active={active}>
+    <LightAnimShell label={`${title}, deep knowledge layers`} active={active}>
       <style>{`
         @keyframes exp-slide {
           0%, 100% { transform: translateX(0); }

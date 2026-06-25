@@ -55,6 +55,7 @@ export default async function ContactPageRoute() {
           email={contactPage.email}
           linkedinUrl={contactPage.linkedinUrl}
           facebookUrl={contactPage.facebookUrl}
+          discoveryCall={contactPage.discoveryCall}
           faqs={contactPage.faqs}
         />
       </main>

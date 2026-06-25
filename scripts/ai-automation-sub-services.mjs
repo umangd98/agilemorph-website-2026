@@ -17,7 +17,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "We build autonomous AI agents that read context, make decisions, and take action across your tools without a human in the loop. Classification, routing, drafting, and execution, running the moment work arrives.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "Intent Classification",
@@ -36,7 +36,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "⤳",
       },
     ],
-    whyUsHeading: "Where an agent beats a workflow",
+    whyUsHeading: "Where An Agent Beats A Workflow",
     whyUs: [
       {
         title: "Unstructured input",
@@ -69,7 +69,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -88,7 +88,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "We turn the manual processes draining your team into reliable automated pipelines. Built on n8n, Make, and Zapier, connected to the tools you already use, monitored so they keep running.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "Process Mapping",
@@ -106,7 +106,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "▦",
       },
     ],
-    whyUsHeading: "Automation that survives contact with reality",
+    whyUsHeading: "Automation That Survives Contact With Reality",
     whyUs: [
       {
         title: "Self-hosted n8n",
@@ -135,7 +135,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -154,7 +154,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "Stop losing leads to slow manual handling. We automate the full cycle: capture from any channel, enrich with real data, route to the right person, and trigger follow-up before the lead goes cold.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "Multi-Channel Capture",
@@ -172,7 +172,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "⇲",
       },
     ],
-    whyUsHeading: "Speed-to-lead is the whole game",
+    whyUsHeading: "Speed-To-Lead Is The Whole Game",
     whyUs: [
       {
         title: "Every channel",
@@ -201,7 +201,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -220,7 +220,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "For teams past the prototype stage. We build self-hosted pipelines, MCP servers, and deployed systems that connect AI directly to your data and tools, securely, observably, and built to scale.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "MCP Servers",
@@ -238,7 +238,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "◴",
       },
     ],
-    whyUsHeading: "When a no-code tool isn't enough",
+    whyUsHeading: "When A No-Code Tool Isn't Enough",
     whyUs: [
       {
         title: "Governed MCP access",
@@ -267,7 +267,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -286,7 +286,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "We automate the channels your customers actually use. WhatsApp, email, and chat, with AI that reads, classifies, and responds in real time, captures structured data, and routes anything that needs a human.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "WhatsApp Pipelines",
@@ -304,7 +304,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "▤",
       },
     ],
-    whyUsHeading: "Built on real production pipelines",
+    whyUsHeading: "Built On Real Production Pipelines",
     whyUs: [
       {
         title: "WhatsApp automation",
@@ -333,7 +333,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -352,7 +352,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     description:
       "Before you spend on automation, know what's worth automating. Our fixed-scope AI Audit maps your processes, identifies the highest-ROI opportunities, and gives you a prioritized, costed roadmap you can act on, with or without us.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "Process Mapping",
@@ -370,7 +370,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "▣",
       },
     ],
-    whyUsHeading: "Clarity before spend",
+    whyUsHeading: "Clarity Before Spend",
     whyUs: [
       {
         title: "Real workflow review",
@@ -399,7 +399,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
@@ -416,9 +416,9 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     title: "Shopify Automation",
     tagline: "AI Automation",
     description:
-      "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+      "We automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
-    capabilitiesHeading: "What's included",
+    capabilitiesHeading: "What's Included",
     capabilities: [
       {
         title: "Order & Fulfillment Flows",
@@ -436,7 +436,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
         icon: "✉",
       },
     ],
-    whyUsHeading: "Built for real Shopify operations",
+    whyUsHeading: "Built For Real Shopify Operations",
     whyUs: [
       {
         title: "Admin API integrations",
@@ -465,7 +465,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
       },
     ],
     cta: {
-      heading: "Ready to automate this?",
+      heading: "Ready To Automate This?",
       description:
         "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
       button: { label: "Book Your Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },

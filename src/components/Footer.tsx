@@ -120,7 +120,7 @@ function FooterServices({ groups }: { groups: FooterServiceGroups }) {
         {additional.length > 0 ? (
           <div className="border-t border-border/70 pt-5">
             <p className="mb-3 font-body text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-              General services
+              General Services
             </p>
             <FooterLinkList links={additional} />
           </div>

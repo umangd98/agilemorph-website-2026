@@ -1,13 +1,13 @@
 import type { CapabilityItem } from "@/sanity/types";
 
-/** Canonical AI Automation capabilities grid — used when Sanity data is missing or incomplete. */
+/** Canonical AI Automation capabilities grid. Used when Sanity data is missing or incomplete. */
 export const AI_AUTOMATION_CAPABILITIES_FALLBACK: CapabilityItem[] = [
   {
     title: "AI Automation",
     slug: "ai-automation",
     featured: true,
     description:
-      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+      "Our core practice: end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
     icon: "⚡",
   },
   {

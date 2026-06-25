@@ -206,7 +206,7 @@ export function buildFooterServiceLinks(pages: ServicePageListItem[]): FooterSer
   }
 
   if (additional.length) {
-    links.push({ label: "—", href: "#", nested: false });
+    links.push({ label: "|", href: "#", nested: false });
   }
 
   for (const link of additional) {

@@ -6,7 +6,7 @@ export function ProfessionalismAnim({
   title = "Professionalism",
 }: WhyUsAnimProps) {
   return (
-    <LightAnimShell label={`${title} — quality and trust`} active={active}>
+    <LightAnimShell label={`${title}, quality and trust`} active={active}>
       <style>{`
         @keyframes prof-draw {
           from { stroke-dashoffset: 320; }
