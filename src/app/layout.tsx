@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description:
       siteSettings?.siteDescription ??
-      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
+      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website Development, and amplify influence via Digital Marketing and Virtual Assistance.",
   };
 }
 
@@ -40,13 +40,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} dark h-full`}
+      className={`${headingFont.variable} ${bodyFont.variable} dark`}
       suppressHydrationWarning
     >
       <head>
         <ThemeScript />
       </head>
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-dvh flex-col">
         <ThemeProvider>{children}</ThemeProvider>
         <TidioChat />
       </body>

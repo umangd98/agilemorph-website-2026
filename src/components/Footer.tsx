@@ -147,7 +147,7 @@ export function Footer({
             <Logo className="mb-5" />
             <p className="mb-6 max-w-sm font-body text-sm leading-relaxed text-muted-foreground">
               Empowering modern enterprises with agile digital transformation and innovative
-              AI‑driven ecosystems.
+              AI-driven ecosystems.
             </p>
             <div className="flex gap-2.5">
               {socialLinks.map((link) => {

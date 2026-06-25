@@ -315,7 +315,7 @@ async function main() {
       image,
     });
 
-    console.log(`  ✓ ${testimonial.name}${testimonial.company ? ` — ${testimonial.company}` : ""}`);
+    console.log(`  ✓ ${testimonial.name}${testimonial.company ? `, ${testimonial.company}` : ""}`);
   }
 
   saveManifest(manifest);
@@ -347,7 +347,7 @@ async function main() {
   });
   console.log("  ✓ Patched aboutPage testimonials");
 
-  console.log(`\nDone — seeded ${items.length} testimonials.`);
+  console.log(`\nDone, seeded ${items.length} testimonials.`);
 }
 
 main().catch((error) => {

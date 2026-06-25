@@ -10,7 +10,7 @@ const CODE_LINES = [
 
 export function WebDevelopmentAnim() {
   return (
-    <AnimShell label="Website development code animation">
+    <AnimShell label="Website Development code animation">
       <style>{`
         @keyframes web-progress {
           0% { width: 0%; }

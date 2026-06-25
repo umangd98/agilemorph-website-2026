@@ -160,7 +160,7 @@ function AllServicesList() {
 function CatalogHeroCopy({
   eyebrow = "What We Do",
   heading = "Services Built For Modern Operations",
-  description = "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
+  description = "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and Website Development when you need the full stack.",
 }: {
   eyebrow?: string;
   heading?: string;

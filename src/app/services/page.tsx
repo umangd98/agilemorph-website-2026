@@ -13,7 +13,7 @@ import type { ServicesIndexPage } from "@/sanity/types";
 const fallbackMetadata: Metadata = {
   title: "Services | AgileMorph Solutions",
   description:
-    "Explore AgileMorph services: AI automation, agents, workflow integrations, digital marketing, virtual assistance, and web development.",
+    "Explore AgileMorph services: AI automation, agents, workflow integrations, digital marketing, virtual assistance, and Website Development.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -325,7 +325,7 @@ export function HeroEcosystemVisual({
   const layerOpacity = staticFrame ? 1 : undefined;
   const ariaLabel = interactive
     ? "Interactive AgileMorph service ecosystem, select a region to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
-    : "AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website";
+    : "AgileMorph integrated AI ecosystem: AI Agents, Workflow Automation, CRM and Lead Automation, MCP and AI Infrastructure, Messaging Automation, AI Audit, Shopify Automation, plus Digital Marketing, Virtual Assistance, and Website Development";
 
   return (
     <div className="relative w-full min-w-0 pt-2 lg:pt-4 lg:-mr-2 xl:-mr-4">

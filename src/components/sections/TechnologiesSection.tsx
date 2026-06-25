@@ -18,14 +18,14 @@ export function TechnologiesSection({
   return (
     <section className="overflow-x-clip bg-background py-section max-sm:py-section-sm" aria-labelledby="technologies-heading">
       <Container>
-        <AnimateOnScroll className="mb-10 text-center">
+        <AnimateOnScroll className="mb-10 text-center sm:mb-12">
           <h2 id="technologies-heading" className="font-heading text-3xl font-extrabold text-foreground">
             {heading}
           </h2>
         </AnimateOnScroll>
-
-        <LogoMarquee items={technologies} />
       </Container>
+
+      <LogoMarquee items={technologies} />
     </section>
   );
 }

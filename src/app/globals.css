@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Design tokens — single source of truth.
+ * Design tokens - single source of truth.
  * Edit the @theme block to retheme the entire site.
  */
 
@@ -13,7 +13,7 @@
   --color-primary-dark: #16a34a;
   --color-primary-light: #bbf7d0;
 
-  /* Backgrounds — light mode defaults (overridden in .dark) */
+  /* Backgrounds - light mode defaults (overridden in .dark) */
   --color-background: #ffffff;
   --color-surface: #f8fafc;
   --color-surface-elevated: #ffffff;
@@ -31,7 +31,7 @@
   --color-border: #e2e8f0;
   --color-muted: #f1f5f9;
 
-  /* Fonts — wired to next/font CSS vars in layout.tsx */
+  /* Fonts - wired to next/font CSS vars in layout.tsx */
   --font-heading: var(--font-heading-var), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-body-var), ui-sans-serif, system-ui, sans-serif;
 
@@ -1072,16 +1072,16 @@ header[data-header="inverse"] {
   }
 }
 
-/* Layout — prevent horizontal bleed from grids, marquees, and hero visuals */
+/* Layout - prevent horizontal bleed from grids, marquees, and hero visuals */
 html {
-  overflow-x: clip;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  overflow-x: clip;
   width: 100%;
   min-width: 0;
+  overflow-x: hidden;
 }
 
 main {

@@ -140,7 +140,7 @@ async function main() {
   for (const service of SERVICES) {
     const docId = bySlug.get(service.slug);
     if (!docId) {
-      console.warn(`  ✗ No servicePage found for slug "${service.slug}" — skipping`);
+      console.warn(`  ✗ No servicePage found for slug "${service.slug}", skipping`);
       continue;
     }
 
@@ -165,7 +165,7 @@ async function main() {
   }
 
   saveManifest(manifest);
-  console.log(`\nDone — uploaded ${SERVICES.length} animations.`);
+  console.log(`\nDone, uploaded ${SERVICES.length} animations.`);
 }
 
 main().catch((error) => {

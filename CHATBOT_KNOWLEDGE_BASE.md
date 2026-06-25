@@ -13,12 +13,12 @@
 
 ### What AgileMorph Does
 
-AgileMorph is an AI automation and digital operations agency. We design, build, and run the systems that remove manual work from businesses — so teams can focus on growth instead of firefighting. We work with startups, scale-ups, and established businesses across 4 continents.
+AgileMorph is an AI automation and digital operations agency. We design, build, and run the systems that remove manual work from businesses, so teams can focus on growth instead of firefighting. We work with startups, scale-ups, and established businesses across 4 continents.
 
 ### The Name
 
-- **Agile** — we sprint, iterate, and out-learn the market.
-- **Morph** — we turn raw ideas into revenue-ready systems that keep adapting as you grow.
+- **Agile**, we sprint, iterate, and out-learn the market.
+- **Morph**, we turn raw ideas into revenue-ready systems that keep adapting as you grow.
 
 ### Our Promise
 
@@ -41,8 +41,8 @@ AgileMorph is an AI automation and digital operations agency. We design, build, 
 
 AgileMorph offers two service categories:
 
-1. **AI Automation** (core practice) — 7 specializations
-2. **Supporting Services** — Digital Marketing, Virtual Assistance, Website Development
+1. **AI Automation** (core practice), 7 specializations
+2. **Supporting Services**, Digital Marketing, Virtual Assistance, Website Development
 
 ---
 
@@ -60,17 +60,17 @@ AI automation is AgileMorph's primary offering. We design, build, and run AI sys
 **Discovery Call:** https://calendly.com/agilemorph/15-minute-discovery
 
 **What it is:**
-Autonomous AI agents that read context, make decisions, and take action across your tools — without a human in the loop. Classification, routing, drafting, and execution, running the moment work arrives.
+Autonomous AI agents that read context, make decisions, and take action across your tools, without a human in the loop. Classification, routing, drafting, and execution, running the moment work arrives.
 
 **Core capabilities:**
-- **Intent Classification** — Every inbound message tagged by type, urgency, and next action in real time.
-- **Smart Drafting** — Replies and summaries written in your voice, grounded in your own data.
-- **Tool Execution** — Agents that write to your systems, not just read from them.
+- **Intent Classification**, Every inbound message tagged by type, urgency, and next action in real time.
+- **Smart Drafting**, Replies and summaries written in your voice, grounded in your own data.
+- **Tool Execution**, Agents that write to your systems, not just read from them.
 
 **Key differentiators:**
 - Reads unstructured input: emails, chats, documents, and voice notes
 - Classifies intent and urgency, then routes to the right path automatically
-- Drafts and sends context-aware replies — fully autonomous or with human approval
+- Drafts and sends context-aware replies, fully autonomous or with human approval
 - Calls your tools directly: CRM, calendar, databases, and payment systems
 - Escalates edge cases to a human with full context attached
 
@@ -88,14 +88,14 @@ Autonomous AI agents that read context, make decisions, and take action across y
 - Document processing (invoices, contracts, forms parsed into structured data)
 - Inbox management (high-volume inboxes sorted, drafted, and prioritized)
 
-**AI models used:** Claude, GPT, and Gemini — chosen per task.
+**AI models used:** Claude, GPT, and Gemini, chosen per task.
 
 **Pricing:** Agent builds typically start at a 5–10 day scoped engagement. Most production agents land in the 5–15 day range depending on tool integrations and approval gates. Fixed scope quoted after a short discovery call.
 
 **FAQs:**
-- *What models do you use?* — Claude, GPT, and Gemini, chosen per task.
-- *Will the agent act without my approval?* — Your choice. We can run fully autonomous, or hold every action behind a one-click approval.
-- *How do you prevent mistakes?* — Confidence thresholds, human-in-the-loop fallbacks, and full logging.
+- *What models do you use?*, Claude, GPT, and Gemini, chosen per task.
+- *Will the agent act without my approval?*, Your choice. We can run fully autonomous, or hold every action behind a one-click approval.
+- *How do you prevent mistakes?*, Confidence thresholds, human-in-the-loop fallbacks, and full logging.
 
 ---
 
@@ -107,9 +107,9 @@ Autonomous AI agents that read context, make decisions, and take action across y
 Manual processes turned into reliable automated pipelines. Built on n8n, Make, and Zapier, connected to the tools you already use, monitored so they keep running.
 
 **Core capabilities:**
-- **Process Mapping** — Document the manual flow first, then automate the version worth keeping.
-- **Reliable Pipelines** — Retries, logging, and fallbacks built in, not bolted on later.
-- **Data Sync** — Keep your tools in agreement without manual exports and imports.
+- **Process Mapping**, Document the manual flow first, then automate the version worth keeping.
+- **Reliable Pipelines**, Retries, logging, and fallbacks built in, not bolted on later.
+- **Data Sync**, Keep your tools in agreement without manual exports and imports.
 
 **Key differentiators:**
 - Self-hosted n8n for full control and no per-task billing surprises
@@ -135,9 +135,9 @@ Manual processes turned into reliable automated pipelines. Built on n8n, Make, a
 **Pricing:** Most workflow builds run 3–8 days per process. Simple single-process automations start small; multi-step pipelines with enrichment and error handling scale from there.
 
 **FAQs:**
-- *n8n, Make, or Zapier — which?* — Depends on volume, control needs, and budget.
-- *Do I own the automation?* — Yes. Self-hosted builds live on your infrastructure.
-- *What if it breaks?* — We build in alerting and offer monitoring retainers.
+- *n8n, Make, or Zapier, which?*, Depends on volume, control needs, and budget.
+- *Do I own the automation?*, Yes. Self-hosted builds live on your infrastructure.
+- *What if it breaks?*, We build in alerting and offer monitoring retainers.
 
 ---
 
@@ -149,9 +149,9 @@ Manual processes turned into reliable automated pipelines. Built on n8n, Make, a
 Full-cycle lead automation: capture from any channel, enrich with real data, route to the right person, and trigger follow-up before the lead goes cold.
 
 **Core capabilities:**
-- **Multi-Channel Capture** — One pipeline for leads from every source you run.
-- **Data Enrichment** — Turn a name and email into a full, verified profile.
-- **Smart Routing** — The right lead to the right rep, instantly and by rule.
+- **Multi-Channel Capture**, One pipeline for leads from every source you run.
+- **Data Enrichment**, Turn a name and email into a full, verified profile.
+- **Smart Routing**, The right lead to the right rep, instantly and by rule.
 
 **Key differentiators:**
 - Capture from forms, ads, email, chat, and LinkedIn into one place
@@ -179,9 +179,9 @@ Full-cycle lead automation: capture from any channel, enrich with real data, rou
 **Pricing:** Lead automation engagements typically start at 4–8 days. Scope depends on the number of channels, your CRM, and enrichment depth.
 
 **FAQs:**
-- *Which CRMs do you support?* — HubSpot, Pipedrive, Salesforce, and most others.
-- *Where does enrichment data come from?* — Apollo, Lusha, and similar providers.
-- *Can you fix our messy existing CRM?* — Yes. Deduplication, field cleanup, and re-segmentation.
+- *Which CRMs do you support?*, HubSpot, Pipedrive, Salesforce, and most others.
+- *Where does enrichment data come from?*, Apollo, Lusha, and similar providers.
+- *Can you fix our messy existing CRM?*, Yes. Deduplication, field cleanup, and re-segmentation.
 
 ---
 
@@ -190,19 +190,19 @@ Full-cycle lead automation: capture from any channel, enrich with real data, rou
 **Page:** /services/mcp-ai-infrastructure
 
 **What it is:**
-For teams past the prototype stage. Self-hosted pipelines, MCP servers, and deployed systems that connect AI directly to your data and tools — securely, observably, and built to scale.
+For teams past the prototype stage. Self-hosted pipelines, MCP servers, and deployed systems that connect AI directly to your data and tools, securely, observably, and built to scale.
 
-**What is MCP?** Model Context Protocol — a standard way to give AI models secure, governed access to your internal systems and tools.
+**What is MCP?** Model Context Protocol, a standard way to give AI models secure, governed access to your internal systems and tools.
 
 **Core capabilities:**
-- **MCP Servers** — A clean, governed bridge between your systems and any AI model.
-- **Self-Hosted Deploys** — Pipelines on your cloud, with no per-task surprise billing.
-- **Observability** — Langfuse tracing so nothing the AI does is a black box.
+- **MCP Servers**, A clean, governed bridge between your systems and any AI model.
+- **Self-Hosted Deploys**, Pipelines on your cloud, with no per-task surprise billing.
+- **Observability**, Langfuse tracing so nothing the AI does is a black box.
 
 **Key differentiators:**
 - MCP servers that expose your data and tools to AI models safely
 - Self-hosted deployments on AWS or DigitalOcean, under your control
-- Observability with Langfuse — see every call, cost, and failure
+- Observability with Langfuse, see every call, cost, and failure
 - PII handling and local redaction to keep sensitive data off third-party clouds
 - Built to scale from first user to high volume without a rebuild
 
@@ -217,12 +217,12 @@ For teams past the prototype stage. Self-hosted pipelines, MCP servers, and depl
 - Cost + quality monitoring (track token spend and output quality per workflow)
 - Custom AI pipelines (multi-stage model orchestration for complex tasks)
 
-**Pricing:** Infrastructure engagements are scoped per project, typically multi-week. These are senior builds — priced accordingly.
+**Pricing:** Infrastructure engagements are scoped per project, typically multi-week. These are senior builds, priced accordingly.
 
 **FAQs:**
-- *What is MCP?* — Model Context Protocol, a standard way to give AI models secure access to your systems.
-- *Where is it hosted?* — Your infrastructure: AWS, DigitalOcean, or your existing cloud.
-- *How do you keep our data private?* — Local PII redaction, self-hosting, and keeping sensitive data out of third-party calls.
+- *What is MCP?*, Model Context Protocol, a standard way to give AI models secure access to your systems.
+- *Where is it hosted?*, Your infrastructure: AWS, DigitalOcean, or your existing cloud.
+- *How do you keep our data private?*, Local PII redaction, self-hosting, and keeping sensitive data out of third-party calls.
 
 ---
 
@@ -231,15 +231,15 @@ For teams past the prototype stage. Self-hosted pipelines, MCP servers, and depl
 **Page:** /services/messaging-automation
 
 **What it is:**
-WhatsApp, email, and chat automations with AI that reads, classifies, and responds in real time — captures structured data and routes anything that needs a human.
+WhatsApp, email, and chat automations with AI that reads, classifies, and responds in real time, captures structured data and routes anything that needs a human.
 
 **Core capabilities:**
-- **WhatsApp Pipelines** — Production WhatsApp automation, classified and logged in real time.
-- **AI Replies** — Context-aware responses in your voice, on your terms.
-- **Data Capture** — Every conversation turned into clean, structured records.
+- **WhatsApp Pipelines**, Production WhatsApp automation, classified and logged in real time.
+- **AI Replies**, Context-aware responses in your voice, on your terms.
+- **Data Capture**, Every conversation turned into clean, structured records.
 
 **Key differentiators:**
-- WhatsApp automation via Whapi and self-hosted n8n — no platform lock-in
+- WhatsApp automation via Whapi and self-hosted n8n, no platform lock-in
 - AI classification of every message by type, intent, and urgency
 - Structured data extraction straight into Airtable, a CRM, or a database
 - Buffered, multi-path architecture so nothing is dropped under load
@@ -262,9 +262,9 @@ WhatsApp, email, and chat automations with AI that reads, classifies, and respon
 **Pricing:** Messaging builds typically run 5–12 days. Cost depends on channels, classification complexity, and where data needs to land.
 
 **FAQs:**
-- *Is WhatsApp automation allowed?* — Yes, via approved API providers like Whapi.
-- *What happens to the data?* — It's structured and synced to Airtable, a CRM, or your database.
-- *Can a human still step in?* — Always. Anything the AI isn't confident about is handed to a person.
+- *Is WhatsApp automation allowed?*, Yes, via approved API providers like Whapi.
+- *What happens to the data?*, It's structured and synced to Airtable, a CRM, or your database.
+- *Can a human still step in?*, Always. Anything the AI isn't confident about is handed to a person.
 
 ---
 
@@ -273,12 +273,12 @@ WhatsApp, email, and chat automations with AI that reads, classifies, and respon
 **Page:** /services/ai-audit
 
 **What it is:**
-A fixed-scope review that maps your processes, identifies the highest-ROI automation opportunities, and delivers a prioritized, costed roadmap you can act on — with or without AgileMorph.
+A fixed-scope review that maps your processes, identifies the highest-ROI automation opportunities, and delivers a prioritized, costed roadmap you can act on, with or without AgileMorph.
 
 **Core capabilities:**
-- **Process Mapping** — Document how work actually flows today, end to end.
-- **ROI Scoring** — Each opportunity ranked by return against effort.
-- **Action Roadmap** — A sequenced plan, not a vague list of ideas.
+- **Process Mapping**, Document how work actually flows today, end to end.
+- **ROI Scoring**, Each opportunity ranked by return against effort.
+- **Action Roadmap**, A sequenced plan, not a vague list of ideas.
 
 **What makes it different:**
 - A structured review of your real workflows, not a generic checklist
@@ -290,7 +290,7 @@ A fixed-scope review that maps your processes, identifies the highest-ROI automa
 **Deliverables:**
 - Written roadmap with mapped processes and ranked opportunities
 - Prioritized, costed action plan
-- Full ownership — provider-agnostic, yours to keep
+- Full ownership, provider-agnostic, yours to keep
 
 **Common use cases:**
 - First-time automation (know where to start before committing budget)
@@ -301,9 +301,9 @@ A fixed-scope review that maps your processes, identifies the highest-ROI automa
 **Pricing:** Fixed-fee engagement, typically delivered within one week. One flat price, one clear deliverable. No obligation to build with AgileMorph afterward.
 
 **FAQs:**
-- *What do I actually get?* — A written roadmap with mapped processes and ranked opportunities.
-- *Do I have to build with you afterward?* — No. The roadmap is yours to act on however you like.
-- *How long does it take?* — Most audits are delivered within a week.
+- *What do I actually get?*, A written roadmap with mapped processes and ranked opportunities.
+- *Do I have to build with you afterward?*, No. The roadmap is yours to act on however you like.
+- *How long does it take?*, Most audits are delivered within a week.
 
 ---
 
@@ -312,12 +312,12 @@ A fixed-scope review that maps your processes, identifies the highest-ROI automa
 **Page:** /services/shopify-automation
 
 **What it is:**
-Automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.
+Automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.
 
 **Core capabilities:**
-- **Order & Fulfillment Flows** — Route orders, update statuses, and trigger fulfillment without manual handoffs.
-- **Inventory Sync** — Keep stock levels aligned across Shopify, warehouses, and your other tools.
-- **Customer Notifications** — Automated emails and messages for shipping, returns, and post-purchase follow-up.
+- **Order & Fulfillment Flows**, Route orders, update statuses, and trigger fulfillment without manual handoffs.
+- **Inventory Sync**, Keep stock levels aligned across Shopify, warehouses, and your other tools.
+- **Customer Notifications**, Automated emails and messages for shipping, returns, and post-purchase follow-up.
 
 **Key differentiators:**
 - Connect to Shopify Admin GraphQL for products, orders, inventory, and customers
@@ -343,9 +343,9 @@ Automate the operational load behind your Shopify store — order routing, inven
 **Pricing:** Shopify automation builds typically run 5–10 days. Scope depends on integrations, order volume, and fulfillment complexity.
 
 **FAQs:**
-- *Which Shopify plans do you support?* — Any plan with API access.
-- *Can you connect to our 3PL or ERP?* — Yes. We bridge via API or middleware.
-- *What if a webhook fails?* — We build retries, dead-letter queues, and alerting.
+- *Which Shopify plans do you support?*, Any plan with API access.
+- *Can you connect to our 3PL or ERP?*, Yes. We bridge via API or middleware.
+- *What if a webhook fails?*, We build retries, dead-letter queues, and alerting.
 
 ---
 
@@ -357,7 +357,7 @@ Automate the operational load behind your Shopify store — order routing, inven
 Custom website and web application development. Python, Django, FastAPI, and React builds that hold up in production.
 
 **Capabilities:**
-- Custom Web Development (fully customized to match your business goals)
+- Custom Website Development (fully customized to match your business goals)
 - Website Optimization & Performance
 - E-Commerce Solutions
 - Content Management Systems (CMS)
@@ -379,7 +379,7 @@ Custom website and web application development. Python, Django, FastAPI, and Rea
 **Page:** /services/digital-marketing
 
 **What it is:**
-Data-driven digital marketing including SEO, content strategy, social media, PPC, email marketing, and analytics — not guesswork.
+Data-driven digital marketing including SEO, content strategy, social media, PPC, email marketing, and analytics, not guesswork.
 
 **Capabilities:**
 - Search Engine Optimization (SEO)
@@ -419,7 +419,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 **Technologies:** Notion, Google Workspace, Slack, Trello, Asana
 
 **Why choose AgileMorph:**
-- Lower overhead — no full-time staff costs
+- Lower overhead, no full-time staff costs
 - Cross-industry experienced VAs
 - Global team, available 24/7
 - Frees your focus for high-value work
@@ -430,7 +430,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 **Page:** /pricing
 
-> Every engagement starts with a discovery audit. From there, choose a fixed-scope project or an ongoing retainer — both structured around delivery, not hours.
+> Every engagement starts with a discovery audit. From there, choose a fixed-scope project or an ongoing retainer, both structured around delivery, not hours.
 
 ---
 
@@ -445,7 +445,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Discovery Audit — Free (normally $500)
+#### Discovery Audit, Free (normally $500)
 
 > "Understand exactly what to build before committing to the build."
 
@@ -460,7 +460,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Single Workflow — $3K – $8K
+#### Single Workflow, $3K – $8K
 
 > "One focused automation, scoped, built, and handed over production-ready."
 
@@ -475,7 +475,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Connected Systems Build — $8K – $20K ⭐ Most Popular
+#### Connected Systems Build, $8K – $20K ⭐ Most Popular
 
 > "Multiple workflows operating as one cohesive system."
 
@@ -491,7 +491,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### AI Platform Build — $20K+
+#### AI Platform Build, $20K+
 
 > "Custom AI infrastructure, agents, internal tools, or full operations rebuild."
 
@@ -519,7 +519,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Maintain — $2,000/month
+#### Maintain, $2,000/month
 
 > "Your automations stay healthy and your team stays unblocked."
 
@@ -531,7 +531,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Iterate — $5,000/month ⭐ Most Popular
+#### Iterate, $5,000/month ⭐ Most Popular
 
 > "Active improvement across your stack each month, not just upkeep."
 
@@ -543,7 +543,7 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ---
 
-#### Embed — $10,000/month
+#### Embed, $10,000/month
 
 > "AgileMorph operates as part of your team, not alongside it."
 
@@ -557,9 +557,9 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 ### 3.3 How Engagements Work
 
-1. **Discovery First** — Every engagement starts with an audit. We map your current operations, identify the highest-leverage opportunities, and produce a written scope.
-2. **Fixed Scope, Defined Delivery** — The scope document from discovery becomes the contract. Deliverables, timelines, and payment milestones are agreed upfront.
-3. **Handed Over, Not Dependent** — Every build includes full documentation and a runbook your team can operate. You understand what we've built.
+1. **Discovery First**, Every engagement starts with an audit. We map your current operations, identify the highest-leverage opportunities, and produce a written scope.
+2. **Fixed Scope, Defined Delivery**, The scope document from discovery becomes the contract. Deliverables, timelines, and payment milestones are agreed upfront.
+3. **Handed Over, Not Dependent**, Every build includes full documentation and a runbook your team can operate. You understand what we've built.
 
 ---
 
@@ -569,27 +569,27 @@ Trained virtual assistants who handle operational tasks so you can focus on grow
 
 **Eyebrow:** Leadership
 **Heading:** Meet Our Leadership
-**Subheading:** Strategists, engineers, and operators united by one goal — building automation that ships fast and scales with your business.
+**Subheading:** Strategists, engineers, and operators united by one goal, building automation that ships fast and scales with your business.
 
 ---
 
-#### Umang Dhandhania — CEO & Founder
+#### Umang Dhandhania, CEO & Founder
 
-A Northwestern-educated engineer with a decade of guiding 100+ companies through product launches, automation overhauls, and market-ready builds — on time, every time. Umang founded AgileMorph to give ambitious teams the systems they need to move fast without sacrificing quality.
+A Northwestern-educated engineer with a decade of guiding 100+ companies through product launches, automation overhauls, and market-ready builds, on time, every time. Umang founded AgileMorph to give ambitious teams the systems they need to move fast without sacrificing quality.
 
 When you work with AgileMorph, you work directly with leadership that understands both the business case and the technical build.
 
 ---
 
-#### Kaustumbh Jaiswal — CTO
+#### Kaustumbh Jaiswal, CTO
 
 The architect behind AgileMorph's engineering stack, Kaustumbh translates complex automation strategies into production-ready systems. He brings deep technical craft and a builder's obsession with quality to every project we ship.
 
 ---
 
-#### Muskan Agrawal — COO
+#### Muskan Agrawal, COO
 
-The force that keeps every project on track — from kickoff to launch. Muskan aligns teams, timelines, and client expectations with precision, ensuring nothing slips through the cracks and every deliverable lands on time.
+The force that keeps every project on track, from kickoff to launch. Muskan aligns teams, timelines, and client expectations with precision, ensuring nothing slips through the cracks and every deliverable lands on time.
 
 ---
 
@@ -637,20 +637,20 @@ Notion, Asana, Trello, Jira, Miro
 **Observability:**
 Langfuse
 
-**Web Development:**
+**Website Development:**
 Python, Django, FastAPI, React, JavaScript, WordPress
 
 **Marketing:**
 Google Ads, Google Analytics, Semrush, Ahrefs, Moz, Canva, Hootsuite
 
 **Certified & Partnered With:**
-- Anthropic (Claude) — Service Partner
-- Make.com — Platinum Partner
-- Zapier — Certified Expert
-- n8n — Integration Partner
-- Upwork — Top Rated
-- Microsoft — Partner
-- Shopify — Partner
+- Anthropic (Claude), Service Partner
+- Make.com, Platinum Partner
+- Zapier, Certified Expert
+- n8n, Integration Partner
+- Upwork, Top Rated
+- Microsoft, Partner
+- Shopify, Partner
 
 ---
 
@@ -673,42 +673,42 @@ Google Ads, Google Analytics, Semrush, Ahrefs, Moz, Canva, Hootsuite
 
 ---
 
-**David Zaretsky** — Snips Media & Northwestern University
+**David Zaretsky**, Snips Media & Northwestern University
 > "Umang has consistently demonstrated leadership qualities and a great positive attitude in working with others in team settings. I'm very happy to recommend Umang for any leadership roles in the fields of engineering."
 
 ---
 
-**Sarvesh Agrawal** — CEO, Dhaninfo
+**Sarvesh Agrawal**, CEO, Dhaninfo
 > "It was a pleasure working alongside Umang and his team at AgileMorph Solutions. Our collaboration resulted in the development of an in-house software solution that had a profound impact on our operational efficiency at Dhaninfo. I wholeheartedly recommend their services to any company seeking transformative solutions."
 
 ---
 
-**Shashi Bhushan Kumar** — Interview Kickstart
+**Shashi Bhushan Kumar**, Interview Kickstart
 > "Umang is a very dedicated, talented and hardworking coder. His passion for solving problems using computer science is unmatched."
 
 ---
 
-**Nikhil Shendge** — Capgemini
+**Nikhil Shendge**, Capgemini
 > "Umang and I worked together on a few projects, he consistently gave 100 percent effort to the team and played a significant role in ensuring that we completed assignments on time. Any team would be lucky to have Umang."
 
 ---
 
-**Nilesh Dhoble** — Persistent Systems
+**Nilesh Dhoble**, Persistent Systems
 > "Umang has a great potential to determine solutions for complex problems with perfect algorithms. His vast knowledge base with deterministic approach makes him absolutely a great team player."
 
 ---
 
-**Ashish Tiwari** — VNIT, India
+**Ashish Tiwari**, VNIT, India
 > "Your commitment to learning and your ability to translate that knowledge into practical solutions left a lasting impression on me. I wholeheartedly endorse Umang Dhandhania and AgileMorph Solutions."
 
 ---
 
-**Christopher Calkins** — Digisist LLC
+**Christopher Calkins**, Digisist LLC
 > "AgileMorph Solutions' work made the client's permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly."
 
 ---
 
-**Retirement Planning Simplified** — Matthews and Associates
+**Retirement Planning Simplified**, Matthews and Associates
 > "AgileMorph delivered good work and we have enjoyed working with them. Thorough and extremely helpful and flexible to our needs. A great team to work with."
 
 ---
@@ -744,7 +744,7 @@ A: We take on only 5 new client projects each month to maintain quality. Spots a
 ### Automation Specific
 
 **Q: Where do I start if I'm new to automation?**
-A: Start with a free Discovery Audit. We map your current operations and give you a prioritized roadmap — no commitment required to build with us afterward.
+A: Start with a free Discovery Audit. We map your current operations and give you a prioritized roadmap, no commitment required to build with us afterward.
 
 **Q: Do I own the automations you build?**
 A: Yes. Self-hosted builds live on your infrastructure. We also hand over full documentation and runbooks so your team can operate independently.
@@ -753,7 +753,7 @@ A: Yes. Self-hosted builds live on your infrastructure. We also hand over full d
 A: Yes, via approved API providers like Whapi. It's fully compliant with WhatsApp's terms.
 
 **Q: Which AI models do you use for agents?**
-A: Claude (Anthropic), GPT-4 (OpenAI), and Gemini (Google) — chosen based on the task requirements.
+A: Claude (Anthropic), GPT-4 (OpenAI), and Gemini (Google), chosen based on the task requirements.
 
 **Q: What happens if an automation breaks?**
 A: We build in alerting, retries, and fallbacks. We also offer monitoring retainers to keep everything running and catch issues before they impact your business.
@@ -808,7 +808,7 @@ A: We build in alerting, retries, and fallbacks. We also offer monitoring retain
 ## 12. Chatbot Behavior Guidelines
 
 ### Tone
-- Confident, direct, and professional — not salesy
+- Confident, direct, and professional, not salesy
 - Match the AgileMorph brand: practical, execution-focused, no fluff
 - Use "we" when referring to AgileMorph
 - Keep responses concise; offer to go deeper if the user wants
@@ -821,11 +821,11 @@ Always offer a human conversation or discovery call when:
 - The user expresses uncertainty about where to start
 
 **Escalation CTA:**
-> "The best next step is a 15-minute discovery call with Umang — it's free and you'll leave with clear direction. Book here: https://calendly.com/agilemorph/15-minute-discovery"
+> "The best next step is a 15-minute discovery call with Umang, it's free and you'll leave with clear direction. Book here: https://calendly.com/agilemorph/15-minute-discovery"
 
 ### Out-of-Scope Responses
 If asked something not covered in this knowledge base:
-> "I don't have that specific detail on hand — reach out to the team at info@theagilemorph.com or book a discovery call and they'll give you a precise answer."
+> "I don't have that specific detail on hand, reach out to the team at info@theagilemorph.com or book a discovery call and they'll give you a precise answer."
 
 ### Never Do
 - Make up pricing, timelines, or capabilities not listed here
