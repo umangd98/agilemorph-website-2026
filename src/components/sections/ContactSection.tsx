@@ -121,20 +121,53 @@ function ContactMethodCard({
       {...(external
         ? { target: "_blank", rel: "noopener noreferrer" }
         : undefined)}
-      className="group flex h-full items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:border-primary/35 hover:bg-mint/40"
+      className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:border-primary/35 hover:bg-mint/40"
     >
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
         {icon}
       </span>
-      <span className="min-w-0">
+      <span className="min-w-0 flex-1">
         <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
           {label}
         </span>
-        <span className="mt-1 block truncate font-body text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+        <span className="mt-1 flex min-h-9 items-center font-body text-sm font-semibold leading-5 text-foreground transition-colors group-hover:text-primary">
           {value}
         </span>
       </span>
     </a>
+  );
+}
+
+function ContactSocialCard({
+  linkedinUrl,
+  facebookUrl,
+}: {
+  linkedinUrl?: string;
+  facebookUrl?: string;
+}) {
+  return (
+    <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-surface p-5">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <Share2 size={18} />
+      </span>
+      <div className="min-w-0 flex-1">
+        <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
+          Follow us
+        </span>
+        <div className="mt-1 flex min-h-9 flex-wrap items-center gap-2">
+          {linkedinUrl ? (
+            <SocialButton href={linkedinUrl} label="LinkedIn">
+              <LinkedInIcon />
+            </SocialButton>
+          ) : null}
+          {facebookUrl ? (
+            <SocialButton href={facebookUrl} label="Facebook">
+              <FacebookIcon />
+            </SocialButton>
+          ) : null}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -153,7 +186,7 @@ function SocialButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary"
     >
       {children}
     </a>
@@ -261,7 +294,7 @@ export function ContactSection({
         <div className="mt-10 space-y-8 sm:mt-12 lg:space-y-10">
           {(phone || email || hasSocial) && (
             <AnimateOnScroll delay={80}>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
                 {phone ? (
                   <ContactMethodCard
                     href={`tel:${phone.replace(/\s/g, "")}`}
@@ -279,28 +312,10 @@ export function ContactSection({
                   />
                 ) : null}
                 {hasSocial ? (
-                  <div className="flex h-full items-center gap-4 rounded-2xl border border-border bg-surface p-5 md:col-span-2 xl:col-span-1">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Share2 size={18} />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <span className="block font-body text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        Follow us
-                      </span>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {linkedinUrl ? (
-                          <SocialButton href={linkedinUrl} label="LinkedIn">
-                            <LinkedInIcon />
-                          </SocialButton>
-                        ) : null}
-                        {facebookUrl ? (
-                          <SocialButton href={facebookUrl} label="Facebook">
-                            <FacebookIcon />
-                          </SocialButton>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <ContactSocialCard
+                    linkedinUrl={linkedinUrl}
+                    facebookUrl={facebookUrl}
+                  />
                 ) : null}
               </div>
             </AnimateOnScroll>
