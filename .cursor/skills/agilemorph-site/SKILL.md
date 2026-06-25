@@ -20,7 +20,7 @@ description: >-
 1. **Single source of truth**: All colors, fonts, spacing, and radii live in `src/app/globals.css` inside the `@theme` block.
 2. **Font loading**: Heading and body fonts are loaded in `src/app/layout.tsx` via `next/font` and exposed as CSS variables.
 3. **No ad-hoc styling**: Never use raw hex colors or inline font family names in components. Use token-backed Tailwind utilities (`bg-primary`, `text-foreground`, `font-heading`, `rounded-lg`, etc.).
-4. **Compose from components**: Pages must be built from `src/components/` — `Container`, `Section`, `Heading`, `Text`, `Button`, `Card`, `Navbar`, `Footer`, `SanityImage`.
+4. **Compose from components**: Pages must be built from `src/components/`, `Container`, `Section`, `Heading`, `Text`, `Button`, `Card`, `Navbar`, `Footer`, `SanityImage`.
 
 ## Sanity conventions
 

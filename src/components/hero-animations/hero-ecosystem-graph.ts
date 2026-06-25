@@ -198,10 +198,10 @@ export const GRAPH_EDGES: readonly GraphEdge[] = [
 export const GRAPH_PILLS: readonly GraphPill[] = [
   { label: "Digital Marketing", slug: "digital-marketing", x: 100, y: 718 },
   { label: "Virtual Assistance", slug: "virtual-assistance", x: 325, y: 718 },
-  { label: "Website", slug: "website-development", x: 550, y: 718 },
+  { label: "Website Development", slug: "website-development", x: 550, y: 718 },
 ] as const;
 
-/** Bottom caption — sits below service pills */
+/** Bottom caption - sits below service pills */
 export const GRAPH_ECOSYSTEM_LABEL_Y = 812 as const;
 
 /** Deterministic decorative circuit paths (no random per mount) */

@@ -315,11 +315,11 @@ function buildHomepage(manifest) {
         },
         {
           _type: "serviceCard",
-          title: "Website",
+          title: "Website Development",
           description:
             "Python, Django, FastAPI, and React builds that hold up in production.",
           href: "/services/website-development",
-          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Website"),
+          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Website Development"),
         },
       ],
     },
@@ -574,7 +574,7 @@ function buildContactPage() {
         _type: "faqItem",
         question: "What services does AgileMorph Solutions offer?",
         answer:
-          "We offer AI Automation (AI Agents, Workflow Automation, CRM & Lead Automation, MCP & AI Infrastructure, Messaging Automation, and AI Audit), plus Digital Marketing, Virtual Assistance, and Website development.",
+          "We offer AI Automation (AI Agents, Workflow Automation, CRM & Lead Automation, MCP & AI Infrastructure, Messaging Automation, and AI Audit), plus Digital Marketing, Virtual Assistance, and Website Development.",
       },
       {
         _type: "faqItem",

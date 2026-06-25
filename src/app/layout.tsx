@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description:
       siteSettings?.siteDescription ??
-      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
+      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website Development, and amplify influence via Digital Marketing and Virtual Assistance.",
   };
 }
 

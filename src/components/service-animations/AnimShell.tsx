@@ -8,8 +8,7 @@ type AnimShellProps = {
 export function AnimShell({ children, label }: AnimShellProps) {
   return (
     <div
-      className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-3xl border border-white/10"
-      style={{ background: "linear-gradient(145deg, #060d1a 0%, #0b1628 50%, #0d1f2d 100%)" }}
+      className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-3xl border border-border bg-linear-to-br from-surface via-surface to-mint/30 dark:border-white/10 dark:from-[#060d1a] dark:via-[#0b1628] dark:to-[#0d1f2d]"
       role="img"
       aria-label={label}
     >

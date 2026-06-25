@@ -25,8 +25,8 @@ npm run dev
 
 All design tokens live in one place:
 
-- **Colors, spacing, radii**: [`src/app/globals.css`](src/app/globals.css) — edit the `@theme` block (look for `TODO` comments).
-- **Fonts**: [`src/app/layout.tsx`](src/app/layout.tsx) — swap the `next/font/google` imports and CSS variable names.
+- **Colors, spacing, radii**: [`src/app/globals.css`](src/app/globals.css), edit the `@theme` block (look for `TODO` comments).
+- **Fonts**: [`src/app/layout.tsx`](src/app/layout.tsx), swap the `next/font/google` imports and CSS variable names.
 
 Every component consumes these tokens via Tailwind utilities. Do not use raw hex values or font names in components.
 

@@ -78,7 +78,7 @@ export const ECOSYSTEM_SERVICE_ZONES = [
 export const ADDITIONAL_SERVICE_PILLS = [
   { label: "Digital Marketing", slug: "digital-marketing", x: 75 },
   { label: "Virtual Assistance", slug: "virtual-assistance", x: 300 },
-  { label: "Website", slug: "website-development", x: 525 },
+  { label: "Website Development", slug: "website-development", x: 525 },
 ] as const;
 
 /** All services for mobile quick-jump chips */

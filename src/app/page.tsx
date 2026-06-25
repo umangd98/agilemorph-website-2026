@@ -22,7 +22,7 @@ import type { Homepage } from "@/sanity/types";
 const fallbackMetadata: Metadata = {
   title: "AGILEMORPH | Digital Accelerators",
   description:
-    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website development, and amplify influence via Digital Marketing and Virtual Assistance.",
+    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website Development, and amplify influence via Digital Marketing and Virtual Assistance.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -65,12 +65,12 @@ export default async function HomePage() {
 
       <main className="flex-1">
         <HeroSection hero={homepage.hero} />
-        {/* Partners strip — certified partnerships, directly under hero as social proof */}
+        {/* Partners strip - certified partnerships, directly under hero as social proof */}
         <PartnersSection
           heading={homepage.partners?.heading}
           items={homepage.partners?.items}
         />
-        {/* Integrations marquee — scrolling tool logos, just below partners */}
+        {/* Integrations marquee - scrolling tool logos, just below partners */}
         <IntegrationsMarquee
           heading={homepage.integrations?.heading}
           items={homepage.integrations?.items}

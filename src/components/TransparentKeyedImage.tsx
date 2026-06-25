@@ -12,6 +12,16 @@ function resolveImageUrl(image: SanityImageAsset) {
   return image.asset?.url ?? urlForImage(image).format("png").url();
 }
 
+function isRemovableBackgroundPixel(r: number, g: number, b: number, a: number) {
+  if (a < 10) return false;
+
+  const channelSpread = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
+  if (channelSpread > 14) return false;
+
+  const brightness = (r + g + b) / 3;
+  return (brightness >= 168 && brightness <= 236) || brightness >= 242;
+}
+
 function keyOutFakeTransparency(imageData: ImageData) {
   const { data, width, height } = imageData;
   const total = width * height;
@@ -19,18 +29,14 @@ function keyOutFakeTransparency(imageData: ImageData) {
 
   for (let i = 0; i < total; i += 1) {
     const offset = i * 4;
-    const r = data[offset]!;
-    const g = data[offset + 1]!;
-    const b = data[offset + 2]!;
-    const a = data[offset + 3]!;
-
-    if (a < 10) continue;
-
-    const channelSpread = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
-    if (channelSpread > 14) continue;
-
-    const brightness = (r + g + b) / 3;
-    if ((brightness >= 168 && brightness <= 236) || brightness >= 242) {
+    if (
+      isRemovableBackgroundPixel(
+        data[offset]!,
+        data[offset + 1]!,
+        data[offset + 2]!,
+        data[offset + 3]!,
+      )
+    ) {
       removable[i] = 1;
     }
   }
@@ -64,6 +70,29 @@ function keyOutFakeTransparency(imageData: ImageData) {
     if (x < width - 1) tryEnqueue(index + 1);
     if (y > 0) tryEnqueue(index - width);
     if (y < height - 1) tryEnqueue(index + width);
+  }
+
+  // Peel interior checkerboard / studio backdrops trapped behind the subject silhouette.
+  let expanded = true;
+  while (expanded) {
+    expanded = false;
+    for (let i = 0; i < total; i += 1) {
+      if (!removable[i] || connected[i]) continue;
+
+      const x = i % width;
+      const y = (i - x) / width;
+      const neighbors = [
+        x > 0 ? i - 1 : -1,
+        x < width - 1 ? i + 1 : -1,
+        y > 0 ? i - width : -1,
+        y < height - 1 ? i + width : -1,
+      ];
+
+      if (neighbors.some((neighbor) => neighbor >= 0 && connected[neighbor])) {
+        connected[i] = 1;
+        expanded = true;
+      }
+    }
   }
 
   for (let i = 0; i < total; i += 1) {

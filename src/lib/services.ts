@@ -63,7 +63,7 @@ const NAV_DESC_BY_SLUG: Record<string, string> = {
   "messaging-automation": "WhatsApp, email, and chat automation",
   "ai-audit": "Find where AI pays off",
   "shopify-automation": "Orders, inventory, and store flows",
-  "website-development": "High-performance web apps",
+  "website-development": "Custom websites and web apps",
   "digital-marketing": "Grow your brand online",
   "virtual-assistance": "Dedicated remote support",
 };
@@ -79,7 +79,7 @@ const SERVICE_LABEL_BY_SLUG: Record<string, string> = {
   "shopify-automation": "Shopify Automation",
   "digital-marketing": "Digital Marketing",
   "virtual-assistance": "Virtual Assistance",
-  "website-development": "Website",
+  "website-development": "Website Development",
 };
 
 export type ServiceNavLink = {

@@ -143,7 +143,7 @@ function CapabilitiesGrid({ capabilities }: { capabilities: readonly CapabilityI
         <FeaturedLeadCard capability={featured} />
       </div>
 
-      {/* Mobile: specializations carousel — outside parent card */}
+      {/* Mobile: specializations carousel - outside parent card */}
       {secondary.length > 0 ? (
         <div className="mt-8 md:hidden">
           <SpecializationsHeading className="mb-4" />
