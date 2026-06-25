@@ -13,6 +13,7 @@ import {
   ValuesSection,
 } from "@/components/sections";
 import { seoToMetadata } from "@/lib/seo";
+import { resolveStatsSection } from "@/data/site-metrics";
 import { sanityFetch } from "@/sanity/fetch";
 import { aboutPageQuery } from "@/sanity/queries";
 import type { AboutPage } from "@/sanity/types";
@@ -52,6 +53,8 @@ export default async function AboutPageRoute() {
     );
   }
 
+  const metrics = resolveStatsSection(aboutPage.stats);
+
   return (
     <>
       <SiteNavbar />
@@ -78,7 +81,9 @@ export default async function AboutPageRoute() {
           heading={aboutPage.cta?.heading}
           description={aboutPage.cta?.description}
           button={aboutPage.cta?.button}
-          stats={aboutPage.stats}
+          statsEyebrow={metrics.eyebrow}
+          statsHeading={metrics.heading}
+          stats={metrics.items}
         />
         <TeamLeadsSection
           eyebrow={aboutPage.teamLeads?.eyebrow}

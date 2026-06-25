@@ -2,11 +2,12 @@
 """Process team lead portraits: bg removal, Kaustumbh framing, bottom arc crop."""
 from __future__ import annotations
 
-import shutil
+from io import BytesIO
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from rembg import remove as rembg_remove
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = Path(
@@ -20,6 +21,17 @@ REF_BBOX = REF.getbbox()
 assert REF_BBOX is not None
 REF_TOP, REF_BOTTOM = REF_BBOX[1], REF_BBOX[3]
 REF_H = REF_BOTTOM - REF_TOP
+
+
+def strip_checkerboard(im: Image.Image) -> Image.Image:
+    """Remove fake transparency grids baked into exported PNGs."""
+    im = im.convert("RGBA")
+    data = np.array(im, dtype=np.float32)
+    r, g, b, a = data[..., 0], data[..., 1], data[..., 2], data[..., 3]
+    neutral = (np.abs(r - g) < 10) & (np.abs(g - b) < 10)
+    checker = neutral & (((np.abs(r - 204) < 14) & (a > 40)) | ((r > 245) & (a > 40)))
+    data[..., 3] = np.where(checker, 0, a)
+    return Image.fromarray(data.astype(np.uint8))
 
 
 def remove_neutral_bg(im: Image.Image, brightness: float = 200, sat_max: float = 35) -> Image.Image:
@@ -72,9 +84,11 @@ def fit_like_kaustumbh(im: Image.Image) -> Image.Image:
 
 def process_umang() -> Image.Image:
     src = ASSETS / "Image-1700a6bf-30dc-4e7a-8116-983b7c1efed4.png"
-    im = remove_neutral_bg(Image.open(src), brightness=195, sat_max=40)
-    im = remove_neutral_bg(im, brightness=155, sat_max=28)
-    im = fit_like_kaustumbh(im)
+    raw = strip_checkerboard(Image.open(src))
+    buffer = BytesIO()
+    raw.save(buffer, format="PNG")
+    cutout = Image.open(BytesIO(rembg_remove(buffer.getvalue()))).convert("RGBA")
+    im = fit_like_kaustumbh(cutout)
     return apply_bottom_arc(im)
 
 

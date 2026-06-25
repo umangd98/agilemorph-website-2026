@@ -13,6 +13,7 @@ import {
   WhyUsSection,
 } from "@/components/sections";
 import { seoToMetadata } from "@/lib/seo";
+import { resolveStatsSection } from "@/data/site-metrics";
 import { getServicePages } from "@/lib/services";
 import { sanityFetch } from "@/sanity/fetch";
 import { homepageQuery } from "@/sanity/queries";
@@ -56,6 +57,8 @@ export default async function HomePage() {
     );
   }
 
+  const metrics = resolveStatsSection(homepage.stats);
+
   return (
     <>
       <SiteNavbar />
@@ -88,9 +91,9 @@ export default async function HomePage() {
           efficiencyCalculator={homepage.whyUs?.efficiencyCalculator}
         />
         <StatsSection
-          eyebrow={homepage.stats?.eyebrow}
-          heading={homepage.stats?.heading}
-          items={homepage.stats?.items}
+          eyebrow={metrics.eyebrow}
+          heading={metrics.heading}
+          items={metrics.items}
         />
         <TestimonialsSection
           eyebrow={homepage.testimonials?.eyebrow}

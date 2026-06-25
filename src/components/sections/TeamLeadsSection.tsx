@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
-import { SanityImage } from "@/components/SanityImage";
+import { TransparentKeyedImage } from "@/components/TransparentKeyedImage";
 import type { TeamLeadItem } from "@/sanity/types";
 
 type TeamLeadCardProps = TeamLeadItem & {
@@ -38,11 +38,9 @@ function TeamLeadCard({
             aria-hidden="true"
           />
           {image ? (
-            <SanityImage
+            <TransparentKeyedImage
               image={image}
               alt={image.alt ?? name}
-              fill
-              sizes="(max-width: 768px) 240px, 248px"
               className="object-contain object-bottom drop-shadow-[0_20px_32px_rgba(15,23,42,0.18)] transition-transform duration-500 group-hover:scale-[1.03]"
               priority={index === 0}
             />

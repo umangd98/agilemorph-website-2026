@@ -7,30 +7,15 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildAiAutomationSubServicePages } from "./ai-automation-sub-services.mjs";
+import { buildStatsSection } from "./site-metrics.mjs";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
 const MANIFEST_PATH = join(__dirname, "media-manifest.json");
 const ENV_PATH = join(ROOT, ".env.local");
-const HOMEPAGE_STATS = {
-  eyebrow: "Metrics That Matter",
-  heading: "Enjoy Tangible Results",
-  items: [
-    { value: "180+", label: "Projects Delivered" },
-    { value: "100+", label: "Clients Across 4 Continents" },
-    { value: "500K+", label: "Hours Saved via Automation" },
-    { value: "98%", label: "Client Retention Rate" },
-    { value: "15+", label: "AI Agents Built and Deployed" },
-    { value: "4+", label: "Years Building AI Systems" },
-  ],
-};
 
 function loadHomepageStats() {
-  return {
-    eyebrow: HOMEPAGE_STATS.eyebrow,
-    heading: HOMEPAGE_STATS.heading,
-    items: HOMEPAGE_STATS.items.map((item) => ({ _type: "stat", ...item })),
-  };
+  return buildStatsSection();
 }
 
 function loadEnv() {
@@ -473,20 +458,7 @@ function buildAboutPage(manifest) {
         "We empower businesses to thrive with innovative digital solutions.",
       steps: buildProcessSteps(manifest),
     },
-    stats: [
-      { _type: "stat", value: "100+", label: "Successful Projects" },
-      { _type: "stat", value: "50+", label: "Satisfied clients and growing" },
-      {
-        _type: "stat",
-        value: "10k+",
-        label: "Hours of dedication and counting",
-      },
-      {
-        _type: "stat",
-        value: "5+",
-        label: "Countries Represented by Our Talent",
-      },
-    ],
+    stats: loadHomepageStats(),
     cta: {
       heading: "Transforming Ideas into Impactful Journeys",
       description:

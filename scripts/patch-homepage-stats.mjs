@@ -1,28 +1,18 @@
 #!/usr/bin/env node
 /**
- * Patches only the homepage stats section in Sanity.
+ * Patches homepage and about page stats sections in Sanity.
  * Usage: node scripts/patch-homepage-stats.mjs
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildStatsSection } from "./site-metrics.mjs";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const ROOT = join(__dirname, "..");
 const ENV_PATH = join(ROOT, ".env.local");
 
-const HOMEPAGE_STATS = {
-  eyebrow: "Metrics That Matter",
-  heading: "Enjoy Tangible Results",
-  items: [
-    { _type: "stat", value: "180+", label: "Projects Delivered" },
-    { _type: "stat", value: "100+", label: "Clients Across 4 Continents" },
-    { _type: "stat", value: "500K+", label: "Hours Saved via Automation" },
-    { _type: "stat", value: "98%", label: "Client Retention Rate" },
-    { _type: "stat", value: "15+", label: "AI Agents Built and Deployed" },
-    { _type: "stat", value: "4+", label: "Years Building AI Systems" },
-  ],
-};
+const STATS = buildStatsSection();
 
 function loadEnv() {
   return Object.fromEntries(
@@ -52,7 +42,7 @@ function getAuthToken({ preferCli = false } = {}) {
   throw new Error("No Sanity auth token found.");
 }
 
-async function patchHomepageStats({ projectId, dataset, token }) {
+async function patchDocument({ projectId, dataset, token, id, field }) {
   const url = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(url, {
     method: "POST",
@@ -61,26 +51,13 @@ async function patchHomepageStats({ projectId, dataset, token }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      mutations: [
-        {
-          patch: {
-            id: "homepage",
-            set: {
-              stats: {
-                eyebrow: HOMEPAGE_STATS.eyebrow,
-                heading: HOMEPAGE_STATS.heading,
-                items: HOMEPAGE_STATS.items,
-              },
-            },
-          },
-        },
-      ],
+      mutations: [{ patch: { id, set: { [field]: STATS } } }],
     }),
   });
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Patch failed: ${response.status} ${text}`);
+    throw new Error(`Patch failed for ${id}: ${response.status} ${text}`);
   }
 }
 
@@ -88,11 +65,14 @@ async function main() {
   const env = loadEnv();
   const projectId = env.NEXT_PUBLIC_SANITY_PROJECT_ID;
   const dataset = env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
-  const token = getAuthToken({ preferCli: true });
+  const token = getAuthToken();
 
-  console.log("Patching homepage stats...");
-  await patchHomepageStats({ projectId, dataset, token });
-  console.log("Homepage stats updated.");
+  console.log("Patching site metrics...");
+  await patchDocument({ projectId, dataset, token, id: "homepage", field: "stats" });
+  console.log("  ✓ homepage.stats");
+  await patchDocument({ projectId, dataset, token, id: "aboutPage", field: "stats" });
+  console.log("  ✓ aboutPage.stats");
+  console.log("Site metrics updated.");
 }
 
 main().catch((error) => {

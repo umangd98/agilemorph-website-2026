@@ -218,7 +218,11 @@ export interface AboutPage {
     subheading?: string;
     steps?: ProcessStep[];
   };
-  stats?: Stat[];
+  stats?: {
+    eyebrow?: string;
+    heading?: string;
+    items?: Stat[];
+  };
   cta?: {
     heading?: string;
     description?: string;

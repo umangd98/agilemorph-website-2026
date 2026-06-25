@@ -117,9 +117,26 @@ export const aboutPage = defineType({
     }),
     defineField({
       name: "stats",
-      title: "Statistics",
-      type: "array",
-      of: [{ type: "stat" }],
+      title: "Stats Section",
+      type: "object",
+      fields: [
+        defineField({
+          name: "eyebrow",
+          title: "Eyebrow",
+          type: "string",
+        }),
+        defineField({
+          name: "heading",
+          title: "Heading",
+          type: "string",
+        }),
+        defineField({
+          name: "items",
+          title: "Statistics",
+          type: "array",
+          of: [{ type: "stat" }],
+        }),
+      ],
     }),
     defineField({
       name: "cta",

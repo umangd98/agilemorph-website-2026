@@ -204,7 +204,11 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     subheading,
     steps[] ${processStepProjection}
   },
-  stats[] ${statProjection},
+  stats {
+    eyebrow,
+    heading,
+    items[] ${statProjection}
+  },
   cta {
     heading,
     description,
