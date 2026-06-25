@@ -62,7 +62,7 @@ export function HeroShowcaseVisual({
 
   return (
     <div
-      className={`relative ml-auto aspect-square w-full max-w-[min(100%,520px)] lg:max-w-none lg:w-[118%] lg:max-w-[720px] xl:max-w-[820px] 2xl:max-w-[900px] ${
+      className={`relative ml-auto aspect-square w-full max-w-[min(100%,520px)] lg:max-w-[550px] xl:max-w-[650px] 2xl:max-w-[700px] ${
         shouldAnimate ? "hero-showcase-in" : visible ? "opacity-100" : "opacity-0"
       }`}
       role="img"
