@@ -16,13 +16,11 @@ import {
 import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import {
-  CALENDLY_DISCOVERY_DESCRIPTION,
-  CALENDLY_DISCOVERY_TITLE,
-} from "@/lib/calendly";
 import { openCalendlyPopup } from "@/lib/calendly-widget";
 import { CONTACT_FORM_NAME, submitNetlifyForm } from "@/lib/netlify-forms";
-import type { FaqItem } from "@/sanity/types";
+import type { ContactPage, FaqItem } from "@/sanity/types";
+
+type DiscoveryCallContent = NonNullable<ContactPage["discoveryCall"]>;
 
 type ContactSectionProps = {
   heading: string;
@@ -31,7 +29,23 @@ type ContactSectionProps = {
   email?: string;
   linkedinUrl?: string;
   facebookUrl?: string;
+  discoveryCall?: DiscoveryCallContent;
   faqs?: FaqItem[];
+};
+
+const defaultDiscoveryCall: Required<DiscoveryCallContent> = {
+  title: "Book a discovery call",
+  subtitle: "15 Minute Discovery with Umang Dhandhania",
+  description:
+    "Pick a time that works for you. We'll discuss your goals and whether AgileMorph is the right fit.",
+  availabilityNote:
+    "We take on only 5 new client projects each month. Spots are limited, so book early if timing matters.",
+  bullets: [
+    "15-minute video call with our team",
+    "Discuss goals, scope, and fit",
+    "Leave with clear next steps",
+  ],
+  ctaLabel: "Book a slot",
 };
 
 const inputClassName =
@@ -169,8 +183,11 @@ export function ContactSection({
   email,
   linkedinUrl,
   facebookUrl,
+  discoveryCall,
   faqs = [],
 }: ContactSectionProps) {
+  const booking = { ...defaultDiscoveryCall, ...discoveryCall };
+  const bookingBullets = booking.bullets?.length ? booking.bullets : defaultDiscoveryCall.bullets;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
@@ -439,21 +456,23 @@ export function ContactSection({
               >
                 <SectionCardHeader
                   icon={<CalendarDays size={18} />}
-                  title="Book a discovery call"
-                  subtitle={CALENDLY_DISCOVERY_TITLE}
+                  title={booking.title}
+                  subtitle={booking.subtitle}
                 />
 
                 <div className="flex flex-1 flex-col space-y-5 px-6 py-6 sm:px-7 sm:py-7">
                   <p className="font-body text-sm leading-relaxed text-muted-foreground">
-                    {CALENDLY_DISCOVERY_DESCRIPTION}
+                    {booking.description}
                   </p>
 
+                  {booking.availabilityNote ? (
+                    <p className="rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 font-body text-sm font-medium text-foreground">
+                      {booking.availabilityNote}
+                    </p>
+                  ) : null}
+
                   <ul className="space-y-3">
-                    {[
-                      "15-minute video call with our team",
-                      "Discuss goals, scope, and fit",
-                      "Leave with clear next steps",
-                    ].map((item) => (
+                    {bookingBullets.map((item) => (
                       <li
                         key={item}
                         className="flex items-start gap-2.5 font-body text-sm text-foreground"
@@ -466,7 +485,7 @@ export function ContactSection({
 
                   <div className="mt-auto border-t border-primary/10 pt-5">
                     <CalendlyBookButton className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark active:scale-[0.99]">
-                      Book a slot
+                      {booking.ctaLabel}
                       <ArrowRight
                         size={15}
                         className="transition-transform duration-200 group-hover:translate-x-0.5"

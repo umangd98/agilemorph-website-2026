@@ -45,7 +45,7 @@ const CAPABILITIES = [
     slug: "ai-automation",
     featured: true,
     description:
-      "Our core practice — end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+      "Our core practice, end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
     icon: "⚡",
   },
   {

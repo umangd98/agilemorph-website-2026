@@ -24,7 +24,7 @@ type ZoneInfo = { slug: string; label: string };
 
 type ServicesEcosystemGraphProps = {
   visible?: boolean;
-  /** Show the full graph immediately — no phased GSAP reveal */
+  /** Show the full graph immediately, no phased GSAP reveal */
   static?: boolean;
   /** Tighter sizing for service hero column */
   compact?: boolean;
@@ -80,7 +80,7 @@ function GraphNodeLink({
     <a
       href={serviceHref(node.slug)}
       className="graph-zone-link outline-none"
-      aria-label={`${node.label} — view service`}
+      aria-label={`${node.label}, view service`}
       onMouseEnter={() => onActivate({ slug: node.slug, label: node.label })}
       onMouseLeave={onDeactivate}
       onFocus={() => onActivate({ slug: node.slug, label: node.label })}
@@ -126,7 +126,7 @@ function GraphPillLink({
     <a
       href={serviceHref(pill.slug)}
       className="graph-zone-link outline-none"
-      aria-label={`${pill.label} — view service`}
+      aria-label={`${pill.label}, view service`}
       onMouseEnter={() => onActivate({ slug: pill.slug, label: pill.label })}
       onMouseLeave={onDeactivate}
       onFocus={() => onActivate({ slug: pill.slug, label: pill.label })}
@@ -355,7 +355,7 @@ export function ServicesEcosystemGraph({
             : "services-ecosystem-graph aspect-[800/880] h-auto w-full min-h-[360px] sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[580px]"
         }
         role="img"
-        aria-label="Interactive AgileMorph service ecosystem graph — select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
+        aria-label="Interactive AgileMorph service ecosystem graph, select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
       >
         <defs>
           <pattern id={`graph-grid-${uid}`} width="40" height="40" patternUnits="userSpaceOnUse">
@@ -413,7 +413,7 @@ export function ServicesEcosystemGraph({
         <a
           href={serviceHref(AI_AUTOMATION_ZONE.slug)}
           className="graph-zone-link outline-none"
-          aria-label={`${AI_AUTOMATION_ZONE.label} — view service`}
+          aria-label={`${AI_AUTOMATION_ZONE.label}, view service`}
           onMouseEnter={() =>
             handleZoneActivate({
               slug: AI_AUTOMATION_ZONE.slug,

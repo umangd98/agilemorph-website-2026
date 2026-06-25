@@ -91,6 +91,13 @@ export interface TechnologyItem {
   logo?: SanityImageAsset;
 }
 
+export interface TeamLeadItem {
+  name: string;
+  role: string;
+  bio: string;
+  image?: SanityImageAsset;
+}
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -217,6 +224,13 @@ export interface AboutPage {
     description?: string;
     button?: CtaButton;
   };
+  teamLeads?: {
+    eyebrow?: string;
+    heading?: string;
+    subheading?: string;
+    cardFooter?: string;
+    members?: TeamLeadItem[];
+  };
   founder?: {
     eyebrow?: string;
     heading?: string;
@@ -327,6 +341,14 @@ export interface ContactPage {
   email?: string;
   linkedinUrl?: string;
   facebookUrl?: string;
+  discoveryCall?: {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    availabilityNote?: string;
+    bullets?: string[];
+    ctaLabel?: string;
+  };
   faqs?: FaqItem[];
   seo?: Seo;
 }

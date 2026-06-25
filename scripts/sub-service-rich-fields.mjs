@@ -114,7 +114,7 @@ export const SUB_SERVICE_RICH_FIELDS_BY_SLUG = {
     },
     faq: [
       {
-        question: "n8n, Make, or Zapier — which?",
+        question: "n8n, Make, or Zapier, which?",
         answer:
           "Depends on volume, control needs, and budget. We're a certified n8n partner and usually recommend self-hosted n8n for serious volume, but we build on all three.",
       },
@@ -222,7 +222,7 @@ export const SUB_SERVICE_RICH_FIELDS_BY_SLUG = {
       {
         question: "What is MCP?",
         answer:
-          "Model Context Protocol — a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world.",
+          "Model Context Protocol, a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world.",
       },
       {
         question: "Where is it hosted?",

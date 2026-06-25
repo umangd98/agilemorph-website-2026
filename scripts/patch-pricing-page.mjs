@@ -50,10 +50,10 @@ function buildPricingPage() {
       eyebrow: "Pricing",
       heading: "Straightforward engagements.\nPredictable outcomes.",
       description:
-        "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer — both structured around delivery, not hours.",
+        "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer, both structured around delivery, not hours.",
     },
     projectSection: {
-      label: "Project pricing — four fixed-scope tiers",
+      label: "Project pricing, four fixed-scope tiers",
       tiers: [
         {
           _type: "pricingProjectTier",
@@ -61,7 +61,7 @@ function buildPricingPage() {
           price: "Free",
           priceStrikethrough: "$500",
           priceBadge: "Free",
-          limitedNote: "Limited time — book before spots fill.",
+          limitedNote: "Limited time, book before spots fill.",
           timeline: "1–2 days",
           tagline:
             "Understand exactly what to build before committing to the build.",
@@ -81,7 +81,7 @@ function buildPricingPage() {
           price: "$3K – $8K",
           timeline: "2–6 weeks",
           tagline:
-            "One focused automation — scoped, built, and handed over production-ready.",
+            "One focused automation, scoped, built, and handed over production-ready.",
           deliverables: [
             "Workflow architecture document",
             "Production build in n8n, Make, or Zapier",
@@ -116,11 +116,11 @@ function buildPricingPage() {
           price: "$20K+",
           timeline: "2–5 months",
           tagline:
-            "Custom AI infrastructure — agents, internal tools, or a full operations rebuild.",
+            "Custom AI infrastructure, agents, internal tools, or a full operations rebuild.",
           deliverables: [
             "Custom LLM agents built on Claude or GPT-4",
             "MCP server setup and AI tool infrastructure",
-            "Full-stack development — Django, FastAPI, React",
+            "Full-stack development, Django, FastAPI, React",
             "Cloud deployment on AWS or DigitalOcean",
             "10+ connected workflows across teams",
             "90-day post-launch support and optimization",
@@ -131,7 +131,7 @@ function buildPricingPage() {
       ],
     },
     retainerSection: {
-      label: "Retainer pricing — three monthly tiers",
+      label: "Retainer pricing, three monthly tiers",
       description:
         "Month-to-month engagements structured around output, not seat time. Each tier reflects a different level of operational involvement.",
       tiers: [
@@ -213,7 +213,7 @@ function buildPricingPage() {
       secondaryCta: cta("See what we build", "/services"),
     },
     seo: {
-      title: "Pricing — AgileMorph Solutions",
+      title: "Pricing, AgileMorph Solutions",
       description:
         "Straightforward engagements and predictable outcomes. Fixed-scope project pricing and monthly retainer tiers for AI automation and digital operations.",
     },

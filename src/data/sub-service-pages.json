@@ -337,7 +337,7 @@
     "faq": [
       {
         "_type": "faqItem",
-        "question": "n8n, Make, or Zapier — which?",
+        "question": "n8n, Make, or Zapier, which?",
         "answer": "Depends on volume, control needs, and budget. We're a certified n8n partner and usually recommend self-hosted n8n for serious volume, but we build on all three."
       },
       {
@@ -830,7 +830,7 @@
       {
         "_type": "faqItem",
         "question": "What is MCP?",
-        "answer": "Model Context Protocol — a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
+        "answer": "Model Context Protocol, a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
       },
       {
         "_type": "faqItem",
@@ -1480,7 +1480,7 @@
     "slug": "shopify-automation",
     "layout": "subService",
     "tagline": "AI Automation",
-    "description": "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+    "description": "We automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.",
     "headline": {
       "before": "Shopify ops that run ",
       "highlight": "on autopilot",

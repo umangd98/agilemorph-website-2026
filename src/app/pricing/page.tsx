@@ -7,7 +7,7 @@ import { getPricingPage } from "@/lib/get-pricing-page";
 import { seoToMetadata } from "@/lib/seo";
 
 const fallbackMetadata: Metadata = {
-  title: "Pricing — AgileMorph Solutions",
+  title: "Pricing | AgileMorph Solutions",
   description:
     "Straightforward engagements and predictable outcomes. Fixed-scope project pricing and monthly retainer tiers for AI automation and digital operations.",
 };

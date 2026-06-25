@@ -80,7 +80,13 @@ export default async function AboutPageRoute() {
           button={aboutPage.cta?.button}
           stats={aboutPage.stats}
         />
-        <TeamLeadsSection />
+        <TeamLeadsSection
+          eyebrow={aboutPage.teamLeads?.eyebrow}
+          heading={aboutPage.teamLeads?.heading}
+          subheading={aboutPage.teamLeads?.subheading}
+          cardFooter={aboutPage.teamLeads?.cardFooter}
+          members={aboutPage.teamLeads?.members}
+        />
         <FounderSection
           eyebrow={aboutPage.founder?.eyebrow}
           heading={aboutPage.founder?.heading}

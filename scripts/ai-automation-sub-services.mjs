@@ -416,7 +416,7 @@ export const AI_AUTOMATION_SUB_SERVICES = [
     title: "Shopify Automation",
     tagline: "AI Automation",
     description:
-      "We automate the operational load behind your Shopify store — order routing, inventory sync, fulfillment updates, and customer notifications — connected to the rest of your stack through n8n, Make, or custom pipelines.",
+      "We automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.",
     heroCta: { label: "Book a Discovery Call", href: "https://calendly.com/agilemorph/15-minute-discovery" },
     capabilitiesHeading: "What's included",
     capabilities: [

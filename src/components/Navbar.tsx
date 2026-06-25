@@ -166,6 +166,27 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   const dropdownRef = useRef<HTMLLIElement>(null);
+  const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearMenuCloseTimer = () => {
+    if (menuCloseTimer.current) {
+      clearTimeout(menuCloseTimer.current);
+      menuCloseTimer.current = null;
+    }
+  };
+
+  const scheduleMenuClose = () => {
+    clearMenuCloseTimer();
+    menuCloseTimer.current = setTimeout(() => {
+      setServicesOpen(false);
+      setAiPanelOpen(false);
+    }, 150);
+  };
+
+  const openServicesMenu = () => {
+    clearMenuCloseTimer();
+    setServicesOpen(true);
+  };
 
   const closeMenus = () => {
     setServicesOpen(false);
@@ -184,10 +205,15 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setServicesOpen(false);
+        setAiPanelOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  useEffect(() => {
+    return () => clearMenuCloseTimer();
   }, []);
 
   useEffect(() => {
@@ -234,7 +260,13 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
 
                 if (isServices) {
                   return (
-                    <li key={link.href} className="relative" ref={dropdownRef}>
+                    <li
+                      key={link.href}
+                      className="relative"
+                      ref={dropdownRef}
+                      onMouseEnter={openServicesMenu}
+                      onMouseLeave={scheduleMenuClose}
+                    >
                       <div
                         className={`flex items-center rounded-lg transition-all duration-200 ${
                           servicesOpen || isActive
@@ -269,6 +301,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
 
                       <div
                         className="absolute right-0 top-full z-50 mt-2"
+                        onMouseEnter={openServicesMenu}
                         style={{
                           opacity: servicesOpen ? 1 : 0,
                           transform: servicesOpen
@@ -278,10 +311,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                           transition: "opacity 200ms ease, transform 200ms ease",
                         }}
                       >
-                        <div
-                          className="relative"
-                          onMouseLeave={() => setAiPanelOpen(false)}
-                        >
+                        <div className="relative flex items-start">
                           <div className="w-[280px] overflow-hidden rounded-2xl border border-border bg-background shadow-2xl shadow-black/10">
                             <div className="p-2">
                               {primary ? (
@@ -297,10 +327,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                               ) : null}
 
                               {additional.length > 0 ? (
-                                <div
-                                  className="mt-2 border-t border-border/70 pt-2"
-                                  onMouseEnter={() => setAiPanelOpen(false)}
-                                >
+                                <div className="mt-2 border-t border-border/70 pt-2">
                                   <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                                     General services
                                   </p>
@@ -323,14 +350,18 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                           </div>
 
                           <div
-                            className={`absolute left-full top-0 ml-2 w-[min(440px,calc(100vw-20rem))] rounded-2xl border border-border bg-background p-4 shadow-2xl shadow-black/10 transition-all duration-200 ease-out ${
+                            className={`absolute left-full top-0 -ml-2 w-[min(440px,calc(100vw-20rem))] pl-2 transition-all duration-200 ease-out ${
                               aiPanelOpen
                                 ? "pointer-events-auto translate-x-0 opacity-100"
                                 : "pointer-events-none invisible -translate-x-1 opacity-0"
                             }`}
-                            onMouseEnter={() => setAiPanelOpen(true)}
+                            onMouseEnter={() => {
+                              clearMenuCloseTimer();
+                              setAiPanelOpen(true);
+                            }}
                             aria-hidden={!aiPanelOpen}
                           >
+                            <div className="rounded-2xl border border-border bg-background p-4 shadow-2xl shadow-black/10">
                             <div className="mb-3 flex items-center justify-between gap-3">
                               <div>
                                 <p className="font-body text-[10px] font-bold uppercase tracking-widest text-primary">
@@ -361,6 +392,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                                   onNavigate={() => setServicesOpen(false)}
                                 />
                               ))}
+                            </div>
                             </div>
                           </div>
                         </div>

@@ -81,6 +81,13 @@ const technologyItemProjection = `{
   logo ${imageProjection}
 }`;
 
+const teamLeadItemProjection = `{
+  name,
+  role,
+  bio,
+  image ${imageProjection}
+}`;
+
 const faqItemProjection = `{
   question,
   answer
@@ -203,6 +210,13 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     description,
     button ${ctaProjection}
   },
+  teamLeads {
+    eyebrow,
+    heading,
+    subheading,
+    cardFooter,
+    members[] ${teamLeadItemProjection}
+  },
   founder {
     eyebrow,
     heading,
@@ -302,6 +316,14 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
   email,
   linkedinUrl,
   facebookUrl,
+  discoveryCall {
+    title,
+    subtitle,
+    description,
+    availabilityNote,
+    bullets,
+    ctaLabel
+  },
   faqs[] ${faqItemProjection},
   seo ${seoProjection}
 }`;

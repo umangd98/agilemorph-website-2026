@@ -1,16 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { Sparkles } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
-import { TEAM_LEADS, type TeamLead } from "@/data/team-leads";
+import { SanityImage } from "@/components/SanityImage";
+import type { TeamLeadItem } from "@/sanity/types";
 
-const CARD_OFFSETS = ["lg:translate-y-0", "lg:-translate-y-6", "lg:translate-y-3"] as const;
-
-type TeamLeadCardProps = TeamLead & {
+type TeamLeadCardProps = TeamLeadItem & {
   index: number;
+  cardFooter?: string;
   delay?: number;
 };
 
@@ -18,17 +17,16 @@ function TeamLeadCard({
   name,
   role,
   bio,
-  imageSrc,
+  image,
   index,
+  cardFooter,
   delay = 0,
 }: TeamLeadCardProps) {
   const cardNumber = String(index + 1).padStart(2, "0");
 
   return (
-    <AnimateOnScroll delay={delay}>
-      <article
-        className={`group relative mx-auto flex w-full max-w-88 flex-col transition-transform duration-500 ease-out hover:-translate-y-2 ${CARD_OFFSETS[index] ?? ""}`}
-      >
+    <AnimateOnScroll delay={delay} className="h-full">
+      <article className="group relative mx-auto flex h-full w-full max-w-88 flex-col transition-transform duration-500 ease-out hover:-translate-y-2">
         <div
           className="pointer-events-none absolute -inset-x-4 top-8 h-40 rounded-full bg-primary/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
           aria-hidden="true"
@@ -39,22 +37,24 @@ function TeamLeadCard({
             className="absolute inset-x-6 bottom-2 h-8 rounded-full bg-foreground/10 blur-xl transition-all duration-500 group-hover:inset-x-4 group-hover:bg-primary/20"
             aria-hidden="true"
           />
-          <Image
-            src={imageSrc}
-            alt={name}
-            fill
-            sizes="(max-width: 768px) 240px, 248px"
-            className="object-contain object-bottom drop-shadow-[0_20px_32px_rgba(15,23,42,0.18)] transition-transform duration-500 group-hover:scale-[1.03]"
-            priority={index === 0}
-          />
+          {image ? (
+            <SanityImage
+              image={image}
+              alt={image.alt ?? name}
+              fill
+              sizes="(max-width: 768px) 240px, 248px"
+              className="object-contain object-bottom drop-shadow-[0_20px_32px_rgba(15,23,42,0.18)] transition-transform duration-500 group-hover:scale-[1.03]"
+              priority={index === 0}
+            />
+          ) : null}
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-linear-to-b from-background via-mint/80 to-mint p-px shadow-[0_22px_50px_rgba(15,23,42,0.08)] transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-[0_28px_60px_rgba(34,197,94,0.12)]">
+        <div className="relative flex flex-1 flex-col overflow-hidden rounded-3xl border border-border/70 bg-linear-to-b from-background via-mint/80 to-mint p-px shadow-[0_22px_50px_rgba(15,23,42,0.08)] transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-[0_28px_60px_rgba(34,197,94,0.12)]">
           <div
             className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/15 blur-2xl"
             aria-hidden="true"
           />
-          <div className="relative flex min-h-88 flex-col rounded-[calc(1.5rem-1px)] bg-linear-to-b from-background/95 via-mint/40 to-mint px-6 pb-8 pt-34 sm:min-h-92 sm:px-7 sm:pb-9 sm:pt-36">
+          <div className="relative flex min-h-92 flex-1 flex-col rounded-[calc(1.5rem-1px)] bg-linear-to-b from-background/95 via-mint/40 to-mint px-6 pb-8 pt-34 sm:min-h-92 sm:px-7 sm:pb-9 sm:pt-36">
             <span
               className="pointer-events-none absolute right-5 top-5 font-heading text-5xl font-extrabold leading-none text-primary/10 transition-colors duration-500 group-hover:text-primary/20"
               aria-hidden="true"
@@ -70,14 +70,13 @@ function TeamLeadCard({
               {name}
             </h3>
 
-            <p className="font-body text-sm leading-relaxed text-muted-foreground">{bio}</p>
+            <p className="flex-1 font-body text-sm leading-relaxed text-muted-foreground">{bio}</p>
 
-            <div
-              className="mt-auto pt-6 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground/80"
-              aria-hidden="true"
-            >
-              AgileMorph leadership
-            </div>
+            {cardFooter ? (
+              <div className="mt-auto pt-6 font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground/80">
+                {cardFooter}
+              </div>
+            ) : null}
           </div>
         </div>
       </article>
@@ -87,26 +86,33 @@ function TeamLeadCard({
 
 function splitHeading(heading: string) {
   const words = heading.trim().split(/\s+/);
-  if (words.length <= 2) {
-    return {
-      prefix: words[0] ?? heading,
-      accent: words.slice(1).join(" "),
-    };
+  if (words.length <= 1) {
+    return { prefix: heading, accent: "" };
   }
 
   return {
-    prefix: words.slice(0, -2).join(" "),
-    accent: words.slice(-2).join(" "),
+    prefix: words.slice(0, -1).join(" "),
+    accent: words[words.length - 1] ?? "",
   };
 }
 
 type TeamLeadsSectionProps = {
+  eyebrow?: string;
   heading?: string;
+  subheading?: string;
+  cardFooter?: string;
+  members?: TeamLeadItem[];
 };
 
 export function TeamLeadsSection({
-  heading = "Meet our team Leads",
+  eyebrow,
+  heading,
+  subheading,
+  cardFooter,
+  members = [],
 }: TeamLeadsSectionProps) {
+  if (!heading || !members.length) return null;
+
   const { prefix, accent } = splitHeading(heading);
 
   return (
@@ -138,10 +144,12 @@ export function TeamLeadsSection({
 
       <Container className="relative">
         <AnimateOnScroll className="mx-auto mb-14 max-w-3xl text-center sm:mb-16">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-[10px] font-bold uppercase tracking-widest text-primary sm:text-xs">
-            <Sparkles size={12} aria-hidden />
-            Leadership
-          </span>
+          {eyebrow ? (
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-[10px] font-bold uppercase tracking-widest text-primary sm:text-xs">
+              <Sparkles size={12} aria-hidden />
+              {eyebrow}
+            </span>
+          ) : null}
           <h2
             id="team-leads-heading"
             className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl lg:text-5xl"
@@ -153,10 +161,11 @@ export function TeamLeadsSection({
               </span>
             ) : null}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-muted-foreground">
-            The people steering strategy, engineering, and delivery — building automation that
-            ships fast and scales with your business.
-          </p>
+          {subheading ? (
+            <p className="mx-auto mt-4 max-w-2xl font-body text-base leading-relaxed text-muted-foreground">
+              {subheading}
+            </p>
+          ) : null}
         </AnimateOnScroll>
 
         <div className="relative">
@@ -165,12 +174,13 @@ export function TeamLeadsSection({
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:gap-8 xl:gap-10">
-            {TEAM_LEADS.map((lead, index) => (
+          <div className="grid grid-cols-1 items-stretch gap-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:gap-8 xl:gap-10">
+            {members.map((lead, index) => (
               <TeamLeadCard
                 key={lead.name}
                 {...lead}
                 index={index}
+                cardFooter={cardFooter}
                 delay={index * 120}
               />
             ))}

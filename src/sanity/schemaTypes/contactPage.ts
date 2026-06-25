@@ -46,6 +46,46 @@ export const contactPage = defineType({
       type: "url",
     }),
     defineField({
+      name: "discoveryCall",
+      title: "Discovery Call Card",
+      type: "object",
+      fields: [
+        defineField({
+          name: "title",
+          title: "Title",
+          type: "string",
+        }),
+        defineField({
+          name: "subtitle",
+          title: "Subtitle",
+          type: "string",
+        }),
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "text",
+          rows: 3,
+        }),
+        defineField({
+          name: "availabilityNote",
+          title: "Availability Note",
+          type: "string",
+          description: "Short scarcity message shown on the booking card.",
+        }),
+        defineField({
+          name: "bullets",
+          title: "Bullet Points",
+          type: "array",
+          of: [{ type: "string" }],
+        }),
+        defineField({
+          name: "ctaLabel",
+          title: "CTA Label",
+          type: "string",
+        }),
+      ],
+    }),
+    defineField({
       name: "faqs",
       title: "FAQs",
       type: "array",
