@@ -329,7 +329,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                               {additional.length > 0 ? (
                                 <div className="mt-2 border-t border-border/70 pt-2">
                                   <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                                    General services
+                                    General Services
                                   </p>
                                   <div className="flex flex-col gap-0.5">
                                     {additional.map((child) => (
@@ -428,7 +428,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
             <div className="hidden items-center gap-2 md:flex">
               <ThemeToggle inverse={isDarkTheme && inverseHeader} />
               <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95">
-                Get in Touch
+                Get In Touch
                 <ArrowRight
                   size={14}
                   className="transition-transform duration-200 group-hover:translate-x-0.5"
@@ -566,7 +566,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                         {additional.length > 0 ? (
                           <div>
                             <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                              General services
+                              General Services
                             </p>
                             <div className="flex flex-col gap-0.5">
                               {additional.map((child) => {
@@ -614,7 +614,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95"
               onBook={() => setMenuOpen(false)}
             >
-              Get in Touch
+              Get In Touch
               <ArrowRight size={14} />
             </CalendlyBookButton>
           </div>

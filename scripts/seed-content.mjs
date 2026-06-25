@@ -258,7 +258,7 @@ function buildHomepage(manifest) {
     _id: "homepage",
     _type: "homepage",
     hero: {
-      heading: "Cut the Overhead.\nReclaim Your Time.",
+      heading: "Cut The Overhead.\nReclaim Your Time.",
       headingAccent: "Let AI Handle the Execution",
       tagline: heroTaglineBlock([
         "Bring absolute order to your operations with end-to-end ",
@@ -271,7 +271,7 @@ function buildHomepage(manifest) {
         { text: "business processes", href: "/services/workflow-automation" },
         " from the ground up, we eliminate daily firefighting so you can lead with clarity.",
       ]),
-      ctaPrimary: cta("Get in Touch", "/contact"),
+      ctaPrimary: cta("Get In Touch", "/contact"),
       ctaSecondary: cta("Explore Our Services", "/services"),
       image: imageRef(
         manifest,
@@ -324,7 +324,7 @@ function buildHomepage(manifest) {
       ],
     },
     whyUs: {
-      heading: "Why AgileMorph is Your Ideal Partner?",
+      heading: "Why AgileMorph Is Your Ideal Partner?",
       items: [
         whyUsItem({
           title: "Innovation",
@@ -351,17 +351,17 @@ function buildHomepage(manifest) {
         }),
       ],
       efficiencyCalculator: {
-        heading: "Estimate your efficiency gain",
+        heading: "Estimate Your Efficiency Gain",
         description:
           "Adjust the sliders to see how much manual work AI automation could take off your team's plate.",
         disclaimer:
           "Estimates based on typical automation outcomes. Book a discovery call for a scoped audit tailored to your operations.",
-        ctaLabel: "Book a discovery call",
+        ctaLabel: "Book A Discovery Call",
       },
     },
     stats: loadHomepageStats(),
     featuredLogos: {
-      heading: "We've been featured on",
+      heading: "We've Been Featured On",
       logos: buildFeaturedLogos(manifest),
     },
     testimonials: {
@@ -509,7 +509,7 @@ function buildAboutPage(manifest) {
     },
     founder: {
       eyebrow: "Meet Our Founder",
-      heading: "Founder-led delivery with engineering depth",
+      heading: "Founder-Led Delivery With Engineering Depth",
       name: "Umang Dhandhania",
       role: "CEO at AgileMorph",
       bio: "A Northwestern-educated engineer who turns complex business problems into clear, revenue-lifting systems. Over the past decade he has guided more than 100 companies through launches, process overhauls, and market-ready builds that beat timelines and KPIs.\n\nHis focus at AgileMorph is practical: give ambitious teams the automation, software, and delivery support they need to move faster without sacrificing quality.\n\nWhen you work with AgileMorph, you work directly with leadership that understands both the business case and the technical build.",
@@ -520,7 +520,7 @@ function buildAboutPage(manifest) {
       ),
     },
     featuredLogos: {
-      heading: "We've been featured on",
+      heading: "We've Been Featured On",
       logos: buildFeaturedLogos(manifest),
     },
     testimonials: {
@@ -550,7 +550,7 @@ function buildContactPage() {
     linkedinUrl: "https://www.linkedin.com/company/agilemorph-solutions",
     facebookUrl: "https://www.facebook.com/agilemorphsolutions",
     discoveryCall: {
-      title: "Book a discovery call",
+      title: "Book A Discovery Call",
       subtitle: "15 Minute Discovery with Umang Dhandhania",
       description:
         "Pick a time that works for you. We'll discuss your goals and whether AgileMorph is the right fit.",
@@ -561,7 +561,7 @@ function buildContactPage() {
         "Discuss goals, scope, and fit",
         "Leave with clear next steps",
       ],
-      ctaLabel: "Book a slot",
+      ctaLabel: "Book A Slot",
     },
     faqs: [
       {
@@ -746,10 +746,10 @@ function buildServicePages(manifest) {
         ["Salesforce", "integrations/salesforce.svg"],
       ].map(([name, logoKey]) => techItem(manifest, name, logoKey)),
       cta: {
-        heading: "Ready to Automate your Success?",
+        heading: "Ready To Automate Your Success?",
         description:
           "Let's shape your business future with intelligent AI-driven automations.",
-        button: cta("Get in Touch", "/contact"),
+        button: cta("Get In Touch", "/contact"),
       },
       seo: {
         title: "AI Automation Development | AgileMorph Solutions",
@@ -863,10 +863,10 @@ function buildServicePages(manifest) {
         name,
       })),
       cta: {
-        heading: "Ready to Build Your Website?",
+        heading: "Ready To Build Your Website?",
         description:
           "Let's create a digital presence that drives growth for your business.",
-        button: cta("Get in Touch", "/contact"),
+        button: cta("Get In Touch", "/contact"),
       },
       seo: {
         title: "Website Development - AgileMorph Solutions",
@@ -888,7 +888,7 @@ function buildServicePages(manifest) {
         "2025/03/Social-Media-Marketing.svg",
         "Digital Marketing",
       ),
-      heroCta: cta("Get in Touch", "/contact"),
+      heroCta: cta("Get In Touch", "/contact"),
       capabilitiesHeading: "Our Digital Marketing Services",
       capabilities: [
         {
@@ -985,10 +985,10 @@ function buildServicePages(manifest) {
         "Ahrefs",
       ].map((name) => ({ _type: "technologyItem", name })),
       cta: {
-        heading: "Ready to Grow Your Brand?",
+        heading: "Ready To Grow Your Brand?",
         description:
           "Let's build a digital marketing strategy that delivers measurable results.",
-        button: cta("Get in Touch", "/contact"),
+        button: cta("Get In Touch", "/contact"),
       },
       seo: {
         title: "Digital Marketing Services - AgileMorph Solutions",
@@ -1010,7 +1010,7 @@ function buildServicePages(manifest) {
         "2025/03/Administrative-Support.svg",
         "Virtual Assistance",
       ),
-      heroCta: cta("Get in Touch", "/contact"),
+      heroCta: cta("Get In Touch", "/contact"),
       capabilitiesHeading: "Our Virtual Assistance Services",
       capabilities: [
         {
@@ -1094,10 +1094,10 @@ function buildServicePages(manifest) {
         name,
       })),
       cta: {
-        heading: "Ready to Boost Your Productivity?",
+        heading: "Ready To Boost Your Productivity?",
         description:
           "Let our virtual assistants handle the tasks so you can focus on what matters.",
-        button: cta("Get in Touch", "/contact"),
+        button: cta("Get In Touch", "/contact"),
       },
       seo: {
         title: "Virtual Assistance Services - AgileMorph Solutions",
@@ -1169,7 +1169,7 @@ function buildPricingPage() {
     _type: "pricingPage",
     hero: {
       eyebrow: "Pricing",
-      heading: "Straightforward engagements.\nPredictable outcomes.",
+      heading: "Straightforward Engagements.\nPredictable Outcomes.",
       description:
         "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer, both structured around delivery, not hours.",
     },
@@ -1328,10 +1328,10 @@ function buildPricingPage() {
       ],
     },
     cta: {
-      heading: "Start with a free\ndiscovery audit.",
+      heading: "Start With A Free\nDiscovery Audit.",
       headingAccent: "discovery audit.",
-      primaryCta: cta("Book a discovery call", "/contact#book"),
-      secondaryCta: cta("See what we build", "/services"),
+      primaryCta: cta("Book A Discovery Call", "/contact#book"),
+      secondaryCta: cta("See What We Build", "/services"),
     },
     seo: {
       title: "Pricing, AgileMorph Solutions",
@@ -1362,16 +1362,16 @@ function buildServicesIndexPage() {
     _id: "servicesIndexPage",
     _type: "servicesIndexPage",
     hero: {
-      eyebrow: "What we do",
-      heading: "Services built for modern operations",
+      eyebrow: "What We Do",
+      heading: "Services Built For Modern Operations",
       description:
         "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
     },
     cta: {
-      heading: "Not sure where to start?",
+      heading: "Not Sure Where To Start?",
       description:
         "Book a discovery call and we'll map the highest-impact automation and supporting services for your team.",
-      button: cta("Get in Touch", "/contact#book"),
+      button: cta("Get In Touch", "/contact#book"),
     },
     seo: {
       title: "Services | AgileMorph Solutions",

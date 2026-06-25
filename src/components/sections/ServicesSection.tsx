@@ -92,7 +92,7 @@ function GeneralServicesSection({ services }: { services: ServicePageListItem[] 
 
       <AnimateOnScroll delay={80}>
         <MobileAutoCarousel
-          ariaLabel="General services"
+          ariaLabel="General Services"
           desktopClassName="hidden gap-5 md:grid md:grid-cols-2 lg:grid-cols-3"
           className="md:contents"
           mobileTrackClassName="gap-0"

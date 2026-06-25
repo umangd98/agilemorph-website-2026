@@ -6,7 +6,7 @@ export const pricingPageFallback: PricingPage = {
   _type: "pricingPage",
   hero: {
     eyebrow: "Pricing",
-    heading: "Straightforward engagements.\nPredictable outcomes.",
+    heading: "Straightforward Engagements.\nPredictable Outcomes.",
     description:
       "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer. Both are structured around delivery, not hours.",
   },
@@ -149,10 +149,10 @@ export const pricingPageFallback: PricingPage = {
     ],
   },
   cta: {
-    heading: "Start with a free\ndiscovery audit.",
-    headingAccent: "discovery audit.",
-    primaryCta: { label: "Book a discovery call", href: "/contact#book" },
-    secondaryCta: { label: "See what we build", href: "/services" },
+    heading: "Start With A Free\nDiscovery Audit.",
+    headingAccent: "Discovery Audit.",
+    primaryCta: { label: "Book A Discovery Call", href: "/contact#book" },
+    secondaryCta: { label: "See What We Build", href: "/services" },
   },
   seo: {
     title: "Pricing | AgileMorph Solutions",

@@ -134,12 +134,12 @@ function SliderField({
 }
 
 const DEFAULT_COPY: Required<EfficiencyCalculatorContent> = {
-  heading: "Estimate your efficiency gain",
+  heading: "Estimate Your Efficiency Gain",
   description:
     "Adjust the sliders to see how much manual work AI automation could take off your team’s plate.",
   disclaimer:
     "Estimates based on typical automation outcomes. Book a discovery call for a scoped audit tailored to your operations.",
-  ctaLabel: "Book a discovery call",
+  ctaLabel: "Book A Discovery Call",
 };
 
 export function EfficiencyCalculator({
@@ -194,7 +194,7 @@ export function EfficiencyCalculator({
       >
         <SliderField
           id="efficiency-team-size"
-          label="Team on repetitive work"
+          label="Team On Repetitive Work"
           value={inputs.teamSize}
           min={EFFICIENCY_LIMITS.teamSize.min}
           max={EFFICIENCY_LIMITS.teamSize.max}
@@ -203,7 +203,7 @@ export function EfficiencyCalculator({
         />
         <SliderField
           id="efficiency-hours"
-          label="Manual hours / person / week"
+          label="Manual Hours / Person / Week"
           value={inputs.hoursPerWeek}
           min={EFFICIENCY_LIMITS.hoursPerWeek.min}
           max={EFFICIENCY_LIMITS.hoursPerWeek.max}
@@ -212,7 +212,7 @@ export function EfficiencyCalculator({
         />
         <SliderField
           id="efficiency-rate"
-          label="Average hourly cost"
+          label="Average Hourly Cost"
           value={inputs.hourlyRate}
           min={EFFICIENCY_LIMITS.hourlyRate.min}
           max={EFFICIENCY_LIMITS.hourlyRate.max}
@@ -223,7 +223,7 @@ export function EfficiencyCalculator({
         />
         <SliderField
           id="efficiency-automatable"
-          label="Share we can automate"
+          label="Share We Can Automate"
           value={inputs.automatablePercent}
           min={EFFICIENCY_LIMITS.automatablePercent.min}
           max={EFFICIENCY_LIMITS.automatablePercent.max}

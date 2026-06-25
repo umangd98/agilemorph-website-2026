@@ -48,7 +48,7 @@ function buildPricingPage() {
     _type: "pricingPage",
     hero: {
       eyebrow: "Pricing",
-      heading: "Straightforward engagements.\nPredictable outcomes.",
+      heading: "Straightforward Engagements.\nPredictable Outcomes.",
       description:
         "Every engagement begins with a discovery audit. From there, you choose a fixed-scope project or an ongoing retainer, both structured around delivery, not hours.",
     },
@@ -207,10 +207,10 @@ function buildPricingPage() {
       ],
     },
     cta: {
-      heading: "Start with a free\ndiscovery audit.",
-      headingAccent: "discovery audit.",
-      primaryCta: cta("Book a discovery call", "/contact#book"),
-      secondaryCta: cta("See what we build", "/services"),
+      heading: "Start With A Free\nDiscovery Audit.",
+      headingAccent: "Discovery Audit.",
+      primaryCta: cta("Book A Discovery Call", "/contact#book"),
+      secondaryCta: cta("See What We Build", "/services"),
     },
     seo: {
       title: "Pricing, AgileMorph Solutions",

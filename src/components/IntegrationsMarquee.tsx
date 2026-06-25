@@ -9,7 +9,7 @@ type IntegrationsMarqueeProps = {
 };
 
 export function IntegrationsMarquee({
-  heading = "We integrate with 500+ platforms seamlessly",
+  heading = "We Integrate With 500+ Platforms Seamlessly",
   items = [],
 }: IntegrationsMarqueeProps) {
   if (!items.length) return null;

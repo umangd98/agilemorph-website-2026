@@ -34,7 +34,7 @@ type ContactSectionProps = {
 };
 
 const defaultDiscoveryCall: Required<DiscoveryCallContent> = {
-  title: "Book a discovery call",
+  title: "Book A Discovery Call",
   subtitle: "15 Minute Discovery with Umang Dhandhania",
   description:
     "Pick a time that works for you. We'll discuss your goals and whether AgileMorph is the right fit.",
@@ -45,7 +45,7 @@ const defaultDiscoveryCall: Required<DiscoveryCallContent> = {
     "Discuss goals, scope, and fit",
     "Leave with clear next steps",
   ],
-  ctaLabel: "Book a slot",
+  ctaLabel: "Book A Slot",
 };
 
 const inputClassName =
@@ -276,7 +276,7 @@ export function ContactSection({
       <Container className="relative">
         <AnimateOnScroll className="mx-auto max-w-3xl text-center">
           <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
-            Get in touch
+            Get In Touch
           </p>
           <h1
             id="contact-heading"
@@ -326,7 +326,7 @@ export function ContactSection({
               <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
                 <SectionCardHeader
                   icon={<MessageSquare size={18} />}
-                  title="Send a message"
+                  title="Send A Message"
                   subtitle="We typically respond within one business day."
                 />
 

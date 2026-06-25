@@ -158,8 +158,8 @@ function AllServicesList() {
 }
 
 function CatalogHeroCopy({
-  eyebrow = "What we do",
-  heading = "Services built for modern operations",
+  eyebrow = "What We Do",
+  heading = "Services Built For Modern Operations",
   description = "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and web development when you need the full stack.",
 }: {
   eyebrow?: string;
@@ -271,12 +271,12 @@ export function ServicesCatalogSection({
       {additional.length > 0 ? (
         <section
           className="border-t border-border bg-surface py-section max-sm:py-section-sm"
-          aria-label="General services"
+          aria-label="General Services"
         >
           <Container>
             <AnimateOnScroll className="mb-6">
               <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                General services
+                General Services
               </p>
               <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base">
                 Supporting services that keep growth, operations, and delivery moving alongside
@@ -285,7 +285,7 @@ export function ServicesCatalogSection({
             </AnimateOnScroll>
 
             <MobileAutoCarousel
-              ariaLabel="General services"
+              ariaLabel="General Services"
               desktopClassName="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-3"
               className="md:contents"
               mobileTrackClassName="gap-3"
