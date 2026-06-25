@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
+import { TidioChat } from "@/components/TidioChat";
 import { getSiteSettings } from "@/lib/get-site-settings";
 
 const headingFont = Montserrat({
@@ -47,6 +48,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-full flex-col">
         <ThemeProvider>{children}</ThemeProvider>
+        <TidioChat />
       </body>
     </html>
   );
