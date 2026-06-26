@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { SiteNavbar } from "@/components/SiteNavbar";
@@ -16,8 +17,11 @@ import { seoToMetadata } from "@/lib/seo";
 import { resolveStatsSection } from "@/data/site-metrics";
 import { getServicePages } from "@/lib/services";
 import { sanityFetch } from "@/sanity/fetch";
-import { homepageQuery } from "@/sanity/queries";
-import type { Homepage } from "@/sanity/types";
+import {
+  homepageAboveFoldQuery,
+  homepageBelowFoldQuery,
+} from "@/sanity/queries";
+import type { HomepageAboveFold, HomepageBelowFold } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
   title: "AGILEMORPH | Digital Accelerators",
@@ -26,22 +30,61 @@ const fallbackMetadata: Metadata = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const homepage = await sanityFetch<Homepage | null>({
-    query: homepageQuery,
+  const homepage = await sanityFetch<HomepageAboveFold | null>({
+    query: homepageAboveFoldQuery,
     tags: ["homepage"],
   });
 
   return seoToMetadata(homepage?.seo, fallbackMetadata);
 }
 
-export default async function HomePage() {
+async function BelowFoldSections() {
   const [homepage, servicePages] = await Promise.all([
-    sanityFetch<Homepage | null>({
-      query: homepageQuery,
+    sanityFetch<HomepageBelowFold | null>({
+      query: homepageBelowFoldQuery,
       tags: ["homepage"],
     }),
     getServicePages(),
   ]);
+
+  const metrics = resolveStatsSection(homepage?.stats);
+
+  return (
+    <>
+      <ProcessSection
+        heading={homepage?.process?.heading}
+        subheading={homepage?.process?.subheading}
+        steps={homepage?.process?.steps}
+      />
+      <ServicesSection
+        eyebrow={homepage?.services?.eyebrow}
+        heading={homepage?.services?.heading}
+        pages={servicePages}
+      />
+      <WhyUsSection
+        heading={homepage?.whyUs?.heading}
+        items={homepage?.whyUs?.items}
+        efficiencyCalculator={homepage?.whyUs?.efficiencyCalculator}
+      />
+      <StatsSection
+        eyebrow={metrics.eyebrow}
+        heading={metrics.heading}
+        items={metrics.items}
+      />
+      <TestimonialsSection
+        eyebrow={homepage?.testimonials?.eyebrow}
+        heading={homepage?.testimonials?.heading}
+        items={homepage?.testimonials?.items}
+      />
+    </>
+  );
+}
+
+export default async function HomePage() {
+  const homepage = await sanityFetch<HomepageAboveFold | null>({
+    query: homepageAboveFoldQuery,
+    tags: ["homepage"],
+  });
 
   if (!homepage) {
     return (
@@ -57,49 +100,23 @@ export default async function HomePage() {
     );
   }
 
-  const metrics = resolveStatsSection(homepage.stats);
-
   return (
     <>
       <SiteNavbar />
 
       <main className="flex-1">
         <HeroSection hero={homepage.hero} />
-        {/* Partners strip - certified partnerships, directly under hero as social proof */}
         <PartnersSection
           heading={homepage.partners?.heading}
           items={homepage.partners?.items}
         />
-        {/* Integrations marquee - scrolling tool logos, just below partners */}
         <IntegrationsMarquee
           heading={homepage.integrations?.heading}
           items={homepage.integrations?.items}
         />
-        <ProcessSection
-          heading={homepage.process?.heading}
-          subheading={homepage.process?.subheading}
-          steps={homepage.process?.steps}
-        />
-        <ServicesSection
-          eyebrow={homepage.services?.eyebrow}
-          heading={homepage.services?.heading}
-          pages={servicePages}
-        />
-        <WhyUsSection
-          heading={homepage.whyUs?.heading}
-          items={homepage.whyUs?.items}
-          efficiencyCalculator={homepage.whyUs?.efficiencyCalculator}
-        />
-        <StatsSection
-          eyebrow={metrics.eyebrow}
-          heading={metrics.heading}
-          items={metrics.items}
-        />
-        <TestimonialsSection
-          eyebrow={homepage.testimonials?.eyebrow}
-          heading={homepage.testimonials?.heading}
-          items={homepage.testimonials?.items}
-        />
+        <Suspense fallback={null}>
+          <BelowFoldSections />
+        </Suspense>
       </main>
 
       <SiteFooter />

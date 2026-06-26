@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: [
+      "lucide-react",
+      "gsap",
+      "@portabletext/react",
+      "@sanity/image-url",
+    ],
   },
   images: {
     remotePatterns: [
