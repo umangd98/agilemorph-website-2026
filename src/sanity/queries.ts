@@ -182,6 +182,71 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   seo ${seoProjection}
 }`;
 
+export const homepageAboveFoldQuery = `*[_type == "homepage"][0]{
+  _id,
+  _type,
+  hero {
+    badge,
+    heading,
+    headingAccent,
+    tagline[]{
+      ...,
+      markDefs[]{
+        ...,
+        _type == "link" => {
+          href
+        }
+      }
+    },
+    ctaPrimary ${ctaProjection},
+    ctaSecondary ${ctaProjection},
+    image ${imageProjection}
+  },
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
+  },
+  integrations {
+    heading,
+    items[] ${integrationItemProjection}
+  },
+  seo ${seoProjection}
+}`;
+
+export const homepageBelowFoldQuery = `*[_type == "homepage"][0]{
+  _id,
+  _type,
+  process {
+    heading,
+    subheading,
+    steps[] ${processStepProjection}
+  },
+  services {
+    eyebrow,
+    heading
+  },
+  whyUs {
+    heading,
+    items[] ${whyUsItemProjection},
+    efficiencyCalculator {
+      heading,
+      description,
+      disclaimer,
+      ctaLabel
+    }
+  },
+  stats {
+    eyebrow,
+    heading,
+    items[] ${statProjection}
+  },
+  testimonials {
+    eyebrow,
+    heading,
+    items[] ${testimonialProjection}
+  }
+}`;
+
 export const aboutPageQuery = `*[_type == "aboutPage"][0]{
   _id,
   _type,

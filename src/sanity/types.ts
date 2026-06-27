@@ -159,6 +159,16 @@ export interface HomepageHero {
   image?: SanityImageAsset;
 }
 
+export type HomepageAboveFold = Pick<
+  Homepage,
+  "_id" | "_type" | "hero" | "partners" | "integrations" | "seo"
+>;
+
+export type HomepageBelowFold = Pick<
+  Homepage,
+  "_id" | "_type" | "process" | "services" | "whyUs" | "stats" | "testimonials"
+>;
+
 export interface Homepage {
   _id: string;
   _type: "homepage";
