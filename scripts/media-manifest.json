@@ -1655,18 +1655,6 @@
     "id": "image-fdad1fd1730575989adde64ce0a3ec16c4aaa70f-24x24-svg",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/fdad1fd1730575989adde64ce0a3ec16c4aaa70f-24x24.svg"
   },
-  "team-leads/muskan-agrawal.png": {
-    "id": "image-b8269897971df5641a071786a12a661efc9d9d0e-480x560-png",
-    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/b8269897971df5641a071786a12a661efc9d9d0e-480x560.png"
-  },
-  "team-leads/kaustumbh-jaiswal.png": {
-    "id": "image-9181b39327db1768dc5f45f2aa7bb4bbd829a9b6-480x560-png",
-    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/9181b39327db1768dc5f45f2aa7bb4bbd829a9b6-480x560.png"
-  },
-  "team-leads/umang-dhandhania.png": {
-    "id": "image-8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560-png",
-    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8fe99ac9ae96f637249a6bd362bf7b763b77d424-480x560.png"
-  },
   "integrations/javascript.svg": {
     "id": "image-5a6d04be12b2f84db5e0af088f05dd9782312f3c-24x24-svg",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/5a6d04be12b2f84db5e0af088f05dd9782312f3c-24x24.svg"
@@ -1734,5 +1722,17 @@
   "integrations/googleworkspace.svg": {
     "id": "image-29389ddaeaaad4316c310143e09ffe3c151f7052-24x24-svg",
     "url": "https://cdn.sanity.io/images/3vo0fmfa/production/29389ddaeaaad4316c310143e09ffe3c151f7052-24x24.svg"
+  },
+  "team-leads/kaustumbh-jaiswal.png": {
+    "id": "image-01abd2fb213d1cd57edb6988ca888e1b0be193e6-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/01abd2fb213d1cd57edb6988ca888e1b0be193e6-480x560.png"
+  },
+  "team-leads/muskan-agrawal.png": {
+    "id": "image-8f789fea4758c3df1a9d02e0b66618eaa8618179-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/8f789fea4758c3df1a9d02e0b66618eaa8618179-480x560.png"
+  },
+  "team-leads/umang-dhandhania.png": {
+    "id": "image-3382df92751280c60e97b4f4d9d3cc76a0af02bd-480x560-png",
+    "url": "https://cdn.sanity.io/images/3vo0fmfa/production/3382df92751280c60e97b4f4d9d3cc76a0af02bd-480x560.png"
   }
 }

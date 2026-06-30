@@ -4,7 +4,8 @@ import { Sparkles } from "lucide-react";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Container } from "@/components/Container";
-import { TransparentKeyedImage } from "@/components/TransparentKeyedImage";
+import { hasImageAsset } from "@/components/SanityImage";
+import { urlForPortraitImage } from "@/sanity/image";
 import type { TeamLeadItem } from "@/sanity/types";
 
 type TeamLeadCardProps = TeamLeadItem & {
@@ -32,21 +33,23 @@ function TeamLeadCard({
           aria-hidden="true"
         />
 
-        <div className="relative z-10 mx-auto mb-[-7.5rem] h-70 w-60 sm:mb-[-8rem] sm:h-74 sm:w-62">
+        <div className="relative z-10 mx-auto mb-[-7.5rem] h-72 w-60 sm:mb-[-8rem] sm:h-76 sm:w-62">
           <div
-            className="pointer-events-none absolute inset-x-4 bottom-0 top-8 rounded-[2rem] bg-linear-to-b from-primary/12 via-mint/35 to-transparent opacity-90 dark:from-primary/20 dark:via-primary/8 dark:to-transparent"
+            className="pointer-events-none absolute inset-x-3 bottom-0 top-6 rounded-[2rem] bg-linear-to-b from-mint via-mint/90 to-mint/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] dark:from-primary/18 dark:via-primary/10 dark:to-transparent dark:shadow-none"
             aria-hidden="true"
           />
           <div
-            className="absolute inset-x-6 bottom-2 h-8 rounded-full bg-foreground/10 blur-xl transition-all duration-500 group-hover:inset-x-4 group-hover:bg-primary/20 dark:bg-black/35 dark:group-hover:bg-primary/25"
+            className="absolute inset-x-6 bottom-2 h-8 rounded-full bg-foreground/8 blur-xl transition-all duration-500 group-hover:inset-x-4 group-hover:bg-primary/15 dark:bg-black/35 dark:group-hover:bg-primary/25"
             aria-hidden="true"
           />
-          {image ? (
-            <TransparentKeyedImage
-              image={image}
+          {hasImageAsset(image) ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={urlForPortraitImage(image).url()}
               alt={image.alt ?? name}
-              className="object-contain object-bottom drop-shadow-[0_20px_32px_rgba(15,23,42,0.18)] transition-transform duration-500 group-hover:scale-[1.03] dark:drop-shadow-[0_24px_40px_rgba(0,0,0,0.55)]"
-              priority={index === 0}
+              decoding={index === 0 ? "sync" : "async"}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              className="absolute inset-0 h-full w-full object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.03] [filter:drop-shadow(0_18px_28px_rgba(15,23,42,0.16))] dark:[filter:drop-shadow(0_24px_40px_rgba(0,0,0,0.5))]"
             />
           ) : null}
         </div>

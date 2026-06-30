@@ -136,8 +136,16 @@ async function processPortrait(url: string) {
 
     ctx.drawImage(img, 0, 0, width, height);
     const imageData = ctx.getImageData(0, 0, width, height);
-    keyOutFakeTransparency(imageData);
-    ctx.putImageData(imageData, 0, 0);
+
+    const { data } = imageData;
+    const cornerIndexes = [0, width - 1, (height - 1) * width, (height - 1) * width + (width - 1)];
+    const alreadyTransparent = cornerIndexes.every((index) => data[index * 4 + 3]! < 12);
+
+    if (!alreadyTransparent) {
+      keyOutFakeTransparency(imageData);
+      ctx.putImageData(imageData, 0, 0);
+    }
+
     return canvas.toDataURL("image/png");
   } finally {
     URL.revokeObjectURL(blobUrl);
