@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { MotionProvider } from "@/components/MotionProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
 import { TidioChat } from "@/components/TidioChat";
 import { getSiteSettings } from "@/lib/get-site-settings";
 
-const headingFont = Montserrat({
-  variable: "--font-heading-var",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["600", "700"],
 });
 
-const bodyFont = Inter({
-  variable: "--font-body-var",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -40,14 +40,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${bodyFont.variable} dark`}
+      className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
       suppressHydrationWarning
     >
       <head>
         <ThemeScript />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </ThemeProvider>
         <TidioChat />
       </body>
     </html>

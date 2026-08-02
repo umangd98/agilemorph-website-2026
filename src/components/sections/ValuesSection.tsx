@@ -37,7 +37,7 @@ export function ValuesSection({
 
   return (
     <section
-      className="bg-background py-section max-sm:py-section-sm"
+      className="border-t border-line py-24 sm:py-32"
       aria-labelledby="values-heading"
     >
       <Container>

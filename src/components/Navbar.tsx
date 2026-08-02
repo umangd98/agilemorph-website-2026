@@ -268,14 +268,10 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                       onMouseLeave={scheduleMenuClose}
                     >
                       <div
-                        className={`flex items-center rounded-lg transition-all duration-200 ${
+                        className={`flex items-center rounded-full transition-colors duration-200 ${
                           servicesOpen || isActive
-                            ? isDarkTheme
-                              ? "bg-white/10 text-white"
-                              : "bg-primary/8 text-primary"
-                            : isDarkTheme
-                              ? "text-slate-300 hover:bg-white/8 hover:text-white"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                            ? "text-fg"
+                            : "text-fg-muted hover:text-fg"
                         }`}
                       >
                         <Link
@@ -405,19 +401,13 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className={`relative rounded-lg px-4 py-2 font-body text-sm font-medium transition-all duration-200 ${
-                        isActive
-                          ? isDarkTheme
-                            ? "bg-white/12 text-white"
-                            : "bg-primary/8 text-primary"
-                          : isDarkTheme
-                            ? "text-slate-300 hover:bg-white/8 hover:text-white"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      className={`relative rounded-full px-4 py-2 font-body text-sm transition-colors duration-200 ${
+                        isActive ? "text-fg" : "text-fg-muted hover:text-fg"
                       }`}
                     >
                       {link.label}
                       {isActive && (
-                        <span className="absolute bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary" />
+                        <span className="absolute bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-signal" />
                       )}
                     </Link>
                   </li>
@@ -427,7 +417,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
 
             <div className="hidden items-center gap-2 md:flex">
               <ThemeToggle inverse={isDarkTheme && inverseHeader} />
-              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary-dark hover:shadow-primary/40 hover:shadow-xl active:scale-95">
+              <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95">
                 Get In Touch
                 <ArrowRight
                   size={14}
@@ -440,11 +430,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
               <ThemeToggle inverse={isDarkTheme && inverseHeader} />
               <button
                 type="button"
-                className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
-                  isDarkTheme
-                    ? "text-white hover:bg-white/10"
-                    : "text-foreground hover:bg-muted"
-                }`}
+                className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg md:hidden"
                 onClick={() => setMenuOpen((v) => !v)}
                 aria-expanded={menuOpen}
                 aria-label="Toggle menu"
@@ -611,7 +597,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
 
           <div className="border-t border-border p-5">
             <CalendlyBookButton
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-signal py-3.5 font-body text-sm font-medium text-bg transition-opacity hover:opacity-90 active:scale-95"
               onBook={() => setMenuOpen(false)}
             >
               Get In Touch

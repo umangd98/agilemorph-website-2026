@@ -28,13 +28,11 @@ type ButtonAsLink = ButtonBaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-primary text-foreground font-semibold hover:bg-primary-dark focus-visible:outline-primary",
-  secondary:
-    "bg-surface-elevated text-foreground hover:bg-border focus-visible:outline-foreground",
+  primary: "bg-signal text-bg font-medium hover:opacity-90",
+  secondary: "bg-fg text-bg font-medium hover:opacity-90",
   outline:
-    "border border-border bg-transparent text-foreground hover:bg-surface-elevated focus-visible:outline-foreground",
-  ghost: "bg-transparent text-foreground hover:bg-surface-elevated",
+    "border border-line bg-transparent text-fg hover:border-line-strong hover:bg-bg-elevated",
+  ghost: "bg-transparent text-fg-muted hover:bg-bg-elevated hover:text-fg",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -55,7 +53,7 @@ export function Button({
   children,
   variant = "primary",
   size = "md",
-  shape = "default",
+  shape = "pill",
   className = "",
   iconRight,
   iconLeft,

@@ -8,32 +8,59 @@
  */
 
 @theme {
-  /* Brand accent */
-  --color-primary: #22c55e;
-  --color-primary-dark: #16a34a;
-  --color-primary-light: #bbf7d0;
+  /* ============================================================
+     Design tokens — Quido "production console" vocabulary.
+     Canonical names: bg / fg / line / signal (AgileMorph green).
+     @theme holds LIGHT values; .dark overrides below.
+     ============================================================ */
 
-  /* Backgrounds - light mode defaults (overridden in .dark) */
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surface-elevated: #ffffff;
-  --color-footer: #f1f5f9;
-  --color-mint: #ecfdf5;
-  --color-mint-dark: #d1fae5;
-  --color-card: #ffffff;
-  --color-card-hover: #f8fafc;
+  /* Surfaces */
+  --color-bg: #fbfbfa;
+  --color-bg-elevated: #f3f3f1;
+  --color-bg-raised: #ebebe8;
 
   /* Text */
-  --color-foreground: #0f172a;
-  --color-muted-foreground: #475569;
+  --color-fg: #121316;
+  --color-fg-muted: #565b62;
+  --color-fg-dim: #6c7178;
 
-  /* UI chrome */
-  --color-border: #e2e8f0;
+  /* Lines */
+  --color-line: rgba(0, 0, 0, 0.1);
+  --color-line-strong: rgba(0, 0, 0, 0.16);
+
+  /* Ambient grid (hero) */
+  --color-grid-line: rgba(0, 0, 0, 0.06);
+  --color-grid-accent: rgba(0, 0, 0, 0.1);
+
+  /* Accent — AgileMorph green, deepened for legibility on paper */
+  --color-signal: #15803d;
+  --color-signal-dim: #166534;
+  --color-fail: #dc2626;
+
+  /* ---- Migration aliases: legacy names mapped to new values so
+     un-ported sections keep rendering during the port. Remove in
+     the final cleanup pass. ---- */
+  --color-primary: #15803d;
+  --color-primary-dark: #166534;
+  --color-primary-light: #bbf7d0;
+  --color-background: #fbfbfa;
+  --color-surface: #f3f3f1;
+  --color-surface-elevated: #ffffff;
+  --color-footer: #f3f3f1;
+  --color-mint: #ecfdf5;
+  --color-mint-dark: #d1fae5;
+  --color-card: #f3f3f1;
+  --color-card-hover: #ebebe8;
+  --color-foreground: #121316;
+  --color-muted-foreground: #565b62;
+  --color-border: rgba(0, 0, 0, 0.1);
   --color-muted: #f1f5f9;
 
-  /* Fonts - wired to next/font CSS vars in layout.tsx */
-  --font-heading: var(--font-heading-var), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-body-var), ui-sans-serif, system-ui, sans-serif;
+  /* Fonts — Geist via next/font (wired in layout.tsx) */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Radii */
   --radius-sm: 0.25rem;
@@ -47,9 +74,6 @@
   /* Section spacing */
   --spacing-section: 7.5rem;
   --spacing-section-sm: 4rem;
-
-  /* Layout */
-  /* Moved to :root to avoid tailwind v4 token conflicts */
 }
 
 :root {
@@ -73,18 +97,39 @@
 }
 
 .dark {
-  --color-background: #060908;
-  --color-surface: #0a0e0c;
-  --color-surface-elevated: #101614;
+  color-scheme: dark;
+
+  /* Canonical tokens — dark values */
+  --color-bg: #08090a;
+  --color-bg-elevated: #0e0f11;
+  --color-bg-raised: #131517;
+  --color-fg: #f2f3f4;
+  --color-fg-muted: #9499a1;
+  --color-fg-dim: #767c84;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
+  --color-grid-line: rgba(255, 255, 255, 0.09);
+  --color-grid-accent: rgba(255, 255, 255, 0.14);
+  --color-signal: #22c55e;
+  --color-signal-dim: #15803d;
+  --color-fail: #f06b6b;
+
+  /* Legacy aliases — dark values */
+  --color-primary: #22c55e;
+  --color-primary-dark: #16a34a;
+  --color-primary-light: #bbf7d0;
+  --color-background: #08090a;
+  --color-surface: #0e0f11;
+  --color-surface-elevated: #131517;
   --color-footer: #050706;
   --color-mint: #0c1411;
   --color-mint-dark: #080d0b;
-  --color-card: #101614;
-  --color-card-hover: #141a18;
-  --color-foreground: #f1f5f9;
-  --color-muted-foreground: #94a3b8;
-  --color-border: #1c2622;
-  --color-muted: #141a18;
+  --color-card: #0e0f11;
+  --color-card-hover: #131517;
+  --color-foreground: #f2f3f4;
+  --color-muted-foreground: #9499a1;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-muted: #131517;
   --header-bg: rgba(6, 9, 8, 0.92);
   --header-border: rgba(255, 255, 255, 0.08);
   --header-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
@@ -986,8 +1031,10 @@ header[data-header="inverse"] {
   }
 
   .site-header {
-    background: var(--color-background);
+    background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .site-header--scrolled {
@@ -1246,7 +1293,165 @@ main {
 }
 
 .prose-blog a {
-  color: var(--color-primary);
+  color: var(--color-signal);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* ============================================================
+   Quido "production console" primitives — ported vocabulary.
+   ============================================================ */
+
+/* Tabular figures for all metrics/data */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* System label — uppercase mono eyebrow */
+.syslabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
+}
+
+/* Text selection — signal-green tint */
+::selection {
+  background: rgba(34, 197, 94, 0.22);
+  color: #fff;
+}
+:root:not(.dark) ::selection {
+  background: rgba(21, 128, 61, 0.18);
+  color: #121316;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Custom text-wrap utilities */
+@utility text-balance {
+  text-wrap: balance;
+}
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/* Ambient signal pulse for status dots */
+@keyframes signalPulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
+  }
+}
+.signal-dot {
+  animation: signalPulse 2.4s ease-in-out infinite;
+}
+
+/* Hero word-reveal + ambient grid animations */
+@keyframes word-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-15px) translateX(7px);
+    opacity: 0.8;
+  }
+}
+
+/* Word reveal — start hidden; the Hero sets the animation per word. */
+.word {
+  display: inline-block;
+  opacity: 0;
+  margin: 0 0.15em;
+}
+
+/* Client logos — monochrome treatment matching the console aesthetic.
+   Assets are full-colour on white; dark theme keys them out. */
+.client-logo {
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+.dark .client-logo {
+  filter: grayscale(1) invert(1);
+  mix-blend-mode: screen;
+  opacity: 0.72;
+}
+.group:hover .client-logo {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-dot,
+  .word {
+    animation: none !important;
+  }
+  .word {
+    opacity: 1;
+  }
 }

@@ -23,7 +23,7 @@ export function SubServiceFeaturesSection({
   const { before, highlight } = splitHeadingForGradient(heading);
 
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="sub-features-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-features-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-features-heading" className="sub-service-section-title">

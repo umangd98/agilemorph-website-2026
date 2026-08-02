@@ -126,7 +126,7 @@ export function BlogListSection({
           <AnimateOnScroll className="relative z-10 max-w-2xl pb-14 max-sm:pb-10">
             {eyebrow ? (
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5">
-                <span className="size-1.5 rounded-full bg-primary" />
+                <span className="size-1.5 rounded-full bg-signal" />
                 <p className="font-body text-xs font-bold uppercase tracking-widest text-primary">
                   {eyebrow}
                 </p>
@@ -262,7 +262,7 @@ export function BlogListSection({
                       <div className="flex flex-col justify-center p-8 lg:p-12">
                         <div className="mb-3 flex items-center gap-3">
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-body text-xs font-bold uppercase tracking-widest text-primary">
-                            <span className="size-1.5 rounded-full bg-primary" />
+                            <span className="size-1.5 rounded-full bg-signal" />
                             Featured
                           </span>
                           {featuredPost.categories?.length ? (
@@ -299,7 +299,7 @@ export function BlogListSection({
                               </>
                             ) : null}
                           </div>
-                          <span className="relative z-10 inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 font-body text-sm font-semibold text-white transition-colors hover:bg-primary-dark">
+                          <span className="relative z-10 inline-flex items-center gap-1.5 rounded-lg bg-signal px-4 py-2 font-body text-sm font-semibold text-bg transition-colors hover:opacity-90">
                             Read more <ArrowRight className="size-3.5" />
                           </span>
                         </div>
@@ -408,7 +408,7 @@ export function BlogListSection({
                     aria-current={page === currentPage ? "page" : undefined}
                     className={
                       page === currentPage
-                        ? "inline-flex h-10 min-w-10 items-center justify-center rounded-xl bg-primary px-3 font-body text-sm font-semibold text-white shadow-sm shadow-primary/30"
+                        ? "inline-flex h-10 min-w-10 items-center justify-center rounded-xl bg-signal px-3 font-body text-sm font-semibold text-bg shadow-sm shadow-primary/30"
                         : "inline-flex h-10 min-w-10 items-center justify-center rounded-xl border border-border bg-surface px-3 font-body text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
                     }
                   >

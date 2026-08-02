@@ -261,7 +261,7 @@ export function ContactSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
+      className="scroll-mt-24 border-t border-line py-24 sm:py-32"
       aria-labelledby="contact-heading"
     >
       <div
@@ -453,7 +453,7 @@ export function ContactSection({
                       <button
                         type="submit"
                         disabled={formStatus === "submitting"}
-                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-body text-sm font-bold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
+                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-signal px-6 py-3 font-body text-sm font-bold text-bg transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         {formStatus === "submitting" ? "Sending…" : "Send message"}
                         <ArrowRight size={15} />
@@ -499,7 +499,7 @@ export function ContactSection({
                   </ul>
 
                   <div className="mt-auto border-t border-primary/10 pt-5">
-                    <CalendlyBookButton className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark active:scale-[0.99]">
+                    <CalendlyBookButton className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-signal px-6 py-3.5 font-body text-sm font-bold text-bg shadow-lg shadow-primary/20 transition-all hover:opacity-90 active:scale-[0.99]">
                       {booking.ctaLabel}
                       <ArrowRight
                         size={15}

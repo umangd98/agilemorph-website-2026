@@ -21,7 +21,7 @@ export function CompanyStorySection({
   image,
 }: CompanyStorySectionProps) {
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="company-story-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="company-story-heading">
       <Container>
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
           <AnimateOnScroll className="min-w-0">
