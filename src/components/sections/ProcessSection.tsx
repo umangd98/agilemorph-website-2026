@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 import { Container, SectionHeader } from "@/components/ui";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { SanityImage } from "@/components/SanityImage";
+import { ProcessArtwork } from "@/components/sections/ProcessArtwork";
 import type { ProcessStep } from "@/sanity/types";
 
 type ProcessSectionProps = {
@@ -112,37 +112,22 @@ function ProcessStepCard({
           aria-hidden
         />
 
-        <div className="relative h-48 overflow-hidden bg-linear-to-br from-primary/6 via-background to-surface sm:h-52">
-          {step.image ? (
-            <SanityImage
-              image={step.image}
-              alt={step.image.alt ?? step.title}
-              fill
-              sizes="(max-width: 1024px) 100vw, 33vw"
-              className={`object-contain p-5 transition-transform duration-700 ease-out motion-reduce:transition-none ${
-                isOpen ? "scale-[1.04]" : "group-hover:scale-[1.02]"
-              }`}
-            />
-          ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-3 opacity-40">
-              <svg className="h-14 w-14 text-primary" viewBox="0 0 64 64" fill="none" aria-hidden>
-                <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" />
-                <path
-                  d="M20 32l8 8 16-16"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          )}
-
+        <div className="relative h-48 overflow-hidden border-b border-line bg-bg-raised sm:h-52">
+          {/* faint blueprint grid to seat the line art in the console aesthetic */}
           <div
-            className={`pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-linear-to-t from-background to-transparent transition-opacity duration-500 ${
-              isOpen ? "opacity-100" : "opacity-80"
-            }`}
             aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-60"
+            style={{
+              backgroundImage:
+                "linear-gradient(var(--color-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+          <ProcessArtwork
+            index={index}
+            className={`relative transition-transform duration-700 ease-out motion-reduce:transition-none ${
+              isOpen ? "scale-[1.04]" : "group-hover:scale-[1.02]"
+            }`}
           />
         </div>
 

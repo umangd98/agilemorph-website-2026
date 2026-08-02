@@ -17,7 +17,7 @@ export function AboutHeroSection({
 }: AboutHeroSectionProps) {
   return (
     <section
-      className="relative overflow-hidden pt-36 pb-20 sm:pt-40 sm:pb-24"
+      className="relative flex min-h-[60vh] flex-col justify-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20"
       aria-label={heading}
     >
       <div
@@ -43,7 +43,7 @@ export function AboutHeroSection({
         </svg>
       </div>
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-5xl lg:text-6xl">
             {heading}

@@ -1119,16 +1119,19 @@ header[data-header="inverse"] {
   }
 }
 
-/* Layout - prevent horizontal bleed from grids, marquees, and hero visuals */
+/* Layout - prevent horizontal bleed from grids, marquees, and hero visuals.
+   Use `clip` (not `hidden`): `overflow-x: hidden` coerces overflow-y to `auto`,
+   turning html/body into scroll containers and breaking `position: sticky` on
+   the header. `clip` stops horizontal bleed without creating a scroll container. */
 html {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   width: 100%;
   min-width: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 main {

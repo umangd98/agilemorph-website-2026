@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { MotionProvider } from "@/components/MotionProvider";
+import { ServiceWorkerCleanup } from "@/components/ServiceWorkerCleanup";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
 import { TidioChat } from "@/components/TidioChat";
@@ -45,6 +46,7 @@ export default function RootLayout({
     >
       <head>
         <ThemeScript />
+        <ServiceWorkerCleanup />
       </head>
       <body className="flex min-h-dvh flex-col">
         <ThemeProvider>
