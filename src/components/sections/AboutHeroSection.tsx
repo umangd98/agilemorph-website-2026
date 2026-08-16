@@ -17,7 +17,7 @@ export function AboutHeroSection({
 }: AboutHeroSectionProps) {
   return (
     <section
-      className="relative flex min-h-[60vh] flex-col justify-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20"
+      className="relative overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-16"
       aria-label={heading}
     >
       <div

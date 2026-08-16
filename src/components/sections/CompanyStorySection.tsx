@@ -2,15 +2,13 @@ import { Sparkles } from "lucide-react";
 
 import { Container } from "@/components/Container";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { SanityImage } from "@/components/SanityImage";
-import type { SanityImageAsset } from "@/sanity/types";
+import { CompanyStoryArtwork } from "@/components/sections/CompanyStoryArtwork";
 
 type CompanyStorySectionProps = {
   heading?: string;
   body?: string;
   promiseHeading?: string;
   promise?: string;
-  image?: SanityImageAsset;
 };
 
 export function CompanyStorySection({
@@ -18,14 +16,13 @@ export function CompanyStorySection({
   body,
   promiseHeading,
   promise,
-  image,
 }: CompanyStorySectionProps) {
   return (
     <section className="border-t border-line py-24 sm:py-32" aria-labelledby="company-story-heading">
       <Container>
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
           <AnimateOnScroll className="min-w-0">
-            <div className="rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-8">
+            <div className="rounded-3xl border border-line bg-bg-elevated p-6 sm:p-8">
               {heading ? (
                 <h2
                   id="company-story-heading"
@@ -59,19 +56,21 @@ export function CompanyStorySection({
             </div>
           </AnimateOnScroll>
 
-          {image ? (
-            <AnimateOnScroll delay={150} className="min-w-0">
-              <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-border bg-background p-6">
-                <SanityImage
-                  image={image}
-                  alt={image.alt ?? heading ?? "AgileMorph"}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain p-4"
-                />
-              </div>
-            </AnimateOnScroll>
-          ) : null}
+          <AnimateOnScroll delay={150} className="min-w-0">
+            <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-line bg-bg-raised">
+              {/* faint blueprint grid to seat the line art in the console aesthetic */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(var(--color-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px)",
+                  backgroundSize: "28px 28px",
+                }}
+              />
+              <CompanyStoryArtwork className="relative" />
+            </div>
+          </AnimateOnScroll>
         </div>
       </Container>
     </section>
