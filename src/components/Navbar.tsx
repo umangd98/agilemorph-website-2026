@@ -8,8 +8,6 @@ import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
-import { ThemeToggle } from "./ThemeToggle";
-import { useTheme } from "./ThemeProvider";
 import {
   getServiceIcon,
   type ServiceNavGroups,
@@ -164,7 +162,6 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
   const dropdownRef = useRef<HTMLLIElement>(null);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -224,7 +221,6 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
 
   const isHome = pathname === "/";
   const heroAtTop = isHome && !scrolled;
-  const isDarkTheme = resolvedTheme === "dark";
   const inverseHeader = heroAtTop;
 
   const isLinkActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
@@ -416,7 +412,6 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
             </ul>
 
             <div className="hidden items-center gap-2 md:flex">
-              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
               <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95">
                 Get In Touch
                 <ArrowRight
@@ -427,7 +422,6 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
             </div>
 
             <div className="flex items-center gap-1 md:hidden">
-              <ThemeToggle inverse={isDarkTheme && inverseHeader} />
               <button
                 type="button"
                 className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg md:hidden"
@@ -465,7 +459,6 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
           <div className="flex h-[68px] items-center justify-between border-b border-border px-5">
             <Logo />
             <div className="flex items-center gap-1">
-              <ThemeToggle />
               <button
                 type="button"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
