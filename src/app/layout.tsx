@@ -4,10 +4,16 @@ import "./globals.css";
 
 import { MotionProvider } from "@/components/MotionProvider";
 import { ServiceWorkerCleanup } from "@/components/ServiceWorkerCleanup";
+import { StructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
 import { TidioChat } from "@/components/TidioChat";
 import { getSiteSettings } from "@/lib/get-site-settings";
+import {
+  organizationSchema,
+  SITE_URL,
+  websiteSchema,
+} from "@/lib/structured-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,20 +30,40 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
 
+  const title =
+    siteSettings?.siteTitle ?? "AI Automation Agency for Growing SMBs | AgileMorph";
+  const description =
+    siteSettings?.siteDescription ??
+    "AgileMorph builds done-for-you AI automation, agents, and integrations that have saved clients 500K+ hours. Claude and Make certified.";
+
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: siteSettings?.siteTitle ?? "AGILEMORPH | Digital Accelerators",
+      default: title,
       template: "%s | AgileMorph",
     },
-    description:
-      siteSettings?.siteDescription ??
-      "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website Development, and amplify influence via Digital Marketing and Virtual Assistance.",
+    description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      url: SITE_URL,
+      siteName: "AgileMorph",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const siteSettings = await getSiteSettings();
+
   return (
     <html
       lang="en"
@@ -47,6 +73,15 @@ export default function RootLayout({
       <head>
         <ThemeScript />
         <ServiceWorkerCleanup />
+        <StructuredData
+          data={[
+            organizationSchema({
+              description: siteSettings?.siteDescription,
+              socialLinks: siteSettings?.socialLinks,
+            }),
+            websiteSchema({ name: siteSettings?.siteTitle }),
+          ]}
+        />
       </head>
       <body className="flex min-h-dvh flex-col">
         <ThemeProvider>

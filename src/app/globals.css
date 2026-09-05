@@ -1426,11 +1426,12 @@ main {
   }
 }
 
-/* Word reveal — start hidden; the Hero sets the animation per word. */
+/* Word reveal — start hidden; the Hero sets the animation per word.
+   Words are separated by real whitespace text nodes (see HeroSection),
+   so no horizontal margin is needed and the heading stays crawlable. */
 .word {
   display: inline-block;
   opacity: 0;
-  margin: 0 0.15em;
 }
 
 /* Client logos — monochrome treatment matching the console aesthetic.

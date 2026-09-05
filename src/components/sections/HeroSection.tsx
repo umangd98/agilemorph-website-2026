@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 
@@ -43,20 +44,24 @@ function HeroGrid() {
 }
 
 function WordReveal({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+  const words = text.split(" ");
   return (
     <>
-      {text.split(" ").map((word, i) => (
-        <span
-          // eslint-disable-next-line react/no-array-index-key
-          key={`${word}-${i}`}
-          className="word"
-          style={{
-            animation: "word-appear 0.8s ease-out forwards",
-            animationDelay: `${baseDelay + i * 70}ms`,
-          }}
-        >
-          {word}
-        </span>
+      {words.map((word, i) => (
+        <Fragment key={`${word}-${i}`}>
+          <span
+            className="word"
+            style={{
+              animation: "word-appear 0.8s ease-out forwards",
+              animationDelay: `${baseDelay + i * 70}ms`,
+            }}
+          >
+            {word}
+          </span>
+          {/* Real whitespace text node between words so crawlers and screen
+              readers read spaced words, not one concatenated string. */}
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </>
   );

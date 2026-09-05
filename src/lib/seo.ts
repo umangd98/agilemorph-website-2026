@@ -18,14 +18,28 @@ export function seoToMetadata(
       ? urlForImage(seo.ogImage).width(1200).height(630).url()
       : undefined;
 
+  const title = seo.title ?? fallback.title;
+  const description = seo.description ?? fallback.description;
+  const resolvedTitle = typeof title === "string" ? title : undefined;
+  const resolvedDescription =
+    typeof description === "string" ? description : undefined;
+
   return {
     ...fallback,
-    title: seo.title ?? fallback.title,
-    description: seo.description ?? fallback.description,
+    title,
+    description,
     openGraph: {
-      title: seo.title ?? undefined,
-      description: seo.description ?? undefined,
+      type: "website",
+      siteName: "AgileMorph",
+      title: resolvedTitle,
+      description: resolvedDescription,
       images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: resolvedTitle,
+      description: resolvedDescription,
+      images: ogImageUrl ? [ogImageUrl] : undefined,
     },
   };
 }
