@@ -5,10 +5,9 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import dynamic from "next/dynamic";
 
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { Container } from "@/components/Container";
+import { Container } from "@/components/ui";
 import { ECOSYSTEM_QUICK_JUMP_SERVICES } from "@/components/hero-animations/hero-ecosystem-graph";
 import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
-import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
 import {
   getServiceIcon,
@@ -60,22 +59,22 @@ function ServiceCatalogCard({
     return (
       <Link
         href={href}
-        className="group flex h-full min-h-[168px] flex-col justify-between rounded-2xl border border-border bg-background p-5 shadow-sm transition-all duration-300 hover:border-primary/30 hover:bg-primary/4 active:bg-primary/5"
+        className="group flex h-full min-h-[168px] flex-col justify-between rounded-xl border border-line bg-bg-elevated p-5 transition-colors duration-300 hover:bg-bg-raised"
       >
         <div className="flex min-w-0 gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-bg-raised text-signal">
             <Icon size={18} aria-hidden />
           </span>
           <div className="min-w-0">
-            <h3 className="font-heading text-base font-bold text-foreground transition-colors group-hover:text-primary">
+            <h3 className="text-base font-medium leading-snug text-fg">
               {title}
             </h3>
-            <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-pretty text-sm leading-relaxed text-fg-muted">
               {description}
             </p>
           </div>
         </div>
-        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-medium text-fg transition-colors group-hover:text-signal">
           Learn more
           <ArrowRight
             size={14}
@@ -91,18 +90,18 @@ function ServiceCatalogCard({
     <AnimateOnScroll delay={delay}>
       <Link
         href={href}
-        className="hover-lift group flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:bg-primary/4 hover:shadow-lg"
+        className="hover-lift group flex h-full flex-col rounded-xl border border-line bg-bg-elevated p-6 transition-colors duration-300 hover:bg-bg-raised"
       >
-        <span className="mb-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/15 bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/30">
+        <span className="mb-4 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-bg-raised text-signal">
           <Icon size={18} aria-hidden />
         </span>
-        <h3 className="font-heading text-lg font-bold text-foreground transition-colors group-hover:text-primary">
+        <h3 className="text-lg font-medium leading-snug text-fg">
           {title}
         </h3>
-        <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 flex-1 text-pretty text-sm leading-relaxed text-fg-muted">
           {description}
         </p>
-        <span className="mt-5 inline-flex items-center gap-2 font-body text-sm font-semibold text-primary">
+        <span className="mt-5 inline-flex items-center gap-2 font-body text-sm font-medium text-fg transition-colors group-hover:text-signal">
           Learn more
           <ArrowRight
             size={15}
@@ -118,7 +117,7 @@ function ServiceCatalogCard({
 function QuickJumpChips({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      <p className="syslabel mb-3">
         Quick jump
       </p>
       <div className="services-mobile-chips -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
@@ -126,7 +125,7 @@ function QuickJumpChips({ className = "" }: { className?: string }) {
           <Link
             key={service.slug}
             href={serviceHref(service.slug)}
-            className="shrink-0 snap-start rounded-full border border-border bg-background px-3.5 py-2 font-body text-xs font-semibold text-foreground transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary active:bg-primary/12"
+            className="shrink-0 snap-start rounded-full border border-line bg-bg-elevated px-3.5 py-2 font-mono text-xs text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
           >
             {service.label}
           </Link>
@@ -139,7 +138,7 @@ function QuickJumpChips({ className = "" }: { className?: string }) {
 function AllServicesList() {
   return (
     <div className="mt-6 hidden lg:block">
-      <p className="mb-3 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      <p className="syslabel mb-3">
         All services
       </p>
       <div className="flex flex-wrap gap-2">
@@ -147,7 +146,7 @@ function AllServicesList() {
           <Link
             key={service.slug}
             href={serviceHref(service.slug)}
-            className="rounded-full border border-border bg-background/80 px-3 py-1.5 font-body text-xs font-medium text-foreground/90 transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary"
+            className="rounded-full border border-line bg-bg-elevated px-3 py-1.5 font-mono text-xs text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
           >
             {service.label}
           </Link>
@@ -172,31 +171,31 @@ function CatalogHeroCopy({
 
   return (
     <>
-      <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-primary">
+      <span className="syslabel mb-4 inline-flex items-center gap-2">
         <Sparkles size={12} aria-hidden />
         {eyebrow}
       </span>
       <h1
         id="services-catalog-heading"
-        className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl lg:text-5xl"
+        className="text-balance text-3xl font-medium leading-[1.08] tracking-[-0.025em] text-fg sm:text-4xl lg:text-5xl"
       >
         {headingParts.length > 1 ? (
           <>
             {headingParts[0]}
-            <span className="text-primary">modern operations</span>
+            <span className="text-signal">modern operations</span>
             {headingParts[1]}
           </>
         ) : (
           heading
         )}
       </h1>
-      <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
+      <p className="mt-5 text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
         {description}
       </p>
-      <p className="mt-3 hidden font-body text-sm text-primary/90 lg:block">
+      <p className="mt-3 hidden font-mono text-sm text-fg-dim lg:block">
         Tap any node in the ecosystem to explore a service.
       </p>
-      <p className="mt-3 font-body text-sm text-primary/90 lg:hidden">
+      <p className="mt-3 font-mono text-sm text-fg-dim lg:hidden">
         Browse services below or use quick jump.
       </p>
     </>
@@ -215,11 +214,9 @@ export function ServicesCatalogSection({
   return (
     <>
       <section
-        className="relative overflow-x-clip border-b border-border bg-surface py-section max-sm:py-section-sm"
+        className="relative overflow-x-clip border-b border-line pt-36 pb-20 sm:pt-40 sm:pb-24"
         aria-labelledby="services-catalog-heading"
       >
-        <PageHeroBackground />
-        <div className="pointer-events-none absolute inset-0 section-ambient-glow" aria-hidden />
         <Container className="relative z-10">
           {/* Mobile hero: text + quick jump only */}
           <div className="lg:hidden">
@@ -253,10 +250,10 @@ export function ServicesCatalogSection({
         </Container>
       </section>
 
-      <section className="bg-background py-section max-sm:py-section-sm" aria-label="AI Automation">
+      <section className="border-t border-line py-24 sm:py-32" aria-label="AI Automation">
         <Container>
           <AnimateOnScroll className="mb-6">
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            <p className="syslabel text-signal">
               Core practice
             </p>
           </AnimateOnScroll>
@@ -270,15 +267,15 @@ export function ServicesCatalogSection({
 
       {additional.length > 0 ? (
         <section
-          className="border-t border-border bg-surface py-section max-sm:py-section-sm"
+          className="border-t border-line py-24 sm:py-32"
           aria-label="General Services"
         >
           <Container>
             <AnimateOnScroll className="mb-6">
-              <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              <p className="syslabel">
                 General Services
               </p>
-              <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mt-2 max-w-2xl text-pretty text-sm leading-relaxed text-fg-muted sm:text-base">
                 Supporting services that keep growth, operations, and delivery moving alongside
                 your automation stack.
               </p>

@@ -5,6 +5,7 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import {
+  FaqSection,
   HeroSection,
   PartnersSection,
   ProcessSection,
@@ -24,9 +25,10 @@ import {
 import type { HomepageAboveFold, HomepageBelowFold } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
-  title: "AGILEMORPH | Digital Accelerators",
+  title: "AI Automation Agency for Growing SMBs | AgileMorph",
   description:
-    "We revolutionize efficiency with AI Automation, craft production-ready experiences through Website Development, and amplify influence via Digital Marketing and Virtual Assistance.",
+    "AgileMorph builds done-for-you AI automation that has saved clients 500K+ hours. Claude and Make certified. Book a free discovery call.",
+  alternates: { canonical: "/" },
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -76,6 +78,7 @@ async function BelowFoldSections() {
         heading={homepage?.testimonials?.heading}
         items={homepage?.testimonials?.items}
       />
+      <FaqSection />
     </>
   );
 }

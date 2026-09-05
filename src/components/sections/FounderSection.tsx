@@ -21,7 +21,7 @@ export function FounderSection({
   image,
 }: FounderSectionProps) {
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="founder-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="founder-heading">
       <Container>
         <AnimateOnScroll className="mb-12 text-center">
           {eyebrow ? (

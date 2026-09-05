@@ -160,7 +160,7 @@ export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProp
                       />
                       <span
                         data-flow-dot
-                        className="absolute -top-[3px] left-0 h-1.5 w-1.5 rounded-full bg-primary"
+                        className="absolute -top-[3px] left-0 h-1.5 w-1.5 rounded-full bg-signal"
                       />
                     </span>
                     <ChevronRight size={14} strokeWidth={2.5} className="opacity-70" />

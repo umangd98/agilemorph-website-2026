@@ -10,7 +10,7 @@ export function SubServiceFaqSection({ faq = [] }: SubServiceFaqSectionProps) {
   if (!faq.length) return null;
 
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="sub-faq-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-faq-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-faq-heading" className="sub-service-section-title">
