@@ -93,9 +93,15 @@ export function HeroSection({ hero }: HeroSectionProps) {
           className="mx-auto max-w-4xl text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-6xl lg:text-[4.5rem]"
         >
           {headingLines.map((line, index) => (
-            <span key={line} className="block">
-              <WordReveal text={line} baseDelay={index * 220} />
-            </span>
+            <Fragment key={line}>
+              <span className="block">
+                <WordReveal text={line} baseDelay={index * 220} />
+              </span>
+              {/* Real whitespace between heading lines. Each line is its own
+                  block box, so a lone space between them is not rendered and
+                  the visual result is unchanged, but text extraction reads
+                  "agency for teams", not "agencyfor teams". */}{" "}
+            </Fragment>
           ))}
           {hero.headingAccent ? (
             <span className="block text-signal">
