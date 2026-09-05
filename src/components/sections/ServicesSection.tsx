@@ -129,7 +129,7 @@ export function ServicesSection({
           index="03"
           label={eyebrow}
           title={heading}
-          intro="AI automation is our core practice, plus digital marketing, virtual assistance, and Website Development to keep your whole operation moving forward."
+          intro="AI automation is the whole practice, split into seven specializations that cover workflows, agents, CRM, messaging, infrastructure, and Shopify."
         />
 
         <AiAutomationCapabilitiesGrid
