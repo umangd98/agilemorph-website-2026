@@ -50,7 +50,7 @@ export function SubServiceFinalCta({ cta, siblings, currentSlug }: SubServiceFin
               {cta?.button ? (
                 <CtaAction
                   cta={cta.button}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 font-body text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark"
+                  className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-bold text-bg shadow-lg shadow-primary/25 transition-all hover:opacity-90"
                 >
                   {cta.button.label}
                   <ArrowRight size={16} aria-hidden />

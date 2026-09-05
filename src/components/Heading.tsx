@@ -38,7 +38,7 @@ export function Heading<T extends ElementType = "h2">({
 
   return (
     <Component
-      className={`font-heading font-semibold tracking-tight text-foreground ${sizeClasses[size]} ${className}`}
+      className={`font-heading font-medium tracking-[-0.02em] text-fg ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}

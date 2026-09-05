@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { Container } from "@/components/Container";
-import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
+import { Container } from "@/components/ui";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import { SanityImage } from "@/components/SanityImage";
 import type { PartnerItem } from "@/sanity/types";
 
@@ -32,11 +31,11 @@ type PartnersSectionProps = {
   items?: PartnerItem[];
 };
 
-function PartnerCard({ partner, index }: { partner: PartnerItem; index: number }) {
-  const content = (
-    <div className="hover-lift group flex h-full min-h-[108px] flex-col items-center justify-center gap-2.5 rounded-xl border border-border bg-background px-3 py-4 text-center shadow-sm transition-all duration-300 hover:border-primary/25 hover:shadow-md sm:min-h-[116px] sm:gap-3 sm:px-4 sm:py-5">
+function PartnerCell({ partner }: { partner: PartnerItem }) {
+  const inner = (
+    <div className="group flex h-full min-h-[7rem] flex-col items-center justify-center gap-2.5 bg-bg-elevated px-4 py-8 text-center transition-colors duration-300 hover:bg-bg-raised">
       {partner.logo ? (
-        <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
+        <div className="relative h-9 w-9 shrink-0">
           <SanityImage
             image={partner.logo}
             alt={partner.logo.alt ?? partner.name}
@@ -46,25 +45,21 @@ function PartnerCard({ partner, index }: { partner: PartnerItem; index: number }
           />
         </div>
       ) : (
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted font-heading text-sm font-bold text-foreground sm:h-10 sm:w-10">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line font-mono text-sm text-fg-muted">
           {partner.name.charAt(0)}
         </div>
       )}
-      <div className="min-w-0 w-full">
-        <p className="font-heading text-xs font-bold leading-tight tracking-tight text-foreground sm:text-sm">
-          {partner.name}
-        </p>
-        {partner.label ? (
-          <p className="mt-1 font-body text-[9px] font-semibold uppercase leading-snug tracking-[0.12em] text-muted-foreground sm:text-[10px]">
-            {partner.label}
-          </p>
-        ) : null}
-      </div>
+      <span className="text-sm font-medium leading-tight text-fg">{partner.name}</span>
+      {partner.label ? (
+        <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-fg-dim">
+          {partner.label}
+        </span>
+      ) : null}
     </div>
   );
 
   return (
-    <AnimateOnScroll delay={index * 60} className="h-full">
+    <RevealItem className="h-full">
       {partner.url ? (
         <Link
           href={partner.url}
@@ -72,51 +67,43 @@ function PartnerCard({ partner, index }: { partner: PartnerItem; index: number }
           rel="noopener noreferrer"
           className="block h-full"
         >
-          {content}
+          {inner}
         </Link>
       ) : (
-        content
+        inner
       )}
-    </AnimateOnScroll>
+    </RevealItem>
   );
 }
 
 export function PartnersSection({
-  heading = "Certified & Partnered With",
+  heading = "Certified & partnered with",
   items = [],
 }: PartnersSectionProps) {
   const partners = withShopifyPartner(items);
-
   if (!partners.length) return null;
 
   return (
     <section
-      className="relative overflow-hidden border-y border-border bg-surface py-section-sm"
+      className="scroll-mt-24 border-t border-line py-20 sm:py-24"
       aria-labelledby="partners-heading"
     >
-      <div
-        className="pointer-events-none absolute inset-0 section-ambient-glow opacity-70"
-        aria-hidden="true"
-      />
+      <Container>
+        <Reveal>
+          <div className="mb-10 flex items-center gap-4">
+            <span className="syslabel shrink-0">{heading}</span>
+            <span aria-hidden className="h-px flex-1 bg-line" />
+          </div>
+        </Reveal>
+        <h2 id="partners-heading" className="sr-only">
+          {heading}
+        </h2>
 
-      <Container className="relative z-10">
-        <AnimateOnScroll className="mb-10 text-center">
-          <p className="mb-3 font-body text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            {heading}
-          </p>
-          <h2 id="partners-heading" className="sr-only">
-            {heading}
-          </h2>
-        </AnimateOnScroll>
-
-        <MobileAutoCarousel
-          ariaLabel="Certified and partnered companies"
-          desktopClassName="gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 sm:gap-4"
-        >
+        <RevealGroup className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
           {partners.map((partner, index) => (
-            <PartnerCard key={`${partner.name}-${index}`} partner={partner} index={index} />
+            <PartnerCell key={`${partner.name}-${index}`} partner={partner} />
           ))}
-        </MobileAutoCarousel>
+        </RevealGroup>
       </Container>
     </section>
   );

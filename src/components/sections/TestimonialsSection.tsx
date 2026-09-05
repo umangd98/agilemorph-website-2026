@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
-import { Container } from "@/components/Container";
+import { Container, SectionHeader } from "@/components/ui";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { Modal } from "@/components/Modal";
 import type { Testimonial } from "@/sanity/types";
@@ -32,7 +32,7 @@ function StarRating() {
   return (
     <div className="flex items-center justify-center gap-0.5" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={14} className="fill-amber-400 text-amber-400" aria-hidden />
+        <Star key={i} size={14} className="fill-signal text-signal" aria-hidden />
       ))}
     </div>
   );
@@ -102,8 +102,8 @@ export function TestimonialsSection({
 
   return (
     <section
-      className="relative isolate z-0 overflow-hidden bg-surface py-section max-sm:py-section-sm"
-      aria-labelledby="testimonials-heading"
+      className="relative isolate z-0 scroll-mt-24 border-t border-line py-24 sm:py-32"
+      aria-label={heading}
     >
       <style>{`
         @keyframes testimonial-enter {
@@ -113,25 +113,8 @@ export function TestimonialsSection({
         .testimonial-enter { animation: testimonial-enter 0.55s cubic-bezier(.22,1,.36,1) both; }
       `}</style>
 
-      <div
-        className="pointer-events-none absolute inset-0 section-ambient-glow"
-        aria-hidden
-      />
-
       <Container className="relative">
-        <AnimateOnScroll className="mb-10 text-center sm:mb-12">
-          {eyebrow ? (
-            <span className="mb-4 block font-body text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              {eyebrow}
-            </span>
-          ) : null}
-          <h2
-            id="testimonials-heading"
-            className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl lg:text-5xl"
-          >
-            {heading}
-          </h2>
-        </AnimateOnScroll>
+        <SectionHeader index="06" label={eyebrow} title={heading} />
 
         <AnimateOnScroll>
           <div
@@ -146,17 +129,17 @@ export function TestimonialsSection({
             }}
           >
             <div
-              className="relative overflow-hidden rounded-3xl border border-border bg-background shadow-xl shadow-primary/5"
+              className="relative overflow-hidden rounded-2xl border border-line bg-bg-elevated"
               aria-live="polite"
               aria-atomic="true"
             >
               <div
-                className="absolute inset-x-0 top-0 h-1 bg-border"
+                className="absolute inset-x-0 top-0 h-1 bg-line"
                 aria-hidden={count <= 1}
               >
                 {count > 1 && !reducedMotion ? (
                   <div
-                    className="h-full bg-primary transition-[width] duration-100 ease-linear"
+                    className="h-full bg-signal transition-[width] duration-100 ease-linear"
                     style={{ width: `${cycleProgress * 100}%` }}
                   />
                 ) : null}
@@ -185,18 +168,18 @@ export function TestimonialsSection({
                   </div>
 
                   <blockquote className="mt-4 max-h-24 w-full overflow-hidden font-body text-base leading-relaxed text-foreground sm:max-h-28 sm:text-lg">
-                    <span className="text-primary/40" aria-hidden>
+                    <span className="text-signal/40" aria-hidden>
                       &ldquo;
                     </span>
                     <span className="line-clamp-4">{testimonial.quote}</span>
-                    <span className="text-primary/40" aria-hidden>
+                    <span className="text-signal/40" aria-hidden>
                       &rdquo;
                     </span>
                   </blockquote>
 
-                  <p className="mt-3 font-body text-xs font-semibold text-primary">Read full story</p>
+                  <p className="mt-3 font-body text-xs font-medium text-signal">Read full story</p>
 
-                  <footer className="mt-6 w-full border-t border-border pt-5">
+                  <footer className="mt-6 w-full border-t border-line pt-5">
                     <p className="font-heading text-lg font-bold text-foreground sm:text-xl">
                       {testimonial.name}
                     </p>
@@ -210,12 +193,12 @@ export function TestimonialsSection({
               </div>
 
               {count > 1 ? (
-                <div className="border-t border-border bg-muted/40 px-4 py-4 sm:px-8">
+                <div className="border-t border-line bg-bg-raised px-4 py-4 sm:px-8">
                   <div className="flex items-center justify-center gap-4 sm:gap-6">
                     <button
                       type="button"
                       onClick={goToPrevious}
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary sm:h-11 sm:w-11"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-bg-elevated text-fg transition-colors hover:border-line-strong hover:text-fg sm:h-11 sm:w-11"
                       aria-label="Previous testimonial"
                     >
                       <ArrowLeft size={18} />
@@ -239,8 +222,8 @@ export function TestimonialsSection({
                               onClick={() => goTo(index)}
                               className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                                 active
-                                  ? "w-7 bg-primary"
-                                  : "w-2 bg-border hover:bg-primary/40"
+                                  ? "w-7 bg-signal"
+                                  : "w-2 bg-line hover:bg-fg-muted"
                               }`}
                             />
                           );
@@ -258,7 +241,7 @@ export function TestimonialsSection({
                     <button
                       type="button"
                       onClick={goToNext}
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/25 transition-colors hover:bg-primary-dark sm:h-11 sm:w-11"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-signal text-bg transition-opacity hover:opacity-90 sm:h-11 sm:w-11"
                       aria-label="Next testimonial"
                     >
                       <ArrowRight size={18} />
@@ -280,11 +263,11 @@ export function TestimonialsSection({
           <StarRating />
         </div>
         <blockquote className="font-body text-base leading-relaxed text-foreground sm:text-lg">
-          <span className="text-primary/40" aria-hidden>
+          <span className="text-signal/40" aria-hidden>
             &ldquo;
           </span>
           {testimonial.quote}
-          <span className="text-primary/40" aria-hidden>
+          <span className="text-signal/40" aria-hidden>
             &rdquo;
           </span>
         </blockquote>
