@@ -32,9 +32,16 @@ export async function generateMetadata({
     tags: ["blogPost", `blogPost:${slug}`],
   });
 
-  return seoToMetadata(post?.seo, {
-    title: post?.title ?? "Blog Post",
-    description: post?.excerpt,
+  // A missing post still renders (notFound() below), but the hosting layer
+  // serves it as 200 rather than 404, so it reads to a crawler as a thin
+  // real page. Mark it noindex so a soft 404 can never be indexed.
+  if (!post) {
+    return { title: "Not found", robots: { index: false, follow: false } };
+  }
+
+  return seoToMetadata(post.seo, {
+    title: post.title,
+    description: post.excerpt,
   });
 }
 
