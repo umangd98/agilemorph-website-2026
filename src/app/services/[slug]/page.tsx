@@ -37,15 +37,26 @@ export async function generateMetadata({
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
 
+  const missing: Metadata = {
+    title: "Not found",
+    robots: { index: false, follow: false },
+  };
+
   if (isExcludedServiceSlug(slug)) {
-    return { title: "Not Found" };
+    return missing;
   }
 
   const servicePage = await getServicePage(slug);
 
-  return seoToMetadata(servicePage?.seo, {
-    title: getServiceLabel(slug, servicePage?.title ?? "Service"),
-    description: servicePage?.description,
+  // Same soft-404 guard as the blog route: an unknown slug renders and is
+  // served as 200, so it must never be indexable.
+  if (!servicePage) {
+    return missing;
+  }
+
+  return seoToMetadata(servicePage.seo, {
+    title: getServiceLabel(slug, servicePage.title),
+    description: servicePage.description,
   });
 }
 
