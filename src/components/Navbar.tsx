@@ -156,8 +156,8 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
   const navItems: NavItem[] = [
     ...linksBeforeServices,
     { label: "Services", href: "/services", children: true },
-    ...(contactLink ? [contactLink] : []),
     { label: "Events", href: "/events" },
+    ...(contactLink ? [contactLink] : []),
   ];
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
