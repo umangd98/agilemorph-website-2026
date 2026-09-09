@@ -3,6 +3,9 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import DigiMarConImage from "../../../media/events/DigiMarCon.png";
+import MAICONConImage from "../../../media/events/MAICON.png";
+
 
 export const metadata: Metadata = {
   title: "Events | AgileMorph",
@@ -23,8 +26,7 @@ const events = [
     href: "https://digimarconmidatlantic.com/",
     label: "DigiMarCon",
     number: "01",
-    image:
-      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1600&q=85",
+    image: DigiMarConImage.src,
   },
   {
     title: "MAICON 2026",
@@ -38,8 +40,8 @@ const events = [
     href: "https://www.marketingaiinstitute.com/events/marketing-artificial-intelligence-conference",
     label: "MAICON",
     number: "02",
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=85",
+    image: MAICONConImage.src,
+
   },
 ];
 
@@ -61,12 +63,14 @@ function CalendarIcon() {
         stroke="currentColor"
         strokeWidth="1.7"
       />
+
       <path
         d="M8 2.5V6.5M16 2.5V6.5M3 9H21"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"
       />
+
       <path
         d="M7.5 13H9.5M11.5 13H13.5M15.5 13H17.5M7.5 17H9.5M11.5 17H13.5"
         stroke="currentColor"
@@ -91,6 +95,7 @@ function LocationIcon() {
         stroke="currentColor"
         strokeWidth="1.7"
       />
+
       <circle
         cx="12"
         cy="10"
@@ -117,6 +122,7 @@ function VenueIcon() {
         strokeWidth="1.7"
         strokeLinejoin="round"
       />
+
       <path
         d="M8 21V14H16V21M3 21H21M8 9H8.01M12 9H12.01M16 9H16.01"
         stroke="currentColor"
@@ -163,12 +169,14 @@ function ExternalLinkIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+
       <path
         d="M19 5L12 12"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"
       />
+
       <path
         d="M19 14V18C19 19.1 18.1 20 17 20H6C4.9 20 4 19.1 4 18V7C4 5.9 4.9 5 6 5H10"
         stroke="currentColor"
@@ -317,7 +325,9 @@ export default function EventsPage() {
 
                   {/* Dots */}
                   <span className="absolute left-[20%] top-[20%] h-2 w-2 rounded-full bg-[#4ade80]" />
-                  <span className="absolute right-[24%] bottom-[22%] h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
+
+                  <span className="absolute bottom-[22%] right-[24%] h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
+
                   <span className="absolute bottom-[12%] left-[42%] h-1.5 w-1.5 rounded-full bg-white/40" />
                 </div>
               </div>
@@ -365,7 +375,7 @@ export default function EventsPage() {
             {/* =====================================================
                 EVENT CARDS
             ====================================================== */}
-            <div className="space-y-8">
+            <div className="space-y-18">
               {events.map((event) => (
                 <article
                   key={event.title}

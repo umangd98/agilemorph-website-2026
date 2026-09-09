@@ -9,6 +9,7 @@ import {
   HeroSection,
   PartnersSection,
   ProcessSection,
+  RecentEventsSection,
   ServicesSection,
   StatsSection,
   TestimonialsSection,
@@ -117,6 +118,7 @@ export default async function HomePage() {
           heading={homepage.integrations?.heading}
           items={homepage.integrations?.items}
         />
+        <RecentEventsSection />
         <Suspense fallback={null}>
           <BelowFoldSections />
         </Suspense>
