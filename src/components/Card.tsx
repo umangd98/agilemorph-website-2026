@@ -8,7 +8,7 @@ type CardProps = {
 export function Card({ children, className = "", ...props }: CardProps) {
   return (
     <article
-      className={`overflow-hidden rounded-xl border border-border bg-background shadow-sm ${className}`}
+      className={`overflow-hidden rounded-xl border border-line bg-bg-elevated ${className}`}
       {...props}
     >
       {children}

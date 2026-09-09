@@ -31,7 +31,7 @@ export function SubServiceHeroIntro({
           className="sub-service-hero-item mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/8 px-3.5 py-1 font-body text-[11px] font-semibold uppercase tracking-[0.16em] text-primary"
           style={{ animationDelay: "0ms" }}
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+          <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden />
           {tagline}
         </span>
       ) : null}
@@ -57,7 +57,7 @@ export function SubServiceHeroIntro({
         {heroCta ? (
           <CtaAction
             cta={heroCta}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 font-body text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-primary/30"
+            className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-semibold text-bg shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:shadow-primary/30"
           >
             {heroCta.label}
             <ArrowRight size={16} aria-hidden />

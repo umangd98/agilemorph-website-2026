@@ -1,4 +1,4 @@
-import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 import type { Stat } from "@/sanity/types";
 
 type MetricsGridProps = {
@@ -7,69 +7,38 @@ type MetricsGridProps = {
   animate?: boolean;
 };
 
-export function MetricsGrid({
-  items = [],
-  variant = "default",
-  animate = true,
-}: MetricsGridProps) {
+/**
+ * Quido "telemetry" metric grid — mono tabular values in signal-green, seated
+ * in a hairline gap-px grid of elevated cells.
+ */
+export function MetricsGrid({ items = [], animate = true }: MetricsGridProps) {
   if (!items.length) return null;
 
-  const isOnPrimary = variant === "onPrimary";
-
-  const grid = (
-    <div
-      className={
-        isOnPrimary
-          ? "grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4"
-          : "grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6 lg:gap-4"
-      }
+  const cells = items.map((stat, index) => (
+    <RevealItem
+      key={`${stat.label}-${index}`}
+      className="flex flex-col items-center justify-center gap-2 bg-bg-elevated px-3 py-7 text-center transition-colors duration-300 hover:bg-bg-raised"
     >
-      {items.map((stat, index) => {
-        const card = (
-          <div
-            className={
-              isOnPrimary
-                ? "flex min-h-[5.5rem] flex-col items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-3 text-center backdrop-blur-sm sm:min-h-[6rem] sm:px-4"
-                : "flex min-h-[6.5rem] flex-col items-center justify-center gap-2 rounded-xl border border-border bg-background/80 px-3 py-4 text-center shadow-sm transition-colors hover:border-primary/30 hover:bg-primary/5 sm:min-h-[7rem]"
-            }
-          >
-            <span
-              className={
-                isOnPrimary
-                  ? "font-heading text-2xl font-extrabold leading-none text-white sm:text-3xl"
-                  : "font-heading text-2xl font-extrabold leading-none text-primary sm:text-3xl"
-              }
-            >
-              {stat.value}
-            </span>
-            <span
-              className={
-                isOnPrimary
-                  ? "max-w-[9rem] font-body text-[10px] font-semibold uppercase leading-snug tracking-wide text-white/85 sm:max-w-[10rem] sm:text-[11px]"
-                  : "max-w-[9.5rem] font-body text-[11px] font-semibold leading-snug text-muted-foreground sm:max-w-[10.5rem] sm:text-xs"
-              }
-            >
-              {stat.label}
-            </span>
-          </div>
-        );
+      <span className="tnum font-mono text-2xl font-medium leading-none text-signal sm:text-3xl">
+        {stat.value}
+      </span>
+      <span className="max-w-[10.5rem] text-pretty text-[0.6875rem] leading-tight text-fg-dim sm:text-xs">
+        {stat.label}
+      </span>
+    </RevealItem>
+  ));
 
-        if (!animate) {
-          return (
-            <div key={`${stat.label}-${index}`} className="h-full">
-              {card}
-            </div>
-          );
-        }
+  if (!animate) {
+    return (
+      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3 lg:grid-cols-6">
+        {cells}
+      </div>
+    );
+  }
 
-        return (
-          <AnimateOnScroll key={`${stat.label}-${index}`} delay={index * 40} className="h-full">
-            {card}
-          </AnimateOnScroll>
-        );
-      })}
-    </div>
+  return (
+    <RevealGroup className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3 lg:grid-cols-6">
+      {cells}
+    </RevealGroup>
   );
-
-  return grid;
 }

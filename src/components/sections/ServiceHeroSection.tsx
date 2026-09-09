@@ -4,8 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Container } from "@/components/Container";
-import { PageHeroBackground } from "@/components/PageHeroBackground";
+import { Container } from "@/components/ui";
 import { CtaAction } from "@/components/CtaAction";
 import { hasImageAsset } from "@/components/SanityImage";
 import { ServiceHeroMedia } from "@/components/sections/ServiceHeroMedia";
@@ -80,37 +79,53 @@ export function ServiceHeroSection({
 
   return (
     <section
-      className="relative bg-background py-section max-sm:py-section-sm"
-      aria-labelledby="service-hero-heading"
+      className="relative overflow-hidden border-b border-line pt-36 pb-20 sm:pt-40 sm:pb-24"
+      aria-label={title}
     >
-      <PageHeroBackground />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          maskImage: "radial-gradient(90% 90% at 30% 20%, black, transparent)",
+          WebkitMaskImage: "radial-gradient(90% 90% at 30% 20%, black, transparent)",
+        }}
+      >
+        <svg className="h-full w-full" aria-hidden>
+          <defs>
+            <pattern id="service-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+              <path d="M64 0H0V64" fill="none" stroke="var(--color-grid-line)" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#service-grid)" />
+        </svg>
+      </div>
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div className="min-w-0">
             {tagline ? (
-              <p className="mb-4 font-body text-xs font-bold uppercase tracking-widest text-primary">
-                {tagline}
-              </p>
+              <p className="syslabel mb-5">{tagline}</p>
             ) : null}
             <h1
-              id="service-hero-heading"
-              className="mb-6 font-heading text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl"
+              className="text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-5xl lg:text-6xl"
             >
               {title}
             </h1>
             {description ? (
-              <p className="mb-8 max-w-2xl font-body text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
                 {description}
               </p>
             ) : null}
             {heroCta ? (
               <CtaAction
                 cta={heroCta}
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-body text-sm font-bold text-white shadow-xl shadow-primary/25 transition-all hover:bg-primary-dark"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90"
               >
                 {heroCta.label}
-                <ArrowRight size={16} />
+                <ArrowRight
+                  size={16}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                />
               </CtaAction>
             ) : null}
             {useEcosystemVisual ? <ServiceHeroMobileChips /> : null}

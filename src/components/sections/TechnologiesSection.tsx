@@ -16,7 +16,7 @@ export function TechnologiesSection({
   if (!technologies.length) return null;
 
   return (
-    <section className="overflow-x-clip bg-background py-section max-sm:py-section-sm" aria-labelledby="technologies-heading">
+    <section className="overflow-x-clip border-t border-line py-24 sm:py-32" aria-labelledby="technologies-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center sm:mb-12">
           <h2 id="technologies-heading" className="font-heading text-3xl font-extrabold text-foreground">
@@ -42,7 +42,7 @@ export function ServiceWhyUsSection({
   if (!items.length) return null;
 
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="service-why-us-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="service-why-us-heading">
       <Container>
         <AnimateOnScroll className="mb-10">
           <h2 id="service-why-us-heading" className="font-heading text-4xl font-extrabold text-foreground">

@@ -21,7 +21,12 @@ import type { CapabilityItem, ServicePage, ServicePageListItem } from "@/sanity/
 
 export const PRIMARY_SERVICE_SLUG = "ai-automation";
 
-export const EXCLUDED_SERVICE_SLUGS = ["bookkeeping"] as const;
+export const EXCLUDED_SERVICE_SLUGS = [
+  "bookkeeping",
+  "digital-marketing",
+  "virtual-assistance",
+  "website-development",
+] as const;
 
 export const ADDITIONAL_SERVICE_SLUGS = [
   "digital-marketing",

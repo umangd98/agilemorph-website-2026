@@ -285,7 +285,7 @@ export function PricingSection({ page }: PricingSectionProps) {
               </h2>
               <div className="flex flex-wrap items-center gap-3">
                 {page.cta.primaryCta ? (
-                  <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:bg-primary-dark">
+                  <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-body text-sm font-semibold text-[#04140d] transition-all hover:opacity-90">
                     {page.cta.primaryCta.label}
                     <ArrowRight
                       size={15}

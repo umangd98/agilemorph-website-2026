@@ -12,7 +12,7 @@ type BlogPostSectionProps = {
 
 export function BlogPostSection({ post }: BlogPostSectionProps) {
   return (
-    <article className="bg-background py-section max-sm:py-section-sm">
+    <article className="border-t border-line py-24 sm:py-32">
       <Container>
         <Link
           href="/blog"

@@ -10,7 +10,7 @@ export function SubServiceProcessSection({ steps = [] }: SubServiceProcessSectio
   if (!steps.length) return null;
 
   return (
-    <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="sub-process-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-process-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-process-heading" className="sub-service-section-title">

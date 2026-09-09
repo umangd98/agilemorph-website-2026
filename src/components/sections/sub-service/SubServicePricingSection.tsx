@@ -14,7 +14,7 @@ export function SubServicePricingSection({ pricing, cta }: SubServicePricingSect
   if (!pricing?.headline && !pricing?.detail) return null;
 
   return (
-    <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="sub-pricing-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-pricing-heading">
       <Container>
         <AnimateOnScroll>
           <div className="grid grid-cols-1 items-center gap-8 rounded-3xl border border-border bg-surface p-8 sm:p-10 lg:grid-cols-[1fr_auto]">
@@ -34,7 +34,7 @@ export function SubServicePricingSection({ pricing, cta }: SubServicePricingSect
             {cta ? (
               <CtaAction
                 cta={cta}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-body text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-semibold text-bg shadow-lg shadow-primary/20 transition-all hover:opacity-90"
               >
                 Get a Fixed Quote
                 <ArrowRight size={16} aria-hidden />

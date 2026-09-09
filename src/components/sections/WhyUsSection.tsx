@@ -1,4 +1,4 @@
-import { Container } from "@/components/Container";
+import { Container, SectionHeader } from "@/components/ui";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { EfficiencyCalculator } from "@/components/sections/EfficiencyCalculator";
 import { WhyUsInteractive } from "@/components/why-us-animations";
@@ -19,23 +19,11 @@ export function WhyUsSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
-      aria-labelledby="why-us-heading"
+      className="scroll-mt-24 border-t border-line py-24 sm:py-32"
+      aria-label={heading}
     >
-      <div
-        className="pointer-events-none absolute inset-0 section-ambient-glow"
-        aria-hidden="true"
-      />
-
-      <Container className="relative z-10">
-        <AnimateOnScroll className="mb-10">
-          <h2
-            id="why-us-heading"
-            className="font-heading text-4xl font-extrabold text-foreground sm:text-5xl"
-          >
-            {heading}
-          </h2>
-        </AnimateOnScroll>
+      <Container>
+        <SectionHeader index="05" label="Why AgileMorph" title={heading} />
 
         <AnimateOnScroll delay={120}>
           <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-6">

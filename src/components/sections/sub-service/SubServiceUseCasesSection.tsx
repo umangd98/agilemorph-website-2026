@@ -10,7 +10,7 @@ export function SubServiceUseCasesSection({ useCases = [] }: SubServiceUseCasesS
   if (!useCases.length) return null;
 
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="sub-usecases-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-usecases-heading">
       <Container>
         <AnimateOnScroll className="mb-10 text-center">
           <h2 id="sub-usecases-heading" className="sub-service-section-title">

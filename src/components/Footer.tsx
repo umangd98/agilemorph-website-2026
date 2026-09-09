@@ -34,7 +34,7 @@ type FooterProps = {
 };
 
 const footerLinkClass =
-  "font-body text-sm text-muted-foreground transition-colors hover:text-primary";
+  "font-body text-sm text-fg-muted transition-colors hover:text-fg";
 
 function FooterNavLink({ href, label }: { href: string; label: string }) {
   return (
@@ -70,9 +70,7 @@ function FacebookIcon() {
 
 function FooterSectionHeading({ children }: { children: ReactNode }) {
   return (
-    <h4 className="mb-5 font-heading text-xs font-bold uppercase tracking-widest text-foreground">
-      {children}
-    </h4>
+    <h4 className="syslabel mb-5 text-fg-muted">{children}</h4>
   );
 }
 
@@ -100,7 +98,7 @@ function FooterServices({ groups }: { groups: FooterServiceGroups }) {
           <div>
             <Link
               href={primary.href}
-              className="font-body text-sm font-semibold text-foreground transition-colors hover:text-primary"
+              className="font-body text-sm font-medium text-fg transition-colors hover:text-signal"
             >
               {primary.label}
             </Link>
@@ -119,9 +117,7 @@ function FooterServices({ groups }: { groups: FooterServiceGroups }) {
 
         {additional.length > 0 ? (
           <div className="border-t border-border/70 pt-5">
-            <p className="mb-3 font-body text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-              General Services
-            </p>
+            <p className="syslabel mb-3 text-fg-dim">General Services</p>
             <FooterLinkList links={additional} />
           </div>
         ) : null}
@@ -140,7 +136,7 @@ export function Footer({
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 border-t border-border bg-footer">
+    <footer className="relative z-10 border-t border-line bg-footer">
       <Container className="pt-14 pb-6 sm:pt-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
           <div className="sm:col-span-2 lg:col-span-3">
@@ -159,7 +155,7 @@ export function Footer({
                     aria-label={link.label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-all hover:border-primary hover:text-primary"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-bg-elevated text-fg-muted transition-colors hover:border-line-strong hover:text-fg"
                   >
                     <Icon />
                   </a>
@@ -186,13 +182,13 @@ export function Footer({
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:mt-14 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-body text-xs text-muted-foreground">
+        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-fg-dim sm:mt-14 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono">
             &copy; {year} AgileMorph Digital Accelerators. All rights reserved.
           </p>
-          <div className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            <span className="font-body text-[10px] uppercase tracking-widest text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <span className="signal-dot h-1.5 w-1.5 rounded-full bg-signal" />
+            <span className="font-mono uppercase tracking-[0.14em]">
               System Status: Optimal
             </span>
           </div>

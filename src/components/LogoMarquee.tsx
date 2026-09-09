@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { urlForImage } from "@/sanity/image";
 import type { SanityImageAsset } from "@/sanity/types";
@@ -94,7 +94,7 @@ function LogoChip({ item }: { item: LogoMarqueeItem }) {
     : null;
 
   return (
-    <span className="inline-flex shrink-0 items-center gap-2 rounded-pill border border-border bg-background px-3 py-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md sm:gap-2.5 sm:px-4 sm:py-2.5">
+    <span className="me-2.5 inline-flex shrink-0 items-center gap-2 rounded-pill border border-border bg-background px-3 py-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md sm:me-3 sm:gap-2.5 sm:px-4 sm:py-2.5">
       {logoUrl ? (
         <Image
           src={logoUrl}
@@ -136,13 +136,51 @@ function MarqueeRow({
   duration?: string;
   reducedMotion?: boolean;
 }) {
-  const doubled = [...items, ...items];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [copies, setCopies] = useState(1);
+
+  // Repeat the items enough times so a single half of the track always spans
+  // the container. Otherwise the track (2 halves, animated -50%) runs out of
+  // content and leaves a white gap on wide viewports.
+  useEffect(() => {
+    const container = containerRef.current;
+    const measure = measureRef.current;
+    if (!container || !measure) return;
+
+    const compute = () => {
+      const containerWidth = container.offsetWidth;
+      const setWidth = measure.offsetWidth;
+      if (containerWidth > 0 && setWidth > 0) {
+        setCopies(Math.max(1, Math.ceil(containerWidth / setWidth) + 1));
+      }
+    };
+
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [items]);
+
+  const half = Array.from({ length: copies }, () => items).flat();
+  const doubled = [...half, ...half];
 
   return (
-    <div className="relative isolate max-w-full">
+    <div className="relative isolate max-w-full" ref={containerRef}>
+      {/* Hidden single set used only to measure one set's width. */}
+      <div
+        ref={measureRef}
+        className="pointer-events-none invisible absolute left-0 top-0 flex"
+        aria-hidden
+      >
+        {items.map((item, idx) => (
+          <LogoChip key={`measure-${item.name}-${idx}`} item={item} />
+        ))}
+      </div>
+
       <div className="overflow-hidden">
         <div
-          className="flex w-max gap-2.5 sm:gap-3"
+          className="flex w-max"
           style={{
             animation: reducedMotion
               ? "none"

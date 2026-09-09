@@ -14,8 +14,8 @@ const sizeClasses = {
 } as const;
 
 const toneClasses = {
-  default: "text-foreground",
-  muted: "text-muted-foreground",
+  default: "text-fg",
+  muted: "text-fg-muted",
 } as const;
 
 export function Text<T extends ElementType = "p">({

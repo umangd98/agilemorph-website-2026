@@ -65,7 +65,7 @@ function FeaturedLeadCard({
         </div>
       </div>
 
-      <span className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border border-primary/20 bg-background px-4 py-2.5 font-body text-sm font-semibold text-primary shadow-sm transition-all duration-200 group-hover:border-primary/35 group-hover:bg-primary group-hover:text-white md:w-auto md:self-center">
+      <span className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border border-primary/20 bg-background px-4 py-2.5 font-body text-sm font-semibold text-primary shadow-sm transition-all duration-200 group-hover:border-primary/35 group-hover:bg-signal group-hover:text-bg md:w-auto md:self-center">
         View service
         <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
       </span>
@@ -192,7 +192,7 @@ export function AiAutomationCapabilitiesGrid({
   heading,
   capabilities,
   embedded = false,
-  className = "bg-surface py-section max-sm:py-section-sm",
+  className = "border-t border-line py-24 sm:py-32",
 }: AiAutomationCapabilitiesGridProps) {
   if (!capabilities.length) return null;
 

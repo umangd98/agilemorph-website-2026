@@ -16,13 +16,11 @@ export function IntegrationsMarquee({
 
   return (
     <section
-      className="overflow-x-clip border-y border-border bg-background py-10 sm:py-section-sm"
+      className="overflow-x-clip border-t border-line py-16 sm:py-20"
       aria-label="Integrations we work with"
     >
-      <div className="mb-6 px-4 text-center sm:mb-8 sm:px-6">
-        <p className="mx-auto max-w-md font-body text-[10px] font-bold uppercase leading-relaxed tracking-[0.16em] text-muted-foreground sm:text-xs sm:tracking-[0.2em]">
-          {heading}
-        </p>
+      <div className="mb-8 px-4 text-center sm:px-6">
+        <p className="syslabel mx-auto max-w-md leading-relaxed">{heading}</p>
       </div>
 
       <LogoMarquee items={items} />

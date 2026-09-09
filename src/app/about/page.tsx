@@ -5,7 +5,6 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import {
   AboutHeroSection,
   CompanyStorySection,
-  FounderSection,
   ProcessSection,
   TeamLeadsSection,
   TestimonialsSection,
@@ -69,7 +68,6 @@ export default async function AboutPageRoute() {
           body={aboutPage.about?.body}
           promiseHeading={aboutPage.about?.promiseHeading}
           promise={aboutPage.about?.promise}
-          image={aboutPage.about?.image}
         />
         <ValuesSection values={aboutPage.values} />
         <ProcessSection
@@ -91,14 +89,6 @@ export default async function AboutPageRoute() {
           subheading={aboutPage.teamLeads?.subheading}
           cardFooter={aboutPage.teamLeads?.cardFooter}
           members={aboutPage.teamLeads?.members}
-        />
-        <FounderSection
-          eyebrow={aboutPage.founder?.eyebrow}
-          heading={aboutPage.founder?.heading}
-          name={aboutPage.founder?.name}
-          role={aboutPage.founder?.role}
-          bio={aboutPage.founder?.bio}
-          image={aboutPage.founder?.image}
         />
         <TestimonialsSection
           heading={aboutPage.testimonials?.heading}

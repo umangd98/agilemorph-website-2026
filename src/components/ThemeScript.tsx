@@ -2,7 +2,9 @@ import Script from "next/script";
 
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
-const themeScript = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var s=localStorage.getItem(k);var t=s!=="light";var r=document.documentElement;if(t){r.classList.add("dark");r.style.colorScheme="dark"}else{r.classList.remove("dark");r.style.colorScheme="light"}}catch(e){}})();`;
+// The site is light-only. Force light before paint and clear any stale
+// preference from when the theme toggle still existed.
+const themeScript = `(function(){try{var r=document.documentElement;r.classList.remove("dark");r.style.colorScheme="light";localStorage.removeItem(${JSON.stringify(THEME_STORAGE_KEY)});}catch(e){}})();`;
 
 export function ThemeScript() {
   return (

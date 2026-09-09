@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { Container } from "@/components/Container";
+import { Container, SectionHeader } from "@/components/ui";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomationCapabilitiesGrid";
@@ -32,17 +32,17 @@ function GeneralServiceCard({
     return (
       <Link
         href={serviceHref(service.slug)}
-        className="group flex h-full min-h-[148px] flex-col justify-between rounded-2xl border border-border bg-background p-5 shadow-sm transition-colors duration-200 hover:border-primary/30 active:bg-primary/5"
+        className="group flex h-full min-h-[148px] flex-col justify-between rounded-xl border border-line bg-bg-elevated p-5 transition-colors duration-200 hover:bg-bg-raised"
       >
         <div className="min-w-0">
-          <h3 className="font-heading text-base font-bold text-foreground transition-colors group-hover:text-primary">
+          <h3 className="text-base font-medium leading-snug tracking-[-0.01em] text-fg">
             {getServiceLabel(service.slug, service.title)}
           </h3>
-          <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-pretty text-sm leading-relaxed text-fg-muted">
             {service.description}
           </p>
         </div>
-        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+        <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-medium text-fg transition-colors group-hover:text-signal">
           Learn more
           <ArrowRight
             size={14}
@@ -57,15 +57,15 @@ function GeneralServiceCard({
   return (
     <Link
       href={serviceHref(service.slug)}
-      className="hover-lift group flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-colors hover:border-primary/30 hover:bg-primary/5 hover:shadow-md"
+      className="group flex h-full flex-col rounded-xl border border-line bg-bg-elevated p-6 transition-colors duration-300 hover:bg-bg-raised"
     >
-      <h3 className="mb-2 font-heading text-lg font-bold text-foreground transition-colors group-hover:text-primary">
+      <h3 className="mb-2 text-lg font-medium leading-snug tracking-[-0.01em] text-fg">
         {getServiceLabel(service.slug, service.title)}
       </h3>
-      <p className="flex-1 font-body text-sm leading-relaxed text-muted-foreground">
+      <p className="flex-1 text-pretty text-sm leading-relaxed text-fg-muted">
         {service.description}
       </p>
-      <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary">
+      <span className="mt-4 inline-flex items-center gap-1.5 font-body text-xs font-medium text-fg transition-colors group-hover:text-signal">
         Learn more
         <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
       </span>
@@ -121,44 +121,16 @@ export function ServicesSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-surface py-section max-sm:py-section-sm"
-      aria-labelledby="services-heading"
+      className="scroll-mt-24 border-t border-line py-24 sm:py-32"
+      aria-label={heading}
     >
-      <div
-        className="pointer-events-none absolute inset-0 section-ambient-glow"
-        aria-hidden="true"
-      />
-
-      <Container className="relative z-10">
-        <AnimateOnScroll>
-          <div className="mb-10 text-center sm:mb-14 md:mb-16">
-            {eyebrow ? (
-              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 font-body text-[10px] font-bold uppercase tracking-widest text-primary sm:mb-4 sm:px-4 sm:text-xs">
-                <Sparkles size={12} />
-                {eyebrow}
-              </span>
-            ) : null}
-            <h2
-              id="services-heading"
-              className="font-heading text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-4xl md:text-5xl"
-            >
-              {heading.split(" ").map((word, i, arr) => {
-                const isLast = i === arr.length - 1;
-                return isLast ? (
-                  <span key={word} className="text-primary">
-                    {word}
-                  </span>
-                ) : (
-                  <span key={word}>{word} </span>
-                );
-              })}
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl px-2 font-body text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:px-0 sm:text-base">
-              AI automation is our core practice, plus digital marketing, virtual assistance, and
-              Website Development to keep your whole operation moving forward.
-            </p>
-          </div>
-        </AnimateOnScroll>
+      <Container>
+        <SectionHeader
+          index="03"
+          label={eyebrow}
+          title={heading}
+          intro="AI automation is the whole practice, split into seven specializations that cover workflows, agents, CRM, messaging, infrastructure, and Shopify."
+        />
 
         <AiAutomationCapabilitiesGrid
           capabilities={capabilities}

@@ -122,7 +122,7 @@ export function TeamLeadsSection({
 
   return (
     <section
-      className="relative overflow-hidden bg-background py-section max-sm:py-section-sm"
+      className="relative scroll-mt-24 overflow-hidden border-t border-line py-24 sm:py-32"
       aria-labelledby="team-leads-heading"
     >
       <div

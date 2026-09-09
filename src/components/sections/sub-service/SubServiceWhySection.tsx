@@ -20,7 +20,7 @@ export function SubServiceWhySection({
   if (!whyTitle && !whyText && !checks.length) return null;
 
   return (
-    <section className="bg-background py-section max-sm:py-section-sm" aria-labelledby="sub-why-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="sub-why-heading">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           <AnimateOnScroll>

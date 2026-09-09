@@ -15,7 +15,7 @@ export function CapabilitiesSection({
   if (!capabilities.length) return null;
 
   return (
-    <section className="bg-surface py-section max-sm:py-section-sm" aria-labelledby="capabilities-heading">
+    <section className="border-t border-line py-24 sm:py-32" aria-labelledby="capabilities-heading">
       <Container>
         <AnimateOnScroll className="mb-12">
           <h2 id="capabilities-heading" className="font-heading text-4xl font-extrabold text-foreground">

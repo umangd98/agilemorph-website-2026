@@ -273,7 +273,7 @@ export function EfficiencyCalculator({
         </div>
 
         <CalendlyBookButton
-          className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary font-body font-bold text-white shadow-[0_8px_32px_rgba(34,197,94,0.32)] transition-all hover:scale-[1.01] hover:bg-primary-dark active:scale-[0.99] ${
+          className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-signal font-body font-bold text-bg shadow-[0_8px_32px_rgba(34,197,94,0.32)] transition-all hover:scale-[1.01] hover:opacity-90 active:scale-[0.99] ${
             prominent ? "px-6 py-3.5 text-sm sm:text-base" : "px-4 py-2 text-xs"
           }`}
         >

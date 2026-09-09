@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-import { Container } from "@/components/Container";
-import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { Container } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
 import { MetricsGrid } from "@/components/MetricsGrid";
 import type { CtaButton, Stat } from "@/sanity/types";
 
@@ -26,58 +26,54 @@ export function AboutImpactSection({
   if (!heading && !description && !stats.length) return null;
 
   return (
-    <section className="bg-background py-12 max-sm:py-10" aria-labelledby="about-impact-heading">
+    <section className="scroll-mt-24 border-t border-line py-24 sm:py-32" aria-label={heading}>
       <Container>
-        <AnimateOnScroll>
-          <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-r from-[#0ba6a6] to-[#57cf5a] p-6 text-white shadow-lg sm:p-8 lg:p-10">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10">
+        <Reveal>
+          <div className="rounded-xl border border-line bg-bg-elevated p-8 sm:p-10 lg:p-12">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center">
               <div className="min-w-0">
                 {heading ? (
-                  <h2
-                    id="about-impact-heading"
-                    className="font-heading text-2xl font-extrabold sm:text-3xl lg:text-[2rem]"
-                  >
+                  <h2 className="text-balance text-2xl font-medium leading-[1.1] tracking-[-0.02em] text-fg sm:text-3xl lg:text-[2rem]">
                     {heading}
                   </h2>
                 ) : null}
                 {description ? (
-                  <p className="mt-3 font-body text-sm leading-relaxed text-white/90 sm:text-base">
+                  <p className="mt-4 text-pretty text-sm leading-relaxed text-fg-muted sm:text-base">
                     {description}
                   </p>
                 ) : null}
                 {button ? (
                   <Link
                     href={button.href}
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-2.5 font-body text-sm font-bold text-foreground shadow-md transition-all hover:-translate-y-0.5"
+                    className="group mt-7 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-body text-sm font-medium text-bg transition-opacity hover:opacity-90"
                   >
                     {button.label}
-                    <ArrowUpRight size={16} />
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
                   </Link>
                 ) : null}
               </div>
 
               {stats.length ? (
                 <div className="min-w-0">
-                  {(statsEyebrow || statsHeading) && (
-                    <div className="mb-4 text-center lg:text-left">
+                  {statsEyebrow || statsHeading ? (
+                    <div className="mb-5">
                       {statsEyebrow ? (
-                        <p className="mb-1 font-body text-[10px] font-bold uppercase tracking-[0.28em] text-white/80 sm:text-xs">
-                          {statsEyebrow}
-                        </p>
+                        <p className="syslabel mb-2">{statsEyebrow}</p>
                       ) : null}
                       {statsHeading ? (
-                        <p className="font-heading text-lg font-extrabold text-white sm:text-xl">
-                          {statsHeading}
-                        </p>
+                        <p className="text-lg font-medium text-fg">{statsHeading}</p>
                       ) : null}
                     </div>
-                  )}
-                  <MetricsGrid items={stats} variant="onPrimary" animate={false} />
+                  ) : null}
+                  <MetricsGrid items={stats} animate={false} />
                 </div>
               ) : null}
             </div>
           </div>
-        </AnimateOnScroll>
+        </Reveal>
       </Container>
     </section>
   );
