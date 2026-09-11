@@ -22,3 +22,5 @@ export { BlogListSection } from "./BlogListSection";
 export { BlogPostSection } from "./BlogPostSection";
 
 export { AboutImpactSection } from "./AboutImpactSection";
+
+export { RecentEventsSection } from "./RecentEventsSection";

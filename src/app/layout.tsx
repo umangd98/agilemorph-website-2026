@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MotionProvider } from "@/components/MotionProvider";
 import { ServiceWorkerCleanup } from "@/components/ServiceWorkerCleanup";
 import { StructuredData } from "@/components/StructuredData";
@@ -88,6 +89,7 @@ export default async function RootLayout({
           <MotionProvider>{children}</MotionProvider>
         </ThemeProvider>
         <TidioChat />
+        <GoogleAnalytics />
       </body>
     </html>
   );

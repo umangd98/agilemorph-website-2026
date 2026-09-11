@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       { source: "/services/digital-marketing", destination: "/services/ai-automation", statusCode: 301 },
       { source: "/services/virtual-assistance", destination: "/services/ai-automation", statusCode: 301 },
       { source: "/services/website-development", destination: "/services/ai-automation", statusCode: 301 },
+      // The site moved from agilemorph.in to theagilemorph.com. /api is left out
+      // so webhooks still pointed at the old host (Sanity revalidation) keep
+      // working: a 301 would turn their POST into a GET.
+      {
+        source: "/:path((?!api/).*)",
+        has: [{ type: "host", value: "(www\\.)?agilemorph\\.in" }],
+        destination: "https://theagilemorph.com/:path",
+        statusCode: 301,
+      },
     ];
   },
   experimental: {

@@ -25,6 +25,7 @@ const defaultNavLinks: NavLink[] = [
   { label: "Blogs", href: "/blog" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
+  { label: "Events", href: "/events" },
 ];
 
 type NavItem = NavLink & { children?: true };
@@ -155,6 +156,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
   const navItems: NavItem[] = [
     ...linksBeforeServices,
     { label: "Services", href: "/services", children: true },
+    { label: "Events", href: "/events" },
     ...(contactLink ? [contactLink] : []),
   ];
   const [menuOpen, setMenuOpen] = useState(false);
