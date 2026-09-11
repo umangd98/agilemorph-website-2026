@@ -65,5 +65,5 @@ export function coverHeadlineSize(
  * desktop and would otherwise crop the title.
  */
 export function coverUrl(slug: string, format: CoverFormat = "landscape"): string {
-  return format === "square" ? `/blog/${slug}/cover?format=square` : `/blog/${slug}/cover`;
+  return format === "square" ? `/blog/${slug}/cover/square` : `/blog/${slug}/cover`;
 }
