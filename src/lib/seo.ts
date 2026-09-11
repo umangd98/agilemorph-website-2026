@@ -10,16 +10,19 @@ function hasOgImage(image: SanityImageAsset): boolean {
 export function seoToMetadata(
   seo: Seo | undefined,
   fallback: Metadata,
+  fallbackImageUrl?: string,
 ): Metadata {
-  if (!seo) return fallback;
+  if (!seo && !fallbackImageUrl) return fallback;
 
+  // An explicit SEO image always wins; fallbackImageUrl only fills the gap so
+  // shared links never go out without a preview image.
   const ogImageUrl =
-    seo.ogImage && hasOgImage(seo.ogImage)
+    (seo?.ogImage && hasOgImage(seo.ogImage)
       ? urlForImage(seo.ogImage).width(1200).height(630).url()
-      : undefined;
+      : undefined) ?? fallbackImageUrl;
 
-  const title = seo.title ?? fallback.title;
-  const description = seo.description ?? fallback.description;
+  const title = seo?.title ?? fallback.title;
+  const description = seo?.description ?? fallback.description;
   const resolvedTitle = typeof title === "string" ? title : undefined;
   const resolvedDescription =
     typeof description === "string" ? description : undefined;
