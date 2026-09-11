@@ -4,7 +4,7 @@ import type { FaqItem, SocialLink } from "@/sanity/types";
  * Canonical production origin. Used by metadata (metadataBase, canonical),
  * sitemap/robots, and JSON-LD structured data.
  */
-export const SITE_URL = "https://agilemorph.in";
+export const SITE_URL = "https://theagilemorph.com";
 
 export const ORGANIZATION_NAME = "AgileMorph";
 export const ORGANIZATION_LEGAL_NAME = "AgileMorph Solutions";
