@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { BlogPostSection } from "@/components/sections/BlogPostSection";
+import { coverUrl } from "@/lib/blog-cover";
 import { seoToMetadata } from "@/lib/seo";
+import { urlForImage } from "@/sanity/image";
 import { sanityFetch } from "@/sanity/fetch";
 import { allBlogSlugsQuery, blogPostQuery } from "@/sanity/queries";
 import type { BlogPost } from "@/sanity/types";
@@ -39,10 +41,20 @@ export async function generateMetadata({
     return { title: "Not found", robots: { index: false, follow: false } };
   }
 
-  return seoToMetadata(post.seo, {
-    title: post.title,
-    description: post.excerpt,
-  });
+  // Share previews use the post's own cover when it has one, and the generated
+  // cover otherwise, so no post is ever shared without an image.
+  const shareImage = post.coverImage?.asset
+    ? urlForImage(post.coverImage).width(1200).height(630).url()
+    : coverUrl(slug);
+
+  return seoToMetadata(
+    post.seo,
+    {
+      title: post.title,
+      description: post.excerpt,
+    },
+    shareImage,
+  );
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

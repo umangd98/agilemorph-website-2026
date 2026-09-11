@@ -7,6 +7,7 @@ import { BlogFilters } from "@/components/BlogFilters";
 import { BlogSearch } from "@/components/BlogSearch";
 import { Container } from "@/components/Container";
 import { SanityImage } from "@/components/SanityImage";
+import { GeneratedCover } from "@/components/blog/GeneratedCover";
 import {
   buildBlogListHref,
   BLOG_SORT_OPTIONS,
@@ -257,7 +258,22 @@ export function BlogListSection({
                           <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent lg:bg-linear-to-r lg:from-transparent lg:to-transparent" />
                         </div>
                       ) : (
-                        <div className="hidden lg:block lg:min-h-[380px] bg-linear-to-br from-mint to-mint-dark" />
+                        <div className="relative aspect-16/10 overflow-hidden bg-muted lg:aspect-auto lg:min-h-[380px]">
+                          {/* The image column is close to square on desktop, so it gets the
+                              square cover there; below lg the card is 16:10 and wide fits. */}
+                          <GeneratedCover
+                            slug={featuredPost.slug}
+                            sizes="100vw"
+                            className="object-cover object-left transition-transform duration-700 group-hover:scale-105 lg:hidden"
+                          />
+                          <GeneratedCover
+                            slug={featuredPost.slug}
+                            format="square"
+                            sizes="50vw"
+                            priority
+                            className="hidden object-cover transition-transform duration-700 group-hover:scale-105 lg:block"
+                          />
+                        </div>
                       )}
                       <div className="flex flex-col justify-center p-8 lg:p-12">
                         <div className="mb-3 flex items-center gap-3">
@@ -326,7 +342,13 @@ export function BlogListSection({
                             />
                           </div>
                         ) : (
-                          <div className="aspect-video bg-linear-to-br from-mint to-mint-dark" />
+                          <div className="relative aspect-video overflow-hidden bg-muted">
+                            <GeneratedCover
+                              slug={post.slug}
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                              className="object-cover object-left transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
                         )}
                         <div className="flex flex-1 flex-col p-6">
                           {post.categories?.length ? (
