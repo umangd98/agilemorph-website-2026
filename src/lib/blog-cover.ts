@@ -13,20 +13,33 @@ const MANUFACTURING =
 const AGENCY =
   /agenc|client|marketing|\blead|outreach|prospect|enrichment|\bseo\b|ga4|gsc|google-business|\bcms\b|white-label|visibility-audit|content-approval|report-summary|newsletter/;
 
+const LABELS: Record<CoverKind, string> = {
+  manufacturing: "Manufacturing",
+  agency: "Agency Operations",
+  automation: "AI Automation",
+};
+
+function kindFrom(text: string): CoverKind | null {
+  // Explicit cluster words decide first. The broad lists overlap: an agency
+  // article about "content production" also matches the manufacturing list.
+  if (/manufactur/.test(text)) return "manufacturing";
+  if (/agenc/.test(text)) return "agency";
+
+  const manufacturing = MANUFACTURING.test(text);
+  const agency = AGENCY.test(text);
+  if (manufacturing && !agency) return "manufacturing";
+  if (agency && !manufacturing) return "agency";
+  return null;
+}
+
 /**
- * Picks the cover motif from the post's slug and title, so posts published by
- * the content routine get an on-theme cover without anyone tagging them.
+ * Picks the cover motif so posts published by the content routine get an
+ * on-theme cover without anyone tagging them. The slug is checked before the
+ * title because slugs come from the planned queue and titles are free text.
  */
 export function coverThemeFor(slug: string, title: string): CoverTheme {
-  const haystack = `${slug} ${title}`.toLowerCase();
-
-  if (MANUFACTURING.test(haystack)) {
-    return { kind: "manufacturing", label: "Manufacturing" };
-  }
-  if (AGENCY.test(haystack)) {
-    return { kind: "agency", label: "Agency Operations" };
-  }
-  return { kind: "automation", label: "AI Automation" };
+  const kind = kindFrom(slug.toLowerCase()) ?? kindFrom(title.toLowerCase()) ?? "automation";
+  return { kind, label: LABELS[kind] };
 }
 
 /**
