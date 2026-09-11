@@ -182,13 +182,13 @@ export async function renderCover(slug: string, format: CoverFormat): Promise<Re
           <div
             style={{
               position: "absolute",
-              right: 70,
-              bottom: 70,
+              right: 56,
+              bottom: 48,
               display: "flex",
-              opacity: 0.85,
+              opacity: 0.6,
             }}
           >
-            <Motif kind={theme.kind} scale={0.8} />
+            <Motif kind={theme.kind} scale={0.7} />
           </div>
         ) : (
           <div
@@ -209,14 +209,17 @@ export async function renderCover(slug: string, format: CoverFormat): Promise<Re
           style={{
             position: "absolute",
             left: square ? 110 : 112,
-            top: square ? 130 : 92,
-            bottom: square ? 130 : 84,
             // Landscape stays narrow: at small card ratios only the left of the
-            // canvas is visible. Square covers the near-1:1 featured card.
+            // canvas is visible. The square cover fills a featured-card column
+            // anywhere from 1:1 to about 1.56:1, which crops its top and bottom,
+            // so the text and logo sit in a centred band (y 180-820) that survives.
+            top: square ? 180 : 92,
+            bottom: square ? 180 : 84,
             width: square ? 780 : 540,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: square ? "center" : "space-between",
+            gap: square ? 48 : 0,
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>

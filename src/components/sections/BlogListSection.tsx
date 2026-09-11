@@ -259,8 +259,9 @@ export function BlogListSection({
                         </div>
                       ) : (
                         <div className="relative aspect-16/10 overflow-hidden bg-muted lg:aspect-auto lg:min-h-[380px]">
-                          {/* The image column is close to square on desktop, so it gets the
-                              square cover there; below lg the card is 16:10 and wide fits. */}
+                          {/* On desktop the image column runs from 1:1 to about 1.56:1, so it
+                              gets the square cover, whose content is kept clear of the
+                              top and bottom crop; below lg the card is 16:10 and wide fits. */}
                           <GeneratedCover
                             slug={featuredPost.slug}
                             sizes="100vw"
