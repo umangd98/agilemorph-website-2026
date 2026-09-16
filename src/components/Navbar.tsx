@@ -105,7 +105,7 @@ function SubServiceCard({
     <Link
       href={link.href}
       onClick={onNavigate}
-      className={`group flex gap-2.5 rounded-xl border p-3 transition-all duration-150 ${
+      className={`group relative flex gap-2.5 rounded-xl border p-3 transition-all duration-150 ${
         active
           ? "border-primary/25 bg-primary/8 text-primary"
           : "border-transparent bg-muted/40 text-foreground hover:border-border hover:bg-muted"
@@ -120,12 +120,30 @@ function SubServiceCard({
       >
         <Icon size={15} />
       </span>
-      <span className="min-w-0">
-        <span className="block font-body text-sm font-semibold leading-tight">{link.label}</span>
-        <span className="mt-0.5 block font-body text-xs leading-snug text-muted-foreground">
-          {link.desc}
-        </span>
+      <span className="min-w-0 pr-12">
+  <span className="flex items-center gap-2">
+  <span className="font-body text-sm font-semibold leading-tight">
+    {link.label}
+  </span>
+
+  {link.isNew && (
+  <span className="absolute right-2.5 top-2.5 z-10">
+    <span className="relative inline-flex items-center gap-1.5 rounded-full border border-[#15803d]/20 bg-[#15803d]/10 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-[0.12em] text-[#15803d] shadow-sm">
+      <span className="relative flex h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#15803d]/40" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#15803d]" />
       </span>
+
+      NEW
+    </span>
+  </span>
+)}
+</span>
+
+  <span className="mt-0.5 block font-body text-xs leading-snug text-muted-foreground">
+    {link.desc}
+  </span>
+</span>
     </Link>
   );
 }
@@ -344,7 +362,7 @@ export function Navbar({ serviceGroups, navLinks = defaultNavLinks }: NavbarProp
                           </div>
 
                           <div
-                            className={`absolute left-full top-0 -ml-2 w-[min(440px,calc(100vw-20rem))] pl-2 transition-all duration-200 ease-out ${
+                            className={`absolute left-full top-0 -ml-2 w-[min(600px,calc(100vw-20rem))] pl-2 transition-all duration-200 ease-out ${
                               aiPanelOpen
                                 ? "pointer-events-auto translate-x-0 opacity-100"
                                 : "pointer-events-none invisible -translate-x-1 opacity-0"
