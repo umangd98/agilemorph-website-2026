@@ -1323,4 +1323,4 @@ export default function AIContentManagementPage() {
       `}</style>
     </div>
   );
-}
+}  

@@ -42,7 +42,6 @@ export function isExcludedServiceSlug(slug: string) {
 }
 
 export const AI_AUTOMATION_SUB_SLUGS = [
-  "ai-content-management",
   "ai-agents",
   "workflow-automation",
   "crm-lead-automation",
@@ -50,6 +49,7 @@ export const AI_AUTOMATION_SUB_SLUGS = [
   "messaging-automation",
   "ai-audit",
   "shopify-automation",
+  // "ai-content-management",
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
