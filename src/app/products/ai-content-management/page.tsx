@@ -566,8 +566,6 @@ export default function AIContentManagementPage() {
             </div>
 
             <div className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-              {/* LEFT */}
-
               <div className="relative z-10">
                 <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#15803d]/20 bg-white/70 px-4 py-2 backdrop-blur">
                   <span className="h-2 w-2 rounded-full bg-[#15803d] shadow-[0_0_0_5px_rgba(21,128,61,0.08)]" />
@@ -658,7 +656,11 @@ export default function AIContentManagementPage() {
                         </div>
 
                         <div className="mt-4 space-y-2">
-                          {["Content Brief", "Keywords", "Brand Context"].map((item) => (
+                          {[
+                            "Content Brief",
+                            "Keywords",
+                            "Brand Context",
+                          ].map((item) => (
                             <div
                               key={item}
                               className="rounded-lg border border-black/[0.07] bg-white px-2 py-2 font-body text-xs text-[#475569]"
@@ -742,8 +744,9 @@ export default function AIContentManagementPage() {
                     <div className="mt-4 grid grid-cols-3 gap-2">
                       <div className="rounded-xl bg-[#f8faf9] p-3 text-center">
                         <div className="font-heading text-lg font-semibold">
-                           6
+                          6
                         </div>
+
                         <div className="font-body text-[9px] uppercase tracking-[0.1em] text-[#64748b]">
                           Stages
                         </div>
@@ -753,6 +756,7 @@ export default function AIContentManagementPage() {
                         <div className="font-heading text-lg font-semibold text-[#15803d]">
                           AI
                         </div>
+
                         <div className="font-body text-[9px] uppercase tracking-[0.1em] text-[#64748b]">
                           Powered
                         </div>
@@ -760,8 +764,9 @@ export default function AIContentManagementPage() {
 
                       <div className="rounded-xl bg-[#f8faf9] p-3 text-center">
                         <div className="font-heading text-lg font-semibold">
-                          Less 
+                          Less
                         </div>
+
                         <div className="font-body text-[9px] uppercase tracking-[0.1em] text-[#64748b]">
                           Manual Work
                         </div>
@@ -813,8 +818,6 @@ export default function AIContentManagementPage() {
                   tasks.
                 </p>
 
-                {/* 4 ABOVE / 4 BELOW */}
-
                 <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {[
                     "Research",
@@ -825,7 +828,7 @@ export default function AIContentManagementPage() {
                     "Feedback",
                     "Revisions",
                     "Publishing",
-                  ].map((item, index) => (
+                  ].map((item) => (
                     <div
                       key={item}
                       className="group flex min-h-[58px] items-center justify-center rounded-2xl border border-black/[0.08] bg-[#f7f9f7] px-3 py-3 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#15803d]/25 hover:bg-[#15803d]/[0.05]"
@@ -842,6 +845,77 @@ export default function AIContentManagementPage() {
                   reducing repetitive work and helping your team move from
                   idea to finished content faster.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            CAT VIDEO
+        ============================================================ */}
+
+        <section className="bg-white pb-20 sm:pb-24 lg:pb-28">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+            <div className="relative overflow-hidden rounded-[30px] border border-black/[0.08] bg-[#f5f8f6] p-3 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-4 lg:p-5">
+              {/* Decorative green glow */}
+              <div
+                className="pointer-events-none absolute -right-32 -top-32 h-[380px] w-[380px] rounded-full blur-3xl"
+                aria-hidden="true"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(21,128,61,0.13), transparent 70%)",
+                }}
+              />
+
+              <div
+                className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full blur-3xl"
+                aria-hidden="true"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(21,128,61,0.08), transparent 70%)",
+                }}
+              />
+
+              <div className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-black shadow-[0_15px_45px_rgba(15,23,42,0.10)]">
+                <video
+                  className="block aspect-video w-full object-cover"
+                  src="/videos/cat-content-management.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Video label */}
+                {/* <div className="pointer-events-none absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2.5 backdrop-blur-md">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-[#15803d]" />
+
+                  <span className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-black">
+                    CAT in Action
+                  </span>
+                </div> */}
+              </div>
+
+              {/* Video information */}
+              <div className="relative flex flex-col gap-4 px-2 pb-1 pt-5 sm:flex-row sm:items-center sm:justify-between sm:px-3 sm:pt-6">
+                <div>
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-[#15803d]">
+                    See how CAT works
+                  </p>
+
+                  <p className="mt-1 max-w-3xl font-body text-sm leading-6 text-[#64748b]">
+                    See how CAT brings research, planning, creation, review,
+                    and publishing into one streamlined workflow.
+                  </p>
+                </div>
+
+                <div className="shrink-0 rounded-full border border-[#15803d]/15 bg-white px-4 py-2.5 font-body text-xs font-semibold text-[#15803d]">
+                  AI-powered content workflow
+                </div>
               </div>
             </div>
           </div>
@@ -880,8 +954,6 @@ export default function AIContentManagementPage() {
               </p>
             </div>
 
-            {/* 4 COLUMNS = 4 ABOVE + 4 BELOW */}
-
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {workflowSteps.map((step) => (
                 <article
@@ -909,8 +981,6 @@ export default function AIContentManagementPage() {
                       {step.number}
                     </span>
                   </div>
-
-                  {/* H3 = 18PX + INCREASED LINE SPACING */}
 
                   <h3 className="mt-7 font-heading text-[18px] font-semibold leading-8 tracking-[-0.015em]">
                     {step.title}
@@ -1010,7 +1080,11 @@ export default function AIContentManagementPage() {
                   className="group border-white/[0.08] bg-[#111111] p-7 transition-all duration-300 hover:bg-[#15803d] lg:border-r last:border-r-0"
                 >
                   <div className="mb-7 flex h-11 w-11 items-center justify-center rounded-xl bg-[#15803d]/10 text-[#15803d] transition-all duration-300 group-hover:bg-white group-hover:text-[#15803d]">
-                    <ImpactIcon type={item.icon as "clock" | "bolt" | "quality" | "scale"} />
+                    <ImpactIcon
+                      type={
+                        item.icon as "clock" | "bolt" | "quality" | "scale"
+                      }
+                    />
                   </div>
 
                   <h3 className="font-heading text-[18px] font-semibold leading-8 tracking-[-0.015em]">
@@ -1124,7 +1198,6 @@ export default function AIContentManagementPage() {
 
         {/* ============================================================
             CTA
-            MOVED BEFORE FAQ
         ============================================================ */}
 
         <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
@@ -1176,13 +1249,6 @@ export default function AIContentManagementPage() {
                         <ArrowIcon />
                       </span>
                     </Link>
-
-                    {/* <Link
-                      href="/contact"
-                      className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-black/[0.10] bg-white px-7 font-body text-sm font-semibold text-[#111111] transition-all duration-300 hover:border-[#15803d]/30 hover:text-[#15803d]"
-                    >
-                      Contact Us
-                    </Link> */}
                   </div>
                 </div>
               </div>
@@ -1211,7 +1277,6 @@ export default function AIContentManagementPage() {
 
         {/* ============================================================
             FAQ
-            NOW AFTER CTA
         ============================================================ */}
 
         <section className="bg-[#f5f8f6] py-20 sm:py-24 lg:py-28">
@@ -1232,10 +1297,9 @@ export default function AIContentManagementPage() {
             </div>
 
             <div className="mt-12 space-y-3">
-              {faqs.map((faq, index) => (
+              {faqs.map((faq) => (
                 <details
                   key={faq.question}
-                //   open={index === 0}
                   className="group overflow-hidden rounded-[20px] border border-black/[0.08] bg-white"
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-6 sm:px-7">
@@ -1323,4 +1387,4 @@ export default function AIContentManagementPage() {
       `}</style>
     </div>
   );
-}  
+}
