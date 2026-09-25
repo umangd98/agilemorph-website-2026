@@ -1,6 +1,7 @@
 import { cache } from "react";
 import {
   Bot,
+  FileText,
   ClipboardCheck,
   Globe,
   MessageSquare,
@@ -48,6 +49,7 @@ export const AI_AUTOMATION_SUB_SLUGS = [
   "messaging-automation",
   "ai-audit",
   "shopify-automation",
+  // "ai-content-management",
 ] as const;
 
 export type AiAutomationSubSlug = (typeof AI_AUTOMATION_SUB_SLUGS)[number];
@@ -68,6 +70,7 @@ const NAV_DESC_BY_SLUG: Record<string, string> = {
   "messaging-automation": "WhatsApp, email, and chat automation",
   "ai-audit": "Find where AI pays off",
   "shopify-automation": "Orders, inventory, and store flows",
+  "ai-content-management": "AI-powered content workflows for teams",
   "website-development": "Custom websites and web apps",
   "digital-marketing": "Grow your brand online",
   "virtual-assistance": "Dedicated remote support",
@@ -82,6 +85,7 @@ const SERVICE_LABEL_BY_SLUG: Record<string, string> = {
   "messaging-automation": "Messaging Automation",
   "ai-audit": "AI Audit",
   "shopify-automation": "Shopify Automation",
+  "ai-content-management": "CAT",
   "digital-marketing": "Digital Marketing",
   "virtual-assistance": "Virtual Assistance",
   "website-development": "Website Development",
@@ -92,6 +96,7 @@ export type ServiceNavLink = {
   label: string;
   href: string;
   desc: string;
+  isNew?: boolean;
 };
 
 export type ServiceNavGroups = {
@@ -109,6 +114,7 @@ const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
   "messaging-automation": MessageSquare,
   "ai-audit": ClipboardCheck,
   "shopify-automation": ShoppingBag,
+  "ai-content-management": FileText,
   "web-development": Globe,
   "website-development": Globe,
   "digital-marketing": TrendingUp,
@@ -144,11 +150,17 @@ export function getServiceLabel(slug: string, title: string) {
 
 export function toServiceNavLink(page: ServicePageListItem): ServiceNavLink {
   const label = getServiceLabel(page.slug, page.title);
+
   return {
     slug: page.slug,
     label,
     href: serviceHref(page.slug),
-    desc: NAV_DESC_BY_SLUG[page.slug] ?? page.tagline ?? page.description ?? "",
+    desc:
+      NAV_DESC_BY_SLUG[page.slug] ??
+      page.tagline ??
+      page.description ??
+      "",
+    isNew: page.slug === "ai-content-management",
   };
 }
 
@@ -251,11 +263,12 @@ export function buildServiceNavGroups(pages: ServicePageListItem[]): ServiceNavG
     if (page) return toServiceNavLink(page);
 
     return {
-      slug,
-      label: SERVICE_LABEL_BY_SLUG[slug] ?? slug,
-      href: serviceHref(slug),
-      desc: NAV_DESC_BY_SLUG[slug] ?? "",
-    };
+  slug,
+  label: SERVICE_LABEL_BY_SLUG[slug] ?? slug,
+  href: serviceHref(slug),
+  desc: NAV_DESC_BY_SLUG[slug] ?? "",
+  // isNew: slug === "ai-content-management",
+};
   });
 
   const additionalLinks = sortAdditionalServicePages(additional).map(toServiceNavLink);

@@ -1,5 +1,6 @@
 export { HeroSection } from "./HeroSection";
 export { ProcessSection } from "./ProcessSection";
+export { CATVideoSection } from "./CATVideoSection";
 export { ServicesSection } from "./ServicesSection";
 export { PricingSection } from "./PricingSection";
 export { WhyUsSection } from "./WhyUsSection";
@@ -22,3 +23,5 @@ export { BlogListSection } from "./BlogListSection";
 export { BlogPostSection } from "./BlogPostSection";
 
 export { AboutImpactSection } from "./AboutImpactSection";
+
+export { RecentEventsSection } from "./RecentEventsSection";

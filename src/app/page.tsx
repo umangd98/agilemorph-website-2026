@@ -5,10 +5,12 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import {
+  CATVideoSection,
   FaqSection,
   HeroSection,
   PartnersSection,
   ProcessSection,
+  RecentEventsSection,
   ServicesSection,
   StatsSection,
   TestimonialsSection,
@@ -117,6 +119,8 @@ export default async function HomePage() {
           heading={homepage.integrations?.heading}
           items={homepage.integrations?.items}
         />
+        <CATVideoSection />
+        <RecentEventsSection />
         <Suspense fallback={null}>
           <BelowFoldSections />
         </Suspense>
