@@ -267,7 +267,7 @@ export function buildServiceNavGroups(pages: ServicePageListItem[]): ServiceNavG
   label: SERVICE_LABEL_BY_SLUG[slug] ?? slug,
   href: serviceHref(slug),
   desc: NAV_DESC_BY_SLUG[slug] ?? "",
-  isNew: slug === "ai-content-management",
+  // isNew: slug === "ai-content-management",
 };
   });
 
