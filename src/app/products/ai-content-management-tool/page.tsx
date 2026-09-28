@@ -79,7 +79,7 @@ const businessKnowledge = [
   "Brand guidelines",
   "Do's and don’ts",
   "Content preferences",
-  "Previous feedback",
+  "Feedback",
 ];
 
 const impactItems = [
@@ -572,7 +572,7 @@ export default function AIContentManagementPage() {
                   <span className="h-2 w-2 rounded-full bg-[#15803d] shadow-[0_0_0_5px_rgba(21,128,61,0.08)]" />
 
                   <span className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[#15803d]">
-                    AI Content Management 
+                    AI Content Management Tool
                   </span>
                 </div>
 
@@ -813,12 +813,13 @@ export default function AIContentManagementPage() {
                 <h2 className="max-w-xl font-heading text-4xl font-semibold leading-[1.2] tracking-[-0.045em] sm:text-5xl">
                   Content Creation Is More Than Just Writing
                 </h2>
+                <p className="mt-5 font-body text-lg leading-8 text-[#475569]">
+                  Creating quality content involves<br></br> more than writing.
+                </p>
               </div>
 
               <div>
-                <p className="font-body text-lg leading-8 text-[#475569]">
-                  Creating quality content involves more than writing.
-                </p>
+                
 
                 <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {[
@@ -1018,9 +1019,9 @@ export default function AIContentManagementPage() {
               </div>
 
               <div className="rounded-[28px] border border-black/[0.08] bg-[#f6faf7] p-6 sm:p-8">
-                {/* <p className="font-body text-xs font-bold uppercase tracking-[0.15em] text-[#15803d]">
+                <p className="font-body text-xs font-bold uppercase tracking-[0.15em] text-[#15803d]">
                   CAT understands your
-                </p> */}
+                </p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {businessKnowledge.map((item) => (
