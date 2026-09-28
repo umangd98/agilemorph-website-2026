@@ -98,7 +98,7 @@ export function CATVideoSection() {
               {/* CTA */}
               <div className="mt-8">
                 <Link
-                  href="/products/ai-content-management"
+                  href="/products/ai-content-management-tool"
                   className="inline-flex items-center rounded-lg bg-[#15803d] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#166534]"
                 >
                   Explore CAT
