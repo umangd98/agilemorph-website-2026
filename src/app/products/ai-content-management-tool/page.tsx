@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
 
@@ -552,16 +553,16 @@ export default function AIContentManagementPage() {
           <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
             <div className="mb-10 flex items-center gap-2 font-body text-xs text-[#64748b]">
               <Link
-                href="/services"
+                href=""
                 className="transition-colors hover:text-[#15803d]"
               >
-                Services
+                Products
               </Link>
 
               <span>/</span>
 
               <span className="text-[#15803d]">
-                AI Content Management
+                Content Automation Tool 
               </span>
             </div>
 
@@ -571,7 +572,7 @@ export default function AIContentManagementPage() {
                   <span className="h-2 w-2 rounded-full bg-[#15803d] shadow-[0_0_0_5px_rgba(21,128,61,0.08)]" />
 
                   <span className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[#15803d]">
-                    AI Content Management
+                    AI Content Management 
                   </span>
                 </div>
 
@@ -592,7 +593,7 @@ export default function AIContentManagementPage() {
 
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                   <Link
-                    href="#cat-workflow"
+                    href="#cat-video"
                     className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.24)]"
                   >
                     See CAT in Action
@@ -602,26 +603,28 @@ export default function AIContentManagementPage() {
                     </span>
                   </Link>
 
-                  <Link
-                    href="/contact"
-                    className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/80 px-7 font-body text-sm font-semibold text-[#111111] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15803d]/30 hover:text-[#15803d]"
-                  >
-                    Book a Demo
-                    <ArrowIcon />
-                  </Link>
+                  <CalendlyBookButton
+  className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/80 px-7 font-body text-sm font-semibold text-[#111111] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15803d]/30 hover:text-[#15803d]"
+>
+  Book a Demo
+
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    <ArrowIcon />
+  </span>
+</CalendlyBookButton>
                 </div>
               </div>
 
               {/* RIGHT ANIMATED VISUAL */}
 
               <div className="relative z-10 mx-auto w-full max-w-[620px]">
-                <div className="absolute -right-2 -top-7 z-20 hidden rounded-full border border-[#15803d]/15 bg-white px-4 py-2 shadow-[0_8px_25px_rgba(15,23,42,0.08)] sm:flex sm:items-center sm:gap-2">
+                {/* <div className="absolute -right-2 -top-7 z-20 hidden rounded-full border border-[#15803d]/15 bg-white px-4 py-2 shadow-[0_8px_25px_rgba(15,23,42,0.08)] sm:flex sm:items-center sm:gap-2">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-[#15803d]" />
 
                   <span className="font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-[#334155]">
                     CAT is working
                   </span>
-                </div>
+                </div> */}
 
                 <div className="relative overflow-hidden rounded-[30px] border border-black/[0.09] bg-white/85 p-5 shadow-[0_25px_70px_rgba(15,23,42,0.10)] backdrop-blur-xl sm:p-7">
                   <div
@@ -640,7 +643,7 @@ export default function AIContentManagementPage() {
                         <span className="h-2.5 w-2.5 rounded-full bg-[#15803d]" />
 
                         <span className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[#475569]">
-                          CAT CONTENT AUTOMATION
+                          CAT 
                         </span>
                       </div>
 
@@ -808,14 +811,13 @@ export default function AIContentManagementPage() {
                 <div className="mb-6 h-1 w-12 rounded-full bg-[#15803d]" />
 
                 <h2 className="max-w-xl font-heading text-4xl font-semibold leading-[1.2] tracking-[-0.045em] sm:text-5xl">
-                  Content Creation Takes More Time Than It Should
+                  Content Creation Is More Than Just Writing
                 </h2>
               </div>
 
               <div>
                 <p className="font-body text-lg leading-8 text-[#475569]">
-                  Creating quality content involves a long list of manual
-                  tasks.
+                  Creating quality content involves more than writing.
                 </p>
 
                 <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -841,9 +843,7 @@ export default function AIContentManagementPage() {
                 </div>
 
                 <p className="mt-7 font-body text-lg leading-8 text-[#475569]">
-                  CAT brings these steps into one AI-powered workflow,
-                  reducing repetitive work and helping your team move from
-                  idea to finished content faster.
+                  CAT brings these steps into one AI-powered workflow, reducing repetitive work and helping your team move from idea to approved content faster.
                 </p>
               </div>
             </div>
@@ -854,72 +854,72 @@ export default function AIContentManagementPage() {
             CAT VIDEO
         ============================================================ */}
 
-        <section className="bg-white pb-20 sm:pb-24 lg:pb-28">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-            <div className="relative overflow-hidden rounded-[30px] border border-black/[0.08] bg-[#f5f8f6] p-3 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-4 lg:p-5">
-              {/* Decorative green glow */}
-              <div
-                className="pointer-events-none absolute -right-32 -top-32 h-[380px] w-[380px] rounded-full blur-3xl"
-                aria-hidden="true"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(21,128,61,0.13), transparent 70%)",
-                }}
-              />
+        {/* ============================================================
+    CAT VIDEO
+============================================================ */}
 
-              <div
-                className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full blur-3xl"
-                aria-hidden="true"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(21,128,61,0.08), transparent 70%)",
-                }}
-              />
+<section
+  id="cat-video"
+  className="scroll-mt-24 bg-white pb-20 sm:pb-24 lg:pb-28"
+>
+  <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+    <div className="relative overflow-hidden rounded-[30px] border border-black/[0.08] bg-[#f5f8f6] p-3 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-4 lg:p-5">
 
-              <div className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-black shadow-[0_15px_45px_rgba(15,23,42,0.10)]">
-                <video
-                  className="block aspect-video w-full object-cover"
-                  src="/videos/cat-content-management.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                >
-                  Your browser does not support the video tag.
-                </video>
+      {/* Decorative green glow */}
+      <div
+        className="pointer-events-none absolute -right-32 -top-32 h-[380px] w-[380px] rounded-full blur-3xl"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(21,128,61,0.13), transparent 70%)",
+        }}
+      />
 
-                {/* Video label */}
-                {/* <div className="pointer-events-none absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2.5 backdrop-blur-md">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-[#15803d]" />
+      <div
+        className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full blur-3xl"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(21,128,61,0.08), transparent 70%)",
+        }}
+      />
 
-                  <span className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-black">
-                    CAT in Action
-                  </span>
-                </div> */}
-              </div>
+      <div className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-black shadow-[0_15px_45px_rgba(15,23,42,0.10)]">
+        <video
+          className="block aspect-video w-full object-cover"
+          src="/videos/cat-content-management.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          preload="metadata"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-              {/* Video information */}
-              <div className="relative flex flex-col gap-4 px-2 pb-1 pt-5 sm:flex-row sm:items-center sm:justify-between sm:px-3 sm:pt-6">
-                <div>
-                  <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-[#15803d]">
-                    See how CAT works
-                  </p>
+      {/* Video information */}
+      <div className="relative flex flex-col gap-4 px-2 pb-1 pt-5 sm:flex-row sm:items-center sm:justify-between sm:px-3 sm:pt-6">
+        <div>
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-[#15803d]">
+            See how CAT works
+          </p>
 
-                  <p className="mt-1 max-w-3xl font-body text-sm leading-6 text-[#64748b]">
-                    See how CAT brings research, planning, creation, review,
-                    and publishing into one streamlined workflow.
-                  </p>
-                </div>
+          <p className="mt-1 max-w-3xl font-body text-sm leading-6 text-[#64748b]">
+            See how CAT brings research, planning, creation, review,
+            and publishing into one streamlined workflow.
+          </p>
+        </div>
 
-                <div className="shrink-0 rounded-full border border-[#15803d]/15 bg-white px-4 py-2.5 font-body text-xs font-semibold text-[#15803d]">
-                  AI-powered content workflow
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div className="shrink-0 rounded-full border border-[#15803d]/15 bg-white px-4 py-2.5 font-body text-xs font-semibold text-[#15803d]">
+          AI-powered content workflow
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
         {/* ============================================================
             WORKFLOW
@@ -1008,20 +1008,19 @@ export default function AIContentManagementPage() {
                 <div className="mb-6 h-1 w-12 rounded-full bg-[#15803d]" />
 
                 <h2 className="font-heading text-4xl font-semibold leading-[1.2] tracking-[-0.045em] sm:text-5xl">
-                  AI That Knows{" "}
-                  <span className="text-[#15803d]">Your Business</span>
+                  Content That Follows {" "}
+                  <span className="text-[#15803d]">Your Brand</span>
                 </h2>
 
                 <p className="mt-6 max-w-xl font-body text-lg leading-8 text-[#475569]">
-                  CAT works with your business context so content production
-                  stays aligned with the requirements your team already uses.
+                  CAT uses your business context to keep every piece of content aligned with your brand, messaging, and requirements.
                 </p>
               </div>
 
               <div className="rounded-[28px] border border-black/[0.08] bg-[#f6faf7] p-6 sm:p-8">
-                <p className="font-body text-xs font-bold uppercase tracking-[0.15em] text-[#15803d]">
+                {/* <p className="font-body text-xs font-bold uppercase tracking-[0.15em] text-[#15803d]">
                   CAT understands your
-                </p>
+                </p> */}
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {businessKnowledge.map((item) => (
@@ -1234,44 +1233,61 @@ export default function AIContentManagementPage() {
 
                   <p className="mx-auto mt-5 max-w-2xl font-body text-lg leading-8 text-[#475569]">
                     See how CAT can help your team reduce repetitive work,
-                    create content faster, and keep your entire workflow in
+                    create content faster, and keep your entire workflow in 
                     one place.
                   </p>
 
                   <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <Link
-                      href="/contact"
-                      className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.22)]"
-                    >
-                      Book Your Call
+                    <CalendlyBookButton
+  className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.22)]"
+>
+  Book a Demo
 
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
-                        <ArrowIcon />
-                      </span>
-                    </Link>
+  <span className="transition-transform duration-300 group-hover:translate-x-1">
+    <ArrowIcon />
+  </span>
+</CalendlyBookButton>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-2">
-              {[
-                "AI Agents",
-                "CRM & Lead Automation",
-                "MCP & AI Infrastructure",
-                "Messaging Automation",
-                "AI Audit",
-                "Shopify Automation",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href="/services"
-                  className="rounded-full border border-black/[0.09] bg-white px-4 py-2.5 font-body text-xs font-medium text-[#64748b] transition-all duration-200 hover:border-[#15803d]/25 hover:text-[#15803d]"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
+  {[
+    {
+      name: "AI Agents",
+      href: "/services/ai-agents",
+    },
+    {
+      name: "CRM & Lead Automation",
+      href: "/services/crm-lead-automation",
+    },
+    {
+      name: "MCP & AI Infrastructure",
+      href: "/services/mcp-ai-infrastructure",
+    },
+    {
+      name: "Messaging Automation",
+      href: "/services/messaging-automation",
+    },
+    {
+      name: "AI Audit",
+      href: "/services/ai-audit",
+    },
+    {
+      name: "Shopify Automation",
+      href: "/services/shopify-automation",
+    },
+  ].map((item) => (
+    <Link
+      key={item.name}
+      href={item.href}
+      className="rounded-full border border-black/[0.09] bg-white px-4 py-2.5 font-body text-xs font-medium text-[#64748b] transition-all duration-200 hover:border-[#15803d]/25 hover:bg-[#15803d]/[0.03] hover:text-[#15803d]"
+    >
+      {item.name}
+    </Link>
+  ))}
+</div>
           </div>
         </section>
 

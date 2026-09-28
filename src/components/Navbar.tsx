@@ -41,7 +41,7 @@ const PRODUCT_LINKS: ServiceNavLink[] = [
   {
     slug: "ai-content-management",
     label: "CAT",
-    href: "/products/ai-content-management",
+    href: "/products/ai-content-management-tool",
     desc: "AI-powered content workflows for teams",
     isNew: true,
   },
