@@ -79,7 +79,7 @@ const businessKnowledge = [
   "Brand guidelines",
   "Do's and don’ts",
   "Content preferences",
-  "Feedback",
+  "Previous feedback",
 ];
 
 const impactItems = [
