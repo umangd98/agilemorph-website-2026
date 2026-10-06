@@ -1,6 +1,7 @@
 import { Shell } from "@/components/marketing/Shell";
 import {
   ClosingCTA,
+  DeliveryTimeline,
   FeedbackGrid,
   PageIntro,
   Section,
@@ -51,16 +52,7 @@ export default async function About() {
         </div>
       </Section>
       <Section title="What delivery looks like">
-        <div className="grid gap-6 md:grid-cols-2">
-          {home.process.map((p) => (
-            <article key={p.title}>
-              <h3 className="text-xl font-medium">{p.title}</h3>
-              <p className="text-fg-muted mt-3 text-sm leading-relaxed">
-                {p.description}
-              </p>
-            </article>
-          ))}
-        </div>
+        <DeliveryTimeline steps={home.process} />
       </Section>
       {!!about.endorsements?.length && (
         <Section

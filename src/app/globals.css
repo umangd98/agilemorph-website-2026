@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./studio-design.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -8,6 +9,18 @@
  */
 
 @theme {
+  /* AgileMorph editorial and system-illustration palette. */
+  --color-forest: #123e2d;
+  --color-forest-deep: #0b291f;
+  --color-on-forest: #f2f5ec;
+  --color-on-forest-muted: #b9d0c0;
+  --color-lime: #d2f3a1;
+  --color-art-paper: #edf1e6;
+  --color-art-white: #fafcf6;
+  --color-art-sage: #dbe6d5;
+  --color-art-sand: #eee9da;
+  --shadow-studio: 0 24px 60px -32px
+    color-mix(in srgb, #0b291f 40%, transparent);
   /* ============================================================
      Design tokens — Quido "production console" vocabulary.
      Canonical names: bg / fg / line / signal (AgileMorph green).

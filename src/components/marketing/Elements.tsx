@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import type { ReactNode } from "react";
 import { Container } from "@/components/Container";
+import { MorphMark, ProjectArtwork } from "./ProjectArtwork";
 import { SanityImage, hasImageAsset } from "@/components/SanityImage";
 import type { FaqItem } from "@/sanity/types";
 import type {
@@ -39,11 +40,7 @@ export function Action({
   );
 }
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return (
-    <p className="text-signal mb-4 font-mono text-xs tracking-[0.16em] uppercase">
-      {children}
-    </p>
-  );
+  return <p className="studio-eyebrow">{children}</p>;
 }
 export function Section({
   eyebrow,
@@ -63,19 +60,15 @@ export function Section({
   return (
     <section
       id={id}
-      className={`border-line scroll-mt-24 border-t py-16 sm:py-24 ${tinted ? "bg-bg-elevated" : ""}`}
+      className={`studio-section scroll-mt-24 ${tinted ? "bg-bg-elevated" : ""}`}
     >
       <Container>
-        <div className="mb-9 max-w-3xl">
-          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-          <h2 className="text-3xl leading-tight font-medium tracking-tight text-balance sm:text-4xl">
-            {title}
-          </h2>
-          {intro && (
-            <p className="text-fg-muted mt-4 max-w-2xl text-base leading-relaxed">
-              {intro}
-            </p>
-          )}
+        <div className="studio-section-header">
+          <div>
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+            <h2>{title}</h2>
+          </div>
+          {intro && <p>{intro}</p>}
         </div>
         {children}
       </Container>
@@ -94,15 +87,12 @@ export function PageIntro({
   children?: ReactNode;
 }) {
   return (
-    <section className="pt-32 pb-16 sm:pt-40 sm:pb-20">
+    <section className="studio-page-intro">
+      <MorphMark className="intro-mark" />
       <Container>
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="max-w-4xl text-4xl leading-[1.08] font-medium tracking-tight text-balance sm:text-6xl">
-          {title}
-        </h1>
-        <p className="text-fg-muted mt-6 max-w-2xl text-lg leading-relaxed">
-          {description}
-        </p>
+        <h1>{title}</h1>
+        <p className="intro-description">{description}</p>
         {children}
       </Container>
     </section>
@@ -116,7 +106,12 @@ export const statusLabels: Record<Project["status"], string> = {
 };
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group border-line bg-background flex h-full flex-col rounded-2xl border p-6 sm:p-7">
+    <article className="group border-line flex h-full flex-col border-b pb-7">
+      {project.detailed && (
+        <div className="mb-6 overflow-hidden rounded-md">
+          <ProjectArtwork project={project} />
+        </div>
+      )}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] tracking-wider uppercase">
         <span className="text-signal">
           {project.category === "company"
@@ -159,7 +154,7 @@ export function ProjectCard({ project }: { project: Project }) {
 }
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-8 md:grid-cols-2">
       {projects.map((p) => (
         <ProjectCard project={p} key={p._id} />
       ))}
@@ -168,25 +163,19 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 }
 export function ServiceGrid({ services }: { services: Service[] }) {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
-      {services.map((s, i) => (
+    <div className="studio-services">
+      {services.map((service, i) => (
         <Link
-          key={s._id}
-          href={`/services/${s.slug.current}`}
-          className="group border-line bg-background hover:border-primary rounded-2xl border p-7 transition-colors"
+          href={`/services/${service.slug.current}`}
+          key={service._id}
+          className="studio-service-row"
         >
-          <div className="flex justify-between">
-            <span className="text-signal font-mono text-xs">0{i + 1}</span>
-            <ArrowUpRight
-              size={20}
-              aria-hidden
-              className="text-fg-muted group-hover:text-signal"
-            />
+          <span className="studio-service-number">0{i + 1}</span>
+          <div className="studio-service-content">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
           </div>
-          <h3 className="mt-7 text-2xl font-medium">{s.title}</h3>
-          <p className="text-fg-muted mt-3 max-w-lg text-sm leading-relaxed">
-            {s.description}
-          </p>
+          <ArrowUpRight size={25} aria-hidden />
         </Link>
       ))}
     </div>
@@ -225,23 +214,21 @@ export function FAQ({ items }: { items: FaqItem[] }) {
 }
 export function EngagementGrid({ items }: { items: Engagement[] }) {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
-      {items.map((e, i) => (
-        <article
-          key={e.title}
-          className="border-line bg-background rounded-2xl border p-7"
-        >
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-signal font-mono text-xs">0{i + 1}</span>
-            <span className="bg-primary/10 text-signal rounded-full px-3 py-1 text-xs">
-              {e.label}
-            </span>
+    <div className="engagement-comparison">
+      {items.map((item) => (
+        <article key={item.title} className="engagement-row">
+          <div>
+            <h3>{item.title}</h3>
+            <p className="engagement-row-label">{item.label}</p>
           </div>
-          <h3 className="mt-6 text-2xl font-medium">{e.title}</h3>
-          <p className="text-fg-muted mt-3 mb-6 text-sm leading-relaxed">
-            {e.description}
-          </p>
-          <BulletList items={e.deliverables} />
+          <div>
+            <p className="engagement-row-description">{item.description}</p>
+            <ul>
+              {item.deliverables.map((d) => (
+                <li key={d}>{d}</li>
+              ))}
+            </ul>
+          </div>
         </article>
       ))}
     </div>
@@ -249,34 +236,41 @@ export function EngagementGrid({ items }: { items: Engagement[] }) {
 }
 export function FeedbackGrid({ items }: { items: Feedback[] }) {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
+    <div className="studio-feedback">
       {items.map((t) => (
-        <figure
-          key={t.name}
-          className="border-line bg-background rounded-2xl border p-7"
-        >
-          <p className="text-signal mb-4 font-mono text-[10px] tracking-wider uppercase">
+        <figure key={t.name} className="studio-quote">
+          <p className="studio-quote-type">
             {t.relationship === "client"
               ? "Client feedback"
               : "Professional recommendation"}
           </p>
-          <blockquote className="text-base leading-relaxed">
-            “{t.quote}”
-          </blockquote>
-          <figcaption className="border-line mt-6 border-t pt-4">
-            <p className="font-medium">{t.name}</p>
-            <p className="text-fg-muted mt-1 text-sm">{t.company}</p>
-            {t.sourceUrl && (
-              <a
-                className="text-signal mt-3 inline-block text-sm underline"
-                href={t.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View source
-              </a>
-            )}
+          <span className="studio-quote-mark" aria-hidden>
+            “
+          </span>
+          <blockquote>{t.quote}</blockquote>
+          <figcaption>
+            <span className="studio-quote-avatar" aria-hidden>
+              {t.name
+                .split(" ")
+                .map((n) => n[0])
+                .slice(0, 2)
+                .join("")}
+            </span>
+            <div>
+              <p className="studio-quote-name">{t.name}</p>
+              <p className="studio-quote-company">{t.company}</p>
+            </div>
           </figcaption>
+          {t.sourceUrl && (
+            <a
+              className="studio-text-link"
+              href={t.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View source <ArrowUpRight size={16} aria-hidden />
+            </a>
+          )}
         </figure>
       ))}
     </div>
@@ -284,60 +278,43 @@ export function FeedbackGrid({ items }: { items: Feedback[] }) {
 }
 export function TeamGrid({ members }: { members: Leader[] }) {
   return (
-    <div
-      className={`grid gap-6 md:grid-cols-2 ${members.length > 2 ? "lg:grid-cols-3" : ""}`}
-    >
+    <div className={`studio-team ${members.length > 2 ? "has-three" : ""}`}>
       {members.map((m) => (
-        <article
-          key={m.name}
-          className="border-line bg-background overflow-hidden rounded-2xl border"
-        >
-          <div className="bg-primary/5 relative h-64">
-            {m.portrait ? (
-              <Image
-                src={m.portrait}
-                alt={m.name}
-                fill
-                sizes="(max-width: 768px) 90vw, 33vw"
-                className="object-contain object-bottom"
-              />
-            ) : hasImageAsset(m.image) ? (
-              <SanityImage
-                image={m.image!}
-                fill
-                alt={m.name}
-                sizes="33vw"
-                className="object-contain object-bottom"
-              />
-            ) : null}
-          </div>
-          <div className="p-6">
-            <p className="text-signal font-mono text-xs">{m.role}</p>
-            <h3 className="mt-3 text-2xl font-medium">{m.name}</h3>
-            <p className="text-fg-muted mt-4 text-sm leading-relaxed">
-              {m.bio}
-            </p>
-            {m.focus && (
-              <p className="border-line text-fg-muted mt-5 border-t pt-4 text-xs leading-relaxed">
-                {m.focus}
-              </p>
-            )}
-            {m.profileUrl && (
-              <a
-                className="text-signal mt-4 inline-block text-sm underline"
-                href={m.profileUrl}
-              >
-                Professional profile
-              </a>
-            )}
-            {m.projectSlugs?.length ? (
-              <Link
-                className="text-signal mt-4 block text-sm underline"
-                href={`/work/${m.projectSlugs[0]}`}
-              >
-                Explore related work
-              </Link>
-            ) : null}
+        <article key={m.name} className="studio-person">
+          {(m.portrait || hasImageAsset(m.image)) && (
+            <div className="studio-portrait">
+              {m.portrait ? (
+                <Image
+                  src={m.portrait}
+                  alt={m.name}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 25vw"
+                  className="object-contain object-bottom"
+                />
+              ) : (
+                <SanityImage
+                  image={m.image!}
+                  alt={m.name}
+                  fill
+                  sizes="(max-width: 640px) 90vw, 30vw"
+                  className="object-contain object-bottom"
+                />
+              )}
+            </div>
+          )}
+          <div>
+            <p className="studio-person-role">{m.role}</p>
+            <h3>{m.name}</h3>
+            <p className="studio-person-bio">{m.bio}</p>
+            {m.focus && <p className="studio-person-focus">{m.focus}</p>}
+            <div className="studio-person-links">
+              {m.profileUrl && (
+                <a href={m.profileUrl}>Professional profile ↗</a>
+              )}
+              {m.projectSlugs?.length ? (
+                <Link href={`/work/${m.projectSlugs[0]}`}>Related work ↗</Link>
+              ) : null}
+            </div>
           </div>
         </article>
       ))}
@@ -346,15 +323,14 @@ export function TeamGrid({ members }: { members: Leader[] }) {
 }
 export function ClosingCTA() {
   return (
-    <section className="border-line bg-primary/5 border-t py-16 sm:py-24">
+    <section className="studio-closing">
+      <MorphMark className="closing-mark" />
       <Container>
-        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-          <div className="max-w-2xl">
-            <Eyebrow>Start a conversation</Eyebrow>
-            <h2 className="text-3xl font-medium tracking-tight text-balance sm:text-4xl">
-              What does your business need to build next?
-            </h2>
-            <p className="text-fg-muted mt-4 text-base leading-relaxed">
+        <div className="relative flex flex-col items-start justify-between gap-9 lg:flex-row lg:items-end">
+          <div>
+            <Eyebrow>From your next challenge</Eyebrow>
+            <h2>To something that works.</h2>
+            <p>
               Bring the problem, the current tools, and the outcome you need. A
               free 15-minute call helps us establish fit and a useful next step.
             </p>
@@ -367,23 +343,35 @@ export function ClosingCTA() {
 }
 export function WorkflowDiagram({ steps }: { steps: string[] }) {
   return (
-    <figure className="border-line bg-primary/5 rounded-2xl border p-5 sm:p-8">
-      <figcaption className="text-fg-muted mb-6 font-mono text-[10px] tracking-wider uppercase">
+    <figure className="workflow-strip">
+      <figcaption>
         Workflow illustration · based on the documented system
       </figcaption>
-      <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((s, i) => (
-          <li
-            key={s}
-            className="border-line bg-background rounded-xl border p-5"
-          >
-            <p className="text-signal mb-5 font-mono text-xs">
-              0{i + 1} <span aria-hidden>→</span>
-            </p>
-            <p className="text-sm leading-relaxed font-medium">{s}</p>
+      <ol>
+        {steps.map((step, i) => (
+          <li key={step}>
+            <span>0{i + 1} →</span>
+            {step}
           </li>
         ))}
       </ol>
     </figure>
+  );
+}
+export function DeliveryTimeline({
+  steps,
+}: {
+  steps: { title: string; description: string }[];
+}) {
+  return (
+    <div className="delivery-timeline">
+      {steps.map((step, i) => (
+        <article key={step.title} className="delivery-step">
+          <span className="delivery-step-number">0{i + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </article>
+      ))}
+    </div>
   );
 }

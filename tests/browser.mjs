@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { chromium } from "playwright";
 const origin = process.env.TEST_BASE_URL ?? "http://localhost:3100";
-const output = ".context/overhaul";
+const output = process.env.TEST_OUTPUT_DIR ?? ".context/overhaul";
 fs.mkdirSync(output, { recursive: true });
 const docs = JSON.parse(
   fs.readFileSync(
@@ -171,9 +171,41 @@ try {
     await page.getByRole("button", { name: "All capabilities" }).click();
     assert.equal(await page.locator("article").count(), projects.length);
     await page.goto(origin + "/");
-    await page.locator("details summary").first().click();
+    const showcase = page.getByRole("group", {
+      name: "Explore a project workflow",
+    });
+    for (const [label, slug] of [
+      ["Products", "publisher-content-platform"],
+      ["Data", "business-data-search"],
+      ["Operations", "whatsapp-inventory-intake"],
+    ]) {
+      const button = showcase.getByRole("button", { name: label, exact: true });
+      await button.focus();
+      await page.keyboard.press("Enter");
+      assert.equal(await button.getAttribute("aria-pressed"), "true");
+      assert.equal(
+        await page.locator(".showcase-project-link").getAttribute("href"),
+        `/work/${slug}`,
+      );
+    }
+    assert.equal(
+      await page
+        .locator(".art-hero .art-signal-path")
+        .evaluate((el) => getComputedStyle(el).animationName),
+      "none",
+    );
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    assert.equal(
+      await page
+        .locator(".art-hero .art-signal-path")
+        .evaluate((el) => getComputedStyle(el).animationName),
+      "studio-signal",
+    );
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.locator("main details summary").first().click();
     assert.ok(
-      (await page.locator("details").first().getAttribute("open")) !== null,
+      (await page.locator("main details").first().getAttribute("open")) !==
+        null,
     );
     assert.equal(
       await page

@@ -5,6 +5,7 @@ import {
   Action,
   BulletList,
   ClosingCTA,
+  DeliveryTimeline,
   EngagementGrid,
   FAQ,
   PageIntro,
@@ -93,16 +94,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       ) : (
         <Section title="From discovery to handover">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {home.process.map((p) => (
-              <article key={p.title}>
-                <h3 className="text-xl font-medium">{p.title}</h3>
-                <p className="text-fg-muted mt-3 text-sm leading-relaxed">
-                  {p.description}
-                </p>
-              </article>
-            ))}
-          </div>
+          <DeliveryTimeline steps={home.process} />
         </Section>
       )}
       <Section

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { filterProjects, groupProjects } from "@/lib/portfolio";
-import { ProjectGrid } from "./Elements";
+import { ProjectShowcase, ProjectList } from "./ProjectShowcase";
 import type { Project } from "@/lib/content-types";
 const filters = [
   ["all", "All capabilities"],
@@ -68,12 +68,20 @@ export function Portfolio({ projects }: { projects: Project[] }) {
         groups
           .filter((g) => g.items.length)
           .map((g) => (
-            <section className="mb-16" key={g.title}>
-              <h2 className="text-2xl font-medium sm:text-3xl">{g.title}</h2>
-              <p className="text-fg-muted mt-3 mb-7 max-w-2xl text-sm leading-relaxed">
-                {g.description}
-              </p>
-              <ProjectGrid projects={g.items} />
+            <section className="portfolio-group" key={`${filter}-${g.title}`}>
+              <div className="portfolio-group-heading">
+                <h2>{g.title}</h2>
+                <p>{g.description}</p>
+              </div>
+              <ProjectShowcase projects={g.items.filter((p) => p.detailed)} />
+              {!!g.items.filter((p) => !p.detailed).length && (
+                <div className="portfolio-additional">
+                  {g.items.some((p) => p.detailed) && (
+                    <p>Additional experience</p>
+                  )}
+                  <ProjectList projects={g.items.filter((p) => !p.detailed)} />
+                </div>
+              )}
             </section>
           ))
       )}

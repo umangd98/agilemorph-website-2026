@@ -48,6 +48,16 @@ No browser test sends a real enquiry. A successful mocked form submission does n
 
 The production preview for this workspace is running at http://localhost:3101. Screenshots and machine-readable browser results are in `.context/overhaul/`; the exact proposed CMS diff is `.context/reviewed-migration-plan.json`. The preview uses reviewed fixtures and does not demonstrate published CMS changes or actual Netlify enquiry delivery.
 
+## Visual refinement
+
+The homepage now pairs its introduction with an interactive, explicitly labeled workflow illustration. Featured projects use larger visual previews; additional portfolio experience uses compact rows. Services, delivery, leadership, feedback, engagements, and closing calls to action have distinct layouts while retaining the existing logo, typography, green palette, and both themes.
+
+All eight detailed case studies share a visual overview, visible attribution and status, chapter navigation, engineering decisions, and scoped results. Illustrations describe documented workflows; they are not product screenshots. This refinement does not change the reviewed content fixtures or CMS migration.
+
+The production preview remains at http://localhost:3101. Updated screenshots and browser results are under `.context/design/`, including `homepage.png`, `homepage-mobile.png`, `home-1440-dark.png`, and `publisher-desktop.png`. Set `TEST_OUTPUT_DIR=.context/design` to reproduce this output location. Browser coverage also checks keyboard selection of the homepage workflows, their case-study destinations, actual FAQ controls, and motion preferences.
+
+The refined production build and all 15 content/migration/webhook tests passed. Browser checks passed across 31 routes at 390px, 768px, and 1440px in both themes. ESLint has zero errors and the same eight legacy warnings. Contact responses were controlled in tests; production submission delivery remains a staging release check.
+
 ## Reviewable migration
 
 Configure `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET`. Read-only runs can use the public dataset or an explicit `SANITY_API_READ_TOKEN`. Use a read token to include unpublished drafts in the preview; an unauthenticated public read cannot necessarily see them. Apply and rollback use the write token to check for drafts and stop if target documents have unpublished edits.

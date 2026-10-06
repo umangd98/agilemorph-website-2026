@@ -297,7 +297,7 @@ export function ContactSection({
           </p>
           <h1
             id="contact-heading"
-            className="font-heading text-foreground mb-5 text-4xl font-extrabold sm:text-5xl"
+            className="font-heading text-foreground mb-5 text-4xl leading-[1.08] font-medium tracking-[-0.05em] sm:text-6xl"
           >
             {heading}
           </h1>

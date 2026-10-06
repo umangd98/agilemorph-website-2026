@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
+import { ArrowDownRight } from "lucide-react";
+import { SystemShowcase } from "@/components/marketing/SystemShowcase";
+import {
+  ProjectShowcase,
+  ExperienceStrip,
+} from "@/components/marketing/ProjectShowcase";
 import { Container } from "@/components/Container";
 import { Shell } from "@/components/marketing/Shell";
 import {
   Action,
   ClosingCTA,
+  DeliveryTimeline,
   EngagementGrid,
   Eyebrow,
   FAQ,
   FeedbackGrid,
-  ProjectGrid,
   Section,
   ServiceGrid,
   TeamGrid,
@@ -52,25 +58,26 @@ export default async function HomePage() {
     ]);
   return (
     <Shell>
-      <section className="relative overflow-hidden pt-32 pb-16 sm:pt-44 sm:pb-24">
-        <div
-          aria-hidden
-          className="from-primary/5 via-background to-background pointer-events-none absolute inset-0 -z-10 bg-linear-to-br"
-        />
+      <section className="studio-hero">
         <Container>
-          <div className="grid items-end gap-12 lg:grid-cols-[1.5fr_0.7fr]">
+          <div className="studio-hero-grid">
             <div>
-              <Eyebrow>Software · AI · Engineering</Eyebrow>
-              <h1 className="max-w-4xl text-5xl leading-[1.06] font-medium tracking-[-0.04em] text-balance sm:text-6xl lg:text-7xl">
-                {home.hero.heading}
+              <Eyebrow>Independent engineering. Real-world impact.</Eyebrow>
+              <h1>
+                {home.hero.heading.endsWith("business.") ? (
+                  <>
+                    {home.hero.heading.slice(0, -9)}
+                    <em>business.</em>
+                  </>
+                ) : (
+                  home.hero.heading
+                )}
               </h1>
-              <div className="text-fg-muted mt-7 max-w-2xl text-lg leading-relaxed">
+              <div className="studio-hero-intro">
                 <PortableText value={home.hero.tagline ?? []} />
               </div>
-              <p className="text-fg-muted mt-5 max-w-xl text-sm leading-relaxed">
-                {home.hero.audience}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <p className="studio-hero-audience">{home.hero.audience}</p>
+              <div className="studio-hero-actions">
                 <Action href={home.hero.ctaPrimary?.href ?? "/contact#book"}>
                   {home.hero.ctaPrimary?.label ?? "Discuss your project"}
                 </Action>
@@ -82,26 +89,24 @@ export default async function HomePage() {
                 </Action>
               </div>
             </div>
-            <div className="border-line bg-bg-elevated rounded-2xl border p-7">
-              <p className="text-signal font-mono text-[10px] tracking-widest uppercase">
-                From problem to production
-              </p>
-              {[
-                "Understand the business",
-                "Build the right system",
-                "Make it work in practice",
-              ].map((s, i) => (
-                <div
-                  className="border-line flex gap-4 border-b py-6 last:border-0 last:pb-0"
-                  key={s}
-                >
-                  <span className="text-signal font-mono text-xs">
-                    0{i + 1}
-                  </span>
-                  <p className="text-lg">{s}</p>
-                </div>
-              ))}
-            </div>
+            <SystemShowcase
+              projects={[
+                "whatsapp-inventory-intake",
+                "publisher-content-platform",
+                "business-data-search",
+              ].flatMap((slug) =>
+                projects.filter((p) => p.slug.current === slug && p.detailed),
+              )}
+            />
+          </div>
+          <div className="studio-hero-foot">
+            <span>
+              <ArrowDownRight size={17} aria-hidden /> Explore the systems
+              behind the stories
+            </span>
+            <span>
+              Software engineering / AI products / Operational automation
+            </span>
           </div>
         </Container>
       </section>
@@ -110,8 +115,11 @@ export default async function HomePage() {
         title="Built for the way businesses actually work."
         intro="A selection of delivered AgileMorph engagements. Explore the problem, what we built, and the evidence behind each story."
       >
-        <ProjectGrid
-          projects={selectProjects(projects, home.featuredProjects)}
+        <ProjectShowcase
+          projects={selectProjects(projects, home.featuredProjects).filter(
+            (p) => p.detailed,
+          )}
+          featured
         />
         <div className="mt-8">
           <Action href="/work" secondary>
@@ -124,27 +132,25 @@ export default async function HomePage() {
         title="Start with the problem you need to solve."
         tinted
       >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="studio-audiences">
           {home.audiences.map((a) => (
-            <article key={a.title}>
+            <article key={a.title} className="audience-entry">
               <h3 className="text-xl font-medium">{a.title}</h3>
               <p className="text-fg-muted mt-3 text-sm leading-relaxed">
                 {a.description}
               </p>
-              <Link
-                className="text-signal mt-5 block text-sm underline"
-                href={`/services/${a.service}`}
-              >
-                Explore the service
-              </Link>
-              {projects.find((p) => p._id === a.project._ref)?.detailed && (
-                <Link
-                  className="text-fg-muted mt-3 block text-sm underline"
-                  href={`/work/${projects.find((p) => p._id === a.project._ref)!.slug.current}`}
-                >
-                  See relevant work
+              <div className="audience-links">
+                <Link href={`/services/${a.service}`}>
+                  Explore the service ↗
                 </Link>
-              )}
+                {projects.find((p) => p._id === a.project._ref)?.detailed && (
+                  <Link
+                    href={`/work/${projects.find((p) => p._id === a.project._ref)!.slug.current}`}
+                  >
+                    Relevant work ↗
+                  </Link>
+                )}
+              </div>
             </article>
           ))}
         </div>
@@ -172,7 +178,7 @@ export default async function HomePage() {
             are project-specific outcomes, not company-wide performance
             promises.
           </p>
-          <ProjectGrid
+          <ExperienceStrip
             projects={projects.filter((p) =>
               ["punchbowl-support-agent", "certifyos-document-review"].includes(
                 p.slug.current,
@@ -185,17 +191,7 @@ export default async function HomePage() {
         eyebrow="How we work"
         title="Clarity before the build. Ownership after it."
       >
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-4">
-          {home.process.map((s, i) => (
-            <article key={s.title}>
-              <p className="text-signal mb-5 font-mono text-xs">0{i + 1}</p>
-              <h3 className="text-xl font-medium">{s.title}</h3>
-              <p className="text-fg-muted mt-3 text-sm leading-relaxed">
-                {s.description}
-              </p>
-            </article>
-          ))}
-        </div>
+        <DeliveryTimeline steps={home.process} />
         {!!settings.credentials?.length && (
           <div className="border-line mt-12 flex flex-wrap items-center gap-4 border-t pt-7">
             <span className="text-fg-muted text-xs">
