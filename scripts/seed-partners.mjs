@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Seeds partner logos and patches homepage + aboutPage documents.
  * Usage: node scripts/seed-partners.mjs
@@ -48,7 +50,8 @@ const PARTNERS = [
     label: "PARTNER",
     url: "https://www.microsoft.com",
     slug: "microsoft",
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    logoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
     filename: "microsoft.svg",
   },
   {

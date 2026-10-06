@@ -98,6 +98,9 @@ export default defineConfig({
                   .title("Site Settings"),
               ),
             S.divider(),
+            S.documentTypeListItem("caseStudy").title(
+              "Projects & Case Studies",
+            ),
             S.documentTypeListItem("servicePage").title("Service Pages"),
             S.documentTypeListItem("blogPost").title("Blog Posts"),
           ]),

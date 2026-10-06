@@ -1,309 +1,91 @@
 import { defineField, defineType } from "sanity";
-
+import {
+  versionField,
+  textField,
+  projectReferences,
+  simpleSteps,
+} from "./reviewedFields";
 export const homepage = defineType({
   name: "homepage",
   title: "Homepage",
   type: "document",
   fields: [
+    versionField,
     defineField({
       name: "hero",
       title: "Hero",
       type: "object",
       fields: [
-        defineField({
-          name: "badge",
-          title: "Badge",
-          type: "string",
-        }),
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "text",
-          rows: 3,
-          description: "Main heading lines. Use a new line for each line break.",
-          validation: (rule) => rule.required(),
-        }),
-        defineField({
-          name: "headingAccent",
-          title: "Heading Accent",
-          type: "string",
-          description: "Optional final line rendered with the accent gradient.",
-        }),
+        textField("heading", "Heading"),
         defineField({
           name: "tagline",
-          title: "Tagline",
+          title: "Introduction",
           type: "array",
-          of: [
-            {
-              type: "block",
-              styles: [{ title: "Normal", value: "normal" }],
-              lists: [],
-              marks: {
-                decorators: [],
-                annotations: [
-                  {
-                    name: "link",
-                    type: "object",
-                    title: "Link",
-                    fields: [
-                      defineField({
-                        name: "href",
-                        title: "URL",
-                        type: "url",
-                        validation: (rule) =>
-                          rule.uri({
-                            allowRelative: true,
-                            scheme: ["http", "https", "mailto", "tel"],
-                          }),
-                      }),
-                    ],
-                  },
-                ],
-              },
-            },
-          ],
+          of: [{ type: "block" }],
         }),
+        textField("audience", "Audience line"),
         defineField({
           name: "ctaPrimary",
-          title: "Primary CTA",
+          title: "Primary action",
           type: "ctaButton",
         }),
         defineField({
           name: "ctaSecondary",
-          title: "Secondary CTA",
+          title: "Secondary action",
           type: "ctaButton",
         }),
-        defineField({
-          name: "image",
-          title: "Hero Image",
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            defineField({
-              name: "alt",
-              title: "Alt Text",
-              type: "string",
-            }),
-          ],
-        }),
-      ],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "process",
-      title: "Process Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "subheading",
-          title: "Subheading",
-          type: "text",
-          rows: 2,
-        }),
-        defineField({
-          name: "steps",
-          title: "Steps",
-          type: "array",
-          of: [{ type: "processStep" }],
-        }),
       ],
     }),
+    projectReferences("featuredProjects", "Selected company work"),
     defineField({
-      name: "services",
-      title: "Services Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "eyebrow",
-          title: "Eyebrow",
-          type: "string",
-        }),
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "cards",
-          title: "Service Cards",
-          type: "array",
-          of: [{ type: "serviceCard" }],
-        }),
-      ],
+      name: "technologies",
+      title: "Supporting technology logos",
+      type: "array",
+      of: [{ type: "integrationItem" }],
+      description:
+        "Tools used in documented work; these are not partnership credentials.",
     }),
     defineField({
-      name: "whyUs",
-      title: "Why Us Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "items",
-          title: "Items",
-          type: "array",
-          of: [{ type: "whyUsItem" }],
-        }),
-        defineField({
-          name: "efficiencyCalculator",
-          title: "Efficiency Calculator",
+      name: "audiences",
+      title: "Who we help",
+      type: "array",
+      of: [
+        {
           type: "object",
           fields: [
+            textField("title", "Buyer"),
+            textField("description", "Situation", "text"),
+            textField("service", "Related service slug"),
             defineField({
-              name: "heading",
-              title: "Heading",
-              type: "string",
-            }),
-            defineField({
-              name: "description",
-              title: "Description",
-              type: "text",
-              rows: 2,
-            }),
-            defineField({
-              name: "disclaimer",
-              title: "Disclaimer",
-              type: "text",
-              rows: 2,
-            }),
-            defineField({
-              name: "ctaLabel",
-              title: "CTA Label",
-              type: "string",
+              name: "project",
+              title: "Relevant project",
+              type: "reference",
+              to: [{ type: "caseStudy" }],
             }),
           ],
-        }),
+        },
       ],
     }),
+    simpleSteps("process", "Delivery process"),
     defineField({
-      name: "stats",
-      title: "Stats Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "eyebrow",
-          title: "Eyebrow",
-          type: "string",
-        }),
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "items",
-          title: "Statistics",
-          type: "array",
-          of: [{ type: "stat" }],
-        }),
-      ],
-    }),
-    defineField({
-      name: "integrations",
-      title: "Integrations Marquee",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "items",
-          title: "Integration Tools",
-          type: "array",
-          of: [{ type: "integrationItem" }],
-        }),
-      ],
-    }),
-    defineField({
-      name: "partners",
-      title: "Partners Section",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "items",
-          title: "Partners",
-          type: "array",
-          of: [{ type: "partnerItem" }],
-        }),
-      ],
-    }),
-    defineField({
-      name: "featuredLogos",
-      title: "Featured Logos",
-      type: "object",
-      fields: [
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
-          name: "logos",
-          title: "Logos",
-          type: "array",
-          of: [
-            {
-              type: "image",
-              options: { hotspot: true },
-              fields: [
-                defineField({
-                  name: "alt",
-                  title: "Alt Text",
-                  type: "string",
-                }),
-              ],
-            },
-          ],
-        }),
-      ],
+      name: "faq",
+      title: "Frequently asked questions",
+      type: "array",
+      of: [{ type: "faqItem" }],
     }),
     defineField({
       name: "testimonials",
-      title: "Testimonials Section",
+      title: "Client feedback",
       type: "object",
       fields: [
         defineField({
-          name: "eyebrow",
-          title: "Eyebrow",
-          type: "string",
-        }),
-        defineField({
-          name: "heading",
-          title: "Heading",
-          type: "string",
-        }),
-        defineField({
           name: "items",
-          title: "Testimonials",
+          title: "Quotes",
           type: "array",
           of: [{ type: "testimonial" }],
         }),
       ],
     }),
-    defineField({
-      name: "seo",
-      title: "SEO",
-      type: "seo",
-    }),
+    defineField({ name: "seo", title: "SEO", type: "seo" }),
   ],
-  preview: {
-    prepare() {
-      return { title: "Homepage" };
-    },
-  },
 });

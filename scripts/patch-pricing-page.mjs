@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Seeds the pricingPage singleton in Sanity.
  * Usage: node scripts/patch-pricing-page.mjs
@@ -140,7 +142,8 @@ function buildPricingPage() {
           name: "Maintain",
           price: "$2K",
           hours: "~8 hrs/month",
-          tagline: "Your automations stay healthy and your team stays unblocked.",
+          tagline:
+            "Your automations stay healthy and your team stays unblocked.",
           items: [
             "Workflow monitoring and uptime checks",
             "Credential rotations and API updates",
@@ -169,7 +172,8 @@ function buildPricingPage() {
           name: "Embed",
           price: "$10K",
           hours: "~40 hrs/month",
-          tagline: "AgileMorph operates as part of your team, not alongside it.",
+          tagline:
+            "AgileMorph operates as part of your team, not alongside it.",
           items: [
             "Everything in Iterate",
             "Weekly working sessions with the team",

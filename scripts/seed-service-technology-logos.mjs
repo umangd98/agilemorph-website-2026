@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Uploads technology logos and patches service page technology lists.
  * Usage: node scripts/seed-service-technology-logos.mjs
@@ -18,45 +20,149 @@ const SERVICE_PAGES = [
     id: "servicePage-ai-automation",
     heading: "Technologies that power our solutions",
     technologies: [
-      { name: "n8n", filename: "n8n.svg", url: "https://cdn.simpleicons.org/n8n/EA4B71" },
-      { name: "Zapier", filename: "zapier.svg", url: "https://cdn.simpleicons.org/zapier/FF4A00" },
-      { name: "Make.com", filename: "make.svg", url: "https://cdn.simpleicons.org/make/6D00CC" },
-      { name: "OpenAI", filename: "openai.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg" },
-      { name: "Google Cloud", filename: "googlecloud.svg", url: "https://cdn.simpleicons.org/googlecloud/4285F4" },
-      { name: "AWS", filename: "aws.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg" },
-      { name: "Python", filename: "python.svg", url: "https://cdn.simpleicons.org/python/3776AB" },
-      { name: "WordPress", filename: "wordpress.svg", url: "https://cdn.simpleicons.org/wordpress/21759B" },
-      { name: "Shopify", filename: "shopify.svg", url: "https://cdn.simpleicons.org/shopify/96BF48" },
-      { name: "HubSpot", filename: "hubspot.svg", url: "https://cdn.simpleicons.org/hubspot/FF7A59" },
-      { name: "Pipedrive", filename: "pipedrive.svg", url: "https://cdn.worldvectorlogo.com/logos/pipedrive.svg" },
-      { name: "Notion", filename: "notion.svg", url: "https://cdn.simpleicons.org/notion/000000" },
-      { name: "Salesforce", filename: "salesforce.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/salesforce.svg" },
+      {
+        name: "n8n",
+        filename: "n8n.svg",
+        url: "https://cdn.simpleicons.org/n8n/EA4B71",
+      },
+      {
+        name: "Zapier",
+        filename: "zapier.svg",
+        url: "https://cdn.simpleicons.org/zapier/FF4A00",
+      },
+      {
+        name: "Make.com",
+        filename: "make.svg",
+        url: "https://cdn.simpleicons.org/make/6D00CC",
+      },
+      {
+        name: "OpenAI",
+        filename: "openai.svg",
+        url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg",
+      },
+      {
+        name: "Google Cloud",
+        filename: "googlecloud.svg",
+        url: "https://cdn.simpleicons.org/googlecloud/4285F4",
+      },
+      {
+        name: "AWS",
+        filename: "aws.svg",
+        url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazonaws.svg",
+      },
+      {
+        name: "Python",
+        filename: "python.svg",
+        url: "https://cdn.simpleicons.org/python/3776AB",
+      },
+      {
+        name: "WordPress",
+        filename: "wordpress.svg",
+        url: "https://cdn.simpleicons.org/wordpress/21759B",
+      },
+      {
+        name: "Shopify",
+        filename: "shopify.svg",
+        url: "https://cdn.simpleicons.org/shopify/96BF48",
+      },
+      {
+        name: "HubSpot",
+        filename: "hubspot.svg",
+        url: "https://cdn.simpleicons.org/hubspot/FF7A59",
+      },
+      {
+        name: "Pipedrive",
+        filename: "pipedrive.svg",
+        url: "https://cdn.worldvectorlogo.com/logos/pipedrive.svg",
+      },
+      {
+        name: "Notion",
+        filename: "notion.svg",
+        url: "https://cdn.simpleicons.org/notion/000000",
+      },
+      {
+        name: "Salesforce",
+        filename: "salesforce.svg",
+        url: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/salesforce.svg",
+      },
     ],
   },
   {
     id: "servicePage-website-development",
     heading: "Technologies that power our solutions",
     technologies: [
-      { name: "JavaScript", filename: "javascript.svg", url: "https://cdn.simpleicons.org/javascript/F7DF1E" },
-      { name: "HTML", filename: "html5.svg", url: "https://cdn.simpleicons.org/html5/E34F26" },
-      { name: "PHP", filename: "php.svg", url: "https://cdn.simpleicons.org/php/777BB4" },
-      { name: "WordPress", filename: "wordpress.svg", url: "https://cdn.simpleicons.org/wordpress/21759B" },
-      { name: "Joomla", filename: "joomla.svg", url: "https://cdn.simpleicons.org/joomla/5091CD" },
-      { name: "API", filename: "openapi.svg", url: "https://cdn.simpleicons.org/openapiinitiative/6BA539" },
+      {
+        name: "JavaScript",
+        filename: "javascript.svg",
+        url: "https://cdn.simpleicons.org/javascript/F7DF1E",
+      },
+      {
+        name: "HTML",
+        filename: "html5.svg",
+        url: "https://cdn.simpleicons.org/html5/E34F26",
+      },
+      {
+        name: "PHP",
+        filename: "php.svg",
+        url: "https://cdn.simpleicons.org/php/777BB4",
+      },
+      {
+        name: "WordPress",
+        filename: "wordpress.svg",
+        url: "https://cdn.simpleicons.org/wordpress/21759B",
+      },
+      {
+        name: "Joomla",
+        filename: "joomla.svg",
+        url: "https://cdn.simpleicons.org/joomla/5091CD",
+      },
+      {
+        name: "API",
+        filename: "openapi.svg",
+        url: "https://cdn.simpleicons.org/openapiinitiative/6BA539",
+      },
     ],
   },
   {
     id: "servicePage-digital-marketing",
     heading: "Technologies that power our solutions",
     technologies: [
-      { name: "Google Ads", filename: "googleads.svg", url: "https://cdn.simpleicons.org/googleads/4285F4" },
-      { name: "Canva", filename: "canva.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg" },
-      { name: "YouTube", filename: "youtube.svg", url: "https://cdn.simpleicons.org/youtube/FF0000" },
-      { name: "Google Search", filename: "google.svg", url: "https://cdn.simpleicons.org/google/4285F4" },
+      {
+        name: "Google Ads",
+        filename: "googleads.svg",
+        url: "https://cdn.simpleicons.org/googleads/4285F4",
+      },
+      {
+        name: "Canva",
+        filename: "canva.svg",
+        url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg",
+      },
+      {
+        name: "YouTube",
+        filename: "youtube.svg",
+        url: "https://cdn.simpleicons.org/youtube/FF0000",
+      },
+      {
+        name: "Google Search",
+        filename: "google.svg",
+        url: "https://cdn.simpleicons.org/google/4285F4",
+      },
       { name: "Moz", filename: "moz.svg", localPath: "moz.svg" },
-      { name: "Google Analytics", filename: "googleanalytics.svg", url: "https://cdn.simpleicons.org/googleanalytics/E37400" },
-      { name: "Semrush", filename: "semrush.svg", url: "https://cdn.simpleicons.org/semrush/FF642D" },
-      { name: "Hootsuite", filename: "hootsuite.svg", url: "https://cdn.simpleicons.org/hootsuite/FF4C46" },
+      {
+        name: "Google Analytics",
+        filename: "googleanalytics.svg",
+        url: "https://cdn.simpleicons.org/googleanalytics/E37400",
+      },
+      {
+        name: "Semrush",
+        filename: "semrush.svg",
+        url: "https://cdn.simpleicons.org/semrush/FF642D",
+      },
+      {
+        name: "Hootsuite",
+        filename: "hootsuite.svg",
+        url: "https://cdn.simpleicons.org/hootsuite/FF4C46",
+      },
       { name: "Ahrefs", filename: "ahrefs.svg", localPath: "ahrefs.svg" },
     ],
   },
@@ -64,11 +170,31 @@ const SERVICE_PAGES = [
     id: "servicePage-virtual-assistance",
     heading: "Technologies that power our solutions",
     technologies: [
-      { name: "Notion", filename: "notion.svg", url: "https://cdn.simpleicons.org/notion/000000" },
-      { name: "Google Workspace", filename: "googleworkspace.svg", localPath: "googleworkspace.svg" },
-      { name: "Slack", filename: "slack.svg", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" },
-      { name: "Trello", filename: "trello.svg", url: "https://cdn.simpleicons.org/trello/0052CC" },
-      { name: "Asana", filename: "asana.svg", url: "https://cdn.simpleicons.org/asana/F06A6A" },
+      {
+        name: "Notion",
+        filename: "notion.svg",
+        url: "https://cdn.simpleicons.org/notion/000000",
+      },
+      {
+        name: "Google Workspace",
+        filename: "googleworkspace.svg",
+        localPath: "googleworkspace.svg",
+      },
+      {
+        name: "Slack",
+        filename: "slack.svg",
+        url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg",
+      },
+      {
+        name: "Trello",
+        filename: "trello.svg",
+        url: "https://cdn.simpleicons.org/trello/0052CC",
+      },
+      {
+        name: "Asana",
+        filename: "asana.svg",
+        url: "https://cdn.simpleicons.org/asana/F06A6A",
+      },
     ],
   },
 ];
@@ -106,7 +232,14 @@ function saveManifest(manifest) {
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
 }
 
-async function uploadFromLocal({ localPath, filename, projectId, dataset, token, manifest }) {
+async function uploadFromLocal({
+  localPath,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+}) {
   const manifestKey = `integrations/${filename}`;
   const cached = manifest[manifestKey];
   if (cached?.id && cached?.url?.includes(`${projectId}/${dataset}`)) {
@@ -138,7 +271,14 @@ async function uploadFromLocal({ localPath, filename, projectId, dataset, token,
   return asset;
 }
 
-async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
+async function uploadFromUrl({
+  url,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+}) {
   const manifestKey = `integrations/${filename}`;
   const cached = manifest[manifestKey];
   if (cached?.id && cached?.url?.includes(`${projectId}/${dataset}`)) {
@@ -170,7 +310,10 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   return asset;
 }
 
-async function buildTechnologyItems(tools, { projectId, dataset, token, manifest }) {
+async function buildTechnologyItems(
+  tools,
+  { projectId, dataset, token, manifest },
+) {
   const technologies = [];
 
   for (const tool of tools) {
@@ -216,7 +359,14 @@ async function buildTechnologyItems(tools, { projectId, dataset, token, manifest
   return technologies;
 }
 
-async function patchServicePage({ id, heading, technologies, projectId, dataset, token }) {
+async function patchServicePage({
+  id,
+  heading,
+  technologies,
+  projectId,
+  dataset,
+  token,
+}) {
   const patchUrl = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(patchUrl, {
     method: "POST",

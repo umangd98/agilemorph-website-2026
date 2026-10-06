@@ -1,0 +1,367 @@
+{
+  "note": "Internal evidence inventory. This file is not loaded by the website or uploaded to Sanity. Sources are user-provided, not independently audited. Client names and prior-engagement attribution follow the approved implementation plan.",
+  "projects": [
+    {
+      "id": "caseStudy-publisher-content-platform",
+      "publicClient": "US industrial data publisher",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-business-data-search",
+      "publicClient": "Business data publisher",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-whatsapp-inventory-intake",
+      "publicClient": "Luxury watch dealer network",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-wholesale-ordering",
+      "publicClient": "Consumer brand",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-punchbowl-support-agent",
+      "publicClient": "Punchbowl",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [
+        {
+          "value": "45%",
+          "label": "Less manual work on cancellation/refund tickets"
+        },
+        {
+          "value": "98%",
+          "label": "Intent accuracy on 786 held-out labelled tickets"
+        }
+      ],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-certifyos-document-review",
+      "publicClient": "CertifyOS",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [
+        {
+          "value": "~1 hour",
+          "label": "Saved per analyst per day"
+        },
+        {
+          "value": "~20%",
+          "label": "Higher analyst throughput"
+        }
+      ],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-deeply-ai-coaching",
+      "publicClient": "Deeply",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [
+        {
+          "value": "~70%",
+          "label": "Fewer repeated context-gathering turns"
+        },
+        {
+          "value": "~30%",
+          "label": "Relative increase in session completion"
+        }
+      ],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-thimblerr-manufacturing",
+      "publicClient": "Thimblerr",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [
+        {
+          "value": "20%",
+          "label": "Faster APIs"
+        },
+        {
+          "value": "43%",
+          "label": "Lower AWS bill"
+        }
+      ],
+      "otherQuantitativeContext": null,
+      "placement": "/work and detailed case study"
+    },
+    {
+      "id": "caseStudy-plumbing-referrals",
+      "publicClient": "New York plumbing company",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-salesforce-registration",
+      "publicClient": "Nonprofit network",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-voice-agent",
+      "publicClient": "AgileMorph portfolio",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Built by AgileMorph. Presented as portfolio experience; the public reference does not identify a client engagement.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-wordpress-remediation",
+      "publicClient": "Client website",
+      "relationship": "company",
+      "status": "delivered",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Delivered by AgileMorph Solutions.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-wattson-health",
+      "publicClient": "Wattson Health",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-nurture-labs",
+      "publicClient": "Nurture Labs",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-prudential",
+      "publicClient": "Prudential",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Kaustumbh Jaiswal resume, named engagement",
+      "scope": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-chronoseconds",
+      "publicClient": "Chronoseconds",
+      "relationship": "previous",
+      "status": "delivered",
+      "source": "Context handoff, section 5",
+      "scope": "Prior work delivered through Quido. Presented as team experience; no completed transfer of the engagement to AgileMorph is implied.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-ai-visibility-index",
+      "publicClient": "US industrial data publisher",
+      "relationship": "company",
+      "status": "in-progress",
+      "source": "AgileMorph project reference, project library",
+      "scope": "An AgileMorph engagement currently in development.",
+      "metrics": [],
+      "otherQuantitativeContext": "500,000 companies: database size, not a delivered result",
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-consultancy-gtm",
+      "publicClient": "ESG and solar consultancy",
+      "relationship": "company",
+      "status": "in-progress",
+      "source": "AgileMorph project reference, project library",
+      "scope": "An AgileMorph engagement currently in progress.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-restaurant-operations",
+      "publicClient": "Restaurant group",
+      "relationship": "company",
+      "status": "scoped",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Specification completed by AgileMorph. Implementation is not presented as delivered.",
+      "metrics": [],
+      "otherQuantitativeContext": "4 brands, 5 flows, 6 KPIs: specification scope",
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-manufacturer-leads",
+      "publicClient": "Indian manufacturer",
+      "relationship": "company",
+      "status": "scoped",
+      "source": "AgileMorph project reference, project library",
+      "scope": "Service design by AgileMorph. Implementation is not presented as delivered.",
+      "metrics": [],
+      "otherQuantitativeContext": null,
+      "placement": "/work summary"
+    },
+    {
+      "id": "caseStudy-technical-partnership",
+      "publicClient": "Long-term client",
+      "relationship": "company",
+      "status": "active",
+      "source": "AgileMorph project reference, project library",
+      "scope": "An active AgileMorph technical partnership.",
+      "metrics": [],
+      "otherQuantitativeContext": "12-month agreement: partnership term",
+      "placement": "/work summary"
+    }
+  ],
+  "credentials": [
+    {
+      "name": "Anthropic",
+      "source": "Project reference section 2",
+      "scope": "Partner certification; no tier or vendor endorsement inferred",
+      "placement": "Homepage supporting credentials"
+    },
+    {
+      "name": "n8n",
+      "source": "Project reference section 2",
+      "scope": "Partner certification; no tier inferred",
+      "placement": "Homepage supporting credentials"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarvesh Agrawal",
+      "affiliation": "Dhaninfo",
+      "relationship": "client",
+      "source": "Existing published CMS snapshot inspected during audit",
+      "scope": "Quote explicitly refers to client work",
+      "placement": "Homepage client feedback",
+      "rating": null
+    },
+    {
+      "name": "Christopher Calkins",
+      "affiliation": "Digisist LLC",
+      "relationship": "client",
+      "source": "Existing published CMS snapshot inspected during audit",
+      "scope": "Quote explicitly refers to client work",
+      "placement": "Homepage client feedback",
+      "rating": null
+    },
+    {
+      "name": "David Zaretsky",
+      "affiliation": "Snips Media & Northwestern University",
+      "relationship": "professional",
+      "source": "Existing published CMS snapshot inspected during audit",
+      "scope": "Individual professional recommendation; affiliation is not an AgileMorph client claim",
+      "placement": "About professional recommendations",
+      "rating": null
+    },
+    {
+      "name": "Nikhil Shendge",
+      "affiliation": "Capgemini",
+      "relationship": "professional",
+      "source": "Existing published CMS snapshot inspected during audit",
+      "scope": "Individual professional recommendation; affiliation is not an AgileMorph client claim",
+      "placement": "About professional recommendations",
+      "rating": null
+    }
+  ],
+  "leadership": [
+    {
+      "name": "Kaustumbh Jaiswal",
+      "source": "Resume and context handoff",
+      "scope": "Amazon and Sixt are prior employers. Quido is founder-built product experience.",
+      "profileSource": "LinkedIn URL from the supplied resume PDF hyperlink annotation."
+    },
+    {
+      "name": "Umang Dhandhania",
+      "source": "Context handoff",
+      "scope": "Northwestern education and described client delivery experience; not a university-origin company claim."
+    },
+    {
+      "name": "Muskan Garg",
+      "source": "Existing published About page",
+      "scope": "Existing COO profile retained; no additional credentials inferred."
+    }
+  ],
+  "excluded": [
+    "Aggregate project/client totals and hours saved",
+    "Overall retention and 4.9 rating",
+    "Unsourced testimonial stars",
+    "Unsubstantiated partner tiers",
+    "Company HIPAA/SOC 2 certification",
+    "Outcome numbers for ongoing or scoped work"
+  ],
+  "blogCorrections": [
+    {
+      "slug": "prospect-research-automation",
+      "source": "Existing published article, span sp42",
+      "scope": "Remove unsupported company-wide 180+ projects, 100+ clients and four-continent aggregate claim. Preserve the existing project narrative and URL."
+    },
+    {
+      "slug": "unlock-the-power-of-professional-web-design-agencies-agilemorph-solutions",
+      "source": "Existing published article, span-4",
+      "scope": "Replace guaranteed engagement/conversion and future-proofing language with concrete design activities."
+    },
+    {
+      "slug": "unveiling-the-power-of-software-testing-agilemorph-solutions-perspective",
+      "source": "Existing published article, span-11",
+      "scope": "Replace guaranteed quality, cost and security language with scoped testing and acceptance criteria."
+    }
+  ]
+}

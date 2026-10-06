@@ -1,32 +1,32 @@
 export default function Loading() {
   return (
-    <div className="min-h-dvh bg-background">
+    <div className="bg-background min-h-dvh">
       {/* Navbar skeleton */}
-      <div className="sticky top-0 z-50 h-16 border-b border-border/50 bg-background/90 flex items-center justify-between px-6 md:px-10">
-        <div className="h-7 w-36 animate-pulse rounded bg-muted" />
-        <div className="hidden md:flex items-center gap-6">
-          <div className="h-4 w-16 animate-pulse rounded bg-muted" />
-          <div className="h-4 w-16 animate-pulse rounded bg-muted" />
-          <div className="h-4 w-16 animate-pulse rounded bg-muted" />
-          <div className="h-9 w-28 animate-pulse rounded-full bg-muted" />
+      <div className="border-border/50 bg-background/90 sticky top-0 z-50 flex h-16 items-center justify-between border-b px-6 md:px-10">
+        <div className="bg-muted h-7 w-36 animate-pulse rounded" />
+        <div className="hidden items-center gap-6 md:flex">
+          <div className="bg-muted h-4 w-16 animate-pulse rounded" />
+          <div className="bg-muted h-4 w-16 animate-pulse rounded" />
+          <div className="bg-muted h-4 w-16 animate-pulse rounded" />
+          <div className="bg-muted h-9 w-28 animate-pulse rounded-full" />
         </div>
       </div>
 
       {/* Hero skeleton */}
-      <div className="flex flex-col items-center justify-center min-h-[88vh] px-6 py-20 text-center gap-6">
-        <div className="h-6 w-28 animate-pulse rounded-full bg-muted" />
-        <div className="flex flex-col items-center gap-3 w-full max-w-3xl">
-          <div className="h-12 w-full animate-pulse rounded-lg bg-muted" />
-          <div className="h-12 w-4/5 animate-pulse rounded-lg bg-muted" />
+      <div className="flex min-h-[88vh] flex-col items-center justify-center gap-6 px-6 py-20 text-center">
+        <div className="bg-muted h-6 w-28 animate-pulse rounded-full" />
+        <div className="flex w-full max-w-3xl flex-col items-center gap-3">
+          <div className="bg-muted h-12 w-full animate-pulse rounded-lg" />
+          <div className="bg-muted h-12 w-4/5 animate-pulse rounded-lg" />
         </div>
-        <div className="flex flex-col items-center gap-2 w-full max-w-xl">
-          <div className="h-4 w-full animate-pulse rounded bg-muted/60" />
-          <div className="h-4 w-5/6 animate-pulse rounded bg-muted/60" />
-          <div className="h-4 w-3/4 animate-pulse rounded bg-muted/60" />
+        <div className="flex w-full max-w-xl flex-col items-center gap-2">
+          <div className="bg-muted/60 h-4 w-full animate-pulse rounded" />
+          <div className="bg-muted/60 h-4 w-5/6 animate-pulse rounded" />
+          <div className="bg-muted/60 h-4 w-3/4 animate-pulse rounded" />
         </div>
-        <div className="flex gap-4 mt-2">
-          <div className="h-12 w-36 animate-pulse rounded-full bg-muted" />
-          <div className="h-12 w-36 animate-pulse rounded-full bg-muted/50" />
+        <div className="mt-2 flex gap-4">
+          <div className="bg-muted h-12 w-36 animate-pulse rounded-full" />
+          <div className="bg-muted/50 h-12 w-36 animate-pulse rounded-full" />
         </div>
       </div>
     </div>

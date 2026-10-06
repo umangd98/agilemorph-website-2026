@@ -1,3 +1,4 @@
+import { versionField } from "./reviewedFields";
 import { defineField, defineType } from "sanity";
 
 export const blogIndexPage = defineType({
@@ -5,6 +6,7 @@ export const blogIndexPage = defineType({
   title: "Blog Index Page",
   type: "document",
   fields: [
+    versionField,
     defineField({
       name: "eyebrow",
       title: "Eyebrow",

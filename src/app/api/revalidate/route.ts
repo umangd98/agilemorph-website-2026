@@ -9,6 +9,8 @@ import { type NextRequest, NextResponse } from "next/server";
  * Trigger on create/update/delete for relevant document types.
  */
 const DOCUMENT_TAG_MAP: Record<string, string> = {
+  reviewedContent: "reviewedContent",
+  caseStudy: "caseStudy",
   homepage: "homepage",
   aboutPage: "aboutPage",
   contactPage: "contactPage",
@@ -24,7 +26,10 @@ export async function POST(request: NextRequest) {
   const secret = process.env.SANITY_REVALIDATE_SECRET;
 
   if (!secret) {
-    return NextResponse.json({ message: "Revalidation not configured" }, { status: 501 });
+    return NextResponse.json(
+      { message: "Revalidation not configured" },
+      { status: 501 },
+    );
   }
 
   const headerSecret = request.headers.get("x-sanity-webhook-secret");
@@ -38,10 +43,13 @@ export async function POST(request: NextRequest) {
 
     if (tag) {
       revalidateTag(tag, "max");
+      revalidateTag("reviewedContent", "max");
       return NextResponse.json({ revalidated: true, tag });
     }
 
-    Object.values(DOCUMENT_TAG_MAP).forEach((value) => revalidateTag(value, "max"));
+    Object.values(DOCUMENT_TAG_MAP).forEach((value) =>
+      revalidateTag(value, "max"),
+    );
     return NextResponse.json({ revalidated: true, tag: "all" });
   } catch {
     return NextResponse.json({ message: "Invalid payload" }, { status: 400 });

@@ -6,6 +6,12 @@ export const partnerItem = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "category",
+      title: "Credential category",
+      type: "string",
+      options: { list: ["certification", "partnership", "technology"] },
+    }),
+    defineField({
       name: "name",
       title: "Name",
       type: "string",

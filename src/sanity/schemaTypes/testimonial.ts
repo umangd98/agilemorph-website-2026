@@ -6,6 +6,39 @@ export const testimonial = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "relationship",
+      title: "Relationship",
+      type: "string",
+      options: {
+        list: [
+          { title: "Client feedback", value: "client" },
+          { title: "Professional recommendation", value: "professional" },
+        ],
+      },
+      validation: (r) => r.required(),
+    }),
+    defineField({ name: "sourceUrl", title: "Public source URL", type: "url" }),
+    defineField({
+      name: "caseStudy",
+      title: "Related case study",
+      type: "reference",
+      to: [{ type: "caseStudy" }],
+    }),
+    defineField({
+      name: "rating",
+      title: "Sourced rating (optional)",
+      type: "number",
+      validation: (r) =>
+        r
+          .min(1)
+          .max(5)
+          .custom((v, c) =>
+            v && !(c.parent as { sourceUrl?: string })?.sourceUrl
+              ? "A rating needs a public source URL"
+              : true,
+          ),
+    }),
+    defineField({
       name: "quote",
       title: "Quote",
       type: "text",

@@ -29,17 +29,19 @@ export function seoToMetadata(
     title,
     description,
     openGraph: {
+      ...fallback.openGraph,
       type: "website",
       siteName: "AgileMorph",
       title: resolvedTitle,
       description: resolvedDescription,
-      images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,
+      ...(ogImageUrl ? { images: [{ url: ogImageUrl }] } : {}),
     },
     twitter: {
+      ...fallback.twitter,
       card: "summary_large_image",
       title: resolvedTitle,
       description: resolvedDescription,
-      images: ogImageUrl ? [ogImageUrl] : undefined,
+      ...(ogImageUrl ? { images: [ogImageUrl] } : {}),
     },
   };
 }
@@ -51,4 +53,25 @@ export function getInitials(name: string): string {
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? "")
     .join("");
+}
+
+/** Metadata for public marketing routes, with a page-specific canonical. */
+export function pageMetadata(
+  title: string,
+  description: string,
+  path: string,
+): Metadata {
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      url: path,
+      siteName: "AgileMorph",
+    },
+    twitter: { card: "summary_large_image", title, description },
+  };
 }

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * One-off patch: hero badge removal, Claude partner rename, Upwork label, brand logo upload.
  * Usage: node scripts/patch-homepage-branding.mjs
@@ -40,7 +42,14 @@ function saveManifest(manifest) {
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
 }
 
-async function uploadBuffer({ buffer, filename, contentType, projectId, dataset, token }) {
+async function uploadBuffer({
+  buffer,
+  filename,
+  contentType,
+  projectId,
+  dataset,
+  token,
+}) {
   const uploadUrl = `https://${projectId}.api.sanity.io/v2021-06-07/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`;
   const uploadResponse = await fetch(uploadUrl, {
     method: "POST",

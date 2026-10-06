@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Scrapes blogs and service pages from theagilemorph.com (WordPress REST API)
  * and seeds/updates Sanity documents.
@@ -17,10 +19,30 @@ const ENV_PATH = join(ROOT, ".env.local");
 const WP_BASE = "https://theagilemorph.com/wp-json/wp/v2";
 
 const SERVICE_PAGE_MAP = [
-  { wpSlug: "ai-automation-development", sanitySlug: "ai-automation", wpId: 842, title: "AI Automation Development" },
-  { wpSlug: "website-development", sanitySlug: "website-development", wpId: 2462, title: "Website Development" },
-  { wpSlug: "digital-marketing-services", sanitySlug: "digital-marketing", wpId: 2571, title: "Digital Marketing Services" },
-  { wpSlug: "virtual-assistance-services", sanitySlug: "virtual-assistance", wpId: 2554, title: "Virtual Assistance Services" },
+  {
+    wpSlug: "ai-automation-development",
+    sanitySlug: "ai-automation",
+    wpId: 842,
+    title: "AI Automation Development",
+  },
+  {
+    wpSlug: "website-development",
+    sanitySlug: "website-development",
+    wpId: 2462,
+    title: "Website Development",
+  },
+  {
+    wpSlug: "digital-marketing-services",
+    sanitySlug: "digital-marketing",
+    wpId: 2571,
+    title: "Digital Marketing Services",
+  },
+  {
+    wpSlug: "virtual-assistance-services",
+    sanitySlug: "virtual-assistance",
+    wpId: 2554,
+    title: "Virtual Assistance Services",
+  },
 ];
 
 function loadEnv() {
@@ -98,7 +120,14 @@ async function wpFetch(path) {
   return response.json();
 }
 
-async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
+async function uploadFromUrl({
+  url,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+}) {
   const manifestKey = `wp-imports/${filename}`;
   if (manifest[manifestKey]?.id) {
     return manifest[manifestKey];
@@ -146,7 +175,13 @@ function htmlToPortableText(html) {
     if (!text || text.length < 2) return;
 
     const style =
-      tag === "h2" ? "h2" : tag === "h3" ? "h3" : tag === "h4" ? "h4" : "normal";
+      tag === "h2"
+        ? "h2"
+        : tag === "h3"
+          ? "h3"
+          : tag === "h4"
+            ? "h4"
+            : "normal";
 
     blocks.push({
       _type: "block",
@@ -181,8 +216,18 @@ function parseServicePage(page) {
 
   const capabilities = [];
   $(".swiper-slide").each((_, slide) => {
-    const slideTitle = $(slide).find("h3").first().text().replace(/\s+/g, " ").trim();
-    const slideDesc = $(slide).find("p").first().text().replace(/\s+/g, " ").trim();
+    const slideTitle = $(slide)
+      .find("h3")
+      .first()
+      .text()
+      .replace(/\s+/g, " ")
+      .trim();
+    const slideDesc = $(slide)
+      .find("p")
+      .first()
+      .text()
+      .replace(/\s+/g, " ")
+      .trim();
     if (slideTitle && slideDesc) {
       capabilities.push({ title: slideTitle, description: slideDesc });
     }
@@ -284,7 +329,10 @@ async function fetchAuthors() {
   return Object.fromEntries(users.map((user) => [user.id, user.name]));
 }
 
-async function fetchFeaturedImage(mediaId, { projectId, dataset, token, manifest }) {
+async function fetchFeaturedImage(
+  mediaId,
+  { projectId, dataset, token, manifest },
+) {
   if (!mediaId) return undefined;
   try {
     const media = await wpFetch(`/media/${mediaId}`);
@@ -472,7 +520,12 @@ async function main() {
   const servicePages = await buildServicePagesFromWp(manifest);
 
   console.log("\nScraping blog posts from WordPress...");
-  const blogPosts = await buildBlogPosts({ projectId, dataset, token, manifest });
+  const blogPosts = await buildBlogPosts({
+    projectId,
+    dataset,
+    token,
+    manifest,
+  });
 
   saveManifest(manifest);
 

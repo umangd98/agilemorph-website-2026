@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Rename Website → Website Development in Sanity documents.
  * Usage: node scripts/patch-website-development-label.mjs
@@ -51,7 +53,10 @@ async function mutate({ projectId, dataset, token, mutations }) {
 
 function renameWebsiteCard(cards = []) {
   return cards.map((card) => {
-    if (card?.href !== "/services/website-development" && card?.title !== "Website") {
+    if (
+      card?.href !== "/services/website-development" &&
+      card?.title !== "Website"
+    ) {
       return card;
     }
 
@@ -75,7 +80,12 @@ async function main() {
   const token = env.SANITY_API_WRITE_TOKEN;
   if (!token) throw new Error("Missing SANITY_API_WRITE_TOKEN in .env.local");
 
-  const homepage = await fetchDocument({ projectId, dataset, token, id: "homepage" });
+  const homepage = await fetchDocument({
+    projectId,
+    dataset,
+    token,
+    id: "homepage",
+  });
   const mutations = [
     {
       patch: {

@@ -4,15 +4,13 @@ import type { FaqItem, SocialLink } from "@/sanity/types";
  * Canonical production origin. Used by metadata (metadataBase, canonical),
  * sitemap/robots, and JSON-LD structured data.
  */
-export const SITE_URL = "https://agilemorph.in";
+export const SITE_URL = "https://theagilemorph.com";
 
 export const ORGANIZATION_NAME = "AgileMorph";
 export const ORGANIZATION_LEGAL_NAME = "AgileMorph Solutions";
 
 const DEFAULT_SAME_AS = [
-  "https://www.linkedin.com/company/agilemorph/",
-  "https://www.instagram.com/agilemorph/",
-  "https://www.facebook.com/agilemorph",
+  "https://www.linkedin.com/company/agilemorph-solutions",
 ];
 
 /** Minimal JSON-LD node shape. */
@@ -46,11 +44,11 @@ export function organizationSchema(options?: {
     },
     description:
       options?.description ??
-      "AI automation agency that builds and deploys end-to-end AI workflows, agents, and integrations for growing businesses.",
-    founder: {
-      "@type": "Person",
-      name: "Umang Dhandhania",
-    },
+      "Software and AI engineering partner for SMBs and enterprises.",
+    founder: [
+      { "@type": "Person", name: "Umang Dhandhania" },
+      { "@type": "Person", name: "Kaustumbh Jaiswal" },
+    ],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Nagpur",

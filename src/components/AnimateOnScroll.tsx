@@ -1,71 +1,43 @@
 "use client";
-
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
-type AnimateOnScrollProps = {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-};
-
-function useSkipScrollAnimation() {
-  const [skip, setSkip] = useState(true);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const mobile = window.matchMedia("(max-width: 767px)").matches;
-    setSkip(reduced || mobile);
-  }, []);
-
-  return skip;
-}
-
+import { useEffect, useRef, type ReactNode } from "react";
+/** Progressive enhancement: content remains visible without JS or when motion is reduced. */
 export function AnimateOnScroll({
   children,
   className = "",
   delay = 0,
-}: AnimateOnScrollProps) {
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const skipAnimation = useSkipScrollAnimation();
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    if (skipAnimation) {
-      setVisible(true);
-      return;
-    }
-
     const el = ref.current;
-    if (!el) return;
-
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let animation: Animation | undefined;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          animation = el.animate(
+            [
+              { opacity: 0.4, transform: "translateY(12px)" },
+              { opacity: 1, transform: "translateY(0)" },
+            ],
+            { duration: 400, delay, easing: "ease-out" },
+          );
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.1 },
     );
-
     observer.observe(el);
-    return () => observer.disconnect();
-  }, [skipAnimation]);
-
-  const showContent = skipAnimation || visible;
-
+    return () => {
+      observer.disconnect();
+      animation?.cancel();
+    };
+  }, [delay]);
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: showContent ? 1 : 0,
-        transform: showContent ? "translateY(0)" : "translateY(24px)",
-        transition: skipAnimation
-          ? undefined
-          : `opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
-      }}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );

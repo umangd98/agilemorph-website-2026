@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Process leadership portraits, upload to Sanity, and patch aboutPage.teamLeads.
  * Usage: npm run upload:team-leads
@@ -66,7 +68,11 @@ async function patchTeamLeads(dataset, projectId, token, manifest) {
         name: "Umang Dhandhania",
         role: "CEO",
         bio: "A Northwestern-educated engineer who turns complex business problems into clear, revenue-lifting systems. Over the past decade he has guided more than 100 companies through launches, process overhauls, and market-ready builds that beat timelines and KPIs.",
-        image: imageRef(manifest, "team-leads/umang-dhandhania.png", "Umang Dhandhania"),
+        image: imageRef(
+          manifest,
+          "team-leads/umang-dhandhania.png",
+          "Umang Dhandhania",
+        ),
       },
       {
         _type: "teamLeadItem",
@@ -74,7 +80,11 @@ async function patchTeamLeads(dataset, projectId, token, manifest) {
         name: "Kaustumbh Jaiswal",
         role: "CTO",
         bio: "Leads AgileMorph's engineering and product architecture, turning automation strategy into reliable, scalable systems. He pairs deep technical craft with a builder's mindset so every solution ships fast and holds up in production.",
-        image: imageRef(manifest, "team-leads/kaustumbh-jaiswal.png", "Kaustumbh Jaiswal"),
+        image: imageRef(
+          manifest,
+          "team-leads/kaustumbh-jaiswal.png",
+          "Kaustumbh Jaiswal",
+        ),
       },
       {
         _type: "teamLeadItem",
@@ -82,7 +92,11 @@ async function patchTeamLeads(dataset, projectId, token, manifest) {
         name: "Muskan Agrawal",
         role: "COO",
         bio: "Keeps delivery sharp across client engagements, aligning teams, timelines, and outcomes so projects move from discovery to launch without friction. She brings operational rigor and a client-first lens to every engagement.",
-        image: imageRef(manifest, "team-leads/muskan-agrawal.png", "Muskan Agrawal"),
+        image: imageRef(
+          manifest,
+          "team-leads/muskan-agrawal.png",
+          "Muskan Agrawal",
+        ),
       },
     ],
   };
@@ -108,7 +122,10 @@ async function patchTeamLeads(dataset, projectId, token, manifest) {
 
 function main() {
   console.log("Processing team lead portraits...");
-  execSync("python3 scripts/process-team-leads.py", { cwd: ROOT, stdio: "inherit" });
+  execSync("python3 scripts/process-team-leads.py", {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
 
   const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
   for (const key of TEAM_LEAD_KEYS) {

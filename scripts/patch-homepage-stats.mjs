@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Patches homepage and about page stats sections in Sanity.
  * Usage: node scripts/patch-homepage-stats.mjs
@@ -68,9 +70,21 @@ async function main() {
   const token = getAuthToken();
 
   console.log("Patching site metrics...");
-  await patchDocument({ projectId, dataset, token, id: "homepage", field: "stats" });
+  await patchDocument({
+    projectId,
+    dataset,
+    token,
+    id: "homepage",
+    field: "stats",
+  });
   console.log("  ✓ homepage.stats");
-  await patchDocument({ projectId, dataset, token, id: "aboutPage", field: "stats" });
+  await patchDocument({
+    projectId,
+    dataset,
+    token,
+    id: "aboutPage",
+    field: "stats",
+  });
   console.log("  ✓ aboutPage.stats");
   console.log("Site metrics updated.");
 }

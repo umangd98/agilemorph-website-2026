@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Removes em dashes from all Sanity documents, replacing with commas.
  * Usage: node scripts/patch-remove-em-dashes.mjs [--dry-run]
@@ -155,7 +157,11 @@ async function main() {
   const dataset = env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
   const token = getAuthToken();
 
-  console.log(dryRun ? "Dry run: scanning for em dashes..." : "Patching em dashes in Sanity...");
+  console.log(
+    dryRun
+      ? "Dry run: scanning for em dashes..."
+      : "Patching em dashes in Sanity...",
+  );
 
   const documents = await fetchAllDocuments(projectId, dataset, token);
   const affected = documents.filter(containsEmDash);
@@ -178,8 +184,12 @@ async function main() {
     console.log(`${doc._id} (${doc._type}): ${changes.length} replacement(s):`);
     for (const change of changes.slice(0, 5)) {
       console.log(`  ${change.path}`);
-      console.log(`    - ${change.before.slice(0, 100)}${change.before.length > 100 ? "..." : ""}`);
-      console.log(`    + ${change.after.slice(0, 100)}${change.after.length > 100 ? "..." : ""}`);
+      console.log(
+        `    - ${change.before.slice(0, 100)}${change.before.length > 100 ? "..." : ""}`,
+      );
+      console.log(
+        `    + ${change.after.slice(0, 100)}${change.after.length > 100 ? "..." : ""}`,
+      );
     }
     if (changes.length > 5) {
       console.log(`  ... and ${changes.length - 5} more`);
@@ -195,13 +205,20 @@ async function main() {
   }
 
   if (dryRun) {
-    console.log(`Dry run complete. ${affected.length} document(s) would be patched.`);
+    console.log(
+      `Dry run complete. ${affected.length} document(s) would be patched.`,
+    );
     return;
   }
 
   console.log("Publishing changed documents...");
   for (const publishedId of publishIds) {
-    const published = await publishDocument(dataset, projectId, token, publishedId);
+    const published = await publishDocument(
+      dataset,
+      projectId,
+      token,
+      publishedId,
+    );
     if (published) {
       console.log(`  Published ${publishedId}`);
     }

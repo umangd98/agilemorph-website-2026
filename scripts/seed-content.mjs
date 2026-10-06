@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Seeds Sanity documents with scraped AgileMorph content.
  * Usage: node scripts/seed-content.mjs
@@ -67,7 +69,9 @@ function imageRef(manifest, key, alt = "") {
 
 function techItem(manifest, name, logoKey) {
   const item = { _type: "technologyItem", name };
-  const logo = logoKey ? imageRef(manifest, logoKey, `${name} logo`) : undefined;
+  const logo = logoKey
+    ? imageRef(manifest, logoKey, `${name} logo`)
+    : undefined;
   if (logo) item.logo = logo;
   return item;
 }
@@ -319,7 +323,11 @@ function buildHomepage(manifest) {
           description:
             "Python, Django, FastAPI, and React builds that hold up in production.",
           href: "/services/website-development",
-          icon: imageRef(manifest, "2025/01/Services_Icon_02.svg", "Website Development"),
+          icon: imageRef(
+            manifest,
+            "2025/01/Services_Icon_02.svg",
+            "Website Development",
+          ),
         },
       ],
     },
@@ -1255,7 +1263,8 @@ function buildPricingPage() {
           name: "Maintain",
           price: "$2K",
           hours: "~8 hrs/month",
-          tagline: "Your automations stay healthy and your team stays unblocked.",
+          tagline:
+            "Your automations stay healthy and your team stays unblocked.",
           items: [
             "Workflow monitoring and uptime checks",
             "Credential rotations and API updates",
@@ -1284,7 +1293,8 @@ function buildPricingPage() {
           name: "Embed",
           price: "$10K",
           hours: "~40 hrs/month",
-          tagline: "AgileMorph operates as part of your team, not alongside it.",
+          tagline:
+            "AgileMorph operates as part of your team, not alongside it.",
           items: [
             "Everything in Iterate",
             "Weekly working sessions with the team",

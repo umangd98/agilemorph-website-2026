@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Patches live Sanity documents with audited content (team leads, discovery call, copy fixes).
  * Usage: node scripts/patch-content-audit.mjs
@@ -42,7 +44,12 @@ function loadManifest() {
 function imageRef(manifest, key, alt = "", projectId, dataset) {
   const asset = manifest[key];
   if (!asset?.id) return undefined;
-  if (projectId && dataset && asset.url && !asset.url.includes(`${projectId}/${dataset}`)) {
+  if (
+    projectId &&
+    dataset &&
+    asset.url &&
+    !asset.url.includes(`${projectId}/${dataset}`)
+  ) {
     return undefined;
   }
   return {
@@ -119,7 +126,13 @@ async function main() {
         name: "Umang Dhandhania",
         role: "CEO",
         bio: "A Northwestern-educated engineer who turns complex business problems into clear, revenue-lifting systems. Over the past decade he has guided more than 100 companies through launches, process overhauls, and market-ready builds that beat timelines and KPIs.",
-        image: imageRef(manifest, "team-leads/umang-dhandhania.png", "Umang Dhandhania", projectId, dataset),
+        image: imageRef(
+          manifest,
+          "team-leads/umang-dhandhania.png",
+          "Umang Dhandhania",
+          projectId,
+          dataset,
+        ),
       },
       {
         _type: "teamLeadItem",
@@ -127,7 +140,13 @@ async function main() {
         name: "Kaustumbh Jaiswal",
         role: "CTO",
         bio: "Leads AgileMorph's engineering and product architecture, turning automation strategy into reliable, scalable systems. He pairs deep technical craft with a builder's mindset so every solution ships fast and holds up in production.",
-        image: imageRef(manifest, "team-leads/kaustumbh-jaiswal.png", "Kaustumbh Jaiswal", projectId, dataset),
+        image: imageRef(
+          manifest,
+          "team-leads/kaustumbh-jaiswal.png",
+          "Kaustumbh Jaiswal",
+          projectId,
+          dataset,
+        ),
       },
       {
         _type: "teamLeadItem",
@@ -135,7 +154,13 @@ async function main() {
         name: "Muskan Agrawal",
         role: "COO",
         bio: "Keeps delivery sharp across client engagements, aligning teams, timelines, and outcomes so projects move from discovery to launch without friction. She brings operational rigor and a client-first lens to every engagement.",
-        image: imageRef(manifest, "team-leads/muskan-agrawal.png", "Muskan Agrawal", projectId, dataset),
+        image: imageRef(
+          manifest,
+          "team-leads/muskan-agrawal.png",
+          "Muskan Agrawal",
+          projectId,
+          dataset,
+        ),
       },
     ],
   };
@@ -190,17 +215,25 @@ async function main() {
   };
 
   await patchDocument(dataset, projectId, token, "aboutPage", aboutPatch);
-  await patchDocument(dataset, projectId, token, "contactPage", { discoveryCall });
+  await patchDocument(dataset, projectId, token, "contactPage", {
+    discoveryCall,
+  });
   await patchDocument(dataset, projectId, token, "servicesIndexPage", {
     "hero.description":
       "AI automation is our core practice, with seven specializations plus marketing, virtual assistance, and Website Development when you need the full stack.",
   });
 
   if (technologies.length) {
-    await patchDocument(dataset, projectId, token, "servicePage-ai-automation", {
-      technologiesHeading: "Technologies that power our solutions",
-      technologies,
-    });
+    await patchDocument(
+      dataset,
+      projectId,
+      token,
+      "servicePage-ai-automation",
+      {
+        technologiesHeading: "Technologies that power our solutions",
+        technologies,
+      },
+    );
   }
 
   console.log("Content audit patches applied to Sanity.");

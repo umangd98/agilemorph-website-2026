@@ -1,3 +1,4 @@
+import { versionField } from "./reviewedFields";
 import { defineField, defineType } from "sanity";
 
 export const servicesIndexPage = defineType({
@@ -5,6 +6,7 @@ export const servicesIndexPage = defineType({
   title: "Services Index Page",
   type: "document",
   fields: [
+    versionField,
     defineField({
       name: "hero",
       title: "Hero",

@@ -6,6 +6,23 @@ export const teamLeadItem = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "portrait",
+      title: "Local portrait path",
+      type: "string",
+    }),
+    defineField({ name: "focus", title: "Delivery focus", type: "string" }),
+    defineField({
+      name: "profileUrl",
+      title: "Verified professional profile",
+      type: "url",
+    }),
+    defineField({
+      name: "projectSlugs",
+      title: "Related project slugs",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
       name: "name",
       title: "Name",
       type: "string",
@@ -36,7 +53,6 @@ export const teamLeadItem = defineType({
           type: "string",
         }),
       ],
-      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

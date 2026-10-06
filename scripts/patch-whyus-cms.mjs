@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Backfill homepage whyUs items with animationType, highlights, and animationLabels.
  * Usage: node scripts/patch-whyus-cms.mjs
@@ -83,7 +85,9 @@ function mergeWhyUsItems(existingItems = []) {
       ...item,
       animationType: patch.animationType,
       highlights: patch.highlights,
-      ...(patch.animationLabels.length ? { animationLabels: patch.animationLabels } : {}),
+      ...(patch.animationLabels.length
+        ? { animationLabels: patch.animationLabels }
+        : {}),
     };
   });
 }
@@ -96,7 +100,12 @@ async function main() {
   if (!token) throw new Error("Missing SANITY_API_WRITE_TOKEN");
 
   console.log("Fetching homepage...");
-  const homepage = await fetchDocument({ projectId, dataset, token, id: "homepage" });
+  const homepage = await fetchDocument({
+    projectId,
+    dataset,
+    token,
+    id: "homepage",
+  });
   if (!homepage?.whyUs?.items?.length) {
     throw new Error("Homepage whyUs.items not found");
   }

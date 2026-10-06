@@ -37,6 +37,10 @@ const subServiceProcessStepProjection = `{
 }`;
 
 const testimonialProjection = `{
+  relationship,
+  sourceUrl,
+  rating,
+  caseStudy,
   quote,
   name,
   role,
@@ -85,6 +89,10 @@ const teamLeadItemProjection = `{
   name,
   role,
   bio,
+  portrait,
+  focus,
+  profileUrl,
+  projectSlugs,
   image ${imageProjection}
 }`;
 
@@ -118,7 +126,7 @@ const integrationItemProjection = `{
   logo ${imageProjection}
 }`;
 
-export const homepageQuery = `*[_type == "homepage"][0]{
+export const homepageQuery = `*[_id == "homepage"][0]{
   _id,
   _type,
   hero {
@@ -182,7 +190,7 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   seo ${seoProjection}
 }`;
 
-export const homepageAboveFoldQuery = `*[_type == "homepage"][0]{
+export const homepageAboveFoldQuery = `*[_id == "homepage"][0]{
   _id,
   _type,
   hero {
@@ -213,7 +221,7 @@ export const homepageAboveFoldQuery = `*[_type == "homepage"][0]{
   seo ${seoProjection}
 }`;
 
-export const homepageBelowFoldQuery = `*[_type == "homepage"][0]{
+export const homepageBelowFoldQuery = `*[_id == "homepage"][0]{
   _id,
   _type,
   process {
@@ -247,7 +255,7 @@ export const homepageBelowFoldQuery = `*[_type == "homepage"][0]{
   }
 }`;
 
-export const aboutPageQuery = `*[_type == "aboutPage"][0]{
+export const aboutPageQuery = `*[_id == "aboutPage"][0]{
   _id,
   _type,
   hero {
@@ -374,7 +382,7 @@ export const allServiceSlugsQuery = `*[_type == "servicePage" && defined(slug.cu
   "slug": slug.current
 }`;
 
-export const contactPageQuery = `*[_type == "contactPage"][0]{
+export const contactPageQuery = `*[_id == "contactPage"][0]{
   _id,
   _type,
   hero {
@@ -406,6 +414,7 @@ export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]
   publishedAt,
   categories,
   author,
+  relatedProjects,
   coverImage ${imageProjection},
   seo ${seoProjection}
 }`;
@@ -451,7 +460,7 @@ const socialLinkProjection = `{
   platform
 }`;
 
-export const pricingPageQuery = `*[_type == "pricingPage"][0]{
+export const pricingPageQuery = `*[_id == "pricingPage"][0]{
   _id,
   _type,
   hero {
@@ -481,7 +490,7 @@ export const pricingPageQuery = `*[_type == "pricingPage"][0]{
   seo ${seoProjection}
 }`;
 
-export const blogIndexPageQuery = `*[_type == "blogIndexPage"][0]{
+export const blogIndexPageQuery = `*[_id == "blogIndexPage"][0]{
   _id,
   _type,
   eyebrow,
@@ -490,7 +499,7 @@ export const blogIndexPageQuery = `*[_type == "blogIndexPage"][0]{
   seo ${seoProjection}
 }`;
 
-export const servicesIndexPageQuery = `*[_type == "servicesIndexPage"][0]{
+export const servicesIndexPageQuery = `*[_id == "servicesIndexPage"][0]{
   _id,
   _type,
   hero {
@@ -506,7 +515,7 @@ export const servicesIndexPageQuery = `*[_type == "servicesIndexPage"][0]{
   seo ${seoProjection}
 }`;
 
-export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
+export const siteSettingsQuery = `*[_id == "siteSettings"][0]{
   _id,
   _type,
   siteTitle,
@@ -537,6 +546,7 @@ const blogPostSummaryProjection = `{
   publishedAt,
   categories,
   author,
+  relatedProjects,
   coverImage ${imageProjection}
 }`;
 

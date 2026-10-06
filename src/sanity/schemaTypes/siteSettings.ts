@@ -1,3 +1,4 @@
+import { versionField } from "./reviewedFields";
 import { defineField, defineType } from "sanity";
 
 export const siteSettings = defineType({
@@ -5,6 +6,13 @@ export const siteSettings = defineType({
   title: "Site Settings",
   type: "document",
   fields: [
+    versionField,
+    defineField({
+      name: "credentials",
+      title: "Documented credentials",
+      type: "array",
+      of: [{ type: "partnerItem" }],
+    }),
     defineField({
       name: "siteTitle",
       title: "Site Title",
@@ -23,7 +31,8 @@ export const siteSettings = defineType({
       title: "Navigation Links",
       type: "array",
       of: [{ type: "navLink" }],
-      description: "Main nav links (Services dropdown is auto-generated)",
+      description:
+        "Main navigation. Service links come from the primary service documents.",
     }),
     defineField({
       name: "footerQuickLinks",
@@ -36,17 +45,6 @@ export const siteSettings = defineType({
       title: "Social Links",
       type: "array",
       of: [{ type: "socialLink" }],
-    }),
-    defineField({
-      name: "newsletterHeading",
-      title: "Newsletter Heading",
-      type: "string",
-    }),
-    defineField({
-      name: "newsletterDescription",
-      title: "Newsletter Description",
-      type: "text",
-      rows: 2,
     }),
   ],
   preview: {

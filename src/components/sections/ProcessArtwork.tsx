@@ -7,7 +7,7 @@
  *
  * 0 — Plan: a project board / blueprint being laid out
  * 1 — Build: a workstation shipping code, momentum forward
- * 2 — Results: a launch + growth curve reaching 100%
+ * 2 — Results: a launch + growth curve illustrating delivery
  */
 
 import type { ComponentType } from "react";
@@ -64,7 +64,13 @@ function PlanArt() {
         />
         {/* done check */}
         <circle cx="300" cy="150" r="15" fill="currentColor" opacity="0.14" />
-        <circle cx="300" cy="150" r="15" stroke="currentColor" strokeWidth="2" />
+        <circle
+          cx="300"
+          cy="150"
+          r="15"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
         <path
           d="M292 150l6 6 11-12"
           stroke="currentColor"
@@ -161,7 +167,7 @@ function ResultsArt() {
           fill="none"
         />
         <circle cx="308" cy="82" r="4" fill="currentColor" />
-        {/* 100% badge */}
+        {/* Delivery badge */}
         <rect
           x="270"
           y="52"
@@ -179,7 +185,7 @@ function ResultsArt() {
           fontFamily="var(--font-mono)"
           fill="currentColor"
         >
-          100%
+          Live
         </text>
       </g>
       {/* rocket */}
@@ -195,7 +201,14 @@ function ResultsArt() {
         <path d="M112 112l14 12-4 20-18-12" />
       </g>
       <g className={ACCENT}>
-        <circle cx="88" cy="74" r="8" stroke="currentColor" strokeWidth="2" fill="none" />
+        <circle
+          cx="88"
+          cy="74"
+          r="8"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+        />
         <path
           d="M76 140c4 12 8 18 12 26 4-8 8-14 12-26"
           fill="currentColor"

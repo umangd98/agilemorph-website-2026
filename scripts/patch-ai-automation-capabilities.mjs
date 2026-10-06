@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Patches ai-automation capabilities on the servicePage document in Sanity.
  * Usage: node scripts/patch-ai-automation-capabilities.mjs
@@ -52,14 +54,16 @@ const CAPABILITIES = [
     _type: "capabilityItem",
     title: "Workflow Automation",
     slug: "workflow-automation",
-    description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
+    description:
+      "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
     icon: "⟳",
   },
   {
     _type: "capabilityItem",
     title: "CRM & Lead Automation",
     slug: "crm-lead-automation",
-    description: "Capture, enrich, route, and follow up on every lead automatically.",
+    description:
+      "Capture, enrich, route, and follow up on every lead automatically.",
     icon: "◎",
   },
   {
@@ -74,7 +78,8 @@ const CAPABILITIES = [
     _type: "capabilityItem",
     title: "Messaging Automation",
     slug: "messaging-automation",
-    description: "WhatsApp, email, and chat automations that respond and convert.",
+    description:
+      "WhatsApp, email, and chat automations that respond and convert.",
     icon: "✉",
   },
   {

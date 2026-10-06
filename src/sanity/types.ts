@@ -379,6 +379,7 @@ export interface BlogPostSummary {
 }
 
 export interface BlogPost extends BlogPostSummary {
+  relatedProjects?: { _ref: string }[];
   body?: unknown[];
   seo?: Seo;
 }

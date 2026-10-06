@@ -12,10 +12,19 @@ function resolveImageUrl(image: SanityImageAsset) {
   return image.asset?.url ?? urlForImage(image).format("png").url();
 }
 
-function isRemovableBackgroundPixel(r: number, g: number, b: number, a: number) {
+function isRemovableBackgroundPixel(
+  r: number,
+  g: number,
+  b: number,
+  a: number,
+) {
   if (a < 10) return false;
 
-  const channelSpread = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
+  const channelSpread = Math.max(
+    Math.abs(r - g),
+    Math.abs(g - b),
+    Math.abs(r - b),
+  );
   if (channelSpread > 14) return false;
 
   const brightness = (r + g + b) / 3;
@@ -47,7 +56,8 @@ function keyOutFakeTransparency(imageData: ImageData) {
   let tail = 0;
 
   const tryEnqueue = (index: number) => {
-    if (index < 0 || index >= total || !removable[index] || connected[index]) return;
+    if (index < 0 || index >= total || !removable[index] || connected[index])
+      return;
     connected[index] = 1;
     queue[tail++] = index;
   };
@@ -118,7 +128,8 @@ async function processPortrait(url: string) {
       const element = new Image();
       element.decoding = "async";
       element.onload = () => resolve(element);
-      element.onerror = () => reject(new Error(`Failed to decode image: ${url}`));
+      element.onerror = () =>
+        reject(new Error(`Failed to decode image: ${url}`));
       element.src = blobUrl;
     });
 
@@ -138,8 +149,15 @@ async function processPortrait(url: string) {
     const imageData = ctx.getImageData(0, 0, width, height);
 
     const { data } = imageData;
-    const cornerIndexes = [0, width - 1, (height - 1) * width, (height - 1) * width + (width - 1)];
-    const alreadyTransparent = cornerIndexes.every((index) => data[index * 4 + 3]! < 12);
+    const cornerIndexes = [
+      0,
+      width - 1,
+      (height - 1) * width,
+      (height - 1) * width + (width - 1),
+    ];
+    const alreadyTransparent = cornerIndexes.every(
+      (index) => data[index * 4 + 3]! < 12,
+    );
 
     if (!alreadyTransparent) {
       keyOutFakeTransparency(imageData);
@@ -170,10 +188,7 @@ export function TransparentKeyedImage({
   const imageUrl = hasImageAsset(image) ? resolveImageUrl(image) : null;
 
   useEffect(() => {
-    if (!imageUrl) {
-      setSrc(null);
-      return;
-    }
+    if (!imageUrl) return;
 
     let cancelled = false;
 
@@ -194,10 +209,7 @@ export function TransparentKeyedImage({
 
   if (!src) {
     return (
-      <div
-        className={`absolute inset-0 ${className}`}
-        aria-hidden="true"
-      />
+      <div className={`absolute inset-0 ${className}`} aria-hidden="true" />
     );
   }
 

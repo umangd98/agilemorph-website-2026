@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { MobileAutoCarousel } from "@/components/MobileAutoCarousel";
 import type { WhyUsItem } from "@/sanity/types";
@@ -21,14 +28,14 @@ type PillarData = {
 
 function WhyUsMobileSlide({ pillar }: { pillar: PillarData }) {
   return (
-    <div className="flex h-full min-h-[168px] flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm">
-      <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-heading text-sm font-bold text-background shadow-md shadow-primary/25">
+    <div className="border-border bg-surface flex h-full min-h-[168px] flex-col rounded-2xl border p-5 shadow-sm">
+      <span className="bg-primary font-heading text-background shadow-primary/25 mb-4 flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold shadow-md">
         {pillar.step}
       </span>
-      <h3 className="font-heading text-lg font-bold leading-snug text-foreground">
+      <h3 className="font-heading text-foreground text-lg leading-snug font-bold">
         {pillar.item.title}
       </h3>
-      <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-muted-foreground">
+      <p className="font-body text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
         {pillar.item.description}
       </p>
     </div>
@@ -66,23 +73,23 @@ function WhyUsPillar({
         onActivate(index);
       }}
       aria-pressed={isActive}
-      className={`group relative flex h-full w-full items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left shadow-sm transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-5 sm:py-5 ${
+      className={`group focus-visible:ring-primary/40 relative flex h-full w-full items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left shadow-sm transition-all duration-500 ease-out focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none motion-reduce:transition-none sm:px-5 sm:py-5 ${
         isActive
-          ? "z-10 translate-x-1 border-primary/35 bg-primary/5 shadow-lg shadow-primary/10"
+          ? "border-primary/35 bg-primary/5 shadow-primary/10 z-10 translate-x-1 shadow-lg"
           : "border-border bg-surface hover:border-primary/20 hover:bg-primary/3 hover:translate-x-0.5"
       }`}
     >
       <span
-        className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-heading text-sm font-bold transition-all duration-500 ${
+        className={`font-heading relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all duration-500 ${
           isActive
-            ? "scale-110 bg-primary text-background shadow-md shadow-primary/30"
+            ? "bg-primary text-background shadow-primary/30 scale-110 shadow-md"
             : "bg-primary/10 text-primary group-hover:bg-primary/15"
         }`}
       >
         {pillar.step}
         {isActive ? (
           <span
-            className="absolute inset-0 animate-ping rounded-xl bg-primary/30 motion-reduce:animate-none"
+            className="bg-primary/30 absolute inset-0 animate-ping rounded-xl motion-reduce:animate-none"
             aria-hidden
           />
         ) : null}
@@ -90,14 +97,14 @@ function WhyUsPillar({
 
       <div className="relative z-10 min-w-0 flex-1">
         <h3
-          className={`font-heading text-base font-bold leading-snug transition-colors duration-300 ${
+          className={`font-heading text-base leading-snug font-bold transition-colors duration-300 ${
             isActive ? "text-foreground" : "text-foreground/90"
           }`}
         >
           {pillar.item.title}
         </h3>
         <p
-          className={`mt-1 font-body text-sm leading-relaxed transition-all duration-500 ${
+          className={`font-body mt-1 text-sm leading-relaxed transition-all duration-500 ${
             isActive
               ? "text-muted-foreground"
               : "text-muted-foreground/80 line-clamp-2 md:line-clamp-none"
@@ -109,14 +116,14 @@ function WhyUsPillar({
 
       <div className="relative z-10 hidden h-[4.5rem] w-[6.5rem] shrink-0 items-center justify-center md:flex">
         {isActive ? (
-          <div className="h-full w-full overflow-hidden rounded-xl border border-primary/25 bg-background shadow-inner">
+          <div className="border-primary/25 bg-background h-full w-full overflow-hidden rounded-xl border shadow-inner">
             <div className="h-full w-full origin-top-left scale-[0.42]">
-              <Anim
-                active
-                title={pillar.item.title}
-                labels={pillar.item.animationLabels}
-                highlights={pillar.item.highlights}
-              />
+              {createElement(Anim, {
+                active: true,
+                title: pillar.item.title,
+                labels: pillar.item.animationLabels,
+                highlights: pillar.item.highlights,
+              })}
             </div>
           </div>
         ) : (
@@ -129,7 +136,7 @@ function WhyUsPillar({
       </div>
 
       <span
-        className={`pointer-events-none absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-primary transition-opacity duration-500 ${
+        className={`bg-primary pointer-events-none absolute inset-y-0 left-0 w-1 rounded-l-2xl transition-opacity duration-500 ${
           isActive ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden
@@ -177,7 +184,7 @@ export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
     >
       <div className="hidden h-full md:block">
         <div
-          className="pointer-events-none absolute left-5 top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-primary/50"
+          className="from-primary/50 via-primary/20 to-primary/50 pointer-events-none absolute top-8 bottom-8 left-5 w-px bg-gradient-to-b"
           aria-hidden
         />
 

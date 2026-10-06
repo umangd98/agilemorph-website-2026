@@ -6,6 +6,18 @@ export const blogPost = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentVersion",
+      title: "Reviewed content version",
+      type: "number",
+      readOnly: true,
+    }),
+    defineField({
+      name: "relatedProjects",
+      title: "Related project evidence",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "caseStudy" }] }],
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
@@ -36,7 +48,7 @@ export const blogPost = defineType({
       name: "body",
       title: "Body",
       type: "array",
-      of: [{ type: "block" }],
+      of: [{ type: "block" }, { type: "diagram" }],
     }),
     defineField({
       name: "coverImage",

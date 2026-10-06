@@ -31,10 +31,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
 
   const title =
-    siteSettings?.siteTitle ?? "AI Automation Agency for Growing SMBs | AgileMorph";
+    siteSettings?.siteTitle ?? "Software & AI Engineering Partner | AgileMorph";
   const description =
     siteSettings?.siteDescription ??
-    "AgileMorph builds done-for-you AI automation, agents, and integrations that have saved clients 500K+ hours. Claude and Make certified.";
+    "AgileMorph builds custom software, AI products, data platforms, and operational automation for SMBs and enterprises.";
 
   return {
     metadataBase: new URL(SITE_URL),

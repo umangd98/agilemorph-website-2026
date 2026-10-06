@@ -1,3 +1,5 @@
+import { diagram, diagramColumn } from "./diagram";
+import { caseStudy } from "./caseStudy";
 import { aboutPage } from "./aboutPage";
 import { blogIndexPage } from "./blogIndexPage";
 import { blogPost } from "./blogPost";
@@ -31,6 +33,9 @@ import { useCaseItem } from "./useCaseItem";
 import { whyUsItem } from "./whyUsItem";
 
 export const schemaTypes = [
+  caseStudy,
+  diagram,
+  diagramColumn,
   ctaButton,
   seo,
   stat,

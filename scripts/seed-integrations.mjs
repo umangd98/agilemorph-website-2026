@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Seeds integration tool logos via SimpleIcons CDN and patches
  * homepage + aboutPage documents in Sanity.
@@ -17,28 +19,116 @@ const ENV_PATH = join(ROOT, ".env.local");
 // Each entry specifies a logo source URL and filename.
 // cdn.simpleicons.org is preferred; jsdelivr v15 is a fallback.
 const INTEGRATIONS = [
-  { name: "Airtable",         filename: "airtable.svg",        url: "https://cdn.simpleicons.org/airtable/18BFFF" },
-  { name: "n8n",              filename: "n8n.svg",             url: "https://cdn.simpleicons.org/n8n/EA4B71" },
-  { name: "Slack",            filename: "slack.svg",           url: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/slack.svg" },
-  { name: "WhatsApp",         filename: "whatsapp.svg",        url: "https://cdn.simpleicons.org/whatsapp/25D366" },
-  { name: "Stripe",           filename: "stripe.svg",          url: "https://cdn.simpleicons.org/stripe/635BFF" },
-  { name: "OpenAI",           filename: "openai.svg",          url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg" },
-  { name: "Shopify",          filename: "shopify.svg",         url: "https://cdn.simpleicons.org/shopify/96BF48" },
-  { name: "HubSpot",          filename: "hubspot.svg",         url: "https://cdn.simpleicons.org/hubspot/FF7A59" },
-  { name: "Asana",            filename: "asana.svg",           url: "https://cdn.simpleicons.org/asana/F06A6A" },
-  { name: "Make.com",         filename: "make.svg",            url: "https://cdn.simpleicons.org/make/6D00CC" },
-  { name: "Zapier",           filename: "zapier.svg",          url: "https://cdn.simpleicons.org/zapier/FF4A00" },
-  { name: "Jira",             filename: "jira.svg",            url: "https://cdn.simpleicons.org/jira/0052CC" },
-  { name: "Mailchimp",        filename: "mailchimp.svg",       url: "https://cdn.simpleicons.org/mailchimp/FFE01B" },
-  { name: "Google Sheets",    filename: "googlesheets.svg",    url: "https://cdn.simpleicons.org/googlesheets/34A853" },
-  { name: "Miro",             filename: "miro.svg",            url: "https://cdn.simpleicons.org/miro/050038" },
-  { name: "Telegram",         filename: "telegram.svg",        url: "https://cdn.simpleicons.org/telegram/26A5E4" },
-  { name: "Notion",           filename: "notion.svg",          url: "https://cdn.simpleicons.org/notion/000000" },
-  { name: "Zoom",             filename: "zoom.svg",            url: "https://cdn.simpleicons.org/zoom/2D8CFF" },
-  { name: "Calendly",         filename: "calendly.svg",        url: "https://cdn.simpleicons.org/calendly/006BFF" },
-  { name: "Twilio",           filename: "twilio.svg",          url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/twilio.svg" },
-  { name: "Meta / Facebook",  filename: "facebook.svg",        url: "https://cdn.simpleicons.org/facebook/1877F2" },
-  { name: "Discord",          filename: "discord.svg",         url: "https://cdn.simpleicons.org/discord/5865F2" },
+  {
+    name: "Airtable",
+    filename: "airtable.svg",
+    url: "https://cdn.simpleicons.org/airtable/18BFFF",
+  },
+  {
+    name: "n8n",
+    filename: "n8n.svg",
+    url: "https://cdn.simpleicons.org/n8n/EA4B71",
+  },
+  {
+    name: "Slack",
+    filename: "slack.svg",
+    url: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/slack.svg",
+  },
+  {
+    name: "WhatsApp",
+    filename: "whatsapp.svg",
+    url: "https://cdn.simpleicons.org/whatsapp/25D366",
+  },
+  {
+    name: "Stripe",
+    filename: "stripe.svg",
+    url: "https://cdn.simpleicons.org/stripe/635BFF",
+  },
+  {
+    name: "OpenAI",
+    filename: "openai.svg",
+    url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/openai.svg",
+  },
+  {
+    name: "Shopify",
+    filename: "shopify.svg",
+    url: "https://cdn.simpleicons.org/shopify/96BF48",
+  },
+  {
+    name: "HubSpot",
+    filename: "hubspot.svg",
+    url: "https://cdn.simpleicons.org/hubspot/FF7A59",
+  },
+  {
+    name: "Asana",
+    filename: "asana.svg",
+    url: "https://cdn.simpleicons.org/asana/F06A6A",
+  },
+  {
+    name: "Make.com",
+    filename: "make.svg",
+    url: "https://cdn.simpleicons.org/make/6D00CC",
+  },
+  {
+    name: "Zapier",
+    filename: "zapier.svg",
+    url: "https://cdn.simpleicons.org/zapier/FF4A00",
+  },
+  {
+    name: "Jira",
+    filename: "jira.svg",
+    url: "https://cdn.simpleicons.org/jira/0052CC",
+  },
+  {
+    name: "Mailchimp",
+    filename: "mailchimp.svg",
+    url: "https://cdn.simpleicons.org/mailchimp/FFE01B",
+  },
+  {
+    name: "Google Sheets",
+    filename: "googlesheets.svg",
+    url: "https://cdn.simpleicons.org/googlesheets/34A853",
+  },
+  {
+    name: "Miro",
+    filename: "miro.svg",
+    url: "https://cdn.simpleicons.org/miro/050038",
+  },
+  {
+    name: "Telegram",
+    filename: "telegram.svg",
+    url: "https://cdn.simpleicons.org/telegram/26A5E4",
+  },
+  {
+    name: "Notion",
+    filename: "notion.svg",
+    url: "https://cdn.simpleicons.org/notion/000000",
+  },
+  {
+    name: "Zoom",
+    filename: "zoom.svg",
+    url: "https://cdn.simpleicons.org/zoom/2D8CFF",
+  },
+  {
+    name: "Calendly",
+    filename: "calendly.svg",
+    url: "https://cdn.simpleicons.org/calendly/006BFF",
+  },
+  {
+    name: "Twilio",
+    filename: "twilio.svg",
+    url: "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/twilio.svg",
+  },
+  {
+    name: "Meta / Facebook",
+    filename: "facebook.svg",
+    url: "https://cdn.simpleicons.org/facebook/1877F2",
+  },
+  {
+    name: "Discord",
+    filename: "discord.svg",
+    url: "https://cdn.simpleicons.org/discord/5865F2",
+  },
 ];
 
 function loadEnv() {
@@ -74,7 +164,14 @@ function saveManifest(manifest) {
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
 }
 
-async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
+async function uploadFromUrl({
+  url,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+}) {
   const manifestKey = `integrations/${filename}`;
   if (manifest[manifestKey]?.id) {
     console.log(`  (cached) ${filename}`);
@@ -87,14 +184,18 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   }
 
   const buffer = Buffer.from(await response.arrayBuffer());
-  const contentType = response.headers.get("content-type")?.split(";")[0]?.trim() || "image/svg+xml";
+  const contentType =
+    response.headers.get("content-type")?.split(";")[0]?.trim() ||
+    "image/svg+xml";
   const uploadUrl = `https://${projectId}.api.sanity.io/v2021-06-07/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`;
 
   const uploadResponse = await fetch(uploadUrl, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": contentType.includes("svg") ? "image/svg+xml" : contentType,
+      "Content-Type": contentType.includes("svg")
+        ? "image/svg+xml"
+        : contentType,
     },
     body: buffer,
   });
@@ -110,7 +211,13 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   return asset;
 }
 
-async function patchIntegrations({ projectId, dataset, token, docId, integrations }) {
+async function patchIntegrations({
+  projectId,
+  dataset,
+  token,
+  docId,
+  integrations,
+}) {
   const url = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(url, {
     method: "POST",
@@ -136,7 +243,9 @@ async function main() {
   const token = getAuthToken();
   const manifest = loadManifest();
 
-  console.log(`Seeding ${INTEGRATIONS.length} integration logos to ${projectId}/${dataset}...\n`);
+  console.log(
+    `Seeding ${INTEGRATIONS.length} integration logos to ${projectId}/${dataset}...\n`,
+  );
 
   const items = [];
   const failed = [];
@@ -185,14 +294,28 @@ async function main() {
     items,
   };
 
-  await patchIntegrations({ projectId, dataset, token, docId: "homepage", integrations });
+  await patchIntegrations({
+    projectId,
+    dataset,
+    token,
+    docId: "homepage",
+    integrations,
+  });
   console.log("\n  ✓ Patched homepage");
 
-  await patchIntegrations({ projectId, dataset, token, docId: "aboutPage", integrations });
+  await patchIntegrations({
+    projectId,
+    dataset,
+    token,
+    docId: "aboutPage",
+    integrations,
+  });
   console.log("  ✓ Patched aboutPage");
 
   if (failed.length) {
-    console.log(`\nNote: ${failed.length} logo(s) could not be downloaded and will use fallback initials: ${failed.join(", ")}`);
+    console.log(
+      `\nNote: ${failed.length} logo(s) could not be downloaded and will use fallback initials: ${failed.join(", ")}`,
+    );
   }
 
   console.log("\nIntegration seed complete.");

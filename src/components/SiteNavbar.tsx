@@ -1,19 +1,18 @@
-import { Navbar } from "@/components/Navbar";
-import {
-  DEFAULT_NAV_LINKS,
-  getSiteSettings,
-} from "@/lib/get-site-settings";
-import { buildServiceNavGroups, getServicePages } from "@/lib/services";
-
+import { Navigation } from "@/components/marketing/Navigation";
+import { getContent, getServices, primaryServices } from "@/lib/content";
+import type { SettingsContent } from "@/lib/content-types";
 export async function SiteNavbar() {
-  const [pages, siteSettings] = await Promise.all([
-    getServicePages(),
-    getSiteSettings(),
+  const [settings, services] = await Promise.all([
+    getContent<SettingsContent>("siteSettings"),
+    getServices(),
   ]);
-  const serviceGroups = buildServiceNavGroups(pages);
-  const navLinks = siteSettings?.navLinks?.length
-    ? siteSettings.navLinks
-    : DEFAULT_NAV_LINKS;
-
-  return <Navbar serviceGroups={serviceGroups} navLinks={navLinks} />;
+  return (
+    <Navigation
+      links={settings.navLinks}
+      serviceLinks={primaryServices(services).map((s) => ({
+        label: s.title,
+        href: `/services/${s.slug.current}`,
+      }))}
+    />
+  );
 }

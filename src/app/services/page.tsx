@@ -1,59 +1,71 @@
-import type { Metadata } from "next";
-
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
-import { PageCtaSection } from "@/components/sections/PageCtaSection";
-import { ServicesCatalogSection } from "@/components/sections/ServicesCatalogSection";
-import { seoToMetadata } from "@/lib/seo";
-import { getServicePages } from "@/lib/services";
-import { sanityFetch } from "@/sanity/fetch";
-import { servicesIndexPageQuery } from "@/sanity/queries";
-import type { ServicesIndexPage } from "@/sanity/types";
-
-const fallbackMetadata: Metadata = {
-  title: "AI Automation Services",
-  description:
-    "AI automation, AI agents, workflow and CRM integration, messaging, MCP infrastructure, and Shopify automation. Seven specializations, built and deployed.",
-};
-
-export async function generateMetadata(): Promise<Metadata> {
-  const servicesIndex = await sanityFetch<ServicesIndexPage | null>({
-    query: servicesIndexPageQuery,
-    tags: ["servicesIndexPage"],
-  });
-
-  return seoToMetadata(servicesIndex?.seo, fallbackMetadata);
+import Link from "next/link";
+import { Shell } from "@/components/marketing/Shell";
+import {
+  ClosingCTA,
+  PageIntro,
+  Section,
+  ServiceGrid,
+} from "@/components/marketing/Elements";
+import { getContent, getServices, primaryServices } from "@/lib/content";
+import { pageMetadata, seoToMetadata } from "@/lib/seo";
+import type { ContentDocument } from "@/lib/content-types";
+const fallbackMetadata = pageMetadata(
+  "Software & AI Services",
+  "Custom software, AI products and agents, operational automation, and data platforms for SMBs and enterprises.",
+  "/services",
+);
+export async function generateMetadata() {
+  const document = await getContent<ContentDocument>("servicesIndexPage");
+  return seoToMetadata(document.seo, fallbackMetadata);
 }
-
-export default async function ServicesPageRoute() {
-  const [pages, servicesIndex] = await Promise.all([
-    getServicePages(),
-    sanityFetch<ServicesIndexPage | null>({
-      query: servicesIndexPageQuery,
-      tags: ["servicesIndexPage"],
-    }),
+export default async function Services() {
+  const [services, index] = await Promise.all([
+    getServices(),
+    getContent<
+      ContentDocument & {
+        hero: { eyebrow: string; heading: string; description: string };
+      }
+    >("servicesIndexPage"),
   ]);
-
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
-        <ServicesCatalogSection
-          pages={pages}
-          heroEyebrow={servicesIndex?.hero?.eyebrow}
-          heroHeading={servicesIndex?.hero?.heading}
-          heroDescription={servicesIndex?.hero?.description}
-        />
-        <PageCtaSection
-          heading={servicesIndex?.cta?.heading ?? "Not Sure Where To Start?"}
-          description={
-            servicesIndex?.cta?.description ??
-            "Book a discovery call and we'll map the highest-impact automation and supporting services for your team."
-          }
-          button={servicesIndex?.cta?.button ?? { label: "Get In Touch", href: "/contact#book" }}
-        />
-      </main>
-      <SiteFooter />
-    </>
+    <Shell>
+      <PageIntro
+        eyebrow={index.hero.eyebrow}
+        title={index.hero.heading}
+        description={index.hero.description}
+      />
+      <Section title="Four ways we help you build.">
+        <ServiceGrid services={primaryServices(services)} />
+      </Section>
+      <Section
+        eyebrow="Specific needs"
+        title="Explore a specialist capability."
+        tinted
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {services
+            .filter((s) => !s.primary && s.slug.current !== "ai-audit")
+            .map((s) => (
+              <Link
+                className="border-line bg-background rounded-xl border p-6"
+                key={s._id}
+                href={`/services/${s.slug.current}`}
+              >
+                <h3 className="font-medium">{s.title}</h3>
+                <p className="text-fg-muted mt-3 text-sm leading-relaxed">
+                  {s.description}
+                </p>
+              </Link>
+            ))}
+        </div>
+        <p className="text-fg-muted mt-8 text-sm">
+          Need to define the work first?{" "}
+          <Link className="text-signal underline" href="/services/ai-audit">
+            Explore a diagnostic audit.
+          </Link>
+        </p>
+      </Section>
+      <ClosingCTA />
+    </Shell>
   );
 }

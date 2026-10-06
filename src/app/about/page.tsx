@@ -1,101 +1,78 @@
-import type { Metadata } from "next";
-
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
+import { Shell } from "@/components/marketing/Shell";
 import {
-  AboutHeroSection,
-  CompanyStorySection,
-  ProcessSection,
-  TeamLeadsSection,
-  TestimonialsSection,
-  AboutImpactSection,
-  ValuesSection,
-} from "@/components/sections";
-import { seoToMetadata } from "@/lib/seo";
-import { resolveStatsSection } from "@/data/site-metrics";
-import { sanityFetch } from "@/sanity/fetch";
-import { aboutPageQuery } from "@/sanity/queries";
-import type { AboutPage } from "@/sanity/types";
-
-const fallbackMetadata: Metadata = {
-  title: "About Us",
-  description:
-    "Empowering businesses with agile solutions, innovative technology, and a customer-first approach.",
-};
-
-export async function generateMetadata(): Promise<Metadata> {
-  const aboutPage = await sanityFetch<AboutPage | null>({
-    query: aboutPageQuery,
-    tags: ["aboutPage"],
-  });
-
-  return seoToMetadata(aboutPage?.seo, fallbackMetadata);
+  ClosingCTA,
+  FeedbackGrid,
+  PageIntro,
+  Section,
+  TeamGrid,
+} from "@/components/marketing/Elements";
+import { getContent } from "@/lib/content";
+import type { AboutContent, HomeContent } from "@/lib/content-types";
+import { pageMetadata, seoToMetadata } from "@/lib/seo";
+const fallbackMetadata = pageMetadata(
+  "About AgileMorph",
+  "Meet AgileMorph’s leadership and the software, AI, and enterprise delivery experience behind the company.",
+  "/about",
+);
+export async function generateMetadata() {
+  const document = await getContent<AboutContent>("aboutPage");
+  return seoToMetadata(document.seo, fallbackMetadata);
 }
-
-export default async function AboutPageRoute() {
-  const aboutPage = await sanityFetch<AboutPage | null>({
-    query: aboutPageQuery,
-    tags: ["aboutPage"],
-  });
-
-  if (!aboutPage) {
-    return (
-      <>
-        <SiteNavbar />
-        <main className="flex flex-1 items-center justify-center px-6 py-24">
-          <p className="font-body text-muted-foreground">
-            About page content is not available yet. Add it in Sanity Studio.
-          </p>
-        </main>
-        <SiteFooter />
-      </>
-    );
-  }
-
-  const metrics = resolveStatsSection(aboutPage.stats);
-
+export default async function About() {
+  const [about, home] = await Promise.all([
+    getContent<AboutContent>("aboutPage"),
+    getContent<HomeContent>("homepage"),
+  ]);
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
-        <AboutHeroSection
-          heading={aboutPage.hero.heading}
-          tagline={aboutPage.hero.tagline}
-          cta={aboutPage.hero.cta}
-        />
-        <CompanyStorySection
-          heading={aboutPage.about?.heading}
-          body={aboutPage.about?.body}
-          promiseHeading={aboutPage.about?.promiseHeading}
-          promise={aboutPage.about?.promise}
-        />
-        <ValuesSection values={aboutPage.values} />
-        <ProcessSection
-          heading={aboutPage.process?.heading}
-          subheading={aboutPage.process?.subheading}
-          steps={aboutPage.process?.steps}
-        />
-        <AboutImpactSection
-          heading={aboutPage.cta?.heading}
-          description={aboutPage.cta?.description}
-          button={aboutPage.cta?.button}
-          statsEyebrow={metrics.eyebrow}
-          statsHeading={metrics.heading}
-          stats={metrics.items}
-        />
-        <TeamLeadsSection
-          eyebrow={aboutPage.teamLeads?.eyebrow}
-          heading={aboutPage.teamLeads?.heading}
-          subheading={aboutPage.teamLeads?.subheading}
-          cardFooter={aboutPage.teamLeads?.cardFooter}
-          members={aboutPage.teamLeads?.members}
-        />
-        <TestimonialsSection
-          heading={aboutPage.testimonials?.heading}
-          items={aboutPage.testimonials?.items}
-        />
-      </main>
-      <SiteFooter />
-    </>
+    <Shell>
+      <PageIntro
+        eyebrow="About AgileMorph"
+        title={about.heading}
+        description={about.introduction}
+      />
+      <Section title={about.teamLeads.heading} intro={about.body}>
+        <TeamGrid members={about.teamLeads.members} />
+      </Section>
+      <Section
+        eyebrow="Working together"
+        title="Leadership and delivery, connected."
+        tinted
+      >
+        <div className="grid gap-8 md:grid-cols-2">
+          <p className="text-fg-muted text-base leading-relaxed">
+            We agree who leads discovery, architecture, implementation, and
+            client communication as part of each scope. Working sessions and
+            delivery reviews keep the people building the system close to the
+            people using it.
+          </p>
+          <p className="text-fg-muted text-base leading-relaxed">
+            {about.founderProduct}
+          </p>
+        </div>
+      </Section>
+      <Section title="What delivery looks like">
+        <div className="grid gap-6 md:grid-cols-2">
+          {home.process.map((p) => (
+            <article key={p.title}>
+              <h3 className="text-xl font-medium">{p.title}</h3>
+              <p className="text-fg-muted mt-3 text-sm leading-relaxed">
+                {p.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </Section>
+      {!!about.endorsements?.length && (
+        <Section
+          eyebrow="Professional recommendations"
+          title="People who have worked alongside our leadership."
+          intro="These recommendations describe individual professional experience. The organizations listed are the recommenders’ affiliations, not a list of AgileMorph clients."
+          tinted
+        >
+          <FeedbackGrid items={about.endorsements} />
+        </Section>
+      )}
+      <ClosingCTA />
+    </Shell>
   );
 }

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Scrapes client success stories / testimonials from theagilemorph.com
  * and patches homepage + aboutPage testimonials in Sanity.
@@ -125,7 +127,12 @@ function parseTestimonials(html) {
         current.quote = text;
         return;
       }
-      if (text.length > 0 && text.length <= 100 && current.name && !current.company) {
+      if (
+        text.length > 0 &&
+        text.length <= 100 &&
+        current.name &&
+        !current.company
+      ) {
         current.company = text;
       }
       return;
@@ -153,7 +160,11 @@ function parseTestimonials(html) {
       return;
     }
     if (!afterChris) return;
-    if (tag === "p" && text.length > 60 && /AgileMorph delivered good work/i.test(text)) {
+    if (
+      tag === "p" &&
+      text.length > 60 &&
+      /AgileMorph delivered good work/i.test(text)
+    ) {
       const nameEl = $(el).nextAll("h3").first();
       const companyEl = nameEl.next("p");
       const name = decodeHtml(nameEl.text());
@@ -203,7 +214,14 @@ async function scrapeTestimonials() {
   throw new Error("Could not find testimonials on any source URL.");
 }
 
-async function uploadFromUrl({ url, filename, projectId, dataset, token, manifest }) {
+async function uploadFromUrl({
+  url,
+  filename,
+  projectId,
+  dataset,
+  token,
+  manifest,
+}) {
   const manifestKey = `testimonials/${filename}`;
   if (manifest[manifestKey]?.id) {
     console.log(`  (cached) ${filename}`);
@@ -216,7 +234,8 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   }
 
   const buffer = Buffer.from(await response.arrayBuffer());
-  const contentType = response.headers.get("content-type")?.split(";")[0]?.trim() || "image/jpeg";
+  const contentType =
+    response.headers.get("content-type")?.split(";")[0]?.trim() || "image/jpeg";
   const uploadUrl = `https://${projectId}.api.sanity.io/v2021-06-07/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`;
 
   const uploadResponse = await fetch(uploadUrl, {
@@ -239,7 +258,13 @@ async function uploadFromUrl({ url, filename, projectId, dataset, token, manifes
   return asset;
 }
 
-async function patchTestimonials({ projectId, dataset, token, docId, testimonials }) {
+async function patchTestimonials({
+  projectId,
+  dataset,
+  token,
+  docId,
+  testimonials,
+}) {
   const url = `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${dataset}`;
   const response = await fetch(url, {
     method: "POST",
@@ -315,7 +340,9 @@ async function main() {
       image,
     });
 
-    console.log(`  ✓ ${testimonial.name}${testimonial.company ? `, ${testimonial.company}` : ""}`);
+    console.log(
+      `  ✓ ${testimonial.name}${testimonial.company ? `, ${testimonial.company}` : ""}`,
+    );
   }
 
   saveManifest(manifest);

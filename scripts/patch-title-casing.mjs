@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { guardLegacyContentWrite } from "./lib/legacy-content-guard.mjs";
+guardLegacyContentWrite();
 /**
  * Patch Sanity documents with corrected Title Case headings and UI labels.
  * Usage: node scripts/patch-title-casing.mjs
@@ -147,7 +149,12 @@ async function main() {
 
   for (const mutation of mutations) {
     const id = mutation.patch.id;
-    const result = await mutate({ projectId, dataset, token, mutations: [mutation] });
+    const result = await mutate({
+      projectId,
+      dataset,
+      token,
+      mutations: [mutation],
+    });
     if (result.missingId) {
       skipped.push(id);
       console.log(`  ⊘ Skipped missing document: ${id}`);

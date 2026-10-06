@@ -14,7 +14,9 @@ type CompanyStoryArtworkProps = {
 const BASE = "text-fg/70";
 const ACCENT = "text-signal";
 
-export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps) {
+export function CompanyStoryArtwork({
+  className = "",
+}: CompanyStoryArtworkProps) {
   return (
     <div className={`flex h-full items-center justify-center p-8 ${className}`}>
       <svg
@@ -69,11 +71,26 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
         {/* green accents — status pill, done-check, growth curve, spark */}
         <g className={ACCENT}>
           {/* address / status pill */}
-          <rect x="250" y="64" width="86" height="12" rx="6" fill="currentColor" opacity="0.9" />
+          <rect
+            x="250"
+            y="64"
+            width="86"
+            height="12"
+            rx="6"
+            fill="currentColor"
+            opacity="0.9"
+          />
 
           {/* first node completed */}
           <circle cx="158" cy="119" r="9" fill="currentColor" opacity="0.14" />
-          <circle cx="158" cy="119" r="9" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle
+            cx="158"
+            cy="119"
+            r="9"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
           <path
             d="M153 119l3.5 3.5 6.5-7"
             stroke="currentColor"
@@ -94,8 +111,16 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
           />
           <circle cx="326" cy="120" r="4" fill="currentColor" />
 
-          {/* 100% badge */}
-          <rect x="286" y="98" width="44" height="16" rx="8" fill="currentColor" opacity="0.14" />
+          {/* Delivery badge */}
+          <rect
+            x="286"
+            y="98"
+            width="44"
+            height="16"
+            rx="8"
+            fill="currentColor"
+            opacity="0.14"
+          />
           <text
             x="308"
             y="110"
@@ -104,7 +129,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
             fontFamily="var(--font-mono)"
             fill="currentColor"
           >
-            100%
+            Live
           </text>
 
           {/* spark */}

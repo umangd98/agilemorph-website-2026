@@ -1,3 +1,5 @@
+import { getContent } from "@/lib/content";
+import type { ContentDocument } from "@/lib/content-types";
 import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/SiteFooter";
@@ -8,27 +10,25 @@ import {
   parseBlogSort,
   sortCategoryLabels,
 } from "@/lib/blog-list";
-import { seoToMetadata } from "@/lib/seo";
+import { pageMetadata, seoToMetadata } from "@/lib/seo";
 import { sanityFetch } from "@/sanity/fetch";
 import {
   blogCategoriesQuery,
-  blogIndexPageQuery,
   blogPostsCountQuery,
   buildPagedBlogPostsQuery,
 } from "@/sanity/queries";
 import type { BlogIndexPage, BlogPostSummary } from "@/sanity/types";
 
-const fallbackMetadata: Metadata = {
-  title: "Blog",
-  description:
-    "View the latest stories, insights and development experiences from AgileMorph.",
-};
+const fallbackMetadata = pageMetadata(
+  "Insights",
+  "Stories, engineering insights, and development experiences from AgileMorph.",
+  "/blog",
+);
 
 export async function generateMetadata(): Promise<Metadata> {
-  const blogIndex = await sanityFetch<BlogIndexPage | null>({
-    query: blogIndexPageQuery,
-    tags: ["blogIndexPage"],
-  });
+  const blogIndex = await getContent<BlogIndexPage & ContentDocument>(
+    "blogIndexPage",
+  );
 
   return seoToMetadata(blogIndex?.seo, fallbackMetadata);
 }
@@ -38,20 +38,26 @@ const POSTS_PER_PAGE = 9;
 export default async function BlogPageRoute({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string; q?: string; category?: string; sort?: string }>;
+  searchParams: Promise<{
+    page?: string;
+    q?: string;
+    category?: string;
+    sort?: string;
+  }>;
 }) {
-  const { page: pageParam, q: searchParam, category: categoryParam, sort: sortParam } =
-    await searchParams;
+  const {
+    page: pageParam,
+    q: searchParam,
+    category: categoryParam,
+    sort: sortParam,
+  } = await searchParams;
   const searchQuery = searchParam?.trim() ?? "";
   const category = categoryParam?.trim() ?? "";
   const sort = parseBlogSort(sortParam);
   const requestedPage = Math.max(1, Number.parseInt(pageParam ?? "1", 10) || 1);
 
   const [blogIndex, total, categories] = await Promise.all([
-    sanityFetch<BlogIndexPage | null>({
-      query: blogIndexPageQuery,
-      tags: ["blogIndexPage"],
-    }),
+    getContent<BlogIndexPage & ContentDocument>("blogIndexPage"),
     sanityFetch<number>({
       query: blogPostsCountQuery,
       params: { term: searchQuery, category },

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 
 import { Container } from "@/components/ui";
-import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
 import { CtaAction } from "@/components/CtaAction";
 import { HeroTagline } from "@/components/sections/HeroTagline";
 import type { HomepageHero } from "@/sanity/types";
@@ -18,7 +17,8 @@ function HeroGrid() {
       className="pointer-events-none absolute inset-0 -z-10"
       style={{
         maskImage: "radial-gradient(80% 80% at 50% 40%, black, transparent)",
-        WebkitMaskImage: "radial-gradient(80% 80% at 50% 40%, black, transparent)",
+        WebkitMaskImage:
+          "radial-gradient(80% 80% at 50% 40%, black, transparent)",
       }}
     >
       <svg className="h-full w-full" aria-hidden>
@@ -43,7 +43,13 @@ function HeroGrid() {
   );
 }
 
-function WordReveal({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+function WordReveal({
+  text,
+  baseDelay = 0,
+}: {
+  text: string;
+  baseDelay?: number;
+}) {
   const words = text.split(" ");
   return (
     <>
@@ -84,13 +90,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
         <div
           className="mx-auto mb-6 flex w-fit justify-center opacity-0"
           style={{ animation: "word-appear 0.9s ease-out 120ms forwards" }}
-        >
-          <ClaudePartnerBadge />
-        </div>
+        ></div>
 
         <h1
           id="hero-heading"
-          className="mx-auto max-w-4xl text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-6xl lg:text-[4.5rem]"
+          className="text-fg mx-auto max-w-4xl text-4xl leading-[1.05] font-medium tracking-[-0.03em] text-balance sm:text-6xl lg:text-[4.5rem]"
         >
           {headingLines.map((line, index) => (
             <Fragment key={line}>
@@ -104,7 +108,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </Fragment>
           ))}
           {hero.headingAccent ? (
-            <span className="block text-signal">
+            <span className="text-signal block">
               <WordReveal
                 text={hero.headingAccent}
                 baseDelay={headingLines.length * 220}
@@ -115,7 +119,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
         {hero.tagline?.length ? (
           <div
-            className="mx-auto mt-7 max-w-2xl text-pretty text-base leading-relaxed text-fg-muted opacity-0 sm:text-lg"
+            className="text-fg-muted mx-auto mt-7 max-w-2xl text-base leading-relaxed text-pretty opacity-0 sm:text-lg"
             style={{ animation: "word-appear 0.9s ease-out 700ms forwards" }}
           >
             <HeroTagline value={hero.tagline} />
@@ -129,7 +133,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
           {hero.ctaPrimary ? (
             <CtaAction
               cta={hero.ctaPrimary}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95"
+              className="group bg-signal font-body text-bg inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-opacity duration-200 hover:opacity-90 active:scale-95"
             >
               {hero.ctaPrimary.label}
               <ArrowRight
@@ -142,8 +146,12 @@ export function HeroSection({ hero }: HeroSectionProps) {
             <Link
               href={hero.ctaSecondary.href}
               target={hero.ctaSecondary.openInNewTab ? "_blank" : undefined}
-              rel={hero.ctaSecondary.openInNewTab ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3.5 font-body text-sm font-medium text-fg transition-colors duration-200 hover:border-line-strong hover:bg-bg-elevated active:scale-95"
+              rel={
+                hero.ctaSecondary.openInNewTab
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              className="border-line font-body text-fg hover:border-line-strong hover:bg-bg-elevated inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-medium transition-colors duration-200 active:scale-95"
             >
               <Play size={13} className="fill-current opacity-80" />
               {hero.ctaSecondary.label}
@@ -155,10 +163,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
           className="mt-8 flex items-center justify-center gap-2 opacity-0"
           style={{ animation: "word-appear 0.9s ease-out 1000ms forwards" }}
         >
-          <span className="tnum font-mono text-sm font-medium text-signal">4.9</span>
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-fg-dim">
-            Rated by clients worldwide
-          </span>
+          <span className="text-fg-dim font-mono text-xs tracking-[0.14em] uppercase"></span>
         </div>
       </Container>
     </section>

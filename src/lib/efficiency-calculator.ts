@@ -23,11 +23,17 @@ export const EFFICIENCY_LIMITS = {
   teamSize: { min: 1, max: 50 },
   hoursPerWeek: { min: 1, max: 40 },
   hourlyRate: { min: 15, max: 200 },
-  automatablePercent: { min: 25, max: 75 },
+  automatablePercent: { min: 0, max: 100 },
 } as const;
 
-export function calculateEfficiency(inputs: EfficiencyInputs): EfficiencyResults {
-  const teamSize = clamp(inputs.teamSize, EFFICIENCY_LIMITS.teamSize.min, EFFICIENCY_LIMITS.teamSize.max);
+export function calculateEfficiency(
+  inputs: EfficiencyInputs,
+): EfficiencyResults {
+  const teamSize = clamp(
+    inputs.teamSize,
+    EFFICIENCY_LIMITS.teamSize.min,
+    EFFICIENCY_LIMITS.teamSize.max,
+  );
   const hoursPerWeek = clamp(
     inputs.hoursPerWeek,
     EFFICIENCY_LIMITS.hoursPerWeek.min,

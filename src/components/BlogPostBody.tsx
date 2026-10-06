@@ -1,3 +1,4 @@
+import { BlogDiagram } from "./BlogDiagram";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 
 import type { SanityImageAsset } from "@/sanity/types";
@@ -9,31 +10,37 @@ type PortableTextBlock = {
 };
 
 const components: PortableTextComponents = {
+  types: { diagram: BlogDiagram },
   block: {
     h2: ({ children }) => (
-      <h2 className="mb-4 mt-10 font-heading text-3xl font-bold text-foreground">
+      <h2 className="font-heading text-foreground mt-10 mb-4 text-3xl font-bold">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mb-3 mt-8 font-heading text-2xl font-bold text-foreground">
+      <h3 className="font-heading text-foreground mt-8 mb-3 text-2xl font-bold">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="mb-2 mt-6 font-heading text-xl font-bold text-foreground">
+      <h4 className="font-heading text-foreground mt-6 mb-2 text-xl font-bold">
         {children}
       </h4>
     ),
     normal: ({ children }) => (
-      <p className="mb-4 font-body text-base leading-relaxed text-muted-foreground">
+      <p className="font-body text-muted-foreground mb-4 text-base leading-relaxed">
         {children}
       </p>
     ),
   },
   listItem: {
+    number: ({ children }) => (
+      <li className="font-body text-muted-foreground mb-2 text-base leading-relaxed">
+        {children}
+      </li>
+    ),
     bullet: ({ children }) => (
-      <li className="mb-2 font-body text-base leading-relaxed text-muted-foreground">
+      <li className="font-body text-muted-foreground mb-2 text-base leading-relaxed">
         {children}
       </li>
     ),

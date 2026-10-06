@@ -1,3 +1,4 @@
+import { versionField } from "./reviewedFields";
 import { defineField, defineType } from "sanity";
 
 export const contactPage = defineType({
@@ -5,6 +6,7 @@ export const contactPage = defineType({
   title: "Contact Page",
   type: "document",
   fields: [
+    versionField,
     defineField({
       name: "hero",
       title: "Hero",

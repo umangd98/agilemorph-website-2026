@@ -1,0 +1,2476 @@
+[
+  {
+    "_id": "siteSettings",
+    "_type": "siteSettings",
+    "contentVersion": 2,
+    "siteTitle": "Software & AI Engineering Partner | AgileMorph",
+    "siteDescription": "AgileMorph helps SMBs and enterprises build custom software, AI products, data platforms, and operational automation.",
+    "navLinks": [
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Our Work",
+        "href": "/work"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Insights",
+        "href": "/blog"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "footerQuickLinks": [
+      {
+        "label": "Our work",
+        "href": "/work"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Engagements & pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      },
+      {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    ],
+    "socialLinks": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/company/agilemorph-solutions",
+        "platform": "linkedin"
+      }
+    ],
+    "credentials": [
+      {
+        "name": "Anthropic",
+        "label": "Partner certification",
+        "category": "certification"
+      },
+      {
+        "name": "n8n",
+        "label": "Partner certification",
+        "category": "certification"
+      }
+    ]
+  },
+  {
+    "_id": "homepage",
+    "_type": "homepage",
+    "contentVersion": 2,
+    "hero": {
+      "heading": "Software and AI built around your business.",
+      "tagline": [
+        {
+          "_type": "block",
+          "_key": "body",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "text",
+              "marks": [],
+              "text": "We help SMBs and enterprises automate operations, connect existing tools, and launch custom software—with senior engineers involved from discovery to production."
+            }
+          ]
+        }
+      ],
+      "audience": "Working with US agencies, B2B service firms, and established businesses worldwide.",
+      "ctaPrimary": {
+        "label": "Discuss your project",
+        "href": "/contact#book"
+      },
+      "ctaSecondary": {
+        "label": "See our work",
+        "href": "/work"
+      }
+    },
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-publisher-content-platform"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-whatsapp-inventory-intake"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-wholesale-ordering"
+      }
+    ],
+    "audiences": [
+      {
+        "title": "Business owners",
+        "description": "Turn a new service or product into working software, with a clear delivery scope.",
+        "service": "software-development",
+        "project": {
+          "_type": "reference",
+          "_ref": "caseStudy-wholesale-ordering"
+        }
+      },
+      {
+        "title": "Operations leaders",
+        "description": "Connect the systems your team uses and reduce manual handoffs.",
+        "service": "ai-automation",
+        "project": {
+          "_type": "reference",
+          "_ref": "caseStudy-whatsapp-inventory-intake"
+        }
+      },
+      {
+        "title": "Agency leaders",
+        "description": "Build repeatable content and data workflows around the tools you already pay for.",
+        "service": "data-platforms",
+        "project": {
+          "_type": "reference",
+          "_ref": "caseStudy-publisher-content-platform"
+        }
+      },
+      {
+        "title": "Product & technology teams",
+        "description": "Add AI capabilities with the architecture, evaluations, and operational controls they need.",
+        "service": "ai-agents",
+        "project": {
+          "_type": "reference",
+          "_ref": "caseStudy-punchbowl-support-agent"
+        }
+      }
+    ],
+    "faq": [
+      {
+        "question": "What kinds of businesses do you work with?",
+        "answer": "We work with SMBs and enterprises, with a particular focus on US agencies and B2B service firms. Our experience spans healthcare, commerce, manufacturing, data publishing, and professional services. The starting point is the problem and the delivery needs, rather than a single industry."
+      },
+      {
+        "question": "Can you build a complete application, not just an automation?",
+        "answer": "Yes. Our work includes customer-facing AI products, internal applications, data platforms, and integrations. We scope the product, interfaces, infrastructure, and ongoing engineering together."
+      },
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ],
+    "process": [
+      {
+        "title": "Understand the work",
+        "description": "We talk to the people using the system, examine the existing tools, and define the business problem together."
+      },
+      {
+        "title": "Agree the scope",
+        "description": "You receive a delivery approach with responsibilities, milestones, acceptance criteria, and pricing before the build begins."
+      },
+      {
+        "title": "Build and validate",
+        "description": "Working increments are reviewed with your team. Tests and evaluations cover the workflow, including failures and human handoffs where required."
+      },
+      {
+        "title": "Launch and hand over",
+        "description": "We deploy, document, and walk your team through the system. Further improvements and support are scoped to your needs."
+      }
+    ],
+    "testimonials": {
+      "items": [
+        {
+          "_key": "sarvesh-agrawal",
+          "_type": "testimonial",
+          "company": "Dhaninfo",
+          "image": {
+            "_type": "image",
+            "alt": "Sarvesh Agrawal photo",
+            "asset": {
+              "_ref": "image-19470e14e5d69f5ddb56ef1fc33b8786b958961a-500x500-jpg",
+              "_type": "reference"
+            }
+          },
+          "name": "Sarvesh Agrawal",
+          "quote": "It was a pleasure working alongside Umang and his team at AgileMorph Solutions. Our collaboration resulted in the development of an in-house software solution that had a profound impact on our operational efficiency at Dhaninfo. Collaborating with AgileMorph Solutions has been an enriching experience, and I wholeheartedly recommend their services to any company seeking transformative solutions",
+          "relationship": "client"
+        },
+        {
+          "_key": "christopher-calkins",
+          "_type": "testimonial",
+          "company": "Digisist LLC",
+          "image": {
+            "_type": "image",
+            "alt": "Christopher Calkins photo",
+            "asset": {
+              "_ref": "image-b6c16470928397cb805fb5d58c54611f8ccaf0db-500x500-png",
+              "_type": "reference"
+            }
+          },
+          "name": "Christopher Calkins",
+          "quote": "AgileMorph Solutions’ work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.",
+          "relationship": "client"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "_key": "airtable",
+        "_type": "integrationItem",
+        "logo": {
+          "_type": "image",
+          "alt": "Airtable logo",
+          "asset": {
+            "_ref": "image-7cff0fc4e34f7fd0b693208347318315a5ee16ff-24x24-svg",
+            "_type": "reference"
+          }
+        },
+        "name": "Airtable"
+      },
+      {
+        "_key": "n8n",
+        "_type": "integrationItem",
+        "logo": {
+          "_type": "image",
+          "alt": "n8n logo",
+          "asset": {
+            "_ref": "image-8ad8c7435a3c34fadacb719b39ba8df15d5bf138-24x24-svg",
+            "_type": "reference"
+          }
+        },
+        "name": "n8n"
+      },
+      {
+        "_key": "openai",
+        "_type": "integrationItem",
+        "logo": {
+          "_type": "image",
+          "alt": "OpenAI logo",
+          "asset": {
+            "_ref": "image-676e9c81c348245899cbc9da8ba7f8c62e0d0f9a-24x24-svg",
+            "_type": "reference"
+          }
+        },
+        "name": "OpenAI"
+      },
+      {
+        "_key": "shopify",
+        "_type": "integrationItem",
+        "logo": {
+          "_type": "image",
+          "alt": "Shopify logo",
+          "asset": {
+            "_ref": "image-e20c6ca58b0c5dc8144458d28a97b856bb72c23f-24x24-svg",
+            "_type": "reference"
+          }
+        },
+        "name": "Shopify"
+      }
+    ]
+  },
+  {
+    "_id": "aboutPage",
+    "_type": "aboutPage",
+    "contentVersion": 2,
+    "heading": "Meet the people behind the work.",
+    "introduction": "AgileMorph Solutions is a software and AI engineering company based in Nagpur, India. We work with SMBs and enterprises to build useful products and make business operations work better.",
+    "teamLeads": {
+      "heading": "Leadership involved in delivery",
+      "members": [
+        {
+          "_key": "umang",
+          "_type": "teamLeadItem",
+          "bio": "A Northwestern-educated engineer with client experience in US healthcare, manufacturing, retail, e-commerce, and insurance. Umang brings enterprise delivery judgment to AgileMorph: understanding operational requirements, coordinating scope, and building systems for the people who use them.",
+          "image": {
+            "_type": "image",
+            "alt": "Umang Dhandhania",
+            "asset": {
+              "_ref": "image-3382df92751280c60e97b4f4d9d3cc76a0af02bd-480x560-png",
+              "_type": "reference"
+            }
+          },
+          "name": "Umang Dhandhania",
+          "role": "Co-founder & CEO",
+          "portrait": "/team/umang-dhandhania.png",
+          "focus": "Business requirements, enterprise delivery, and client partnerships",
+          "projectSlugs": ["publisher-content-platform", "business-data-search"]
+        },
+        {
+          "_key": "kaustumbh",
+          "_type": "teamLeadItem",
+          "bio": "An engineer turned founder, previously at Amazon and Sixt R&D. Kaustumbh has built production AI products and full-stack systems for clients including Punchbowl, Deeply, and CertifyOS. His work spans user discovery, architecture, implementation, evaluations, and deployment.",
+          "image": {
+            "_type": "image",
+            "alt": "Kaustumbh Jaiswal",
+            "asset": {
+              "_ref": "image-01abd2fb213d1cd57edb6988ca888e1b0be193e6-480x560-png",
+              "_type": "reference"
+            }
+          },
+          "name": "Kaustumbh Jaiswal",
+          "role": "Co-founder & CTO",
+          "portrait": "/team/kaustumbh-jaiswal.png",
+          "focus": "Discovery, AI engineering, and product architecture",
+          "projectSlugs": ["punchbowl-support-agent", "deeply-ai-coaching"],
+          "profileUrl": "https://www.linkedin.com/in/kaustumbhjaiswal7"
+        },
+        {
+          "_key": "muskan",
+          "_type": "teamLeadItem",
+          "bio": "Keeps delivery sharp across client engagements, aligning teams, timelines, and outcomes so projects move from discovery to launch without friction. She brings operational rigor and a client-first lens to every engagement.",
+          "image": {
+            "_type": "image",
+            "alt": "Muskan Agrawal",
+            "asset": {
+              "_ref": "image-8f789fea4758c3df1a9d02e0b66618eaa8618179-480x560-png",
+              "_type": "reference"
+            }
+          },
+          "name": "Muskan Garg",
+          "role": "COO",
+          "portrait": "/team/muskan-agrawal.png",
+          "focus": "Delivery coordination and client operations"
+        }
+      ]
+    },
+    "body": "Speed matters when you are testing an idea. Rigor matters when a system becomes part of someone’s working day. Our leadership brings both perspectives to discovery, architecture, delivery, and handover. We scope leadership involvement and the wider delivery team around each engagement.",
+    "founderProduct": "Before focusing on AgileMorph, Kaustumbh co-founded Quido and built its investment product as the sole engineer, spanning a mobile app, website, backend, and cloud deployment. This is founder-built product experience, separate from client engagements.",
+    "endorsements": [
+      {
+        "_key": "david-zaretsky",
+        "_type": "testimonial",
+        "company": "Snips Media & Northwestern University",
+        "image": {
+          "_type": "image",
+          "alt": "David Zaretsky photo",
+          "asset": {
+            "_ref": "image-7169f051d8d1997c8961ce1151647954649acf93-800x800-jpg",
+            "_type": "reference"
+          }
+        },
+        "name": "David Zaretsky",
+        "quote": "Umang has consistently demonstrated leadership qualities and a great positive attitude in working with others in team settings. I’m very happy to recommend Umang for any leadership roles in the fields of engineering.",
+        "relationship": "professional"
+      },
+      {
+        "_key": "nikhil-shendge",
+        "_type": "testimonial",
+        "company": "Capgemini",
+        "image": {
+          "_type": "image",
+          "alt": "Nikhil Shendge photo",
+          "asset": {
+            "_ref": "image-b4f468d4b533aed985c119e0f1ffb58a805a7eb1-800x800-jpg",
+            "_type": "reference"
+          }
+        },
+        "name": "Nikhil Shendge",
+        "quote": "Umang and I worked together on a few projects, he consistently gave 100 percent effort to the team and played a significant role in ensuring that we completed assignments on time. He had excellent time management skills and had a knack for keeping productive during intense crunch periods. Any team would be lucky to have Umang, and I couldn’t recommend him more for any business looking for new talent.",
+        "relationship": "professional"
+      }
+    ]
+  },
+  {
+    "_id": "pricingPage",
+    "_type": "pricingPage",
+    "contentVersion": 2,
+    "heading": "A clear scope. A practical way forward.",
+    "description": "Start with a free 15-minute conversation. Audits, implementation, and ongoing partnerships are priced for the work your business needs.",
+    "engagements": [
+      {
+        "title": "Start with a conversation",
+        "label": "Free · 15 minutes",
+        "description": "Tell us about your business, the problem, and the tools involved. We discuss fit and the next useful step.",
+        "deliverables": [
+          "Discuss your goals and current workflow",
+          "Identify the information needed to scope the work",
+          "Agree the next step"
+        ]
+      },
+      {
+        "title": "Diagnostic audit",
+        "label": "Quoted to scope",
+        "description": "For problems that need investigation before a build, we map the workflow and develop a practical delivery recommendation.",
+        "deliverables": [
+          "Current workflow and bottleneck assessment",
+          "Prioritized opportunities and implementation approach",
+          "Scope, fee, and delivery schedule agreed before the audit"
+        ]
+      },
+      {
+        "title": "Scoped implementation",
+        "label": "Quoted to scope",
+        "description": "A defined application, integration, or AI system delivered against agreed milestones.",
+        "deliverables": [
+          "Written scope and acceptance criteria",
+          "Iterative builds and validation with your team",
+          "Deployment, documentation, and handover"
+        ]
+      },
+      {
+        "title": "Ongoing technical partnership",
+        "label": "Quoted to scope",
+        "description": "Engineering support for a product or operating system that continues to evolve.",
+        "deliverables": [
+          "Agreed development or support capacity",
+          "Prioritized roadmap and regular working sessions",
+          "Explicit coverage and responsibility boundaries"
+        ]
+      }
+    ],
+    "costDrivers": [
+      "System complexity and number of integrations",
+      "Data quality, cleanup, and migration",
+      "Product interfaces and workflow requirements",
+      "Testing, AI evaluations, and approval controls",
+      "Deployment requirements and ongoing support"
+    ],
+    "costNote": "Hosting, platform subscriptions, and model/API costs are identified during scoping. The proposal explains what is included and what is billed separately."
+  },
+  {
+    "_id": "contactPage",
+    "_type": "contactPage",
+    "contentVersion": 2,
+    "hero": {
+      "heading": "Tell us what needs to work better.",
+      "description": "A business problem, a product idea, or systems that need to connect. Share the context and we will discuss a practical next step."
+    },
+    "phone": "+1 209-432-7765",
+    "email": "info@theagilemorph.com",
+    "linkedinUrl": "https://www.linkedin.com/company/agilemorph-solutions",
+    "discoveryCall": {
+      "title": "A free introductory call",
+      "subtitle": "15 minutes with Umang Dhandhania",
+      "description": "We discuss your goals, existing tools, and delivery needs. If an audit or build is appropriate, its scope, fee, and schedule are agreed separately.",
+      "availabilityNote": "",
+      "bullets": [
+        "15-minute video conversation",
+        "Discuss the problem and project fit",
+        "Agree the next useful step"
+      ],
+      "ctaLabel": "Book a free introductory call"
+    },
+    "faqs": [
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicesIndexPage",
+    "_type": "servicesIndexPage",
+    "contentVersion": 2,
+    "hero": {
+      "eyebrow": "What we build",
+      "heading": "Engineering for your next product. And your everyday operations.",
+      "description": "From custom applications to connected workflows, we bring software and AI engineering to the problems your business needs to solve."
+    }
+  },
+  {
+    "_id": "blogIndexPage",
+    "_type": "blogIndexPage",
+    "contentVersion": 2,
+    "eyebrow": "Insights",
+    "heading": "Notes from the work.",
+    "description": "Engineering decisions, operational problems, and lessons from building software and AI systems."
+  },
+  {
+    "_id": "caseStudy-publisher-content-platform",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "publisher-content-platform"
+    },
+    "title": "A content operation with visibility into every AI run",
+    "client": "US industrial data publisher",
+    "summary": "Multi-model content workflows with cost and quality observability.",
+    "services": ["ai-agents", "data-platforms", "ai-automation"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": true,
+    "problem": "Content production could not keep pace, while output from a single AI model was inconsistent. The team needed an operating platform for content workflows and a way to inspect what each run produced and cost.",
+    "contribution": "AgileMorph built the content automation platform, combining a Django backend, Celery processing, and a React interface.",
+    "solution": [
+      "Multi-model pipelines bring Claude, GPT, and Gemini into the content-production workflow.",
+      "Langfuse observability makes cost and quality visible per run.",
+      "Background processing supports the platform’s production workflows."
+    ],
+    "outcome": "The delivered platform brings multi-model content production, background processing, and per-run cost and quality inspection into a single operating workflow.",
+    "workflow": [
+      "Content inputs",
+      "Multi-model pipeline",
+      "Cost & quality visibility",
+      "Content outputs"
+    ],
+    "stack": ["Django", "Celery", "React", "Langfuse"]
+  },
+  {
+    "_id": "caseStudy-business-data-search",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "business-data-search"
+    },
+    "title": "Ask business questions of an existing database",
+    "client": "Business data publisher",
+    "summary": "Natural-language search over MSSQL, with ongoing enrichment and classification.",
+    "services": ["data-platforms", "mcp-ai-infrastructure"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": true,
+    "problem": "Valuable company information lived in a SQL database that only technical staff could query. Business users needed a more accessible way to ask questions of that data.",
+    "contribution": "AgileMorph delivered a natural-language search tool using MCP over the client’s MSSQL database and continues a related data enrichment engagement.",
+    "solution": [
+      "A plain-language interface gives business users a way to query the existing database.",
+      "MCP connects the AI search workflow to the underlying data system.",
+      "Related enrichment includes industry-code classification and standardizing LinkedIn job titles at scale."
+    ],
+    "outcome": "The search tool is delivered, making the existing MSSQL database accessible through a natural-language interface. Related classification and enrichment work continues.",
+    "workflow": [
+      "Business question",
+      "MCP search interface",
+      "Existing MSSQL data",
+      "Search response"
+    ],
+    "stack": ["MSSQL", "MCP", "Data enrichment"]
+  },
+  {
+    "_id": "caseStudy-whatsapp-inventory-intake",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "whatsapp-inventory-intake"
+    },
+    "title": "From WhatsApp listings to structured inventory",
+    "client": "Luxury watch dealer network",
+    "summary": "Messages, photos, and shorthand become records in Airtable.",
+    "services": [
+      "messaging-automation",
+      "ai-automation",
+      "workflow-automation"
+    ],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": true,
+    "problem": "Inventory listings arrived in unstructured WhatsApp messages, including photos and shorthand. Someone had to read those messages and re-enter the details.",
+    "contribution": "AgileMorph delivered the intake pipeline and later re-engineered buffering and batching behavior that was driving excessive AI token costs.",
+    "solution": [
+      "Claude extracts structured listing information from incoming messages.",
+      "Self-hosted n8n coordinates record creation in Airtable and message forwarding where needed.",
+      "The later engineering work addressed token-cost problems caused by buffer and batching bugs."
+    ],
+    "outcome": "The delivered pipeline turns informal messages into structured inventory records and forwards messages where needed. A subsequent engineering engagement corrected buffering and batching bugs behind excessive token usage.",
+    "workflow": [
+      "WhatsApp messages",
+      "Claude extraction",
+      "Structured Airtable records",
+      "Message forwarding"
+    ],
+    "stack": ["Self-hosted n8n", "Whapi", "Claude", "Airtable"]
+  },
+  {
+    "_id": "caseStudy-wholesale-ordering",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "wholesale-ordering"
+    },
+    "title": "A clearer way for wholesale customers to order",
+    "client": "Consumer brand",
+    "summary": "A Shopify-based B2B ordering experience, reporting, and developer handover.",
+    "services": ["software-development", "shopify-automation", "ai-automation"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": true,
+    "problem": "Wholesale orders arrived through email and manual back-and-forth. The brand also lacked reporting on wholesale performance.",
+    "contribution": "AgileMorph delivered a B2B wholesale ordering experience using Shopify and SparkLayer, alongside automated reporting.",
+    "solution": [
+      "SparkLayer supplies the B2B ordering layer on the existing Shopify foundation.",
+      "n8n and Airtable support the reporting workflow.",
+      "A full developer handover document gives the client’s team the information needed to own the system."
+    ],
+    "outcome": "The brand received a wholesale ordering platform, automated reporting, and a full developer handover document for its team to operate the system.",
+    "workflow": [
+      "Wholesale buyer",
+      "Shopify + SparkLayer",
+      "Order workflow",
+      "Automated reporting"
+    ],
+    "stack": ["Shopify", "SparkLayer", "n8n", "Airtable"]
+  },
+  {
+    "_id": "caseStudy-punchbowl-support-agent",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "punchbowl-support-agent"
+    },
+    "title": "Support automation that can act on a ticket",
+    "client": "Punchbowl",
+    "summary": "Cancellation and refund automation with evaluation gates and transaction safeguards.",
+    "services": ["ai-agents", "ai-automation"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": true,
+    "problem": "Subscription cancellations and refunds required manual support work. Automating them involved both understanding the ticket and safely executing billing actions.",
+    "contribution": "As a Senior AI Engineer on an independent engagement, Kaustumbh built the support agent, API tool calling, and evaluation setup.",
+    "solution": [
+      "The agent reads tickets and calls subscription, cancellation, and refund APIs.",
+      "Idempotency keys and existing-refund checks guard against duplicate refunds. Cancellation and refund are separate steps, with failed refunds retried and unresolved cases routed to a person.",
+      "Refunds above $500 and low-confidence classifications go to human review.",
+      "CI evaluations combine an intent golden set, LLM-judged responses, and human-labelled refund decisions."
+    ],
+    "outcome": "The resume reports a 45% reduction in manual work on these cancellation/refund tickets. Intent classification reached 98% on a held-out set of 786 labelled tickets; this is an evaluation result, not a guarantee for other workflows.",
+    "results": [
+      {
+        "value": "45%",
+        "label": "Less manual work on cancellation/refund tickets"
+      },
+      {
+        "value": "98%",
+        "label": "Intent accuracy on 786 held-out labelled tickets"
+      }
+    ],
+    "workflow": [
+      "Support ticket",
+      "Intent + policy checks",
+      "Billing API actions",
+      "Human review when needed"
+    ],
+    "stack": ["Python", "FastAPI", "OpenAI", "CI evaluations"]
+  },
+  {
+    "_id": "caseStudy-certifyos-document-review",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "certifyos-document-review"
+    },
+    "title": "Rules that help analysts review provider documents",
+    "client": "CertifyOS",
+    "summary": "A healthcare document rule engine and an interface for review exceptions.",
+    "services": ["software-development", "data-platforms", "ai-automation"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": true,
+    "problem": "Healthcare-professional documents required a manual review step. Analysts needed automated checks and a clear view of the violations that still required attention.",
+    "contribution": "During an independent Senior Software Engineer engagement, Kaustumbh built the business rule engine and the dashboard interface showing rule violations.",
+    "solution": [
+      "Java, Quarkus, and GraalVM power the rule engine.",
+      "A React/TypeScript/Next.js interface makes rule violations visible in the internal dashboard.",
+      "The work handled provider PHI within CertifyOS’s HIPAA and SOC 2 compliance program; these are client-program credentials, not AgileMorph certifications."
+    ],
+    "outcome": "The resume reports approximately an hour saved per analyst per day and roughly 20% higher throughput. These figures describe this engagement.",
+    "results": [
+      {
+        "value": "~1 hour",
+        "label": "Saved per analyst per day"
+      },
+      {
+        "value": "~20%",
+        "label": "Higher analyst throughput"
+      }
+    ],
+    "workflow": [
+      "Provider documents",
+      "Business rule checks",
+      "Violation dashboard",
+      "Analyst review"
+    ],
+    "stack": ["Java", "Quarkus", "GraalVM", "React", "Next.js"]
+  },
+  {
+    "_id": "caseStudy-deeply-ai-coaching",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "deeply-ai-coaching"
+    },
+    "title": "An AI coaching product that remembers context",
+    "client": "Deeply",
+    "summary": "User discovery, contextual memory, voice sessions, and tool-connected coaching.",
+    "services": ["ai-agents", "software-development", "mcp-ai-infrastructure"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": true,
+    "problem": "A relationship-coaching product needed relevant history to carry across conversations, reducing repeated context gathering and supporting more complete sessions.",
+    "contribution": "As a Forward Deployed Engineer, Kaustumbh worked with the founders on user discovery and built memory and voice capabilities into the product.",
+    "solution": [
+      "Conversation embeddings are stored in pgvector on Supabase and tagged by topic. Retrieval is scoped per user and relationship, then filtered before vector search.",
+      "The coaching agent connects memory, summaries, reminders, and human escalation through tool calling and MCP integrations.",
+      "Voice sessions use VAPI, with FastAPI and React/Next.js supporting the application.",
+      "PostHog product analytics and Langfuse prompt evaluations support iteration."
+    ],
+    "outcome": "The resume reports roughly 70% fewer repeated context-gathering turns and about a 30% relative increase in session completion, measured through PostHog. These are product-specific results.",
+    "results": [
+      {
+        "value": "~70%",
+        "label": "Fewer repeated context-gathering turns"
+      },
+      {
+        "value": "~30%",
+        "label": "Relative increase in session completion"
+      }
+    ],
+    "workflow": [
+      "User conversation",
+      "Scoped memory retrieval",
+      "Coaching + tools",
+      "Session and product feedback"
+    ],
+    "stack": ["FastAPI", "Next.js", "Claude", "VAPI", "pgvector", "PostHog"]
+  },
+  {
+    "_id": "caseStudy-thimblerr-manufacturing",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "thimblerr-manufacturing"
+    },
+    "title": "Software delivery with a leaner cloud footprint",
+    "client": "Thimblerr",
+    "summary": "Manufacturing application backend delivery and AWS optimization.",
+    "services": ["software-development", "data-platforms"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": true,
+    "problem": "A textile manufacturing application needed backend engineering from design through delivery. Its cloud setup also had opportunities to improve API performance and resource use.",
+    "contribution": "On an independent Senior Software Engineer engagement, Kaustumbh built backend systems and reworked the AWS setup.",
+    "solution": [
+      "Backend delivery used Python, Django, FastAPI, and MySQL.",
+      "Infrastructure changes improved load balancing.",
+      "Under-used instances were removed to reduce unnecessary cloud spend."
+    ],
+    "outcome": "The resume reports APIs running 20% faster and an AWS bill 43% lower following the infrastructure changes. These figures apply to that application and setup.",
+    "results": [
+      {
+        "value": "20%",
+        "label": "Faster APIs"
+      },
+      {
+        "value": "43%",
+        "label": "Lower AWS bill"
+      }
+    ],
+    "workflow": [
+      "Manufacturing workflows",
+      "Application APIs",
+      "Data storage",
+      "AWS infrastructure"
+    ],
+    "stack": ["Python", "Django", "FastAPI", "MySQL", "AWS"]
+  },
+  {
+    "_id": "caseStudy-plumbing-referrals",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "plumbing-referrals"
+    },
+    "title": "Referral tracking and rewards",
+    "client": "New York plumbing company",
+    "summary": "A delivered referral program captures referrals, tracks progress, and sends rewards through the company’s existing field-service tools.",
+    "services": ["ai-automation", "workflow-automation"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-salesforce-registration",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "salesforce-registration"
+    },
+    "title": "Registration and waitlists inside Salesforce",
+    "client": "Nonprofit network",
+    "summary": "A delivered Salesforce system replaces manual program registration and waitlist handling.",
+    "services": ["software-development", "ai-automation"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-voice-agent",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "voice-agent"
+    },
+    "title": "Voice AI in the portfolio",
+    "client": "AgileMorph portfolio",
+    "summary": "A voice AI agent built and live in the AgileMorph portfolio, illustrating the team’s voice-product engineering experience.",
+    "services": ["ai-agents"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Built by AgileMorph. Presented as portfolio experience; the public reference does not identify a client engagement.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-wordpress-remediation",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "wordpress-remediation"
+    },
+    "title": "Emergency website remediation",
+    "client": "Client website",
+    "summary": "Cleared a self-healing WordPress malware chain during an overnight remediation engagement.",
+    "services": ["software-development"],
+    "category": "company",
+    "status": "delivered",
+    "attribution": "Delivered by AgileMorph Solutions.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-wattson-health",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "wattson-health"
+    },
+    "title": "Phone and SMS assistance for pharmacies",
+    "client": "Wattson Health",
+    "summary": "Kaustumbh contributed an AI phone/SMS assistant and authentication and early features for a pharmacy dashboard.",
+    "services": ["ai-agents", "software-development"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-nurture-labs",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "nurture-labs"
+    },
+    "title": "A code-generation product with usage billing",
+    "client": "Nurture Labs",
+    "summary": "Kaustumbh built agent tooling, metered credits with Stripe, authentication, administration, and deployment infrastructure.",
+    "services": ["ai-agents", "software-development", "mcp-ai-infrastructure"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-prudential",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "prudential"
+    },
+    "title": "Software for bank-led insurance sales",
+    "client": "Prudential",
+    "summary": "Kaustumbh contributed policy recommendations, applications, and customer management within the client’s SOC 2 and data-protection controls.",
+    "services": ["software-development"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Work delivered by Kaustumbh Jaiswal during a previous independent client engagement. Presented as prior team experience.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-chronoseconds",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "chronoseconds"
+    },
+    "title": "A retail website and WhatsApp sales agent",
+    "client": "Chronoseconds",
+    "summary": "A Next.js website rebuild, WhatsApp AI sales agent, and domain migration for a pre-owned luxury watch retailer.",
+    "services": ["software-development", "ai-agents", "messaging-automation"],
+    "category": "previous",
+    "status": "delivered",
+    "attribution": "Prior work delivered through Quido. Presented as team experience; no completed transfer of the engagement to AgileMorph is implied.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-ai-visibility-index",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "ai-visibility-index"
+    },
+    "title": "Measuring visibility in AI search",
+    "client": "US industrial data publisher",
+    "summary": "A phased system measures supplier mentions against a database of 500,000 verified US industrial companies and produces category/state visibility reporting.",
+    "services": ["data-platforms", "ai-agents"],
+    "category": "company",
+    "status": "in-progress",
+    "attribution": "An AgileMorph engagement currently in development.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-consultancy-gtm",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "consultancy-gtm"
+    },
+    "title": "Research-led outbound workflows",
+    "client": "ESG and solar consultancy",
+    "summary": "An AI research and writing engine drafts personalized outreach into the existing CRM for human review, alongside targeting and sending setup.",
+    "services": ["crm-lead-automation", "ai-automation"],
+    "category": "company",
+    "status": "in-progress",
+    "attribution": "An AgileMorph engagement currently in progress.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-restaurant-operations",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "restaurant-operations"
+    },
+    "title": "A specification for multi-outlet operations",
+    "client": "Restaurant group",
+    "summary": "Specified five operational flows and six KPIs for a four-brand group, plus a WhatsApp commerce scope. This is specification work, not a delivered platform.",
+    "services": ["software-development", "data-platforms"],
+    "category": "company",
+    "status": "scoped",
+    "attribution": "Specification completed by AgileMorph. Implementation is not presented as delivered.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-manufacturer-leads",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "manufacturer-leads"
+    },
+    "title": "An enriched lead service design",
+    "client": "Indian manufacturer",
+    "summary": "Designed an enriched lead service. The reference does not establish a delivered implementation.",
+    "services": ["data-platforms", "crm-lead-automation"],
+    "category": "company",
+    "status": "scoped",
+    "attribution": "Service design by AgileMorph. Implementation is not presented as delivered.",
+    "detailed": false
+  },
+  {
+    "_id": "caseStudy-technical-partnership",
+    "_type": "caseStudy",
+    "contentVersion": 2,
+    "slug": {
+      "_type": "slug",
+      "current": "technical-partnership"
+    },
+    "title": "A continuing product and automation team",
+    "client": "Long-term client",
+    "summary": "An active 12-month technical partnership. Included as an engagement-format example, not a separate quantified outcome.",
+    "services": ["software-development", "ai-automation"],
+    "category": "company",
+    "status": "active",
+    "attribution": "An active AgileMorph technical partnership.",
+    "detailed": false
+  },
+  {
+    "_id": "servicePage-software-development",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Custom software & product engineering",
+    "slug": {
+      "_type": "slug",
+      "current": "software-development"
+    },
+    "layout": "reviewed",
+    "headlineText": "Build the software your business needs next.",
+    "description": "For teams launching a product, replacing an unsuitable internal tool, or extending an existing application.",
+    "deliverables": [
+      "Product discovery and architecture",
+      "Customer-facing web and mobile applications",
+      "Internal tools and business platforms",
+      "Backend APIs, integrations, and deployment"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-wholesale-ordering"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-certifyos-document-review"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-thimblerr-manufacturing"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-nurture-labs"
+      }
+    ],
+    "parentService": null,
+    "primary": true,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-ai-agents",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "AI products & agents",
+    "slug": {
+      "_type": "slug",
+      "current": "ai-agents"
+    },
+    "layout": "reviewed",
+    "headlineText": "Useful AI, connected to the work.",
+    "description": "For product and operations teams building conversational experiences or workflows that interpret information and take actions.",
+    "deliverables": [
+      "Conversational products, voice, and contextual memory",
+      "Tool calling and integration with business systems",
+      "Evaluation datasets and quality feedback loops",
+      "Human approval and escalation paths"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-punchbowl-support-agent"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-deeply-ai-coaching"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-publisher-content-platform"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-wattson-health"
+      }
+    ],
+    "parentService": null,
+    "primary": true,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-ai-automation",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Automation & integrations",
+    "slug": {
+      "_type": "slug",
+      "current": "ai-automation"
+    },
+    "layout": "reviewed",
+    "headlineText": "Make the handoffs between systems work.",
+    "description": "For businesses whose teams still re-enter data, move messages, or coordinate work manually across tools.",
+    "deliverables": [
+      "Workflow discovery and integration design",
+      "Intake, CRM, commerce, and reporting automation",
+      "Error handling, retries, and operational visibility",
+      "Documentation and team handover"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-whatsapp-inventory-intake"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-wholesale-ordering"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-plumbing-referrals"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-salesforce-registration"
+      }
+    ],
+    "parentService": null,
+    "primary": true,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-data-platforms",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Data platforms & search",
+    "slug": {
+      "_type": "slug",
+      "current": "data-platforms"
+    },
+    "layout": "reviewed",
+    "headlineText": "Make business data easier to use.",
+    "description": "For teams with valuable information spread across databases, documents, and operational systems.",
+    "deliverables": [
+      "Data enrichment, classification, and standardization",
+      "Natural-language search over existing databases",
+      "Reporting platforms and structured data workflows",
+      "AI access to tools and data through MCP"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-business-data-search"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-publisher-content-platform"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-certifyos-document-review"
+      }
+    ],
+    "parentService": "mcp-ai-infrastructure",
+    "primary": true,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-workflow-automation",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Workflow automation",
+    "slug": {
+      "_type": "slug",
+      "current": "workflow-automation"
+    },
+    "layout": "reviewed",
+    "headlineText": "Connect the steps your team repeats.",
+    "description": "For operations teams coordinating recurring work between applications.",
+    "deliverables": [
+      "Workflow mapping",
+      "Tool integrations",
+      "Retries, logging, and exception paths",
+      "Runbooks and handover"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-whatsapp-inventory-intake"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-plumbing-referrals"
+      }
+    ],
+    "parentService": "ai-automation",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-crm-lead-automation",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "CRM & lead automation",
+    "slug": {
+      "_type": "slug",
+      "current": "crm-lead-automation"
+    },
+    "layout": "reviewed",
+    "headlineText": "A more consistent path from enquiry to follow-up.",
+    "description": "For sales and service teams managing scattered lead data and manual research.",
+    "deliverables": [
+      "Capture and structured enrichment",
+      "Qualification and routing logic",
+      "CRM-connected research and drafting",
+      "Human review for outreach"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-consultancy-gtm"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-manufacturer-leads"
+      }
+    ],
+    "parentService": "ai-automation",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-messaging-automation",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Messaging automation",
+    "slug": {
+      "_type": "slug",
+      "current": "messaging-automation"
+    },
+    "layout": "reviewed",
+    "headlineText": "Turn incoming messages into useful work.",
+    "description": "For teams whose business relies on WhatsApp, email, or high-volume message intake.",
+    "deliverables": [
+      "Structured data extraction",
+      "Database and CRM handoffs",
+      "Routing and message forwarding",
+      "Human handoff and operational monitoring"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-whatsapp-inventory-intake"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-chronoseconds"
+      }
+    ],
+    "parentService": "ai-automation",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-shopify-automation",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Shopify automation",
+    "slug": {
+      "_type": "slug",
+      "current": "shopify-automation"
+    },
+    "layout": "reviewed",
+    "headlineText": "Connect commerce to the rest of your operation.",
+    "description": "For brands coordinating wholesale ordering and reporting across systems.",
+    "deliverables": [
+      "B2B ordering workflows",
+      "Shopify and business-tool integrations",
+      "Automated reporting",
+      "Developer documentation and handover"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-wholesale-ordering"
+      }
+    ],
+    "parentService": "ai-automation",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-mcp-ai-infrastructure",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "MCP & AI infrastructure",
+    "slug": {
+      "_type": "slug",
+      "current": "mcp-ai-infrastructure"
+    },
+    "layout": "reviewed",
+    "headlineText": "Give AI a useful, controlled connection to your systems.",
+    "description": "For teams adding AI access to business data or running custom AI products.",
+    "deliverables": [
+      "MCP access to existing tools and databases",
+      "Deployment design around data requirements",
+      "Cost and quality observability",
+      "Access boundaries and operational handover"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-business-data-search"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-deeply-ai-coaching"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-nurture-labs"
+      }
+    ],
+    "parentService": "data-platforms",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "servicePage-ai-audit",
+    "_type": "servicePage",
+    "contentVersion": 2,
+    "title": "Diagnostic AI & software audit",
+    "slug": {
+      "_type": "slug",
+      "current": "ai-audit"
+    },
+    "layout": "reviewed",
+    "headlineText": "Understand the problem before committing to a build.",
+    "description": "For teams deciding what to build, what to connect, or where an existing workflow needs attention.",
+    "deliverables": [
+      "Map current workflows and bottlenecks",
+      "Assess integration and data constraints",
+      "Prioritize opportunities and delivery options",
+      "Agree the next implementation scope"
+    ],
+    "featuredProjects": [
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-whatsapp-inventory-intake"
+      },
+      {
+        "_type": "reference",
+        "_ref": "caseStudy-business-data-search"
+      }
+    ],
+    "parentService": "engagement",
+    "primary": false,
+    "safeguards": [
+      "Agree data access, deployment, and third-party dependencies during scoping.",
+      "Validate the agreed workflow and its failure paths before handover.",
+      "Define monitoring, human review, and post-launch responsibilities for the specific system."
+    ],
+    "faq": [
+      {
+        "question": "Do we need to replace our existing tools?",
+        "answer": "We start with the systems you already use. Integrations can connect them; custom software fills gaps where existing tools do not fit the workflow."
+      },
+      {
+        "question": "Who owns the software and how is it handed over?",
+        "answer": "Ownership, access, and third-party licenses are agreed in the engagement scope. Our delivery approach includes documentation, a walkthrough, and an operating runbook so your team can understand and operate the system."
+      },
+      {
+        "question": "How do you handle sensitive data and AI decisions?",
+        "answer": "We scope access, deployment, data handling, and approval requirements before building. Depending on the workflow, safeguards can include evaluation datasets, confidence thresholds, audit logs, human review, and self-hosted components. Self-hosting a workflow does not by itself keep data out of external model APIs."
+      },
+      {
+        "question": "How much does an engagement cost?",
+        "answer": "The introductory 15-minute call is free. Diagnostic audits, implementation, and ongoing partnerships are quoted to scope. We agree deliverables, milestones, fees, and the delivery schedule before work starts."
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The scope defines handover and post-launch responsibilities. Ongoing maintenance, improvements, or an embedded technical partnership can be arranged separately, with support coverage and response expectations agreed for your systems."
+      }
+    ]
+  },
+  {
+    "_id": "blogPost-prospect-research-automation",
+    "_type": "blogPost",
+    "contentVersion": 2,
+    "body": [
+      {
+        "_key": "blk1",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp2",
+            "_type": "span",
+            "marks": [],
+            "text": "Every agency that pitches new business does prospect research before the first call: pulling domain metrics, checking rankings, sizing up the market, scanning the site for gaps. Prospect research automation promises to compress that work from an afternoon of open browser tabs into a few minutes of setup. Most agencies still do the research by hand, because the job touches five separate systems and no single vendor sells all five. This piece looks at what actually gets automated, what the enrichment platforms leave for you to do anyway, and where the real friction sits: not inside any one tool, but in the gap between them."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk3",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp4",
+            "_type": "span",
+            "marks": [],
+            "text": "What Prospect Research Automation Actually Means"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "blk5",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp6",
+            "_type": "span",
+            "marks": [],
+            "text": "Prospect research automation pulls a prospect's domain data, competitive position, and business context into one place on its own, instead of a rep checking Ahrefs, Semrush, the website, and LinkedIn one tab at a time. Done well, it turns a research pull that used to take half an hour into a profile that updates itself before every call."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk7",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp8",
+            "_type": "span",
+            "marks": [],
+            "text": "In practice that means domain rating, organic traffic direction, ranking keywords, backlink volume, the tech stack a site runs on, and any public signal worth flagging: a funding round, a leadership change, a rebrand. An account executive used to spend a morning before a pitch assembling this by hand. A system built for it assembles the same profile once, automatically, for every prospect that enters the pipeline."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk9",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp10",
+            "_type": "span",
+            "marks": [],
+            "text": "The Real Cost of Manual Prospect Research"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "blk11",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp12",
+            "_type": "span",
+            "marks": [],
+            "text": "The manual version isn't slow because any single step is hard. Pulling a domain report from Ahrefs takes two minutes. Pulling the same view from Semrush takes another two. Checking the site by hand, reading the About page, and skimming recent LinkedIn posts adds ten more. None of that is difficult work. It's work that has to happen again for every prospect, done by a person who could be selling instead."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "dia13",
+        "_type": "diagram",
+        "caption": "Every step works on its own. Rebuilding the join by hand is what costs the time.",
+        "steps": [
+          {
+            "_key": "step14",
+            "_type": "diagramStep",
+            "detail": "Domain rating, traffic",
+            "flagged": false,
+            "label": "Pull Ahrefs data"
+          },
+          {
+            "_key": "step15",
+            "_type": "diagramStep",
+            "detail": "Rankings, competitors",
+            "flagged": false,
+            "label": "Pull Semrush data"
+          },
+          {
+            "_key": "step16",
+            "_type": "diagramStep",
+            "detail": "About page, recent posts",
+            "flagged": false,
+            "label": "Check site + LinkedIn"
+          },
+          {
+            "_key": "step17",
+            "_type": "diagramStep",
+            "detail": "Rebuilt for every prospect",
+            "flagged": true,
+            "label": "Assemble by hand"
+          },
+          {
+            "_key": "step18",
+            "_type": "diagramStep",
+            "detail": "Repeated, every single time",
+            "flagged": true,
+            "label": "Hand off to AE"
+          }
+        ],
+        "title": "The manual research pull",
+        "variant": "chain"
+      },
+      {
+        "_key": "blk19",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp20",
+            "_type": "span",
+            "marks": [],
+            "text": "The pattern shows up at agencies of every size: a rep with several tabs open, none of them talking to each other, assembling one prospect's profile from parts that were never meant to be joined by hand. We've seen it directly at a North American marketing agency with 50+ staff, where prospect research had been done by hand in Ahrefs and Semrush for every account entering the pipeline. Nothing about the tools was wrong. The problem was that pulling them together was somebody's job, every time, for every prospect."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk21",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp22",
+            "_type": "span",
+            "marks": [],
+            "text": "What the Enrichment Platforms Solve, and What They Skip"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "blk23",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp24",
+            "_type": "span",
+            "marks": [],
+            "text": "A wave of platforms now sell exactly this: feed in a domain, get back contact data, buying signals, and a scored profile. That's a real improvement over a spreadsheet. For an agency landing a handful of new clients a quarter, an off-the-shelf tool on its free or entry tier may be all you need. If your volume is low, don't build anything custom. Add the login and move on."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk25",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp26",
+            "_type": "span",
+            "marks": [],
+            "text": "The gap shows up at volume. Most of these platforms are a new destination, not a bridge to the ones an agency already runs. The profile they generate still needs a manual copy into the CRM, a check against the account list the reporting already tracks, and a handoff to whoever owns outreach. Connecting the systems already in place removes that copy-paste step and scales with the client count rather than the headcount doing the copying."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "dia27",
+        "_type": "diagram",
+        "caption": "Enrichment adds data. Connecting systems removes the copy-paste step back into the CRM.",
+        "left": {
+          "_type": "diagramColumn",
+          "heading": "Off-the-shelf enrichment tools",
+          "items": [
+            "New dashboard to log into",
+            "Buying signals and contact data",
+            "Still needs a manual copy to the CRM"
+          ]
+        },
+        "right": {
+          "_type": "diagramColumn",
+          "heading": "Connecting systems already in place",
+          "items": [
+            "No new platform to log into",
+            "Profile written straight to the CRM",
+            "Scales with client count, not headcount"
+          ]
+        },
+        "title": "Two ways to close the research gap",
+        "variant": "compare"
+      },
+      {
+        "_key": "blk28",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp29",
+            "_type": "span",
+            "marks": [],
+            "text": "Where AgileMorph Fits Into Prospect Research Automation"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "blk40",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp30",
+            "_type": "span",
+            "marks": [],
+            "text": "Our starting point is what's already running, not a new platform to log into. For a North American marketing agency running 60+ client accounts, we built "
+          },
+          {
+            "_key": "sp32",
+            "_type": "span",
+            "marks": ["lnk31"],
+            "text": "AI lead enrichment"
+          },
+          {
+            "_key": "sp33",
+            "_type": "span",
+            "marks": [],
+            "text": " that reads a prospect the way the enrichment platforms do, then writes qualification criteria straight into an "
+          },
+          {
+            "_key": "sp35",
+            "_type": "span",
+            "marks": ["lnk34"],
+            "text": "outreach sequence"
+          },
+          {
+            "_key": "sp36",
+            "_type": "span",
+            "marks": [],
+            "text": ", so the sales team spends its time on booked meetings instead of manual prospecting. Alongside it, an AI visibility audit tool works as a lead magnet: it audits a prospect's business, industry, website, and market, and hands that research to the prospect before a rep ever calls. Try it yourself with our "
+          },
+          {
+            "_key": "sp38",
+            "_type": "span",
+            "marks": ["lnk37"],
+            "text": "AI visibility audit"
+          },
+          {
+            "_key": "sp39",
+            "_type": "span",
+            "marks": [],
+            "text": "."
+          }
+        ],
+        "markDefs": [
+          {
+            "_key": "lnk31",
+            "_type": "link",
+            "href": "/blog/ai-lead-enrichment"
+          },
+          {
+            "_key": "lnk34",
+            "_type": "link",
+            "href": "/blog/automated-outreach-qualified-meetings"
+          },
+          {
+            "_key": "lnk37",
+            "_type": "link",
+            "href": "/services/ai-audit"
+          }
+        ],
+        "style": "normal"
+      },
+      {
+        "_key": "blk41",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp42",
+            "_type": "span",
+            "marks": [],
+            "text": "Neither system replaced a platform the agency already paid for. Both connected pieces that had been sitting next to each other, doing nothing for each other. These examples show why examining the connections between existing tools can be a useful starting point before adding another platform."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk50",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp43",
+            "_type": "span",
+            "marks": [],
+            "text": "Prospect research automation is one piece of a wider pattern in agency operations. The same seam shows up in "
+          },
+          {
+            "_key": "sp45",
+            "_type": "span",
+            "marks": ["lnk44"],
+            "text": "client reporting"
+          },
+          {
+            "_key": "sp46",
+            "_type": "span",
+            "marks": [],
+            "text": ", where dashboards get stitched together by hand every cycle, and in "
+          },
+          {
+            "_key": "sp48",
+            "_type": "span",
+            "marks": ["lnk47"],
+            "text": "content approval"
+          },
+          {
+            "_key": "sp49",
+            "_type": "span",
+            "marks": [],
+            "text": ", where sign-off across a dozen client sites lives in email threads instead of one system."
+          }
+        ],
+        "markDefs": [
+          {
+            "_key": "lnk44",
+            "_type": "link",
+            "href": "/blog/client-reporting-for-agencies"
+          },
+          {
+            "_key": "lnk47",
+            "_type": "link",
+            "href": "/blog/content-approval-workflow-agencies"
+          }
+        ],
+        "style": "normal"
+      },
+      {
+        "_key": "blk51",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp52",
+            "_type": "span",
+            "marks": [],
+            "text": "FAQ"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "blk54",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp53",
+            "_type": "span",
+            "marks": ["strong"],
+            "text": "What is prospect research automation?"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk55",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp56",
+            "_type": "span",
+            "marks": [],
+            "text": "It's the practice of pulling a prospect's domain metrics, competitive position, and business signals into one profile automatically, instead of a rep checking each source by hand before a call."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk58",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp57",
+            "_type": "span",
+            "marks": ["strong"],
+            "text": "What data should an automated prospect profile include?"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk59",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp60",
+            "_type": "span",
+            "marks": [],
+            "text": "At minimum: domain rating and traffic direction, ranking keywords, backlink volume, the site's tech stack, and any recent public signal such as funding or a leadership change. What you include should match what your reps already use to qualify a prospect today."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk62",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp61",
+            "_type": "span",
+            "marks": ["strong"],
+            "text": "Does prospect research automation replace judgment?"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk63",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp64",
+            "_type": "span",
+            "marks": [],
+            "text": "No. It removes the data-gathering step so a rep can spend the saved time on judgment, reading the account, rather than assembling the report on it."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk66",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp65",
+            "_type": "span",
+            "marks": ["strong"],
+            "text": "Do small agencies need an enrichment platform?"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk67",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp68",
+            "_type": "span",
+            "marks": [],
+            "text": "Not always. If you're pitching a handful of new accounts a quarter, a free-tier tool and a rep typing notes into the CRM will do the job. The case for automation shows up once volume turns the manual version into somebody's full-time task."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk70",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp69",
+            "_type": "span",
+            "marks": ["strong"],
+            "text": "Is this the same as lead enrichment?"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "blk71",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "sp72",
+            "_type": "span",
+            "marks": [],
+            "text": "They overlap heavily. Research builds the profile; enrichment adds contact and outreach data on top of it. Most of the agencies we work with end up using one connected system for both rather than treating them as separate purchases."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ]
+  },
+  {
+    "_id": "blogPost-unlock-the-power-of-professional-web-design-agencies-agilemorph-solutions",
+    "_type": "blogPost",
+    "contentVersion": 2,
+    "body": [
+      {
+        "_key": "block-0",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-0",
+            "_type": "span",
+            "marks": [],
+            "text": "Introduction"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-1",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-1",
+            "_type": "span",
+            "marks": [],
+            "text": "In the dynamic realm of the digital landscape, a brand’s online presence is akin to a meticulously crafted storefront, with the website serving as the gateway to the virtual realm.In a vast and competitive online milieu, the artful presentation of a brand’s identity becomes a paramount aspect in distinguishing it from the multitude of others vying for attention."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-2",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-2",
+            "_type": "span",
+            "marks": [],
+            "text": "Enter professional web design agencies, the artisans of the digital realm, who bring a unique blend of creativity and technical expertise to the table. By leveraging their skills, they transform the online space into an immersive and captivating experience, weaving together elements of aesthetics, functionality, and user experience."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-3",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-3",
+            "_type": "span",
+            "marks": [],
+            "text": "1. Why Choose a Professional Web Design Agency?"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-4",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-4",
+            "_type": "span",
+            "marks": [],
+            "text": "Expertise: A professional agency brings design and engineering experience to decisions about your website. Brand identity: Layouts and content can be tailored to your business and its audience. User experience: Clear navigation, readable content, and accessible interactions help people use the site. Credibility: Consistent branding and clear descriptions of your work give visitors information they can assess. Search visibility: Technical SEO helps search engines understand your pages. Technology choices: Choose tools around the site’s requirements and maintenance needs."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-5",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-5",
+            "_type": "span",
+            "marks": [],
+            "text": "2. Choosing the Right Agency:"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-6",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-6",
+            "_type": "span",
+            "marks": [],
+            "text": "Define Your Requirements: Clearly outline your design needs and objectives to find an agency that aligns with your vision.Portfolio Evaluation: Assess previous work to gauge the agency’s style, versatility, and industry expertise.Client Testimonials: Look for positive reviews and testimonials to ensure the agency delivers on its promises and maintains good client relationships.Industry Experience: Prioritize agencies with experience in your industry, as they’ll better understand your unique challenges and audience.Design Approach: Seek agencies that prioritize both creativity and functionality, ensuring your website is visually appealing and user-friendly.Communication and Management: Clear communication channels and defined workflows are crucial for a successful collaboration."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-7",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-7",
+            "_type": "span",
+            "marks": [],
+            "text": "3. The Collaborative Process:"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-8",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-8",
+            "_type": "span",
+            "marks": [],
+            "text": "Initial Consultations: Discuss your brand vision and goals to establish a clear design direction.Project Briefings: Plan design options and elements to create a structured framework for the website.Feedback Loops: Regular updates and revisions ensure the final design meets your expectations and requirements.Defined Milestones: Setting achievable milestones keeps the project on track and ensures timely delivery."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-9",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-9",
+            "_type": "span",
+            "marks": [],
+            "text": "🌟 Contact AgileMorph Solutions today and take the first step towards your AI-driven future! 🌟"
+          }
+        ],
+        "markDefs": [],
+        "style": "h3"
+      }
+    ]
+  },
+  {
+    "_id": "blogPost-unveiling-the-power-of-software-testing-agilemorph-solutions-perspective",
+    "_type": "blogPost",
+    "contentVersion": 2,
+    "body": [
+      {
+        "_key": "block-0",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-0",
+            "_type": "span",
+            "marks": [],
+            "text": "Introduction"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-1",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-1",
+            "_type": "span",
+            "marks": [],
+            "text": "Software testing, also known as QA testing, is a critical facet of the software development process, offering a multitude of benefits. Here’s a glimpse into why software testing, with the expertise of AgileMorph Solutions, is indispensable:"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-2",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-2",
+            "_type": "span",
+            "marks": [],
+            "text": "1. Anticipates Critical Issues"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-3",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-3",
+            "_type": "span",
+            "marks": [],
+            "text": "In the realm of software, especially when dealing with sensitive data, the anticipation of functional issues is paramount. AgileMorph Solutions ensures rigorous performance testing and QA to eradicate errors and mitigate potential communication breakdowns, blackouts, and data leaks."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-4",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-4",
+            "_type": "span",
+            "marks": [],
+            "text": "3. Cost-Effective Excellence"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-5",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-5",
+            "_type": "span",
+            "marks": [],
+            "text": "Software testing, when integrated early in the development process, maximizes cost-effectiveness. AgileMorph Solutions emphasizes early bug detection, preventing substantial costs in the later stages of development. Rectifying issues during advanced development or post-product completion can be significantly more expensive."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-6",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-6",
+            "_type": "span",
+            "marks": [],
+            "text": "4. Security Reinforcement"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-7",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-7",
+            "_type": "span",
+            "marks": [],
+            "text": "Continuous testing, a core principle at AgileMorph Solutions, upholds software security by identifying and eliminating vulnerable pieces of code. The end product boasts a robust architecture that safeguards data, making reliability and trustworthiness a top priority."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-8",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-8",
+            "_type": "span",
+            "marks": [],
+            "text": "5. Seamless Addition of Features:"
+          }
+        ],
+        "markDefs": [],
+        "style": "h2"
+      },
+      {
+        "_key": "block-9",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-9",
+            "_type": "span",
+            "marks": [],
+            "text": "Outdated code often hinders the integration of new features. AgileMorph Solutions conducts comprehensive tests to prevent code calcification, enabling developers to effortlessly add new features. This proactive approach allows entrepreneurs to differentiate their products in the competitive marketplace."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "block-10",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-10",
+            "_type": "span",
+            "marks": [],
+            "text": "Conclusion"
+          }
+        ],
+        "markDefs": [],
+        "style": "h3"
+      },
+      {
+        "_key": "block-11",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "span-11",
+            "_type": "span",
+            "marks": [],
+            "text": "Software testing helps teams understand product behavior and find issues before release. AgileMorph’s delivery process can include functional checks, usability review, and validation against agreed acceptance criteria. The scope of testing and any security assessment should reflect the system’s requirements and the risks the client needs to address."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ]
+  }
+]
