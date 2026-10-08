@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CalendlyBookButton } from "@/components/CalendlyBookButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import { CAT_TRY_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "AI Content Management Platform for Agencies & Teams | AgileMorph",
@@ -591,10 +592,23 @@ export default function AIContentManagementPage() {
                   less effort and fewer manual steps.
                 </p>
 
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a
+                    href={CAT_TRY_URL}
+                    target="_blank"
+                    rel="noopener"
+                    className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.24)]"
+                  >
+                    Try CAT
+
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      <ArrowIcon />
+                    </span>
+                  </a>
+
                   <Link
                     href="#cat-video"
-                    className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.24)]"
+                    className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/80 px-7 font-body text-sm font-semibold text-[#111111] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15803d]/30 hover:text-[#15803d]"
                   >
                     See CAT in Action
 
@@ -1239,8 +1253,21 @@ export default function AIContentManagementPage() {
                   </p>
 
                   <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <a
+                      href={CAT_TRY_URL}
+                      target="_blank"
+                      rel="noopener"
+                      className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.22)]"
+                    >
+                      Try CAT
+
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        <ArrowIcon />
+                      </span>
+                    </a>
+
                     <CalendlyBookButton
-  className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#15803d] px-7 font-body text-sm font-semibold text-white shadow-[0_10px_25px_rgba(21,128,61,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#166534] hover:shadow-[0_15px_35px_rgba(21,128,61,0.22)]"
+  className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white px-7 font-body text-sm font-semibold text-[#111111] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15803d]/30 hover:text-[#15803d]"
 >
   Book a Demo
 

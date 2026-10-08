@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CAT_TRY_URL } from "@/lib/links";
+
 export function CATVideoSection() {
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-24">
@@ -96,10 +98,21 @@ export function CATVideoSection() {
               </div>
 
               {/* CTA */}
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href={CAT_TRY_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center rounded-lg bg-[#15803d] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#166534]"
+                >
+                  Try CAT
+                  <span className="ml-2 text-base" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
                 <Link
                   href="/products/ai-content-management-tool"
-                  className="inline-flex items-center rounded-lg bg-[#15803d] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#166534]"
+                  className="inline-flex items-center rounded-lg border border-black/15 bg-white px-5 py-3 text-sm font-semibold text-black/80 transition-colors duration-200 hover:border-[#15803d]/40 hover:text-[#15803d]"
                 >
                   Explore CAT
                   <span className="ml-2 text-base" aria-hidden="true">

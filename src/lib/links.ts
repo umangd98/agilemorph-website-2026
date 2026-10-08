@@ -9,3 +9,6 @@ export function externalLinkProps(href: string, openInNewTab?: boolean) {
     ? ({ target: "_blank" as const, rel: "noopener noreferrer" as const })
     : {};
 }
+
+/** CAT, the AI content management tool, in its live app. */
+export const CAT_TRY_URL = "https://cat.agilemorph.in/home";
