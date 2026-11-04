@@ -20,6 +20,7 @@ import type { BlogIndexPage, BlogPostSummary } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
   title: "Blog",
+  alternates: { canonical: "/blog" },
   description:
     "View the latest stories, insights and development experiences from AgileMorph.",
 };

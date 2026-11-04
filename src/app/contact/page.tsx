@@ -11,6 +11,7 @@ import type { ContactPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
   title: "Contact Us",
+  alternates: { canonical: "/contact" },
   description: "Get in touch with AgileMorph Solutions.",
 };
 

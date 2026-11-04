@@ -57,6 +57,7 @@ export async function generateMetadata({
   return seoToMetadata(servicePage.seo, {
     title: getServiceLabel(slug, servicePage.title),
     description: servicePage.description,
+    alternates: { canonical: `/services/${slug}` },
   });
 }
 

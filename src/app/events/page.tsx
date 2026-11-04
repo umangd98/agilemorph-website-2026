@@ -8,7 +8,8 @@ import MAICONConImage from "../../../media/events/MAICON.png";
 
 
 export const metadata: Metadata = {
-  title: "Events | AgileMorph",
+  title: "Events",
+  alternates: { canonical: "/events" },
   description:
     "Meet AgileMorph at the events shaping the future of AI, automation, and digital marketing.",
 };

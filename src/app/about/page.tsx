@@ -19,6 +19,7 @@ import type { AboutPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
   title: "About Us",
+  alternates: { canonical: "/about" },
   description:
     "Empowering businesses with agile solutions, innovative technology, and a customer-first approach.",
 };
