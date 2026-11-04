@@ -10,7 +10,6 @@ import {
   HeroSection,
   PartnersSection,
   ProcessSection,
-  RecentEventsSection,
   ServicesSection,
   StatsSection,
   TestimonialsSection,
@@ -120,7 +119,6 @@ export default async function HomePage() {
           items={homepage.integrations?.items}
         />
         <CATVideoSection />
-        <RecentEventsSection />
         <Suspense fallback={null}>
           <BelowFoldSections />
         </Suspense>

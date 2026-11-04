@@ -1,6 +1,7 @@
 import { cache } from "react";
 import {
   Bot,
+  Calculator,
   FileText,
   ClipboardCheck,
   Globe,
@@ -115,6 +116,7 @@ const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
   "ai-audit": ClipboardCheck,
   "shopify-automation": ShoppingBag,
   "ai-content-management": FileText,
+  "peak-week-calculator": Calculator,
   "web-development": Globe,
   "website-development": Globe,
   "digital-marketing": TrendingUp,
