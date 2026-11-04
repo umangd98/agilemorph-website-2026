@@ -1,0 +1,128 @@
+.peak-week {
+  --paper: #F1F4F2;
+  --sheet: #FFFFFF;
+  --sheet-2: #F7F9F8;
+  --ink: #15191B;
+  --muted: #5C6560;
+  --line: #DCE2DE;
+  --green: #0B7A5B;
+  --green-bright: #0EA47A;
+  --green-soft: #DDF3EA;
+  --amber: #8A5A00;
+  --amber-soft: #FFF3D6;
+  --bar-muted: #C9D1CD;
+  --hand: #0B7A5B;
+  --f-display: var(--font-peak-display), "Arial Narrow", system-ui, sans-serif;
+  --f-body: var(--font-peak-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: var(--font-peak-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-hand: var(--font-peak-hand), "Comic Sans MS", cursive;
+}
+.peak-week * { box-sizing: border-box; }
+.peak-week {
+  background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+}
+.peak-week .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; }
+.peak-week header { display: grid; gap: 14px; }
+.peak-week .eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.peak-week h1 { font-family: var(--f-display); font-stretch: 80%; font-weight: 800; font-size: clamp(34px, 6vw, 60px); line-height: 1; margin: 0; letter-spacing: -.01em; text-wrap: balance; max-width: 18ch; }
+.peak-week .lede { margin: 0; color: var(--muted); font-size: 17px; max-width: 62ch; }
+.peak-week .hand { font-family: var(--f-hand); font-weight: 700; color: var(--hand); font-size: 26px; line-height: 1.1; }
+
+.peak-week .tabs { display: flex; gap: 6px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.peak-week .tab { font: 600 15px var(--f-body); color: var(--muted); background: transparent; border: 0; border-bottom: 3px solid transparent; padding: 12px 14px 10px; cursor: pointer; }
+.peak-week .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--green-bright); }
+.peak-week .tab:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 2px; border-radius: 4px; }
+.peak-week .tab small { font-family: var(--f-mono); font-weight: 400; font-size: 11px; color: var(--muted); margin-left: 6px; }
+
+.peak-week .grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 860px) { .peak-week .grid { grid-template-columns: minmax(0, 1fr); } }
+.peak-week .panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 18px; min-width: 0; }
+.peak-week .panel h2 { font-family: var(--f-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.peak-week .field { display: grid; gap: 6px; }
+.peak-week .field label { font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; gap: 12px; }
+.peak-week .field label span { font-family: var(--f-mono); font-weight: 400; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.peak-week input[type="number"] {
+  width: 100%; font: 500 17px/1.2 var(--f-mono); color: var(--ink); background: var(--sheet-2);
+  border: 1px solid var(--line); border-radius: 7px; padding: 10px 12px; font-variant-numeric: tabular-nums;
+}
+.peak-week input[type="number"]:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 1px; }
+.peak-week .field small, .peak-week .fine { color: var(--muted); font-size: 13px; }
+.peak-week .fine { margin: 0; }
+
+.peak-week .big { font-family: var(--f-display); font-stretch: 75%; font-weight: 800; font-size: clamp(56px, 10vw, 96px); line-height: .9; color: var(--green); font-variant-numeric: tabular-nums; }
+.peak-week .big small { font-size: .38em; color: var(--ink); font-stretch: 85%; margin-left: 6px; }
+.peak-week .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+@media (max-width: 560px) { .peak-week .stats { grid-template-columns: minmax(0, 1fr); } }
+.peak-week .stat { background: var(--sheet); padding: 14px 16px; display: grid; gap: 2px; }
+.peak-week .stat b { font-family: var(--f-display); font-stretch: 85%; font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.peak-week .stat span { font-size: 13px; color: var(--muted); }
+.peak-week .callout { background: var(--green-soft); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.peak-week .callout h3 { margin: 0; font-family: var(--f-display); font-stretch: 85%; font-size: 23px; font-weight: 700; color: var(--green); text-wrap: balance; font-variant-numeric: tabular-nums; }
+.peak-week .callout p { margin: 0; font-size: 14px; }
+.peak-week .warn { background: var(--amber-soft); color: var(--amber); border-radius: 8px; padding: 8px 12px; font-size: 13px; }
+
+/* ticket mix table */
+.peak-week .mix-wrap { overflow-x: auto; }
+.peak-week table.mix { width: 100%; border-collapse: collapse; min-width: 560px; }
+.peak-week .mix th { text-align: left; font: 500 12px var(--f-mono); letter-spacing: .04em; color: var(--muted); padding: 8px 8px; border-bottom: 1px solid var(--line); }
+.peak-week .mix td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.peak-week .mix td:first-child { font-weight: 600; font-size: 15px; }
+.peak-week .mix td input { padding: 8px 10px; font-size: 15px; max-width: 96px; }
+.peak-week .mix tfoot td { font-family: var(--f-mono); font-size: 13px; color: var(--muted); border-bottom: 0; }
+
+/* bars */
+.peak-week .bars { display: grid; gap: 10px; }
+.peak-week .brow { display: grid; grid-template-columns: 150px minmax(0, 1fr) 70px; gap: 12px; align-items: center; font-size: 14px; }
+@media (max-width: 560px) { .peak-week .brow { grid-template-columns: 104px minmax(0, 1fr) 56px; font-size: 13px; } }
+.peak-week .brow .val { font-family: var(--f-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.peak-week .track { height: 18px; background: var(--sheet-2); border-radius: 4px; position: relative; overflow: hidden; }
+.peak-week .fill { position: absolute; inset: 0 auto 0 0; background: var(--bar-muted); border-radius: 4px; transition: width .3s ease; }
+.peak-week .fill.auto { background: var(--green-bright); }
+.peak-week .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.peak-week .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; }
+
+/* day columns */
+.peak-week .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end; height: 190px; }
+.peak-week .day { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; text-align: center; min-width: 0; }
+.peak-week .day .col { align-self: end; background: var(--green-bright); border-radius: 6px 6px 2px 2px; transition: height .3s ease; min-height: 4px; }
+.peak-week .day .col.quiet { background: var(--bar-muted); }
+.peak-week .day b { font-family: var(--f-display); font-stretch: 85%; font-size: 22px; line-height: 1; }
+.peak-week .day span { font-family: var(--f-mono); font-size: 11px; color: var(--muted); line-height: 1.2; min-height: 2.4em; }
+.peak-week .weights { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.peak-week .weights input { padding: 6px; font-size: 13px; text-align: center; }
+
+/* playbook */
+.peak-week .phase { display: grid; gap: 12px; }
+.peak-week .phase h2 { font-family: var(--f-display); font-stretch: 85%; font-size: 26px; font-weight: 700; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0; }
+.peak-week .phase .when { font-family: var(--f-mono); font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.peak-week .tips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .peak-week .tips { grid-template-columns: minmax(0, 1fr); } }
+.peak-week .tip { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
+.peak-week .tips > .tip:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.peak-week .tip .n { font-family: var(--f-mono); font-size: 12px; color: var(--green); }
+.peak-week .tip h3 { margin: 0; font-size: 18px; line-height: 1.3; text-wrap: balance; }
+.peak-week .tip p { margin: 0; font-size: 15px; color: var(--muted); }
+.peak-week .tip p b { color: var(--ink); font-weight: 600; }
+.peak-week .chip { justify-self: start; font-family: var(--f-mono); font-size: 11px; background: var(--sheet-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; color: var(--muted); }
+.peak-week .templates { display: grid; gap: 14px; }
+.peak-week .tpl { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; min-width: 0; }
+.peak-week .tpl-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.peak-week .tpl h3 { margin: 0; font-size: 17px; }
+.peak-week .tpl pre { margin: 0; white-space: pre-wrap; font: 15px/1.55 var(--f-body); background: var(--sheet-2); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+
+.peak-week button.btn { font: 600 14px var(--f-body); border-radius: 7px; padding: 9px 14px; cursor: pointer; border: 1px solid var(--ink); background: var(--ink); color: var(--sheet); }
+.peak-week button.btn.ghost { background: transparent; color: var(--ink); }
+.peak-week button.btn:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 2px; }
+.peak-week .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.peak-week .ok { font-size: 13px; color: var(--green); }
+.peak-week textarea.fallback { width: 100%; font: 13px/1.4 var(--f-mono); padding: 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--sheet-2); color: var(--ink); }
+
+.peak-week footer { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 14px; max-width: 72ch; }
+.peak-week footer strong { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .peak-week .fill, .peak-week .day .col { transition: none; } }
+
+/* The tool's views toggle with the hidden attribute; some also set display inline. */
+.peak-week [hidden] { display: none !important; }
+.peak-week footer a { color: var(--green); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }

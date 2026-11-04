@@ -28,9 +28,11 @@ const defaultNavLinks: NavLink[] = [
   { label: "Events", href: "/events" },
 ];
 
+type LinkMenuKey = "products" | "resources";
+
 type NavItem = NavLink & {
   children?: true;
-  type?: "services" | "products";
+  type?: "services" | LinkMenuKey;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -46,6 +48,41 @@ const PRODUCT_LINKS: ServiceNavLink[] = [
     isNew: true,
   },
 ];
+
+const RESOURCE_LINKS: ServiceNavLink[] = [
+  {
+    slug: "peak-week-calculator",
+    label: "Peak Week Calculator",
+    href: "/resources/peak-week-calculator",
+    desc: "Plan Black Friday support hours, day by day",
+    isNew: true,
+  },
+];
+
+const LINK_MENUS: Record<
+  LinkMenuKey,
+  {
+    label: string;
+    heading: string;
+    links: ServiceNavLink[];
+    panelMarginLeft?: string;
+  }
+> = {
+  products: {
+    label: "Products",
+    heading: "AI-powered products",
+    links: PRODUCT_LINKS,
+    panelMarginLeft: "clamp(40px, 10vw, 100px)",
+  },
+  resources: {
+    label: "Resources",
+    heading: "Free tools and playbooks",
+    links: RESOURCE_LINKS,
+  },
+};
+
+const isLinkMenuKey = (type: NavItem["type"]): type is LinkMenuKey =>
+  type === "products" || type === "resources";
 
 /* -------------------------------------------------------------------------- */
 /* Shared Service/Product Row                                                  */
@@ -271,6 +308,13 @@ export function Navbar({
     },
 
     {
+      label: "Resources",
+      href: "#",
+      type: "resources",
+      children: true,
+    },
+
+    {
       label: "Events",
       href: "/events",
     },
@@ -280,17 +324,16 @@ export function Navbar({
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
+  const [openLinkMenu, setOpenLinkMenu] = useState<LinkMenuKey | null>(null);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const pathname = usePathname();
 
   const servicesDropdownRef = useRef<HTMLLIElement>(null);
-  const productsDropdownRef = useRef<HTMLLIElement>(null);
 
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const productsCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(
+  const linkMenuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
 
@@ -305,10 +348,10 @@ export function Navbar({
     }
   };
 
-  const clearProductsCloseTimer = () => {
-    if (productsCloseTimer.current) {
-      clearTimeout(productsCloseTimer.current);
-      productsCloseTimer.current = null;
+  const clearLinkMenuCloseTimer = () => {
+    if (linkMenuCloseTimer.current) {
+      clearTimeout(linkMenuCloseTimer.current);
+      linkMenuCloseTimer.current = null;
     }
   };
 
@@ -321,30 +364,30 @@ export function Navbar({
     }, 150);
   };
 
-  const scheduleProductsClose = () => {
-    clearProductsCloseTimer();
+  const scheduleLinkMenuClose = () => {
+    clearLinkMenuCloseTimer();
 
-    productsCloseTimer.current = setTimeout(() => {
-      setProductsOpen(false);
+    linkMenuCloseTimer.current = setTimeout(() => {
+      setOpenLinkMenu(null);
     }, 150);
   };
 
   const openServicesMenu = () => {
     clearMenuCloseTimer();
-    setProductsOpen(false);
+    setOpenLinkMenu(null);
     setServicesOpen(true);
   };
 
-  const openProductsMenu = () => {
-    clearProductsCloseTimer();
+  const openLinkMenuNow = (key: LinkMenuKey) => {
+    clearLinkMenuCloseTimer();
     setServicesOpen(false);
     setAiPanelOpen(false);
-    setProductsOpen(true);
+    setOpenLinkMenu(key);
   };
 
   const closeMenus = () => {
     setServicesOpen(false);
-    setProductsOpen(false);
+    setOpenLinkMenu(null);
     setAiPanelOpen(false);
     setMenuOpen(false);
   };
@@ -385,11 +428,8 @@ export function Navbar({
         setAiPanelOpen(false);
       }
 
-      if (
-        productsDropdownRef.current &&
-        !productsDropdownRef.current.contains(target)
-      ) {
-        setProductsOpen(false);
+      if (!(target as Element).closest?.("[data-link-menu]")) {
+        setOpenLinkMenu(null);
       }
     };
 
@@ -407,7 +447,7 @@ export function Navbar({
   useEffect(() => {
     return () => {
       clearMenuCloseTimer();
-      clearProductsCloseTimer();
+      clearLinkMenuCloseTimer();
     };
   }, []);
 
@@ -418,7 +458,7 @@ export function Navbar({
   useEffect(() => {
     setMenuOpen(false);
     setServicesOpen(false);
-    setProductsOpen(false);
+    setOpenLinkMenu(null);
     setAiPanelOpen(false);
   }, [pathname]);
 
@@ -437,9 +477,8 @@ export function Navbar({
     (primary && isLinkActive(primary.href)) ||
     aiAutomationSubs.some((sub) => isLinkActive(sub.href));
 
-  const isProductRoute = PRODUCT_LINKS.some((product) =>
-    isLinkActive(product.href),
-  );
+  const isLinkMenuRoute = (key: LinkMenuKey) =>
+    LINK_MENUS[key].links.some((item) => isLinkActive(item.href));
 
   /* ------------------------------------------------------------------------ */
   /* AI panel state                                                            */
@@ -476,110 +515,111 @@ export function Navbar({
             {/* Desktop Navigation                                               */}
             {/* ---------------------------------------------------------------- */}
 
-            <ul className="hidden items-center gap-1 md:flex">
+            <ul className="hidden items-center gap-1 xl:flex">
               {navItems.map((link) => {
                 const isServices = link.type === "services";
-                const isProducts = link.type === "products";
+                const linkMenuKey = isLinkMenuKey(link.type) ? link.type : null;
 
                 const isActive =
                   isServices
                     ? pathname.startsWith("/services")
-                    : isProducts
-                      ? isProductRoute
+                    : linkMenuKey
+                      ? isLinkMenuRoute(linkMenuKey)
                       : pathname.startsWith(link.href);
 
                 /* ------------------------------------------------------------ */
-                /* Products                                                      */
+                /* Products and Resources                                        */
                 /* ------------------------------------------------------------ */
 
-                if (isProducts) {
+                if (linkMenuKey) {
+                  const menu = LINK_MENUS[linkMenuKey];
+                  const menuOpenNow = openLinkMenu === linkMenuKey;
+                  const closeThisMenu = () => setOpenLinkMenu(null);
+
                   return (
                     <li
-                      key="products"
+                      key={linkMenuKey}
                       className="relative"
-                      ref={productsDropdownRef}
-                      onMouseEnter={openProductsMenu}
-                      onMouseLeave={scheduleProductsClose}
+                      data-link-menu
+                      onMouseEnter={() => openLinkMenuNow(linkMenuKey)}
+                      onMouseLeave={scheduleLinkMenuClose}
                     >
                       <div
                         className={`flex items-center rounded-full transition-colors duration-200 ${
-                          productsOpen || isActive
+                          menuOpenNow || isActive
                             ? "text-fg"
                             : "text-fg-muted hover:text-fg"
                         }`}
                       >
                         <button
                           type="button"
-                          onClick={() =>
-                            setProductsOpen((value) => {
-                              const next = !value;
-
-                              if (next) {
-                                setServicesOpen(false);
-                                setAiPanelOpen(false);
-                              }
-
-                              return next;
-                            })
-                          }
-                          aria-expanded={productsOpen}
+                          onClick={(event) => {
+                            setServicesOpen(false);
+                            setAiPanelOpen(false);
+                            // Hover has already opened it for a mouse, so a
+                            // mouse click must not close it again. Only keyboard
+                            // clicks (detail 0) toggle.
+                            setOpenLinkMenu(
+                              event.detail === 0 && menuOpenNow
+                                ? null
+                                : linkMenuKey,
+                            );
+                          }}
+                          aria-expanded={menuOpenNow}
                           aria-haspopup="true"
                           className="flex items-center gap-1.5 rounded-lg px-4 py-2 font-body text-sm font-medium"
                         >
-                          Products
+                          {menu.label}
 
                           <ChevronDown
                             size={13}
                             className={`mt-px opacity-70 transition-transform duration-300 ${
-                              productsOpen ? "rotate-180" : ""
+                              menuOpenNow ? "rotate-180" : ""
                             }`}
                           />
                         </button>
                       </div>
 
-                      {/* Products Dropdown */}
                       <div
-  className="absolute left-1/2 top-full z-50 mt-2"
-  onMouseEnter={openProductsMenu}
-  style={{
-    marginLeft: "clamp(40px, 10vw, 100px)",
-    opacity: productsOpen ? 1 : 0,
-    transform: productsOpen
-      ? "translate(-50%, 0) scale(1)"
-      : "translate(-50%, -6px) scale(0.97)",
-    pointerEvents: productsOpen ? "auto" : "none",
-    transition:
-      "opacity 200ms ease, transform 200ms ease, margin-left 200ms ease",
-  }}
->
+                        className="absolute left-1/2 top-full z-50 mt-2"
+                        onMouseEnter={() => openLinkMenuNow(linkMenuKey)}
+                        style={{
+                          marginLeft: menu.panelMarginLeft,
+                          opacity: menuOpenNow ? 1 : 0,
+                          transform: menuOpenNow
+                            ? "translate(-50%, 0) scale(1)"
+                            : "translate(-50%, -6px) scale(0.97)",
+                          pointerEvents: menuOpenNow ? "auto" : "none",
+                          transition:
+                            "opacity 200ms ease, transform 200ms ease, margin-left 200ms ease",
+                        }}
+                      >
                         <div className="w-[420px] overflow-hidden rounded-2xl border border-border bg-background shadow-2xl shadow-black/10">
                           <div className="p-2">
                             <div className="px-3 pb-2 pt-2">
                               <p className="font-body text-[10px] font-bold uppercase tracking-widest text-primary">
-                                Products
+                                {menu.label}
                               </p>
 
                               <p className="mt-0.5 font-heading text-sm font-bold text-foreground">
-                                AI-powered products
+                                {menu.heading}
                               </p>
                             </div>
 
                             <div className="border-t border-border/70 pt-2">
-                              {PRODUCT_LINKS.map((product) => (
+                              {menu.links.map((item) => (
                                 <ServiceLinkRow
-                                  key={product.href}
-                                  link={product}
-                                  active={isLinkActive(product.href)}
+                                  key={item.href}
+                                  link={item}
+                                  active={isLinkActive(item.href)}
                                   showArrow
-                                  onNavigate={() => setProductsOpen(false)}
+                                  onNavigate={closeThisMenu}
                                 />
                               ))}
                             </div>
                           </div>
 
-                          <ProductsDropdownFooter
-                            onNavigate={() => setProductsOpen(false)}
-                          />
+                          <ProductsDropdownFooter onNavigate={closeThisMenu} />
                         </div>
                       </div>
                     </li>
@@ -618,7 +658,7 @@ export function Navbar({
                           type="button"
                           onClick={() => {
                             setServicesOpen((value) => !value);
-                            setProductsOpen(false);
+                            setOpenLinkMenu(null);
                           }}
                           aria-expanded={servicesOpen}
                           aria-haspopup="true"
@@ -787,7 +827,7 @@ export function Navbar({
             {/* ---------------------------------------------------------------- */}
             {/* Desktop CTA                                                       */}
 
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 xl:flex">
               <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95">
                 Get In Touch
 
@@ -801,10 +841,10 @@ export function Navbar({
             {/* ---------------------------------------------------------------- */}
             {/* Mobile Toggle                                                     */}
 
-            <div className="flex items-center gap-1 md:hidden">
+            <div className="flex items-center gap-1 xl:hidden">
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg md:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg xl:hidden"
                 onClick={() => setMenuOpen((value) => !value)}
                 aria-expanded={menuOpen}
                 aria-label="Toggle menu"
@@ -821,7 +861,7 @@ export function Navbar({
       {/* ====================================================================== */}
 
       <div
-        className="fixed inset-0 z-40 md:hidden"
+        className="fixed inset-0 z-40 xl:hidden"
         style={{
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? "auto" : "none",
@@ -861,62 +901,65 @@ export function Navbar({
           <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
             {navItems.map((link) => {
               const isServices = link.type === "services";
-              const isProducts = link.type === "products";
+              const linkMenuKey = isLinkMenuKey(link.type) ? link.type : null;
 
               const isActive =
                 isServices
                   ? pathname.startsWith("/services")
-                  : isProducts
-                    ? isProductRoute
+                  : linkMenuKey
+                    ? isLinkMenuRoute(linkMenuKey)
                     : pathname.startsWith(link.href);
 
               /* -------------------------------------------------------------- */
-              /* Mobile Products                                                 */
+              /* Mobile Products and Resources                                   */
               /* -------------------------------------------------------------- */
 
-              if (isProducts) {
+              if (linkMenuKey) {
+                const menu = LINK_MENUS[linkMenuKey];
+                const menuOpenNow = openLinkMenu === linkMenuKey;
+
                 return (
-                  <div key="mobile-products">
+                  <div key={`mobile-${linkMenuKey}`} data-link-menu>
                     <div className="flex items-center gap-1">
                       <button
                         type="button"
                         onClick={() =>
-                          setProductsOpen((value) => !value)
+                          setOpenLinkMenu(menuOpenNow ? null : linkMenuKey)
                         }
-                        aria-expanded={productsOpen}
+                        aria-expanded={menuOpenNow}
                         className={`flex flex-1 items-center justify-between rounded-xl px-4 py-3 font-body text-sm font-semibold transition-colors ${
                           isActive
                             ? "bg-primary/8 text-primary"
                             : "text-foreground hover:bg-muted"
                         }`}
                       >
-                        <span>Products</span>
+                        <span>{menu.label}</span>
 
                         <ChevronDown
                           size={14}
                           className={`transition-transform duration-200 ${
-                            productsOpen ? "rotate-180" : ""
+                            menuOpenNow ? "rotate-180" : ""
                           }`}
                         />
                       </button>
                     </div>
 
-                    {productsOpen ? (
+                    {menuOpenNow ? (
                       <div className="ml-2 mt-1 space-y-1 border-l-2 border-primary/20 pl-3">
                         <p className="px-3 pb-1 pt-2 font-body text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                          Products
+                          {menu.label}
                         </p>
 
-                        {PRODUCT_LINKS.map((product) => {
-                          const Icon = getServiceIcon(product.slug);
+                        {menu.links.map((item) => {
+                          const Icon = getServiceIcon(item.slug);
 
                           return (
                             <Link
-                              key={product.href}
-                              href={product.href}
+                              key={item.href}
+                              href={item.href}
                               onClick={closeMenus}
                               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 font-body text-sm transition-colors ${
-                                isLinkActive(product.href)
+                                isLinkActive(item.href)
                                   ? "bg-primary/8 font-semibold text-primary"
                                   : "text-muted-foreground hover:bg-primary/5 hover:text-primary"
                               }`}
@@ -927,11 +970,11 @@ export function Navbar({
 
                               <span className="flex min-w-0 flex-col">
                                 <span className="font-semibold">
-                                  {product.label}
+                                  {item.label}
                                 </span>
 
                                 <span className="text-xs text-muted-foreground">
-                                  {product.desc}
+                                  {item.desc}
                                 </span>
                               </span>
                             </Link>
