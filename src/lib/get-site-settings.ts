@@ -11,15 +11,9 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings | null> => {
   });
 });
 
-export const DEFAULT_NAV_LINKS: NavLink[] = [
-  { label: "About", href: "/about" },
-  { label: "Blogs", href: "/blog" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact", href: "/contact" },
-];
-
 export const DEFAULT_FOOTER_QUICK_LINKS: NavLink[] = [
   { label: "About Us", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
