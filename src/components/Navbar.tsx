@@ -17,23 +17,23 @@ import type { NavLink } from "@/sanity/types";
 
 type NavbarProps = {
   serviceGroups: ServiceNavGroups;
-  navLinks?: NavLink[];
 };
-
-const defaultNavLinks: NavLink[] = [
-  { label: "About", href: "/about" },
-  { label: "Blogs", href: "/blog" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact", href: "/contact" },
-  { label: "Events", href: "/events" },
-];
 
 type LinkMenuKey = "products" | "resources";
 
 type NavItem = NavLink & {
-  children?: true;
   type?: "services" | LinkMenuKey;
 };
+
+// Ordered the way a buyer decides. Contact lives in the footer and behind the
+// Book a Call button; Blog and Events live under Resources.
+const NAV_ITEMS: NavItem[] = [
+  { label: "Services", href: "/services", type: "services" },
+  { label: "Products", href: "#", type: "products" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Resources", href: "#", type: "resources" },
+  { label: "About", href: "/about" },
+];
 
 /* -------------------------------------------------------------------------- */
 /* Product configuration                                                       */
@@ -57,6 +57,18 @@ const RESOURCE_LINKS: ServiceNavLink[] = [
     desc: "Plan Black Friday support hours, day by day",
     isNew: true,
   },
+  {
+    slug: "blog",
+    label: "Blog",
+    href: "/blog",
+    desc: "Practical guides on AI automation and operations",
+  },
+  {
+    slug: "events",
+    label: "Events",
+    href: "/events",
+    desc: "Where to meet the AgileMorph team",
+  },
 ];
 
 const LINK_MENUS: Record<
@@ -65,18 +77,16 @@ const LINK_MENUS: Record<
     label: string;
     heading: string;
     links: ServiceNavLink[];
-    panelMarginLeft?: string;
   }
 > = {
   products: {
     label: "Products",
     heading: "AI-powered products",
     links: PRODUCT_LINKS,
-    panelMarginLeft: "clamp(40px, 10vw, 100px)",
   },
   resources: {
     label: "Resources",
-    heading: "Free tools and playbooks",
+    heading: "Tools, guides and events",
     links: RESOURCE_LINKS,
   },
 };
@@ -244,10 +254,10 @@ function ServicesDropdownFooter({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Products Footer                                                             */
+/* Products and Resources Footer                                               */
 /* -------------------------------------------------------------------------- */
 
-function ProductsDropdownFooter({
+function LinkMenuFooter({
   onNavigate,
 }: {
   onNavigate: () => void;
@@ -272,55 +282,8 @@ function ProductsDropdownFooter({
 /* Navbar                                                                      */
 /* -------------------------------------------------------------------------- */
 
-export function Navbar({
-  serviceGroups,
-  navLinks = defaultNavLinks,
-}: NavbarProps) {
+export function Navbar({ serviceGroups }: NavbarProps) {
   const { primary, aiAutomationSubs, additional } = serviceGroups;
-
-  const links = navLinks.length > 0 ? navLinks : defaultNavLinks;
-
-  const contactLink =
-    links.find((link) => link.href === "/contact") ??
-    links[links.length - 1];
-
-  const linksBeforeServices = links.filter(
-    (link) =>
-      link.href !== contactLink?.href &&
-      link.href !== "/events",
-  );
-
-  const navItems: NavItem[] = [
-    ...linksBeforeServices,
-
-    {
-      label: "Products",
-      href: "#",
-      type: "products",
-      children: true,
-    },
-
-    {
-      label: "Services",
-      href: "/services",
-      type: "services",
-      children: true,
-    },
-
-    {
-      label: "Resources",
-      href: "#",
-      type: "resources",
-      children: true,
-    },
-
-    {
-      label: "Events",
-      href: "/events",
-    },
-
-    ...(contactLink ? [contactLink] : []),
-  ];
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -515,8 +478,8 @@ export function Navbar({
             {/* Desktop Navigation                                               */}
             {/* ---------------------------------------------------------------- */}
 
-            <ul className="hidden items-center gap-1 xl:flex">
-              {navItems.map((link) => {
+            <ul className="hidden items-center gap-1 lg:flex">
+              {NAV_ITEMS.map((link) => {
                 const isServices = link.type === "services";
                 const linkMenuKey = isLinkMenuKey(link.type) ? link.type : null;
 
@@ -584,14 +547,13 @@ export function Navbar({
                         className="absolute left-1/2 top-full z-50 mt-2"
                         onMouseEnter={() => openLinkMenuNow(linkMenuKey)}
                         style={{
-                          marginLeft: menu.panelMarginLeft,
                           opacity: menuOpenNow ? 1 : 0,
                           transform: menuOpenNow
                             ? "translate(-50%, 0) scale(1)"
                             : "translate(-50%, -6px) scale(0.97)",
                           pointerEvents: menuOpenNow ? "auto" : "none",
                           transition:
-                            "opacity 200ms ease, transform 200ms ease, margin-left 200ms ease",
+                            "opacity 200ms ease, transform 200ms ease",
                         }}
                       >
                         <div className="w-[420px] overflow-hidden rounded-2xl border border-border bg-background shadow-2xl shadow-black/10">
@@ -619,7 +581,7 @@ export function Navbar({
                             </div>
                           </div>
 
-                          <ProductsDropdownFooter onNavigate={closeThisMenu} />
+                          <LinkMenuFooter onNavigate={closeThisMenu} />
                         </div>
                       </div>
                     </li>
@@ -656,8 +618,12 @@ export function Navbar({
 
                         <button
                           type="button"
-                          onClick={() => {
-                            setServicesOpen((value) => !value);
+                          onClick={(event) => {
+                            // Same rule as the link menus: only keyboard clicks
+                            // toggle, so a mouse click can't undo the hover.
+                            setServicesOpen((value) =>
+                              event.detail === 0 ? !value : true,
+                            );
                             setOpenLinkMenu(null);
                           }}
                           aria-expanded={servicesOpen}
@@ -827,9 +793,9 @@ export function Navbar({
             {/* ---------------------------------------------------------------- */}
             {/* Desktop CTA                                                       */}
 
-            <div className="hidden items-center gap-2 xl:flex">
+            <div className="hidden items-center gap-2 lg:flex">
               <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95">
-                Get In Touch
+                Book a Call
 
                 <ArrowRight
                   size={14}
@@ -841,10 +807,10 @@ export function Navbar({
             {/* ---------------------------------------------------------------- */}
             {/* Mobile Toggle                                                     */}
 
-            <div className="flex items-center gap-1 xl:hidden">
+            <div className="flex items-center gap-1 lg:hidden">
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg xl:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-bg-elevated hover:text-fg lg:hidden"
                 onClick={() => setMenuOpen((value) => !value)}
                 aria-expanded={menuOpen}
                 aria-label="Toggle menu"
@@ -861,7 +827,7 @@ export function Navbar({
       {/* ====================================================================== */}
 
       <div
-        className="fixed inset-0 z-40 xl:hidden"
+        className="fixed inset-0 z-40 lg:hidden"
         style={{
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? "auto" : "none",
@@ -899,7 +865,7 @@ export function Navbar({
 
           {/* Mobile Links */}
           <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
-            {navItems.map((link) => {
+            {NAV_ITEMS.map((link) => {
               const isServices = link.type === "services";
               const linkMenuKey = isLinkMenuKey(link.type) ? link.type : null;
 
@@ -1124,7 +1090,7 @@ export function Navbar({
               className="flex w-full items-center justify-center gap-2 rounded-full bg-signal py-3.5 font-body text-sm font-medium text-bg transition-opacity hover:opacity-90 active:scale-95"
               onBook={() => setMenuOpen(false)}
             >
-              Get In Touch
+              Book a Call
               <ArrowRight size={14} />
             </CalendlyBookButton>
           </div>
