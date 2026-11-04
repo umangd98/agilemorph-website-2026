@@ -5,6 +5,7 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
 import {
+  CATVideoSection,
   FaqSection,
   HeroSection,
   PartnersSection,
@@ -117,6 +118,7 @@ export default async function HomePage() {
           heading={homepage.integrations?.heading}
           items={homepage.integrations?.items}
         />
+        <CATVideoSection />
         <Suspense fallback={null}>
           <BelowFoldSections />
         </Suspense>

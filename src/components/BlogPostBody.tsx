@@ -1,5 +1,7 @@
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 
+import { DiagramBlock, type DiagramValue } from "@/components/blog/DiagramBlock";
+
 import type { SanityImageAsset } from "@/sanity/types";
 
 type PortableTextBlock = {
@@ -9,6 +11,9 @@ type PortableTextBlock = {
 };
 
 const components: PortableTextComponents = {
+  types: {
+    diagram: ({ value }: { value: DiagramValue }) => <DiagramBlock value={value} />,
+  },
   block: {
     h2: ({ children }) => (
       <h2 className="mb-4 mt-10 font-heading text-3xl font-bold text-foreground">

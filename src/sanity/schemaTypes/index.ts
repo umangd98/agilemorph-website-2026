@@ -4,6 +4,7 @@ import { blogPost } from "./blogPost";
 import { capabilityItem } from "./capabilityItem";
 import { companyValue } from "./companyValue";
 import { contactPage } from "./contactPage";
+import { diagram, diagramColumn, diagramStep } from "./diagram";
 import { ctaButton } from "./ctaButton";
 import { faqItem } from "./faqItem";
 import { flowStep } from "./flowStep";
@@ -43,6 +44,9 @@ export const schemaTypes = [
   teamLeadItem,
   faqItem,
   flowStep,
+  diagramStep,
+  diagramColumn,
+  diagram,
   statItem,
   useCaseItem,
   companyValue,

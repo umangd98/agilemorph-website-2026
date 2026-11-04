@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { BlogPostBody } from "@/components/BlogPostBody";
 import { Container } from "@/components/Container";
 import { SanityImage } from "@/components/SanityImage";
+import { GeneratedCover } from "@/components/blog/GeneratedCover";
 import type { BlogPost } from "@/sanity/types";
 
 type BlogPostSectionProps = {
@@ -63,7 +64,16 @@ export function BlogPostSection({ post }: BlogPostSectionProps) {
               className="object-cover"
             />
           </div>
-        ) : null}
+        ) : (
+          <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-surface">
+            <GeneratedCover
+              slug={post.slug}
+              priority
+              sizes="(max-width: 1024px) 100vw, 900px"
+              className="object-cover object-left"
+            />
+          </div>
+        )}
 
         {post.excerpt ? (
           <p className="mb-8 max-w-3xl font-body text-lg leading-relaxed text-muted-foreground">
