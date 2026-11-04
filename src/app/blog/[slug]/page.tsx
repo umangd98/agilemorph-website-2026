@@ -52,6 +52,7 @@ export async function generateMetadata({
     {
       title: post.title,
       description: post.excerpt,
+      alternates: { canonical: `/blog/${slug}` },
     },
     shareImage,
   );

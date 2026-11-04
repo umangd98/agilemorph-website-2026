@@ -7,7 +7,8 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { CAT_TRY_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: "AI Content Management Platform for Agencies & Teams | AgileMorph",
+  title: "AI Content Management Platform for Agencies & Teams",
+  alternates: { canonical: "/products/ai-content-management-tool" },
   description:
     "Turn hours of content work into minutes with CAT, an AI-powered content automation system built for agencies and teams.",
 };

@@ -8,6 +8,7 @@ import { seoToMetadata } from "@/lib/seo";
 
 const fallbackMetadata: Metadata = {
   title: "Pricing | AgileMorph Solutions",
+  alternates: { canonical: "/pricing" },
   description:
     "Straightforward engagements and predictable outcomes. Fixed-scope project pricing and monthly retainer tiers for AI automation and digital operations.",
 };

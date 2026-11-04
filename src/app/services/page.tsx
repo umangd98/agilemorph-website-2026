@@ -12,6 +12,7 @@ import type { ServicesIndexPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
   title: "AI Automation Services",
+  alternates: { canonical: "/services" },
   description:
     "AI automation, AI agents, workflow and CRM integration, messaging, MCP infrastructure, and Shopify automation. Seven specializations, built and deployed.",
 };

@@ -44,7 +44,6 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | AgileMorph",
     },
     description,
-    alternates: { canonical: "/" },
     openGraph: {
       type: "website",
       url: SITE_URL,
