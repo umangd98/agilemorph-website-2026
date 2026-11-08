@@ -20,7 +20,7 @@ export function SubServicePricingSection({ pricing, cta }: SubServicePricingSect
           <div className="grid grid-cols-1 items-center gap-8 rounded-3xl border border-border bg-surface p-8 sm:p-10 lg:grid-cols-[1fr_auto]">
             <div>
               <h2 id="sub-pricing-heading" className="sub-service-section-title text-2xl sm:text-[1.75rem]">
-                Investment
+                How engagements start
               </h2>
               {pricing.detail ? (
                 <p className="sub-service-body mt-4 max-w-2xl">{pricing.detail}</p>
@@ -36,7 +36,7 @@ export function SubServicePricingSection({ pricing, cta }: SubServicePricingSect
                 cta={cta}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-signal px-6 py-3.5 font-body text-sm font-semibold text-bg shadow-lg shadow-primary/20 transition-all hover:opacity-90"
               >
-                Get a Fixed Quote
+                Book a discovery call
                 <ArrowRight size={16} aria-hidden />
               </CtaAction>
             ) : null}

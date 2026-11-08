@@ -15,11 +15,13 @@ const singletonTypes = new Set([
   "blogIndexPage",
   "servicesIndexPage",
   "siteSettings",
+  "howWeWorkPage",
+  "caseStudiesIndexPage",
 ]);
 
 export default defineConfig({
   name: "agilemorph-site",
-  title: "AgileMorph",
+  title: "Agilemorph",
   basePath: "/studio",
   projectId,
   dataset,
@@ -97,7 +99,26 @@ export default defineConfig({
                   .documentId("siteSettings")
                   .title("Site Settings"),
               ),
+            S.listItem()
+              .title("How We Work Page")
+              .id("howWeWorkPage")
+              .child(
+                S.document()
+                  .schemaType("howWeWorkPage")
+                  .documentId("howWeWorkPage")
+                  .title("How We Work Page"),
+              ),
+            S.listItem()
+              .title("Case Studies Index Page")
+              .id("caseStudiesIndexPage")
+              .child(
+                S.document()
+                  .schemaType("caseStudiesIndexPage")
+                  .documentId("caseStudiesIndexPage")
+                  .title("Case Studies Index Page"),
+              ),
             S.divider(),
+            S.documentTypeListItem("caseStudy").title("Case Studies"),
             S.documentTypeListItem("servicePage").title("Service Pages"),
             S.documentTypeListItem("blogPost").title("Blog Posts"),
           ]),

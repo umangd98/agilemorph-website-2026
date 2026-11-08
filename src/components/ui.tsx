@@ -24,7 +24,7 @@ export function Container({
 }
 
 /**
- * Section header — `index / LABEL` in mono with a hairline rule to the edge,
+ * Section header, `index / LABEL` in mono with a hairline rule to the edge,
  * a large tracked-in title, and an optional intro.
  */
 export function SectionHeader({

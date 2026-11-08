@@ -326,6 +326,7 @@ export const aboutPage = defineType({
         }),
       ],
     }),
+    defineField({ name: "founders", title: "Founders", type: "foundersBlock" }),
     defineField({
       name: "seo",
       title: "SEO",

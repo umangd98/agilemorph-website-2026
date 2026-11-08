@@ -51,13 +51,6 @@ const processStepProjection = `{
   image ${imageProjection}
 }`;
 
-const serviceCardProjection = `{
-  title,
-  description,
-  href,
-  icon ${imageProjection}
-}`;
-
 const whyUsItemProjection = `{
   title,
   description,
@@ -182,7 +175,62 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   seo ${seoProjection}
 }`;
 
-export const homepageAboveFoldQuery = `*[_type == "homepage"][0]{
+const cardGridProjection = `{
+  eyebrow,
+  heading,
+  intro,
+  items[]{ title, description, href },
+  closing
+}`;
+
+const comparisonProjection = `{
+  eyebrow,
+  heading,
+  intro,
+  beforeLabel,
+  afterLabel,
+  rows[]{ label, before, after }
+}`;
+
+const phaseProjection = `{
+  eyebrow,
+  heading,
+  intro,
+  phases[]{ title, summary, details, decision, humanInLoop },
+  note,
+  cta ${ctaProjection}
+}`;
+
+const ctaBlockProjection = `{
+  heading,
+  description,
+  button ${ctaProjection},
+  secondaryButton ${ctaProjection},
+  showEmail
+}`;
+
+const foundersProjection = `{
+  eyebrow,
+  heading,
+  intro,
+  members[]{ name, role, tag, bio, points, image ${imageProjection} },
+  note
+}`;
+
+const caseStudySummaryFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  anonymised,
+  headline,
+  summary,
+  tags,
+  status`;
+
+const caseStudySummaryProjection = `{${caseStudySummaryFields}
+}`;
+
+export const homepageAboveFoldQuery = `*[_id == "homepage"][0]{
   _id,
   _type,
   hero {
@@ -200,34 +248,32 @@ export const homepageAboveFoldQuery = `*[_type == "homepage"][0]{
     },
     ctaPrimary ${ctaProjection},
     ctaSecondary ${ctaProjection},
-    image ${imageProjection}
-  },
-  partners {
-    heading,
-    items[] ${partnerItemProjection}
-  },
-  integrations {
-    heading,
-    items[] ${integrationItemProjection}
+    proofPoints,
+    explainer
   },
   seo ${seoProjection}
 }`;
 
-export const homepageBelowFoldQuery = `*[_type == "homepage"][0]{
+export const homepageBelowFoldQuery = `*[_id == "homepage"][0]{
   _id,
   _type,
-  process {
-    heading,
-    subheading,
-    steps[] ${processStepProjection}
-  },
-  services {
+  problem ${cardGridProjection},
+  fde ${comparisonProjection},
+  phases ${phaseProjection},
+  caseStudies {
     eyebrow,
-    heading
-  },
-  whyUs {
     heading,
-    items[] ${whyUsItemProjection},
+    intro,
+    items[]-> ${caseStudySummaryProjection}
+  },
+  founders ${foundersProjection},
+  capabilities ${cardGridProjection},
+  partners {
+    heading,
+    items[] ${partnerItemProjection}
+  },
+  security ${cardGridProjection},
+  whyUs {
     efficiencyCalculator {
       heading,
       description,
@@ -235,19 +281,11 @@ export const homepageBelowFoldQuery = `*[_type == "homepage"][0]{
       ctaLabel
     }
   },
-  stats {
-    eyebrow,
-    heading,
-    items[] ${statProjection}
-  },
-  testimonials {
-    eyebrow,
-    heading,
-    items[] ${testimonialProjection}
-  }
+  clientTypes ${cardGridProjection},
+  finalCta ${ctaBlockProjection}
 }`;
 
-export const aboutPageQuery = `*[_type == "aboutPage"][0]{
+export const aboutPageQuery = `*[_id == "aboutPage"][0]{
   _id,
   _type,
   hero {
@@ -310,6 +348,7 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
     heading,
     items[] ${testimonialProjection}
   },
+  founders ${foundersProjection},
   seo ${seoProjection}
 }`;
 
@@ -550,4 +589,59 @@ export function buildPagedBlogPostsQuery(orderBy: string) {
 
 export const allBlogSlugsQuery = `*[_type == "blogPost" && defined(slug.current)]{
   "slug": slug.current
+}`;
+
+export const howWeWorkPageQuery = `*[_id == "howWeWorkPage"][0]{
+  _id,
+  hero {
+    eyebrow,
+    heading,
+    description,
+    ctaPrimary ${ctaProjection},
+    ctaSecondary ${ctaProjection}
+  },
+  problem ${cardGridProjection},
+  ourRead { eyebrow, heading, body },
+  comparison ${comparisonProjection},
+  phases ${phaseProjection},
+  audit ${cardGridProjection},
+  architecture ${phaseProjection},
+  adoption ${cardGridProjection},
+  engagement {
+    eyebrow,
+    heading,
+    intro,
+    tracks[]{
+      name,
+      audience,
+      steps[]{ title, description, href },
+      note,
+      cta ${ctaProjection}
+    }
+  },
+  security ${cardGridProjection},
+  cta ${ctaBlockProjection},
+  seo ${seoProjection}
+}`;
+
+export const caseStudiesIndexPageQuery = `*[_id == "caseStudiesIndexPage"][0]{
+  _id,
+  hero { eyebrow, heading, description },
+  founderTrack ${cardGridProjection},
+  cta ${ctaBlockProjection},
+  seo ${seoProjection}
+}`;
+
+export const caseStudiesListQuery = `*[_type == "caseStudy" && defined(slug.current)] | order(order asc, title asc) ${caseStudySummaryProjection}`;
+
+export const caseStudyQuery = `*[_type == "caseStudy" && slug.current == $slug][0]{
+${caseStudySummaryFields},
+  context,
+  gap,
+  howWeWorked,
+  whatWeBuilt,
+  outcome,
+  phases[]{ title, description },
+  stack,
+  seo ${seoProjection}
 }`;

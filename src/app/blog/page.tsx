@@ -22,7 +22,7 @@ const fallbackMetadata: Metadata = {
   title: "Blog",
   alternates: { canonical: "/blog" },
   description:
-    "View the latest stories, insights and development experiences from AgileMorph.",
+    "View the latest stories, insights and development experiences from Agilemorph.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {

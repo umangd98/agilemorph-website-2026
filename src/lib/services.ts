@@ -5,6 +5,7 @@ import {
   Calculator,
   FileText,
   ClipboardCheck,
+  Code2,
   Globe,
   MessageSquare,
   Newspaper,
@@ -52,6 +53,7 @@ export const AI_AUTOMATION_SUB_SLUGS = [
   "messaging-automation",
   "ai-audit",
   "shopify-automation",
+  "custom-ai-engineering",
   // "ai-content-management",
 ] as const;
 
@@ -65,15 +67,16 @@ export function isSubServicePage(page: Pick<ServicePage, "layout" | "slug">) {
 }
 
 const NAV_DESC_BY_SLUG: Record<string, string> = {
-  "ai-automation": "Automate workflows with AI",
-  "ai-agents": "Autonomous agents that act",
-  "workflow-automation": "n8n, Make, and Zapier pipelines",
-  "crm-lead-automation": "Capture and follow up on leads",
-  "mcp-ai-infrastructure": "Self-hosted AI infrastructure",
-  "messaging-automation": "WhatsApp, email, and chat automation",
-  "ai-audit": "Find where AI pays off",
-  "shopify-automation": "Orders, inventory, and store flows",
-  "ai-content-management": "AI-powered content workflows for teams",
+  "ai-automation": "Everything we build during an engagement",
+  "ai-agents": "Agents that work inside your systems",
+  "workflow-automation": "Custom code, n8n, Make and Zapier",
+  "crm-lead-automation": "Capture and follow up on every lead",
+  "mcp-ai-infrastructure": "MCP servers and self-hosted AI",
+  "messaging-automation": "WhatsApp, email and chat into your systems",
+  "ai-audit": "Find where AI pays off, scoped small",
+  "shopify-automation": "Orders, inventory and store flows",
+  "custom-ai-engineering": "RAG, voice AI and evals in Python, TypeScript, Java",
+  "ai-content-management": "Content workflows for teams, from our R&D arm",
   "website-development": "Custom websites and web apps",
   "digital-marketing": "Grow your brand online",
   "virtual-assistance": "Dedicated remote support",
@@ -88,6 +91,7 @@ const SERVICE_LABEL_BY_SLUG: Record<string, string> = {
   "messaging-automation": "Messaging Automation",
   "ai-audit": "AI Audit",
   "shopify-automation": "Shopify Automation",
+  "custom-ai-engineering": "Custom AI Engineering",
   "ai-content-management": "CAT",
   "digital-marketing": "Digital Marketing",
   "virtual-assistance": "Virtual Assistance",
@@ -117,6 +121,7 @@ const SERVICE_ICON_BY_SLUG: Record<string, LucideIcon> = {
   "messaging-automation": MessageSquare,
   "ai-audit": ClipboardCheck,
   "shopify-automation": ShoppingBag,
+  "custom-ai-engineering": Code2,
   "ai-content-management": FileText,
   "peak-week-calculator": Calculator,
   blog: Newspaper,
@@ -131,8 +136,11 @@ export function getServiceIcon(slug: string): LucideIcon {
   return SERVICE_ICON_BY_SLUG[slug] ?? Bot;
 }
 
+/** Capability pages live under What we build. The old /services paths 301 here. */
+export const WHAT_WE_BUILD_PATH = "/what-we-build";
+
 export function serviceHref(slug: string) {
-  return `/services/${slug}`;
+  return `${WHAT_WE_BUILD_PATH}/${slug}`;
 }
 
 export function capabilityHref(slug: string) {

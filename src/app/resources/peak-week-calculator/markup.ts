@@ -34,7 +34,7 @@ export const PEAK_WEEK_MARKUP = `<div class="wrap">
       </div>
       <div class="callout">
         <h3>Automation could free <span id="q-save">0</span> hours that week.</h3>
-        <p>That range assumes 34–45% of the work is handled without a person, which is what two AgileMorph builds achieved. The advanced planner lets you set it per ticket type.</p>
+        <p>That range assumes 34–45% of the work is handled without a person, which is what two Agilemorph builds achieved. The advanced planner lets you set it per ticket type.</p>
       </div>
       <p class="hand" style="margin:0">want it day by day? try the advanced planner →</p>
       <div class="actions"><button type="button" class="btn" data-copy="quick">Copy my numbers</button><button type="button" class="btn ghost" data-go="advanced">Open advanced planner</button><span class="ok" hidden></span></div>
@@ -157,7 +157,7 @@ We're keeping an eye on it and will let you know if anything changes.</pre><span
   </section>
 
   <footer>
-    <span><strong>Want these set up for your store?</strong> Send the word PEAK as a LinkedIn message to us at <a href="https://www.linkedin.com/company/agilemorph/" target="_blank" rel="noopener">AgileMorph Solutions</a>, and we'll sketch your support flow on a free 20-minute call.</span>
-    <span>AgileMorph Solutions builds support and ops automation for e-commerce brands in the US and Canada. Nothing you type on this page leaves your browser.</span>
+    <span><strong>Want these set up for your store?</strong> Send the word PEAK as a LinkedIn message to us at <a href="https://www.linkedin.com/company/agilemorph/" target="_blank" rel="noopener">Agilemorph</a>, and we'll sketch your support flow on a free 20-minute call.</span>
+    <span>Agilemorph builds support and ops automation for e-commerce brands in the US and Canada. Nothing you type on this page leaves your browser.</span>
   </footer>
 </div>`;

@@ -1,5 +1,5 @@
 /**
- * Theme-aware line-art for the "AgileMorph Solutions" company-story section.
+ * Theme-aware line-art for the "Agilemorph" company-story section.
  *
  * Matches the "production console" aesthetic of ProcessArtwork: base linework
  * tracks `--color-fg` via `currentColor` (dark on light, light on dark) and the
@@ -24,7 +24,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
         aria-hidden
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* base linework — console window, workflow nodes, chart axes */}
+        {/* base linework, console window, workflow nodes, chart axes */}
         <g
           className={BASE}
           stroke="currentColor"
@@ -39,7 +39,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
           <circle cx="80" cy="71" r="3.5" />
           <circle cx="94" cy="71" r="3.5" />
 
-          {/* left column — workflow nodes */}
+          {/* left column, workflow nodes */}
           <rect x="72" y="104" width="104" height="30" rx="7" />
           <rect x="72" y="150" width="104" height="30" rx="7" />
           <rect x="72" y="196" width="104" height="30" rx="7" />
@@ -54,7 +54,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
           <line x1="124" y1="134" x2="124" y2="150" />
           <line x1="124" y1="180" x2="124" y2="196" />
 
-          {/* right column — chart axes + ticks */}
+          {/* right column, chart axes + ticks */}
           <line x1="214" y1="104" x2="214" y2="210" />
           <line x1="214" y1="210" x2="332" y2="210" />
           <line x1="244" y1="210" x2="244" y2="214" />
@@ -66,7 +66,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
           <line x1="300" y1="252" x2="316" y2="252" opacity="0.55" />
         </g>
 
-        {/* green accents — status pill, done-check, growth curve, spark */}
+        {/* green accents, status pill, done-check, growth curve, spark */}
         <g className={ACCENT}>
           {/* address / status pill */}
           <rect x="250" y="64" width="86" height="12" rx="6" fill="currentColor" opacity="0.9" />
@@ -94,7 +94,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
           />
           <circle cx="326" cy="120" r="4" fill="currentColor" />
 
-          {/* 100% badge */}
+          {/* status badge */}
           <rect x="286" y="98" width="44" height="16" rx="8" fill="currentColor" opacity="0.14" />
           <text
             x="308"
@@ -104,7 +104,7 @@ export function CompanyStoryArtwork({ className = "" }: CompanyStoryArtworkProps
             fontFamily="var(--font-mono)"
             fill="currentColor"
           >
-            100%
+            LIVE
           </text>
 
           {/* spark */}

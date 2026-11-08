@@ -15,6 +15,7 @@ import { AiAutomationCapabilitiesGrid } from "@/components/sections/AiAutomation
 import { getAllServiceSlugs, getServicePage, getSubServiceSiblings } from "@/lib/get-service-page";
 import {
   getServiceLabel,
+  serviceHref,
   isExcludedServiceSlug,
   isSubServicePage,
   PRIMARY_SERVICE_SLUG,
@@ -57,7 +58,7 @@ export async function generateMetadata({
   return seoToMetadata(servicePage.seo, {
     title: getServiceLabel(slug, servicePage.title),
     description: servicePage.description,
-    alternates: { canonical: `/services/${slug}` },
+    alternates: { canonical: serviceHref(slug) },
   });
 }
 

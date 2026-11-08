@@ -355,7 +355,7 @@ export function ServicesEcosystemGraph({
             : "services-ecosystem-graph aspect-[800/880] h-auto w-full min-h-[360px] sm:min-h-[440px] lg:min-h-[520px] xl:min-h-[580px]"
         }
         role="img"
-        aria-label="Interactive AgileMorph service ecosystem graph, select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
+        aria-label="Interactive Agilemorph service ecosystem graph, select a node to explore AI automation, agents, workflow, messaging, CRM, infrastructure, audit, Shopify, marketing, virtual assistance, and web services"
       >
         <defs>
           <pattern id={`graph-grid-${uid}`} width="40" height="40" patternUnits="userSpaceOnUse">

@@ -1,5 +1,12 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+
+import {
+  COMPANY_LEGAL_NAME,
+  COMPANY_LOCATION,
+  CONTACT_EMAIL,
+  FOOTER_TAGLINE,
+} from "@/data/positioning";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { NewsletterForm } from "./NewsletterForm";
@@ -91,7 +98,7 @@ function FooterServices({ groups }: { groups: FooterServiceGroups }) {
 
   return (
     <>
-      <FooterSectionHeading>Services</FooterSectionHeading>
+      <FooterSectionHeading>What we build</FooterSectionHeading>
 
       <div className="space-y-6">
         {primary ? (
@@ -131,7 +138,7 @@ export function Footer({
   quickLinks = [],
   socialLinks = [],
   newsletterHeading = "Newsletter",
-  newsletterDescription = "Stay updated with the latest in digital acceleration.",
+  newsletterDescription = "Practical notes on getting AI used inside real operations.",
 }: FooterProps) {
   const year = new Date().getFullYear();
 
@@ -141,10 +148,18 @@ export function Footer({
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
           <div className="sm:col-span-2 lg:col-span-3">
             <Logo className="mb-5" />
-            <p className="mb-6 max-w-sm font-body text-sm leading-relaxed text-muted-foreground">
-              Empowering modern enterprises with agile digital transformation and innovative
-              AI-driven ecosystems.
+            <p className="mb-5 max-w-sm font-body text-sm leading-relaxed text-muted-foreground">
+              {FOOTER_TAGLINE}
             </p>
+            <address className="mb-6 flex flex-col gap-1.5 font-body text-sm not-italic text-muted-foreground">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="w-fit text-fg transition-colors hover:text-signal"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              <span>{COMPANY_LOCATION}</span>
+            </address>
             <div className="flex gap-2.5">
               {socialLinks.map((link) => {
                 const Icon = socialIconForPlatform(link.platform);
@@ -184,7 +199,7 @@ export function Footer({
 
         <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-fg-dim sm:mt-14 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono">
-            &copy; {year} AgileMorph Digital Accelerators. All rights reserved.
+            &copy; {year} {COMPANY_LEGAL_NAME}. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="signal-dot h-1.5 w-1.5 rounded-full bg-signal" />

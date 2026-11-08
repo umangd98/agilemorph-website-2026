@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Events",
   alternates: { canonical: "/events" },
   description:
-    "Meet AgileMorph at the events shaping the future of AI, automation, and digital marketing.",
+    "Meet Agilemorph at the events shaping the future of AI, automation, and digital marketing.",
 };
 
 const events = [
@@ -242,7 +242,7 @@ export default function EventsPage() {
                   </span>
 
                   <span className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[#d1fae5]">
-                    Meet AgileMorph
+                    Meet Agilemorph
                   </span>
                 </div>
 

@@ -36,7 +36,7 @@ type ServiceWhyUsSectionProps = {
 };
 
 export function ServiceWhyUsSection({
-  heading = "Why Choose Us",
+  heading = "What makes us different",
   items = [],
 }: ServiceWhyUsSectionProps) {
   if (!items.length) return null;

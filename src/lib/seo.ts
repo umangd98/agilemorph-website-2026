@@ -33,7 +33,7 @@ export function seoToMetadata(
     description,
     openGraph: {
       type: "website",
-      siteName: "AgileMorph",
+      siteName: "Agilemorph",
       title: resolvedTitle,
       description: resolvedDescription,
       images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,

@@ -12,7 +12,7 @@ import type { ContactPage } from "@/sanity/types";
 const fallbackMetadata: Metadata = {
   title: "Contact Us",
   alternates: { canonical: "/contact" },
-  description: "Get in touch with AgileMorph Solutions.",
+  description: "Get in touch with Agilemorph.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {

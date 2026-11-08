@@ -8,7 +8,7 @@ type MetricsGridProps = {
 };
 
 /**
- * Quido "telemetry" metric grid — mono tabular values in signal-green, seated
+ * "Telemetry" metric grid, mono tabular values in signal-green, seated
  * in a hairline gap-px grid of elevated cells.
  */
 export function MetricsGrid({ items = [], animate = true }: MetricsGridProps) {

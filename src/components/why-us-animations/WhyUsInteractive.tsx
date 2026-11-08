@@ -197,7 +197,7 @@ export function WhyUsInteractive({ items }: WhyUsInteractiveProps) {
       </div>
 
       <MobileAutoCarousel
-        ariaLabel="Why choose AgileMorph"
+        ariaLabel="Why choose Agilemorph"
         desktopClassName="hidden"
         mobileTrackClassName="px-0.5"
         mobileSlideClassName="w-full shrink-0 snap-center px-0.5"

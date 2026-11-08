@@ -1,52 +1,62 @@
 import type { CapabilityItem } from "@/sanity/types";
 
-/** Canonical AI Automation capabilities grid. Used when Sanity data is missing or incomplete. */
+/** Canonical What we build grid. Used when Sanity data is missing or incomplete. */
 export const AI_AUTOMATION_CAPABILITIES_FALLBACK: CapabilityItem[] = [
   {
     title: "AI Automation",
     slug: "ai-automation",
     featured: true,
     description:
-      "Our core practice: end-to-end AI workflows, agents, and integrations that cut manual work across your business.",
+      "Everything we build during an engagement, inside the systems you already run and measured until it's used.",
     icon: "⚡",
+  },
+  {
+    title: "AI Agents",
+    slug: "ai-agents",
+    description: "Agents that work inside your existing systems.",
+    icon: "◈",
   },
   {
     title: "Workflow Automation",
     slug: "workflow-automation",
-    description: "n8n, Make, and Zapier pipelines that eliminate repetitive work.",
+    description: "Custom code, n8n, Make and Zapier.",
     icon: "⟳",
   },
   {
     title: "CRM & Lead Automation",
     slug: "crm-lead-automation",
-    description: "Capture, enrich, route, and follow up on every lead automatically.",
+    description: "Capture, route and follow up inside the CRM you run.",
     icon: "◎",
-  },
-  {
-    title: "MCP & AI Infrastructure",
-    slug: "mcp-ai-infrastructure",
-    description:
-      "Self-hosted pipelines, MCP servers, and production-grade deployments.",
-    icon: "⧉",
   },
   {
     title: "Messaging Automation",
     slug: "messaging-automation",
-    description: "WhatsApp, email, and chat automations that respond and convert.",
+    description: "WhatsApp, email and chat, written into your systems.",
     icon: "✉",
+  },
+  {
+    title: "MCP & AI Infrastructure",
+    slug: "mcp-ai-infrastructure",
+    description: "MCP servers and self-hosted AI on your cloud or on-premise.",
+    icon: "⧉",
+  },
+  {
+    title: "Custom AI Engineering",
+    slug: "custom-ai-engineering",
+    description: "RAG, voice AI and evals in Python, TypeScript and Java.",
+    icon: "⌘",
+  },
+  {
+    title: "Shopify Automation",
+    slug: "shopify-automation",
+    description: "Orders, inventory, fulfilment and customer flows.",
+    icon: "🛍",
   },
   {
     title: "AI Audit",
     slug: "ai-audit",
     description:
-      "A fixed-scope review that maps where AI saves you the most time and money.",
+      "A fixed-scope audit for growing businesses: where AI pays off, in 1 to 2 weeks.",
     icon: "◷",
-  },
-  {
-    title: "Shopify Automation",
-    slug: "shopify-automation",
-    description:
-      "Automate orders, inventory, fulfillment, and customer flows across your Shopify store.",
-    icon: "🛍",
   },
 ];

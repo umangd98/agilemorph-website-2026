@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: PATH,
-    siteName: "AgileMorph",
+    siteName: "Agilemorph",
     title: TITLE,
     description: DESCRIPTION,
   },

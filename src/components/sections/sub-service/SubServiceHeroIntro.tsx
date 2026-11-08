@@ -64,10 +64,10 @@ export function SubServiceHeroIntro({
           </CtaAction>
         ) : null}
         <Link
-          href="/services"
+          href="/what-we-build"
           className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-6 py-3.5 font-body text-sm font-medium text-foreground/90 transition-colors hover:border-primary/30 hover:text-primary"
         >
-          All Services
+          All capabilities
         </Link>
       </div>
     </div>

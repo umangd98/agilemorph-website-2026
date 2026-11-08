@@ -1,23 +1,24 @@
 import { Suspense } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
-import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
+import { FaqSection, HeroSection, PartnersSection } from "@/components/sections";
+import { EfficiencyCalculator } from "@/components/sections/EfficiencyCalculator";
 import {
-  CATVideoSection,
-  FaqSection,
-  HeroSection,
-  PartnersSection,
-  ProcessSection,
-  ServicesSection,
-  StatsSection,
-  TestimonialsSection,
-  WhyUsSection,
-} from "@/components/sections";
+  CardGridSection,
+  CaseStudyGrid,
+  ComparisonSection,
+  FdeSection,
+  FinalCtaSection,
+  FoundersPairSection,
+  PhaseFlowSection,
+} from "@/components/sections/fde";
+import { Reveal } from "@/components/Reveal";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/data/positioning";
 import { seoToMetadata } from "@/lib/seo";
-import { resolveStatsSection } from "@/data/site-metrics";
-import { getServicePages } from "@/lib/services";
 import { sanityFetch } from "@/sanity/fetch";
 import {
   homepageAboveFoldQuery,
@@ -26,9 +27,8 @@ import {
 import type { HomepageAboveFold, HomepageBelowFold } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
-  title: "AI Automation Agency for Growing SMBs | AgileMorph",
-  description:
-    "AgileMorph builds done-for-you AI automation that has saved clients 500K+ hours. Claude and Make certified. Book a free discovery call.",
+  title: { absolute: SITE_TITLE },
+  description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
 };
 
@@ -38,48 +38,71 @@ export async function generateMetadata(): Promise<Metadata> {
     tags: ["homepage"],
   });
 
-  return seoToMetadata(homepage?.seo, fallbackMetadata);
+  const metadata = seoToMetadata(homepage?.seo, fallbackMetadata);
+  // The homepage title is the full brand title, not "<page> | Agilemorph".
+  return {
+    ...metadata,
+    title: { absolute: homepage?.seo?.title ?? SITE_TITLE },
+  };
 }
 
 async function BelowFoldSections() {
-  const [homepage, servicePages] = await Promise.all([
-    sanityFetch<HomepageBelowFold | null>({
-      query: homepageBelowFoldQuery,
-      tags: ["homepage"],
-    }),
-    getServicePages(),
-  ]);
+  const homepage = await sanityFetch<HomepageBelowFold | null>({
+    query: homepageBelowFoldQuery,
+    tags: ["homepage", "caseStudy"],
+  });
 
-  const metrics = resolveStatsSection(homepage?.stats);
+  const caseStudies = (homepage?.caseStudies?.items ?? []).filter(Boolean);
 
   return (
     <>
-      <ProcessSection
-        heading={homepage?.process?.heading}
-        subheading={homepage?.process?.subheading}
-        steps={homepage?.process?.steps}
+      <CardGridSection index="01" block={homepage?.problem} tone="symptom" columns={4} />
+      <ComparisonSection index="02" block={homepage?.fde} />
+      <PhaseFlowSection index="03" block={homepage?.phases} />
+
+      {caseStudies.length ? (
+        <FdeSection
+          index="04"
+          eyebrow={homepage?.caseStudies?.eyebrow}
+          heading={homepage?.caseStudies?.heading}
+          intro={homepage?.caseStudies?.intro}
+        >
+          <CaseStudyGrid items={caseStudies} />
+          <Reveal>
+            <Link
+              href="/case-studies"
+              className="group mt-10 inline-flex items-center gap-2 text-sm font-medium text-signal"
+            >
+              All case studies
+              <ArrowRight
+                size={15}
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              />
+            </Link>
+          </Reveal>
+        </FdeSection>
+      ) : null}
+
+      <FoundersPairSection index="05" block={homepage?.founders} />
+      <CardGridSection index="06" block={homepage?.capabilities} columns={5} />
+      <PartnersSection
+        heading={homepage?.partners?.heading}
+        items={homepage?.partners?.items}
       />
-      <ServicesSection
-        eyebrow={homepage?.services?.eyebrow}
-        heading={homepage?.services?.heading}
-        pages={servicePages}
-      />
-      <WhyUsSection
-        heading={homepage?.whyUs?.heading}
-        items={homepage?.whyUs?.items}
-        efficiencyCalculator={homepage?.whyUs?.efficiencyCalculator}
-      />
-      <StatsSection
-        eyebrow={metrics.eyebrow}
-        heading={metrics.heading}
-        items={metrics.items}
-      />
-      <TestimonialsSection
-        eyebrow={homepage?.testimonials?.eyebrow}
-        heading={homepage?.testimonials?.heading}
-        items={homepage?.testimonials?.items}
-      />
-      <FaqSection />
+      <CardGridSection index="07" block={homepage?.security} columns={4} />
+
+      <FdeSection index="" eyebrow="ROI estimator">
+        <Reveal>
+          <EfficiencyCalculator
+            content={homepage?.whyUs?.efficiencyCalculator}
+            variant="prominent"
+          />
+        </Reveal>
+      </FdeSection>
+
+      <FaqSection index="08" />
+      <CardGridSection index="09" block={homepage?.clientTypes} columns={4} />
+      <FinalCtaSection block={homepage?.finalCta} />
     </>
   );
 }
@@ -110,15 +133,6 @@ export default async function HomePage() {
 
       <main className="flex-1">
         <HeroSection hero={homepage.hero} />
-        <PartnersSection
-          heading={homepage.partners?.heading}
-          items={homepage.partners?.items}
-        />
-        <IntegrationsMarquee
-          heading={homepage.integrations?.heading}
-          items={homepage.integrations?.items}
-        />
-        <CATVideoSection />
         <Suspense fallback={null}>
           <BelowFoldSections />
         </Suspense>

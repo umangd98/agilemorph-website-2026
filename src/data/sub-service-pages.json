@@ -5,8 +5,8 @@
     "title": "AI Agents",
     "slug": "ai-agents",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "We build autonomous AI agents that read context, make decisions, and take action across your tools without a human in the loop. Classification, routing, drafting, and execution, running the moment work arrives.",
+    "tagline": "What we build",
+    "description": "During an engagement we build AI agents that handle enquiries, tickets and documents inside the systems you already run, so nobody has to re-key them. We embed with your team, connect the agent to your CRM, ERP or inbox, and measure whether people actually use it.",
     "headline": {
       "before": "Agents that don't just answer. They ",
       "highlight": "act",
@@ -32,133 +32,133 @@
     "stats": [
       {
         "_type": "statItem",
-        "value": "<2s",
-        "label": "Decision latency"
+        "value": "Your stack",
+        "label": "Works inside existing systems"
       },
       {
         "_type": "statItem",
-        "value": "95%+",
-        "label": "Classification accuracy"
+        "value": "Logged",
+        "label": "Every decision and action"
       },
       {
         "_type": "statItem",
-        "value": "24/7",
-        "label": "Always-on operation"
+        "value": "Approval",
+        "label": "Human sign-off where you want it"
       },
       {
         "_type": "statItem",
-        "value": "0",
-        "label": "Manual triage needed"
+        "value": "Yours",
+        "label": "Code, prompts and data"
       }
     ],
     "whyTitle": "Where an agent beats a workflow",
     "whyHighlight": "beats",
-    "whyText": "A standard automation follows fixed rules. An agent reasons. When the input is messy, ambiguous, or human, an agent decides what to do, the way a trained team member would, at a fraction of the cost.",
+    "whyText": "A standard automation follows fixed rules. An agent reasons. When the input is messy, ambiguous or human, an agent decides what to do the way a trained team member would, and hands anything uncertain to a person.",
     "checks": [
       "Reads unstructured input: emails, chats, documents, voice notes",
       "Classifies intent and urgency, then routes to the right path",
-      "Drafts and sends context-aware replies for your approval or fully autonomously",
-      "Calls your tools directly: CRM, calendar, databases, payment systems",
-      "Escalates edge cases to a human with full context attached"
+      "Drafts context-aware replies, held for your approval or sent automatically",
+      "Calls your tools directly: CRM, ERP, calendar, databases, payment systems",
+      "Escalates edge cases to a person with full context attached"
     ],
     "useCases": [
       {
         "_type": "useCaseItem",
         "title": "Inbound lead qualification",
-        "description": "Agent reads the enquiry, scores it, and books or routes it."
+        "description": "The agent reads the enquiry, scores it, and books or routes it."
       },
       {
         "_type": "useCaseItem",
         "title": "Support triage",
-        "description": "Tickets classified and answered or escalated automatically."
+        "description": "Tickets classified, then answered or escalated automatically."
       },
       {
         "_type": "useCaseItem",
         "title": "Document processing",
-        "description": "Invoices, contracts, and forms parsed into structured data."
+        "description": "Invoices, contracts and forms parsed into structured data."
       },
       {
         "_type": "useCaseItem",
         "title": "Inbox management",
-        "description": "High-volume inboxes sorted, drafted, and prioritized."
+        "description": "High-volume inboxes sorted, drafted and prioritised."
       }
     ],
     "pricing": {
-      "headline": "Agent builds typically start at a 5–10 day scoped engagement",
-      "detail": "Most production agents land in the 5–15 day range depending on tool integrations and approval gates. We quote a fixed scope after a short discovery call."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
         "_type": "faqItem",
         "question": "What models do you use?",
-        "answer": "We work with Claude, GPT, and Gemini, chosen per task. Classification, drafting, and reasoning each have a best-fit model and we route accordingly."
+        "answer": "Claude, GPT and Gemini, chosen per task and agreed with your IT team. Classification, drafting and reasoning each have a best-fit model, and we route accordingly."
       },
       {
         "_type": "faqItem",
         "question": "Will the agent act without my approval?",
-        "answer": "Your choice. We can run fully autonomous, or hold every action behind a one-click approval until you trust it."
+        "answer": "Your choice. It can run on its own, or hold every action behind a one-click approval until you trust it."
       },
       {
         "_type": "faqItem",
         "question": "How do you prevent mistakes?",
-        "answer": "Confidence thresholds, human-in-the-loop fallbacks, and full logging. Low-confidence cases always escalate with context."
+        "answer": "Confidence thresholds, evals, human-in-the-loop fallbacks and full logging. Low-confidence cases always escalate to a person with context."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "Intent Classification",
-        "description": "Every inbound message tagged by type, urgency, and next action in real time.",
+        "title": "Intent classification",
+        "description": "Every inbound message tagged by type, urgency and next action in real time.",
         "icon": "⬡"
       },
       {
         "_type": "capabilityItem",
-        "title": "Smart Drafting",
+        "title": "Smart drafting",
         "description": "Replies and summaries written in your voice, grounded in your own data.",
         "icon": "✎"
       },
       {
         "_type": "capabilityItem",
-        "title": "Tool Execution",
+        "title": "Tool execution",
         "description": "Agents that write to your systems, not just read from them.",
         "icon": "⤳"
       }
     ],
-    "whyUsHeading": "Where An Agent Beats A Workflow",
+    "whyUsHeading": "Where an agent beats a workflow",
     "whyUs": [
       {
         "title": "Unstructured input",
-        "description": "Reads unstructured input: emails, chats, documents, and voice notes.",
+        "description": "Reads unstructured input: emails, chats, documents and voice notes.",
         "highlights": [
-          "Emails & chats",
+          "Emails and chats",
           "Documents",
           "Voice notes"
         ]
@@ -173,31 +173,31 @@
       },
       {
         "title": "Context-aware replies",
-        "description": "Drafts and sends context-aware replies for your approval or fully autonomously.",
+        "description": "Drafts context-aware replies, held for your approval or sent automatically.",
         "highlights": [
           "Your voice",
-          "Human-in-the-loop optional"
+          "Human approval optional"
         ]
       },
       {
         "title": "Direct tool access",
-        "description": "Calls your tools directly: CRM, calendar, databases, and payment systems.",
+        "description": "Calls your tools directly: CRM, ERP, calendar, databases and payment systems.",
         "highlights": [
-          "CRM & calendar",
+          "CRM and ERP",
           "Databases",
           "Payments"
         ]
       },
       {
         "title": "Human escalation",
-        "description": "Escalates edge cases to a human with full context attached.",
+        "description": "Escalates edge cases to a person with full context attached.",
         "highlights": [
           "Full context",
           "Confidence thresholds"
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -233,17 +233,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to put an agent inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether an agent fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "AI Agent Development Services",
-      "description": "We build autonomous AI agents that read context, decide, and act across your tools. Claude Service Partner. 180+ projects delivered. Book a discovery call."
+      "description": "AI agent development inside your existing systems. Agents that read context, decide and act across your CRM, ERP and inbox. Claude Service Partner."
     }
   },
   {
@@ -252,8 +252,8 @@
     "title": "Workflow Automation",
     "slug": "workflow-automation",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "We turn the manual processes draining your team into reliable automated pipelines. Built on n8n, Make, and Zapier, connected to the tools you already use, monitored so they keep running.",
+    "tagline": "What we build",
+    "description": "During an engagement we build workflows that take the manual, repeated steps out of your team's day. They run on custom code, n8n, Make or Zapier, inside the tools you already use, and we monitor them until they run without anyone watching.",
     "headline": {
       "before": "The repetitive work, ",
       "highlight": "gone",
@@ -279,40 +279,40 @@
     "stats": [
       {
         "_type": "statItem",
-        "value": "40%+",
-        "label": "Time reclaimed"
+        "value": "Your tools",
+        "label": "Connected, not replaced"
       },
       {
         "_type": "statItem",
-        "value": "100+",
-        "label": "Integrations supported"
+        "value": "Retries",
+        "label": "Built in from the first build"
       },
       {
         "_type": "statItem",
-        "value": "0",
-        "label": "Copy-paste tasks"
+        "value": "Alerts",
+        "label": "No silent failures"
       },
       {
         "_type": "statItem",
-        "value": "24/7",
-        "label": "Hands-off running"
+        "value": "Yours",
+        "label": "Workflows and documentation"
       }
     ],
     "whyTitle": "Automation that survives contact with reality",
     "whyHighlight": "reality",
-    "whyText": "Plenty of automations work in a demo and break in week two. We build with error handling, retries, logging, and alerts from day one, so the pipeline keeps working when an API changes or data comes in messy.",
+    "whyText": "Plenty of automations work in a demo and break the first time real data hits them. We build with error handling, retries, logging and alerts from the start, so the pipeline keeps working when an API changes or data comes in messy.",
     "checks": [
       "Self-hosted n8n for full control and no per-task billing surprises",
-      "Error handling and retries so one bad record doesn't stop everything",
-      "Alerting when something needs a human, instead of silent failure",
-      "Clean documentation so your team can see exactly what runs and when",
-      "Certified n8n partner team building it"
+      "Error handling and retries, so one bad record doesn't stop everything",
+      "Alerts when something needs a person, instead of silent failure",
+      "Clear documentation, so your team can see exactly what runs and when",
+      "Built by an n8n Integration Partner team, with custom code where no-code is the wrong fit"
     ],
     "useCases": [
       {
         "_type": "useCaseItem",
         "title": "Lead-to-CRM sync",
-        "description": "New leads enriched and pushed to your CRM instantly."
+        "description": "New leads enriched and pushed to your CRM as they arrive."
       },
       {
         "_type": "useCaseItem",
@@ -322,7 +322,7 @@
       {
         "_type": "useCaseItem",
         "title": "Data scraping",
-        "description": "Structured data pulled from sites and marketplaces on schedule."
+        "description": "Structured data pulled from sites and marketplaces on a schedule."
       },
       {
         "_type": "useCaseItem",
@@ -331,14 +331,14 @@
       }
     ],
     "pricing": {
-      "headline": "Most workflow builds run 3–8 days per process",
-      "detail": "Simple single-process automations start small; multi-step pipelines with enrichment and error handling scale from there. Fixed scope, quoted up front."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
         "_type": "faqItem",
-        "question": "n8n, Make, or Zapier, which?",
-        "answer": "Depends on volume, control needs, and budget. We're a certified n8n partner and usually recommend self-hosted n8n for serious volume, but we build on all three."
+        "question": "n8n, Make or Zapier: which one?",
+        "answer": "It depends on volume, control needs and budget. We are an n8n Integration Partner and usually recommend self-hosted n8n for serious volume. We build on all three, and write custom code when none of them fit."
       },
       {
         "_type": "faqItem",
@@ -348,58 +348,58 @@
       {
         "_type": "faqItem",
         "question": "What if it breaks?",
-        "answer": "We build in alerting and offer monitoring retainers so issues get caught and fixed before they cost you."
+        "answer": "We build in alerting and offer monitoring retainers, so issues get caught and fixed before they cost you."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "Process Mapping",
+        "title": "Process mapping",
         "description": "We document the manual flow first, then automate the version worth keeping.",
         "icon": "⟳"
       },
       {
         "_type": "capabilityItem",
-        "title": "Reliable Pipelines",
-        "description": "Retries, logging, and fallbacks built in, not bolted on later.",
+        "title": "Reliable pipelines",
+        "description": "Retries, logging and fallbacks built in, not bolted on later.",
         "icon": "⛭"
       },
       {
         "_type": "capabilityItem",
-        "title": "Data Sync",
+        "title": "Data sync",
         "description": "Keep your tools in agreement without manual exports and imports.",
         "icon": "▦"
       }
     ],
-    "whyUsHeading": "Automation That Survives Contact With Reality",
+    "whyUsHeading": "Automation that survives contact with reality",
     "whyUs": [
       {
         "title": "Self-hosted n8n",
@@ -411,7 +411,7 @@
       },
       {
         "title": "Error handling",
-        "description": "Error handling and retries so one bad record doesn't stop everything.",
+        "description": "Error handling and retries, so one bad record doesn't stop everything.",
         "highlights": [
           "Retries",
           "Graceful failures"
@@ -419,7 +419,7 @@
       },
       {
         "title": "Proactive alerting",
-        "description": "Alerting when something needs a human, instead of silent failure.",
+        "description": "Alerts when something needs a person, instead of silent failure.",
         "highlights": [
           "Real-time alerts",
           "No silent failures"
@@ -427,22 +427,22 @@
       },
       {
         "title": "Clear documentation",
-        "description": "Clean documentation so your team can see exactly what runs and when.",
+        "description": "Clear documentation, so your team can see exactly what runs and when.",
         "highlights": [
           "Runbooks",
           "Team visibility"
         ]
       },
       {
-        "title": "Certified n8n partner",
-        "description": "Certified n8n partner team building production-ready pipelines.",
+        "title": "n8n Integration Partner",
+        "description": "Built by an n8n Integration Partner team, with custom code where no-code is the wrong fit.",
         "highlights": [
           "Certified partner",
           "Production-ready"
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -478,17 +478,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether this fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "Workflow Automation Services: n8n, Make, Zapier",
-      "description": "Production n8n, Make, and Zapier pipelines that kill repetitive work and keep running as your business changes. Make Platinum Partner. 500K+ hours saved."
+      "description": "Workflow automation on n8n, Make, Zapier or custom code, built inside the tools you already run, with retries, logging and alerts. Make Platinum Partner."
     }
   },
   {
@@ -497,8 +497,8 @@
     "title": "CRM & Lead Automation",
     "slug": "crm-lead-automation",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "Stop losing leads to slow manual handling. We automate the full cycle: capture from any channel, enrich with real data, route to the right person, and trigger follow-up before the lead goes cold.",
+    "tagline": "What we build",
+    "description": "During an engagement we build lead automation that captures, enriches, routes and follows up on every enquiry before it goes cold. It runs inside the CRM you already use, whether that is HubSpot, Salesforce or Pipedrive, and we measure whether your reps actually work from it.",
     "headline": {
       "before": "Every lead captured, enriched, and ",
       "highlight": "followed up",
@@ -524,50 +524,50 @@
     "stats": [
       {
         "_type": "statItem",
-        "value": "<60s",
-        "label": "Lead response time"
+        "value": "Your CRM",
+        "label": "Stays the system of record"
       },
       {
         "_type": "statItem",
-        "value": "3x",
-        "label": "Faster qualification"
+        "value": "Logged",
+        "label": "Every lead, every source"
       },
       {
         "_type": "statItem",
-        "value": "100%",
-        "label": "Leads logged"
+        "value": "Rules",
+        "label": "Routing you can read and change"
       },
       {
         "_type": "statItem",
-        "value": "0",
-        "label": "Leads forgotten"
+        "value": "Yours",
+        "label": "Workflows and data"
       }
     ],
     "whyTitle": "Speed-to-lead is the whole game",
     "whyHighlight": "game",
-    "whyText": "A lead contacted in the first five minutes converts far better than one contacted an hour later. We close that gap to seconds: the moment a lead arrives, it's enriched, scored, assigned, and followed up, without anyone touching it.",
+    "whyText": "A lead contacted straight away is far more likely to convert than one contacted hours later. We close that gap: the moment a lead arrives, it is enriched, scored, assigned and followed up, without anyone touching it.",
     "checks": [
-      "Capture leads from forms, ads, email, chat, and LinkedIn into one place",
-      "Enrich with verified contact data via Apollo, Lusha, and NeverBounce",
-      "Score and segment automatically so reps work the best leads first",
-      "Trigger instant first-touch follow-up by email or message",
-      "Sync cleanly to HubSpot, Pipedrive, Salesforce, or your CRM of choice"
+      "Capture leads from forms, ads, email, chat and LinkedIn into one place",
+      "Enrich with verified contact data via Apollo, Lusha and NeverBounce",
+      "Score and segment automatically, so reps work the best leads first",
+      "Trigger an immediate first-touch follow-up by email or message",
+      "Sync cleanly to HubSpot, Pipedrive, Salesforce or the CRM you already run"
     ],
     "useCases": [
       {
         "_type": "useCaseItem",
         "title": "Speed-to-lead",
-        "description": "First contact triggered within seconds of a new lead."
+        "description": "First contact triggered as soon as a new lead arrives."
       },
       {
         "_type": "useCaseItem",
         "title": "Enriched lead lists",
-        "description": "Daily verified, enriched CSV or CRM delivery."
+        "description": "Verified, enriched leads delivered daily to a CSV or your CRM."
       },
       {
         "_type": "useCaseItem",
         "title": "Pipeline hygiene",
-        "description": "Stale deals flagged, duplicates merged automatically."
+        "description": "Stale deals flagged and duplicates merged automatically."
       },
       {
         "_type": "useCaseItem",
@@ -576,112 +576,112 @@
       }
     ],
     "pricing": {
-      "headline": "Lead automation engagements typically start at 4–8 days",
-      "detail": "Scope depends on the number of channels, your CRM, and enrichment depth. We quote a fixed price after mapping your current funnel."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
         "_type": "faqItem",
         "question": "Which CRMs do you support?",
-        "answer": "HubSpot, Pipedrive, Salesforce, and most others with an API. We've built production flows on all three."
+        "answer": "HubSpot, Pipedrive, Salesforce and most others with an API. We have built production flows on HubSpot, Pipedrive and Salesforce."
       },
       {
         "_type": "faqItem",
         "question": "Where does enrichment data come from?",
-        "answer": "Apollo, Lusha, and similar providers, with NeverBounce verification so you're not paying for bad contacts."
+        "answer": "Apollo, Lusha and similar providers, with NeverBounce verification so you're not paying for bad contacts."
       },
       {
         "_type": "faqItem",
         "question": "Can you fix our messy existing CRM?",
-        "answer": "Yes. Deduplication, field cleanup, and re-segmentation are common first steps before automation goes live."
+        "answer": "Yes. Deduplication, field clean-up and re-segmentation are common first steps before automation goes live."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "Multi-Channel Capture",
+        "title": "Multi-channel capture",
         "description": "One pipeline for leads from every source you run.",
         "icon": "◎"
       },
       {
         "_type": "capabilityItem",
-        "title": "Data Enrichment",
+        "title": "Data enrichment",
         "description": "Turn a name and email into a full, verified profile.",
         "icon": "⊕"
       },
       {
         "_type": "capabilityItem",
-        "title": "Smart Routing",
-        "description": "The right lead to the right rep, instantly and by rule.",
+        "title": "Smart routing",
+        "description": "The right lead to the right rep, straight away and by rule.",
         "icon": "⇲"
       }
     ],
-    "whyUsHeading": "Speed-To-Lead Is The Whole Game",
+    "whyUsHeading": "Speed-to-lead is the whole game",
     "whyUs": [
       {
         "title": "Every channel",
-        "description": "Capture leads from forms, ads, email, chat, and LinkedIn into one place.",
+        "description": "Capture leads from forms, ads, email, chat and LinkedIn into one place.",
         "highlights": [
-          "Forms & ads",
-          "Email & chat",
+          "Forms and ads",
+          "Email and chat",
           "LinkedIn"
         ]
       },
       {
         "title": "Verified enrichment",
-        "description": "Enrich with verified contact data via Apollo, Lusha, and NeverBounce.",
+        "description": "Enrich with verified contact data via Apollo, Lusha and NeverBounce.",
         "highlights": [
-          "Apollo & Lusha",
+          "Apollo and Lusha",
           "Email verification"
         ]
       },
       {
         "title": "Automatic scoring",
-        "description": "Score and segment automatically so reps work the best leads first.",
+        "description": "Score and segment automatically, so reps work the best leads first.",
         "highlights": [
           "Lead scoring",
           "Smart segments"
         ]
       },
       {
-        "title": "Instant follow-up",
-        "description": "Trigger instant first-touch follow-up by email or message.",
+        "title": "Immediate follow-up",
+        "description": "Trigger an immediate first-touch follow-up by email or message.",
         "highlights": [
-          "Seconds, not hours",
+          "As soon as a lead lands",
           "Multi-channel"
         ]
       },
       {
         "title": "CRM sync",
-        "description": "Sync cleanly to HubSpot, Pipedrive, Salesforce, or your CRM of choice.",
+        "description": "Sync cleanly to HubSpot, Pipedrive, Salesforce or the CRM you already run.",
         "highlights": [
           "HubSpot",
           "Pipedrive",
@@ -689,7 +689,7 @@
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -725,17 +725,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether this fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "CRM & Lead Automation Services",
-      "description": "Capture, enrich, route, and follow up on every lead automatically, before it goes cold. Works with HubSpot, Pipedrive, and the CRM you already run."
+      "description": "CRM and lead automation that captures, enriches, routes and follows up on every lead before it goes cold. Built inside HubSpot, Salesforce or Pipedrive."
     }
   },
   {
@@ -744,8 +744,8 @@
     "title": "MCP & AI Infrastructure",
     "slug": "mcp-ai-infrastructure",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "For teams past the prototype stage. We build self-hosted pipelines, MCP servers, and deployed systems that connect AI directly to your data and tools, securely, observably, and built to scale.",
+    "tagline": "What we build",
+    "description": "During an engagement we build MCP servers and self-hosted AI infrastructure that give models safe, governed access to your data and tools. It runs in your cloud or on-premise, agreed with your IT team, with tracing and monitoring from the first deploy.",
     "headline": {
       "before": "Production-grade AI ",
       "highlight": "infrastructure",
@@ -771,34 +771,34 @@
     "stats": [
       {
         "_type": "statItem",
-        "value": "100%",
-        "label": "Self-hosted control"
+        "value": "Self-hosted",
+        "label": "Your cloud or on-premise"
       },
       {
         "_type": "statItem",
-        "value": "Full",
-        "label": "Observability built in"
+        "value": "Traced",
+        "label": "Every call, cost and failure"
       },
       {
         "_type": "statItem",
-        "value": "SOC-ready",
-        "label": "Security practices"
+        "value": "Redacted",
+        "label": "PII kept local where required"
       },
       {
         "_type": "statItem",
-        "value": "∞",
-        "label": "Scales with you"
+        "value": "Yours",
+        "label": "Code and infrastructure"
       }
     ],
     "whyTitle": "When a no-code tool isn't enough",
     "whyHighlight": "enough",
-    "whyText": "No-code platforms hit a ceiling: cost per task, data privacy, custom logic, and volume. When you cross it, you need real infrastructure. We build MCP servers and self-hosted pipelines that give AI safe, structured access to your systems, on infrastructure you own.",
+    "whyText": "No-code platforms hit a ceiling: cost per task, data privacy, custom logic and volume. When you cross it, you need real infrastructure. We build MCP servers and self-hosted pipelines that give AI safe, structured access to your systems, on infrastructure you own.",
     "checks": [
       "MCP servers that expose your data and tools to AI models safely",
-      "Self-hosted deployments on AWS or DigitalOcean, under your control",
-      "Observability with Langfuse so you can see every call, cost, and failure",
+      "Self-hosted deployments on AWS, DigitalOcean or on-premise, under your control",
+      "Observability with Langfuse, so you can see every call, cost and failure",
       "PII handling and local redaction to keep sensitive data off third-party clouds",
-      "Built to scale from first user to high volume without a rebuild"
+      "Built to grow from the first user to high volume without a rebuild"
     ],
     "useCases": [
       {
@@ -823,19 +823,19 @@
       }
     ],
     "pricing": {
-      "headline": "Infrastructure engagements are scoped per project, typically multi-week",
-      "detail": "These are senior builds. We scope precisely after a technical discovery and quote a fixed plan with milestones."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
         "_type": "faqItem",
         "question": "What is MCP?",
-        "answer": "Model Context Protocol, a standard way to give AI models secure, structured access to your tools and data. It's how serious AI systems connect to the real world."
+        "answer": "Model Context Protocol, an open standard for giving AI models secure, structured access to your tools and data. The model calls your systems through a defined, permissioned interface instead of someone copying data in and out."
       },
       {
         "_type": "faqItem",
         "question": "Where is it hosted?",
-        "answer": "Your infrastructure: AWS, DigitalOcean, or your existing cloud. You own and control it."
+        "answer": "On your infrastructure: AWS, DigitalOcean, your existing cloud or on-premise. You own and control it."
       },
       {
         "_type": "faqItem",
@@ -846,52 +846,52 @@
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "MCP Servers",
+        "title": "MCP servers",
         "description": "A clean, governed bridge between your systems and any AI model.",
         "icon": "⧉"
       },
       {
         "_type": "capabilityItem",
-        "title": "Self-Hosted Deploys",
-        "description": "Pipelines on your cloud, with no per-task surprise billing.",
+        "title": "Self-hosted deploys",
+        "description": "Pipelines on your cloud or on-premise, with no per-task surprise billing.",
         "icon": "⚙"
       },
       {
         "_type": "capabilityItem",
         "title": "Observability",
-        "description": "Langfuse tracing so nothing the AI does is a black box.",
+        "description": "Langfuse tracing, so nothing the AI does is a black box.",
         "icon": "◴"
       }
     ],
-    "whyUsHeading": "When A No-Code Tool Isn't Enough",
+    "whyUsHeading": "When a no-code tool isn't enough",
     "whyUs": [
       {
         "title": "Governed MCP access",
@@ -903,15 +903,16 @@
       },
       {
         "title": "Your infrastructure",
-        "description": "Self-hosted deployments on AWS or DigitalOcean, under your control.",
+        "description": "Self-hosted deployments on AWS, DigitalOcean or on-premise, under your control.",
         "highlights": [
           "AWS",
-          "DigitalOcean"
+          "DigitalOcean",
+          "On-premise"
         ]
       },
       {
         "title": "Full observability",
-        "description": "Observability with Langfuse so you can see every call, cost, and failure.",
+        "description": "Observability with Langfuse, so you can see every call, cost and failure.",
         "highlights": [
           "Langfuse tracing",
           "Cost visibility"
@@ -926,15 +927,15 @@
         ]
       },
       {
-        "title": "Built to scale",
-        "description": "Built to scale from first user to high volume without a rebuild.",
+        "title": "Built to grow",
+        "description": "Built to grow from the first user to high volume without a rebuild.",
         "highlights": [
           "Production-grade",
-          "Scales with you"
+          "Grows with you"
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -970,17 +971,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether this fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "MCP Servers & Self-Hosted AI Infrastructure",
-      "description": "Self-hosted AI pipelines, MCP servers, and production deployments you control, for teams whose data cannot sit inside a third-party platform."
+      "description": "MCP servers, self-hosted AI pipelines and production deployments you control, in your cloud or on-premise, for data that cannot sit in a third-party platform."
     }
   },
   {
@@ -989,8 +990,8 @@
     "title": "Messaging Automation",
     "slug": "messaging-automation",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "We automate the channels your customers actually use. WhatsApp, email, and chat, with AI that reads, classifies, and responds in real time, captures structured data, and routes anything that needs a human.",
+    "tagline": "What we build",
+    "description": "During an engagement we build messaging automation for WhatsApp, email and chat, the channels your customers and field teams already use. AI reads each message, captures the structured data and writes it into your CRM, ERP or database, with a person in the loop for anything uncertain.",
     "headline": {
       "before": "Conversations that run ",
       "highlight": "themselves",
@@ -1016,40 +1017,40 @@
     "stats": [
       {
         "_type": "statItem",
-        "value": "<5s",
-        "label": "Reply time"
+        "value": "Logged",
+        "label": "Every conversation"
       },
       {
         "_type": "statItem",
-        "value": "24/7",
-        "label": "Always responding"
+        "value": "Handoff",
+        "label": "A person for anything uncertain"
       },
       {
         "_type": "statItem",
-        "value": "100%",
-        "label": "Conversations logged"
+        "value": "Your system",
+        "label": "Records land where you work"
       },
       {
         "_type": "statItem",
-        "value": "0",
-        "label": "Missed messages"
+        "value": "Yours",
+        "label": "Data and workflows"
       }
     ],
     "whyTitle": "Built on real production pipelines",
     "whyHighlight": "production",
-    "whyText": "This isn't theory. We run live WhatsApp-to-database pipelines today: messages classified by AI, structured into records, and synced automatically, on self-hosted infrastructure with buffering and two-path routing for reliability.",
+    "whyText": "We run live WhatsApp-to-database pipelines in production: messages classified by AI, structured into records and synced automatically, on self-hosted infrastructure with buffering and fallback routing for reliability.",
     "checks": [
-      "WhatsApp automation via Whapi and self-hosted n8n, no platform lock-in",
-      "AI classification of every message by type, intent, and urgency",
-      "Structured data extraction straight into Airtable, a CRM, or a database",
-      "Buffered, multi-path architecture so nothing is dropped under load",
+      "WhatsApp automation via Whapi and self-hosted n8n, with no platform lock-in",
+      "AI classification of every message by type, intent and urgency",
+      "Structured data extraction straight into Airtable, a CRM, an ERP or a database",
+      "Buffered, multi-path architecture, so nothing is dropped under load",
       "Human handoff with full context when a conversation needs it"
     ],
     "useCases": [
       {
         "_type": "useCaseItem",
         "title": "Dealer / order intake",
-        "description": "Inbound messages parsed into structured deal records."
+        "description": "Inbound messages parsed into structured order and deal records."
       },
       {
         "_type": "useCaseItem",
@@ -1059,17 +1060,17 @@
       {
         "_type": "useCaseItem",
         "title": "Booking + scheduling",
-        "description": "Appointments handled conversationally end to end."
+        "description": "Appointments handled conversationally, end to end."
       },
       {
         "_type": "useCaseItem",
         "title": "Broadcast + follow-up",
-        "description": "Targeted outbound that respects each customer's history."
+        "description": "Targeted outbound messages that respect each customer's history."
       }
     ],
     "pricing": {
-      "headline": "Messaging builds typically run 5–12 days",
-      "detail": "Cost depends on channels, classification complexity, and where data needs to land. Fixed scope after a discovery call."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
@@ -1080,67 +1081,67 @@
       {
         "_type": "faqItem",
         "question": "What happens to the data?",
-        "answer": "It's structured and synced to wherever you want it: Airtable, a CRM, or your database. You own all of it."
+        "answer": "It is structured and synced to wherever you want it: Airtable, a CRM, an ERP or your database. You own all of it."
       },
       {
         "_type": "faqItem",
-        "question": "Can a human still step in?",
+        "question": "Can a person still step in?",
         "answer": "Always. Anything the AI isn't confident about is handed to a person with the full conversation attached."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "WhatsApp Pipelines",
+        "title": "WhatsApp pipelines",
         "description": "Production WhatsApp automation, classified and logged in real time.",
         "icon": "✉"
       },
       {
         "_type": "capabilityItem",
-        "title": "AI Replies",
+        "title": "AI replies",
         "description": "Context-aware responses in your voice, on your terms.",
         "icon": "⌯"
       },
       {
         "_type": "capabilityItem",
-        "title": "Data Capture",
+        "title": "Data capture",
         "description": "Every conversation turned into clean, structured records.",
         "icon": "▤"
       }
     ],
-    "whyUsHeading": "Built On Real Production Pipelines",
+    "whyUsHeading": "Built on real production pipelines",
     "whyUs": [
       {
         "title": "WhatsApp automation",
-        "description": "WhatsApp automation via Whapi and self-hosted n8n, no platform lock-in.",
+        "description": "WhatsApp automation via Whapi and self-hosted n8n, with no platform lock-in.",
         "highlights": [
           "Whapi",
           "Self-hosted n8n"
@@ -1148,7 +1149,7 @@
       },
       {
         "title": "AI classification",
-        "description": "AI classification of every message by type, intent, and urgency.",
+        "description": "AI classification of every message by type, intent and urgency.",
         "highlights": [
           "Intent detection",
           "Urgency scoring"
@@ -1156,15 +1157,15 @@
       },
       {
         "title": "Structured extraction",
-        "description": "Structured data extraction straight into Airtable, a CRM, or a database.",
+        "description": "Structured data extraction straight into Airtable, a CRM, an ERP or a database.",
         "highlights": [
           "Airtable",
-          "CRM sync"
+          "CRM and ERP sync"
         ]
       },
       {
         "title": "Reliable architecture",
-        "description": "Buffered, multi-path architecture so nothing is dropped under load.",
+        "description": "Buffered, multi-path architecture, so nothing is dropped under load.",
         "highlights": [
           "Buffered queues",
           "Multi-path routing"
@@ -1175,11 +1176,11 @@
         "description": "Human handoff with full context when a conversation needs it.",
         "highlights": [
           "Full context",
-          "Seamless escalation"
+          "Clean escalation"
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -1215,17 +1216,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether this fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "WhatsApp & Email Automation Services",
-      "description": "WhatsApp, email, and chat automation that responds, converts, and logs every conversation against the right record. Built on Twilio and Meta APIs."
+      "description": "WhatsApp automation, email and chat flows that reply, capture structured data and log every conversation against the right record in your CRM or ERP."
     }
   },
   {
@@ -1234,8 +1235,8 @@
     "title": "AI Audit",
     "slug": "ai-audit",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "Before you spend on automation, know what's worth automating. Our fixed-scope AI Audit maps your processes, identifies the highest-ROI opportunities, and gives you a prioritized, costed roadmap you can act on, with or without us.",
+    "tagline": "What we build",
+    "description": "During an engagement we build the roadmap before we build anything else. The AI Audit maps your processes with your team, remote or on site, over 1 to 2 weeks, and ranks where AI and automation pay off. You keep the roadmap and can act on it with or without us.",
     "headline": {
       "before": "Find out exactly where AI ",
       "highlight": "pays off",
@@ -1249,44 +1250,44 @@
       },
       {
         "_type": "flowStep",
-        "label": "Analyze",
+        "label": "Analyse",
         "text": "Score ROI + effort"
       },
       {
         "_type": "flowStep",
         "label": "Deliver",
-        "text": "Prioritized roadmap"
+        "text": "Prioritised roadmap"
       }
     ],
     "stats": [
       {
         "_type": "statItem",
         "value": "Fixed",
-        "label": "Scope + price"
+        "label": "Scope and fee"
       },
       {
         "_type": "statItem",
-        "value": "1 week",
-        "label": "Typical turnaround"
+        "value": "On site",
+        "label": "Or remote with your team"
       },
       {
         "_type": "statItem",
-        "value": "ROI-ranked",
+        "value": "Ranked",
         "label": "Every opportunity"
       },
       {
         "_type": "statItem",
         "value": "Yours",
-        "label": "To keep + act on"
+        "label": "To keep and act on"
       }
     ],
     "whyTitle": "Clarity before spend",
     "whyHighlight": "spend",
-    "whyText": "Most automation money is wasted on the wrong things first. The audit removes the guesswork: a clear, honest map of where AI saves you the most time and money, ranked by effort and return, so your first project is the one that pays for the rest.",
+    "whyText": "Automation budgets often go to the wrong things first. The audit removes the guesswork: an honest map of where AI saves you time and money, ranked by effort and return, so your first build is the one that pays for the rest.",
     "checks": [
       "A structured review of your real workflows, not a generic checklist",
-      "Every opportunity scored by time saved, cost, and implementation effort",
-      "A prioritized roadmap: what to automate first, second, and later",
+      "Every opportunity scored by time saved, cost and implementation effort",
+      "A prioritised roadmap: what to automate first, second and later",
       "Honest calls on what is not worth automating yet",
       "A document your team owns and can act on with any provider"
     ],
@@ -1299,7 +1300,7 @@
       {
         "_type": "useCaseItem",
         "title": "Stalled AI efforts",
-        "description": "Diagnose why past attempts didn't stick."
+        "description": "Find out why past attempts didn't stick."
       },
       {
         "_type": "useCaseItem",
@@ -1313,75 +1314,75 @@
       }
     ],
     "pricing": {
-      "headline": "Fixed-fee engagement, typically delivered within a week",
-      "detail": "One flat price, one clear deliverable. If you move forward on a build with us, the audit fee is credited toward it."
+      "headline": "Fixed scope, fixed fee, 1 to 2 weeks.",
+      "detail": "The AI Audit has a fixed scope and a fixed fee, agreed before we start. It runs remote or on site and ends with a written roadmap and a recommended first build. Enterprises and multi-site businesses start with a discovery audit on site instead, scoped to their sites and systems."
     },
     "faq": [
       {
         "_type": "faqItem",
         "question": "What do I actually get?",
-        "answer": "A written roadmap: your mapped processes, ranked automation opportunities with ROI and effort scores, and a recommended sequence."
+        "answer": "A written roadmap: your mapped processes, ranked automation opportunities with ROI and effort scores, and a recommended sequence, starting with a first build."
       },
       {
         "_type": "faqItem",
-        "question": "Do I have to build with you afterward?",
-        "answer": "No. The roadmap is yours to act on however you like. If you do build with us, the audit fee is credited."
+        "question": "Do I have to build with you afterwards?",
+        "answer": "No. The roadmap is yours to act on however you like."
       },
       {
         "_type": "faqItem",
         "question": "How long does it take?",
-        "answer": "Most audits are delivered within a week of the discovery call."
+        "answer": "1 to 2 weeks from kick-off, remote or on site, depending on how many processes are in scope."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery call",
+        "description": "We learn how your business runs and agree which processes are in scope."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Shadow and map",
+        "description": "We sit with your team, remote or on site, and map each process, data flow and tool as it really works."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Score",
+        "description": "Every opportunity ranked by time saved, cost and effort, including what isn't worth doing yet."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Roadmap",
+        "description": "A written roadmap with a recommended first build, yours to keep and act on."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "Process Mapping",
+        "title": "Process mapping",
         "description": "We document how work actually flows today, end to end.",
         "icon": "◷"
       },
       {
         "_type": "capabilityItem",
-        "title": "ROI Scoring",
+        "title": "ROI scoring",
         "description": "Each opportunity ranked by return against effort.",
         "icon": "⊿"
       },
       {
         "_type": "capabilityItem",
-        "title": "Action Roadmap",
+        "title": "Action roadmap",
         "description": "A sequenced plan, not a vague list of ideas.",
         "icon": "▣"
       }
     ],
-    "whyUsHeading": "Clarity Before Spend",
+    "whyUsHeading": "Clarity before spend",
     "whyUs": [
       {
         "title": "Real workflow review",
@@ -1393,15 +1394,15 @@
       },
       {
         "title": "ROI scoring",
-        "description": "Every opportunity scored by time saved, cost, and implementation effort.",
+        "description": "Every opportunity scored by time saved, cost and implementation effort.",
         "highlights": [
           "Time saved",
           "Effort vs return"
         ]
       },
       {
-        "title": "Prioritized roadmap",
-        "description": "A prioritized roadmap: what to automate first, second, and later.",
+        "title": "Prioritised roadmap",
+        "description": "A prioritised roadmap: what to automate first, second and later.",
         "highlights": [
           "Sequenced plan",
           "Clear priorities"
@@ -1424,7 +1425,7 @@
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -1460,17 +1461,17 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Start with an AI Audit",
+      "description": "Book a discovery call and we'll agree the scope with you. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
-      "title": "AI Automation Audit: Fixed-Scope Review",
-      "description": "A fixed-scope review that maps where AI saves you the most time and money, and tells you plainly which processes are not worth automating."
+      "title": "AI Audit: Fixed-Scope AI Automation Review",
+      "description": "A fixed-scope AI automation audit, 1 to 2 weeks, remote or on site. We map your processes, rank where AI pays off and say plainly what not to automate."
     }
   },
   {
@@ -1479,8 +1480,8 @@
     "title": "Shopify Automation",
     "slug": "shopify-automation",
     "layout": "subService",
-    "tagline": "AI Automation",
-    "description": "We automate the operational load behind your Shopify store, order routing, inventory sync, fulfillment updates, and customer notifications, connected to the rest of your stack through n8n, Make, or custom pipelines.",
+    "tagline": "What we build",
+    "description": "During an engagement we build Shopify automation that takes order routing, inventory sync, fulfilment updates and customer notifications off your team's plate. It connects your store to the warehouse, CRM and ERP you already run through n8n, Make or custom code, and we monitor it so nothing slips when volume spikes.",
     "headline": {
       "before": "Shopify ops that run ",
       "highlight": "on autopilot",
@@ -1499,16 +1500,11 @@
       },
       {
         "_type": "flowStep",
-        "label": "Fulfill",
+        "label": "Fulfil",
         "text": "CRM / 3PL / notify"
       }
     ],
     "stats": [
-      {
-        "_type": "statItem",
-        "value": "0",
-        "label": "Manual order routing"
-      },
       {
         "_type": "statItem",
         "value": "Real-time",
@@ -1516,40 +1512,45 @@
       },
       {
         "_type": "statItem",
-        "value": "24/7",
-        "label": "Customer updates"
+        "value": "Retries",
+        "label": "On every webhook"
       },
       {
         "_type": "statItem",
-        "value": "100%",
-        "label": "Webhook reliability"
+        "value": "Alerts",
+        "label": "Failures caught, not silent"
+      },
+      {
+        "_type": "statItem",
+        "value": "Yours",
+        "label": "Workflows and documentation"
       }
     ],
     "whyTitle": "Built for real Shopify operations",
     "whyHighlight": "operations",
-    "whyText": "Shopify stores generate a constant stream of orders, inventory changes, and customer events. We automate the handoffs between Shopify, your warehouse, CRM, and support tools so nothing slips through when volume spikes.",
+    "whyText": "Shopify stores generate a constant stream of orders, inventory changes and customer events. We automate the handoffs between Shopify, your warehouse, CRM and support tools, so nothing slips through when volume spikes.",
     "checks": [
-      "Connect to Shopify Admin GraphQL for products, orders, inventory, and customers",
-      "Pipelines on n8n, Make, or self-hosted infrastructure you control",
-      "Bridge Shopify with CRM, ERP, shipping, and support tools automatically",
-      "Retries, logging, and alerts so failed webhooks don't silently break ops",
+      "Connect to Shopify Admin GraphQL for products, orders, inventory and customers",
+      "Pipelines on n8n, Make or self-hosted infrastructure you control",
+      "Bridge Shopify with CRM, ERP, shipping and support tools automatically",
+      "Retries, logging and alerts, so failed webhooks don't silently break operations",
       "Production experience shipping Shopify automations alongside AI workflows"
     ],
     "useCases": [
       {
         "_type": "useCaseItem",
         "title": "Order routing",
-        "description": "Route orders to the right warehouse or fulfillment partner automatically."
+        "description": "Route orders to the right warehouse or fulfilment partner automatically."
       },
       {
         "_type": "useCaseItem",
         "title": "Inventory sync",
-        "description": "Keep stock aligned across Shopify, warehouses, and marketplaces."
+        "description": "Keep stock aligned across Shopify, warehouses and marketplaces."
       },
       {
         "_type": "useCaseItem",
         "title": "Customer notifications",
-        "description": "Shipping, returns, and post-purchase messages on autopilot."
+        "description": "Shipping, returns and post-purchase messages on autopilot."
       },
       {
         "_type": "useCaseItem",
@@ -1558,79 +1559,79 @@
       }
     ],
     "pricing": {
-      "headline": "Shopify automation builds typically run 5–10 days",
-      "detail": "Scope depends on integrations, order volume, and fulfillment complexity. Fixed price after mapping your current ops flow."
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
     },
     "faq": [
       {
         "_type": "faqItem",
         "question": "Which Shopify plans do you support?",
-        "answer": "Any plan with API access. We use the Admin GraphQL API for reliable, scalable integrations."
+        "answer": "Any plan with API access. We use the Admin GraphQL API for reliable integrations that hold up as you grow."
       },
       {
         "_type": "faqItem",
         "question": "Can you connect to our 3PL or ERP?",
-        "answer": "Yes. We bridge Shopify with shipping, warehouse, CRM, and ERP systems via API or middleware."
+        "answer": "Yes. We bridge Shopify with shipping, warehouse, CRM and ERP systems via API or middleware."
       },
       {
         "_type": "faqItem",
         "question": "What if a webhook fails?",
-        "answer": "We build retries, dead-letter queues, and alerting so failures are caught and replayed automatically."
+        "answer": "We build retries, dead-letter queues and alerting, so failures are caught and replayed automatically."
       }
     ],
     "processSteps": [
       {
         "_type": "processStep",
-        "title": "Discovery",
-        "description": "A short call to understand your process, tools, and goals."
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
       },
       {
         "_type": "processStep",
-        "title": "Scope & Quote",
-        "description": "A fixed scope and price. No open-ended billing surprises."
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
       },
       {
         "_type": "processStep",
-        "title": "Build",
-        "description": "Iterative delivery with rapid feedback loops and your approval."
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
       },
       {
         "_type": "processStep",
-        "title": "Launch & Support",
-        "description": "Go live with monitoring and documentation you own."
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
       }
     ],
     "heroCta": {
-      "label": "Book a Discovery Call",
+      "label": "Book a discovery call",
       "href": "https://calendly.com/agilemorph/15-minute-discovery",
       "openInNewTab": true
     },
-    "capabilitiesHeading": "What's Included",
+    "capabilitiesHeading": "What's included",
     "capabilities": [
       {
         "_type": "capabilityItem",
-        "title": "Order & Fulfillment Flows",
-        "description": "Route orders, update statuses, and trigger fulfillment without manual handoffs.",
+        "title": "Order and fulfilment flows",
+        "description": "Route orders, update statuses and trigger fulfilment without manual handoffs.",
         "icon": "🛍"
       },
       {
         "_type": "capabilityItem",
-        "title": "Inventory Sync",
-        "description": "Keep stock levels aligned across Shopify, warehouses, and your other tools.",
+        "title": "Inventory sync",
+        "description": "Keep stock levels aligned across Shopify, warehouses and your other tools.",
         "icon": "▦"
       },
       {
         "_type": "capabilityItem",
-        "title": "Customer Notifications",
-        "description": "Automated emails and messages for shipping, returns, and post-purchase follow-up.",
+        "title": "Customer notifications",
+        "description": "Automated emails and messages for shipping, returns and post-purchase follow-up.",
         "icon": "✉"
       }
     ],
-    "whyUsHeading": "Built For Real Shopify Operations",
+    "whyUsHeading": "Built for real Shopify operations",
     "whyUs": [
       {
         "title": "Admin API integrations",
-        "description": "Connect to Shopify Admin GraphQL for products, orders, inventory, and customers.",
+        "description": "Connect to Shopify Admin GraphQL for products, orders, inventory and customers.",
         "highlights": [
           "Orders",
           "Inventory",
@@ -1639,7 +1640,7 @@
       },
       {
         "title": "Workflow tooling",
-        "description": "Pipelines on n8n, Make, or self-hosted infrastructure you control.",
+        "description": "Pipelines on n8n, Make or self-hosted infrastructure you control.",
         "highlights": [
           "n8n",
           "Make",
@@ -1648,7 +1649,7 @@
       },
       {
         "title": "Cross-stack sync",
-        "description": "Bridge Shopify with CRM, ERP, shipping, and support tools automatically.",
+        "description": "Bridge Shopify with CRM, ERP, shipping and support tools automatically.",
         "highlights": [
           "CRM sync",
           "ERP ready"
@@ -1656,7 +1657,7 @@
       },
       {
         "title": "Error handling",
-        "description": "Retries, logging, and alerts so failed webhooks don't silently break ops.",
+        "description": "Retries, logging and alerts, so failed webhooks don't silently break operations.",
         "highlights": [
           "Retries",
           "Alerts"
@@ -1664,14 +1665,14 @@
       },
       {
         "title": "Production experience",
-        "description": "We've shipped Shopify automations alongside our broader AI automation work.",
+        "description": "We've shipped Shopify automations alongside our broader AI engineering work.",
         "highlights": [
           "Production-ready",
           "Proven stack"
         ]
       }
     ],
-    "technologiesHeading": "Tools & Technologies",
+    "technologiesHeading": "Tools and technologies",
     "technologies": [
       {
         "_type": "technologyItem",
@@ -1707,17 +1708,268 @@
       }
     ],
     "cta": {
-      "heading": "Ready To Automate This?",
-      "description": "Book a 15-minute discovery call. We'll tell you straight whether automation makes sense for your case, and what it would take.",
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether this fits your case. Every build starts with a discovery audit. See how we work.",
       "button": {
-        "label": "Book Your Call",
-        "href": "https://calendly.com/agilemorph/15-minute-discovery",
-        "openInNewTab": true
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
       }
     },
     "seo": {
       "title": "Shopify Automation Services",
-      "description": "Automate orders, inventory, fulfilment, and customer flows across your Shopify store. Shopify Partner. Connects to 500+ platforms you already use."
+      "description": "Shopify automation for orders, inventory, fulfilment and customer flows, connected to the CRM, ERP and 3PL you already use. Built by a Shopify Partner."
+    }
+  },
+  {
+    "_id": "servicePage-custom-ai-engineering",
+    "_type": "servicePage",
+    "title": "Custom AI Engineering",
+    "slug": "custom-ai-engineering",
+    "layout": "subService",
+    "tagline": "What we build",
+    "description": "During an engagement we build custom AI software in Python, TypeScript and Java when no-code is the wrong fit. Agents, retrieval, voice AI and MCP servers run inside your existing systems, in production from the first release, and you own the code.",
+    "headline": {
+      "before": "Custom AI, written as real ",
+      "highlight": "production code",
+      "after": "."
+    },
+    "flow": [
+      {
+        "_type": "flowStep",
+        "label": "Input",
+        "text": "Documents / voice / events"
+      },
+      {
+        "_type": "flowStep",
+        "label": "Engine",
+        "text": "Retrieval + agent + evals"
+      },
+      {
+        "_type": "flowStep",
+        "label": "System",
+        "text": "ERP / CRM / your API"
+      }
+    ],
+    "stats": [
+      {
+        "_type": "statItem",
+        "value": "Your repo",
+        "label": "You own the code"
+      },
+      {
+        "_type": "statItem",
+        "value": "Evals",
+        "label": "Quality checked on every release"
+      },
+      {
+        "_type": "statItem",
+        "value": "On-premise",
+        "label": "Or your own cloud"
+      },
+      {
+        "_type": "statItem",
+        "value": "Traced",
+        "label": "Every call in Langfuse"
+      }
+    ],
+    "whyTitle": "When no-code is the wrong fit",
+    "whyHighlight": "wrong fit",
+    "whyText": "Make, n8n and Zapier are the right call for plenty of work. They stop fitting when you need custom logic, high volume, sensitive data, real-time voice or tight integration with SAP or a homegrown system. Then we write the code, with the same production discipline from day one.",
+    "checks": [
+      "Agents that read, decide and act inside your ERP, CRM and internal tools",
+      "Retrieval (RAG) and document intelligence over your contracts, manuals and records",
+      "Real-time voice AI on Retell and Twilio, logged to your systems",
+      "Evals and monitoring in Langfuse, so you see quality, cost and failures per release",
+      "MCP servers that give models governed access to your systems",
+      "Error handling, retries, monitoring and audit logs from the first build"
+    ],
+    "useCases": [
+      {
+        "_type": "useCaseItem",
+        "title": "Document intelligence",
+        "description": "Invoices, contracts and reports turned into checked, structured records."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Internal knowledge search",
+        "description": "Staff ask questions and get answers grounded in your own documents."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "Voice agents",
+        "description": "Calls answered, qualified and logged to your system in real time."
+      },
+      {
+        "_type": "useCaseItem",
+        "title": "An agent inside your ERP",
+        "description": "Routine updates prepared by an agent and confirmed by a person."
+      }
+    ],
+    "pricing": {
+      "headline": "Scope is fixed after the audit, before any build starts.",
+      "detail": "Enterprises and multi-site businesses start with a fixed-scope discovery audit, on site with your teams. Growing businesses start with an AI Audit (1 to 2 weeks), then a first build. Either way, we agree the scope from what we observe, not from a guess."
+    },
+    "faq": [
+      {
+        "_type": "faqItem",
+        "question": "Which languages and models do you use?",
+        "answer": "Python, TypeScript and Java, chosen to fit your stack and your team. Models include Claude, GPT and open-weight models, agreed with your IT team."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Can it run on our own infrastructure?",
+        "answer": "Yes. We deploy in your cloud or on-premise when required, including self-hosted models where data cannot leave your network."
+      },
+      {
+        "_type": "faqItem",
+        "question": "Who owns the code?",
+        "answer": "You do. Code, prompts, eval sets, documentation and data stay with you, in your repositories."
+      },
+      {
+        "_type": "faqItem",
+        "question": "How do you know the AI is giving good answers?",
+        "answer": "We build evals with your team from real examples, run them on every change and trace live calls in Langfuse. Low-confidence outputs go to a person."
+      }
+    ],
+    "processSteps": [
+      {
+        "_type": "processStep",
+        "title": "Discovery audit",
+        "description": "We sit with your team, map the real process and the systems it touches, and find where the gaps are."
+      },
+      {
+        "_type": "processStep",
+        "title": "Fixed scope",
+        "description": "We agree a fixed scope from what we observed. No open-ended billing."
+      },
+      {
+        "_type": "processStep",
+        "title": "Build in production",
+        "description": "We build inside your existing systems, alongside your team, and ship a working version within weeks."
+      },
+      {
+        "_type": "processStep",
+        "title": "Adopt and improve",
+        "description": "We measure who uses it, fix what gets in the way, and hand over code and documentation you own."
+      }
+    ],
+    "heroCta": {
+      "label": "Book a discovery call",
+      "href": "https://calendly.com/agilemorph/15-minute-discovery",
+      "openInNewTab": true
+    },
+    "capabilitiesHeading": "What's included",
+    "capabilities": [
+      {
+        "_type": "capabilityItem",
+        "title": "Agents and retrieval",
+        "description": "Agents and RAG pipelines that work over your data and write to your systems.",
+        "icon": "⬡"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Real-time voice",
+        "description": "Voice agents on Retell and Twilio that answer, qualify and log calls.",
+        "icon": "⌯"
+      },
+      {
+        "_type": "capabilityItem",
+        "title": "Evals and monitoring",
+        "description": "Langfuse tracing and eval suites, so quality is measured, not assumed.",
+        "icon": "◴"
+      }
+    ],
+    "whyUsHeading": "When no-code is the wrong fit",
+    "whyUs": [
+      {
+        "title": "Agents in your systems",
+        "description": "Agents that read, decide and act inside your ERP, CRM and internal tools.",
+        "highlights": [
+          "ERP and CRM",
+          "Internal tools"
+        ]
+      },
+      {
+        "title": "Retrieval and documents",
+        "description": "RAG and document intelligence over your contracts, manuals and records.",
+        "highlights": [
+          "RAG",
+          "Document intelligence"
+        ]
+      },
+      {
+        "title": "Real-time voice AI",
+        "description": "Voice agents on Retell and Twilio, logged to your systems.",
+        "highlights": [
+          "Retell",
+          "Twilio"
+        ]
+      },
+      {
+        "title": "Evals and monitoring",
+        "description": "Evals and Langfuse tracing on every release.",
+        "highlights": [
+          "Langfuse",
+          "Eval suites"
+        ]
+      },
+      {
+        "title": "You own it",
+        "description": "Self-hosted or on-premise when required. Code, prompts and data stay with you.",
+        "highlights": [
+          "Your repo",
+          "On-premise ready"
+        ]
+      }
+    ],
+    "technologiesHeading": "Tools and technologies",
+    "technologies": [
+      {
+        "_type": "technologyItem",
+        "name": "Python"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "TypeScript"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Java"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Claude"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "OpenAI"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Langfuse"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Retell"
+      },
+      {
+        "_type": "technologyItem",
+        "name": "Twilio"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to build this inside your stack?",
+      "description": "Book a discovery call and we'll tell you plainly whether custom code is the right fit. Every build starts with a discovery audit. See how we work.",
+      "button": {
+        "label": "See how we work",
+        "href": "/how-we-work",
+        "openInNewTab": false
+      }
+    },
+    "seo": {
+      "title": "Custom AI Engineering: Python, TypeScript, Java",
+      "description": "Custom AI engineering for agents, RAG, document intelligence, real-time voice AI and MCP servers. Production-grade, self-hosted if needed, and you own the code."
     }
   }
 ]

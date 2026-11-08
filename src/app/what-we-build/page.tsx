@@ -11,10 +11,10 @@ import { servicesIndexPageQuery } from "@/sanity/queries";
 import type { ServicesIndexPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
-  title: "AI Automation Services",
-  alternates: { canonical: "/services" },
+  title: "What we build: AI agents, automation and integration",
+  alternates: { canonical: "/what-we-build" },
   description:
-    "AI automation, AI agents, workflow and CRM integration, messaging, MCP infrastructure, and Shopify automation. Seven specializations, built and deployed.",
+    "AI agents, workflow automation, CRM and messaging automation, RAG, voice AI and self-hosted AI infrastructure, built inside the systems you already run.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return seoToMetadata(servicesIndex?.seo, fallbackMetadata);
 }
 
-export default async function ServicesPageRoute() {
+export default async function WhatWeBuildPageRoute() {
   const [pages, servicesIndex] = await Promise.all([
     getServicePages(),
     sanityFetch<ServicesIndexPage | null>({
@@ -46,12 +46,12 @@ export default async function ServicesPageRoute() {
           heroDescription={servicesIndex?.hero?.description}
         />
         <PageCtaSection
-          heading={servicesIndex?.cta?.heading ?? "Not Sure Where To Start?"}
+          heading={servicesIndex?.cta?.heading ?? "Every build starts with a discovery audit"}
           description={
             servicesIndex?.cta?.description ??
-            "Book a discovery call and we'll map the highest-impact automation and supporting services for your team."
+            "Every build starts with a discovery audit. See how we work."
           }
-          button={servicesIndex?.cta?.button ?? { label: "Get In Touch", href: "/contact#book" }}
+          button={servicesIndex?.cta?.button ?? { label: "See how we work", href: "/how-we-work" }}
         />
       </main>
       <SiteFooter />

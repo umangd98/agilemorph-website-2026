@@ -9,6 +9,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeScript } from "@/components/ThemeScript";
 import { TidioChat } from "@/components/TidioChat";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/data/positioning";
 import { getSiteSettings } from "@/lib/get-site-settings";
 import {
   organizationSchema,
@@ -31,23 +32,20 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getSiteSettings();
 
-  const title =
-    siteSettings?.siteTitle ?? "AI Automation Agency for Growing SMBs | AgileMorph";
-  const description =
-    siteSettings?.siteDescription ??
-    "AgileMorph builds done-for-you AI automation, agents, and integrations that have saved clients 500K+ hours. Claude and Make certified.";
+  const title = siteSettings?.siteTitle ?? SITE_TITLE;
+  const description = siteSettings?.siteDescription ?? SITE_DESCRIPTION;
 
   return {
     metadataBase: new URL(SITE_URL),
     title: {
       default: title,
-      template: "%s | AgileMorph",
+      template: "%s | Agilemorph",
     },
     description,
     openGraph: {
       type: "website",
       url: SITE_URL,
-      siteName: "AgileMorph",
+      siteName: "Agilemorph",
       title,
       description,
     },

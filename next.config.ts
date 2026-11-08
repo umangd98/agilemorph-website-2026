@@ -6,10 +6,17 @@ const nextConfig: NextConfig = {
     // lineup narrowed to AI automation; 301 them so their links and rankings
     // land on the page that replaced them instead of 404ing.
     return [
-      { source: "/services/bookkeeping", destination: "/services/ai-automation", statusCode: 301 },
-      { source: "/services/digital-marketing", destination: "/services/ai-automation", statusCode: 301 },
-      { source: "/services/virtual-assistance", destination: "/services/ai-automation", statusCode: 301 },
-      { source: "/services/website-development", destination: "/services/ai-automation", statusCode: 301 },
+      { source: "/services/bookkeeping", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      { source: "/services/digital-marketing", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      { source: "/services/virtual-assistance", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      { source: "/services/website-development", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      // Services became What we build in the Forward Deployed Engineering
+      // repositioning. Same slugs, new parent path.
+      { source: "/what-we-build/:slug(bookkeeping|digital-marketing|virtual-assistance|website-development)", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      { source: "/services", destination: "/what-we-build", statusCode: 301 },
+      { source: "/services/:slug", destination: "/what-we-build/:slug", statusCode: 301 },
+      // Pricing folded into the engagement model on How we work.
+      { source: "/pricing", destination: "/how-we-work#engagement-model", statusCode: 301 },
       // The site lives on theagilemorph.com; agilemorph.in, .dev and .biz are
       // older domains on the same deploy. /api is left out so webhooks still
       // pointed at an old host (Sanity revalidation) keep working: a 301 would

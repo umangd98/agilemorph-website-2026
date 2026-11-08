@@ -10,6 +10,7 @@ import {
 import type { FaqItem } from "@/sanity/types";
 
 type FaqSectionProps = {
+  index?: string;
   eyebrow?: string;
   heading?: string;
   items?: FaqItem[];
@@ -21,6 +22,7 @@ type FaqSectionProps = {
  * Falls back to the curated default set when Sanity has no FAQ content.
  */
 export function FaqSection({
+  index = "07",
   eyebrow = HOMEPAGE_FAQ_EYEBROW,
   heading = HOMEPAGE_FAQ_HEADING,
   items,
@@ -38,7 +40,7 @@ export function FaqSection({
       {schema ? <StructuredData data={schema} /> : null}
 
       <Container>
-        <SectionHeader index="07" label={eyebrow} title={heading} />
+        <SectionHeader index={index} label={eyebrow} title={heading} />
 
         <div className="mx-auto flex max-w-3xl flex-col gap-3">
           {faqItems.map((item, index) => (

@@ -39,7 +39,7 @@ export function Reveal({
   );
 }
 
-/** Staggered container — children get a sequential entrance. */
+/** Staggered container, children get a sequential entrance. */
 export function RevealGroup({
   children,
   className,

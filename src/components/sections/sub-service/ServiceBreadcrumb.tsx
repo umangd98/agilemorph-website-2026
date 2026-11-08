@@ -12,8 +12,8 @@ export function ServiceBreadcrumb({ title }: ServiceBreadcrumbProps) {
       aria-label="Breadcrumb"
       className="mb-7 flex flex-wrap items-center gap-x-1.5 gap-y-1 font-body text-xs tracking-wide text-muted-foreground sm:mb-8"
     >
-      <Link href="/services" className="transition-colors hover:text-primary">
-        Services
+      <Link href="/what-we-build" className="transition-colors hover:text-primary">
+        What we build
       </Link>
       <span className="select-none text-border/80" aria-hidden>
         /

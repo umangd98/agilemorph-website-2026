@@ -186,7 +186,7 @@ export function SubServiceFlowVisual({ pageKey, flow }: SubServiceFlowVisualProp
         data-flow-footer
         className="relative z-1 mt-5 border-t border-border/70 pt-3.5 text-center font-body text-xs leading-relaxed text-muted-foreground sm:text-left sm:text-[0.8125rem]"
       >
-        Live, automated, monitored. Running while you sleep.
+        Live in production, monitored, measured until it&apos;s used.
       </p>
     </div>
   );

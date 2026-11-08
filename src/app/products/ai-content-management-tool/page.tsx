@@ -593,6 +593,10 @@ export default function AIContentManagementPage() {
                   less effort and fewer manual steps.
                 </p>
 
+                <p className="mt-3 max-w-2xl font-body text-sm leading-6 text-[#64748b]">
+                  CAT comes out of Agilemorph&apos;s R&amp;D arm, funded by our engineering work.
+                </p>
+
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a
                     href={CAT_TRY_URL}
@@ -1285,27 +1289,27 @@ export default function AIContentManagementPage() {
   {[
     {
       name: "AI Agents",
-      href: "/services/ai-agents",
+      href: "/what-we-build/ai-agents",
     },
     {
       name: "CRM & Lead Automation",
-      href: "/services/crm-lead-automation",
+      href: "/what-we-build/crm-lead-automation",
     },
     {
       name: "MCP & AI Infrastructure",
-      href: "/services/mcp-ai-infrastructure",
+      href: "/what-we-build/mcp-ai-infrastructure",
     },
     {
       name: "Messaging Automation",
-      href: "/services/messaging-automation",
+      href: "/what-we-build/messaging-automation",
     },
     {
       name: "AI Audit",
-      href: "/services/ai-audit",
+      href: "/what-we-build/ai-audit",
     },
     {
       name: "Shopify Automation",
-      href: "/services/shopify-automation",
+      href: "/what-we-build/shopify-automation",
     },
   ].map((item) => (
     <Link

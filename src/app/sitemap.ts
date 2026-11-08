@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/lib/structured-data";
 import { getAllServiceSlugs } from "@/lib/get-service-page";
+import { serviceHref } from "@/lib/services";
 import { sanityFetch } from "@/sanity/fetch";
-import { allBlogSlugsQuery } from "@/sanity/queries";
+import { allBlogSlugsQuery, caseStudiesListQuery } from "@/sanity/queries";
 
 const STATIC_ROUTES: Array<{
   path: string;
@@ -11,9 +12,10 @@ const STATIC_ROUTES: Array<{
   priority: number;
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
-  { path: "/services", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/how-we-work", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/what-we-build", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/case-studies", changeFrequency: "monthly", priority: 0.8 },
   { path: "/products/ai-content-management-tool", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/pricing", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
@@ -40,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const slugs = await getAllServiceSlugs();
     serviceEntries = slugs.map((slug) => ({
-      url: `${SITE_URL}/services/${slug}`,
+      url: `${SITE_URL}${serviceHref(slug)}`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: slug === "ai-automation" ? 0.9 : 0.8,
@@ -67,5 +69,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     blogEntries = [];
   }
 
-  return [...staticEntries, ...serviceEntries, ...blogEntries];
+  let caseStudyEntries: MetadataRoute.Sitemap = [];
+  try {
+    const studies = await sanityFetch<Array<{ slug: string }>>({
+      query: caseStudiesListQuery,
+      tags: ["caseStudy"],
+    });
+    caseStudyEntries = (studies ?? [])
+      .filter((study) => Boolean(study?.slug))
+      .map((study) => ({
+        url: `${SITE_URL}/case-studies/${study.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7,
+      }));
+  } catch {
+    caseStudyEntries = [];
+  }
+
+  return [...staticEntries, ...serviceEntries, ...caseStudyEntries, ...blogEntries];
 }

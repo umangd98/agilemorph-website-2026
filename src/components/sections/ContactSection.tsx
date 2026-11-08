@@ -34,18 +34,17 @@ type ContactSectionProps = {
 };
 
 const defaultDiscoveryCall: Required<DiscoveryCallContent> = {
-  title: "Book A Discovery Call",
+  title: "Book a discovery call",
   subtitle: "15 Minute Discovery with Umang Dhandhania",
   description:
-    "Pick a time that works for you. We'll discuss your goals and whether AgileMorph is the right fit.",
-  availabilityNote:
-    "We take on only 5 new client projects each month. Spots are limited, so book early if timing matters.",
+    "Pick a time that works for you. We'll discuss your operation and whether Agilemorph is the right fit.",
+  availabilityNote: "",
   bullets: [
     "15-minute video call with our team",
     "Discuss goals, scope, and fit",
     "Leave with clear next steps",
   ],
-  ctaLabel: "Book A Slot",
+  ctaLabel: "Book a slot",
 };
 
 const inputClassName =

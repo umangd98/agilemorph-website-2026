@@ -5,9 +5,9 @@
  * light theme, light on dark), with signal-green accents via nested groups.
  * One illustration per step concept; cycles by index so any step count works.
  *
- * 0 — Plan: a project board / blueprint being laid out
- * 1 — Build: a workstation shipping code, momentum forward
- * 2 — Results: a launch + growth curve reaching 100%
+ * 0, Plan: a project board / blueprint being laid out
+ * 1, Build: a workstation shipping code, momentum forward
+ * 2, Results: a launch + growth curve reaching 100%
  */
 
 import type { ComponentType } from "react";

@@ -54,7 +54,7 @@ function FeaturedLeadCard({
 
         <div className="min-w-0">
           <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-primary sm:text-xs">
-            Lead service
+            Overview
           </p>
           <h3 className="mt-1 font-heading text-lg font-extrabold text-foreground transition-colors group-hover:text-primary sm:text-xl md:text-2xl">
             {capability.title}
@@ -66,7 +66,7 @@ function FeaturedLeadCard({
       </div>
 
       <span className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border border-primary/20 bg-background px-4 py-2.5 font-body text-sm font-semibold text-primary shadow-sm transition-all duration-200 group-hover:border-primary/35 group-hover:bg-signal group-hover:text-bg md:w-auto md:self-center">
-        View service
+        View overview
         <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
       </span>
     </Link>
@@ -124,7 +124,7 @@ function SpecializationsHeading({ className = "" }: { className?: string }) {
     <p
       className={`font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs ${className}`}
     >
-      Specializations
+      Capabilities
     </p>
   );
 }
@@ -174,7 +174,11 @@ function CapabilitiesGrid({ capabilities }: { capabilities: readonly CapabilityI
           <SpecializationsHeading />
         </div>
 
-        <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={`grid gap-px bg-border md:grid-cols-2 ${
+            secondary.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+          }`}
+        >
           {secondary.map((capability) => (
             <SecondaryCapabilityCard
               key={capability.title}

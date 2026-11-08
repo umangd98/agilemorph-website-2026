@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/ui";
-import { ClaudePartnerBadge } from "@/components/ClaudePartnerBadge";
 import { CtaAction } from "@/components/CtaAction";
 import { HeroTagline } from "@/components/sections/HeroTagline";
+import { FdeExplainer } from "@/components/sections/fde/FdeExplainer";
 import type { HomepageHero } from "@/sanity/types";
 
 type HeroSectionProps = { hero: HomepageHero };
 
-/** Ambient SVG grid + drawn accent lines — the Quido hero backdrop. */
+/** Ambient SVG grid backdrop. */
 function HeroGrid() {
   return (
     <div
@@ -75,22 +75,24 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section
-      className="relative flex min-h-[92vh] w-full flex-col justify-center overflow-hidden pt-28 pb-16 sm:pt-32"
+      className="relative flex min-h-[92vh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28"
       aria-labelledby="hero-heading"
     >
       <HeroGrid />
 
       <Container className="relative z-10 text-center">
-        <div
-          className="mx-auto mb-6 flex w-fit justify-center opacity-0"
-          style={{ animation: "word-appear 0.9s ease-out 120ms forwards" }}
-        >
-          <ClaudePartnerBadge />
-        </div>
+        {hero.badge ? (
+          <p
+            className="syslabel mx-auto mb-6 w-fit text-signal opacity-0"
+            style={{ animation: "word-appear 0.9s ease-out 120ms forwards" }}
+          >
+            {hero.badge}
+          </p>
+        ) : null}
 
         <h1
           id="hero-heading"
-          className="mx-auto max-w-4xl text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-6xl lg:text-[4.5rem]"
+          className="mx-auto max-w-5xl text-balance text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-fg sm:text-6xl lg:text-[4rem]"
         >
           {headingLines.map((line, index) => (
             <Fragment key={line}>
@@ -123,7 +125,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
         ) : null}
 
         <div
-          className="mt-9 flex flex-col items-center justify-center gap-3 opacity-0 sm:flex-row"
+          className="mt-8 flex flex-col items-center justify-center gap-3 opacity-0 sm:flex-row"
           style={{ animation: "word-appear 0.9s ease-out 850ms forwards" }}
         >
           {hero.ctaPrimary ? (
@@ -145,20 +147,34 @@ export function HeroSection({ hero }: HeroSectionProps) {
               rel={hero.ctaSecondary.openInNewTab ? "noopener noreferrer" : undefined}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3.5 font-body text-sm font-medium text-fg transition-colors duration-200 hover:border-line-strong hover:bg-bg-elevated active:scale-95"
             >
-              <Play size={13} className="fill-current opacity-80" />
               {hero.ctaSecondary.label}
             </Link>
           ) : null}
         </div>
 
+        {hero.proofPoints?.length ? (
+          <ul
+            className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 opacity-0"
+            style={{ animation: "word-appear 0.9s ease-out 1000ms forwards" }}
+            aria-label="Proof points"
+          >
+            {hero.proofPoints.map((point) => (
+              <li
+                key={point}
+                className="inline-flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-fg-dim sm:text-xs sm:tracking-[0.12em]"
+              >
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-signal" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
         <div
-          className="mt-8 flex items-center justify-center gap-2 opacity-0"
-          style={{ animation: "word-appear 0.9s ease-out 1000ms forwards" }}
+          className="mt-7 opacity-0"
+          style={{ animation: "word-appear 0.9s ease-out 1100ms forwards" }}
         >
-          <span className="tnum font-mono text-sm font-medium text-signal">4.9</span>
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-fg-dim">
-            Rated by clients worldwide
-          </span>
+          <FdeExplainer text={hero.explainer} />
         </div>
       </Container>
     </section>

@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL, FOUNDERS, ONE_LINER } from "@/data/positioning";
 import type { FaqItem, SocialLink } from "@/sanity/types";
 
 /**
@@ -6,8 +7,7 @@ import type { FaqItem, SocialLink } from "@/sanity/types";
  */
 export const SITE_URL = "https://theagilemorph.com";
 
-export const ORGANIZATION_NAME = "AgileMorph";
-export const ORGANIZATION_LEGAL_NAME = "AgileMorph Solutions";
+export const ORGANIZATION_NAME = "Agilemorph";
 
 const DEFAULT_SAME_AS = [
   "https://www.linkedin.com/company/agilemorph/",
@@ -38,26 +38,25 @@ export function organizationSchema(options?: {
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: ORGANIZATION_NAME,
-    legalName: ORGANIZATION_LEGAL_NAME,
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/brand/agilemorph-logo-dark.png`,
     },
-    description:
-      options?.description ??
-      "AI automation agency that builds and deploys end-to-end AI workflows, agents, and integrations for growing businesses.",
-    founder: {
+    description: options?.description ?? ONE_LINER,
+    email: CONTACT_EMAIL,
+    founder: FOUNDERS.map((founder) => ({
       "@type": "Person",
-      name: "Umang Dhandhania",
-    },
+      name: founder.name,
+      jobTitle: founder.jobTitle,
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Nagpur",
       addressRegion: "Maharashtra",
       addressCountry: "IN",
     },
-    areaServed: ["US", "IN", "GB", "AU"],
+    areaServed: ["India", "United States", "Africa"],
     sameAs: socialUrls(options?.socialLinks),
   };
 }

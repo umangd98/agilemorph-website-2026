@@ -3,25 +3,26 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import {
-  AboutHeroSection,
   CompanyStorySection,
-  ProcessSection,
-  TeamLeadsSection,
-  TestimonialsSection,
-  AboutImpactSection,
+  PartnersSection,
   ValuesSection,
 } from "@/components/sections";
+import {
+  FdeExplainer,
+  FdePageHero,
+  FinalCtaSection,
+  FoundersPairSection,
+} from "@/components/sections/fde";
+import { ONE_LINER } from "@/data/positioning";
 import { seoToMetadata } from "@/lib/seo";
-import { resolveStatsSection } from "@/data/site-metrics";
 import { sanityFetch } from "@/sanity/fetch";
 import { aboutPageQuery } from "@/sanity/queries";
 import type { AboutPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
-  title: "About Us",
+  title: "About",
   alternates: { canonical: "/about" },
-  description:
-    "Empowering businesses with agile solutions, innovative technology, and a customer-first approach.",
+  description: ONE_LINER,
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -53,47 +54,41 @@ export default async function AboutPageRoute() {
     );
   }
 
-  const metrics = resolveStatsSection(aboutPage.stats);
-
   return (
     <>
       <SiteNavbar />
       <main className="flex-1">
-        <AboutHeroSection
+        <FdePageHero
+          eyebrow="About Agilemorph"
           heading={aboutPage.hero.heading}
-          tagline={aboutPage.hero.tagline}
-          cta={aboutPage.hero.cta}
-        />
+          description={aboutPage.hero.tagline}
+          ctaPrimary={aboutPage.hero.cta}
+        >
+          <FdeExplainer />
+        </FdePageHero>
         <CompanyStorySection
           heading={aboutPage.about?.heading}
           body={aboutPage.about?.body}
           promiseHeading={aboutPage.about?.promiseHeading}
           promise={aboutPage.about?.promise}
         />
-        <ValuesSection values={aboutPage.values} />
-        <ProcessSection
-          heading={aboutPage.process?.heading}
-          subheading={aboutPage.process?.subheading}
-          steps={aboutPage.process?.steps}
+        <FoundersPairSection index="01" block={aboutPage.founders} />
+        <ValuesSection heading="What makes us different" values={aboutPage.values} />
+        <PartnersSection
+          heading={aboutPage.partners?.heading}
+          items={aboutPage.partners?.items}
         />
-        <AboutImpactSection
-          heading={aboutPage.cta?.heading}
-          description={aboutPage.cta?.description}
-          button={aboutPage.cta?.button}
-          statsEyebrow={metrics.eyebrow}
-          statsHeading={metrics.heading}
-          stats={metrics.items}
-        />
-        <TeamLeadsSection
-          eyebrow={aboutPage.teamLeads?.eyebrow}
-          heading={aboutPage.teamLeads?.heading}
-          subheading={aboutPage.teamLeads?.subheading}
-          cardFooter={aboutPage.teamLeads?.cardFooter}
-          members={aboutPage.teamLeads?.members}
-        />
-        <TestimonialsSection
-          heading={aboutPage.testimonials?.heading}
-          items={aboutPage.testimonials?.items}
+        <FinalCtaSection
+          block={
+            aboutPage.cta?.heading
+              ? {
+                  heading: aboutPage.cta.heading,
+                  description: aboutPage.cta.description,
+                  button: aboutPage.cta.button,
+                  showEmail: true,
+                }
+              : undefined
+          }
         />
       </main>
       <SiteFooter />

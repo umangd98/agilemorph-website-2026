@@ -240,7 +240,7 @@ export const ECOSYSTEM_QUICK_JUMP_SERVICES = [
   { slug: "mcp-ai-infrastructure", label: "MCP & AI Infrastructure" },
   { slug: "messaging-automation", label: "Messaging Automation" },
   { slug: "ai-audit", label: "AI Audit" },
-  ...GRAPH_PILLS.map((pill) => ({ slug: pill.slug, label: pill.label })),
+  { slug: "custom-ai-engineering", label: "Custom AI Engineering" },
 ] as const;
 
 export function getNodeDimensions(type: GraphNodeType) {

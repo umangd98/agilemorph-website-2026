@@ -9,8 +9,8 @@
 
 @theme {
   /* ============================================================
-     Design tokens — Quido "production console" vocabulary.
-     Canonical names: bg / fg / line / signal (AgileMorph green).
+     Design tokens, "production console" vocabulary.
+     Canonical names: bg / fg / line / signal (Agilemorph green).
      @theme holds LIGHT values; .dark overrides below.
      ============================================================ */
 
@@ -32,10 +32,12 @@
   --color-grid-line: rgba(0, 0, 0, 0.06);
   --color-grid-accent: rgba(0, 0, 0, 0.1);
 
-  /* Accent — AgileMorph green, deepened for legibility on paper */
+  /* Accent, Agilemorph green, deepened for legibility on paper */
   --color-signal: #15803d;
   --color-signal-dim: #166534;
   --color-fail: #dc2626;
+  /* Human in the loop: marks steps where a person decides */
+  --color-human: #9a5b00;
 
   /* ---- Migration aliases: legacy names mapped to new values so
      un-ported sections keep rendering during the port. Remove in
@@ -56,7 +58,7 @@
   --color-border: rgba(0, 0, 0, 0.1);
   --color-muted: #f1f5f9;
 
-  /* Fonts — Geist via next/font (wired in layout.tsx) */
+  /* Fonts, Geist via next/font (wired in layout.tsx) */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -112,7 +114,7 @@
 .dark {
   color-scheme: dark;
 
-  /* Canonical tokens — dark values */
+  /* Canonical tokens, dark values */
   --color-bg: #08090a;
   --color-bg-elevated: #0e0f11;
   --color-bg-raised: #131517;
@@ -126,8 +128,9 @@
   --color-signal: #22c55e;
   --color-signal-dim: #15803d;
   --color-fail: #f06b6b;
+  --color-human: #e0a347;
 
-  /* Legacy aliases — dark values */
+  /* Legacy aliases, dark values */
   --color-primary: #22c55e;
   --color-primary-dark: #16a34a;
   --color-primary-light: #bbf7d0;
@@ -1315,7 +1318,7 @@ main {
 }
 
 /* ============================================================
-   Quido "production console" primitives — ported vocabulary.
+   "production console" primitives, ported vocabulary.
    ============================================================ */
 
 /* Tabular figures for all metrics/data */
@@ -1324,7 +1327,7 @@ main {
   font-feature-settings: "tnum";
 }
 
-/* System label — uppercase mono eyebrow */
+/* System label, uppercase mono eyebrow */
 .syslabel {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -1333,7 +1336,7 @@ main {
   color: var(--color-fg-dim);
 }
 
-/* Text selection — signal-green tint */
+/* Text selection, signal-green tint */
 ::selection {
   background: rgba(34, 197, 94, 0.22);
   color: #fff;
@@ -1439,7 +1442,7 @@ main {
   }
 }
 
-/* Word reveal — start hidden; the Hero sets the animation per word.
+/* Word reveal, start hidden; the Hero sets the animation per word.
    Words are separated by real whitespace text nodes (see HeroSection),
    so no horizontal margin is needed and the heading stays crawlable. */
 .word {
@@ -1447,7 +1450,7 @@ main {
   opacity: 0;
 }
 
-/* Client logos — monochrome treatment matching the console aesthetic.
+/* Client logos, monochrome treatment matching the console aesthetic.
    Assets are full-colour on white; dark theme keys them out. */
 .client-logo {
   filter: grayscale(1);

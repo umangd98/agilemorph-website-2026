@@ -56,23 +56,23 @@ export function SubServiceFinalCta({ cta, siblings, currentSlug }: SubServiceFin
                   <ArrowRight size={16} aria-hidden />
                 </CtaAction>
               ) : null}
-              <Link
-                href="/contact"
+              <CtaAction
+                cta={{ label: "Book a discovery call", href: "/contact#book" }}
                 className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 font-body text-sm font-semibold text-foreground transition-colors hover:border-primary/35 hover:text-primary"
               >
-                Contact Us
-              </Link>
+                Book a discovery call
+              </CtaAction>
             </div>
           </div>
         </AnimateOnScroll>
 
         {otherServices.length > 0 ? (
           <nav
-            aria-label="Other AI automation services"
+            aria-label="Other capabilities"
             className="mt-8"
           >
             <p className="mb-3 text-center font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground lg:hidden">
-              Other services
+              More of what we build
             </p>
             <div className="services-mobile-chips -mx-1 flex gap-2 px-1 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0">
               {otherServices.map((item, index) => (

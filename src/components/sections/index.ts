@@ -3,7 +3,6 @@ export { ProcessSection } from "./ProcessSection";
 export { CATVideoSection } from "./CATVideoSection";
 export { ServicesSection } from "./ServicesSection";
 export { PricingSection } from "./PricingSection";
-export { WhyUsSection } from "./WhyUsSection";
 export { StatsSection } from "./StatsSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { FaqSection } from "./FaqSection";

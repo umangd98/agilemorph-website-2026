@@ -64,7 +64,7 @@ export function RecentEventsSection() {
             </h2>
 
             <p className="mt-5 max-w-2xl text-pretty font-body text-base leading-relaxed text-fg-muted sm:text-lg">
-              Meet AgileMorph at the industry events shaping the future of AI,
+              Meet Agilemorph at the industry events shaping the future of AI,
               automation, and digital growth. Connect with our team, exchange
               ideas, and explore what&apos;s next.
             </p>

@@ -139,7 +139,7 @@ function AllServicesList() {
   return (
     <div className="mt-6 hidden lg:block">
       <p className="syslabel mb-3">
-        All services
+        All capabilities
       </p>
       <div className="flex flex-wrap gap-2">
         {ECOSYSTEM_QUICK_JUMP_SERVICES.map((service) => (
@@ -157,16 +157,16 @@ function AllServicesList() {
 }
 
 function CatalogHeroCopy({
-  eyebrow = "What We Do",
-  heading = "Services Built For Modern Operations",
-  description = "AI automation is the whole practice, split into seven specializations so you can start where the hours are actually going.",
+  eyebrow = "What we build",
+  heading = "What we build during an engagement",
+  description = "The capabilities our engineers bring when they embed with your team. Each one is built inside the systems you already run, in production, and measured until it's used.",
 }: {
   eyebrow?: string;
   heading?: string;
   description?: string;
 }) {
-  const headingParts = heading.includes("modern operations")
-    ? heading.split("modern operations")
+  const headingParts = heading.includes("during an engagement")
+    ? heading.split("during an engagement")
     : [heading];
 
   return (
@@ -182,7 +182,7 @@ function CatalogHeroCopy({
         {headingParts.length > 1 ? (
           <>
             {headingParts[0]}
-            <span className="text-signal">modern operations</span>
+            <span className="text-signal">during an engagement</span>
             {headingParts[1]}
           </>
         ) : (
@@ -193,10 +193,10 @@ function CatalogHeroCopy({
         {description}
       </p>
       <p className="mt-3 hidden font-mono text-sm text-fg-dim lg:block">
-        Tap any node in the ecosystem to explore a service.
+        Tap any node in the ecosystem to explore a capability.
       </p>
       <p className="mt-3 font-mono text-sm text-fg-dim lg:hidden">
-        Browse services below or use quick jump.
+        Browse capabilities below or use quick jump.
       </p>
     </>
   );
@@ -254,7 +254,7 @@ export function ServicesCatalogSection({
         <Container>
           <AnimateOnScroll className="mb-6">
             <p className="syslabel text-signal">
-              Core practice
+              Capabilities
             </p>
           </AnimateOnScroll>
 

@@ -12,9 +12,12 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings | null> => {
 });
 
 export const DEFAULT_FOOTER_QUICK_LINKS: NavLink[] = [
-  { label: "About Us", href: "/about" },
+  { label: "How we work", href: "/how-we-work" },
+  { label: "What we build", href: "/what-we-build" },
+  { label: "Case studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const DEFAULT_SOCIAL_LINKS: SocialLink[] = [

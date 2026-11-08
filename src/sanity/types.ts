@@ -157,16 +157,27 @@ export interface HomepageHero {
   ctaPrimary?: CtaButton;
   ctaSecondary?: CtaButton;
   image?: SanityImageAsset;
+  proofPoints?: string[];
+  explainer?: string;
 }
 
-export type HomepageAboveFold = Pick<
-  Homepage,
-  "_id" | "_type" | "hero" | "partners" | "integrations" | "seo"
->;
+export type HomepageAboveFold = Pick<Homepage, "_id" | "_type" | "hero" | "seo">;
 
 export type HomepageBelowFold = Pick<
   Homepage,
-  "_id" | "_type" | "process" | "services" | "whyUs" | "stats" | "testimonials"
+  | "_id"
+  | "_type"
+  | "problem"
+  | "fde"
+  | "phases"
+  | "caseStudies"
+  | "founders"
+  | "capabilities"
+  | "partners"
+  | "security"
+  | "whyUs"
+  | "clientTypes"
+  | "finalCta"
 >;
 
 export interface Homepage {
@@ -203,6 +214,15 @@ export interface Homepage {
     heading?: string;
     items?: Testimonial[];
   };
+  problem?: CardGridBlock;
+  fde?: ComparisonBlock;
+  phases?: PhaseBlock;
+  caseStudies?: CaseStudyListBlock;
+  founders?: FoundersBlock;
+  capabilities?: CardGridBlock;
+  security?: CardGridBlock;
+  clientTypes?: CardGridBlock;
+  finalCta?: CtaBlock;
   seo?: Seo;
 }
 
@@ -263,6 +283,7 @@ export interface AboutPage {
     heading?: string;
     items?: Testimonial[];
   };
+  founders?: FoundersBlock;
   seo?: Seo;
 }
 
@@ -500,4 +521,163 @@ export interface SiteSettings {
   socialLinks?: SocialLink[];
   newsletterHeading?: string;
   newsletterDescription?: string;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Forward Deployed Engineering section blocks                                 */
+/* -------------------------------------------------------------------------- */
+
+export interface TextCard {
+  title: string;
+  description?: string;
+  href?: string;
+}
+
+export interface CardGridBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  items?: TextCard[];
+  closing?: string;
+}
+
+export interface ComparisonRow {
+  label: string;
+  before?: string;
+  after?: string;
+}
+
+export interface ComparisonBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  rows?: ComparisonRow[];
+}
+
+export interface PhaseItem {
+  title: string;
+  summary?: string;
+  details?: string[];
+  decision?: string;
+  humanInLoop?: boolean;
+}
+
+export interface PhaseBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  phases?: PhaseItem[];
+  note?: string;
+  cta?: CtaButton;
+}
+
+export interface ProseBlock {
+  eyebrow?: string;
+  heading?: string;
+  body?: string;
+}
+
+export interface CtaBlock {
+  heading?: string;
+  description?: string;
+  button?: CtaButton;
+  secondaryButton?: CtaButton;
+  showEmail?: boolean;
+}
+
+export interface EngagementTrack {
+  name: string;
+  audience?: string;
+  steps?: TextCard[];
+  note?: string;
+  cta?: CtaButton;
+}
+
+export interface EngagementBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  tracks?: EngagementTrack[];
+}
+
+export interface FounderCard {
+  name: string;
+  role?: string;
+  tag?: string;
+  bio?: string;
+  points?: string[];
+  image?: SanityImageAsset;
+}
+
+export interface FoundersBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  members?: FounderCard[];
+  note?: string;
+}
+
+export interface CaseStudySummary {
+  _id: string;
+  title: string;
+  slug: string;
+  anonymised?: boolean;
+  headline?: string;
+  summary?: string;
+  tags?: string[];
+  status?: string;
+}
+
+export interface CaseStudy extends CaseStudySummary {
+  context?: string;
+  gap?: string;
+  howWeWorked?: string;
+  whatWeBuilt?: string[];
+  outcome?: string;
+  phases?: TextCard[];
+  stack?: string[];
+  seo?: Seo;
+}
+
+export interface CaseStudyListBlock {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  items?: CaseStudySummary[];
+}
+
+export interface HowWeWorkPage {
+  _id: string;
+  hero?: {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+    ctaPrimary?: CtaButton;
+    ctaSecondary?: CtaButton;
+  };
+  problem?: CardGridBlock;
+  ourRead?: ProseBlock;
+  comparison?: ComparisonBlock;
+  phases?: PhaseBlock;
+  audit?: CardGridBlock;
+  architecture?: PhaseBlock;
+  adoption?: CardGridBlock;
+  engagement?: EngagementBlock;
+  security?: CardGridBlock;
+  cta?: CtaBlock;
+  seo?: Seo;
+}
+
+export interface CaseStudiesIndexPage {
+  _id: string;
+  hero?: {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+  };
+  founderTrack?: CardGridBlock;
+  cta?: CtaBlock;
+  seo?: Seo;
 }

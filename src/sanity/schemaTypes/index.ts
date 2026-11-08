@@ -12,6 +12,7 @@ import { homepage } from "./homepage";
 import { integrationItem } from "./integrationItem";
 import { navLink } from "./navLink";
 import { partnerItem } from "./partnerItem";
+import { positioningSchemaTypes } from "./positioning";
 import { pricingEngagementStep } from "./pricingEngagementStep";
 import { pricingPage } from "./pricingPage";
 import { pricingProjectTier } from "./pricingProjectTier";
@@ -66,4 +67,5 @@ export const schemaTypes = [
   blogIndexPage,
   servicesIndexPage,
   siteSettings,
+  ...positioningSchemaTypes,
 ];

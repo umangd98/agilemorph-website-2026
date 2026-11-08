@@ -25,12 +25,14 @@ type NavItem = NavLink & {
   type?: "services" | LinkMenuKey;
 };
 
-// Ordered the way a buyer decides. Contact lives in the footer and behind the
-// Book a Call button; Blog and Events live under Resources.
+// Ordered the way a buyer decides: how we work first, then what we build and
+// the proof. Contact lives in the footer and behind the booking button; the
+// engagement model (formerly Pricing) lives on How we work.
 const NAV_ITEMS: NavItem[] = [
-  { label: "Services", href: "/services", type: "services" },
+  { label: "How we work", href: "/how-we-work" },
+  { label: "What we build", href: "/what-we-build", type: "services" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Products", href: "#", type: "products" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Resources", href: "#", type: "resources" },
   { label: "About", href: "/about" },
 ];
@@ -44,7 +46,7 @@ const PRODUCT_LINKS: ServiceNavLink[] = [
     slug: "ai-content-management",
     label: "CAT",
     href: "/products/ai-content-management-tool",
-    desc: "AI-powered content workflows for teams",
+    desc: "Content workflows for teams, from our R&D arm",
     isNew: true,
   },
 ];
@@ -67,7 +69,7 @@ const RESOURCE_LINKS: ServiceNavLink[] = [
     slug: "events",
     label: "Events",
     href: "/events",
-    desc: "Where to meet the AgileMorph team",
+    desc: "Where to meet the Agilemorph team",
   },
 ];
 
@@ -485,7 +487,7 @@ export function Navbar({ serviceGroups }: NavbarProps) {
 
                 const isActive =
                   isServices
-                    ? pathname.startsWith("/services")
+                    ? pathname.startsWith("/what-we-build")
                     : linkMenuKey
                       ? isLinkMenuRoute(linkMenuKey)
                       : pathname.startsWith(link.href);
@@ -723,11 +725,11 @@ export function Navbar({ serviceGroups }: NavbarProps) {
                               <div className="mb-3 flex items-center justify-between gap-3">
                                 <div>
                                   <p className="font-body text-[10px] font-bold uppercase tracking-widest text-primary">
-                                    AI Automation
+                                    What we build
                                   </p>
 
                                   <p className="font-heading text-sm font-bold text-foreground">
-                                    Specializations
+                                    Capabilities
                                   </p>
                                 </div>
 
@@ -795,7 +797,7 @@ export function Navbar({ serviceGroups }: NavbarProps) {
 
             <div className="hidden items-center gap-2 lg:flex">
               <CalendlyBookButton className="group inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-body text-sm font-medium text-bg transition-opacity duration-200 hover:opacity-90 active:scale-95">
-                Book a Call
+                Book a discovery call
 
                 <ArrowRight
                   size={14}
@@ -871,7 +873,7 @@ export function Navbar({ serviceGroups }: NavbarProps) {
 
               const isActive =
                 isServices
-                  ? pathname.startsWith("/services")
+                  ? pathname.startsWith("/what-we-build")
                   : linkMenuKey
                     ? isLinkMenuRoute(linkMenuKey)
                     : pathname.startsWith(link.href);
@@ -1005,7 +1007,7 @@ export function Navbar({ serviceGroups }: NavbarProps) {
                         {aiAutomationSubs.length > 0 ? (
                           <div>
                             <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                              Specializations
+                              Capabilities
                             </p>
 
                             <div className="flex flex-col gap-0.5">
@@ -1090,7 +1092,7 @@ export function Navbar({ serviceGroups }: NavbarProps) {
               className="flex w-full items-center justify-center gap-2 rounded-full bg-signal py-3.5 font-body text-sm font-medium text-bg transition-opacity hover:opacity-90 active:scale-95"
               onBook={() => setMenuOpen(false)}
             >
-              Book a Call
+              Book a discovery call
               <ArrowRight size={14} />
             </CalendlyBookButton>
           </div>
