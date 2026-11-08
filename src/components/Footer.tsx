@@ -10,14 +10,7 @@ import {
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { NewsletterForm } from "./NewsletterForm";
-import type { FooterServiceGroups } from "@/lib/services";
 import type { NavLink, SocialLink, SocialPlatform } from "@/sanity/types";
-
-const emptyServiceGroups: FooterServiceGroups = {
-  primary: null,
-  aiAutomationSubs: [],
-  additional: [],
-};
 
 function socialIconForPlatform(platform?: SocialPlatform) {
   switch (platform) {
@@ -33,7 +26,6 @@ function socialIconForPlatform(platform?: SocialPlatform) {
 }
 
 type FooterProps = {
-  serviceGroups?: FooterServiceGroups;
   quickLinks?: NavLink[];
   socialLinks?: SocialLink[];
   newsletterHeading?: string;
@@ -93,48 +85,7 @@ function FooterLinkList({ links }: { links: { href: string; label: string }[] })
   );
 }
 
-function FooterServices({ groups }: { groups: FooterServiceGroups }) {
-  const { primary, aiAutomationSubs, additional } = groups;
-
-  return (
-    <>
-      <FooterSectionHeading>What we build</FooterSectionHeading>
-
-      <div className="space-y-6">
-        {primary ? (
-          <div>
-            <Link
-              href={primary.href}
-              className="font-body text-sm font-medium text-fg transition-colors hover:text-signal"
-            >
-              {primary.label}
-            </Link>
-
-            {aiAutomationSubs.length > 0 ? (
-              <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
-                {aiAutomationSubs.map((link) => (
-                  <li key={link.href}>
-                    <FooterNavLink href={link.href} label={link.label} />
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        ) : null}
-
-        {additional.length > 0 ? (
-          <div className="border-t border-border/70 pt-5">
-            <p className="syslabel mb-3 text-fg-dim">General Services</p>
-            <FooterLinkList links={additional} />
-          </div>
-        ) : null}
-      </div>
-    </>
-  );
-}
-
 export function Footer({
-  serviceGroups = emptyServiceGroups,
   quickLinks = [],
   socialLinks = [],
   newsletterHeading = "Newsletter",
@@ -179,16 +130,22 @@ export function Footer({
             </div>
           </div>
 
-          <div className="lg:col-span-2">
-            <FooterSectionHeading>Quick Links</FooterSectionHeading>
+          <div className="lg:col-span-2 lg:col-start-6">
+            <FooterSectionHeading>Agilemorph</FooterSectionHeading>
             <FooterLinkList links={quickLinks} />
           </div>
 
-          <div className="sm:col-span-2 lg:col-span-4">
-            <FooterServices groups={serviceGroups} />
+          <div className="lg:col-span-2">
+            <FooterSectionHeading>Get in touch</FooterSectionHeading>
+            <FooterLinkList
+              links={[
+                { label: "Contact", href: "/contact" },
+                { label: "Book a discovery call", href: "/contact#book" },
+              ]}
+            />
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="sm:col-span-2 lg:col-span-3">
             <FooterSectionHeading>{newsletterHeading}</FooterSectionHeading>
             <p className="mb-5 font-body text-sm leading-relaxed text-muted-foreground">
               {newsletterDescription}
@@ -201,12 +158,6 @@ export function Footer({
           <p className="font-mono">
             &copy; {year} {COMPANY_LEGAL_NAME}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <span className="signal-dot h-1.5 w-1.5 rounded-full bg-signal" />
-            <span className="font-mono uppercase tracking-[0.14em]">
-              System Status: Optimal
-            </span>
-          </div>
         </div>
       </Container>
     </footer>

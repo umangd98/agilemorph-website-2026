@@ -381,6 +381,69 @@ export const caseStudy = defineType({
   preview: { select: { title: "title", subtitle: "headline" } },
 });
 
+export const capabilityDetail = defineType({
+  name: "capabilityDetail",
+  title: "Capability",
+  type: "object",
+  fields: [
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "anchor",
+      title: "Anchor",
+      type: "string",
+      description: "Lowercase id used in links, for example \"agents\" for /what-we-build#agents.",
+      validation: (rule) => rule.required().regex(/^[a-z0-9-]+$/),
+    }),
+    defineField({ name: "summary", title: "Summary", type: "text", rows: 3 }),
+    defineField({
+      name: "points",
+      title: "What it covers",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+    }),
+    defineField({
+      name: "tools",
+      title: "Tools",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+    }),
+  ],
+  preview: { select: { title: "title", subtitle: "summary" } },
+});
+
+export const whatWeBuildPage = defineType({
+  name: "whatWeBuildPage",
+  title: "What We Build Page",
+  type: "document",
+  fields: [
+    defineField({
+      name: "hero",
+      title: "Hero",
+      type: "object",
+      fields: [
+        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "heading", title: "Heading", type: "string" }),
+        defineField({ name: "description", title: "Description", type: "text", rows: 4 }),
+      ],
+    }),
+    defineField({
+      name: "capabilities",
+      title: "Capabilities",
+      type: "array",
+      of: [defineArrayMember({ type: "capabilityDetail" })],
+    }),
+    defineField({ name: "principles", title: "How every build is made", type: "cardGridBlock" }),
+    defineField({ name: "cta", title: "Final CTA", type: "ctaBlock" }),
+    defineField({ name: "seo", title: "SEO", type: "seo" }),
+  ],
+  preview: { prepare: () => ({ title: "What We Build Page" }) },
+});
+
 export const howWeWorkPage = defineType({
   name: "howWeWorkPage",
   title: "How We Work Page",
@@ -454,6 +517,8 @@ export const positioningSchemaTypes = [
   foundersBlock,
   caseStudyListBlock,
   caseStudy,
+  capabilityDetail,
+  whatWeBuildPage,
   howWeWorkPage,
   caseStudiesIndexPage,
 ];

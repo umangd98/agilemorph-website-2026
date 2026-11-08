@@ -1,3 +1,4 @@
+export { CapabilityListSection } from "./CapabilityListSection";
 export { CardGridSection } from "./CardGridSection";
 export { CaseStudyCard, CaseStudyGrid, caseStudyHref } from "./CaseStudyGrid";
 export { ComparisonSection } from "./ComparisonSection";

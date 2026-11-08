@@ -1,58 +1,60 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNavbar } from "@/components/SiteNavbar";
-import { PageCtaSection } from "@/components/sections/PageCtaSection";
-import { ServicesCatalogSection } from "@/components/sections/ServicesCatalogSection";
+import { PartnersSection } from "@/components/sections";
+import {
+  CapabilityListSection,
+  CardGridSection,
+  FdePageHero,
+  FinalCtaSection,
+} from "@/components/sections/fde";
 import { seoToMetadata } from "@/lib/seo";
-import { getServicePages } from "@/lib/services";
 import { sanityFetch } from "@/sanity/fetch";
-import { servicesIndexPageQuery } from "@/sanity/queries";
-import type { ServicesIndexPage } from "@/sanity/types";
+import { homepagePartnersQuery, whatWeBuildPageQuery } from "@/sanity/queries";
+import type { PartnersSection as PartnersBlock, WhatWeBuildPage } from "@/sanity/types";
 
 const fallbackMetadata: Metadata = {
-  title: "What we build: AI agents, automation and integration",
-  alternates: { canonical: "/what-we-build" },
+  title: "What we build",
   description:
-    "AI agents, workflow automation, CRM and messaging automation, RAG, voice AI and self-hosted AI infrastructure, built inside the systems you already run.",
+    "AI agents, field capture, workflow automation, document intelligence, voice AI and self-hosted AI infrastructure, built inside the systems you already run.",
+  alternates: { canonical: "/what-we-build" },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const servicesIndex = await sanityFetch<ServicesIndexPage | null>({
-    query: servicesIndexPageQuery,
-    tags: ["servicesIndexPage"],
+async function getPage() {
+  return sanityFetch<WhatWeBuildPage | null>({
+    query: whatWeBuildPageQuery,
+    tags: ["whatWeBuildPage"],
   });
-
-  return seoToMetadata(servicesIndex?.seo, fallbackMetadata);
 }
 
-export default async function WhatWeBuildPageRoute() {
-  const [pages, servicesIndex] = await Promise.all([
-    getServicePages(),
-    sanityFetch<ServicesIndexPage | null>({
-      query: servicesIndexPageQuery,
-      tags: ["servicesIndexPage"],
-    }),
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPage();
+  if (!page) return { title: "Not Found", robots: { index: false } };
+  return seoToMetadata(page.seo, fallbackMetadata);
+}
+
+export default async function WhatWeBuildRoute() {
+  const [page, partners] = await Promise.all([
+    getPage(),
+    sanityFetch<PartnersBlock | null>({ query: homepagePartnersQuery, tags: ["homepage"] }),
   ]);
+  if (!page?.hero?.heading) notFound();
 
   return (
     <>
       <SiteNavbar />
       <main className="flex-1">
-        <ServicesCatalogSection
-          pages={pages}
-          heroEyebrow={servicesIndex?.hero?.eyebrow}
-          heroHeading={servicesIndex?.hero?.heading}
-          heroDescription={servicesIndex?.hero?.description}
+        <FdePageHero
+          eyebrow={page.hero.eyebrow}
+          heading={page.hero.heading}
+          description={page.hero.description}
         />
-        <PageCtaSection
-          heading={servicesIndex?.cta?.heading ?? "Every build starts with a discovery audit"}
-          description={
-            servicesIndex?.cta?.description ??
-            "Every build starts with a discovery audit. See how we work."
-          }
-          button={servicesIndex?.cta?.button ?? { label: "See how we work", href: "/how-we-work" }}
-        />
+        <CapabilityListSection index="01" capabilities={page.capabilities} />
+        <CardGridSection index="02" block={page.principles} columns={3} />
+        <PartnersSection heading={partners?.heading} items={partners?.items} />
+        <FinalCtaSection block={page.cta} />
       </main>
       <SiteFooter />
     </>

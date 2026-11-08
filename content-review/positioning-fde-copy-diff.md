@@ -1,6 +1,6 @@
 # Positioning FDE: copy changes for founder review
 
-Generated 2026-11-08T10:52:52.937Z from dataset `production`. Every change below is saved as an unpublished draft in Sanity.
+Generated 2026-11-08T11:26:40.522Z from dataset `production`. Every change below is saved as an unpublished draft in Sanity.
 Nothing is live until it is published from Studio. Items containing `[CONFIRM]` need a founder decision before publishing.
 
 ## homepage (homepage)
@@ -136,16 +136,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Agilemorph
 
-- `integrations.heading`
-
-  Before:
-
-  > We connect to 500+ platforms
-
-  After:
-
-  > Connects to the 500+ platforms in the Make, n8n and Zapier catalogues
-
 - `partners.heading`
 
   Before:
@@ -185,46 +175,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Agilemorph
-
-- `testimonials.items[upwork-jordan-k].quote`
-
-  Before:
-
-  > AgileMorph was great to work with and completed all tasks asked of him efficiently.
-
-  After:
-
-  > Agilemorph was great to work with and completed all tasks asked of him efficiently.
-
-- `testimonials.items[upwork-pipedrive-repeat].quote`
-
-  Before:
-
-  > Great work from AgileMorph team once again - super talented API developers!
-
-  After:
-
-  > Great work from Agilemorph team once again - super talented API developers!
-
-- `testimonials.items[christopher-calkins].quote`
-
-  Before:
-
-  > AgileMorph Solutions’ work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
-
-  After:
-
-  > Agilemorph’s work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
-
-- `whyUs.efficiencyCalculator.ctaLabel`
-
-  Before:
-
-  > Book A Discovery Call
-
-  After:
-
-  > Book a discovery call
 
 - `problem.eyebrow`
 
@@ -974,7 +924,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > The capabilities our engineers bring. Each one is built inside the systems you already run, and chosen to fit the workflow.
+  > Each capability is built inside the systems you already run, in production from the first release, and chosen to fit the workflow.
 
 - `capabilities.items[fde000k].title`
 
@@ -984,7 +934,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > AI agents
+  > Field capture into your system of record
 
 - `capabilities.items[fde000k].description`
 
@@ -994,7 +944,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Agents that work inside your existing systems.
+  > WhatsApp, voice notes and photos turned into validated records in your ERP or CRM.
 
 - `capabilities.items[fde000k].href`
 
@@ -1004,7 +954,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/ai-agents
+  > /what-we-build#field-capture
 
 - `capabilities.items[fde000l].title`
 
@@ -1014,7 +964,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Workflow automation
+  > AI agents inside your systems
 
 - `capabilities.items[fde000l].description`
 
@@ -1024,7 +974,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Custom code, n8n, Make and Zapier.
+  > Agents that read, decide and act inside your CRM, ERP and inbox.
 
 - `capabilities.items[fde000l].href`
 
@@ -1034,7 +984,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/workflow-automation
+  > /what-we-build#agents
 
 - `capabilities.items[fde000m].title`
 
@@ -1044,7 +994,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > CRM and lead automation
+  > Workflow automation and integration
 
 - `capabilities.items[fde000m].description`
 
@@ -1054,7 +1004,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Capture, route and follow up inside the CRM you run.
+  > The manual steps between SAP, Salesforce, your ERP and your other tools, automated.
 
 - `capabilities.items[fde000m].href`
 
@@ -1064,7 +1014,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/crm-lead-automation
+  > /what-we-build#workflows
 
 - `capabilities.items[fde000n].title`
 
@@ -1074,7 +1024,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Messaging automation
+  > Retrieval and document intelligence
 
 - `capabilities.items[fde000n].description`
 
@@ -1084,7 +1034,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > WhatsApp, email and chat, written into your systems.
+  > Answers grounded in your own documents, and scans turned into structured data.
 
 - `capabilities.items[fde000n].href`
 
@@ -1094,7 +1044,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/messaging-automation
+  > /what-we-build#documents
 
 - `capabilities.items[fde000o].title`
 
@@ -1104,7 +1054,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > MCP servers and self-hosted AI
+  > Real-time voice AI
 
 - `capabilities.items[fde000o].description`
 
@@ -1114,7 +1064,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > AI infrastructure on your cloud or on-premise.
+  > Voice agents that answer, qualify and log calls into your systems.
 
 - `capabilities.items[fde000o].href`
 
@@ -1124,7 +1074,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/mcp-ai-infrastructure
+  > /what-we-build#voice
 
 - `capabilities.items[fde000p].title`
 
@@ -1134,7 +1084,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > Retrieval and document intelligence
+  > Evals, monitoring and self-hosted AI
 
 - `capabilities.items[fde000p].description`
 
@@ -1144,7 +1094,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > RAG over your documents, scans and records.
+  > MCP servers, Langfuse evals and AI that runs in your cloud or on-premise.
 
 - `capabilities.items[fde000p].href`
 
@@ -1154,127 +1104,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   After:
 
-  > /what-we-build/custom-ai-engineering
-
-- `capabilities.items[fde000q].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Real-time voice AI
-
-- `capabilities.items[fde000q].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Voice agents on Retell and Twilio.
-
-- `capabilities.items[fde000q].href`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > /what-we-build/custom-ai-engineering
-
-- `capabilities.items[fde000r].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Evals and monitoring
-
-- `capabilities.items[fde000r].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Langfuse evals, so you know the AI is right before people rely on it.
-
-- `capabilities.items[fde000r].href`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > /what-we-build/custom-ai-engineering
-
-- `capabilities.items[fde000s].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Shopify and e-commerce automation
-
-- `capabilities.items[fde000s].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Orders, inventory and store flows.
-
-- `capabilities.items[fde000s].href`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > /what-we-build/shopify-automation
-
-- `capabilities.items[fde000t].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Custom AI engineering
-
-- `capabilities.items[fde000t].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Python, TypeScript and Java, when no-code is the wrong fit.
-
-- `capabilities.items[fde000t].href`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > /what-we-build/custom-ai-engineering
+  > /what-we-build#infrastructure
 
 - `capabilities.closing`
 
@@ -1306,7 +1136,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Your infrastructure, your system of record, your IP
 
-- `security.items[fde000u].title`
+- `security.items[fde000q].title`
 
   Before:
 
@@ -1316,7 +1146,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Your infrastructure
 
-- `security.items[fde000u].description`
+- `security.items[fde000q].description`
 
   Before:
 
@@ -1326,7 +1156,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Cloud or on-premise. Models and hosting are agreed with your IT team.
 
-- `security.items[fde000v].title`
+- `security.items[fde000r].title`
 
   Before:
 
@@ -1336,7 +1166,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Your system stays the system of record
 
-- `security.items[fde000v].description`
+- `security.items[fde000r].description`
 
   Before:
 
@@ -1346,7 +1176,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > We write into SAP, Salesforce or your ERP. No parallel database to maintain.
 
-- `security.items[fde000w].title`
+- `security.items[fde000s].title`
 
   Before:
 
@@ -1356,7 +1186,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > A full audit trail on every write
 
-- `security.items[fde000w].description`
+- `security.items[fde000s].description`
 
   Before:
 
@@ -1366,7 +1196,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > What changed, where it came from and who confirmed it, logged every time.
 
-- `security.items[fde000x].title`
+- `security.items[fde000t].title`
 
   Before:
 
@@ -1376,7 +1206,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > IP stays with you
 
-- `security.items[fde000x].description`
+- `security.items[fde000t].description`
 
   Before:
 
@@ -1406,7 +1236,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Who we work with
 
-- `clientTypes.items[fde000y].title`
+- `clientTypes.items[fde000u].title`
 
   Before:
 
@@ -1416,7 +1246,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Multi-site enterprises
 
-- `clientTypes.items[fde000y].description`
+- `clientTypes.items[fde000u].description`
 
   Before:
 
@@ -1426,7 +1256,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Manufacturing, agro-processing, EPC, mining, infrastructure and environment services.
 
-- `clientTypes.items[fde000z].title`
+- `clientTypes.items[fde000v].title`
 
   Before:
 
@@ -1436,7 +1266,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Mid-size operations businesses
 
-- `clientTypes.items[fde000z].description`
+- `clientTypes.items[fde000v].description`
 
   Before:
 
@@ -1446,7 +1276,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > In India, Africa and the US.
 
-- `clientTypes.items[fde0010].title`
+- `clientTypes.items[fde000w].title`
 
   Before:
 
@@ -1456,7 +1286,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Growing service, trades and e-commerce businesses
 
-- `clientTypes.items[fde0010].description`
+- `clientTypes.items[fde000w].description`
 
   Before:
 
@@ -1466,7 +1296,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Starting with an AI Audit. Same model, smaller scope.
 
-- `clientTypes.items[fde0011].title`
+- `clientTypes.items[fde000x].title`
 
   Before:
 
@@ -1476,7 +1306,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > AI-first startups
 
-- `clientTypes.items[fde0011].description`
+- `clientTypes.items[fde000x].description`
 
   Before:
 
@@ -1525,6 +1355,616 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > /contact#book
+
+- `featuredLogos.heading`
+
+  Before:
+
+  > We've been featured on
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[k0scyhbh].alt`
+
+  Before:
+
+  > Partner logo 1
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[u6369gm9].alt`
+
+  Before:
+
+  > Partner logo 2
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[n0uiuulz].alt`
+
+  Before:
+
+  > Partner logo 3
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[31t2dtwc].alt`
+
+  Before:
+
+  > Partner logo 4
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[jr1nsu9w].alt`
+
+  Before:
+
+  > Partner logo 5
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[72ixsgyn].alt`
+
+  Before:
+
+  > Partner logo 6
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[pbgaymet].alt`
+
+  Before:
+
+  > Partner logo 7
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[cmcm4h3c].alt`
+
+  Before:
+
+  > Partner logo 8
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[xx8ylx8g].alt`
+
+  Before:
+
+  > Partner logo 9
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[npebc1pn].alt`
+
+  Before:
+
+  > Partner logo 10
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[3ocpzc7j].alt`
+
+  Before:
+
+  > Partner logo 11
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[woxfnvba].alt`
+
+  Before:
+
+  > Partner logo 12
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[qospv4zb].alt`
+
+  Before:
+
+  > Partner logo 13
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[cb43w3u1].alt`
+
+  Before:
+
+  > Partner logo 14
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[82pbjha4].alt`
+
+  Before:
+
+  > Partner logo 15
+
+  After:
+
+  _(none)_
+
+- `integrations.heading`
+
+  Before:
+
+  > We connect to 500+ platforms
+
+  After:
+
+  _(none)_
+
+- `integrations.items[airtable].logo.alt`
+
+  Before:
+
+  > Airtable logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[airtable].name`
+
+  Before:
+
+  > Airtable
+
+  After:
+
+  _(none)_
+
+- `integrations.items[n8n].logo.alt`
+
+  Before:
+
+  > n8n logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[n8n].name`
+
+  Before:
+
+  > n8n
+
+  After:
+
+  _(none)_
+
+- `integrations.items[slack].logo.alt`
+
+  Before:
+
+  > Slack logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[slack].name`
+
+  Before:
+
+  > Slack
+
+  After:
+
+  _(none)_
+
+- `integrations.items[whatsapp].logo.alt`
+
+  Before:
+
+  > WhatsApp logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[whatsapp].name`
+
+  Before:
+
+  > WhatsApp
+
+  After:
+
+  _(none)_
+
+- `integrations.items[stripe].logo.alt`
+
+  Before:
+
+  > Stripe logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[stripe].name`
+
+  Before:
+
+  > Stripe
+
+  After:
+
+  _(none)_
+
+- `integrations.items[openai].logo.alt`
+
+  Before:
+
+  > OpenAI logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[openai].name`
+
+  Before:
+
+  > OpenAI
+
+  After:
+
+  _(none)_
+
+- `integrations.items[shopify].logo.alt`
+
+  Before:
+
+  > Shopify logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[shopify].name`
+
+  Before:
+
+  > Shopify
+
+  After:
+
+  _(none)_
+
+- `integrations.items[hubspot].logo.alt`
+
+  Before:
+
+  > HubSpot logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[hubspot].name`
+
+  Before:
+
+  > HubSpot
+
+  After:
+
+  _(none)_
+
+- `integrations.items[asana].logo.alt`
+
+  Before:
+
+  > Asana logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[asana].name`
+
+  Before:
+
+  > Asana
+
+  After:
+
+  _(none)_
+
+- `integrations.items[make].logo.alt`
+
+  Before:
+
+  > Make.com logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[make].name`
+
+  Before:
+
+  > Make.com
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zapier].logo.alt`
+
+  Before:
+
+  > Zapier logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zapier].name`
+
+  Before:
+
+  > Zapier
+
+  After:
+
+  _(none)_
+
+- `integrations.items[jira].logo.alt`
+
+  Before:
+
+  > Jira logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[jira].name`
+
+  Before:
+
+  > Jira
+
+  After:
+
+  _(none)_
+
+- `integrations.items[mailchimp].logo.alt`
+
+  Before:
+
+  > Mailchimp logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[mailchimp].name`
+
+  Before:
+
+  > Mailchimp
+
+  After:
+
+  _(none)_
+
+- `integrations.items[googlesheets].logo.alt`
+
+  Before:
+
+  > Google Sheets logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[googlesheets].name`
+
+  Before:
+
+  > Google Sheets
+
+  After:
+
+  _(none)_
+
+- `integrations.items[miro].logo.alt`
+
+  Before:
+
+  > Miro logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[miro].name`
+
+  Before:
+
+  > Miro
+
+  After:
+
+  _(none)_
+
+- `integrations.items[telegram].logo.alt`
+
+  Before:
+
+  > Telegram logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[telegram].name`
+
+  Before:
+
+  > Telegram
+
+  After:
+
+  _(none)_
+
+- `integrations.items[notion].logo.alt`
+
+  Before:
+
+  > Notion logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[notion].name`
+
+  Before:
+
+  > Notion
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zoom].logo.alt`
+
+  Before:
+
+  > Zoom logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zoom].name`
+
+  Before:
+
+  > Zoom
+
+  After:
+
+  _(none)_
+
+- `integrations.items[calendly].logo.alt`
+
+  Before:
+
+  > Calendly logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[calendly].name`
+
+  Before:
+
+  > Calendly
+
+  After:
+
+  _(none)_
+
+- `integrations.items[twilio].logo.alt`
+
+  Before:
+
+  > Twilio logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[twilio].name`
+
+  Before:
+
+  > Twilio
+
+  After:
+
+  _(none)_
+
+- `integrations.items[facebook].logo.alt`
+
+  Before:
+
+  > Meta / Facebook logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[facebook].name`
+
+  Before:
+
+  > Meta / Facebook
+
+  After:
+
+  _(none)_
+
+- `integrations.items[discord].logo.alt`
+
+  Before:
+
+  > Discord logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[discord].name`
+
+  Before:
+
+  > Discord
+
+  After:
+
+  _(none)_
 
 - `process.heading`
 
@@ -2126,6 +2566,226 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   _(none)_
 
+- `testimonials.eyebrow`
+
+  Before:
+
+  > Client Feedback
+
+  After:
+
+  _(none)_
+
+- `testimonials.heading`
+
+  Before:
+
+  > What clients say
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-serena-h].company`
+
+  Before:
+
+  > Upwork client · Shopify, Make.com & MailerLite integration
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-serena-h].name`
+
+  Before:
+
+  > Serena H.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-serena-h].quote`
+
+  Before:
+
+  > Exceptional skillset. Exceptional customer service. Communicates promptly and professionally. Listens very well to your vision and helps you craft the best course to achieve it. The best collaborative experience that I have had on this platform thus far.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-jordan-k].company`
+
+  Before:
+
+  > Upwork client · HubSpot & Zapier systems integration, 463 hours
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-jordan-k].name`
+
+  Before:
+
+  > Jordan K.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-jordan-k].quote`
+
+  Before:
+
+  > AgileMorph was great to work with and completed all tasks asked of him efficiently.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-tarab-a].company`
+
+  Before:
+
+  > Upwork client · Wix Forms to Opus.io via Zapier
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-tarab-a].name`
+
+  Before:
+
+  > Tarab A.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-tarab-a].quote`
+
+  Before:
+
+  > I had a very good experience with this team. They finished the project in hours and to my satisfaction. I highly recommend Sarvesh and his team for any or all IT projects.
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-pipedrive-repeat].company`
+
+  Before:
+
+  > Pipedrive API integration
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-pipedrive-repeat].name`
+
+  Before:
+
+  > Repeat Upwork client
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[upwork-pipedrive-repeat].quote`
+
+  Before:
+
+  > Great work from AgileMorph team once again - super talented API developers!
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[christopher-calkins].company`
+
+  Before:
+
+  > Digisist LLC
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[christopher-calkins].image.alt`
+
+  Before:
+
+  > Christopher Calkins photo
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[christopher-calkins].name`
+
+  Before:
+
+  > Christopher Calkins
+
+  After:
+
+  _(none)_
+
+- `testimonials.items[christopher-calkins].quote`
+
+  Before:
+
+  > AgileMorph Solutions’ work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
+
+  After:
+
+  _(none)_
+
+- `whyUs.efficiencyCalculator.ctaLabel`
+
+  Before:
+
+  > Book A Discovery Call
+
+  After:
+
+  _(none)_
+
+- `whyUs.efficiencyCalculator.description`
+
+  Before:
+
+  > Set your team size, weekly manual hours, and hourly cost. You get a rough annual figure for what AI automation could return, which is enough for a budget conversation but not a quote.
+
+  After:
+
+  _(none)_
+
+- `whyUs.efficiencyCalculator.disclaimer`
+
+  Before:
+
+  > Estimates based on typical outcomes across our builds. Book a discovery call for a scoped audit of your own operations.
+
+  After:
+
+  _(none)_
+
+- `whyUs.efficiencyCalculator.heading`
+
+  Before:
+
+  > Estimate what you'd get back
+
+  After:
+
+  _(none)_
+
 - `whyUs.heading`
 
   Before:
@@ -2502,16 +3162,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Our engineers embed with your teams, find where AI fits in your systems, workflows and processes, build it in production, and stay until it's used.
 
-- `integrations.heading`
-
-  Before:
-
-  > We connect to 500+ platforms
-
-  After:
-
-  > Connects to the 500+ platforms in the Make, n8n and Zapier catalogues
-
 - `partners.heading`
 
   Before:
@@ -2551,96 +3201,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > About
-
-- `teamLeads.cardFooter`
-
-  Before:
-
-  > AgileMorph leadership
-
-  After:
-
-  > Agilemorph leadership
-
-- `teamLeads.members[umang].bio`
-
-  Before:
-
-  > A Northwestern-educated engineer who turns complex business problems into clear, revenue-lifting systems. Over the past decade he has guided more than 100 companies through launches, process overhauls, and market-ready builds that beat timelines and KPIs.
-
-  After:
-
-  > Master's from Northwestern University. Has delivered enterprise software for US healthcare, manufacturing, retail, e-commerce and insurance clients. Brings the process rigour that regulated, large organisations need.
-
-- `teamLeads.members[umang].role`
-
-  Before:
-
-  > CEO
-
-  After:
-
-  > Co-founder
-
-- `teamLeads.members[kaustumbh].bio`
-
-  Before:
-
-  > Leads AgileMorph's engineering and product architecture, turning automation strategy into reliable, scalable systems. He pairs deep technical craft with a builder's mindset so every solution ships fast and holds up in production.
-
-  After:
-
-  > Former software engineer at Amazon and Sixt. Has shipped AI products end to end for US startups, including autonomous agents, retrieval systems and real-time voice AI. Works as a forward deployed engineer himself, and leads architecture and on-site engineering.
-
-- `teamLeads.members[kaustumbh].role`
-
-  Before:
-
-  > CTO
-
-  After:
-
-  > Co-founder and CTO
-
-- `testimonials.items[upwork-jordan-k].quote`
-
-  Before:
-
-  > AgileMorph was great to work with and completed all tasks asked of him efficiently.
-
-  After:
-
-  > Agilemorph was great to work with and completed all tasks asked of him efficiently.
-
-- `testimonials.items[upwork-pipedrive-repeat].quote`
-
-  Before:
-
-  > Great work from AgileMorph team once again - super talented API developers!
-
-  After:
-
-  > Great work from Agilemorph team once again - super talented API developers!
-
-- `testimonials.items[christopher-calkins].quote`
-
-  Before:
-
-  > AgileMorph Solutions’ work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
-
-  After:
-
-  > Agilemorph’s work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
-
-- `testimonials.items[retirement-planning-simplified].quote`
-
-  Before:
-
-  > AgileMorph delivered good work and we have enjoyed working with them. Thorough and extremely helpful and flexible to our needs. A great team to work with.
-
-  After:
-
-  > Agilemorph delivered good work and we have enjoyed working with them. Thorough and extremely helpful and flexible to our needs. A great team to work with.
 
 - `values[1xiunvh0].title`
 
@@ -2792,7 +3352,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Two founders, two strengths. One brings AI-native speed, the other brings the delivery rigour that large, regulated organisations need. You work with both.
 
-- `founders.members[fde0012].name`
+- `founders.members[fde000y].name`
 
   Before:
 
@@ -2802,7 +3362,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Kaustumbh Jaiswal
 
-- `founders.members[fde0012].role`
+- `founders.members[fde000y].role`
 
   Before:
 
@@ -2812,7 +3372,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Co-founder and CTO
 
-- `founders.members[fde0012].tag`
+- `founders.members[fde000y].tag`
 
   Before:
 
@@ -2822,7 +3382,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Build fast
 
-- `founders.members[fde0012].bio`
+- `founders.members[fde000y].bio`
 
   Before:
 
@@ -2832,7 +3392,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Former software engineer at Amazon and Sixt. Has shipped AI products end to end for US startups, including autonomous agents, retrieval systems and real-time voice AI. Works as a forward deployed engineer himself, and leads architecture and on-site engineering.
 
-- `founders.members[fde0012].points[0]`
+- `founders.members[fde000y].points[0]`
 
   Before:
 
@@ -2842,7 +3402,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Ex-Amazon, ex-Sixt
 
-- `founders.members[fde0012].points[1]`
+- `founders.members[fde000y].points[1]`
 
   Before:
 
@@ -2852,7 +3412,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Python, TypeScript and Java
 
-- `founders.members[fde0012].points[2]`
+- `founders.members[fde000y].points[2]`
 
   Before:
 
@@ -2862,7 +3422,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > LLM orchestration, evals on Langfuse, voice AI on Retell and Twilio
 
-- `founders.members[fde0012].image.alt`
+- `founders.members[fde000y].image.alt`
 
   Before:
 
@@ -2872,7 +3432,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Kaustumbh Jaiswal
 
-- `founders.members[fde0013].name`
+- `founders.members[fde000z].name`
 
   Before:
 
@@ -2882,7 +3442,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Umang Dhandhania
 
-- `founders.members[fde0013].role`
+- `founders.members[fde000z].role`
 
   Before:
 
@@ -2892,7 +3452,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Co-founder
 
-- `founders.members[fde0013].tag`
+- `founders.members[fde000z].tag`
 
   Before:
 
@@ -2902,7 +3462,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Build right
 
-- `founders.members[fde0013].bio`
+- `founders.members[fde000z].bio`
 
   Before:
 
@@ -2912,7 +3472,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Master's from Northwestern University. Has delivered enterprise software for US healthcare, manufacturing, retail, e-commerce and insurance clients. Brings the process rigour that regulated, large organisations need.
 
-- `founders.members[fde0013].points[0]`
+- `founders.members[fde000z].points[0]`
 
   Before:
 
@@ -2922,7 +3482,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Northwestern University
 
-- `founders.members[fde0013].points[1]`
+- `founders.members[fde000z].points[1]`
 
   Before:
 
@@ -2932,7 +3492,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Enterprise delivery in regulated domains
 
-- `founders.members[fde0013].points[2]`
+- `founders.members[fde000z].points[2]`
 
   Before:
 
@@ -2942,7 +3502,7 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Process rigour from scope to sign-off
 
-- `founders.members[fde0013].image.alt`
+- `founders.members[fde000z].image.alt`
 
   Before:
 
@@ -2951,6 +3511,166 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Umang Dhandhania
+
+- `featuredLogos.heading`
+
+  Before:
+
+  > We've been featured on
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[z5i39aqq].alt`
+
+  Before:
+
+  > Partner logo 1
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[betguolj].alt`
+
+  Before:
+
+  > Partner logo 2
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[7113zub3].alt`
+
+  Before:
+
+  > Partner logo 3
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[6xhyrscj].alt`
+
+  Before:
+
+  > Partner logo 4
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[64wwvri8].alt`
+
+  Before:
+
+  > Partner logo 5
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[yra4j3sc].alt`
+
+  Before:
+
+  > Partner logo 6
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[p5exd070].alt`
+
+  Before:
+
+  > Partner logo 7
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[pyvdusbt].alt`
+
+  Before:
+
+  > Partner logo 8
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[mjdfzr5c].alt`
+
+  Before:
+
+  > Partner logo 9
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[svf0g4he].alt`
+
+  Before:
+
+  > Partner logo 10
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[8wsw8lkw].alt`
+
+  Before:
+
+  > Partner logo 11
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[z9z2orbo].alt`
+
+  Before:
+
+  > Partner logo 12
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[9qbalgqp].alt`
+
+  Before:
+
+  > Partner logo 13
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[7hz3qngl].alt`
+
+  Before:
+
+  > Partner logo 14
+
+  After:
+
+  _(none)_
+
+- `featuredLogos.logos[r9rtpkae].alt`
+
+  Before:
+
+  > Partner logo 15
+
+  After:
+
+  _(none)_
 
 - `founder.bio`
 
@@ -3011,6 +3731,456 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   Before:
 
   > CEO at AgileMorph
+
+  After:
+
+  _(none)_
+
+- `integrations.heading`
+
+  Before:
+
+  > We connect to 500+ platforms
+
+  After:
+
+  _(none)_
+
+- `integrations.items[airtable].logo.alt`
+
+  Before:
+
+  > Airtable logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[airtable].name`
+
+  Before:
+
+  > Airtable
+
+  After:
+
+  _(none)_
+
+- `integrations.items[n8n].logo.alt`
+
+  Before:
+
+  > n8n logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[n8n].name`
+
+  Before:
+
+  > n8n
+
+  After:
+
+  _(none)_
+
+- `integrations.items[slack].logo.alt`
+
+  Before:
+
+  > Slack logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[slack].name`
+
+  Before:
+
+  > Slack
+
+  After:
+
+  _(none)_
+
+- `integrations.items[whatsapp].logo.alt`
+
+  Before:
+
+  > WhatsApp logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[whatsapp].name`
+
+  Before:
+
+  > WhatsApp
+
+  After:
+
+  _(none)_
+
+- `integrations.items[stripe].logo.alt`
+
+  Before:
+
+  > Stripe logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[stripe].name`
+
+  Before:
+
+  > Stripe
+
+  After:
+
+  _(none)_
+
+- `integrations.items[openai].logo.alt`
+
+  Before:
+
+  > OpenAI logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[openai].name`
+
+  Before:
+
+  > OpenAI
+
+  After:
+
+  _(none)_
+
+- `integrations.items[shopify].logo.alt`
+
+  Before:
+
+  > Shopify logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[shopify].name`
+
+  Before:
+
+  > Shopify
+
+  After:
+
+  _(none)_
+
+- `integrations.items[hubspot].logo.alt`
+
+  Before:
+
+  > HubSpot logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[hubspot].name`
+
+  Before:
+
+  > HubSpot
+
+  After:
+
+  _(none)_
+
+- `integrations.items[asana].logo.alt`
+
+  Before:
+
+  > Asana logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[asana].name`
+
+  Before:
+
+  > Asana
+
+  After:
+
+  _(none)_
+
+- `integrations.items[make].logo.alt`
+
+  Before:
+
+  > Make.com logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[make].name`
+
+  Before:
+
+  > Make.com
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zapier].logo.alt`
+
+  Before:
+
+  > Zapier logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zapier].name`
+
+  Before:
+
+  > Zapier
+
+  After:
+
+  _(none)_
+
+- `integrations.items[jira].logo.alt`
+
+  Before:
+
+  > Jira logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[jira].name`
+
+  Before:
+
+  > Jira
+
+  After:
+
+  _(none)_
+
+- `integrations.items[mailchimp].logo.alt`
+
+  Before:
+
+  > Mailchimp logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[mailchimp].name`
+
+  Before:
+
+  > Mailchimp
+
+  After:
+
+  _(none)_
+
+- `integrations.items[googlesheets].logo.alt`
+
+  Before:
+
+  > Google Sheets logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[googlesheets].name`
+
+  Before:
+
+  > Google Sheets
+
+  After:
+
+  _(none)_
+
+- `integrations.items[miro].logo.alt`
+
+  Before:
+
+  > Miro logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[miro].name`
+
+  Before:
+
+  > Miro
+
+  After:
+
+  _(none)_
+
+- `integrations.items[telegram].logo.alt`
+
+  Before:
+
+  > Telegram logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[telegram].name`
+
+  Before:
+
+  > Telegram
+
+  After:
+
+  _(none)_
+
+- `integrations.items[notion].logo.alt`
+
+  Before:
+
+  > Notion logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[notion].name`
+
+  Before:
+
+  > Notion
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zoom].logo.alt`
+
+  Before:
+
+  > Zoom logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[zoom].name`
+
+  Before:
+
+  > Zoom
+
+  After:
+
+  _(none)_
+
+- `integrations.items[calendly].logo.alt`
+
+  Before:
+
+  > Calendly logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[calendly].name`
+
+  Before:
+
+  > Calendly
+
+  After:
+
+  _(none)_
+
+- `integrations.items[twilio].logo.alt`
+
+  Before:
+
+  > Twilio logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[twilio].name`
+
+  Before:
+
+  > Twilio
+
+  After:
+
+  _(none)_
+
+- `integrations.items[facebook].logo.alt`
+
+  Before:
+
+  > Meta / Facebook logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[facebook].name`
+
+  Before:
+
+  > Meta / Facebook
+
+  After:
+
+  _(none)_
+
+- `integrations.items[discord].logo.alt`
+
+  Before:
+
+  > Discord logo
+
+  After:
+
+  _(none)_
+
+- `integrations.items[discord].name`
+
+  Before:
+
+  > Discord
 
   After:
 
@@ -3356,1113 +4526,371 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   _(none)_
 
-## servicePage-ai-automation (servicePage)
+- `teamLeads.cardFooter`
 
-- `capabilities[fde0014].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > AI Automation
-
-- `capabilities[fde0014].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ai-automation
-
-- `capabilities[fde0014].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Everything we build during an engagement, inside the systems you already run and measured until it's used.
-
-- `capabilities[fde0014].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ⚡
-
-- `capabilities[fde0015].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > AI Agents
-
-- `capabilities[fde0015].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ai-agents
-
-- `capabilities[fde0015].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Agents that work inside your existing systems.
-
-- `capabilities[fde0015].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ◈
-
-- `capabilities[fde0016].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Workflow Automation
-
-- `capabilities[fde0016].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > workflow-automation
-
-- `capabilities[fde0016].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Custom code, n8n, Make and Zapier.
-
-- `capabilities[fde0016].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ⟳
-
-- `capabilities[fde0017].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > CRM & Lead Automation
-
-- `capabilities[fde0017].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > crm-lead-automation
-
-- `capabilities[fde0017].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Capture, route and follow up inside the CRM you run.
-
-- `capabilities[fde0017].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ◎
-
-- `capabilities[fde0018].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Messaging Automation
-
-- `capabilities[fde0018].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > messaging-automation
-
-- `capabilities[fde0018].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > WhatsApp, email and chat, written into your systems.
-
-- `capabilities[fde0018].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ✉
-
-- `capabilities[fde0019].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > MCP & AI Infrastructure
-
-- `capabilities[fde0019].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > mcp-ai-infrastructure
-
-- `capabilities[fde0019].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > MCP servers and self-hosted AI on your cloud or on-premise.
-
-- `capabilities[fde0019].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ⧉
-
-- `capabilities[fde001a].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Custom AI Engineering
-
-- `capabilities[fde001a].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > custom-ai-engineering
-
-- `capabilities[fde001a].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > RAG, voice AI and evals in Python, TypeScript and Java.
-
-- `capabilities[fde001a].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ⌘
-
-- `capabilities[fde001b].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Shopify Automation
-
-- `capabilities[fde001b].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > shopify-automation
-
-- `capabilities[fde001b].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > Orders, inventory, fulfilment and customer flows.
-
-- `capabilities[fde001b].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > 🛍
-
-- `capabilities[fde001c].title`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > AI Audit
-
-- `capabilities[fde001c].slug`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ai-audit
-
-- `capabilities[fde001c].description`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > A fixed-scope audit for growing businesses: where AI pays off, in 1 to 2 weeks.
-
-- `capabilities[fde001c].icon`
-
-  Before:
-
-  _(none)_
-
-  After:
-
-  > ◷
-
-- `capabilitiesHeading`
-
-  Before:
-
-  > Core Capabilities
-
-  After:
-
-  > What we build
-
-- `checks[0]`
-
-  Before:
-
-  > Maps every repetitive process in your operation and ranks it by hours saved against build cost
-
-  After:
-
-  > Maps the processes, data flows and gaps in your operation during a discovery audit
-
-- `checks[1]`
-
-  Before:
-
-  > Builds the workflows, agents, and integrations that replace the manual version
-
-  After:
-
-  > Builds agents, workflows and integrations inside the systems you already run
-
-- `checks[2]`
-
-  Before:
-
-  > Connects the tools you already pay for, across 500+ supported platforms
-
-  After:
-
-  > Ships with error handling, retries, monitoring, audit logs and evals
-
-- `checks[3]`
-
-  Before:
-
-  > Ships with error handling, retries, and monitoring so failures surface before they cost you
-
-  After:
-
-  > Measures usage until the new way is the default
-
-- `checks[4]`
-
-  Before:
-
-  > Hands over documentation and a walkthrough so your team runs it without us
-
-  After:
-
-  > Hands over code, workflows, documentation and data. You own all of it
-
-- `cta.heading`
-
-  Before:
-
-  > Find out what's worth automating
-
-  After:
-
-  > Every build starts with a discovery audit
-
-- `cta.description`
-
-  Before:
-
-  > Book a 15-minute discovery call. We'll tell you straight which parts of your operation are worth automating, and which are not.
-
-  After:
-
-  > Every build starts with a discovery audit. See how we work.
-
-- `cta.button.label`
-
-  Before:
-
-  > Book Your Call
-
-  After:
-
-  > See how we work
-
-- `cta.button.href`
-
-  Before:
-
-  > https://calendly.com/agilemorph/15-minute-discovery
-
-  After:
-
-  > /how-we-work
-
-- `description`
-
-  Before:
-
-  > AgileMorph builds end-to-end AI automation for growing SMBs: workflows that run without supervision, agents that make decisions, and integrations across 500+ platforms. We are certified on Claude, Make.com, n8n, and Zapier, so the tool matches the problem instead of the other way round.
-
-  After:
-
-  > During an engagement we build AI into the systems you already run: agents, workflows, messaging, retrieval, voice and the infrastructure under them. Certified on Claude, Make, n8n and Zapier, and able to write the code when no-code is the wrong fit.
-
-- `faq[fq3].answer`
-
-  Before:
-
-  > Almost never. We connect what you have across 500+ platforms, including HubSpot, Shopify, Slack, Airtable, Stripe, and Google Workspace. Replacing a working tool is a cost, not an outcome.
-
-  After:
-
-  > Almost never. We build inside what you already run, including SAP, Salesforce, HubSpot, Shopify and Google Workspace. Replacing a working tool is a cost, not an outcome.
-
-- `faq[fq4].answer`
-
-  Before:
-
-  > Smaller automations go live in one to two weeks. Larger multi-system builds run in phases so you see working systems early rather than waiting months for one launch.
-
-  After:
-
-  > A pilot is usually live in production within weeks of the audit. Larger builds run in phases, so you see working systems early instead of waiting months for one launch.
-
-- `flow[flow1].text`
-
-  Before:
-
-  > We rank what pays to automate
-
-  After:
-
-  > We map where AI fits
-
-- `flow[flow2].text`
-
-  Before:
-
-  > Workflows and agents, in short cycles
-
-  After:
-
-  > Inside your systems, in production
-
-- `flow[flow3].label`
-
-  Before:
-
-  > Handover
-
-  After:
-
-  > Adopt
-
-- `flow[flow3].text`
-
-  Before:
-
-  > Docs, monitoring, and your team trained
-
-  After:
-
-  > Measured until it's used
-
-- `headline.after`
-
-  Before:
-
-  >  between tools.
-
-  After:
-
-  >  between systems.
-
-- `heroCta.label`
-
-  Before:
-
-  > Start Your AI Journey
-
-  After:
-
-  > Book a discovery call
-
-- `heroCta.href`
-
-  Before:
-
-  > /contact
-
-  After:
-
-  > /contact#book
-
-- `pricing.headline`
-
-  Before:
-
-  > Most engagements start with a fixed-scope AI Audit
-
-  After:
-
-  > Every engagement starts with an audit
-
-- `pricing.detail`
-
-  Before:
-
-  > Pricing follows scope and outcome rather than hours. The fastest route to a real number is a discovery call or the fixed-scope audit, which maps your highest-return automations before you commit to a build.
-
-  After:
-
-  > Enterprises start with a fixed-scope discovery audit on site. Growing businesses start with an AI Audit of 1 to 2 weeks, then a first build. Scope is fixed after the audit.
-
-- `seo.description`
-
-  Before:
-
-  > End-to-end AI automation services: workflows, agents, and integrations built and deployed for your team. 500K+ hours saved. Claude and Make certified.
-
-  After:
-
-  > AI agents, workflows, messaging, RAG and voice AI built inside the systems you already run, from SAP and Salesforce to WhatsApp. Claude and Make certified.
-
-- `seo.title`
-
-  Before:
-
-  > AI Automation Services for Growing SMBs
-
-  After:
-
-  > AI Automation and Integration Services
-
-- `tagline`
-
-  Before:
-
-  > Every workflow we automate is one your team stops doing by hand
-
-  After:
-
-  > What we build during an engagement
-
-- `technologiesHeading`
-
-  Before:
-
-  > Technologies that power our solutions
-
-  After:
-
-  > Tools and technologies
-
-- `whyUs[oq7k6s14].description`
-
-  Before:
-
-  > Solving complex challenges with precision and ease.
-
-  After:
-
-  > We work on your sites or alongside your teams. Scope comes from what we observe, not from a document.
-
-- `whyUs[oq7k6s14].title`
-
-  Before:
-
-  > Expert Automation Team
-
-  After:
-
-  > Embedded, not outsourced
-
-- `whyUs[flvza32t].description`
-
-  Before:
-
-  > We focus on understanding your business needs and delivering solutions that exceed your expectations.
-
-  After:
-
-  > We extend SAP, Salesforce, your ERP, CRM and factory tools. No parallel systems to maintain.
-
-- `whyUs[flvza32t].title`
-
-  Before:
-
-  > Client-Focused
-
-  After:
-
-  > Inside your stack
-
-- `whyUs[3w0k11vg].description`
-
-  Before:
-
-  > We use agile methodologies to ensure that our development process is transparent, efficient, and responsive to change.
-
-  After:
-
-  > We measure who uses it and how fresh the data is, and we stay until the numbers prove it works.
-
-- `whyUs[3w0k11vg].title`
-
-  Before:
-
-  > Agile Methodology
-
-  After:
-
-  > Adoption is our job
-
-- `whyUs[mkbqs2ft].description`
-
-  Before:
-
-  > From concept to deployment and beyond, we offer comprehensive services to support your software throughout its lifecycle.
-
-  After:
-
-  > Error handling, retries, monitoring, audit logs and evals from the first build. A pilot is live in production, not a demo.
-
-- `whyUs[mkbqs2ft].title`
-
-  Before:
-
-  > End-to-End Services
-
-  After:
-
-  > Production from day one
-
-- `whyUs[w8orgdgi].description`
-
-  Before:
-
-  > Rigorous testing processes guarantee that our applications are reliable, secure, and perform seamlessly.
-
-  After:
-
-  > Code, workflows, documentation and data belong to you. Self-hosted or on-premise when required; model choice agreed with your IT team.
-
-- `whyUs[w8orgdgi].title`
-
-  Before:
-
-  > Quality Assurance
-
-  After:
-
-  > You own it
-
-- `whyUs[fde001d].title`
-
   Before:
 
-  _(none)_
+  > AgileMorph leadership
 
   After:
-
-  > Fast and rigorous
 
-- `whyUs[fde001d].description`
-
-  Before:
-
   _(none)_
-
-  After:
-
-  > Amazon-trained speed plus enterprise delivery discipline. We ship a working workflow in weeks and improve it every week.
-
-- `whyUsHeading`
-
-  Before:
-
-  > Why You Choose Us for AI Automation Development Service Page Services?
-
-  After:
-
-  > What makes us different
 
-- `capabilities[Hv3zyv14FBW5AozIiVv602].description`
+- `teamLeads.eyebrow`
 
   Before:
 
-  > Our core practice, end-to-end AI workflows, agents, and integrations that cut manual work across your business.
+  > Leadership
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv602].icon`
+- `teamLeads.heading`
 
   Before:
 
-  > ⚡
+  > Meet Our Leadership
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv602].slug`
+- `teamLeads.members[umang].bio`
 
   Before:
 
-  > ai-automation
+  > A Northwestern-educated engineer who turns complex business problems into clear, revenue-lifting systems. Over the past decade he has guided more than 100 companies through launches, process overhauls, and market-ready builds that beat timelines and KPIs.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv602].title`
+- `teamLeads.members[umang].image.alt`
 
   Before:
 
-  > AI Automation
+  > Umang Dhandhania
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv643].description`
+- `teamLeads.members[umang].name`
 
   Before:
 
-  > n8n, Make, and Zapier pipelines that eliminate repetitive work.
+  > Umang Dhandhania
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv643].icon`
+- `teamLeads.members[umang].role`
 
   Before:
 
-  > ⟳
+  > CEO
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv643].slug`
+- `teamLeads.members[kaustumbh].bio`
 
   Before:
 
-  > workflow-automation
+  > Leads AgileMorph's engineering and product architecture, turning automation strategy into reliable, scalable systems. He pairs deep technical craft with a builder's mindset so every solution ships fast and holds up in production.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv643].title`
+- `teamLeads.members[kaustumbh].image.alt`
 
   Before:
 
-  > Workflow Automation
+  > Kaustumbh Jaiswal
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv684].description`
+- `teamLeads.members[kaustumbh].name`
 
   Before:
 
-  > Capture, enrich, route, and follow up on every lead automatically.
+  > Kaustumbh Jaiswal
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv684].icon`
+- `teamLeads.members[kaustumbh].role`
 
   Before:
 
-  > ◎
+  > CTO
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv684].slug`
+- `teamLeads.members[muskan].bio`
 
   Before:
 
-  > crm-lead-automation
+  > Keeps delivery sharp across client engagements, aligning teams, timelines, and outcomes so projects move from discovery to launch without friction. She brings operational rigor and a client-first lens to every engagement.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv684].title`
+- `teamLeads.members[muskan].image.alt`
 
   Before:
 
-  > CRM & Lead Automation
+  > Muskan Agrawal
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6C5].description`
+- `teamLeads.members[muskan].name`
 
   Before:
 
-  > Self-hosted pipelines, MCP servers, and production-grade deployments.
+  > Muskan Garg
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6C5].icon`
+- `teamLeads.members[muskan].role`
 
   Before:
 
-  > ⧉
+  > COO
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6C5].slug`
+- `teamLeads.subheading`
 
   Before:
 
-  > mcp-ai-infrastructure
+  > The people steering strategy, engineering, and delivery, building automation that ships fast and scales with your business.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6C5].title`
+- `testimonials.heading`
 
   Before:
 
-  > MCP & AI Infrastructure
+  > What clients say
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6G6].description`
+- `testimonials.items[upwork-serena-h].company`
 
   Before:
 
-  > WhatsApp, email, and chat automations that respond and convert.
+  > Upwork client · Shopify, Make.com & MailerLite integration
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6G6].icon`
+- `testimonials.items[upwork-serena-h].name`
 
   Before:
 
-  > ✉
+  > Serena H.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6G6].slug`
+- `testimonials.items[upwork-serena-h].quote`
 
   Before:
 
-  > messaging-automation
+  > Exceptional skillset. Exceptional customer service. Communicates promptly and professionally. Listens very well to your vision and helps you craft the best course to achieve it. The best collaborative experience that I have had on this platform thus far.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6G6].title`
+- `testimonials.items[upwork-jordan-k].company`
 
   Before:
 
-  > Messaging Automation
+  > Upwork client · HubSpot & Zapier systems integration, 463 hours
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6K7].description`
+- `testimonials.items[upwork-jordan-k].name`
 
   Before:
 
-  > A fixed-scope review that maps where AI saves you the most time and money.
+  > Jordan K.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6K7].icon`
+- `testimonials.items[upwork-jordan-k].quote`
 
   Before:
 
-  > ◷
+  > AgileMorph was great to work with and completed all tasks asked of him efficiently.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6K7].slug`
+- `testimonials.items[upwork-tarab-a].company`
 
   Before:
 
-  > ai-audit
+  > Upwork client · Wix Forms to Opus.io via Zapier
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6K7].title`
+- `testimonials.items[upwork-tarab-a].name`
 
   Before:
 
-  > AI Audit
+  > Tarab A.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6O8].description`
+- `testimonials.items[upwork-tarab-a].quote`
 
   Before:
 
-  > Automate orders, inventory, fulfillment, and customer flows across your Shopify store.
+  > I had a very good experience with this team. They finished the project in hours and to my satisfaction. I highly recommend Sarvesh and his team for any or all IT projects.
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6O8].icon`
+- `testimonials.items[upwork-pipedrive-repeat].company`
 
   Before:
 
-  > 🛍
+  > Pipedrive API integration
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6O8].slug`
+- `testimonials.items[upwork-pipedrive-repeat].name`
 
   Before:
 
-  > shopify-automation
+  > Repeat Upwork client
 
   After:
 
   _(none)_
 
-- `capabilities[Hv3zyv14FBW5AozIiVv6O8].title`
+- `testimonials.items[upwork-pipedrive-repeat].quote`
 
   Before:
 
-  > Shopify Automation
+  > Great work from AgileMorph team once again - super talented API developers!
 
   After:
 
   _(none)_
 
-- `stats[st1].label`
+- `testimonials.items[christopher-calkins].company`
 
   Before:
 
-  > Hours saved for clients
+  > Digisist LLC
 
   After:
 
   _(none)_
 
-- `stats[st1].value`
+- `testimonials.items[christopher-calkins].image.alt`
 
   Before:
 
-  > 500K+
+  > Christopher Calkins photo
 
   After:
 
   _(none)_
 
-- `stats[st2].label`
+- `testimonials.items[christopher-calkins].name`
 
   Before:
 
-  > Projects delivered
+  > Christopher Calkins
 
   After:
 
   _(none)_
 
-- `stats[st2].value`
+- `testimonials.items[christopher-calkins].quote`
 
   Before:
 
-  > 180+
+  > AgileMorph Solutions’ work made the client’s permit application process smoother and hassle-free, resulting in time savings and error reduction. The team delivered on schedule and addressed needs promptly. Above all, their proactive approach and dedication to the client’s goals stood out.
 
   After:
 
   _(none)_
 
-- `stats[st3].label`
+- `testimonials.items[retirement-planning-simplified].company`
 
   Before:
 
-  > Client retention
+  > Matthews and Associates
 
   After:
 
   _(none)_
 
-- `stats[st3].value`
+- `testimonials.items[retirement-planning-simplified].image.alt`
 
   Before:
 
-  > 98%
+  > Retirement Planning Simplified logo
 
   After:
 
   _(none)_
 
-- `stats[st4].label`
+- `testimonials.items[retirement-planning-simplified].name`
 
   Before:
 
-  > Platforms we connect
+  > Retirement Planning Simplified
 
   After:
 
   _(none)_
 
-- `stats[st4].value`
+- `testimonials.items[retirement-planning-simplified].quote`
 
   Before:
 
-  > 500+
+  > AgileMorph delivered good work and we have enjoyed working with them. Thorough and extremely helpful and flexible to our needs. A great team to work with.
 
   After:
 
@@ -4539,6 +4967,16 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Whether you have a question or want to see where AI fits in your operation, talk to the engineers who would build it.
+
+- `hero.heading`
+
+  Before:
+
+  > Contact Us
+
+  After:
+
+  > Contact
 
 - `seo.description`
 
@@ -4632,49 +5070,49 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Work happens on the floor, on the site, in the field. Teams fall back to WhatsApp, spreadsheets and phone calls because the official system is slow or awkward, so the ERP or CRM is stale and inaccurate, and leadership has no live view.
 
-- `problem.items[fde001e].title`
+- `problem.items[fde0010].title`
 
   Text:
 
   > Teams report in WhatsApp, not the system
 
-- `problem.items[fde001e].description`
+- `problem.items[fde0010].description`
 
   Text:
 
   > Updates go to chat groups, spreadsheets and phone calls because the official system is slow or awkward.
 
-- `problem.items[fde001f].title`
+- `problem.items[fde0011].title`
 
   Text:
 
   > Records don't match what happened
 
-- `problem.items[fde001f].description`
+- `problem.items[fde0011].description`
 
   Text:
 
   > The ERP or CRM says one thing. The floor, the site or the field says another.
 
-- `problem.items[fde001g].title`
+- `problem.items[fde0012].title`
 
   Text:
 
   > Updates land days late
 
-- `problem.items[fde001g].description`
+- `problem.items[fde0012].description`
 
   Text:
 
   > By the time the data reaches the system, the decision it was needed for has already been made.
 
-- `problem.items[fde001h].title`
+- `problem.items[fde0013].title`
 
   Text:
 
   > Leadership has no live view
 
-- `problem.items[fde001h].description`
+- `problem.items[fde0013].description`
 
   Text:
 
@@ -4718,91 +5156,91 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Forward Deployed Engineering
 
-- `comparison.rows[fde001i].label`
+- `comparison.rows[fde0014].label`
 
   Text:
 
   > Where the team works
 
-- `comparison.rows[fde001i].before`
+- `comparison.rows[fde0014].before`
 
   Text:
 
   > Offsite, from a requirements document
 
-- `comparison.rows[fde001i].after`
+- `comparison.rows[fde0014].after`
 
   Text:
 
   > On your sites, beside your people
 
-- `comparison.rows[fde001j].label`
+- `comparison.rows[fde0015].label`
 
   Text:
 
   > How scope is set
 
-- `comparison.rows[fde001j].before`
+- `comparison.rows[fde0015].before`
 
   Text:
 
   > Fixed upfront, before anyone sees the field
 
-- `comparison.rows[fde001j].after`
+- `comparison.rows[fde0015].after`
 
   Text:
 
   > From what we observe in the discovery audit
 
-- `comparison.rows[fde001k].label`
+- `comparison.rows[fde0016].label`
 
   Text:
 
   > What ships
 
-- `comparison.rows[fde001k].before`
+- `comparison.rows[fde0016].before`
 
   Text:
 
   > A system, then a handover
 
-- `comparison.rows[fde001k].after`
+- `comparison.rows[fde0016].after`
 
   Text:
 
   > A working workflow in weeks, improved every week
 
-- `comparison.rows[fde001l].label`
+- `comparison.rows[fde0017].label`
 
   Text:
 
   > Who owns adoption
 
-- `comparison.rows[fde001l].before`
+- `comparison.rows[fde0017].before`
 
   Text:
 
   > Your team, after go-live
 
-- `comparison.rows[fde001l].after`
+- `comparison.rows[fde0017].after`
 
   Text:
 
   > Us, until usage data proves it works
 
-- `comparison.rows[fde001m].label`
+- `comparison.rows[fde0018].label`
 
   Text:
 
   > How success is measured
 
-- `comparison.rows[fde001m].before`
+- `comparison.rows[fde0018].before`
 
   Text:
 
   > Delivered to spec
 
-- `comparison.rows[fde001m].after`
+- `comparison.rows[fde0018].after`
 
   Text:
 
@@ -4838,157 +5276,157 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > You continue only if the previous phase delivered.
 
-- `phases.phases[fde001n].title`
+- `phases.phases[fde0019].title`
 
   Text:
 
   > Discovery audit
 
-- `phases.phases[fde001n].summary`
+- `phases.phases[fde0019].summary`
 
   Text:
 
   > Fixed scope, fixed fee. On site with your teams.
 
-- `phases.phases[fde001n].details[0]`
+- `phases.phases[fde0019].details[0]`
 
   Text:
 
   > We map every process, data flow and gap
 
-- `phases.phases[fde001n].details[1]`
+- `phases.phases[fde0019].details[1]`
 
   Text:
 
   > We set a baseline per site: update lag, field completeness, duplicate rate and active users
 
-- `phases.phases[fde001n].decision`
+- `phases.phases[fde0019].decision`
 
   Text:
 
   > You decide whether the findings justify a blueprint.
 
-- `phases.phases[fde001o].title`
+- `phases.phases[fde001a].title`
 
   Text:
 
   > Blueprint
 
-- `phases.phases[fde001o].summary`
+- `phases.phases[fde001a].summary`
 
   Text:
 
   > Ranked opportunities, target architecture and a pilot plan.
 
-- `phases.phases[fde001o].details[0]`
+- `phases.phases[fde001a].details[0]`
 
   Text:
 
   > Opportunities ranked for your operation
 
-- `phases.phases[fde001o].details[1]`
+- `phases.phases[fde001a].details[1]`
 
   Text:
 
   > A target architecture inside your stack
 
-- `phases.phases[fde001o].details[2]`
+- `phases.phases[fde001a].details[2]`
 
   Text:
 
   > A pilot plan with success criteria
 
-- `phases.phases[fde001o].decision`
+- `phases.phases[fde001a].decision`
 
   Text:
 
   > You choose the workflow to pilot.
 
-- `phases.phases[fde001p].title`
+- `phases.phases[fde001b].title`
 
   Text:
 
   > Pilot
 
-- `phases.phases[fde001p].summary`
+- `phases.phases[fde001b].summary`
 
   Text:
 
   > One workflow at one or two sites, live in production.
 
-- `phases.phases[fde001p].details[0]`
+- `phases.phases[fde001b].details[0]`
 
   Text:
 
   > Success criteria agreed upfront
 
-- `phases.phases[fde001p].details[1]`
+- `phases.phases[fde001b].details[1]`
 
   Text:
 
   > Error handling, retries, monitoring, audit logs and evals from the first build
 
-- `phases.phases[fde001p].decision`
+- `phases.phases[fde001b].decision`
 
   Text:
 
   > You decide, against the agreed criteria, whether to adopt it.
 
-- `phases.phases[fde001q].title`
+- `phases.phases[fde001c].title`
 
   Text:
 
   > Adopt
 
-- `phases.phases[fde001q].summary`
+- `phases.phases[fde001c].summary`
 
   Text:
 
   > We train, nudge and measure usage until the new way is the default.
 
-- `phases.phases[fde001q].details[0]`
+- `phases.phases[fde001c].details[0]`
 
   Text:
 
   > Training with the people who use it
 
-- `phases.phases[fde001q].details[1]`
+- `phases.phases[fde001c].details[1]`
 
   Text:
 
   > Usage measured per site, per person, per week
 
-- `phases.phases[fde001q].decision`
+- `phases.phases[fde001c].decision`
 
   Text:
 
   > You decide when it is ready to roll out.
 
-- `phases.phases[fde001r].title`
+- `phases.phases[fde001d].title`
 
   Text:
 
   > Scale
 
-- `phases.phases[fde001r].summary`
+- `phases.phases[fde001d].summary`
 
   Text:
 
   > Roll out across sites and functions with a dedicated engineer on a monthly retainer.
 
-- `phases.phases[fde001r].details[0]`
+- `phases.phases[fde001d].details[0]`
 
   Text:
 
   > Same model, site by site and function by function
 
-- `phases.phases[fde001r].details[1]`
+- `phases.phases[fde001d].details[1]`
 
   Text:
 
   > A weekly review with your IT team
 
-- `phases.phases[fde001r].decision`
+- `phases.phases[fde001d].decision`
 
   Text:
 
@@ -5018,49 +5456,49 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Fixed scope, fixed fee, on site with your teams.
 
-- `audit.items[fde001s].title`
+- `audit.items[fde001e].title`
 
   Text:
 
   > Shadow
 
-- `audit.items[fde001s].description`
+- `audit.items[fde001e].description`
 
   Text:
 
   > Site visits with operators, supervisors and back-office teams.
 
-- `audit.items[fde001t].title`
+- `audit.items[fde001f].title`
 
   Text:
 
   > Map
 
-- `audit.items[fde001t].description`
+- `audit.items[fde001f].description`
 
   Text:
 
   > Every data path, including chat groups, spreadsheets, calls and system objects.
 
-- `audit.items[fde001u].title`
+- `audit.items[fde001g].title`
 
   Text:
 
   > Measure
 
-- `audit.items[fde001u].description`
+- `audit.items[fde001g].description`
 
   Text:
 
   > A baseline per site: update lag, field completeness, duplicate rate and active users.
 
-- `audit.items[fde001v].title`
+- `audit.items[fde001h].title`
 
   Text:
 
   > Deliver
 
-- `audit.items[fde001v].description`
+- `audit.items[fde001h].description`
 
   Text:
 
@@ -5084,73 +5522,73 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > One pattern we build often. AI captures the update where it happens, and a person confirms anything uncertain.
 
-- `architecture.phases[fde001w].title`
+- `architecture.phases[fde001i].title`
 
   Text:
 
   > Field update
 
-- `architecture.phases[fde001w].summary`
+- `architecture.phases[fde001i].summary`
 
   Text:
 
   > A WhatsApp text, voice note or photo from the person doing the work.
 
-- `architecture.phases[fde001x].title`
+- `architecture.phases[fde001j].title`
 
   Text:
 
   > AI capture agent
 
-- `architecture.phases[fde001x].summary`
+- `architecture.phases[fde001j].summary`
 
   Text:
 
   > Extracts a structured record from the message.
 
-- `architecture.phases[fde001y].title`
+- `architecture.phases[fde001k].title`
 
   Text:
 
   > Validation
 
-- `architecture.phases[fde001y].summary`
+- `architecture.phases[fde001k].summary`
 
   Text:
 
   > The record is checked against the system of record.
 
-- `architecture.phases[fde001z].title`
+- `architecture.phases[fde001l].title`
 
   Text:
 
   > Supervisor confirms
 
-- `architecture.phases[fde001z].summary`
+- `architecture.phases[fde001l].summary`
 
   Text:
 
   > Uncertain entries go to a supervisor, who confirms in one tap.
 
-- `architecture.phases[fde0020].title`
+- `architecture.phases[fde001m].title`
 
   Text:
 
   > Written via API
 
-- `architecture.phases[fde0020].summary`
+- `architecture.phases[fde001m].summary`
 
   Text:
 
   > The record is written into your ERP or CRM.
 
-- `architecture.phases[fde0021].title`
+- `architecture.phases[fde001n].title`
 
   Text:
 
   > Live dashboards
 
-- `architecture.phases[fde0021].summary`
+- `architecture.phases[fde001n].summary`
 
   Text:
 
@@ -5180,61 +5618,61 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > We measure who uses it and how fresh the data is, and we stay until the numbers prove it works.
 
-- `adoption.items[fde0022].title`
+- `adoption.items[fde001o].title`
 
   Text:
 
   > Adoption dashboard per site
 
-- `adoption.items[fde0022].description`
+- `adoption.items[fde001o].description`
 
   Text:
 
   > Who is using the new workflow, and who has fallen back to the old one.
 
-- `adoption.items[fde0023].title`
+- `adoption.items[fde001p].title`
 
   Text:
 
   > Data-quality score per record
 
-- `adoption.items[fde0023].description`
+- `adoption.items[fde001p].description`
 
   Text:
 
   > Completeness and freshness for every record written.
 
-- `adoption.items[fde0024].title`
+- `adoption.items[fde001q].title`
 
   Text:
 
   > Automatic nudges
 
-- `adoption.items[fde0024].description`
+- `adoption.items[fde001q].description`
 
   Text:
 
   > A reminder goes out when a record goes stale.
 
-- `adoption.items[fde0025].title`
+- `adoption.items[fde001r].title`
 
   Text:
 
   > Escalation to a manager
 
-- `adoption.items[fde0025].description`
+- `adoption.items[fde001r].description`
 
   Text:
 
   > If a nudge is ignored, the right manager hears about it.
 
-- `adoption.items[fde0026].title`
+- `adoption.items[fde001s].title`
 
   Text:
 
   > Weekly review with your IT team
 
-- `adoption.items[fde0026].description`
+- `adoption.items[fde001s].description`
 
   Text:
 
@@ -5258,125 +5696,125 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Two entry points, one model. We scope and quote after the audit. No long contract before you've seen results.
 
-- `engagement.tracks[fde0027].name`
+- `engagement.tracks[fde001t].name`
 
   Text:
 
   > Enterprise engagement
 
-- `engagement.tracks[fde0027].audience`
+- `engagement.tracks[fde001t].audience`
 
   Text:
 
   > For enterprises and multi-site businesses
 
-- `engagement.tracks[fde0027].steps[fde0028].title`
+- `engagement.tracks[fde001t].steps[fde001u].title`
 
   Text:
 
   > Discovery audit
 
-- `engagement.tracks[fde0027].steps[fde0028].description`
+- `engagement.tracks[fde001t].steps[fde001u].description`
 
   Text:
 
   > Fixed scope, fixed fee. On site with your teams. Ends with an audit report and a pilot recommendation.
 
-- `engagement.tracks[fde0027].steps[fde0029].title`
+- `engagement.tracks[fde001t].steps[fde001v].title`
 
   Text:
 
   > Pilot
 
-- `engagement.tracks[fde0027].steps[fde0029].description`
+- `engagement.tracks[fde001t].steps[fde001v].description`
 
   Text:
 
   > One workflow at one or two sites, live in production, against success criteria agreed upfront.
 
-- `engagement.tracks[fde0027].steps[fde002a].title`
+- `engagement.tracks[fde001t].steps[fde001w].title`
 
   Text:
 
   > Rollout
 
-- `engagement.tracks[fde0027].steps[fde002a].description`
+- `engagement.tracks[fde001t].steps[fde001w].description`
 
   Text:
 
   > Across sites and functions, with a dedicated engineer on a monthly retainer.
 
-- `engagement.tracks[fde0027].note`
+- `engagement.tracks[fde001t].note`
 
   Text:
 
   > Every phase ends with a decision point. You continue only if the previous phase delivered.
 
-- `engagement.tracks[fde0027].cta.label`
+- `engagement.tracks[fde001t].cta.label`
 
   Text:
 
   > Book a discovery call
 
-- `engagement.tracks[fde0027].cta.href`
+- `engagement.tracks[fde001t].cta.href`
 
   Text:
 
   > /contact#book
 
-- `engagement.tracks[fde002b].name`
+- `engagement.tracks[fde001x].name`
 
   Text:
 
   > AI Audit
 
-- `engagement.tracks[fde002b].audience`
+- `engagement.tracks[fde001x].audience`
 
   Text:
 
   > For growing businesses
 
-- `engagement.tracks[fde002b].steps[fde002c].title`
+- `engagement.tracks[fde001x].steps[fde001y].title`
 
   Text:
 
   > AI Audit
 
-- `engagement.tracks[fde002b].steps[fde002c].description`
+- `engagement.tracks[fde001x].steps[fde001y].description`
 
   Text:
 
   > Fixed scope, 1 to 2 weeks, remote or on site. Maps where AI and automation pay off in your operation.
 
-- `engagement.tracks[fde002b].steps[fde002d].title`
+- `engagement.tracks[fde001x].steps[fde001z].title`
 
   Text:
 
   > First build
 
-- `engagement.tracks[fde002b].steps[fde002d].description`
+- `engagement.tracks[fde001x].steps[fde001z].description`
 
   Text:
 
   > Live within weeks of the audit.
 
-- `engagement.tracks[fde002b].note`
+- `engagement.tracks[fde001x].note`
 
   Text:
 
   > Same model, smaller scope.
 
-- `engagement.tracks[fde002b].cta.label`
+- `engagement.tracks[fde001x].cta.label`
 
   Text:
 
-  > Get an AI Audit
+  > Book an AI Audit call
 
-- `engagement.tracks[fde002b].cta.href`
+- `engagement.tracks[fde001x].cta.href`
 
   Text:
 
-  > /what-we-build/ai-audit
+  > /contact#book
 
 - `security.eyebrow`
 
@@ -5390,49 +5828,49 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Your infrastructure, your system of record, your IP
 
-- `security.items[fde002e].title`
+- `security.items[fde0020].title`
 
   Text:
 
   > Your infrastructure
 
-- `security.items[fde002e].description`
+- `security.items[fde0020].description`
 
   Text:
 
   > Cloud or on-premise. Models and hosting are agreed with your IT team.
 
-- `security.items[fde002f].title`
+- `security.items[fde0021].title`
 
   Text:
 
   > Your system stays the system of record
 
-- `security.items[fde002f].description`
+- `security.items[fde0021].description`
 
   Text:
 
   > We write into SAP, Salesforce or your ERP. No parallel database to maintain.
 
-- `security.items[fde002g].title`
+- `security.items[fde0022].title`
 
   Text:
 
   > A full audit trail on every write
 
-- `security.items[fde002g].description`
+- `security.items[fde0022].description`
 
   Text:
 
   > What changed, where it came from and who confirmed it, logged every time.
 
-- `security.items[fde002h].title`
+- `security.items[fde0023].title`
 
   Text:
 
   > IP stays with you
 
-- `security.items[fde002h].description`
+- `security.items[fde0023].description`
 
   Text:
 
@@ -5474,6 +5912,590 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Forward Deployed Engineering, explained. Our engineers embed with your teams, build AI into the systems you already run, and stay until it's used.
 
+## whatWeBuildPage (whatWeBuildPage), new document
+
+- `hero.eyebrow`
+
+  Text:
+
+  > What we build
+
+- `hero.heading`
+
+  Text:
+
+  > What we build during an engagement
+
+- `hero.description`
+
+  Text:
+
+  > Every capability below is built inside the systems you already run, in production from the first release, and measured until people use it. We pick the tool for the workflow: no-code where it fits, code where it doesn't.
+
+- `capabilities[fde0024].anchor`
+
+  Text:
+
+  > field-capture
+
+- `capabilities[fde0024].title`
+
+  Text:
+
+  > Field capture into your system of record
+
+- `capabilities[fde0024].summary`
+
+  Text:
+
+  > Work gets reported where it happens: a WhatsApp message, a voice note, a photo, an email. AI reads it, extracts a structured record, checks it against your system and writes it in, with a person confirming anything uncertain.
+
+- `capabilities[fde0024].points[0]`
+
+  Text:
+
+  > WhatsApp, email and chat as inputs, including voice notes and photos
+
+- `capabilities[fde0024].points[1]`
+
+  Text:
+
+  > Every message classified by type, intent and urgency
+
+- `capabilities[fde0024].points[2]`
+
+  Text:
+
+  > Structured records written into your ERP, CRM or database through its API
+
+- `capabilities[fde0024].points[3]`
+
+  Text:
+
+  > A supervisor confirms uncertain entries in one tap
+
+- `capabilities[fde0024].points[4]`
+
+  Text:
+
+  > A buffered, multi-path design, so nothing is dropped under load
+
+- `capabilities[fde0024].tools[0]`
+
+  Text:
+
+  > WhatsApp Business
+
+- `capabilities[fde0024].tools[1]`
+
+  Text:
+
+  > Claude
+
+- `capabilities[fde0024].tools[2]`
+
+  Text:
+
+  > n8n
+
+- `capabilities[fde0024].tools[3]`
+
+  Text:
+
+  > Your ERP or CRM API
+
+- `capabilities[fde0025].anchor`
+
+  Text:
+
+  > agents
+
+- `capabilities[fde0025].title`
+
+  Text:
+
+  > AI agents inside your systems
+
+- `capabilities[fde0025].summary`
+
+  Text:
+
+  > Agents that handle enquiries, tickets and documents inside the systems you already run, so nobody has to re-key them. They act through your tools and hand anything unusual to a person with the full context.
+
+- `capabilities[fde0025].points[0]`
+
+  Text:
+
+  > Reads unstructured input: emails, chats, documents and voice notes
+
+- `capabilities[fde0025].points[1]`
+
+  Text:
+
+  > Classifies intent and urgency, then routes to the right path
+
+- `capabilities[fde0025].points[2]`
+
+  Text:
+
+  > Drafts replies, held for approval or sent automatically
+
+- `capabilities[fde0025].points[3]`
+
+  Text:
+
+  > Calls your tools directly: CRM, ERP, calendar and databases
+
+- `capabilities[fde0025].points[4]`
+
+  Text:
+
+  > Escalates edge cases to a person with full context attached
+
+- `capabilities[fde0025].tools[0]`
+
+  Text:
+
+  > Claude
+
+- `capabilities[fde0025].tools[1]`
+
+  Text:
+
+  > OpenAI
+
+- `capabilities[fde0025].tools[2]`
+
+  Text:
+
+  > n8n
+
+- `capabilities[fde0025].tools[3]`
+
+  Text:
+
+  > Python
+
+- `capabilities[fde0025].tools[4]`
+
+  Text:
+
+  > TypeScript
+
+- `capabilities[fde0026].anchor`
+
+  Text:
+
+  > workflows
+
+- `capabilities[fde0026].title`
+
+  Text:
+
+  > Workflow automation and integration
+
+- `capabilities[fde0026].summary`
+
+  Text:
+
+  > The repeated steps between your systems, automated inside the tools you already run. We use n8n, Make or Zapier where they fit and write code in Python, TypeScript or Java where they don't.
+
+- `capabilities[fde0026].points[0]`
+
+  Text:
+
+  > Lead capture, enrichment, routing and follow-up inside your CRM
+
+- `capabilities[fde0026].points[1]`
+
+  Text:
+
+  > Order, inventory and fulfilment flows between Shopify, warehouse and ERP
+
+- `capabilities[fde0026].points[2]`
+
+  Text:
+
+  > Reports that assemble themselves from every system
+
+- `capabilities[fde0026].points[3]`
+
+  Text:
+
+  > Error handling, retries and alerts, so one bad record doesn't stop everything
+
+- `capabilities[fde0026].points[4]`
+
+  Text:
+
+  > Documentation of what runs and when, owned by your team
+
+- `capabilities[fde0026].tools[0]`
+
+  Text:
+
+  > n8n
+
+- `capabilities[fde0026].tools[1]`
+
+  Text:
+
+  > Make
+
+- `capabilities[fde0026].tools[2]`
+
+  Text:
+
+  > Zapier
+
+- `capabilities[fde0026].tools[3]`
+
+  Text:
+
+  > Salesforce
+
+- `capabilities[fde0026].tools[4]`
+
+  Text:
+
+  > HubSpot
+
+- `capabilities[fde0026].tools[5]`
+
+  Text:
+
+  > Shopify
+
+- `capabilities[fde0026].tools[6]`
+
+  Text:
+
+  > Java
+
+- `capabilities[fde0027].anchor`
+
+  Text:
+
+  > documents
+
+- `capabilities[fde0027].title`
+
+  Text:
+
+  > Retrieval and document intelligence
+
+- `capabilities[fde0027].summary`
+
+  Text:
+
+  > Answers grounded in your contracts, manuals, scans and records, and documents turned into structured data your systems can use.
+
+- `capabilities[fde0027].points[0]`
+
+  Text:
+
+  > Retrieval (RAG) over your documents, with sources shown
+
+- `capabilities[fde0027].points[1]`
+
+  Text:
+
+  > Scanned forms and invoices extracted into structured records
+
+- `capabilities[fde0027].points[2]`
+
+  Text:
+
+  > Knowledge search for teams on site and in the field
+
+- `capabilities[fde0027].points[3]`
+
+  Text:
+
+  > Evals that check answers before people rely on them
+
+- `capabilities[fde0027].tools[0]`
+
+  Text:
+
+  > Python
+
+- `capabilities[fde0027].tools[1]`
+
+  Text:
+
+  > Qdrant
+
+- `capabilities[fde0027].tools[2]`
+
+  Text:
+
+  > Claude
+
+- `capabilities[fde0027].tools[3]`
+
+  Text:
+
+  > Langfuse
+
+- `capabilities[fde0028].anchor`
+
+  Text:
+
+  > voice
+
+- `capabilities[fde0028].title`
+
+  Text:
+
+  > Real-time voice AI
+
+- `capabilities[fde0028].summary`
+
+  Text:
+
+  > Voice agents that answer, qualify and route calls, with every outcome written into your systems like any other record.
+
+- `capabilities[fde0028].points[0]`
+
+  Text:
+
+  > Calls answered, qualified and routed
+
+- `capabilities[fde0028].points[1]`
+
+  Text:
+
+  > Outcomes logged to your CRM or ERP
+
+- `capabilities[fde0028].points[2]`
+
+  Text:
+
+  > Hand-off to a person with the full context
+
+- `capabilities[fde0028].points[3]`
+
+  Text:
+
+  > Every call traced and reviewed
+
+- `capabilities[fde0028].tools[0]`
+
+  Text:
+
+  > Retell
+
+- `capabilities[fde0028].tools[1]`
+
+  Text:
+
+  > Twilio
+
+- `capabilities[fde0028].tools[2]`
+
+  Text:
+
+  > Claude
+
+- `capabilities[fde0029].anchor`
+
+  Text:
+
+  > infrastructure
+
+- `capabilities[fde0029].title`
+
+  Text:
+
+  > Evals, monitoring and self-hosted AI
+
+- `capabilities[fde0029].summary`
+
+  Text:
+
+  > The infrastructure that lets your IT team trust AI in production: governed access to your data, quality you can measure, and hosting you control.
+
+- `capabilities[fde0029].points[0]`
+
+  Text:
+
+  > MCP servers that give models governed access to your data and tools
+
+- `capabilities[fde0029].points[1]`
+
+  Text:
+
+  > Self-hosted deployments in your cloud or on-premise
+
+- `capabilities[fde0029].points[2]`
+
+  Text:
+
+  > Langfuse tracing and evals, so you see every call, cost and failure
+
+- `capabilities[fde0029].points[3]`
+
+  Text:
+
+  > PII handling and redaction to keep sensitive data in your environment
+
+- `capabilities[fde0029].tools[0]`
+
+  Text:
+
+  > MCP
+
+- `capabilities[fde0029].tools[1]`
+
+  Text:
+
+  > Langfuse
+
+- `capabilities[fde0029].tools[2]`
+
+  Text:
+
+  > AWS
+
+- `capabilities[fde0029].tools[3]`
+
+  Text:
+
+  > On-premise
+
+- `principles.eyebrow`
+
+  Text:
+
+  > How every build is made
+
+- `principles.heading`
+
+  Text:
+
+  > How every build is made
+
+- `principles.items[fde002a].title`
+
+  Text:
+
+  > Inside your stack
+
+- `principles.items[fde002a].description`
+
+  Text:
+
+  > We extend SAP, Salesforce, your ERP, CRM and factory tools. No parallel systems to maintain.
+
+- `principles.items[fde002b].title`
+
+  Text:
+
+  > Production from day one
+
+- `principles.items[fde002b].description`
+
+  Text:
+
+  > Error handling, retries, monitoring, audit logs and evals from the first build.
+
+- `principles.items[fde002c].title`
+
+  Text:
+
+  > Adoption measured
+
+- `principles.items[fde002c].description`
+
+  Text:
+
+  > We track who uses it and how fresh the data is, and keep improving until it's the default.
+
+- `principles.items[fde002d].title`
+
+  Text:
+
+  > You own it
+
+- `principles.items[fde002d].description`
+
+  Text:
+
+  > Code, workflows, documentation and data belong to you.
+
+- `principles.items[fde002e].title`
+
+  Text:
+
+  > Code when no-code is wrong
+
+- `principles.items[fde002e].description`
+
+  Text:
+
+  > Python, TypeScript and Java when Make, n8n or Zapier would hit a ceiling.
+
+- `principles.items[fde002f].title`
+
+  Text:
+
+  > Certified across the stack
+
+- `principles.items[fde002f].description`
+
+  Text:
+
+  > Claude, Make, n8n, Zapier, Microsoft and Shopify partners.
+
+- `cta.heading`
+
+  Text:
+
+  > Every build starts with a discovery audit
+
+- `cta.description`
+
+  Text:
+
+  > Book a call to talk through your operation, or see how an engagement runs.
+
+- `cta.button.label`
+
+  Text:
+
+  > Book a discovery call
+
+- `cta.button.href`
+
+  Text:
+
+  > /contact#book
+
+- `cta.secondaryButton.label`
+
+  Text:
+
+  > See how we work
+
+- `cta.secondaryButton.href`
+
+  Text:
+
+  > /how-we-work
+
+- `seo.title`
+
+  Text:
+
+  > What we build
+
+- `seo.description`
+
+  Text:
+
+  > AI agents, field capture into your ERP, workflow automation, document intelligence, voice AI and self-hosted AI, built inside the systems you already run.
+
 ## caseStudiesIndexPage (caseStudiesIndexPage), new document
 
 - `hero.eyebrow`
@@ -5512,49 +6534,49 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Work our founders have built before and alongside Agilemorph. Cited as our founders' experience, not as Agilemorph client work.
 
-- `founderTrack.items[fde002i].title`
+- `founderTrack.items[fde002g].title`
 
   Text:
 
   > Autonomous retention agent
 
-- `founderTrack.items[fde002i].description`
+- `founderTrack.items[fde002g].description`
 
   Text:
 
   > For a consumer app, deciding when and how to make a save offer.
 
-- `founderTrack.items[fde002j].title`
+- `founderTrack.items[fde002h].title`
 
   Text:
 
   > Real-time voice AI for pharmacies
 
-- `founderTrack.items[fde002j].description`
+- `founderTrack.items[fde002h].description`
 
   Text:
 
   > At a YC-backed health startup.
 
-- `founderTrack.items[fde002k].title`
+- `founderTrack.items[fde002i].title`
 
   Text:
 
   > Business rule engine
 
-- `founderTrack.items[fde002k].description`
+- `founderTrack.items[fde002i].description`
 
   Text:
 
   > Built in Java and Quarkus to lift team productivity.
 
-- `founderTrack.items[fde002l].title`
+- `founderTrack.items[fde002j].title`
 
   Text:
 
   > AWS cost optimisation
 
-- `founderTrack.items[fde002l].description`
+- `founderTrack.items[fde002j].description`
 
   Text:
 
@@ -5700,61 +6722,61 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > [CONFIRM] a number (users, report accuracy, retention, time to MVP).
 
-- `phases[fde002m].title`
+- `phases[fde002k].title`
 
   Text:
 
   > Discovery audit
 
-- `phases[fde002m].description`
+- `phases[fde002k].description`
 
   Text:
 
   > Worked directly with the founders and early users to turn their needs into features.
 
-- `phases[fde002n].title`
+- `phases[fde002l].title`
 
   Text:
 
   > Blueprint
 
-- `phases[fde002n].description`
+- `phases[fde002l].description`
 
   Text:
 
   > Designed the assessment framework and the architecture for retrieval, orchestration and evaluation.
 
-- `phases[fde002o].title`
+- `phases[fde002m].title`
 
   Text:
 
   > Pilot
 
-- `phases[fde002o].description`
+- `phases[fde002m].description`
 
   Text:
 
   > Shipped the MVP to early users, with free and paid report tiers.
 
-- `phases[fde002p].title`
+- `phases[fde002n].title`
 
   Text:
 
   > Adopt
 
-- `phases[fde002p].description`
+- `phases[fde002n].description`
 
   Text:
 
   > Built onboarding, automated reports and the retention loop, and ran user research.
 
-- `phases[fde002q].title`
+- `phases[fde002o].title`
 
   Text:
 
   > Scale
 
-- `phases[fde002q].description`
+- `phases[fde002o].description`
 
   Text:
 
@@ -5894,23 +6916,47 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > In progress. [CONFIRM] measured result: the baseline and first results until final numbers exist.
 
-- `phases[fde002r].title`
+- `phases[fde002p].title`
 
   Text:
 
   > Discovery audit
 
-- `phases[fde002r].description`
+- `phases[fde002p].description`
 
   Text:
 
   > On the ground with factory users, gathering requirements and mapping where AI fits into existing systems.
 
-- `phases[fde002s].title`
+- `phases[fde002q].title`
 
   Text:
 
   > Blueprint
+
+- `phases[fde002q].description`
+
+  Text:
+
+  > [CONFIRM]
+
+- `phases[fde002r].title`
+
+  Text:
+
+  > Pilot
+
+- `phases[fde002r].description`
+
+  Text:
+
+  > [CONFIRM]
+
+- `phases[fde002s].title`
+
+  Text:
+
+  > Adopt
 
 - `phases[fde002s].description`
 
@@ -5922,33 +6968,9 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   Text:
 
-  > Pilot
-
-- `phases[fde002t].description`
-
-  Text:
-
-  > [CONFIRM]
-
-- `phases[fde002u].title`
-
-  Text:
-
-  > Adopt
-
-- `phases[fde002u].description`
-
-  Text:
-
-  > [CONFIRM]
-
-- `phases[fde002v].title`
-
-  Text:
-
   > Scale
 
-- `phases[fde002v].description`
+- `phases[fde002t].description`
 
   Text:
 
@@ -6034,23 +7056,47 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > [CONFIRM] specifics and numbers.
 
-- `phases[fde002w].title`
+- `phases[fde002u].title`
 
   Text:
 
   > Discovery audit
 
-- `phases[fde002w].description`
+- `phases[fde002u].description`
 
   Text:
 
   > On-site requirement discovery with the teams who run operations.
 
-- `phases[fde002x].title`
+- `phases[fde002v].title`
 
   Text:
 
   > Blueprint
+
+- `phases[fde002v].description`
+
+  Text:
+
+  > [CONFIRM]
+
+- `phases[fde002w].title`
+
+  Text:
+
+  > Pilot
+
+- `phases[fde002w].description`
+
+  Text:
+
+  > [CONFIRM]
+
+- `phases[fde002x].title`
+
+  Text:
+
+  > Adopt
 
 - `phases[fde002x].description`
 
@@ -6062,33 +7108,9 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   Text:
 
-  > Pilot
-
-- `phases[fde002y].description`
-
-  Text:
-
-  > [CONFIRM]
-
-- `phases[fde002z].title`
-
-  Text:
-
-  > Adopt
-
-- `phases[fde002z].description`
-
-  Text:
-
-  > [CONFIRM]
-
-- `phases[fde0030].title`
-
-  Text:
-
   > Scale
 
-- `phases[fde0030].description`
+- `phases[fde002y].description`
 
   Text:
 
@@ -6192,61 +7214,61 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > [CONFIRM] naming and an outcome number.
 
-- `phases[fde0031].title`
+- `phases[fde002z].title`
 
   Text:
 
   > Discovery audit
 
-- `phases[fde0031].description`
+- `phases[fde002z].description`
 
   Text:
 
   > Worked with the owner on how sales conversations actually run.
 
-- `phases[fde0032].title`
+- `phases[fde0030].title`
 
   Text:
 
   > Blueprint
 
-- `phases[fde0032].description`
+- `phases[fde0030].description`
 
   Text:
 
   > Chose a channel-adapter design so one agent serves WhatsApp and Telegram.
 
-- `phases[fde0033].title`
+- `phases[fde0031].title`
 
   Text:
 
   > Pilot
 
-- `phases[fde0033].description`
+- `phases[fde0031].description`
 
   Text:
 
   > Put the agent live in the existing sales channels.
 
-- `phases[fde0034].title`
+- `phases[fde0032].title`
 
   Text:
 
   > Adopt
 
-- `phases[fde0034].description`
+- `phases[fde0032].description`
 
   Text:
 
   > Measured how the agent handled conversations.
 
-- `phases[fde0035].title`
+- `phases[fde0033].title`
 
   Text:
 
   > Scale
 
-- `phases[fde0035].description`
+- `phases[fde0033].description`
 
   Text:
 
@@ -6386,23 +7408,47 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > [CONFIRM] naming and a number.
 
-- `phases[fde0036].title`
+- `phases[fde0034].title`
 
   Text:
 
   > Discovery audit
 
-- `phases[fde0036].description`
+- `phases[fde0034].description`
 
   Text:
 
   > [CONFIRM]
 
-- `phases[fde0037].title`
+- `phases[fde0035].title`
 
   Text:
 
   > Blueprint
+
+- `phases[fde0035].description`
+
+  Text:
+
+  > [CONFIRM]
+
+- `phases[fde0036].title`
+
+  Text:
+
+  > Pilot
+
+- `phases[fde0036].description`
+
+  Text:
+
+  > Owner approval in the loop for every payout.
+
+- `phases[fde0037].title`
+
+  Text:
+
+  > Adopt
 
 - `phases[fde0037].description`
 
@@ -6414,33 +7460,9 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   Text:
 
-  > Pilot
-
-- `phases[fde0038].description`
-
-  Text:
-
-  > Owner approval in the loop for every payout.
-
-- `phases[fde0039].title`
-
-  Text:
-
-  > Adopt
-
-- `phases[fde0039].description`
-
-  Text:
-
-  > [CONFIRM]
-
-- `phases[fde003a].title`
-
-  Text:
-
   > Scale
 
-- `phases[fde003a].description`
+- `phases[fde0038].description`
 
   Text:
 
@@ -6476,110 +7498,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > A referral rewards engine on Housecall Pro, Google Sheets and Tremendous, built for a New York City gas piping contractor with the owner approving every payout.
 
-## caseStudy-trades-speed-to-lead (caseStudy), new document
-
-- `title`
-
-  Text:
-
-  > Speed-to-lead and booking for trades firms
-
-- `slug.current`
-
-  Text:
-
-  > trades-speed-to-lead
-
-- `headline`
-
-  Text:
-
-  > A capability example: a speed-to-lead and booking system for trades firms.
-
-- `summary`
-
-  Text:
-
-  > A capability example, not a client case study: a GoHighLevel speed-to-lead and booking system designed for HVAC, roofing and remodelling firms.
-
-- `tags[0]`
-
-  Text:
-
-  > Capability example
-
-- `tags[1]`
-
-  Text:
-
-  > Trades
-
-- `context`
-
-  Text:
-
-  > Designed for HVAC, roofing and remodelling firms that run ServiceTitan or Housecall Pro.
-
-- `gap`
-
-  Text:
-
-  > [CONFIRM]
-
-- `howWeWorked`
-
-  Text:
-
-  > Built as a reusable system, ready to be fitted inside a firm's existing tools during an AI Audit and first build.
-
-- `whatWeBuilt[0]`
-
-  Text:
-
-  > A GoHighLevel speed-to-lead and booking system
-
-- `whatWeBuilt[1]`
-
-  Text:
-
-  > Designed to work alongside ServiceTitan and Housecall Pro
-
-- `outcome`
-
-  Text:
-
-  > A capability example. There is no client outcome to report until a client agrees to be named.
-
-- `stack[0]`
-
-  Text:
-
-  > GoHighLevel
-
-- `stack[1]`
-
-  Text:
-
-  > ServiceTitan
-
-- `stack[2]`
-
-  Text:
-
-  > Housecall Pro
-
-- `seo.title`
-
-  Text:
-
-  > Speed-to-lead for trades firms
-
-- `seo.description`
-
-  Text:
-
-  > A GoHighLevel speed-to-lead and booking system designed for HVAC, roofing and remodelling firms on ServiceTitan and Housecall Pro.
-
 ## blogPost-ai-adoption-in-manufacturing (blogPost)
 
 - `body[0613612f970a].children[cafd404703e8].text`
@@ -6591,18 +7509,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Agilemorph's position starts from the opposite direction. If your ERP, MES, and quality system already do their individual jobs, the fix is connecting them, not replacing them. Where a plant's actual gap is a $30-a-month reporting tool or a vision API that already exists off the shelf, we say so. The honesty costs us a sale sometimes. It's also the reason clients keep us around after the first project.
-
-## blogPost-ai-and-ml-for-fraud-detection-a-deep-dive-into-modern-solutions (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > AI and ML for Fraud Detection: A Deep Dive into Modern Solutions - AgileMorph Solutions
-
-  After:
-
-  > AI and ML for Fraud Detection: A Deep Dive into Modern Solutions - Agilemorph
 
 ## blogPost-ai-demand-forecasting-manufacturing (blogPost)
 
@@ -6626,492 +7532,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > If you're not sure whether your forecast problem is a data problem or a model problem, that's worth answering before you commit budget to either. Agilemorph's 
 
-## blogPost-ai-marketing-report-summary (blogPost)
-
-- `body[k26].children[k26s1].text`
-
-  Before:
-
-  > What did AgileMorph build for the agency mentioned in this article?
-
-  After:
-
-  > What did Agilemorph build for the agency mentioned in this article?
-
-## blogPost-boost-your-online-booking-experience-with-ai-powered-chatbots-agilemorph-solutions (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In the rapidly evolving digital landscape, the integration of AI-powered chatbots in online booking systems has become a significant trend. AgileMorph Solutions is leading the way in this revolution, enhancing the user experience and streamlining the booking process for a variety of services. This blog explores the transformative impact of AI-driven chatbots in the realm of online reservations and scheduling.
-
-  After:
-
-  > In the rapidly evolving digital landscape, the integration of AI-powered chatbots in online booking systems has become a significant trend. Agilemorph is leading the way in this revolution, enhancing the user experience and streamlining the booking process for a variety of services. This blog explores the transformative impact of AI-driven chatbots in the realm of online reservations and scheduling.
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > The year 2024 marks a significant shift towards Democratized AI, making AI more accessible and affordable for businesses and individuals alike. This trend paves the way for innovation and growth across various sectors. Expect to see an increase in cloud-based AI platforms and open-source software, simplifying the deployment of AI applications without extensive expertise or infrastructure. This democratization is leading to the development of smaller, more efficient language models, becoming the new industry standard. AgileMorph Solutions is at the forefront, offering specialized AI model development, tailored to meet the unique needs of different industries and business departments.
-
-  After:
-
-  > The year 2024 marks a significant shift towards Democratized AI, making AI more accessible and affordable for businesses and individuals alike. This trend paves the way for innovation and growth across various sectors. Expect to see an increase in cloud-based AI platforms and open-source software, simplifying the deployment of AI applications without extensive expertise or infrastructure. This democratization is leading to the development of smaller, more efficient language models, becoming the new industry standard. Agilemorph is at the forefront, offering specialized AI model development, tailored to meet the unique needs of different industries and business departments.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > Prepare for the emergence of multi-modal generative AI. These systems will skillfully blend diverse inputs such as text, voice, melodies, and visual elements, leading to a new era of creative expression. The art world is set to undergo a significant transformation, with immersive art experiences that challenge traditional boundaries and stimulate the senses. AgileMorph Solutions is excited to be part of this creative revolution.
-
-  After:
-
-  > Prepare for the emergence of multi-modal generative AI. These systems will skillfully blend diverse inputs such as text, voice, melodies, and visual elements, leading to a new era of creative expression. The art world is set to undergo a significant transformation, with immersive art experiences that challenge traditional boundaries and stimulate the senses. Agilemorph is excited to be part of this creative revolution.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > In 2024, AI will significantly accelerate business transformation. The focus will be on establishing centralized AI platforms that break down silos and enhance cross-departmental collaboration, with an emphasis on security and governance. AI’s automation capabilities will streamline operations, ranging from routine tasks to complex strategic initiatives, allowing human resources to focus on more value-added activities. At AgileMorph, we are ready to help businesses harness these opportunities.
-
-  After:
-
-  > In 2024, AI will significantly accelerate business transformation. The focus will be on establishing centralized AI platforms that break down silos and enhance cross-departmental collaboration, with an emphasis on security and governance. AI’s automation capabilities will streamline operations, ranging from routine tasks to complex strategic initiatives, allowing human resources to focus on more value-added activities. At Agilemorph, we are ready to help businesses harness these opportunities.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > In conclusion, AI-powered chatbots are revolutionizing the online booking experience, offering businesses an innovative solution to enhance user satisfaction, increase conversions, and foster long-term relationships. AgileMorph Solutions is at the forefront of this technological advancement, providing chatbots that are not only efficient and user-friendly but also capable of delivering personalized and proactive user engagement.
-
-  After:
-
-  > In conclusion, AI-powered chatbots are revolutionizing the online booking experience, offering businesses an innovative solution to enhance user satisfaction, increase conversions, and foster long-term relationships. Agilemorph is at the forefront of this technological advancement, providing chatbots that are not only efficient and user-friendly but also capable of delivering personalized and proactive user engagement.
-
-- `body[block-14].children[span-14].text`
-
-  Before:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with AgileMorph Solutions. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-  After:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with Agilemorph. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-- `body[block-15].children[span-15].text`
-
-  Before:
-
-  > 🌟 Contact AgileMorph Solutions today and take the first step towards your AI-driven future! 🌟
-
-  After:
-
-  > 🌟 Contact Agilemorph today and take the first step towards your AI-driven future! 🌟
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In the rapidly evolving digital landscape, the integration of AI-powered chatbots in online booking systems has become a significant trend. AgileMorph Solutions is leading the way in this revolution, enhancing the user experience and streamlining the booking process for a variety of services. This blog explores the transformative impact of AI-driven chatbots in the [&hellip;]
-
-  After:
-
-  > Introduction In the rapidly evolving digital landscape, the integration of AI-powered chatbots in online booking systems has become a significant trend. Agilemorph is leading the way in this revolution, enhancing the user experience and streamlining the booking process for a variety of services. This blog explores the transformative impact of AI-driven chatbots in the [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Boost Your Online Booking Experience with AI-Powered Chatbots – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Boost Your Online Booking Experience with AI-Powered Chatbots – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Boost Your Online Booking Experience with AI-Powered Chatbots – AgileMorph Solutions
-
-  After:
-
-  > Boost Your Online Booking Experience with AI-Powered Chatbots – Agilemorph
-
-## blogPost-embracing-the-future-the-top-5-data-and-ai-trends-for-2024-agilemorph-solutions (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > As we step into 2024, the landscape of data and artificial intelligence (AI) is evolving rapidly, presenting new opportunities and challenges. At AgileMorph Solutions, we pride ourselves on staying ahead of the curve. Here are the top five trends in Data and AI that you simply cannot afford to overlook this year.
-
-  After:
-
-  > As we step into 2024, the landscape of data and artificial intelligence (AI) is evolving rapidly, presenting new opportunities and challenges. At Agilemorph, we pride ourselves on staying ahead of the curve. Here are the top five trends in Data and AI that you simply cannot afford to overlook this year.
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > The year 2024 marks a significant shift towards Democratized AI, making AI more accessible and affordable for businesses and individuals alike. This trend paves the way for innovation and growth across various sectors. Expect to see an increase in cloud-based AI platforms and open-source software, simplifying the deployment of AI applications without extensive expertise or infrastructure. This democratization is leading to the development of smaller, more efficient language models, becoming the new industry standard. AgileMorph Solutions is at the forefront, offering specialized AI model development, tailored to meet the unique needs of different industries and business departments.
-
-  After:
-
-  > The year 2024 marks a significant shift towards Democratized AI, making AI more accessible and affordable for businesses and individuals alike. This trend paves the way for innovation and growth across various sectors. Expect to see an increase in cloud-based AI platforms and open-source software, simplifying the deployment of AI applications without extensive expertise or infrastructure. This democratization is leading to the development of smaller, more efficient language models, becoming the new industry standard. Agilemorph is at the forefront, offering specialized AI model development, tailored to meet the unique needs of different industries and business departments.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > Prepare for the emergence of multi-modal generative AI. These systems will skillfully blend diverse inputs such as text, voice, melodies, and visual elements, leading to a new era of creative expression. The art world is set to undergo a significant transformation, with immersive art experiences that challenge traditional boundaries and stimulate the senses. AgileMorph Solutions is excited to be part of this creative revolution.
-
-  After:
-
-  > Prepare for the emergence of multi-modal generative AI. These systems will skillfully blend diverse inputs such as text, voice, melodies, and visual elements, leading to a new era of creative expression. The art world is set to undergo a significant transformation, with immersive art experiences that challenge traditional boundaries and stimulate the senses. Agilemorph is excited to be part of this creative revolution.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > In 2024, AI will significantly accelerate business transformation. The focus will be on establishing centralized AI platforms that break down silos and enhance cross-departmental collaboration, with an emphasis on security and governance. AI’s automation capabilities will streamline operations, ranging from routine tasks to complex strategic initiatives, allowing human resources to focus on more value-added activities. At AgileMorph, we are ready to help businesses harness these opportunities.
-
-  After:
-
-  > In 2024, AI will significantly accelerate business transformation. The focus will be on establishing centralized AI platforms that break down silos and enhance cross-departmental collaboration, with an emphasis on security and governance. AI’s automation capabilities will streamline operations, ranging from routine tasks to complex strategic initiatives, allowing human resources to focus on more value-added activities. At Agilemorph, we are ready to help businesses harness these opportunities.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > In conclusion, while we embrace the technological advancements AI brings, it’s vital to maintain our emotional intelligence. AI cannot replace the unique human qualities of empathy and emotional connection. At AgileMorph Solutions, we believe in balancing cutting-edge technology with human heart and ethics. Prepare to navigate an exhilarating 2024 with us at the helm!
-
-  After:
-
-  > In conclusion, while we embrace the technological advancements AI brings, it’s vital to maintain our emotional intelligence. AI cannot replace the unique human qualities of empathy and emotional connection. At Agilemorph, we believe in balancing cutting-edge technology with human heart and ethics. Prepare to navigate an exhilarating 2024 with us at the helm!
-
-- `body[block-14].children[span-14].text`
-
-  Before:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with AgileMorph Solutions. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-  After:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with Agilemorph. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-- `body[block-15].children[span-15].text`
-
-  Before:
-
-  > 🌟 Contact AgileMorph Solutions today and take the first step towards your AI-driven future! 🌟
-
-  After:
-
-  > 🌟 Contact Agilemorph today and take the first step towards your AI-driven future! 🌟
-
-- `excerpt`
-
-  Before:
-
-  > Introduction As we step into 2024, the landscape of data and artificial intelligence (AI) is evolving rapidly, presenting new opportunities and challenges. At AgileMorph Solutions, we pride ourselves on staying ahead of the curve. Here are the top five trends in Data and AI that you simply cannot afford to overlook this year. 1. Democratization [&hellip;]
-
-  After:
-
-  > Introduction As we step into 2024, the landscape of data and artificial intelligence (AI) is evolving rapidly, presenting new opportunities and challenges. At Agilemorph, we pride ourselves on staying ahead of the curve. Here are the top five trends in Data and AI that you simply cannot afford to overlook this year. 1. Democratization [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Embracing the Future: The Top 5 Data and AI Trends for 2024 – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Embracing the Future: The Top 5 Data and AI Trends for 2024 – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Embracing the Future: The Top 5 Data and AI Trends for 2024 – AgileMorph Solutions
-
-  After:
-
-  > Embracing the Future: The Top 5 Data and AI Trends for 2024 – Agilemorph
-
-## blogPost-empowering-business-growth-agilemorph-solutions-in-data-analysis-and-automation-agilemorph-solutions (blogPost)
-
-- `body[block-12].children[span-12].text`
-
-  Before:
-
-  > Conclusion: Transform Your Business with AgileMorph Solutions
-
-  After:
-
-  > Conclusion: Transform Your Business with Agilemorph
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > As businesses navigate the complexities of data analysis and automation, AgileMorph Solutions stands as a partner in innovation. Our expertise ensures a tailored approach, empowering your business to make impactful decisions, drive productivity, and achieve sustained growth. Consult with AgileMorph Solutions today and embark on a transformative journey towards data-driven success.
-
-  After:
-
-  > As businesses navigate the complexities of data analysis and automation, Agilemorph stands as a partner in innovation. Our expertise ensures a tailored approach, empowering your business to make impactful decisions, drive productivity, and achieve sustained growth. Consult with Agilemorph today and embark on a transformative journey towards data-driven success.
-
-- `seo.title`
-
-  Before:
-
-  > Empowering Business Growth: AgileMorph Solutions in Data Analysis and Automation – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Empowering Business Growth: Agilemorph in Data Analysis and Automation – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Empowering Business Growth: AgileMorph Solutions in Data Analysis and Automation – AgileMorph Solutions
-
-  After:
-
-  > Empowering Business Growth: Agilemorph in Data Analysis and Automation – Agilemorph
-
-## blogPost-exploring-the-future-of-e-commerce-the-impact-of-custom-chatbots-on-online-shopping (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > Exploring the Future of E-commerce: The Impact of Custom Chatbots on Online Shopping - AgileMorph Solutions
-
-  After:
-
-  > Exploring the Future of E-commerce: The Impact of Custom Chatbots on Online Shopping - Agilemorph
-
-## blogPost-ga4-gsc-google-business-profile-reporting (blogPost)
-
-- `body[b16].children[b16s0].text`
-
-  Before:
-
-  > If you want a sense of what that looks like for your own stack before committing to anything, AgileMorph's 
-
-  After:
-
-  > If you want a sense of what that looks like for your own stack before committing to anything, Agilemorph's 
-
-- `body[b22].children[b22s0].text`
-
-  Before:
-
-  > What's the difference between a reporting dashboard and what AgileMorph builds?
-
-  After:
-
-  > What's the difference between a reporting dashboard and what Agilemorph builds?
-
-## blogPost-how-gpt-powered-apis-can-streamline-your-operations (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > How GPT-Powered APIs Can Streamline Your Operations - AgileMorph Solutions
-
-  After:
-
-  > How GPT-Powered APIs Can Streamline Your Operations - Agilemorph
-
-## blogPost-how-to-build-a-winning-sales-pipeline-with-crm-tools (blogPost)
-
-- `body[block-2].children[span-2].text`
-
-  Before:
-
-  > At AgileMorph, we specialize in helping businesses like yours build efficient, customer-centric sales processes. In this blog, we’ll guide you through how to build a winning sales pipeline using CRM tools, optimizing the sales funnel, and making the most of your customer interactions.
-
-  After:
-
-  > At Agilemorph, we specialize in helping businesses like yours build efficient, customer-centric sales processes. In this blog, we’ll guide you through how to build a winning sales pipeline using CRM tools, optimizing the sales funnel, and making the most of your customer interactions.
-
-- `body[block-42].children[span-42].text`
-
-  Before:
-
-  > At AgileMorph, we are passionate about helping businesses like yours succeed by providing innovative CRM solutions and expert guidance on sales funnel optimization. If you’re ready to take your sales pipeline to the next level, contact us today to learn how we can help streamline your sales process and improve your bottom line.
-
-  After:
-
-  > At Agilemorph, we are passionate about helping businesses like yours succeed by providing innovative CRM solutions and expert guidance on sales funnel optimization. If you’re ready to take your sales pipeline to the next level, contact us today to learn how we can help streamline your sales process and improve your bottom line.
-
-- `seo.title`
-
-  Before:
-
-  > How to Build a Winning Sales Pipeline with CRM Tools - AgileMorph Solutions
-
-  After:
-
-  > How to Build a Winning Sales Pipeline with CRM Tools - Agilemorph
-
-## blogPost-how-to-stay-consistent-with-newsletters-without-burning-out (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > How to Stay Consistent with Newsletters Without Burning Out - AgileMorph Solutions
-
-  After:
-
-  > How to Stay Consistent with Newsletters Without Burning Out - Agilemorph
-
-## blogPost-how-virtual-assistants-can-help-you-scale-your-business-2 (blogPost)
-
-- `body[block-2].children[span-2].text`
-
-  Before:
-
-  > At AgileMorph, we believe virtual assistants are not just task managers; they are partners in growth. This blog will delve into how virtual assistants can help you scale your business, covering key virtual assistant benefits and practical applications that make them a wise investment.
-
-  After:
-
-  > At Agilemorph, we believe virtual assistants are not just task managers; they are partners in growth. This blog will delve into how virtual assistants can help you scale your business, covering key virtual assistant benefits and practical applications that make them a wise investment.
-
-- `body[block-47].children[span-47].text`
-
-  Before:
-
-  > At AgileMorph, we understand the importance of agility in business. Virtual assistants give you the flexibility, cost-efficiency, and specialized skills you need to scale effectively. As you move towards the next phase of your business journey, consider how a virtual assistant can help unlock your full growth potential.
-
-  After:
-
-  > At Agilemorph, we understand the importance of agility in business. Virtual assistants give you the flexibility, cost-efficiency, and specialized skills you need to scale effectively. As you move towards the next phase of your business journey, consider how a virtual assistant can help unlock your full growth potential.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In today’s fast-paced business environment, scaling your business requires agility, smart resource allocation, and streamlined processes. But for many businesses, especially small and medium-sized enterprises, managing day-to-day tasks while focusing on growth can become overwhelming. Enter the Virtual Assistant(VA) – a remote professional who handles various tasks, from administrative duties to specialized services. At AgileMorph, [&hellip;]
-
-  After:
-
-  > Introduction In today’s fast-paced business environment, scaling your business requires agility, smart resource allocation, and streamlined processes. But for many businesses, especially small and medium-sized enterprises, managing day-to-day tasks while focusing on growth can become overwhelming. Enter the Virtual Assistant(VA) – a remote professional who handles various tasks, from administrative duties to specialized services. At Agilemorph, [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > How Virtual Assistants Can Help You Scale Your Business - AgileMorph Solutions
-
-  After:
-
-  > How Virtual Assistants Can Help You Scale Your Business - Agilemorph
-
-## blogPost-importance-of-automating-accounts-payable-streamlining-your-business-processes (blogPost)
-
-- `body[block-2].children[span-2].text`
-
-  Before:
-
-  > At AgileMorph, we understand the complexities businesses face in optimizing workflows, and our mission is to empower companies through tailored automation solutions. Let’s explore how automating accounts payable can bring tangible benefits to your business.
-
-  After:
-
-  > At Agilemorph, we understand the complexities businesses face in optimizing workflows, and our mission is to empower companies through tailored automation solutions. Let’s explore how automating accounts payable can bring tangible benefits to your business.
-
-- `body[block-44].children[span-44].text`
-
-  Before:
-
-  > At AgileMorph, we believe that automating accounts payable is not just a way to enhance efficiency, it’s a critical step toward transforming your business into a more agile and future-ready organization. The move toward automation helps businesses stay competitive, reduce costs, and improve relationships with vendors.
-
-  After:
-
-  > At Agilemorph, we believe that automating accounts payable is not just a way to enhance efficiency, it’s a critical step toward transforming your business into a more agile and future-ready organization. The move toward automation helps businesses stay competitive, reduce costs, and improve relationships with vendors.
-
-- `body[block-46].children[span-46].text`
-
-  Before:
-
-  > Ready to take your business to the next level? Contact AgileMorph today and discover how we can help you automate your accounts payable and streamline business processes for maximum efficiency and success.
-
-  After:
-
-  > Ready to take your business to the next level? Contact Agilemorph today and discover how we can help you automate your accounts payable and streamline business processes for maximum efficiency and success.
-
-- `seo.title`
-
-  Before:
-
-  > Importance of Automating Accounts Payable: Streamlining Your Business Processes - AgileMorph Solutions
-
-  After:
-
-  > Importance of Automating Accounts Payable: Streamlining Your Business Processes - Agilemorph
-
-## blogPost-improving-business-efficiency-and-customer-experience-how-retail-uses-it-services (blogPost)
-
-- `body[block-20].children[span-20].text`
-
-  Before:
-
-  > In conclusion, IT services play a transformative role in modernizing retail operations and enhancing customer experiences. By embracing technological advancements and leveraging IT solutions, retailers can stay competitive, adapt to evolving consumer expectations, and drive sustainable growth in today’s dynamic retail landscape. AgileMorph Solutions is ready to support retailers with innovative IT services tailored to their needs, from robust infrastructure management to cutting-edge AI and blockchain solutions. With AgileMorph Solutions, retailers can navigate the complexities of modern retail confidently, delivering seamless experiences that delight customers and drive business success.
-
-  After:
-
-  > In conclusion, IT services play a transformative role in modernizing retail operations and enhancing customer experiences. By embracing technological advancements and leveraging IT solutions, retailers can stay competitive, adapt to evolving consumer expectations, and drive sustainable growth in today’s dynamic retail landscape. Agilemorph is ready to support retailers with innovative IT services tailored to their needs, from robust infrastructure management to cutting-edge AI and blockchain solutions. With Agilemorph, retailers can navigate the complexities of modern retail confidently, delivering seamless experiences that delight customers and drive business success.
-
-- `seo.title`
-
-  Before:
-
-  > Improving Business Efficiency and Customer Experience: How Retail Uses IT Services - AgileMorph Solutions
-
-  After:
-
-  > Improving Business Efficiency and Customer Experience: How Retail Uses IT Services - Agilemorph
-
-## blogPost-manual-vs-automated-bookkeeping-which-is-best-for-your-business (blogPost)
-
-- `body[block-47].children[span-47].text`
-
-  Before:
-
-  > At AgileMorph, we understand that every business is unique, and there’s no one-size-fits-all solution. That’s why we recommend evaluating your business’s current stage, budget, and long-term goals when deciding which bookkeeping method will best serve your needs.
-
-  After:
-
-  > At Agilemorph, we understand that every business is unique, and there’s no one-size-fits-all solution. That’s why we recommend evaluating your business’s current stage, budget, and long-term goals when deciding which bookkeeping method will best serve your needs.
-
-- `body[block-48].children[span-48].text`
-
-  Before:
-
-  > Are you ready to streamline your bookkeeping and take your business to the next level? Contact AgileMorph today to learn how we can help you choose and implement the best bookkeeping tools for your business!
-
-  After:
-
-  > Are you ready to streamline your bookkeeping and take your business to the next level? Contact Agilemorph today to learn how we can help you choose and implement the best bookkeeping tools for your business!
-
-- `seo.title`
-
-  Before:
-
-  > Manual vs. Automated Bookkeeping: Which is Best for Your Business? - AgileMorph Solutions
-
-  After:
-
-  > Manual vs. Automated Bookkeeping: Which is Best for Your Business? - Agilemorph
-
 ## blogPost-manufacturing-data-quality (blogPost)
 
 - `body[mdq11774c].caption`
@@ -7123,240 +7543,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Agilemorph's position: fix the joins between systems already running, not the systems themselves.
-
-## blogPost-maximizing-impact-elevating-brands-with-tailored-digital-strategies-agilemorph-solutions (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In an era dominated by digital transformation, businesses acknowledge the critical role of effective Digital Marketing in driving visibility, engagement, and overall success. While pre-packaged marketing solutions exist, they often lack the specificity required to address the unique needs and aspirations of a particular enterprise. Enter AgileMorph Strategies and Digital Marketing Solutions – the guiding force leading businesses toward tailored digital strategies that seamlessly align with their goals and objectives.
-
-  After:
-
-  > In an era dominated by digital transformation, businesses acknowledge the critical role of effective Digital Marketing in driving visibility, engagement, and overall success. While pre-packaged marketing solutions exist, they often lack the specificity required to address the unique needs and aspirations of a particular enterprise. Enter Agilemorph Strategies and Digital Marketing Solutions – the guiding force leading businesses toward tailored digital strategies that seamlessly align with their goals and objectives.
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > Digital Marketing Solutions involve the art of crafting strategies tailored to the distinct requirements of a business in the digital landscape. Unlike generic marketing plans designed for a broad audience, these bespoke solutions are precision-engineered by AgileMorph Strategies to meet the exclusive needs of a single enterprise. Think of it as the personalized concierge service of the marketing world, offering strategies finely tuned to complement your brand, boost online presence, and pave the way for digital excellence.
-
-  After:
-
-  > Digital Marketing Solutions involve the art of crafting strategies tailored to the distinct requirements of a business in the digital landscape. Unlike generic marketing plans designed for a broad audience, these bespoke solutions are precision-engineered by Agilemorph Strategies to meet the exclusive needs of a single enterprise. Think of it as the personalized concierge service of the marketing world, offering strategies finely tuned to complement your brand, boost online presence, and pave the way for digital excellence.
-
-- `body[block-5].children[span-5].text`
-
-  Before:
-
-  > The advantages of custom digital marketing strategies are vast, with one of the most notable being their ability to address specific pain points within a business. Imagine a company struggling with audience engagement; a custom-developed marketing strategy by AgileMorph Strategies can bridge these gaps, fostering meaningful connections and boosting overall online visibility. Custom strategies are adaptable, evolving with your business and responding to changing market dynamics without unnecessary complexity. Each tactic serves a purpose, contributing to a streamlined and effective brand experience.
-
-  After:
-
-  > The advantages of custom digital marketing strategies are vast, with one of the most notable being their ability to address specific pain points within a business. Imagine a company struggling with audience engagement; a custom-developed marketing strategy by Agilemorph Strategies can bridge these gaps, fostering meaningful connections and boosting overall online visibility. Custom strategies are adaptable, evolving with your business and responding to changing market dynamics without unnecessary complexity. Each tactic serves a purpose, contributing to a streamlined and effective brand experience.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > The true strength of custom digital marketing strategies lies in their seamless integration with the existing digital presence of a business. This interoperability, facilitated by AgileMorph Strategies, acts as a catalyst for effectiveness, automating processes and optimizing campaigns. The outcome is a significant increase in brand reach and a more fluid digital marketing rhythm.
-
-  After:
-
-  > The true strength of custom digital marketing strategies lies in their seamless integration with the existing digital presence of a business. This interoperability, facilitated by Agilemorph Strategies, acts as a catalyst for effectiveness, automating processes and optimizing campaigns. The outcome is a significant increase in brand reach and a more fluid digital marketing rhythm.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > Embarking on the journey of Digital Marketing Solutions necessitates collaboration with seasoned strategists. AgileMorph Strategies, as that trusted partner, transcends conventional marketing; we conceptualize and implement digital strategies that resonate with your brand narrative. Understanding your unique market position, AgileMorph Strategies crafts marketing approaches that not only meet but exceed your expectations.
-
-  After:
-
-  > Embarking on the journey of Digital Marketing Solutions necessitates collaboration with seasoned strategists. Agilemorph Strategies, as that trusted partner, transcends conventional marketing; we conceptualize and implement digital strategies that resonate with your brand narrative. Understanding your unique market position, Agilemorph Strategies crafts marketing approaches that not only meet but exceed your expectations.
-
-- `body[block-11].children[span-11].text`
-
-  Before:
-
-  > At AgileMorph Strategies, we marry digital expertise with a profound understanding of market dynamics to deliver marketing strategies that are transformative. Our commitment to excellence is unwavering, ensuring that every campaign contributes to the success story of your company. Beyond implementation, AgileMorph Strategies remains by your side, providing unwavering support to ensure that your digital marketing evolves in tandem with your business.
-
-  After:
-
-  > At Agilemorph Strategies, we marry digital expertise with a profound understanding of market dynamics to deliver marketing strategies that are transformative. Our commitment to excellence is unwavering, ensuring that every campaign contributes to the success story of your company. Beyond implementation, Agilemorph Strategies remains by your side, providing unwavering support to ensure that your digital marketing evolves in tandem with your business.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > Digital Marketing Solutions by AgileMorph Strategies is not a mere service; it’s a strategic alliance aimed at propelling your business toward a future defined by digital innovation and growth. Why settle for generic when your brand can flourish with strategies crafted exclusively for its needs? Schedule a consultation with AgileMorph Strategies today and let’s embark on a journey to shape the digital future together.
-
-  After:
-
-  > Digital Marketing Solutions by Agilemorph Strategies is not a mere service; it’s a strategic alliance aimed at propelling your business toward a future defined by digital innovation and growth. Why settle for generic when your brand can flourish with strategies crafted exclusively for its needs? Schedule a consultation with Agilemorph Strategies today and let’s embark on a journey to shape the digital future together.
-
-- `body[block-14].children[span-14].text`
-
-  Before:
-
-  > Are you ready to experience a digital marketing approach meticulously designed for your success? Connect with AgileMorph Strategies and schedule a consultation today. Let’s shape the digital landscape together.
-
-  After:
-
-  > Are you ready to experience a digital marketing approach meticulously designed for your success? Connect with Agilemorph Strategies and schedule a consultation today. Let’s shape the digital landscape together.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In an era dominated by digital transformation, businesses acknowledge the critical role of effective Digital Marketing in driving visibility, engagement, and overall success. While pre-packaged marketing solutions exist, they often lack the specificity required to address the unique needs and aspirations of a particular enterprise. Enter AgileMorph Strategies and Digital Marketing Solutions – the [&hellip;]
-
-  After:
-
-  > Introduction In an era dominated by digital transformation, businesses acknowledge the critical role of effective Digital Marketing in driving visibility, engagement, and overall success. While pre-packaged marketing solutions exist, they often lack the specificity required to address the unique needs and aspirations of a particular enterprise. Enter Agilemorph Strategies and Digital Marketing Solutions – the [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Maximizing Impact: Elevating Brands with Tailored Digital Strategies – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Maximizing Impact: Elevating Brands with Tailored Digital Strategies – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Maximizing Impact: Elevating Brands with Tailored Digital Strategies – AgileMorph Solutions
-
-  After:
-
-  > Maximizing Impact: Elevating Brands with Tailored Digital Strategies – Agilemorph
-
-## blogPost-navigating-success-through-software-application-development-agilemorph-solutions (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In an era dominated by technological advancements, businesses recognize the pivotal role of software applications in driving innovation, efficiency, and overall success. While off-the-shelf solutions exist, they often fall short in addressing the unique needs and aspirations of a specific enterprise. Enter AgileMorph Solutions and Software Application Development – the beacon guiding businesses toward bespoke digital solutions that align seamlessly with their processes and objectives.
-
-  After:
-
-  > In an era dominated by technological advancements, businesses recognize the pivotal role of software applications in driving innovation, efficiency, and overall success. While off-the-shelf solutions exist, they often fall short in addressing the unique needs and aspirations of a specific enterprise. Enter Agilemorph and Software Application Development – the beacon guiding businesses toward bespoke digital solutions that align seamlessly with their processes and objectives.
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > Software Application Development is the art of crafting digital solutions tailored to the distinct requirements of a business. Unlike generic applications designed for a wide audience, these bespoke solutions are precision-engineered by AgileMorph Solutions to meet the exclusive needs of a single enterprise. Think of it as the personalized concierge service of the tech world, offering applications finely tuned to complement your workflows, boost productivity, and pave the way for operational excellence.
-
-  After:
-
-  > Software Application Development is the art of crafting digital solutions tailored to the distinct requirements of a business. Unlike generic applications designed for a wide audience, these bespoke solutions are precision-engineered by Agilemorph to meet the exclusive needs of a single enterprise. Think of it as the personalized concierge service of the tech world, offering applications finely tuned to complement your workflows, boost productivity, and pave the way for operational excellence.
-
-- `body[block-5].children[span-5].text`
-
-  Before:
-
-  > The advantages of custom software applications are vast, with one of the most notable being their ability to address specific pain points within a business. Imagine a company struggling with communication gaps; a custom-developed application by AgileMorph Solutions can bridge these divides, fostering collaboration and boosting overall efficiency. Custom applications are scalable, growing with your business and adapting to evolving needs without unnecessary feature bloat. Each function serves a purpose, contributing to a streamlined and effective user experience.
-
-  After:
-
-  > The advantages of custom software applications are vast, with one of the most notable being their ability to address specific pain points within a business. Imagine a company struggling with communication gaps; a custom-developed application by Agilemorph can bridge these divides, fostering collaboration and boosting overall efficiency. Custom applications are scalable, growing with your business and adapting to evolving needs without unnecessary feature bloat. Each function serves a purpose, contributing to a streamlined and effective user experience.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > The true strength of custom software applications lies in their seamless integration with the existing digital infrastructure of a business. This interoperability, facilitated by AgileMorph Solutions, acts as a catalyst for efficiency, automating processes and eliminating redundant tasks. The outcome is a significant increase in productivity and a more fluid operational rhythm.
-
-  After:
-
-  > The true strength of custom software applications lies in their seamless integration with the existing digital infrastructure of a business. This interoperability, facilitated by Agilemorph, acts as a catalyst for efficiency, automating processes and eliminating redundant tasks. The outcome is a significant increase in productivity and a more fluid operational rhythm.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > Embarking on the journey of Software Application Development requires a collaboration with a seasoned team of developers. AgileMorph Solutions, standing as that trusted partner, goes beyond coding; we conceptualize and build digital solutions that resonate with your business narrative. By understanding your unique requirements, AgileMorph Solutions creates applications that not only meet but surpass your expectations.
-
-  After:
-
-  > Embarking on the journey of Software Application Development requires a collaboration with a seasoned team of developers. Agilemorph, standing as that trusted partner, goes beyond coding; we conceptualize and build digital solutions that resonate with your business narrative. By understanding your unique requirements, Agilemorph creates applications that not only meet but surpass your expectations.
-
-- `body[block-10].children[span-10].text`
-
-  Before:
-
-  > 5. AgileMorph Solutions: Architects of Your Custom Applications
-
-  After:
-
-  > 5. Agilemorph: Architects of Your Custom Applications
-
-- `body[block-11].children[span-11].text`
-
-  Before:
-
-  > At AgileMorph Solutions, we marry technical expertise with a profound understanding of business dynamics to deliver software applications that are nothing short of transformative. Our commitment to excellence is unyielding, ensuring that every line of code contributes to the success story of your company. Beyond the launch, AgileMorph Solutions remains by your side, providing unwavering support to ensure that your application evolves in tandem with your business.
-
-  After:
-
-  > At Agilemorph, we marry technical expertise with a profound understanding of business dynamics to deliver software applications that are nothing short of transformative. Our commitment to excellence is unyielding, ensuring that every line of code contributes to the success story of your company. Beyond the launch, Agilemorph remains by your side, providing unwavering support to ensure that your application evolves in tandem with your business.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > Software Application Development by AgileMorph Solutions is not merely a service; it’s a strategic alliance aimed at propelling your business toward a future defined by innovation and growth. Why settle for generic when your business can thrive with an application crafted exclusively for its needs? Schedule a consultation with AgileMorph Solutions today and let’s embark on a journey to shape the digital future together.
-
-  After:
-
-  > Software Application Development by Agilemorph is not merely a service; it’s a strategic alliance aimed at propelling your business toward a future defined by innovation and growth. Why settle for generic when your business can thrive with an application crafted exclusively for its needs? Schedule a consultation with Agilemorph today and let’s embark on a journey to shape the digital future together.
-
-- `body[block-14].children[span-14].text`
-
-  Before:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with AgileMorph Solutions. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-  After:
-
-  > Are you ready to embrace these transformative trends in Data and AI? Don’t just watch the future unfold – be a part of it with Agilemorph. Whether you’re looking to innovate, grow, or transform your business, our expert team is here to guide you every step of the way.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In an era dominated by technological advancements, businesses recognize the pivotal role of software applications in driving innovation, efficiency, and overall success. While off-the-shelf solutions exist, they often fall short in addressing the unique needs and aspirations of a specific enterprise. Enter AgileMorph Solutions and Software Application Development – the beacon guiding businesses toward [&hellip;]
-
-  After:
-
-  > Introduction In an era dominated by technological advancements, businesses recognize the pivotal role of software applications in driving innovation, efficiency, and overall success. While off-the-shelf solutions exist, they often fall short in addressing the unique needs and aspirations of a specific enterprise. Enter Agilemorph and Software Application Development – the beacon guiding businesses toward [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Navigating Success Through Software Application Development – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Navigating Success Through Software Application Development – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Navigating Success Through Software Application Development – AgileMorph Solutions
-
-  After:
-
-  > Navigating Success Through Software Application Development – Agilemorph
 
 ## blogPost-pricing-drift-manufacturing (blogPost)
 
@@ -7392,118 +7578,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
 
   > Neither system replaced a platform the agency already paid for. Both connected pieces that had been sitting next to each other, doing nothing for each other. That's the pattern across the 40+ projects we've delivered: the fix is rarely a new tool. It's usually the join between two tools nobody wrote down as anyone's job.
 
-## blogPost-revolutionizing-customer-service-with-ai-powered-customer-support (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In today’s fast-paced digital landscape, customer support is more critical than ever. Consumers expect prompt, efficient, and personalized responses, regardless of the time or their location. Enter AI-powered customer support, a game-changer in the realm of customer service. AgileMorph harnesses the power of AI and NLP (Natural Language Processing) through tools like Zendesk and Freshdesk to deliver exceptional 24/7 support. In this blog, we will delve into the myriad benefits of AI-powered customer support and how it can revolutionize your customer service operations.
-
-  After:
-
-  > In today’s fast-paced digital landscape, customer support is more critical than ever. Consumers expect prompt, efficient, and personalized responses, regardless of the time or their location. Enter AI-powered customer support, a game-changer in the realm of customer service. Agilemorph harnesses the power of AI and NLP (Natural Language Processing) through tools like Zendesk and Freshdesk to deliver exceptional 24/7 support. In this blog, we will delve into the myriad benefits of AI-powered customer support and how it can revolutionize your customer service operations.
-
-- `body[block-12].children[span-12].text`
-
-  Before:
-
-  > Personalized Recommendations: AgileMorph’s AI chatbots don’t just answer questions, they offer personalized recommendations based on historical data. By analyzing past interactions and purchase history, chatbots can suggest relevant products or services, enhancing the customer experience and boosting sales.
-
-  After:
-
-  > Personalized Recommendations: Agilemorph’s AI chatbots don’t just answer questions, they offer personalized recommendations based on historical data. By analyzing past interactions and purchase history, chatbots can suggest relevant products or services, enhancing the customer experience and boosting sales.
-
-- `body[block-16].children[span-16].text`
-
-  Before:
-
-  > Understanding Customer Intent: Natural Language Processing (NLP) is a branch of AI that focuses on the interaction between computers and humans through natural language. AgileMorph’s chatbots use NLP to understand customer intent accurately, ensuring responses are relevant and contextually appropriate.
-
-  After:
-
-  > Understanding Customer Intent: Natural Language Processing (NLP) is a branch of AI that focuses on the interaction between computers and humans through natural language. Agilemorph’s chatbots use NLP to understand customer intent accurately, ensuring responses are relevant and contextually appropriate.
-
-- `body[block-19].children[span-19].text`
-
-  Before:
-
-  > Implementing AI-Powered Customer Support with AgileMorph
-
-  After:
-
-  > Implementing AI-Powered Customer Support with Agilemorph
-
-- `body[block-20].children[span-20].text`
-
-  Before:
-
-  > Customization and Flexibility: AgileMorph’s approach to AI-powered customer support is highly customizable. We understand that every business has unique needs, and our chatbots can be tailored to fit specific requirements, ensuring maximum efficiency and customer satisfaction.
-
-  After:
-
-  > Customization and Flexibility: Agilemorph’s approach to AI-powered customer support is highly customizable. We understand that every business has unique needs, and our chatbots can be tailored to fit specific requirements, ensuring maximum efficiency and customer satisfaction.
-
-- `body[block-21].children[span-21].text`
-
-  Before:
-
-  > Easy Deployment: Deploying AI chatbots with AgileMorph is straightforward. Our team handles the integration with tools like Zendesk and Freshdesk, ensuring a smooth transition with minimal disruption to your operations.
-
-  After:
-
-  > Easy Deployment: Deploying AI chatbots with Agilemorph is straightforward. Our team handles the integration with tools like Zendesk and Freshdesk, ensuring a smooth transition with minimal disruption to your operations.
-
-- `body[block-22].children[span-22].text`
-
-  Before:
-
-  > Data Security and Privacy: Customer data security and privacy are paramount. AgileMorph ensures that all AI-powered customer support solutions comply with industry standards and regulations, safeguarding your customers’ information.
-
-  After:
-
-  > Data Security and Privacy: Customer data security and privacy are paramount. Agilemorph ensures that all AI-powered customer support solutions comply with industry standards and regulations, safeguarding your customers’ information.
-
-- `body[block-28].children[span-28].text`
-
-  Before:
-
-  > AI-powered customer support is not just a trend, it’s the future of customer service. By leveraging advanced AI and NLP technologies, AgileMorph provides solutions that ensure your customers receive prompt, personalized, and effective support around the clock. Implementing AI-powered chatbots through platforms like Zendesk and Freshdesk can transform your customer service operations, driving efficiency, cost savings, and enhanced customer loyalty. Embrace the future with AgileMorph and elevate your customer support to new heights.
-
-  After:
-
-  > AI-powered customer support is not just a trend, it’s the future of customer service. By leveraging advanced AI and NLP technologies, Agilemorph provides solutions that ensure your customers receive prompt, personalized, and effective support around the clock. Implementing AI-powered chatbots through platforms like Zendesk and Freshdesk can transform your customer service operations, driving efficiency, cost savings, and enhanced customer loyalty. Embrace the future with Agilemorph and elevate your customer support to new heights.
-
-- `body[block-33].children[span-33].text`
-
-  Before:
-
-  > Absolutely. AgileMorph ensures that all AI-powered customer support solutions comply with industry standards for data security and privacy, safeguarding your customers’ information.
-
-  After:
-
-  > Absolutely. Agilemorph ensures that all AI-powered customer support solutions comply with industry standards for data security and privacy, safeguarding your customers’ information.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In today’s fast-paced digital landscape, customer support is more critical than ever. Consumers expect prompt, efficient, and personalized responses, regardless of the time or their location. Enter AI-powered customer support, a game-changer in the realm of customer service. AgileMorph harnesses the power of AI and NLP (Natural Language Processing) through tools like Zendesk and [&hellip;]
-
-  After:
-
-  > Introduction In today’s fast-paced digital landscape, customer support is more critical than ever. Consumers expect prompt, efficient, and personalized responses, regardless of the time or their location. Enter AI-powered customer support, a game-changer in the realm of customer service. Agilemorph harnesses the power of AI and NLP (Natural Language Processing) through tools like Zendesk and [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Revolutionizing Customer Service with AI-Powered Customer Support - AgileMorph Solutions
-
-  After:
-
-  > Revolutionizing Customer Service with AI-Powered Customer Support - Agilemorph
-
 ## blogPost-scrap-and-rework-analysis (blogPost)
 
 - `body[blk47].children[sp48].text`
@@ -7525,634 +7599,6 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > If you're not sure whether your own setup needs a system change or just a connection between the ones you already have, Agilemorph's 
-
-## blogPost-tailored-tech-solutions-elevating-operational-efficiency-agilemorph-solutions (blogPost)
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > Embarking on the journey of Custom Software Development demands a partnership with a seasoned team of developers. AgileMorph Solutions is that expert ally. Our team doesn’t just write code; they weave digital solutions that resonate with your business narrative. Understanding your business’s pulse allows us to create software that not only meets but exceeds your expectations.
-
-  After:
-
-  > Embarking on the journey of Custom Software Development demands a partnership with a seasoned team of developers. Agilemorph is that expert ally. Our team doesn’t just write code; they weave digital solutions that resonate with your business narrative. Understanding your business’s pulse allows us to create software that not only meets but exceeds your expectations.
-
-- `body[block-10].children[span-10].text`
-
-  Before:
-
-  > 5. AgileMorph Solutions: Your Custom Software Artisans
-
-  After:
-
-  > 5. Agilemorph: Your Custom Software Artisans
-
-- `body[block-11].children[span-11].text`
-
-  Before:
-
-  > At AgileMorph Solutions, we blend technological prowess with business acumen to deliver software that’s nothing short of a masterpiece. Our commitment to excellence is unwavering, ensuring that every line of code contributes to your company’s growth story. And beyond the launch, we stand by you, offering steadfast support and ensuring that your software solution matures in tandem with your business.
-
-  After:
-
-  > At Agilemorph, we blend technological prowess with business acumen to deliver software that’s nothing short of a masterpiece. Our commitment to excellence is unwavering, ensuring that every line of code contributes to your company’s growth story. And beyond the launch, we stand by you, offering steadfast support and ensuring that your software solution matures in tandem with your business.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > Custom Software Development by AgileMorph Solutions is not just a service; it’s a strategic partnership aimed at propelling your business into a future defined by efficiency and growth. Don’t settle for less when your business can benefit from software that fits like a glove. Book a call with us today and let’s tailor a solution that’s as unique as your business.
-
-  After:
-
-  > Custom Software Development by Agilemorph is not just a service; it’s a strategic partnership aimed at propelling your business into a future defined by efficiency and growth. Don’t settle for less when your business can benefit from software that fits like a glove. Book a call with us today and let’s tailor a solution that’s as unique as your business.
-
-- `body[block-14].children[span-14].text`
-
-  Before:
-
-  > Are you ready to experience software that’s crafted for your success? Reach out to AgileMorph Solutions and book a consultation today. Let’s shape the digital future together.
-
-  After:
-
-  > Are you ready to experience software that’s crafted for your success? Reach out to Agilemorph and book a consultation today. Let’s shape the digital future together.
-
-- `seo.title`
-
-  Before:
-
-  > Tailored Tech Solutions: Elevating Operational Efficiency – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Tailored Tech Solutions: Elevating Operational Efficiency – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Tailored Tech Solutions: Elevating Operational Efficiency – AgileMorph Solutions
-
-  After:
-
-  > Tailored Tech Solutions: Elevating Operational Efficiency – Agilemorph
-
-## blogPost-the-benefits-of-crm-integrations-for-your-business (blogPost)
-
-- `body[block-2].children[span-2].text`
-
-  Before:
-
-  > At AgileMorph, we understand that your business’s success depends on how well your systems work together. That’s why we emphasize the importance of seamless CRM integrations to optimize workflows, improve customer satisfaction, and drive business growth.
-
-  After:
-
-  > At Agilemorph, we understand that your business’s success depends on how well your systems work together. That’s why we emphasize the importance of seamless CRM integrations to optimize workflows, improve customer satisfaction, and drive business growth.
-
-- `body[block-30].children[span-30].text`
-
-  Before:
-
-  > At AgileMorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-  After:
-
-  > At Agilemorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-- `body[block-39].children[span-39].text`
-
-  Before:
-
-  > Why Choose AgileMorph for Your CRM Integration?
-
-  After:
-
-  > Why Choose Agilemorph for Your CRM Integration?
-
-- `body[block-40].children[span-40].text`
-
-  Before:
-
-  > At AgileMorph, we specialize in helping businesses unlock the full potential of their CRM systems through seamless integrations. Our team works closely with clients to understand their unique business needs and craft tailored integration solutions that drive results. Whether it’s connecting your CRM with ERP systems, marketing tools, or communication platforms, AgileMorph ensures that your business operates at its peak performance.
-
-  After:
-
-  > At Agilemorph, we specialize in helping businesses unlock the full potential of their CRM systems through seamless integrations. Our team works closely with clients to understand their unique business needs and craft tailored integration solutions that drive results. Whether it’s connecting your CRM with ERP systems, marketing tools, or communication platforms, Agilemorph ensures that your business operates at its peak performance.
-
-- `body[block-41].children[span-41].text`
-
-  Before:
-
-  > Ready to take your business to the next level? Contact AgileMorph today to learn how we can help you streamline operations, improve customer relationships, and drive growth through powerful CRM integrations.
-
-  After:
-
-  > Ready to take your business to the next level? Contact Agilemorph today to learn how we can help you streamline operations, improve customer relationships, and drive growth through powerful CRM integrations.
-
-- `seo.title`
-
-  Before:
-
-  > The Benefits of CRM Integrations for Your Business - AgileMorph Solutions
-
-  After:
-
-  > The Benefits of CRM Integrations for Your Business - Agilemorph
-
-## blogPost-the-future-of-lead-generation-why-intent-based-prospecting-beats-volume-every-time (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > The Future of Lead Generation: Why Intent-Based Prospecting Beats Volume Every Time - AgileMorph Solutions
-
-  After:
-
-  > The Future of Lead Generation: Why Intent-Based Prospecting Beats Volume Every Time - Agilemorph
-
-## blogPost-top-5-challenges-in-accounts-payable-and-how-to-overcome-them (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In today’s fast-paced business world, ensuring that your accounts payable (AP) process runs smoothly is critical for maintaining financial health. However, many companies face significant challenges when managing AP, which can lead to inefficiencies, delayed payments, and strained vendor relationships. At AgileMorph, we understand the intricacies of these issues and have helped numerous businesses streamline their processes for optimal performance. In this blog, we’ll explore the top five accounts payable challenges and provide practical solutions to overcome them.
-
-  After:
-
-  > In today’s fast-paced business world, ensuring that your accounts payable (AP) process runs smoothly is critical for maintaining financial health. However, many companies face significant challenges when managing AP, which can lead to inefficiencies, delayed payments, and strained vendor relationships. At Agilemorph, we understand the intricacies of these issues and have helped numerous businesses streamline their processes for optimal performance. In this blog, we’ll explore the top five accounts payable challenges and provide practical solutions to overcome them.
-
-- `body[block-25].children[span-25].text`
-
-  Before:
-
-  > At AgileMorph, we specialize in helping businesses tackle their accounts payable challenges by providing cutting-edge solutions designed to improve efficiency, reduce costs, and ensure timely payments. If you’re ready to transform your accounts payable process and achieve greater operational success, contact us today!
-
-  After:
-
-  > At Agilemorph, we specialize in helping businesses tackle their accounts payable challenges by providing cutting-edge solutions designed to improve efficiency, reduce costs, and ensure timely payments. If you’re ready to transform your accounts payable process and achieve greater operational success, contact us today!
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In today’s fast-paced business world, ensuring that your accounts payable (AP) process runs smoothly is critical for maintaining financial health. However, many companies face significant challenges when managing AP, which can lead to inefficiencies, delayed payments, and strained vendor relationships. At AgileMorph, we understand the intricacies of these issues and have helped numerous businesses [&hellip;]
-
-  After:
-
-  > Introduction In today’s fast-paced business world, ensuring that your accounts payable (AP) process runs smoothly is critical for maintaining financial health. However, many companies face significant challenges when managing AP, which can lead to inefficiencies, delayed payments, and strained vendor relationships. At Agilemorph, we understand the intricacies of these issues and have helped numerous businesses [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Top 5 Challenges in Accounts Payable and How to Overcome Them - AgileMorph Solutions
-
-  After:
-
-  > Top 5 Challenges in Accounts Payable and How to Overcome Them - Agilemorph
-
-## blogPost-transform-your-retail-business-with-custom-e-commerce-development (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In the rapidly evolving world of retail, standing out requires more than just a great product; it demands a seamless, engaging online shopping experience. Enter AgileMorph, your partner in custom e- commerce development. Our bespoke services are designed to meet the unique needs of your retail business, enhancing your virtual storefronts, B2C & B2B marketplaces, and platform integrations. In this blog, we’ll dive into how AgileMorph’s expert solutions can elevate your online presence and drive success in the digital marketplace.
-
-  After:
-
-  > In the rapidly evolving world of retail, standing out requires more than just a great product; it demands a seamless, engaging online shopping experience. Enter Agilemorph, your partner in custom e- commerce development. Our bespoke services are designed to meet the unique needs of your retail business, enhancing your virtual storefronts, B2C & B2B marketplaces, and platform integrations. In this blog, we’ll dive into how Agilemorph’s expert solutions can elevate your online presence and drive success in the digital marketplace.
-
-- `body[block-6].children[span-6].text`
-
-  Before:
-
-  > Secure Payment Systems: A secure payment system is the backbone of any e-commerce store. At AgileMorph, we integrate robust payment solutions that ensure safe transactions and protect customer data. Our systems support various payment methods, providing convenience and security for your customers.
-
-  After:
-
-  > Secure Payment Systems: A secure payment system is the backbone of any e-commerce store. At Agilemorph, we integrate robust payment solutions that ensure safe transactions and protect customer data. Our systems support various payment methods, providing convenience and security for your customers.
-
-- `body[block-21].children[span-21].text`
-
-  Before:
-
-  > In the ever-evolving world of retail, having a strong online presence is crucial. AgileMorph’s custom e- commerce development services offer the perfect solution for businesses looking to enhance their virtual storefronts, create feature-rich B2C & B2B marketplaces, and leverage popular platforms for seamless integration. By choosing AgileMorph, you gain a partner dedicated to transforming your online retail experience and driving your business towards success.
-
-  After:
-
-  > In the ever-evolving world of retail, having a strong online presence is crucial. Agilemorph’s custom e- commerce development services offer the perfect solution for businesses looking to enhance their virtual storefronts, create feature-rich B2C & B2B marketplaces, and leverage popular platforms for seamless integration. By choosing Agilemorph, you gain a partner dedicated to transforming your online retail experience and driving your business towards success.
-
-- `body[block-26].children[span-26].text`
-
-  Before:
-
-  > Absolutely. AgileMorph ensures that all AI-powered customer support solutions comply with industry standards for data security and privacy, safeguarding your customers’ information.
-
-  After:
-
-  > Absolutely. Agilemorph ensures that all AI-powered customer support solutions comply with industry standards for data security and privacy, safeguarding your customers’ information.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In the rapidly evolving world of retail, standing out requires more than just a great product; it demands a seamless, engaging online shopping experience. Enter AgileMorph, your partner in custom e- commerce development. Our bespoke services are designed to meet the unique needs of your retail business, enhancing your virtual storefronts, B2C & B2B marketplaces, [&hellip;]
-
-  After:
-
-  > Introduction In the rapidly evolving world of retail, standing out requires more than just a great product; it demands a seamless, engaging online shopping experience. Enter Agilemorph, your partner in custom e- commerce development. Our bespoke services are designed to meet the unique needs of your retail business, enhancing your virtual storefronts, B2C & B2B marketplaces, [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Transform Your Retail Business with Custom E-commerce Development - AgileMorph Solutions
-
-  After:
-
-  > Transform Your Retail Business with Custom E-commerce Development - Agilemorph
-
-## blogPost-understanding-ais-impact-in-retail-purpose-benefits-and-significance (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > Understanding AI's Impact in Retail: Purpose, Benefits, and Significance - AgileMorph Solutions
-
-  After:
-
-  > Understanding AI's Impact in Retail: Purpose, Benefits, and Significance - Agilemorph
-
-## blogPost-unleashing-business-potential-the-transformative-power-of-agilemorph-cloud-solutions-agilemorph-solutions (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > In a rapidly evolving technological landscape, businesses are increasingly turning to cloud computing solutions to drive growth and efficiency. AgileMorph Solutions, a trailblazer in the field, plays a pivotal role in optimizing these advantages. Let’s explore the myriad benefits of embracing cloud computing and how AgileMorph Solutions can be the catalyst for your business success.
-
-  After:
-
-  > In a rapidly evolving technological landscape, businesses are increasingly turning to cloud computing solutions to drive growth and efficiency. Agilemorph, a trailblazer in the field, plays a pivotal role in optimizing these advantages. Let’s explore the myriad benefits of embracing cloud computing and how Agilemorph can be the catalyst for your business success.
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > Cloud computing, with the expert touch of AgileMorph Solutions, offers unparalleled scalability. Unlike traditional IT infrastructure, where scaling up requires additional hardware and time, AgileMorph ensures businesses can swiftly expand their resources with a pay-as-you-go model. The expansive network of cloud servers owned by AgileMorph Solutions provides virtually limitless resources, facilitating effortless scalability for businesses of any size.
-
-  After:
-
-  > Cloud computing, with the expert touch of Agilemorph, offers unparalleled scalability. Unlike traditional IT infrastructure, where scaling up requires additional hardware and time, Agilemorph ensures businesses can swiftly expand their resources with a pay-as-you-go model. The expansive network of cloud servers owned by Agilemorph provides virtually limitless resources, facilitating effortless scalability for businesses of any size.
-
-- `body[block-5].children[span-5].text`
-
-  Before:
-
-  > AgileMorph Solutions empowers small businesses with a cost-effective approach to cloud computing. The pay-as-you-go model ensures businesses pay only for the resources they use, eliminating the need for bundled packages with unnecessary overheads. With AgileMorph Solutions, businesses can promptly scale resources up or down based on their needs, ensuring optimal cost efficiency even on a constrained budget.
-
-  After:
-
-  > Agilemorph empowers small businesses with a cost-effective approach to cloud computing. The pay-as-you-go model ensures businesses pay only for the resources they use, eliminating the need for bundled packages with unnecessary overheads. With Agilemorph, businesses can promptly scale resources up or down based on their needs, ensuring optimal cost efficiency even on a constrained budget.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > Beyond affordability, AgileMorph Solutions significantly reduces overall IT expenditure. By transitioning IT infrastructure to the cloud, businesses, especially small ones, can avoid the hefty costs of maintaining in-house servers and data centers. AgileMorph Solutions takes charge of maintenance, upgrades, and software updates, allowing businesses to allocate resources strategically towards core objectives.
-
-  After:
-
-  > Beyond affordability, Agilemorph significantly reduces overall IT expenditure. By transitioning IT infrastructure to the cloud, businesses, especially small ones, can avoid the hefty costs of maintaining in-house servers and data centers. Agilemorph takes charge of maintenance, upgrades, and software updates, allowing businesses to allocate resources strategically towards core objectives.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > AgileMorph Solutions transforms how businesses collaborate and facilitate remote work. By delivering computing resources and applications over the internet, AgileMorph Solutions enables real-time synchronization of data across devices. This not only reduces the risk of data loss but also provides unparalleled flexibility for employees to work from anywhere, meeting the demands of the modern work landscape.
-
-  After:
-
-  > Agilemorph transforms how businesses collaborate and facilitate remote work. By delivering computing resources and applications over the internet, Agilemorph enables real-time synchronization of data across devices. This not only reduces the risk of data loss but also provides unparalleled flexibility for employees to work from anywhere, meeting the demands of the modern work landscape.
-
-- `body[block-11].children[span-11].text`
-
-  Before:
-
-  > Cloud services, fortified by AgileMorph Solutions, ensure minimal downtime and mitigate the risk of data loss. With a network of cloud servers in AgileMorph’s data center, any issues with one server are seamlessly absorbed by others, keeping your cloud services running without interruptions. This robust reliability empowers businesses to stay online, secure their data, and pursue their objectives with confidence.
-
-  After:
-
-  > Cloud services, fortified by Agilemorph, ensure minimal downtime and mitigate the risk of data loss. With a network of cloud servers in Agilemorph’s data center, any issues with one server are seamlessly absorbed by others, keeping your cloud services running without interruptions. This robust reliability empowers businesses to stay online, secure their data, and pursue their objectives with confidence.
-
-- `body[block-13].children[span-13].text`
-
-  Before:
-
-  > Cloud computing, when harnessed with the expertise of AgileMorph Solutions, becomes a strategic enabler for businesses aiming for growth and innovation. This dynamic partnership ensures that your business not only adapts to the digital era but thrives in it. Schedule a consultation with AgileMorph Solutions today and embark on a journey to unlock the full potential of your business in the digital landscape.
-
-  After:
-
-  > Cloud computing, when harnessed with the expertise of Agilemorph, becomes a strategic enabler for businesses aiming for growth and innovation. This dynamic partnership ensures that your business not only adapts to the digital era but thrives in it. Schedule a consultation with Agilemorph today and embark on a journey to unlock the full potential of your business in the digital landscape.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction In a rapidly evolving technological landscape, businesses are increasingly turning to cloud computing solutions to drive growth and efficiency. AgileMorph Solutions, a trailblazer in the field, plays a pivotal role in optimizing these advantages. Let's explore the myriad benefits of embracing cloud computing and how AgileMorph Solutions can be the catalyst for your business [&hellip;]
-
-  After:
-
-  > Introduction In a rapidly evolving technological landscape, businesses are increasingly turning to cloud computing solutions to drive growth and efficiency. Agilemorph, a trailblazer in the field, plays a pivotal role in optimizing these advantages. Let's explore the myriad benefits of embracing cloud computing and how Agilemorph can be the catalyst for your business [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Unleashing Business Potential: The Transformative Power of AgileMorph Cloud Solutions – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Unleashing Business Potential: The Transformative Power of Agilemorph Cloud Solutions – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Unleashing Business Potential: The Transformative Power of AgileMorph Cloud Solutions – AgileMorph Solutions
-
-  After:
-
-  > Unleashing Business Potential: The Transformative Power of Agilemorph Cloud Solutions – Agilemorph
-
-## blogPost-unlock-the-power-of-professional-web-design-agencies-agilemorph-solutions (blogPost)
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > 🌟 Contact AgileMorph Solutions today and take the first step towards your AI-driven future! 🌟
-
-  After:
-
-  > 🌟 Contact Agilemorph today and take the first step towards your AI-driven future! 🌟
-
-- `seo.title`
-
-  Before:
-
-  > Unlock the Power of Professional Web Design Agencies – AgileMorph Solutions - AgileMorph Solutions
-
-  After:
-
-  > Unlock the Power of Professional Web Design Agencies – Agilemorph - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Unlock the Power of Professional Web Design Agencies – AgileMorph Solutions
-
-  After:
-
-  > Unlock the Power of Professional Web Design Agencies – Agilemorph
-
-## blogPost-unlocking-the-potential-of-ai-and-gpt-in-marketing (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > Unlocking the Potential of AI and GPT in Marketing - AgileMorph Solutions
-
-  After:
-
-  > Unlocking the Potential of AI and GPT in Marketing - Agilemorph
-
-## blogPost-unlocking-the-potential-of-local-llms-for-privacy-and-scale (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > Unlocking the Potential of Local LLMs for Privacy and Scale - AgileMorph Solutions
-
-  After:
-
-  > Unlocking the Potential of Local LLMs for Privacy and Scale - Agilemorph
-
-## blogPost-unveiling-the-power-of-software-testing-agilemorph-solutions-perspective (blogPost)
-
-- `body[block-1].children[span-1].text`
-
-  Before:
-
-  > Software testing, also known as QA testing, is a critical facet of the software development process, offering a multitude of benefits. Here’s a glimpse into why software testing, with the expertise of AgileMorph Solutions, is indispensable:
-
-  After:
-
-  > Software testing, also known as QA testing, is a critical facet of the software development process, offering a multitude of benefits. Here’s a glimpse into why software testing, with the expertise of Agilemorph, is indispensable:
-
-- `body[block-3].children[span-3].text`
-
-  Before:
-
-  > In the realm of software, especially when dealing with sensitive data, the anticipation of functional issues is paramount. AgileMorph Solutions ensures rigorous performance testing and QA to eradicate errors and mitigate potential communication breakdowns, blackouts, and data leaks.
-
-  After:
-
-  > In the realm of software, especially when dealing with sensitive data, the anticipation of functional issues is paramount. Agilemorph ensures rigorous performance testing and QA to eradicate errors and mitigate potential communication breakdowns, blackouts, and data leaks.
-
-- `body[block-5].children[span-5].text`
-
-  Before:
-
-  > Software testing, when integrated early in the development process, maximizes cost-effectiveness. AgileMorph Solutions emphasizes early bug detection, preventing substantial costs in the later stages of development. Rectifying issues during advanced development or post-product completion can be significantly more expensive.
-
-  After:
-
-  > Software testing, when integrated early in the development process, maximizes cost-effectiveness. Agilemorph emphasizes early bug detection, preventing substantial costs in the later stages of development. Rectifying issues during advanced development or post-product completion can be significantly more expensive.
-
-- `body[block-7].children[span-7].text`
-
-  Before:
-
-  > Continuous testing, a core principle at AgileMorph Solutions, upholds software security by identifying and eliminating vulnerable pieces of code. The end product boasts a robust architecture that safeguards data, making reliability and trustworthiness a top priority.
-
-  After:
-
-  > Continuous testing, a core principle at Agilemorph, upholds software security by identifying and eliminating vulnerable pieces of code. The end product boasts a robust architecture that safeguards data, making reliability and trustworthiness a top priority.
-
-- `body[block-9].children[span-9].text`
-
-  Before:
-
-  > Outdated code often hinders the integration of new features. AgileMorph Solutions conducts comprehensive tests to prevent code calcification, enabling developers to effortlessly add new features. This proactive approach allows entrepreneurs to differentiate their products in the competitive marketplace.
-
-  After:
-
-  > Outdated code often hinders the integration of new features. Agilemorph conducts comprehensive tests to prevent code calcification, enabling developers to effortlessly add new features. This proactive approach allows entrepreneurs to differentiate their products in the competitive marketplace.
-
-- `body[block-11].children[span-11].text`
-
-  Before:
-
-  > This blog underscores the paramount importance of software testing in the realm of software development. AgileMorph Solutions brings to the forefront an exceptional process that guarantees product quality, usability, enhanced functionality, and reduced maintenance costs. When engaging in QA software testing services, entrust your product development to AgileMorph Solutions, a team of experienced software testers utilizing modern tools and methodologies to ensure the utmost security for your software.
-
-  After:
-
-  > This blog underscores the paramount importance of software testing in the realm of software development. Agilemorph brings to the forefront an exceptional process that guarantees product quality, usability, enhanced functionality, and reduced maintenance costs. When engaging in QA software testing services, entrust your product development to Agilemorph, a team of experienced software testers utilizing modern tools and methodologies to ensure the utmost security for your software.
-
-- `excerpt`
-
-  Before:
-
-  > Introduction Software testing, also known as QA testing, is a critical facet of the software development process, offering a multitude of benefits. Here's a glimpse into why software testing, with the expertise of AgileMorph Solutions, is indispensable: 1. Anticipates Critical Issues In the realm of software, especially when dealing with sensitive data, the anticipation of [&hellip;]
-
-  After:
-
-  > Introduction Software testing, also known as QA testing, is a critical facet of the software development process, offering a multitude of benefits. Here's a glimpse into why software testing, with the expertise of Agilemorph, is indispensable: 1. Anticipates Critical Issues In the realm of software, especially when dealing with sensitive data, the anticipation of [&hellip;]
-
-- `seo.title`
-
-  Before:
-
-  > Unveiling the Power of Software Testing: AgileMorph Solutions Perspective - AgileMorph Solutions
-
-  After:
-
-  > Unveiling the Power of Software Testing: Agilemorph Perspective - Agilemorph
-
-- `title`
-
-  Before:
-
-  > Unveiling the Power of Software Testing: AgileMorph Solutions Perspective
-
-  After:
-
-  > Unveiling the Power of Software Testing: Agilemorph Perspective
-
-## blogPost-unveiling-the-significance-of-a-website-a-gateway-to-business-growth (blogPost)
-
-- `seo.title`
-
-  Before:
-
-  > Unveiling the Significance of a Website: A Gateway to Business Growth - AgileMorph Solutions
-
-  After:
-
-  > Unveiling the Significance of a Website: A Gateway to Business Growth - Agilemorph
-
-## blogPost-what-is-a-virtual-assistant-and-why-does-your-business-need-one (blogPost)
-
-- `body[block-28].children[span-28].text`
-
-  Before:
-
-  > Why AgileMorph?
-
-  After:
-
-  > Why Agilemorph?
-
-- `body[block-29].children[span-29].text`
-
-  Before:
-
-  > At AgileMorph, we understand that every business is unique, and so are its needs. That’s why we offer tailored virtual assistant services designed to fit your specific requirements. Our VAs are highly skilled professionals with expertise in a wide range of industries, ensuring that you get the best possible support for your business.
-
-  After:
-
-  > At Agilemorph, we understand that every business is unique, and so are its needs. That’s why we offer tailored virtual assistant services designed to fit your specific requirements. Our VAs are highly skilled professionals with expertise in a wide range of industries, ensuring that you get the best possible support for your business.
-
-- `body[block-30].children[span-30].text`
-
-  Before:
-
-  > We provide a seamless process for onboarding virtual assistants who integrate smoothly into your business operations. Whether you need assistance with administrative tasks, digital marketing, customer service, or specialized technical support, AgileMorph has the right solution for you.
-
-  After:
-
-  > We provide a seamless process for onboarding virtual assistants who integrate smoothly into your business operations. Whether you need assistance with administrative tasks, digital marketing, customer service, or specialized technical support, Agilemorph has the right solution for you.
-
-- `body[block-32].children[span-32].text`
-
-  Before:
-
-  > At AgileMorph, our virtual assistant services are designed to help businesses increase productivity while keeping costs down. Our services include:
-
-  After:
-
-  > At Agilemorph, our virtual assistant services are designed to help businesses increase productivity while keeping costs down. Our services include:
-
-- `body[block-38].children[span-38].text`
-
-  Before:
-
-  > At AgileMorph, we pride ourselves on being a partner in your success. We understand that every business has its own set of challenges, and our goal is to provide reliable, cost-effective solutions to help you grow and succeed.
-
-  After:
-
-  > At Agilemorph, we pride ourselves on being a partner in your success. We understand that every business has its own set of challenges, and our goal is to provide reliable, cost-effective solutions to help you grow and succeed.
-
-- `body[block-41].children[span-41].text`
-
-  Before:
-
-  > If you’re ready to take your business to the next level, consider leveraging the expertise of a virtual assistant from AgileMorph. Our team of dedicated professionals is ready to support you in achieving your business goals.
-
-  After:
-
-  > If you’re ready to take your business to the next level, consider leveraging the expertise of a virtual assistant from Agilemorph. Our team of dedicated professionals is ready to support you in achieving your business goals.
-
-- `seo.title`
-
-  Before:
-
-  > What is a Virtual Assistant and Why Does Your Business Need One? - AgileMorph Solutions
-
-  After:
-
-  > What is a Virtual Assistant and Why Does Your Business Need One? - Agilemorph
-
-## blogPost-why-accurate-bookkeeping-is-essential-for-business-growth (blogPost)
-
-- `body[block-40].children[span-40].text`
-
-  Before:
-
-  > At AgileMorph, we believe that accurate bookkeeping is the cornerstone of business success. It’s more than just a tool for managing finances, it’s a strategic asset that can fuel growth, improve decision-making, and enhance operational efficiency. Without accurate bookkeeping, businesses are flying blind, making growth difficult and risky.
-
-  After:
-
-  > At Agilemorph, we believe that accurate bookkeeping is the cornerstone of business success. It’s more than just a tool for managing finances, it’s a strategic asset that can fuel growth, improve decision-making, and enhance operational efficiency. Without accurate bookkeeping, businesses are flying blind, making growth difficult and risky.
-
-- `body[block-42].children[span-42].text`
-
-  Before:
-
-  > Ready to take control of your business’s financial future? Contact AgileMorph today to discover how our expert bookkeeping services can help streamline your financial management, reduce stress, and support your business growth. Let us handle the numbers while you focus on achieving your goals.
-
-  After:
-
-  > Ready to take control of your business’s financial future? Contact Agilemorph today to discover how our expert bookkeeping services can help streamline your financial management, reduce stress, and support your business growth. Let us handle the numbers while you focus on achieving your goals.
-
-- `seo.title`
-
-  Before:
-
-  > Why Accurate Bookkeeping Is Essential for Business Growth - AgileMorph Solutions
-
-  After:
-
-  > Why Accurate Bookkeeping Is Essential for Business Growth - Agilemorph
 
 ## blogPost-ai-in-manufacturing-operations (blogPost)
 
@@ -8197,144 +7643,4 @@ Nothing is live until it is published from Studio. Items containing `[CONFIRM]` 
   After:
 
   > Every vendor in this market sells a bigger platform. Agilemorph connects the reporting, approval, outreach, and prospecting tools an agency runs.
-
-## pricingPage (pricingPage)
-
-- `retainerSection.tiers[Hv3zyv14FBW5AozIiVvKJb].tagline`
-
-  Before:
-
-  > AgileMorph operates as part of your team, not alongside it.
-
-  After:
-
-  > Agilemorph operates as part of your team, not alongside it.
-
-## servicePage-bookkeeping (servicePage)
-
-- `description`
-
-  Before:
-
-  > At AgileMorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-  After:
-
-  > At Agilemorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-- `seo.description`
-
-  Before:
-
-  > At AgileMorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-  After:
-
-  > At Agilemorph, we offer comprehensive bookkeeping services to keep your financial records accurate, up-to-date, and compliant.
-
-- `seo.title`
-
-  Before:
-
-  > Book keeping Services - AgileMorph Solutions
-
-  After:
-
-  > Book keeping Services - Agilemorph
-
-## servicePage-digital-marketing (servicePage)
-
-- `description`
-
-  Before:
-
-  > In today’s digital world, AgileMorph Solutions boosts your brand with expert digital marketing services.
-
-  After:
-
-  > In today’s digital world, Agilemorph boosts your brand with expert digital marketing services.
-
-- `seo.description`
-
-  Before:
-
-  > In today’s digital world, AgileMorph Solutions boosts your brand with expert digital marketing services.
-
-  After:
-
-  > In today’s digital world, Agilemorph boosts your brand with expert digital marketing services.
-
-- `seo.title`
-
-  Before:
-
-  > Digital Marketing Services - AgileMorph Solutions
-
-  After:
-
-  > Digital Marketing Services - Agilemorph
-
-## servicePage-virtual-assistance (servicePage)
-
-- `description`
-
-  Before:
-
-  > At AgileMorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.
-
-  After:
-
-  > At Agilemorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.
-
-- `seo.description`
-
-  Before:
-
-  > At AgileMorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.
-
-  After:
-
-  > At Agilemorph, we offer virtual assistant services to streamline operations, reduce administrative burdens, and boost productivity.
-
-- `seo.title`
-
-  Before:
-
-  > Virtual Assistance Services - AgileMorph Solutions
-
-  After:
-
-  > Virtual Assistance Services - Agilemorph
-
-## servicePage-website-development (servicePage)
-
-- `description`
-
-  Before:
-
-  > At AgileMorph, we craft user-friendly websites designed to grow your business and enhance your online presence.
-
-  After:
-
-  > At Agilemorph, we craft user-friendly websites designed to grow your business and enhance your online presence.
-
-- `seo.description`
-
-  Before:
-
-  > At AgileMorph, we craft user-friendly websites designed to grow your business and enhance your online presence.
-
-  After:
-
-  > At Agilemorph, we craft user-friendly websites designed to grow your business and enhance your online presence.
-
-- `seo.title`
-
-  Before:
-
-  > Website Development - AgileMorph Solutions
-
-  After:
-
-  > Website Development - Agilemorph
 

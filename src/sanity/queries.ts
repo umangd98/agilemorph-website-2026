@@ -1,3 +1,5 @@
+import { RETIRED_BLOG_SLUGS } from "@/data/retired-blog-posts";
+
 const imageProjection = `{
   ...,
   asset->,
@@ -273,14 +275,6 @@ export const homepageBelowFoldQuery = `*[_id == "homepage"][0]{
     items[] ${partnerItemProjection}
   },
   security ${cardGridProjection},
-  whyUs {
-    efficiencyCalculator {
-      heading,
-      description,
-      disclaimer,
-      ctaLabel
-    }
-  },
   clientTypes ${cardGridProjection},
   finalCta ${ctaBlockProjection}
 }`;
@@ -436,7 +430,10 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
   seo ${seoProjection}
 }`;
 
-export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]{
+/** Posts that belong to the current positioning. */
+const liveBlogPost = `_type == "blogPost" && !(slug.current in ${JSON.stringify(RETIRED_BLOG_SLUGS)})`;
+
+export const blogPostQuery = `*[${liveBlogPost} && slug.current == $slug][0]{
   _id,
   title,
   "slug": slug.current,
@@ -579,15 +576,15 @@ const blogPostSummaryProjection = `{
   coverImage ${imageProjection}
 }`;
 
-export const blogCategoriesQuery = `array::unique(*[_type == "blogPost"].categories[]) | order(@ asc)`;
+export const blogCategoriesQuery = `array::unique(*[${liveBlogPost}].categories[]) | order(@ asc)`;
 
-export const blogPostsCountQuery = `count(*[_type == "blogPost" && (${blogPostListFilter})])`;
+export const blogPostsCountQuery = `count(*[${liveBlogPost} && (${blogPostListFilter})])`;
 
 export function buildPagedBlogPostsQuery(orderBy: string) {
-  return `*[_type == "blogPost" && (${blogPostListFilter})] | order(${orderBy}) [$start...$end] ${blogPostSummaryProjection}`;
+  return `*[${liveBlogPost} && (${blogPostListFilter})] | order(${orderBy}) [$start...$end] ${blogPostSummaryProjection}`;
 }
 
-export const allBlogSlugsQuery = `*[_type == "blogPost" && defined(slug.current)]{
+export const allBlogSlugsQuery = `*[${liveBlogPost} && defined(slug.current)]{
   "slug": slug.current
 }`;
 
@@ -644,4 +641,18 @@ ${caseStudySummaryFields},
   phases[]{ title, description },
   stack,
   seo ${seoProjection}
+}`;
+
+export const whatWeBuildPageQuery = `*[_id == "whatWeBuildPage"][0]{
+  _id,
+  hero { eyebrow, heading, description },
+  capabilities[]{ title, anchor, summary, points, tools },
+  principles ${cardGridProjection},
+  cta ${ctaBlockProjection},
+  seo ${seoProjection}
+}`;
+
+export const homepagePartnersQuery = `*[_id == "homepage"][0].partners{
+  heading,
+  items[] ${partnerItemProjection}
 }`;

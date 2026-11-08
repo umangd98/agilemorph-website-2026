@@ -1,22 +1,46 @@
 import type { NextConfig } from "next";
 
+import { RETIRED_BLOG_SLUGS } from "./src/data/retired-blog-posts";
+
 const nextConfig: NextConfig = {
   async redirects() {
-    // Retired service pages. These were live and indexed before the service
-    // lineup narrowed to AI automation; 301 them so their links and rankings
-    // land on the page that replaced them instead of 404ing.
+    // The Forward Deployed Engineering rebuild collapsed every service page
+    // into one What we build page and retired pages that no longer fit. Each
+    // old URL 301s to the closest page so links and rankings carry over.
+    const capability: Record<string, string> = {
+      "ai-agents": "/what-we-build#agents",
+      "messaging-automation": "/what-we-build#field-capture",
+      "workflow-automation": "/what-we-build#workflows",
+      "crm-lead-automation": "/what-we-build#workflows",
+      "shopify-automation": "/what-we-build#workflows",
+      "custom-ai-engineering": "/what-we-build#documents",
+      "mcp-ai-infrastructure": "/what-we-build#infrastructure",
+      "ai-audit": "/how-we-work#engagement-model",
+    };
+    const capabilityRedirects = Object.entries(capability).flatMap(([slug, destination]) => [
+      { source: `/services/${slug}`, destination, statusCode: 301 as const },
+      { source: `/what-we-build/${slug}`, destination, statusCode: 301 as const },
+    ]);
+
     return [
-      { source: "/services/bookkeeping", destination: "/what-we-build/ai-automation", statusCode: 301 },
-      { source: "/services/digital-marketing", destination: "/what-we-build/ai-automation", statusCode: 301 },
-      { source: "/services/virtual-assistance", destination: "/what-we-build/ai-automation", statusCode: 301 },
-      { source: "/services/website-development", destination: "/what-we-build/ai-automation", statusCode: 301 },
-      // Services became What we build in the Forward Deployed Engineering
-      // repositioning. Same slugs, new parent path.
-      { source: "/what-we-build/:slug(bookkeeping|digital-marketing|virtual-assistance|website-development)", destination: "/what-we-build/ai-automation", statusCode: 301 },
+      ...capabilityRedirects,
+      // Everything else under the old paths (the AI Automation hub and the
+      // long-retired bookkeeping, marketing, assistant and web pages).
       { source: "/services", destination: "/what-we-build", statusCode: 301 },
-      { source: "/services/:slug", destination: "/what-we-build/:slug", statusCode: 301 },
+      { source: "/services/:slug", destination: "/what-we-build", statusCode: 301 },
+      { source: "/what-we-build/:slug", destination: "/what-we-build", statusCode: 301 },
       // Pricing folded into the engagement model on How we work.
       { source: "/pricing", destination: "/how-we-work#engagement-model", statusCode: 301 },
+      // CAT is an R&D product, mentioned on About; its marketing page is retired.
+      { source: "/products/:path*", destination: "/about", statusCode: 301 },
+      // E-commerce lead magnet and event listings that predate the repositioning.
+      { source: "/resources/:path*", destination: "/", statusCode: 301 },
+      { source: "/events", destination: "/about", statusCode: 301 },
+      ...RETIRED_BLOG_SLUGS.map((slug) => ({
+        source: `/blog/${slug}`,
+        destination: "/blog",
+        statusCode: 301 as const,
+      })),
       // The site lives on theagilemorph.com; agilemorph.in, .dev and .biz are
       // older domains on the same deploy. /api is left out so webhooks still
       // pointed at an old host (Sanity revalidation) keep working: a 301 would

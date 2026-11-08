@@ -7,8 +7,9 @@
  * `SANITY_PREVIEW_DRAFTS=true npm run dev`, then publish from Studio.
  *
  * What it does:
- * - Homepage, About, the AI Automation service page and Contact: new copy.
- * - New documents: How We Work page, Case Studies index, six case studies.
+ * - Homepage, About and Contact: new copy, retired fields removed.
+ * - New documents: How We Work, What We Build, Case Studies index and five
+ *   case studies.
  * - Every other document: "AgileMorph" spelling, em dashes and the unverified
  *   metrics removed (blog posts included).
  * - Writes a string-level diff for founder review to
@@ -27,16 +28,15 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
-  BOOK,
   DIFFERENTIATORS,
   HOMEPAGE_CASE_STUDY_IDS,
-  SEE_HOW,
   aboutFields,
   caseStudiesIndexDoc,
   caseStudyDocs,
   homepageFields,
   howWeWorkDoc,
   key,
+  whatWeBuildDoc,
 } from "./positioning-fde-content.mjs";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -197,18 +197,26 @@ function transformHomepage(doc, images) {
   };
   next.seo = { ...fields.seo, ...(doc.seo?.ogImage ? { ogImage: { ...doc.seo.ogImage, alt: "Agilemorph" } } : {}) };
   next.partners = { ...doc.partners, heading: "Certified and partnered with" };
-  next.whyUs = {
-    efficiencyCalculator: {
-      ...doc.whyUs?.efficiencyCalculator,
-      ctaLabel: "Book a discovery call",
-    },
-  };
-  // Sections the new homepage no longer renders, and that carry unverified metrics.
-  delete next.stats;
-  delete next.process;
-  delete next.services;
+  // Fields removed from the homepage schema in the rebuild.
+  for (const field of RETIRED_FIELDS.homepage) delete next[field];
   return next;
 }
+
+/** Fields dropped from the schema. Sanity history keeps the old values. */
+const RETIRED_FIELDS = {
+  homepage: ["process", "services", "whyUs", "stats", "integrations", "featuredLogos", "testimonials"],
+  aboutPage: ["process", "stats", "teamLeads", "founder", "integrations", "featuredLogos", "testimonials"],
+};
+
+/** Document types whose pages no longer exist. Left untouched. */
+const RETIRED_TYPES = new Set(["servicePage", "servicesIndexPage", "pricingPage"]);
+
+/** Blog posts hidden from the site (src/data/retired-blog-posts.ts). Left untouched. */
+const RETIRED_BLOG_SLUGS = new Set(
+  [...readFileSync(join(ROOT, "src/data/retired-blog-posts.ts"), "utf8").matchAll(/^\s*"([^"]+)",$/gm)].map(
+    (m) => m[1],
+  ),
+);
 
 function transformAbout(doc, images) {
   const fields = aboutFields(images);
@@ -232,152 +240,8 @@ function transformAbout(doc, images) {
     partners: { ...doc.partners, heading: "Certified and partnered with" },
     seo: { ...doc.seo, ...fields.seo },
   };
-  // Old sections the page no longer renders, carrying unverified metrics.
-  delete next.stats;
-  delete next.process;
-  delete next.founder;
-  if (next.teamLeads?.members) {
-    next.teamLeads = {
-      ...next.teamLeads,
-      cardFooter: "Agilemorph leadership",
-      members: next.teamLeads.members.map((member) => {
-        const founder = fields.founders.members.find((f) => f.name === member.name);
-        return founder ? { ...member, role: founder.role, bio: founder.bio } : member;
-      }),
-    };
-  }
-  return next;
-}
-
-function transformAiAutomation(doc) {
-  const capability = (title, slug, description, icon, featured) => ({
-    _type: "capabilityItem",
-    _key: key(),
-    title,
-    slug,
-    description,
-    icon,
-    ...(featured ? { featured: true } : {}),
-  });
-
-  const next = {
-    ...doc,
-    tagline: "What we build during an engagement",
-    description:
-      "During an engagement we build AI into the systems you already run: agents, workflows, messaging, retrieval, voice and the infrastructure under them. Certified on Claude, Make, n8n and Zapier, and able to write the code when no-code is the wrong fit.",
-    headline: { before: "Stop paying people to ", highlight: "copy data", after: " between systems." },
-    heroCta: BOOK,
-    capabilitiesHeading: "What we build",
-    capabilities: [
-      capability(
-        "AI Automation",
-        "ai-automation",
-        "Everything we build during an engagement, inside the systems you already run and measured until it's used.",
-        "⚡",
-        true,
-      ),
-      capability("AI Agents", "ai-agents", "Agents that work inside your existing systems.", "◈"),
-      capability(
-        "Workflow Automation",
-        "workflow-automation",
-        "Custom code, n8n, Make and Zapier.",
-        "⟳",
-      ),
-      capability(
-        "CRM & Lead Automation",
-        "crm-lead-automation",
-        "Capture, route and follow up inside the CRM you run.",
-        "◎",
-      ),
-      capability(
-        "Messaging Automation",
-        "messaging-automation",
-        "WhatsApp, email and chat, written into your systems.",
-        "✉",
-      ),
-      capability(
-        "MCP & AI Infrastructure",
-        "mcp-ai-infrastructure",
-        "MCP servers and self-hosted AI on your cloud or on-premise.",
-        "⧉",
-      ),
-      capability(
-        "Custom AI Engineering",
-        "custom-ai-engineering",
-        "RAG, voice AI and evals in Python, TypeScript and Java.",
-        "⌘",
-      ),
-      capability(
-        "Shopify Automation",
-        "shopify-automation",
-        "Orders, inventory, fulfilment and customer flows.",
-        "🛍",
-      ),
-      capability(
-        "AI Audit",
-        "ai-audit",
-        "A fixed-scope audit for growing businesses: where AI pays off, in 1 to 2 weeks.",
-        "◷",
-      ),
-    ],
-    whyUsHeading: "What makes us different",
-    whyUs: DIFFERENTIATORS.map(([title, description], i) => ({
-      ...(doc.whyUs?.[i] ?? {}),
-      _type: "whyUsItem",
-      _key: doc.whyUs?.[i]?._key ?? key(),
-      title,
-      description,
-    })),
-    technologiesHeading: "Tools and technologies",
-    cta: {
-      heading: "Every build starts with a discovery audit",
-      description: "Every build starts with a discovery audit. See how we work.",
-      button: SEE_HOW,
-    },
-    checks: [
-      "Maps the processes, data flows and gaps in your operation during a discovery audit",
-      "Builds agents, workflows and integrations inside the systems you already run",
-      "Ships with error handling, retries, monitoring, audit logs and evals",
-      "Measures usage until the new way is the default",
-      "Hands over code, workflows, documentation and data. You own all of it",
-    ],
-    flow: [
-      { _type: "flowStep", _key: "flow1", label: "Audit", text: "We map where AI fits" },
-      { _type: "flowStep", _key: "flow2", label: "Build", text: "Inside your systems, in production" },
-      { _type: "flowStep", _key: "flow3", label: "Adopt", text: "Measured until it's used" },
-    ],
-    pricing: {
-      headline: "Every engagement starts with an audit",
-      detail:
-        "Enterprises start with a fixed-scope discovery audit on site. Growing businesses start with an AI Audit of 1 to 2 weeks, then a first build. Scope is fixed after the audit.",
-    },
-    seo: {
-      ...doc.seo,
-      title: "AI Automation and Integration Services",
-      description:
-        "AI agents, workflows, messaging, RAG and voice AI built inside the systems you already run, from SAP and Salesforce to WhatsApp. Claude and Make certified.",
-    },
-  };
-  delete next.stats;
-
-  next.faq = (doc.faq ?? []).map((item) => {
-    if (item._key === "fq3") {
-      return {
-        ...item,
-        answer:
-          "Almost never. We build inside what you already run, including SAP, Salesforce, HubSpot, Shopify and Google Workspace. Replacing a working tool is a cost, not an outcome.",
-      };
-    }
-    if (item._key === "fq4") {
-      return {
-        ...item,
-        answer:
-          "A pilot is usually live in production within weeks of the audit. Larger builds run in phases, so you see working systems early instead of waiting months for one launch.",
-      };
-    }
-    return item;
-  });
-
+  // Fields removed from the About schema in the rebuild.
+  for (const field of RETIRED_FIELDS.aboutPage) delete next[field];
   return next;
 }
 
@@ -386,6 +250,7 @@ function transformContact(doc) {
     ...doc,
     hero: {
       ...doc.hero,
+      heading: "Contact",
       description:
         "Whether you have a question or want to see where AI fits in your operation, talk to the engineers who would build it.",
     },
@@ -451,7 +316,6 @@ async function main() {
   const transforms = {
     homepage: (doc) => transformHomepage(doc, images),
     aboutPage: (doc) => transformAbout(doc, images),
-    "servicePage-ai-automation": transformAiAutomation,
     contactPage: transformContact,
   };
 
@@ -468,7 +332,7 @@ async function main() {
   }
 
   // 2. New documents.
-  for (const doc of [howWeWorkDoc(), caseStudiesIndexDoc(), ...caseStudyDocs()]) {
+  for (const doc of [howWeWorkDoc(), whatWeBuildDoc(), caseStudiesIndexDoc(), ...caseStudyDocs()]) {
     outputs.push({ id: doc._id, before: baseFor(doc._id), after: deepFix(doc), isNew: !byId.has(doc._id) });
   }
 
@@ -479,6 +343,8 @@ async function main() {
   );
   for (const id of candidates) {
     const base = baseFor(id);
+    if (RETIRED_TYPES.has(base._type)) continue;
+    if (base._type === "blogPost" && RETIRED_BLOG_SLUGS.has(base.slug?.current)) continue;
     const after = deepFix(stripSystem(base));
     if (JSON.stringify(after) !== JSON.stringify(stripSystem(base))) {
       outputs.push({ id, before: base, after });

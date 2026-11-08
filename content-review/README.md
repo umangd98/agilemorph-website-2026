@@ -24,6 +24,17 @@ SANITY_LOCAL_PREVIEW=content-review/preview-dataset.json npm run dev
 ## Launch order
 
 Publish the drafts before or at the same time as deploying this branch.
-`/how-we-work` returns a 404, and the new homepage sections stay hidden, until
-the `howWeWorkPage` and homepage drafts are published. Publish case studies
+`/how-we-work` and `/what-we-build` return a 404, and the new homepage
+sections stay hidden, until the `howWeWorkPage`, `whatWeBuildPage` and
+homepage drafts are published. Publish case studies
 one at a time, as each client approves.
+
+## Retired content
+
+- Pages removed in the rebuild (service pages, Pricing, CAT product page, Peak
+  Week Calculator, Events) 301 to the closest new page. See `next.config.ts`.
+- 40 blog posts written for the old positioning are hidden and 301 to `/blog`.
+  The list is `src/data/retired-blog-posts.ts`. They are still in Sanity;
+  delete them in Studio once you agree with the list.
+- Old `servicePage`, `servicesIndexPage` and `pricingPage` documents are no
+  longer in the schema and can be deleted in Studio.

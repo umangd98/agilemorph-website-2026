@@ -175,7 +175,6 @@ export type HomepageBelowFold = Pick<
   | "capabilities"
   | "partners"
   | "security"
-  | "whyUs"
   | "clientTypes"
   | "finalCta"
 >;
@@ -678,6 +677,27 @@ export interface CaseStudiesIndexPage {
     description?: string;
   };
   founderTrack?: CardGridBlock;
+  cta?: CtaBlock;
+  seo?: Seo;
+}
+
+export interface CapabilityDetail {
+  title: string;
+  anchor: string;
+  summary?: string;
+  points?: string[];
+  tools?: string[];
+}
+
+export interface WhatWeBuildPage {
+  _id: string;
+  hero?: {
+    eyebrow?: string;
+    heading?: string;
+    description?: string;
+  };
+  capabilities?: CapabilityDetail[];
+  principles?: CardGridBlock;
   cta?: CtaBlock;
   seo?: Seo;
 }

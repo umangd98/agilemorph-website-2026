@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FaqSection, HeroSection, PartnersSection } from "@/components/sections";
-import { EfficiencyCalculator } from "@/components/sections/EfficiencyCalculator";
 import {
   CardGridSection,
   CaseStudyGrid,
@@ -84,21 +83,12 @@ async function BelowFoldSections() {
       ) : null}
 
       <FoundersPairSection index="05" block={homepage?.founders} />
-      <CardGridSection index="06" block={homepage?.capabilities} columns={5} />
+      <CardGridSection index="06" block={homepage?.capabilities} columns={3} />
       <PartnersSection
         heading={homepage?.partners?.heading}
         items={homepage?.partners?.items}
       />
       <CardGridSection index="07" block={homepage?.security} columns={4} />
-
-      <FdeSection index="" eyebrow="ROI estimator">
-        <Reveal>
-          <EfficiencyCalculator
-            content={homepage?.whyUs?.efficiencyCalculator}
-            variant="prominent"
-          />
-        </Reveal>
-      </FdeSection>
 
       <FaqSection index="08" />
       <CardGridSection index="09" block={homepage?.clientTypes} columns={4} />

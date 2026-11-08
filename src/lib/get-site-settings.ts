@@ -17,7 +17,6 @@ export const DEFAULT_FOOTER_QUICK_LINKS: NavLink[] = [
   { label: "Case studies", href: "/case-studies" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const DEFAULT_SOCIAL_LINKS: SocialLink[] = [

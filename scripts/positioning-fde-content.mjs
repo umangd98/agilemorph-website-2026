@@ -177,6 +177,149 @@ export function foundersBlock({ kaustumbhImage, umangImage }, extra = {}) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* What we build                                                               */
+/* -------------------------------------------------------------------------- */
+
+export const CAPABILITIES = [
+  {
+    anchor: "field-capture",
+    title: "Field capture into your system of record",
+    short: "WhatsApp, voice notes and photos turned into validated records in your ERP or CRM.",
+    summary:
+      "Work gets reported where it happens: a WhatsApp message, a voice note, a photo, an email. AI reads it, extracts a structured record, checks it against your system and writes it in, with a person confirming anything uncertain.",
+    points: [
+      "WhatsApp, email and chat as inputs, including voice notes and photos",
+      "Every message classified by type, intent and urgency",
+      "Structured records written into your ERP, CRM or database through its API",
+      "A supervisor confirms uncertain entries in one tap",
+      "A buffered, multi-path design, so nothing is dropped under load",
+    ],
+    tools: ["WhatsApp Business", "Claude", "n8n", "Your ERP or CRM API"],
+  },
+  {
+    anchor: "agents",
+    title: "AI agents inside your systems",
+    short: "Agents that read, decide and act inside your CRM, ERP and inbox.",
+    summary:
+      "Agents that handle enquiries, tickets and documents inside the systems you already run, so nobody has to re-key them. They act through your tools and hand anything unusual to a person with the full context.",
+    points: [
+      "Reads unstructured input: emails, chats, documents and voice notes",
+      "Classifies intent and urgency, then routes to the right path",
+      "Drafts replies, held for approval or sent automatically",
+      "Calls your tools directly: CRM, ERP, calendar and databases",
+      "Escalates edge cases to a person with full context attached",
+    ],
+    tools: ["Claude", "OpenAI", "n8n", "Python", "TypeScript"],
+  },
+  {
+    anchor: "workflows",
+    title: "Workflow automation and integration",
+    short: "The manual steps between SAP, Salesforce, your ERP and your other tools, automated.",
+    summary:
+      "The repeated steps between your systems, automated inside the tools you already run. We use n8n, Make or Zapier where they fit and write code in Python, TypeScript or Java where they don't.",
+    points: [
+      "Lead capture, enrichment, routing and follow-up inside your CRM",
+      "Order, inventory and fulfilment flows between Shopify, warehouse and ERP",
+      "Reports that assemble themselves from every system",
+      "Error handling, retries and alerts, so one bad record doesn't stop everything",
+      "Documentation of what runs and when, owned by your team",
+    ],
+    tools: ["n8n", "Make", "Zapier", "Salesforce", "HubSpot", "Shopify", "Java"],
+  },
+  {
+    anchor: "documents",
+    title: "Retrieval and document intelligence",
+    short: "Answers grounded in your own documents, and scans turned into structured data.",
+    summary:
+      "Answers grounded in your contracts, manuals, scans and records, and documents turned into structured data your systems can use.",
+    points: [
+      "Retrieval (RAG) over your documents, with sources shown",
+      "Scanned forms and invoices extracted into structured records",
+      "Knowledge search for teams on site and in the field",
+      "Evals that check answers before people rely on them",
+    ],
+    tools: ["Python", "Qdrant", "Claude", "Langfuse"],
+  },
+  {
+    anchor: "voice",
+    title: "Real-time voice AI",
+    short: "Voice agents that answer, qualify and log calls into your systems.",
+    summary:
+      "Voice agents that answer, qualify and route calls, with every outcome written into your systems like any other record.",
+    points: [
+      "Calls answered, qualified and routed",
+      "Outcomes logged to your CRM or ERP",
+      "Hand-off to a person with the full context",
+      "Every call traced and reviewed",
+    ],
+    tools: ["Retell", "Twilio", "Claude"],
+  },
+  {
+    anchor: "infrastructure",
+    title: "Evals, monitoring and self-hosted AI",
+    short: "MCP servers, Langfuse evals and AI that runs in your cloud or on-premise.",
+    summary:
+      "The infrastructure that lets your IT team trust AI in production: governed access to your data, quality you can measure, and hosting you control.",
+    points: [
+      "MCP servers that give models governed access to your data and tools",
+      "Self-hosted deployments in your cloud or on-premise",
+      "Langfuse tracing and evals, so you see every call, cost and failure",
+      "PII handling and redaction to keep sensitive data in your environment",
+    ],
+    tools: ["MCP", "Langfuse", "AWS", "On-premise"],
+  },
+];
+
+export function whatWeBuildDoc() {
+  return {
+    _id: "whatWeBuildPage",
+    _type: "whatWeBuildPage",
+    hero: {
+      eyebrow: "What we build",
+      heading: "What we build during an engagement",
+      description:
+        "Every capability below is built inside the systems you already run, in production from the first release, and measured until people use it. We pick the tool for the workflow: no-code where it fits, code where it doesn't.",
+    },
+    capabilities: CAPABILITIES.map((c) => ({
+      _type: "capabilityDetail",
+      _key: key(),
+      anchor: c.anchor,
+      title: c.title,
+      summary: c.summary,
+      points: c.points,
+      tools: c.tools,
+    })),
+    principles: {
+      _type: "cardGridBlock",
+      eyebrow: "How every build is made",
+      heading: "How every build is made",
+      items: [
+        card("Inside your stack", "We extend SAP, Salesforce, your ERP, CRM and factory tools. No parallel systems to maintain."),
+        card("Production from day one", "Error handling, retries, monitoring, audit logs and evals from the first build."),
+        card("Adoption measured", "We track who uses it and how fresh the data is, and keep improving until it's the default."),
+        card("You own it", "Code, workflows, documentation and data belong to you."),
+        card("Code when no-code is wrong", "Python, TypeScript and Java when Make, n8n or Zapier would hit a ceiling."),
+        card("Certified across the stack", "Claude, Make, n8n, Zapier, Microsoft and Shopify partners."),
+      ],
+    },
+    cta: {
+      _type: "ctaBlock",
+      heading: "Every build starts with a discovery audit",
+      description: "Book a call to talk through your operation, or see how an engagement runs.",
+      button: BOOK,
+      secondaryButton: SEE_HOW,
+      showEmail: true,
+    },
+    seo: {
+      _type: "seo",
+      title: "What we build",
+      description:
+        "AI agents, field capture into your ERP, workflow automation, document intelligence, voice AI and self-hosted AI, built inside the systems you already run.",
+    },
+  };
+}
+
+/* -------------------------------------------------------------------------- */
 /* Homepage                                                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -268,59 +411,8 @@ export function homepageFields(images, caseStudyIds) {
       eyebrow: "What we build",
       heading: "What we build during an engagement",
       intro:
-        "The capabilities our engineers bring. Each one is built inside the systems you already run, and chosen to fit the workflow.",
-      items: [
-        card(
-          "AI agents",
-          "Agents that work inside your existing systems.",
-          "/what-we-build/ai-agents",
-        ),
-        card(
-          "Workflow automation",
-          "Custom code, n8n, Make and Zapier.",
-          "/what-we-build/workflow-automation",
-        ),
-        card(
-          "CRM and lead automation",
-          "Capture, route and follow up inside the CRM you run.",
-          "/what-we-build/crm-lead-automation",
-        ),
-        card(
-          "Messaging automation",
-          "WhatsApp, email and chat, written into your systems.",
-          "/what-we-build/messaging-automation",
-        ),
-        card(
-          "MCP servers and self-hosted AI",
-          "AI infrastructure on your cloud or on-premise.",
-          "/what-we-build/mcp-ai-infrastructure",
-        ),
-        card(
-          "Retrieval and document intelligence",
-          "RAG over your documents, scans and records.",
-          "/what-we-build/custom-ai-engineering",
-        ),
-        card(
-          "Real-time voice AI",
-          "Voice agents on Retell and Twilio.",
-          "/what-we-build/custom-ai-engineering",
-        ),
-        card(
-          "Evals and monitoring",
-          "Langfuse evals, so you know the AI is right before people rely on it.",
-          "/what-we-build/custom-ai-engineering",
-        ),
-        card(
-          "Shopify and e-commerce automation",
-          "Orders, inventory and store flows.",
-          "/what-we-build/shopify-automation",
-        ),
-        card(
-          "Custom AI engineering",
-          "Python, TypeScript and Java, when no-code is the wrong fit.",
-          "/what-we-build/custom-ai-engineering",
-        ),
-      ],
+        "Each capability is built inside the systems you already run, in production from the first release, and chosen to fit the workflow.",
+      items: CAPABILITIES.map((c) => card(c.title, c.short, `/what-we-build#${c.anchor}`)),
       closing:
         "Certified across Claude, Make, n8n, Zapier, Microsoft and Shopify, and able to write the code when no-code is the wrong fit.",
     },
@@ -527,7 +619,7 @@ export function howWeWorkDoc() {
             card("First build", "Live within weeks of the audit."),
           ],
           note: "Same model, smaller scope.",
-          cta: cta("Get an AI Audit", "/what-we-build/ai-audit"),
+          cta: cta("Book an AI Audit call", "/contact#book"),
         },
       ],
     },
@@ -723,34 +815,6 @@ export function caseStudyDocs() {
       seo: seo(
         "Referral rewards engine for a contractor",
         "A referral rewards engine on Housecall Pro, Google Sheets and Tremendous, built for a New York City gas piping contractor with the owner approving every payout.",
-      ),
-    },
-    {
-      _id: "caseStudy-trades-speed-to-lead",
-      _type: "caseStudy",
-      title: "Speed-to-lead and booking for trades firms",
-      slug: { _type: "slug", current: "trades-speed-to-lead" },
-      anonymised: false,
-      order: 6,
-      headline: "A capability example: a speed-to-lead and booking system for trades firms.",
-      summary:
-        "A capability example, not a client case study: a GoHighLevel speed-to-lead and booking system designed for HVAC, roofing and remodelling firms.",
-      tags: ["Capability example", "Trades"],
-      context:
-        "Designed for HVAC, roofing and remodelling firms that run ServiceTitan or Housecall Pro.",
-      gap: CONFIRM,
-      howWeWorked:
-        "Built as a reusable system, ready to be fitted inside a firm's existing tools during an AI Audit and first build.",
-      whatWeBuilt: [
-        "A GoHighLevel speed-to-lead and booking system",
-        "Designed to work alongside ServiceTitan and Housecall Pro",
-      ],
-      outcome: "A capability example. There is no client outcome to report until a client agrees to be named.",
-      phases: [],
-      stack: ["GoHighLevel", "ServiceTitan", "Housecall Pro"],
-      seo: seo(
-        "Speed-to-lead for trades firms",
-        "A GoHighLevel speed-to-lead and booking system designed for HVAC, roofing and remodelling firms on ServiceTitan and Housecall Pro.",
       ),
     },
   ];

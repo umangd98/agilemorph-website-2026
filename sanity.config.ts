@@ -11,11 +11,10 @@ const singletonTypes = new Set([
   "homepage",
   "aboutPage",
   "contactPage",
-  "pricingPage",
   "blogIndexPage",
-  "servicesIndexPage",
   "siteSettings",
   "howWeWorkPage",
+  "whatWeBuildPage",
   "caseStudiesIndexPage",
 ]);
 
@@ -64,15 +63,6 @@ export default defineConfig({
                   .title("Contact Page"),
               ),
             S.listItem()
-              .title("Pricing Page")
-              .id("pricingPage")
-              .child(
-                S.document()
-                  .schemaType("pricingPage")
-                  .documentId("pricingPage")
-                  .title("Pricing Page"),
-              ),
-            S.listItem()
               .title("Blog Index Page")
               .id("blogIndexPage")
               .child(
@@ -82,15 +72,6 @@ export default defineConfig({
                   .title("Blog Index Page"),
               ),
             S.listItem()
-              .title("Services Index Page")
-              .id("servicesIndexPage")
-              .child(
-                S.document()
-                  .schemaType("servicesIndexPage")
-                  .documentId("servicesIndexPage")
-                  .title("Services Index Page"),
-              ),
-            S.listItem()
               .title("Site Settings")
               .id("siteSettings")
               .child(
@@ -98,6 +79,15 @@ export default defineConfig({
                   .schemaType("siteSettings")
                   .documentId("siteSettings")
                   .title("Site Settings"),
+              ),
+            S.listItem()
+              .title("What We Build Page")
+              .id("whatWeBuildPage")
+              .child(
+                S.document()
+                  .schemaType("whatWeBuildPage")
+                  .documentId("whatWeBuildPage")
+                  .title("What We Build Page"),
               ),
             S.listItem()
               .title("How We Work Page")
@@ -119,7 +109,6 @@ export default defineConfig({
               ),
             S.divider(),
             S.documentTypeListItem("caseStudy").title("Case Studies"),
-            S.documentTypeListItem("servicePage").title("Service Pages"),
             S.documentTypeListItem("blogPost").title("Blog Posts"),
           ]),
     }),
