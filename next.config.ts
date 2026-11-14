@@ -4,33 +4,21 @@ import { RETIRED_BLOG_SLUGS } from "./src/data/retired-blog-posts";
 
 const nextConfig: NextConfig = {
   async redirects() {
-    // The Forward Deployed Engineering rebuild collapsed every service page
-    // into one What we build page and retired pages that no longer fit. Each
-    // old URL 301s to the closest page so links and rankings carry over.
-    const capability: Record<string, string> = {
-      "ai-agents": "/what-we-build#agents",
-      "messaging-automation": "/what-we-build#field-capture",
-      "workflow-automation": "/what-we-build#workflows",
-      "crm-lead-automation": "/what-we-build#workflows",
-      "shopify-automation": "/what-we-build#workflows",
-      "custom-ai-engineering": "/what-we-build#documents",
-      "mcp-ai-infrastructure": "/what-we-build#infrastructure",
-      "ai-audit": "/how-we-work#engagement-model",
-    };
-    const capabilityRedirects = Object.entries(capability).flatMap(([slug, destination]) => [
-      { source: `/services/${slug}`, destination, statusCode: 301 as const },
-      { source: `/what-we-build/${slug}`, destination, statusCode: 301 as const },
-    ]);
+    // The site was rebuilt around Forward Deployed Engineering. Every retired
+    // URL 301s to the closest page so links and rankings carry over.
+    const WHAT_WE_BUILD = "/how-we-work#what-we-build";
+    const ENGAGEMENT_MODEL = "/how-we-work#engagement-model";
 
     return [
-      ...capabilityRedirects,
-      // Everything else under the old paths (the AI Automation hub and the
-      // long-retired bookkeeping, marketing, assistant and web pages).
-      { source: "/services", destination: "/what-we-build", statusCode: 301 },
-      { source: "/services/:slug", destination: "/what-we-build", statusCode: 301 },
-      { source: "/what-we-build/:slug", destination: "/what-we-build", statusCode: 301 },
-      // Pricing folded into the engagement model on How we work.
-      { source: "/pricing", destination: "/how-we-work#engagement-model", statusCode: 301 },
+      // Service pages, then the single What we build page, became a section of How we work.
+      { source: "/services/ai-audit", destination: ENGAGEMENT_MODEL, statusCode: 301 },
+      { source: "/what-we-build/ai-audit", destination: ENGAGEMENT_MODEL, statusCode: 301 },
+      { source: "/services", destination: WHAT_WE_BUILD, statusCode: 301 },
+      { source: "/services/:slug*", destination: WHAT_WE_BUILD, statusCode: 301 },
+      { source: "/what-we-build", destination: WHAT_WE_BUILD, statusCode: 301 },
+      { source: "/what-we-build/:slug*", destination: WHAT_WE_BUILD, statusCode: 301 },
+      // Pricing became the engagement model.
+      { source: "/pricing", destination: ENGAGEMENT_MODEL, statusCode: 301 },
       // CAT is an R&D product, mentioned on About; its marketing page is retired.
       { source: "/products/:path*", destination: "/about", statusCode: 301 },
       // E-commerce lead magnet and event listings that predate the repositioning.
@@ -56,7 +44,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "lucide-react",
-      "gsap",
       "@portabletext/react",
       "@sanity/image-url",
     ],

@@ -17,7 +17,6 @@ import {
 import type { BlogPostSummary } from "@/sanity/types";
 
 type BlogListSectionProps = {
-  eyebrow?: string;
   heading?: string;
   description?: string;
   posts?: BlogPostSummary[];
@@ -78,9 +77,8 @@ function pageHref({
 }
 
 export function BlogListSection({
-  eyebrow = "Insights & Stories",
-  heading = "Blog",
-  description = "Explore our latest stories, industry insights, and development experiences.",
+  heading = "Notes from the floor",
+  description = "What we learn embedding with operations teams: where data breaks between the floor and the system, and how to fix it.",
   posts = [],
   categories = [],
   currentPage = 1,
@@ -104,47 +102,14 @@ export function BlogListSection({
 
   return (
     <>
-      {/* Hero banner */}
-      <section className="relative overflow-hidden bg-background pb-0 pt-20 max-sm:pt-14" aria-label="Blog header">
-        {/* Decorative orbs */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-32 -left-32 size-[480px] rounded-full opacity-40 blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 70%)" }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-10 right-0 size-[360px] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(6,182,212,0.14) 0%, transparent 70%)" }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-1/2 h-px w-full -translate-x-1/2"
-          style={{ background: "linear-gradient(90deg, transparent, rgba(34,197,94,0.18), transparent)" }}
-        />
-
+      <section className="pt-14 pb-12 sm:pt-20" aria-label="Blog header">
         <Container>
-          <AnimateOnScroll className="relative z-10 max-w-2xl pb-14 max-sm:pb-10">
-            {eyebrow ? (
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5">
-                <span className="size-1.5 rounded-full bg-signal" />
-                <p className="font-body text-xs font-bold uppercase tracking-widest text-primary">
-                  {eyebrow}
-                </p>
-              </div>
-            ) : null}
-            <h1
-              id="blog-heading"
-              className="mb-4 font-heading text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl"
-            >
-              {heading}
-            </h1>
-            {description ? (
-              <p className="font-body text-lg leading-relaxed text-muted-foreground">
-                {description}
-              </p>
-            ) : null}
-          </AnimateOnScroll>
+          <h1 id="blog-heading" className="type-display">
+            {heading}
+          </h1>
+          {description ? (
+            <p className="type-lede mt-6 max-w-2xl text-ink-muted">{description}</p>
+          ) : null}
         </Container>
       </section>
 

@@ -1,40 +1,25 @@
-# Forward Deployed Engineering repositioning: content handoff
+# Content handoff
 
-The page copy for this branch lives in Sanity. It has **not** been written yet:
-the `SANITY_API_WRITE_TOKEN` in `.env.local` was refused with
-`Insufficient permissions; permission "create" required`.
+The marketing pages are written in code: `src/content/site.ts` and
+`src/content/case-studies.ts`. Edit copy there. Sanity holds the blog only.
 
-- `positioning-fde-copy-diff.md` lists every Sanity string that changes, before and after, document by document.
-- `scripts/patch-positioning-fde.mjs` applies exactly that diff as **unpublished drafts**. Its copy is in `scripts/positioning-fde-content.mjs`.
+## Before launch
 
-## Review the branch locally before any CMS write
-
-```bash
-node scripts/patch-positioning-fde.mjs --emit-preview   # needs only the read token
-SANITY_LOCAL_PREVIEW=content-review/preview-dataset.json npm run dev
-```
-
-## Apply to Sanity
-
-1. Put a token with Editor (create) rights in `SANITY_API_WRITE_TOKEN`.
-2. `node scripts/patch-positioning-fde.mjs` writes drafts only. Nothing goes live.
-3. Review with `SANITY_PREVIEW_DRAFTS=true npm run dev`, or in Studio.
-4. Resolve every `[CONFIRM]` item, then publish from Studio.
-
-## Launch order
-
-Publish the drafts before or at the same time as deploying this branch.
-`/how-we-work` and `/what-we-build` return a 404, and the new homepage
-sections stay hidden, until the `howWeWorkPage`, `whatWeBuildPage` and
-homepage drafts are published. Publish case studies
-one at a time, as each client approves.
+- **Case studies** are anonymised. To name a client, change `client` in
+  `src/content/case-studies.ts`. Outcome figures appear only once supplied;
+  until then each page says the figures are being confirmed with the client.
+- **Founder bios** in `src/content/site.ts` need both founders' sign-off.
+- **Blog spelling fixes.** `node scripts/patch-blog-copy.mjs` saves "AgileMorph",
+  em dash and unverified-metric fixes to 8 live posts as Sanity drafts. It needs
+  a token with Editor rights; the current one can't create documents. Publish
+  the drafts from Studio. `--dry-run` writes `blog-copy-diff.md` only.
 
 ## Retired content
 
-- Pages removed in the rebuild (service pages, Pricing, CAT product page, Peak
-  Week Calculator, Events) 301 to the closest new page. See `next.config.ts`.
-- 40 blog posts written for the old positioning are hidden and 301 to `/blog`.
-  The list is `src/data/retired-blog-posts.ts`. They are still in Sanity;
-  delete them in Studio once you agree with the list.
-- Old `servicePage`, `servicesIndexPage` and `pricingPage` documents are no
-  longer in the schema and can be deleted in Studio.
+- Service pages, What we build, Pricing, the CAT product page, the Peak Week
+  Calculator and Events 301 to the closest page. See `next.config.ts`.
+- 40 blog posts written for the old positioning are hidden and 301 to `/blog`
+  (`src/data/retired-blog-posts.ts`). They are still in Sanity. Delete them in
+  Studio once you agree with the list.
+- The old Sanity page documents (homepage, about, contact, pricing, service
+  pages, site settings) are no longer in the schema and can be deleted.

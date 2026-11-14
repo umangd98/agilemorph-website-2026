@@ -1,175 +1,109 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
-import { Reveal } from "@/components/Reveal";
-import { Container, StackTag } from "@/components/ui";
-import {
-  CardGridSection,
-  FdeExplainer,
-  FdePageHero,
-  FdeSection,
-  FinalCtaSection,
-} from "@/components/sections/fde";
-import { seoToMetadata } from "@/lib/seo";
-import { sanityFetch } from "@/sanity/fetch";
-import {
-  caseStudiesIndexPageQuery,
-  caseStudiesListQuery,
-  caseStudyQuery,
-} from "@/sanity/queries";
-import type { CaseStudiesIndexPage, CaseStudy, CaseStudySummary } from "@/sanity/types";
+import { Container } from "@/components/Container";
+import { CtaBand } from "@/components/site/blocks";
+import { PageShell } from "@/components/site/PageShell";
+import { CASE_STUDIES, getCaseStudy } from "@/content/case-studies";
+import { PHASES } from "@/content/site";
 
-type CaseStudyPageProps = {
-  params: Promise<{ slug: string }>;
-};
+type Props = { params: Promise<{ slug: string }> };
 
-async function getCaseStudy(slug: string) {
-  return sanityFetch<CaseStudy | null>({
-    query: caseStudyQuery,
-    params: { slug },
-    tags: ["caseStudy", `caseStudy:${slug}`],
-  });
+export function generateStaticParams() {
+  return CASE_STUDIES.map((study) => ({ slug: study.slug }));
 }
 
-export async function generateStaticParams() {
-  const studies = await sanityFetch<CaseStudySummary[]>({
-    query: caseStudiesListQuery,
-    tags: ["caseStudy"],
-  });
-  return (studies ?? []).map((study) => ({ slug: study.slug }));
+export const dynamicParams = false;
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const study = getCaseStudy((await params).slug);
+  if (!study) return {};
+  return {
+    title: `${study.client}: case study`,
+    description: study.headline,
+    alternates: { canonical: `/case-studies/${study.slug}` },
+  };
 }
 
-export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const study = await getCaseStudy(slug);
-  if (!study) return { title: "Not Found", robots: { index: false } };
-
-  return seoToMetadata(study.seo, {
-    title: `${study.title}: case study`,
-    description: study.summary ?? study.headline,
-    alternates: { canonical: `/case-studies/${slug}` },
-  });
-}
-
-function TextBlock({ label, body }: { label: string; body?: string }) {
-  if (!body) return null;
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <Reveal className="grid gap-3 border-t border-line py-8 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-10">
-      <h2 className="syslabel pt-1">{label}</h2>
-      <div className="flex max-w-3xl flex-col gap-4">
-        {body
-          .split(/\n\s*\n/)
-          .filter(Boolean)
-          .map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-      </div>
-    </Reveal>
+    <div className="grid gap-3 border-t border-rule py-8 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-12">
+      <h2 className="text-[0.9375rem] font-medium text-ink-muted">{label}</h2>
+      <div className="max-w-2xl text-lg">{children}</div>
+    </div>
   );
 }
 
-export default async function CaseStudyRoute({ params }: CaseStudyPageProps) {
-  const { slug } = await params;
-  const [study, indexPage] = await Promise.all([
-    getCaseStudy(slug),
-    sanityFetch<CaseStudiesIndexPage | null>({
-      query: caseStudiesIndexPageQuery,
-      tags: ["caseStudiesIndexPage"],
-    }),
-  ]);
-
+export default async function CaseStudyPage({ params }: Props) {
+  const study = getCaseStudy((await params).slug);
   if (!study) notFound();
 
+  const phases = PHASES.filter((phase) => study.phases[phase.name]);
+
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
-        <FdePageHero
-          eyebrow={study.anonymised ? "Case study, client anonymised" : "Case study"}
-          heading={study.title}
-          description={study.headline}
-          align="left"
-        >
-          <div className="flex flex-col gap-6">
-            {study.status || study.tags?.length ? (
-              <div className="flex flex-wrap gap-2">
-                {study.status ? <StackTag>{study.status}</StackTag> : null}
-                {(study.tags ?? []).map((tag) => (
-                  <StackTag key={tag}>{tag}</StackTag>
+    <PageShell>
+      <section className="pt-14 pb-12 sm:pt-20">
+        <Container>
+          <Link href="/case-studies" className="text-[0.9375rem] text-ink-muted hover:text-ink">
+            Case studies
+          </Link>
+          <h1 className="type-display mt-6 max-w-4xl">{study.client}</h1>
+          <p className="type-lede mt-6 max-w-2xl text-ink-muted">{study.headline}</p>
+          <p className="mt-6 text-[0.9375rem] text-ink-faint">
+            {study.status ? <span className="text-amber">{study.status}, </span> : null}
+            {study.region}, client anonymised
+          </p>
+        </Container>
+      </section>
+
+      <Container className="pb-20">
+        <div className="border-b border-rule">
+          <Row label="Context">{study.context}</Row>
+          {study.gap ? <Row label="The gap">{study.gap}</Row> : null}
+          <Row label="How we worked">{study.howWeWorked}</Row>
+          {study.built ? (
+            <Row label="What we built">
+              <ul className="flex flex-col gap-3">
+                {study.built.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span aria-hidden className="mt-[0.8em] h-px w-3 shrink-0 bg-ink" />
+                    <span>{item}</span>
+                  </li>
                 ))}
-              </div>
-            ) : null}
-            <FdeExplainer align="left" className="mx-0" />
-          </div>
-        </FdePageHero>
+              </ul>
+            </Row>
+          ) : null}
+          {phases.length ? (
+            <Row label="The phases">
+              <ol className="flex flex-col gap-4">
+                {phases.map((phase) => (
+                  <li key={phase.name}>
+                    <span className="font-medium">{phase.name}.</span>{" "}
+                    <span className="text-ink-muted">{study.phases[phase.name]}</span>
+                  </li>
+                ))}
+              </ol>
+            </Row>
+          ) : null}
+          <Row label="Outcome">
+            {study.outcome ?? (
+              <span className="text-ink-muted">
+                {study.status === "In progress"
+                  ? "The engagement is running. Results will be published with the client's approval."
+                  : "Outcome figures are being confirmed with the client before we publish them."}
+              </span>
+            )}
+          </Row>
+          {study.stack ? (
+            <Row label="Stack">
+              <p className="text-ink-muted">{study.stack.join(", ")}</p>
+            </Row>
+          ) : null}
+        </div>
+      </Container>
 
-        <FdeSection index="01" eyebrow="The engagement" heading="The engagement">
-          <div className="border-b border-line">
-            <TextBlock label="Context" body={study.context} />
-            <TextBlock label="The gap" body={study.gap} />
-            <TextBlock label="How we worked" body={study.howWeWorked} />
-            {study.whatWeBuilt?.length ? (
-              <Reveal className="grid gap-3 border-t border-line py-8 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-10">
-                <h2 className="syslabel pt-1">What we built</h2>
-                <ul className="flex max-w-3xl flex-col gap-3">
-                  {study.whatWeBuilt.map((item) => (
-                    <li key={item} className="flex gap-3 text-base leading-relaxed text-fg-muted sm:text-lg">
-                      <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" />
-                      <span className="min-w-0">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ) : null}
-            <TextBlock label="Outcome" body={study.outcome} />
-            {study.stack?.length ? (
-              <Reveal className="grid gap-3 border-t border-line py-8 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-10">
-                <h2 className="syslabel pt-1">Stack</h2>
-                <div className="flex flex-wrap gap-2">
-                  {study.stack.map((item) => (
-                    <StackTag key={item}>{item}</StackTag>
-                  ))}
-                </div>
-              </Reveal>
-            ) : null}
-          </div>
-        </FdeSection>
-
-        <CardGridSection
-          index="02"
-          block={
-            study.phases?.length
-              ? {
-                  eyebrow: "The five phases",
-                  heading: "How the five phases played out",
-                  items: study.phases,
-                }
-              : undefined
-          }
-          columns={3}
-        />
-
-        <section className="border-t border-line py-10">
-          <Container>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted hover:text-signal"
-            >
-              <ArrowLeft size={15} aria-hidden />
-              All case studies
-            </Link>
-          </Container>
-        </section>
-
-        <FinalCtaSection block={indexPage?.cta} />
-      </main>
-      <SiteFooter />
-    </>
+      <CtaBand />
+    </PageShell>
   );
 }

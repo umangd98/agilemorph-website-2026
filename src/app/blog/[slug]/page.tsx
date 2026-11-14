@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
+import { PageShell } from "@/components/site/PageShell";
 import { BlogPostSection } from "@/components/sections/BlogPostSection";
 import { coverUrl } from "@/lib/blog-cover";
 import { seoToMetadata } from "@/lib/seo";
@@ -71,12 +70,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
+    <PageShell>
         <BlogPostSection post={post} />
-      </main>
-      <SiteFooter />
-    </>
+    </PageShell>
   );
 }

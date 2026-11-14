@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/fetch";
-import { allBlogSlugsQuery, caseStudiesListQuery } from "@/sanity/queries";
+import { CASE_STUDIES } from "@/content/case-studies";
+import { allBlogSlugsQuery } from "@/sanity/queries";
 
 const STATIC_ROUTES: Array<{
   path: string;
@@ -11,7 +12,6 @@ const STATIC_ROUTES: Array<{
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
   { path: "/how-we-work", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/what-we-build", changeFrequency: "monthly", priority: 0.9 },
   { path: "/case-studies", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
@@ -48,23 +48,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     blogEntries = [];
   }
 
-  let caseStudyEntries: MetadataRoute.Sitemap = [];
-  try {
-    const studies = await sanityFetch<Array<{ slug: string }>>({
-      query: caseStudiesListQuery,
-      tags: ["caseStudy"],
-    });
-    caseStudyEntries = (studies ?? [])
-      .filter((study) => Boolean(study?.slug))
-      .map((study) => ({
-        url: `${SITE_URL}/case-studies/${study.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.7,
-      }));
-  } catch {
-    caseStudyEntries = [];
-  }
+  const caseStudyEntries: MetadataRoute.Sitemap = CASE_STUDIES.map((study) => ({
+    url: `${SITE_URL}/case-studies/${study.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   return [...staticEntries, ...caseStudyEntries, ...blogEntries];
 }

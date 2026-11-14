@@ -1,5 +1,6 @@
-import { CONTACT_EMAIL, FOUNDERS, ONE_LINER } from "@/data/positioning";
-import type { FaqItem, SocialLink } from "@/sanity/types";
+import { COMPANY, FOUNDERS, ONE_LINER } from "@/content/site";
+
+type FaqItem = { question: string; answer: string };
 
 /**
  * Canonical production origin. Used by metadata (metadataBase, canonical),
@@ -9,30 +10,14 @@ export const SITE_URL = "https://theagilemorph.com";
 
 export const ORGANIZATION_NAME = "Agilemorph";
 
-const DEFAULT_SAME_AS = [
-  "https://www.linkedin.com/company/agilemorph/",
-  "https://www.instagram.com/agilemorph/",
-  "https://www.facebook.com/agilemorph",
-];
-
 /** Minimal JSON-LD node shape. */
 type JsonLdNode = Record<string, unknown>;
-
-function socialUrls(socialLinks?: SocialLink[]): string[] {
-  const urls = (socialLinks ?? [])
-    .map((link) => link.url)
-    .filter((url): url is string => Boolean(url));
-  return urls.length ? urls : DEFAULT_SAME_AS;
-}
 
 /**
  * Organization schema. Establishes the brand entity for Google's Knowledge
  * Graph: name, logo, socials (sameAs), founder, and area served.
  */
-export function organizationSchema(options?: {
-  description?: string;
-  socialLinks?: SocialLink[];
-}): JsonLdNode {
+export function organizationSchema(): JsonLdNode {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -43,12 +28,12 @@ export function organizationSchema(options?: {
       "@type": "ImageObject",
       url: `${SITE_URL}/brand/agilemorph-logo-dark.png`,
     },
-    description: options?.description ?? ONE_LINER,
-    email: CONTACT_EMAIL,
+    description: ONE_LINER,
+    email: COMPANY.email,
     founder: FOUNDERS.map((founder) => ({
       "@type": "Person",
       name: founder.name,
-      jobTitle: founder.jobTitle,
+      jobTitle: founder.role,
     })),
     address: {
       "@type": "PostalAddress",
@@ -57,20 +42,20 @@ export function organizationSchema(options?: {
       addressCountry: "IN",
     },
     areaServed: ["India", "United States", "Africa"],
-    sameAs: socialUrls(options?.socialLinks),
+    sameAs: COMPANY.social.map((item) => item.href),
   };
 }
 
 /**
  * WebSite schema. Ties the domain to the organization as its publisher.
  */
-export function websiteSchema(options?: { name?: string }): JsonLdNode {
+export function websiteSchema(): JsonLdNode {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: options?.name ?? ORGANIZATION_NAME,
+    name: ORGANIZATION_NAME,
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }

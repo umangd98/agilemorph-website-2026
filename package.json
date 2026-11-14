@@ -11,12 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "upload-media": "node scripts/upload-media.mjs",
-    "upload:team-leads": "node scripts/upload-team-leads.mjs",
-    "seed-content": "node scripts/seed-content.mjs",
-    "patch-pricing-page": "node scripts/patch-pricing-page.mjs",
-    "patch-ai-automation-capabilities": "node scripts/patch-ai-automation-capabilities.mjs",
-    "scrape-wordpress": "node scripts/scrape-wordpress.mjs"
+    "patch-blog-copy": "node scripts/patch-blog-copy.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.4",
@@ -24,8 +19,6 @@
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.0.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.42.2",
-    "gsap": "^3.15.0",
     "lucide-react": "^1.18.0",
     "next": "16.2.9",
     "next-sanity": "^13.1.0",
@@ -40,7 +33,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "prettier": "^3.8.4",

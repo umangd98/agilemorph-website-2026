@@ -1,73 +1,44 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
-import {
-  CardGridSection,
-  CaseStudyGrid,
-  FdeExplainer,
-  FdePageHero,
-  FdeSection,
-  FinalCtaSection,
-} from "@/components/sections/fde";
-import { seoToMetadata } from "@/lib/seo";
-import { sanityFetch } from "@/sanity/fetch";
-import { caseStudiesIndexPageQuery, caseStudiesListQuery } from "@/sanity/queries";
-import type { CaseStudiesIndexPage, CaseStudySummary } from "@/sanity/types";
+import { Container } from "@/components/Container";
+import { CaseStudyRows, CtaBand } from "@/components/site/blocks";
+import { PageShell } from "@/components/site/PageShell";
+import { Section, TermList } from "@/components/site/Section";
+import { FOUNDER_TRACK } from "@/content/case-studies";
 
-const fallbackMetadata: Metadata = {
+export const metadata: Metadata = {
   title: "Case studies",
   description:
-    "How Agilemorph's forward deployed engineers embed with a team, find where AI fits, build it in production and stay until it is used.",
+    "Engagements where Agilemorph's engineers embedded with the team, found where AI fits, built it in production and measured whether people used it.",
   alternates: { canonical: "/case-studies" },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const page = await sanityFetch<CaseStudiesIndexPage | null>({
-    query: caseStudiesIndexPageQuery,
-    tags: ["caseStudiesIndexPage"],
-  });
-  return seoToMetadata(page?.seo, fallbackMetadata);
-}
-
-export default async function CaseStudiesRoute() {
-  const [page, studies] = await Promise.all([
-    sanityFetch<CaseStudiesIndexPage | null>({
-      query: caseStudiesIndexPageQuery,
-      tags: ["caseStudiesIndexPage"],
-    }),
-    sanityFetch<CaseStudySummary[]>({
-      query: caseStudiesListQuery,
-      tags: ["caseStudy"],
-    }),
-  ]);
-
-  const items = studies ?? [];
-
+export default function CaseStudiesPage() {
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
-        <FdePageHero
-          eyebrow={page?.hero?.eyebrow ?? "Case studies"}
-          heading={page?.hero?.heading ?? "Case studies"}
-          description={page?.hero?.description}
-        >
-          <FdeExplainer />
-        </FdePageHero>
+    <PageShell>
+      <section className="pt-14 pb-16 sm:pt-20">
+        <Container>
+          <h1 className="type-display max-w-4xl">Work from the field</h1>
+          <p className="type-lede mt-8 max-w-2xl text-ink-muted">
+            Engagements where our engineers embedded with the team, found where AI fits, built it
+            in production and measured whether people used it. Clients stay anonymous until they
+            approve being named.
+          </p>
+        </Container>
+      </section>
 
-        <FdeSection index="01" eyebrow="Engagements" heading={items.length ? "Engagements" : undefined}>
-          {items.length ? (
-            <CaseStudyGrid items={items} />
-          ) : (
-            <p className="text-fg-muted">Case studies are being written up. Check back soon.</p>
-          )}
-        </FdeSection>
+      <Section>
+        <CaseStudyRows />
+      </Section>
 
-        <CardGridSection index="02" block={page?.founderTrack} columns={4} />
-        <FinalCtaSection block={page?.cta} />
-      </main>
-      <SiteFooter />
-    </>
+      <Section
+        title="What our founders have built"
+        intro="Before and alongside Agilemorph. Our founders' own experience, not Agilemorph client work."
+      >
+        <TermList items={FOUNDER_TRACK} />
+      </Section>
+
+      <CtaBand />
+    </PageShell>
   );
 }
