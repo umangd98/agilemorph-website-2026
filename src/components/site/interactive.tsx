@@ -5,16 +5,13 @@ import {
   motion,
   MotionConfig,
   useInView,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
 } from "motion/react";
 import { Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
 import FlowField from "@/components/kokonutui/flow-field";
-import { COMPANY, COMPARISON, FAQ, FUNCTIONS, PHASES } from "@/content/site";
+import { COMPANY, COMPARISON, FAQ, FUNCTIONS } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { BookButton } from "./Button";
@@ -102,86 +99,6 @@ export function ComparisonSwitch() {
             </div>
           ))}
         </dl>
-      </div>
-    </MotionConfig>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* The loop: a sticky rail that fills as you scroll through the engagement     */
-/* -------------------------------------------------------------------------- */
-
-export function PhaseScroll() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 65%", "end 55%"] });
-  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.4 });
-  const [active, setActive] = useState(0);
-
-  useMotionValueEvent(scrollYProgress, "change", (value) => {
-    setActive(Math.min(PHASES.length - 1, Math.max(0, Math.floor(value * PHASES.length))));
-  });
-
-  return (
-    <MotionConfig reducedMotion="user">
-      <div ref={ref} className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
-        <div className="hidden lg:block">
-          <div className="sticky top-28">
-            <div className="flex items-baseline gap-4">
-              <div className="relative h-[7.5rem] w-[5.5rem] overflow-hidden">
-                <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.span
-                    key={active}
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.5, ease: EASE }}
-                    className="absolute inset-0 font-display text-[7.5rem] leading-none font-semibold tracking-[-0.06em] text-green tabular-nums"
-                  >
-                    {active + 1}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
-              <span className="font-display text-3xl font-semibold text-ink-faint">/ {PHASES.length}</span>
-            </div>
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.p
-                key={active}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="mt-6 max-w-sm text-lg"
-              >
-                <span className="text-ink-faint">You decide: </span>
-                {PHASES[active]?.decision}
-              </motion.p>
-            </AnimatePresence>
-            <div className="mt-10 h-1 w-full max-w-sm overflow-hidden rounded-full bg-rule">
-              <motion.div className="h-full origin-left rounded-full bg-green" style={{ scaleX: fill }} />
-            </div>
-          </div>
-        </div>
-
-        <ol>
-          {PHASES.map((phase, i) => (
-            <li
-              key={phase.name}
-              className={cn(
-                "border-t border-rule py-10 transition-opacity duration-500 last:border-b lg:py-14",
-                i === active ? "lg:opacity-100" : "lg:opacity-35",
-              )}
-            >
-              <p className="font-display text-xl font-semibold text-green tabular-nums lg:hidden">{i + 1}</p>
-              <h3 className="type-title mt-2 text-[2rem] sm:text-[2.5rem] lg:mt-0">{phase.name}</h3>
-              <p className="mt-2 text-lg font-medium text-green-deep">{phase.verb}</p>
-              <p className="type-lede mt-4 max-w-xl text-ink-muted">{phase.summary}</p>
-              <p className="mt-5 text-sm lg:hidden">
-                <span className="text-ink-faint">You decide: </span>
-                {phase.decision}
-              </p>
-            </li>
-          ))}
-        </ol>
       </div>
     </MotionConfig>
   );

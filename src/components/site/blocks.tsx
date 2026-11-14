@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CASE_STUDIES } from "@/content/case-studies";
-import { FOUNDERS, GAP, PHASES } from "@/content/site";
+import { FOUNDERS, GAP } from "@/content/site";
 
 export { Explainer } from "./Explainer";
 export {
@@ -10,8 +10,8 @@ export {
   CtaBand,
   FaqAccordion as FaqList,
   FunctionExplorer,
-  PhaseScroll,
 } from "./interactive";
+export { LoopPipeline } from "./LoopPipeline";
 
 export function GapStatement() {
   return (
@@ -35,41 +35,6 @@ export function GapStatement() {
         <p className="type-heading mt-10">{GAP.closing}</p>
       </div>
     </div>
-  );
-}
-
-/** The loop in full, for How we work. */
-export function PhaseList() {
-  return (
-    <ol className="border-b border-rule">
-      {PHASES.map((phase, i) => (
-        <li
-          key={phase.name}
-          className="grid gap-4 border-t border-rule py-10 md:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.2fr)] md:gap-8"
-        >
-          <span className="font-display text-4xl font-semibold text-green tabular-nums">{i + 1}</span>
-          <div>
-            <h3 className="type-heading">{phase.name}</h3>
-            <p className="mt-1 font-medium text-green-deep">{phase.verb}</p>
-            <p className="mt-3 text-ink-muted">{phase.summary}</p>
-          </div>
-          <div>
-            <ul className="flex flex-col gap-2">
-              {phase.details.map((detail) => (
-                <li key={detail} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-ink" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 text-sm">
-              <span className="text-ink-faint">You decide: </span>
-              {phase.decision}
-            </p>
-          </div>
-        </li>
-      ))}
-    </ol>
   );
 }
 

@@ -11,7 +11,7 @@ import {
   Founders,
   FunctionExplorer,
   GapStatement,
-  PhaseScroll,
+  LoopPipeline,
 } from "@/components/site/blocks";
 import { Hero } from "@/components/site/Hero";
 import { PageShell } from "@/components/site/PageShell";
@@ -45,7 +45,7 @@ export default function HomePage() {
         title="Find, build, ship, adopt, iterate"
         intro="One loop, run with your team. Each stage ends with a decision, and you continue only if the last one delivered."
       >
-        <PhaseScroll />
+        <LoopPipeline />
         <p className="mt-10">
           <Link href="/how-we-work" className={textLink}>
             The full engagement model

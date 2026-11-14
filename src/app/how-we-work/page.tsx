@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/Container";
 import { BookButton } from "@/components/site/Button";
-import { Comparison, CtaBand, Explainer, GapStatement, PhaseList } from "@/components/site/blocks";
+import { Comparison, CtaBand, Explainer, GapStatement, LoopPipeline } from "@/components/site/blocks";
 import { Adoption } from "@/components/site/Adoption";
 import { ConsoleDemo } from "@/components/site/ConsoleDemo";
 import { PageShell } from "@/components/site/PageShell";
@@ -89,7 +89,7 @@ export default function HowWeWorkPage() {
         title="Find, build, ship, adopt, iterate"
         intro="Each stage ends with a decision. You continue only if the previous one delivered."
       >
-        <PhaseList />
+        <LoopPipeline showDetails />
       </Section>
 
       <Section
