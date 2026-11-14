@@ -50,49 +50,6 @@ export const PROOF = [
 ] as const;
 
 /* -------------------------------------------------------------------------- */
-/* The floor-to-system example used in the hero and on How we work            */
-/* -------------------------------------------------------------------------- */
-
-export const FIELD_EXAMPLE = {
-  messages: [
-    {
-      from: "Shift supervisor, packing",
-      kind: "Text",
-      body: "Packing line B stopped again. Bearing on the conveyor drive. Replaced it, running now.",
-    },
-    {
-      from: "Maintenance fitter",
-      kind: "Voice note, transcribed",
-      body: "Used the last spare bearing from the store. Somebody needs to reorder.",
-    },
-    {
-      from: "Shift supervisor, packing",
-      kind: "Photo",
-      body: "Job card, signed off by the fitter.",
-    },
-  ],
-  record: {
-    title: "Downtime record",
-    system: "Written to your ERP",
-    fields: [
-      { label: "Asset", value: "Packing line B, conveyor drive" },
-      { label: "Status", value: "Running" },
-      { label: "Cause", value: "Bearing failure" },
-      { label: "Action", value: "Bearing replaced" },
-      { label: "Follow-up", value: "Spare bearing reorder raised" },
-      { label: "Evidence", value: "Job card photo attached" },
-    ],
-    confirm: {
-      pending: "Supervisor to confirm the cause",
-      done: "Confirmed by the shift supervisor",
-    },
-  },
-  steps: ["Captured", "Validated", "Confirmed", "Written"],
-  caption:
-    "A pattern we build often. AI captures the update where it happens, checks it against the system of record, asks a person to confirm anything uncertain, and writes the record through the API.",
-} as const;
-
-/* -------------------------------------------------------------------------- */
 /* Shared sections                                                             */
 /* -------------------------------------------------------------------------- */
 

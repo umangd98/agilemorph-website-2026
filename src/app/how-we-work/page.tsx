@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { BookButton } from "@/components/site/Button";
 import { Comparison, CtaBand, Explainer, GapStatement, PhaseList } from "@/components/site/blocks";
-import { FloorToSystem } from "@/components/site/FloorToSystem";
+import { Adoption } from "@/components/site/Adoption";
+import { ConsoleDemo } from "@/components/site/ConsoleDemo";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
 import {
@@ -65,8 +66,17 @@ export default function HowWeWorkPage() {
 
       <section aria-label="An example architecture" className="bg-panel py-16 sm:py-20">
         <Container>
-          <h2 className="type-title mb-12 max-w-3xl">From a WhatsApp message to the system of record</h2>
-          <FloorToSystem />
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+            <div>
+              <h2 className="type-title max-w-xl">From a message on the floor to a record in your system</h2>
+              <p className="type-lede mt-6 max-w-lg text-ink-muted">
+                A pattern we build often. AI captures the update where it happens, checks it against
+                the system of record, asks a person to confirm anything uncertain, and writes the
+                record through the API.
+              </p>
+            </div>
+            <ConsoleDemo />
+          </div>
         </Container>
       </section>
 
@@ -94,7 +104,8 @@ export default function HowWeWorkPage() {
         title="Adoption is our job"
         intro="We measure who uses it and how fresh the data is, and we stay until the numbers prove it works."
       >
-        <TermList items={ADOPTION} />
+        <Adoption />
+        <TermList items={ADOPTION} className="mt-16" />
       </Section>
 
       <Section

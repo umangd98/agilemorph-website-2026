@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored from the Kokonut UI and Bklit shadcn registries. Re-pulled with
+    // `npx shadcn add`, not hand-edited, so they are not linted here.
+    "src/components/kokonutui/**",
+    "src/components/charts/**",
+    "src/components/shimmering-text.tsx",
   ]),
 ]);
 

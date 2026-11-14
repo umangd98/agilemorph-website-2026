@@ -1,8 +1,13 @@
+import path from "node:path";
+
 import type { NextConfig } from "next";
 
 import { RETIRED_BLOG_SLUGS } from "./src/data/retired-blog-posts";
 
 const nextConfig: NextConfig = {
+  // A stray lockfile in the home directory otherwise makes Turbopack pick the
+  // wrong workspace root.
+  turbopack: { root: path.resolve(__dirname) },
   async redirects() {
     // The site was rebuilt around Forward Deployed Engineering. Every retired
     // URL 301s to the closest page so links and rankings carry over.
