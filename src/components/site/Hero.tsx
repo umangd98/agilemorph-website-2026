@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, MotionConfig } from "motion/react";
+import { useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import SplitFlapText from "@/components/kokonutui/split-flap-text";
@@ -12,6 +13,22 @@ import { BookButton, ButtonLink } from "./Button";
 import { HeroLoop, useLoopCycle } from "./HeroLoop";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Systems the headline flips through, on its own beat, faster than the loop. */
+const SYSTEMS = ["HUBSPOT", "SAP", "SALESFORCE", "ZENDESK", "TALLY", "SHOPIFY", "ZOHO", "ODOO", "XERO", "ERP"];
+const SYSTEM_MS = 2200;
+
+function useSystemWord(fallback: string, reduced: boolean | null) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (reduced) return;
+    const id = setInterval(() => {
+      if (document.visibilityState === "visible") setI((n) => (n + 1) % SYSTEMS.length);
+    }, SYSTEM_MS);
+    return () => clearInterval(id);
+  }, [reduced]);
+  return reduced ? fallback : SYSTEMS[i]!;
+}
 
 function Words({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
@@ -48,7 +65,7 @@ function FadeUp({ delay, children, className }: { delay: number; children: React
 
 export function Hero() {
   const cycle = useLoopCycle();
-  const system = cycle.example.system;
+  const system = useSystemWord(cycle.example.system, cycle.reduced);
 
   return (
     <MotionConfig reducedMotion="user">

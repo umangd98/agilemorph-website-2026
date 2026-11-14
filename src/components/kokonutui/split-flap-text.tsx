@@ -1,4 +1,4 @@
-// @ts-nocheck -- vendored from the Kokonut UI registry (MIT), which is not written for noUncheckedIndexedAccess. Re-pull with `npx shadcn add @kokonutui/<name>` rather than editing.
+// @ts-nocheck -- vendored from the Kokonut UI registry (MIT), which is not written for noUncheckedIndexedAccess. Re-pull with `npx shadcn add @kokonutui/<name>` rather than editing. Local change: FLIP 56 to 38 and STAGGER 40 to 28, so the hero word flips faster.
 "use client";
 
 /**
@@ -24,9 +24,9 @@ import { cn } from "@/lib/utils";
 /** The order the flaps are printed in. A tile can only flip forward. */
 const CHARSET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:.-/&!?";
 /** One flap falling, in ms. Quick, so long trips round the drum still feel brisk. */
-const FLIP = 56;
+const FLIP = 38;
 /** Tiles start a beat apart, left to right. */
-const STAGGER = 40;
+const STAGGER = 28;
 
 export interface SplitFlapTextProps {
   /** Show this text. Leave out to cycle through `words`. */
