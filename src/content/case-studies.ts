@@ -16,37 +16,11 @@ export type CaseStudy = {
   howWeWorked: string;
   built?: string[];
   outcome?: string;
-  phases: Partial<Record<"Discovery audit" | "Blueprint" | "Pilot" | "Adopt" | "Scale", string>>;
+  phases: Partial<Record<"Find" | "Build" | "Ship" | "Adopt" | "Iterate", string>>;
   stack?: string[];
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
-  {
-    slug: "manufacturer-africa-factory-floor",
-    client: "A manufacturer with factories in Africa",
-    headline: "Embedded with factory users to find where AI fits into the systems already running.",
-    region: "Africa",
-    status: "In progress",
-    context: "A manufacturer running factories in Africa.",
-    howWeWorked:
-      "Our engineers work directly with factory users, gathering requirements on the ground and identifying where AI fits into the existing systems.",
-    phases: {
-      "Discovery audit":
-        "On the ground with factory users, gathering requirements and mapping where AI fits into existing systems.",
-    },
-  },
-  {
-    slug: "listed-agro-processing-company",
-    client: "A BSE-listed agro-processing company",
-    headline: "On-site discovery to find where AI fits into a listed processor's operations.",
-    region: "India",
-    context: "A publicly listed agro-processing company in India.",
-    howWeWorked:
-      "The same embedded model: on-site requirement discovery, identifying where AI integrates into existing operations, then building and measuring.",
-    phases: {
-      "Discovery audit": "On-site requirement discovery with the teams who run operations.",
-    },
-  },
   {
     slug: "ai-coaching-platform-mvp",
     client: "An AI relationship-coaching platform in the US",
@@ -66,9 +40,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Onboarding flows, UX copy, email templates and user research",
     ],
     phases: {
-      "Discovery audit": "Worked directly with the founders and early users to turn their needs into features.",
-      Blueprint: "Designed the assessment framework and the architecture for retrieval, orchestration and evaluation.",
-      Pilot: "Shipped the MVP to early users, with free and paid report tiers.",
+      Find: "Worked directly with the founders and early users to turn their needs into features.",
+      Build: "Designed the assessment framework and the architecture for retrieval, orchestration and evaluation.",
+      Ship: "Shipped the MVP to early users, with free and paid report tiers.",
       Adopt: "Built onboarding, automated reports and the retention loop, and ran user research.",
     },
     stack: ["Next.js", "Supabase", "NestJS", "Langfuse", "Qdrant", "OpenRouter", "n8n", "Zapier"],
@@ -88,9 +62,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Webhook reliability, CDN and bot mitigation",
     ],
     phases: {
-      "Discovery audit": "Worked with the owner on how sales conversations actually run.",
-      Blueprint: "Chose a channel-adapter design so one agent serves WhatsApp and Telegram.",
-      Pilot: "Put the agent live in the existing sales channels.",
+      Find: "Worked with the owner on how sales conversations actually run.",
+      Build: "Chose a channel-adapter design so one agent serves WhatsApp and Telegram.",
+      Ship: "Put the agent live in the existing sales channels.",
       Adopt: "Measured how the agent handled conversations.",
     },
     stack: ["Next.js", "Sanity", "FastAPI", "Supabase", "Claude", "WhatsApp", "Telegram"],
@@ -109,9 +83,35 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Tremendous payouts, released only after the owner approves",
     ],
     phases: {
-      Pilot: "Owner approval in the loop for every payout.",
+      Ship: "Owner approval in the loop for every payout.",
     },
     stack: ["Housecall Pro", "Google Sheets", "Tremendous"],
+  },
+  {
+    slug: "manufacturer-africa-factory-floor",
+    client: "A manufacturer with factories in Africa",
+    headline: "Embedded with factory users to find where AI fits into the systems already running.",
+    region: "Africa",
+    status: "In progress",
+    context: "A manufacturer running factories in Africa.",
+    howWeWorked:
+      "Our engineers work directly with factory users, gathering requirements on the ground and identifying where AI fits into the existing systems.",
+    phases: {
+      Find:
+        "On the ground with factory users, gathering requirements and mapping where AI fits into existing systems.",
+    },
+  },
+  {
+    slug: "listed-agro-processing-company",
+    client: "A BSE-listed agro-processing company",
+    headline: "On-site discovery to find where AI fits into a listed processor's operations.",
+    region: "India",
+    context: "A publicly listed agro-processing company in India.",
+    howWeWorked:
+      "The same embedded model: on-site requirement discovery, identifying where AI integrates into existing operations, then building and measuring.",
+    phases: {
+      Find: "On-site requirement discovery with the teams who run operations.",
+    },
   },
 ];
 

@@ -29,13 +29,13 @@ export default function HowWeWorkPage() {
     <PageShell>
       <section className="pt-14 pb-16 sm:pt-20 sm:pb-20">
         <Container>
-          <h1 className="type-display max-w-4xl">Close the gap between the floor and the system.</h1>
+          <h1 className="type-display max-w-4xl">Find it, build it, ship it, get it used, make it better.</h1>
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
             <Explainer className="self-start" />
             <nav aria-label="On this page" className="text-[0.9375rem]">
               <ul className="flex flex-col border-b border-rule">
                 {[
-                  ["The five phases", "#phases"],
+                  ["The loop", "#phases"],
                   ["What the discovery audit covers", "#discovery-audit"],
                   ["What we build", "#what-we-build"],
                   ["How engagements are structured", "#engagement-model"],
@@ -68,11 +68,11 @@ export default function HowWeWorkPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
             <div>
-              <h2 className="type-title max-w-xl">From a message on the floor to a record in your system</h2>
+              <h2 className="type-title max-w-xl">From wherever the work happens to a record in your system</h2>
               <p className="type-lede mt-6 max-w-lg text-ink-muted">
-                A pattern we build often. AI captures the update where it happens, checks it against
-                the system of record, asks a person to confirm anything uncertain, and writes the
-                record through the API.
+                A pattern we build often, in sales, finance, support and operations alike. AI
+                captures the update where it happens, checks it against the system of record, asks a
+                person to confirm anything uncertain, and writes the record through the API.
               </p>
             </div>
             <ConsoleDemo />
@@ -86,8 +86,8 @@ export default function HowWeWorkPage() {
 
       <Section
         id="phases"
-        title="Five phases, each ending with a decision"
-        intro="You continue only if the previous phase delivered."
+        title="Find, build, ship, adopt, iterate"
+        intro="Each stage ends with a decision. You continue only if the previous one delivered."
       >
         <PhaseList />
       </Section>
@@ -95,14 +95,14 @@ export default function HowWeWorkPage() {
       <Section
         id="discovery-audit"
         title="What the discovery audit covers"
-        intro="Fixed scope, fixed fee, on site with your teams."
+        intro="Fixed scope, fixed fee, alongside your teams."
       >
         <TermList items={DISCOVERY_AUDIT} />
       </Section>
 
       <Section
         title="Adoption is our job"
-        intro="We measure who uses it and how fresh the data is, and we stay until the numbers prove it works."
+        intro="We measure who uses it, listen to what they tell us, and keep improving it until the numbers prove it works."
       >
         <Adoption />
         <TermList items={ADOPTION} className="mt-16" />

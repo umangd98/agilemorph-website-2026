@@ -9,12 +9,12 @@ import { Line, LineChart } from "@/components/charts/line-chart";
 
 /*
  * Adoption, made visible. Left: everyone who should be using the new workflow,
- * one dot each, across four sites. They go from the old way (grey), through a
+ * one dot each, across four teams. They go from the old way (grey), through a
  * nudge (amber), to the new way (green), week after week. Right: the curve we
  * chase, updates moving out of chat and into the system. Both illustrative.
  */
 
-const SITES = ["Plant", "Warehouse", "Project site", "Head office"] as const;
+const SITES = ["Sales", "Support", "Finance", "Operations"] as const;
 const COLS = 12;
 const ROWS = 4;
 const GRID: [number, number] = [COLS, ROWS];
@@ -39,7 +39,7 @@ function SiteGrid({ play }: { play: boolean }) {
     }
     if (!play) return;
 
-    // Each site adopts from a different starting point, a beat after the last.
+    // Each team adopts from a different starting point, a beat after the last.
     const tl = createTimeline({ loop: true, loopDelay: 1600, defaults: { ease: "outQuad" } });
     sites.forEach((site, i) => {
       const origin = (1 + (i % 3)) * COLS + 3 + i * 2;
@@ -129,7 +129,7 @@ export function Adoption() {
       <figure className="m-0">
         <SiteGrid play={inView} />
         <figcaption className="mt-6 text-[0.9375rem] text-ink-muted">
-          Every dot is a person who should be using the new workflow. We track them per site, per
+          Every dot is a person who should be using the new workflow. We track them per team, per
           week, and nudge until the grid is green.
         </figcaption>
       </figure>

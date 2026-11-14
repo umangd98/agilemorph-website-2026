@@ -75,7 +75,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </Row>
           ) : null}
           {phases.length ? (
-            <Row label="The phases">
+            <Row label="The loop">
               <ol className="flex flex-col gap-4">
                 {phases.map((phase) => (
                   <li key={phase.name}>

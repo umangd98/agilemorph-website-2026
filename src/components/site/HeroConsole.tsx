@@ -1,16 +1,17 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Check, Image as ImageIcon, MessageSquare, Mic, Phone } from "lucide-react";
+import { Check, Mail, MessageSquare, Mic, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { SCENARIOS, type Scenario } from "@/content/scenarios";
 import { cn } from "@/lib/utils";
 
 /*
- * The hero console: a message from the floor travels through capture,
- * validation and a person's confirmation, and lands as a record in the
- * client's system. It cycles through three sites and can be driven by hand.
+ * The capture console: a message from wherever the work happens travels
+ * through capture, validation and a person's confirmation, and lands as a
+ * record in the system the team already runs. It cycles through teams and can
+ * be driven by hand.
  */
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -27,7 +28,7 @@ const STEP_STAGE = [2, 3, 4, 7] as const;
 const CHANNEL_ICON = {
   "WhatsApp text": MessageSquare,
   "Voice note": Mic,
-  Photo: ImageIcon,
+  Email: Mail,
   "Phone call": Phone,
 } as const;
 
@@ -127,7 +128,7 @@ export function HeroConsole({
       className="relative overflow-hidden rounded-[1.25rem] bg-white/90 shadow-[0_1px_0_rgba(11,13,16,0.04),0_30px_60px_-30px_rgba(11,13,16,0.25)] ring-1 ring-rule backdrop-blur"
     >
       {/* Sites */}
-      <div className="flex items-center gap-1 border-b border-rule-soft p-1.5" role="tablist" aria-label="Example sites">
+      <div className="flex items-center gap-1 border-b border-rule-soft p-1.5" role="tablist" aria-label="Example teams">
         {SCENARIOS.map((s, i) => (
           <button
             key={s.site}
@@ -142,7 +143,7 @@ export function HeroConsole({
           >
             {i === index ? (
               <motion.span
-                layoutId="site-pill"
+                layoutId="team-pill"
                 className="absolute inset-0 rounded-[0.8rem] bg-panel"
                 transition={{ type: "spring", bounce: 0.18, duration: 0.5 }}
               />
@@ -161,8 +162,8 @@ export function HeroConsole({
       </div>
 
       <div className="p-5 sm:p-6">
-        {/* On the floor */}
-        <p className="text-xs font-medium text-ink-faint">On the floor</p>
+        {/* Where the work happens */}
+        <p className="text-xs font-medium text-ink-faint">Where the work happens</p>
         <div className="mt-2 min-h-[6.25rem]">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -175,7 +176,8 @@ export function HeroConsole({
             >
               <p className="flex items-center gap-2 text-[0.8125rem] text-ink-muted">
                 <Icon size={14} aria-hidden className="shrink-0 text-green" />
-                {scenario.message.from}, {scenario.message.channel.toLowerCase()}
+                {scenario.message.from},{" "}
+                {scenario.message.channel === "WhatsApp text" ? "WhatsApp" : scenario.message.channel.toLowerCase()}
               </p>
               {stage < 1 ? (
                 <TypingDots />
@@ -271,7 +273,7 @@ export function HeroConsole({
                 stage >= 7 ? "bg-green-soft text-green-deep" : "bg-white text-ink-faint",
               )}
             >
-              {stage >= 7 ? `Written to ${scenario.system === "SALESFORCE" ? "Salesforce" : scenario.system}` : "Waiting"}
+              {stage >= 7 ? `Written to ${scenario.system}` : "Waiting"}
             </motion.span>
           </div>
           <dl className="px-4 py-2 font-code text-[0.8125rem]">

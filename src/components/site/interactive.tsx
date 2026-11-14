@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
 import FlowField from "@/components/kokonutui/flow-field";
-import { COMPANY, COMPARISON, FAQ, PHASES } from "@/content/site";
+import { COMPANY, COMPARISON, FAQ, FUNCTIONS, PHASES } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 import { BookButton } from "./Button";
@@ -108,7 +108,7 @@ export function ComparisonSwitch() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Phases: a sticky rail that fills as you scroll through the engagement       */
+/* The loop: a sticky rail that fills as you scroll through the engagement     */
 /* -------------------------------------------------------------------------- */
 
 export function PhaseScroll() {
@@ -173,6 +173,7 @@ export function PhaseScroll() {
             >
               <p className="font-display text-xl font-semibold text-green tabular-nums lg:hidden">{i + 1}</p>
               <h3 className="type-title mt-2 text-[2rem] sm:text-[2.5rem] lg:mt-0">{phase.name}</h3>
+              <p className="mt-2 text-lg font-medium text-green-deep">{phase.verb}</p>
               <p className="type-lede mt-4 max-w-xl text-ink-muted">{phase.summary}</p>
               <p className="mt-5 text-sm lg:hidden">
                 <span className="text-ink-faint">You decide: </span>
@@ -181,6 +182,78 @@ export function PhaseScroll() {
             </li>
           ))}
         </ol>
+      </div>
+    </MotionConfig>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Where AI fits: one business, function by function                           */
+/* -------------------------------------------------------------------------- */
+
+export function FunctionExplorer() {
+  const [active, setActive] = useState(0);
+  const fn = FUNCTIONS[active]!;
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
+        <div role="tablist" aria-label="Business functions" aria-orientation="vertical" className="flex flex-wrap gap-2 lg:flex-col lg:gap-0 lg:self-start lg:border-b lg:border-rule">
+          {FUNCTIONS.map((f, i) => (
+            <button
+              key={f.name}
+              type="button"
+              role="tab"
+              id={`fn-tab-${i}`}
+              aria-selected={i === active}
+              aria-controls="fn-panel"
+              onClick={() => setActive(i)}
+              onMouseEnter={() => setActive(i)}
+              className={cn(
+                "relative rounded-pill px-4 py-2 text-left text-[0.9375rem] font-medium ring-1 ring-rule transition-colors lg:rounded-none lg:border-t lg:border-rule lg:px-0 lg:py-5 lg:text-xl lg:ring-0",
+                i === active ? "bg-ink text-white lg:bg-transparent lg:text-ink" : "text-ink-muted hover:text-ink",
+              )}
+            >
+              {i === active ? (
+                <motion.span
+                  layoutId="fn-marker"
+                  className="absolute top-1/2 -left-5 hidden h-2 w-2 -translate-y-1/2 rounded-full bg-green lg:block"
+                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  aria-hidden
+                />
+              ) : null}
+              <span className={cn("relative transition-transform duration-300", i === active && "lg:inline-block lg:translate-x-1")}>
+                {f.name}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div id="fn-panel" role="tabpanel" aria-labelledby={`fn-tab-${active}`} className="relative min-h-[22rem] overflow-hidden rounded-panel bg-white ring-1 ring-rule">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: EASE }}
+              className="grid h-full"
+            >
+              <div className="border-b border-rule-soft p-7 sm:p-9">
+                <p className="text-sm font-medium text-red">What we usually find</p>
+                <p className="type-heading mt-3">{fn.find}</p>
+              </div>
+              <div className="border-b border-rule-soft bg-green-soft/50 p-7 sm:p-9">
+                <p className="text-sm font-medium text-green-deep">What we build</p>
+                <p className="type-heading mt-3">{fn.build}</p>
+              </div>
+              <div className="p-7 sm:p-9">
+                <p className="text-sm font-medium text-ink-faint">Built into</p>
+                <p className="mt-2 text-ink-muted">{fn.systems}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </MotionConfig>
   );
@@ -247,8 +320,8 @@ export function FaqAccordion() {
 /* -------------------------------------------------------------------------- */
 
 export function CtaBand({
-  heading = "Let's pick one workflow and prove it on site.",
-  body = "Book a discovery call. We'll tell you where AI fits in your operation and what a pilot would take.",
+  heading = "Let's find where AI fits in your business.",
+  body = "Book a discovery call. We'll tell you where AI would pay off in your systems, and what the first build would take.",
 }: {
   heading?: string;
   body?: string;

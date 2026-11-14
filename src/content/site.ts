@@ -25,13 +25,13 @@ export const COMPANY = {
 export const SITE_TITLE = "Agilemorph | Forward Deployed Engineering for AI";
 
 export const ONE_LINER =
-  "Agilemorph is one of India's first forward deployed engineering firms. Our engineers embed with your teams, find where AI fits in your systems, workflows and processes, build it in production, and stay until it's used.";
+  "We're one of India's first forward deployed engineering firms. We work out where AI fits in your business, build it into the systems you already run, ship it, make sure your people use it, and keep improving it from their feedback.";
 
 export const SITE_DESCRIPTION =
-  "Agilemorph is one of India's first forward deployed engineering firms. Our engineers embed with your teams, find where AI fits in your systems and processes, build it in production, and stay until it's used.";
+  "Agilemorph is one of India's first forward deployed engineering firms. We find where AI fits in your business, build it into your existing systems, ship it, drive adoption and iterate on user feedback.";
 
 export const FDE_EXPLAINER =
-  "Forward Deployed Engineering means our engineers work inside your business, on your sites or alongside your teams, instead of building from a requirements document at a distance. We learn the real process, build AI into the systems you already run, measure whether people use it, and keep improving until they do.";
+  "Forward Deployed Engineering means our engineers work inside your business, alongside your teams, instead of building from a requirements document at a distance. We learn how the work really happens, build AI into the systems you already run, measure whether people use it, and keep improving it until they do.";
 
 export const FOOTER_TAGLINE =
   "Forward Deployed Engineering, built in India. AI inside your systems, adopted by your people, owned by you.";
@@ -54,15 +54,15 @@ export const PROOF = [
 /* -------------------------------------------------------------------------- */
 
 export const GAP = {
-  heading: "Work happens on site. The record of it lives somewhere else.",
-  body: "Teams fall back to WhatsApp, spreadsheets and phone calls because the official system is slow or awkward. So the ERP or CRM goes stale, and leadership has no live view of what is actually happening.",
+  heading: "Most AI projects stall between the demo and daily use.",
+  body: "The demo works. Then the tool sits beside the systems people actually use, nobody changes how they work, and it is quietly switched off. The model is rarely the problem. Nobody stayed to make it fit.",
   symptoms: [
-    "Teams report in WhatsApp instead of the system.",
-    "Records don't match what happened on the floor.",
-    "Updates land days late.",
-    "Leadership has no live view.",
+    "A pilot that never reached production.",
+    "A tool that lives outside the systems your team uses.",
+    "People drift back to the old way.",
+    "Nobody can say whether it paid off.",
   ],
-  closing: "Most AI projects fail here. They are built offsite, handed over, and never adopted.",
+  closing: "We close that gap by working inside your business until the new way is the default.",
 } as const;
 
 export const COMPARISON = {
@@ -70,60 +70,160 @@ export const COMPARISON = {
   before: "A traditional IT vendor",
   after: "Agilemorph",
   rows: [
-    ["Where the team works", "Offsite, from a requirements document", "On your sites, beside your people"],
-    ["How scope is set", "Fixed upfront, before anyone sees the field", "From what we observe in the discovery audit"],
-    ["What ships", "A system, then a handover", "A working workflow in weeks, improved every week"],
+    ["Where the team works", "Offsite, from a requirements document", "Inside your business, beside your people"],
+    ["How scope is set", "Fixed upfront, before anyone sees the work", "From what we observe with your teams"],
+    ["Where it lives", "A new tool for people to learn", "Inside the systems you already run"],
     ["Who owns adoption", "Your team, after go-live", "We do, until usage data proves it works"],
-    ["How success is measured", "Delivered to spec", "Used on site, with accurate and current data"],
+    ["What happens after launch", "A handover and a support contract", "Improved every week from user feedback"],
   ],
 } as const;
 
+/** The loop we run on every engagement. The hero, the homepage and How we work all tell it. */
 export const PHASES = [
   {
-    name: "Discovery audit",
-    summary: "Fixed scope, fixed fee. On site with your teams, mapping every process, data flow and gap.",
+    name: "Find",
+    verb: "We find where AI fits",
+    summary: "We embed with your teams, see how the work really gets done, and find where AI pays off inside the systems you already run.",
     details: [
-      "Every process, data flow and gap mapped with the people who do the work",
-      "A baseline per site: update lag, field completeness, duplicate rate and active users",
+      "A fixed-scope discovery audit with the people who do the work",
+      "Opportunities ranked, with success criteria agreed upfront",
     ],
-    decision: "Do the findings justify a blueprint?",
+    decision: "Which workflow do we build first?",
   },
   {
-    name: "Blueprint",
-    summary: "Ranked opportunities, a target architecture and a pilot plan.",
+    name: "Build",
+    verb: "We build it into your systems",
+    summary: "Built into your existing stack: your CRM, ERP, helpdesk, inbox or custom software. No parallel tool for people to learn.",
     details: [
-      "Opportunities ranked for your operation",
-      "A target architecture inside your existing stack",
-      "A pilot plan with success criteria agreed upfront",
+      "Error handling, monitoring, audit logs and evals from the first build",
+      "A person in the loop for anything uncertain",
     ],
-    decision: "Which workflow do we pilot?",
+    decision: "Is it ready for real users?",
   },
   {
-    name: "Pilot",
-    summary: "One workflow at one or two sites, live in production.",
+    name: "Ship",
+    verb: "We ship it to production",
+    summary: "Live with one team within weeks, in real work, measured against the criteria you agreed.",
     details: [
-      "Error handling, retries, monitoring, audit logs and evals from the first build",
-      "Measured against the success criteria you agreed",
+      "Rolled out to a single team first, so problems surface early",
+      "Measured against the success criteria from day one",
     ],
     decision: "Did it meet the criteria?",
   },
   {
     name: "Adopt",
-    summary: "We train, nudge and measure usage until the new way is the default.",
+    verb: "We make sure it gets used",
+    summary: "We train, nudge and measure usage until the new way is the default. Adoption is our job, not yours.",
     details: [
       "Training with the people who use it, where they work",
-      "Usage measured per site, per person, per week",
+      "Usage measured per team, per person, per week",
     ],
     decision: "Is it ready to roll out?",
   },
   {
-    name: "Scale",
-    summary: "Roll out across sites and functions with a dedicated engineer on a monthly retainer.",
+    name: "Iterate",
+    verb: "We improve it from feedback",
+    summary: "Every week we change it based on what users tell us, then take the same loop to the next team or workflow.",
     details: [
-      "Site by site and function by function, on the same model",
-      "A weekly review with your IT team",
+      "A weekly review of usage, feedback and data quality",
+      "A dedicated engineer on a monthly retainer as it scales",
     ],
     decision: "What do we take on next?",
+  },
+] as const;
+
+/**
+ * Hero examples: the same loop run in different parts of a business. Each one
+ * names the system it was built into. Illustrative, not client data.
+ */
+export const LOOP_EXAMPLES = [
+  {
+    team: "Sales",
+    system: "HUBSPOT",
+    systemName: "HubSpot",
+    stages: [
+      "Reps spend their mornings updating deals instead of selling.",
+      "An assistant that turns call notes and emails into deal updates in HubSpot.",
+      "Live with one sales team, with reps approving each update.",
+      "We sit with the reps, see who uses it, and fix what slows them down.",
+      "Reps asked for follow-up drafts. They shipped the next week.",
+    ],
+  },
+  {
+    team: "Support",
+    system: "ZENDESK",
+    systemName: "Zendesk",
+    stages: [
+      "Agents search several tools for an order before they can reply.",
+      "An agent that drafts replies inside Zendesk, with the order history attached.",
+      "Live on one queue, with a person approving every reply.",
+      "We track which drafts get rewritten and coach the team on the rest.",
+      "Refund requests came next, straight from the team's feedback.",
+    ],
+  },
+  {
+    team: "Finance",
+    system: "SAP",
+    systemName: "SAP",
+    stages: [
+      "Supplier invoices are keyed in by hand and checked twice.",
+      "Invoice capture that matches each bill to its purchase order in SAP.",
+      "Live for one business unit, with finance approving every exception.",
+      "We track which invoices still go the manual way, and why.",
+      "Credit notes followed, once the team trusted the matching.",
+    ],
+  },
+  {
+    team: "Operations",
+    system: "ERP",
+    systemName: "your ERP",
+    stages: [
+      "Updates arrive on WhatsApp and never reach the ERP.",
+      "Voice notes and photos turned into validated records in the ERP.",
+      "Live with one team, with a supervisor confirming anything unclear.",
+      "We see who still reports in chat and help them switch.",
+      "Daily summaries for managers, because they asked for them.",
+    ],
+  },
+] as const;
+
+/** Where in a business we usually find AI that pays off. Shown on the homepage. */
+export const FUNCTIONS = [
+  {
+    name: "Sales",
+    find: "Reps re-typing calls and emails into the CRM, and leads that wait too long for a reply.",
+    build: "Assistants that update deals, draft follow-ups and qualify inbound leads, inside your CRM.",
+    systems: "Salesforce, HubSpot, Zoho, WhatsApp Business",
+  },
+  {
+    name: "Customer support",
+    find: "Agents hunting across tools for context, and the same questions answered by hand every day.",
+    build: "Reply drafting with the customer's history attached, routing, and voice agents that log every call.",
+    systems: "Zendesk, Freshdesk, Intercom, Twilio",
+  },
+  {
+    name: "Finance",
+    find: "Invoices, receipts and statements keyed in by hand, and month-end spent reconciling.",
+    build: "Document capture matched to purchase orders, exception queues and reconciliation checks.",
+    systems: "SAP, Tally, Xero, QuickBooks",
+  },
+  {
+    name: "Operations",
+    find: "Updates that live in chat and spreadsheets while the official system goes stale.",
+    build: "Capture from WhatsApp, voice notes and photos, validated and written into your system of record.",
+    systems: "SAP, Oracle, Odoo, custom ERPs",
+  },
+  {
+    name: "People and HR",
+    find: "Onboarding checklists, policy questions and approvals chased by email.",
+    build: "Assistants that answer from your own policies and move requests through approval.",
+    systems: "Microsoft 365, Google Workspace, your HRMS",
+  },
+  {
+    name: "Leadership",
+    find: "Reports assembled by hand from several systems, already out of date when they arrive.",
+    build: "Live summaries and questions answered from your own data, with the source for every number.",
+    systems: "Your warehouse, BI tools and systems of record",
   },
 ] as const;
 
@@ -131,7 +231,7 @@ export const OWNERSHIP = {
   heading: "Yours, not ours",
   items: [
     ["Your infrastructure", "Cloud or on-premise. Models and hosting are agreed with your IT team."],
-    ["Your system of record", "We write into SAP, Salesforce or your ERP. No parallel database to maintain."],
+    ["Your systems", "We build into your CRM, ERP, helpdesk or custom software. No parallel tool to maintain."],
     ["A full audit trail", "Every write is logged: what changed, where it came from and who confirmed it."],
     ["Your IP", "Code, workflows, documentation and data belong to you."],
   ],
@@ -160,7 +260,7 @@ export const FAQ = [
   ["What is Forward Deployed Engineering?", FDE_EXPLAINER],
   [
     "How is this different from hiring an IT vendor or an automation agency?",
-    "A vendor builds offsite from a document, fixes scope before seeing the field, hands over a system and counts success as delivered to spec. We work on your sites, set scope from what we observe, ship a working workflow in weeks, and own adoption until usage data proves it works.",
+    "A vendor builds offsite from a document, fixes scope before seeing the work, hands over a system and counts success as delivered to spec. We work inside your business, set scope from what we observe, ship a working workflow in weeks, own adoption, and keep improving it from user feedback.",
   ],
   [
     "Do you work on site?",
@@ -168,7 +268,7 @@ export const FAQ = [
   ],
   [
     "What systems do you work with?",
-    "SAP, Salesforce, ERPs, CRMs, factory and field tools, WhatsApp Business, Shopify and custom software.",
+    "SAP, Salesforce, HubSpot, Zendesk, ERPs, CRMs, helpdesks, Microsoft 365, Google Workspace, WhatsApp Business, Shopify and custom software.",
   ],
   [
     "Can you deploy in our own cloud or on-premise?",
@@ -179,7 +279,11 @@ export const FAQ = [
     "How do engagements start?",
     "With a fixed-scope discovery audit for enterprises, or an AI Audit for growing businesses. No long contract before you've seen results.",
   ],
-  ["How long until something is live?", "A pilot is usually live in production within weeks of the audit."],
+  ["How long until something is live?", "The first workflow is usually live in production within weeks of the audit."],
+  [
+    "What happens after it ships?",
+    "We stay. We measure who uses it, collect feedback from the people using it, and ship improvements every week until it is the default way of working.",
+  ],
   [
     "Do you only use no-code tools?",
     "No. We use Make, n8n and Zapier where they fit and write code in Python, TypeScript and Java where they don't.",
@@ -188,9 +292,9 @@ export const FAQ = [
 ] as const;
 
 export const CLIENT_TYPES = [
-  ["Multi-site enterprises", "Manufacturing, agro-processing, EPC, mining, infrastructure and environment services."],
-  ["Mid-size operations businesses", "In India, Africa and the US."],
-  ["Growing service, trades and e-commerce businesses", "Starting with an AI Audit. Same model, smaller scope."],
+  ["Enterprises", "That want AI inside the systems they already run, not another tool beside them."],
+  ["Mid-size businesses", "In India, the US and Africa, with teams ready to work a new way."],
+  ["Growing businesses", "Starting with an AI Audit. Same model, smaller scope."],
   ["AI-first startups", "That need an embedded engineering partner."],
 ] as const;
 
@@ -199,22 +303,22 @@ export const CLIENT_TYPES = [
 /* -------------------------------------------------------------------------- */
 
 export const OUR_READ = {
-  heading: "The system isn't the problem. The distance between the work and the system is.",
+  heading: "Your systems aren't the problem. The distance between the work and the system is.",
   paragraphs: [
-    "So we bring the system to where people already work. We put AI at the point where work happens: a WhatsApp update, a scanned document, a voice note, a machine log. We validate it, write it into the system of record, and keep a person in the loop for anything uncertain.",
-    "Then we measure usage per site, per person, per week, until the new way is the default.",
+    "So we bring AI to where people already work: an email, a WhatsApp message, a call, a document, a form. We validate what it produces, write it into your system of record, and keep a person in the loop for anything uncertain.",
+    "Then we measure usage per team, per person, per week, and keep improving it from what users tell us until the new way is the default.",
   ],
 } as const;
 
 export const DISCOVERY_AUDIT = [
-  ["Shadow", "Site visits with operators, supervisors and back-office teams."],
-  ["Map", "Every data path, including chat groups, spreadsheets, calls and system objects."],
-  ["Measure", "A baseline per site: update lag, field completeness, duplicate rate and active users."],
-  ["Deliver", "An audit report, ranked opportunities and a pilot recommendation."],
+  ["Shadow", "Time with the people who do the work, from the front line to the back office."],
+  ["Map", "Every data path, including email, chat, spreadsheets, calls and the systems you run."],
+  ["Measure", "A baseline per team: time spent, update lag, data quality and active users."],
+  ["Deliver", "An audit report, ranked opportunities and a recommendation for what to build first."],
 ] as const;
 
 export const ADOPTION = [
-  ["Adoption dashboard per site", "Who is using the new workflow, and who has gone back to the old one."],
+  ["Adoption dashboard per team", "Who is using the new workflow, and who has gone back to the old one."],
   ["Data-quality score per record", "Completeness and freshness for every record written."],
   ["Automatic nudges", "A reminder goes out when a record goes stale."],
   ["Escalation to a manager", "If a nudge is ignored, the right manager hears about it."],
@@ -223,7 +327,7 @@ export const ADOPTION = [
 
 export const CAPABILITIES = [
   {
-    name: "Field capture into your system of record",
+    name: "Capture into your system of record",
     body: "WhatsApp messages, voice notes, photos and email turned into validated records in your ERP or CRM.",
     tools: "WhatsApp Business, Claude, n8n, your ERP or CRM API",
   },
@@ -257,11 +361,11 @@ export const CAPABILITIES = [
 export const ENGAGEMENTS = [
   {
     name: "Enterprise engagement",
-    forWhom: "For enterprises and multi-site businesses",
+    forWhom: "For enterprises and larger organisations",
     steps: [
-      ["Discovery audit", "Fixed scope, fixed fee, on site. Ends with an audit report and a pilot recommendation."],
-      ["Pilot", "One workflow at one or two sites, live in production, against criteria agreed upfront."],
-      ["Rollout", "Across sites and functions, with a dedicated engineer on a monthly retainer."],
+      ["Discovery audit", "Fixed scope, fixed fee, with your teams. Ends with an audit report and a pilot recommendation."],
+      ["Pilot", "One workflow with one team, live in production, against criteria agreed upfront."],
+      ["Rollout", "Across teams and functions, improved every week, with a dedicated engineer on a monthly retainer."],
     ],
     note: "Every phase ends with a decision point. You continue only if the previous phase delivered.",
     cta: "Book a discovery call",
@@ -270,7 +374,7 @@ export const ENGAGEMENTS = [
     name: "AI Audit",
     forWhom: "For growing businesses",
     steps: [
-      ["AI Audit", "Fixed scope, 1 to 2 weeks, remote or on site. Maps where AI and automation pay off in your operation."],
+      ["AI Audit", "Fixed scope, 1 to 2 weeks, remote or on site. Maps where AI and automation pay off in your business."],
       ["First build", "Live within weeks of the audit."],
     ],
     note: "Same model, smaller scope.",

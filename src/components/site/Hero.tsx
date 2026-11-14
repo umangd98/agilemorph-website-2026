@@ -9,7 +9,7 @@ import { ONE_LINER, PROOF } from "@/content/site";
 
 import { Explainer } from "./Explainer";
 import { BookButton, ButtonLink } from "./Button";
-import { HeroConsole, useScenarioCycle } from "./HeroConsole";
+import { HeroLoop, useLoopCycle } from "./HeroLoop";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -47,13 +47,13 @@ function FadeUp({ delay, children, className }: { delay: number; children: React
 }
 
 export function Hero() {
-  const cycle = useScenarioCycle();
-  const system = cycle.scenario.system;
+  const cycle = useLoopCycle();
+  const system = cycle.example.system;
 
   return (
     <MotionConfig reducedMotion="user">
       <section className="relative isolate overflow-hidden border-b border-rule">
-        {/* A survey map of the site: the cursor raises the ground, a click sends a ripple. */}
+        {/* A contour map behind the hero: the cursor raises the ground, a click sends a ripple. */}
         <TopoBackground
           className="absolute inset-0 -z-10 min-h-0 bg-transparent text-[#cfd1c7] [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
           labels={false}
@@ -67,19 +67,18 @@ export function Hero() {
         <Container className="grid grid-cols-[minmax(0,1fr)] gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-20">
           <div>
             <h1 className="type-display">
-              <span className="sr-only">AI that actually gets used. Built inside the systems you already run.</span>
-              <span aria-hidden className="block">
-                <Words text="AI that actually gets used." />
+              <span className="sr-only">
+                AI, built into the systems you already run, that gets used.
               </span>
-              <span aria-hidden className="mt-1 block text-ink-muted">
-                <Words text="Built inside your" delay={0.3} />
+              <span aria-hidden className="block">
+                <Words text="AI, built into your" />
               </span>
               <motion.span
                 aria-hidden
-                className="mt-3 block"
+                className="mt-2 block"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.7 }}
+                transition={{ duration: 0.4, delay: 0.45 }}
               >
                 <SplitFlapText
                   text={system}
@@ -87,6 +86,9 @@ export function Hero() {
                   tileClassName="bg-ink text-paper"
                 />
               </motion.span>
+              <span aria-hidden className="mt-2 block text-ink-muted">
+                <Words text="that gets used." delay={0.55} />
+              </span>
             </h1>
 
             <FadeUp delay={0.75}>
@@ -102,10 +104,7 @@ export function Hero() {
           </div>
 
           <FadeUp delay={0.5}>
-            <HeroConsole cycle={cycle} />
-            <p className="mt-3 text-center text-xs text-ink-faint">
-              Three sites, one pattern. Pick a site, or watch it run.
-            </p>
+            <HeroLoop cycle={cycle} />
           </FadeUp>
         </Container>
 

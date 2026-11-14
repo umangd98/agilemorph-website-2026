@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Blog",
   alternates: { canonical: "/blog" },
   description:
-    "Notes from embedding with operations teams: where data breaks between the floor and the system, and how to fix it.",
+    "Notes from embedding with teams: where AI fits in a business, how to build it into existing systems, and how to get it used.",
 };
 
 const POSTS_PER_PAGE = 9;

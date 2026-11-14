@@ -5,7 +5,13 @@ import { CASE_STUDIES } from "@/content/case-studies";
 import { FOUNDERS, GAP, PHASES } from "@/content/site";
 
 export { Explainer } from "./Explainer";
-export { ComparisonSwitch as Comparison, CtaBand, FaqAccordion as FaqList, PhaseScroll } from "./interactive";
+export {
+  ComparisonSwitch as Comparison,
+  CtaBand,
+  FaqAccordion as FaqList,
+  FunctionExplorer,
+  PhaseScroll,
+} from "./interactive";
 
 export function GapStatement() {
   return (
@@ -32,7 +38,7 @@ export function GapStatement() {
   );
 }
 
-/** The five phases in full, for How we work. */
+/** The loop in full, for How we work. */
 export function PhaseList() {
   return (
     <ol className="border-b border-rule">
@@ -44,6 +50,7 @@ export function PhaseList() {
           <span className="font-display text-4xl font-semibold text-green tabular-nums">{i + 1}</span>
           <div>
             <h3 className="type-heading">{phase.name}</h3>
+            <p className="mt-1 font-medium text-green-deep">{phase.verb}</p>
             <p className="mt-3 text-ink-muted">{phase.summary}</p>
           </div>
           <div>

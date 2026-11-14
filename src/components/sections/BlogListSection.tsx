@@ -77,7 +77,7 @@ function pageHref({
 }
 
 export function BlogListSection({
-  heading = "Notes from the floor",
+  heading = "Notes from the work",
   description = "What we learn embedding with operations teams: where data breaks between the floor and the system, and how to fix it.",
   posts = [],
   categories = [],

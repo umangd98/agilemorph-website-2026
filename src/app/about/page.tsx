@@ -21,8 +21,8 @@ export default function AboutPage() {
           <h1 className="type-display max-w-4xl">One of India&apos;s first forward deployed engineering firms.</h1>
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
             <p className="type-lede max-w-xl text-ink-muted">
-              Our engineers embed with your teams, find where AI fits in your systems, workflows
-              and processes, build it in production, and stay until it&apos;s used.
+              We find where AI fits in your business, build it into the systems you already run,
+              ship it, make sure your people use it, and keep improving it from their feedback.
             </p>
             <Explainer className="self-start" />
           </div>
@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           <p className="type-lede">
             We are based in Nagpur, India, with clients in India, the US
-            and Africa. Our work happens inside client businesses, on their sites and alongside
+            and Africa. Our work happens inside client businesses, alongside
             their teams.
           </p>
           <p className="type-lede text-ink-muted">

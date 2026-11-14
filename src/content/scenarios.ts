@@ -1,7 +1,8 @@
 /**
- * Field-to-system scenarios played in the homepage hero console. Each one is
- * a message from the floor that ends as a confirmed record in a system of
- * record, across the three regions we work in. Illustrative, not client data.
+ * Scenarios played in the How we work console. Each one is a message from
+ * wherever the work happens that ends as a confirmed record in the system the
+ * team already runs, across different parts of a business. Illustrative, not
+ * client data.
  */
 
 export type Scenario = {
@@ -9,7 +10,7 @@ export type Scenario = {
   system: string;
   message: {
     from: string;
-    channel: "WhatsApp text" | "Voice note" | "Photo" | "Phone call";
+    channel: "WhatsApp text" | "Voice note" | "Email" | "Phone call";
     body: string;
   };
   confirm: { ask: string; done: string };
@@ -22,46 +23,46 @@ export type Scenario = {
 
 export const SCENARIOS: Scenario[] = [
   {
-    site: "Plant, Nagpur",
+    site: "Sales",
+    system: "HubSpot",
+    message: {
+      from: "Prospect",
+      channel: "WhatsApp text",
+      body: "Can you send pricing for the annual plan? We'd like to start next month.",
+    },
+    confirm: { ask: "Account owner approves the quote", done: "Quote approved by the account owner" },
+    record: {
+      title: "Deal",
+      fields: [
+        ["Contact", "Matched from the number"],
+        ["Stage", "Quote requested"],
+        ["Next step", "Quote drafted for review"],
+      ],
+      status: "DEAL UPDATED",
+    },
+  },
+  {
+    site: "Finance",
     system: "SAP",
     message: {
-      from: "Shift supervisor",
-      channel: "Voice note",
-      body: "Packing line B stopped. Bearing on the conveyor drive. Replaced it, running again now.",
+      from: "Supplier",
+      channel: "Email",
+      body: "Please find our invoice attached for the order delivered last week.",
     },
-    confirm: { ask: "Supervisor confirms the cause", done: "Cause confirmed by the supervisor" },
+    confirm: { ask: "Finance approves a price mismatch", done: "Mismatch approved by finance" },
     record: {
-      title: "Downtime record",
+      title: "Supplier invoice",
       fields: [
-        ["Asset", "Packing line B, conveyor drive"],
-        ["Cause", "Bearing failure"],
-        ["Action", "Bearing replaced, spare reordered"],
+        ["Vendor", "Matched to the vendor record"],
+        ["Check", "Matched to the purchase order"],
+        ["Next step", "Queued for payment"],
       ],
-      status: "RUNNING",
+      status: "INVOICE POSTED",
     },
   },
   {
-    site: "Project site, Lagos",
-    system: "ERP",
-    message: {
-      from: "Store keeper",
-      channel: "Photo",
-      body: "Cement delivery at the gate. Short against the delivery note, photo attached.",
-    },
-    confirm: { ask: "Site engineer confirms the shortfall", done: "Shortfall confirmed by the site engineer" },
-    record: {
-      title: "Goods receipt",
-      fields: [
-        ["Material", "Cement, from the delivery note"],
-        ["Variance", "Short delivery flagged"],
-        ["Next step", "Supplier query drafted"],
-      ],
-      status: "QUERY RAISED",
-    },
-  },
-  {
-    site: "Warehouse, Ohio",
-    system: "SALESFORCE",
+    site: "Support",
+    system: "Salesforce",
     message: {
       from: "Customer",
       channel: "Phone call",
@@ -76,6 +77,25 @@ export const SCENARIOS: Scenario[] = [
         ["Next step", "Replacement order created"],
       ],
       status: "CASE OPENED",
+    },
+  },
+  {
+    site: "Operations",
+    system: "your ERP",
+    message: {
+      from: "Supervisor",
+      channel: "Voice note",
+      body: "Line B stopped for a bearing on the drive. Replaced it, running again now.",
+    },
+    confirm: { ask: "Supervisor confirms the cause", done: "Cause confirmed by the supervisor" },
+    record: {
+      title: "Downtime record",
+      fields: [
+        ["Asset", "Line B, drive"],
+        ["Cause", "Bearing failure"],
+        ["Action", "Bearing replaced, spare reordered"],
+      ],
+      status: "RUNNING",
     },
   },
 ];

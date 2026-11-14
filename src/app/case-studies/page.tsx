@@ -18,7 +18,7 @@ export default function CaseStudiesPage() {
     <PageShell>
       <section className="pt-14 pb-16 sm:pt-20">
         <Container>
-          <h1 className="type-display max-w-4xl">Work from the field</h1>
+          <h1 className="type-display max-w-4xl">Some of our work</h1>
           <p className="type-lede mt-8 max-w-2xl text-ink-muted">
             Engagements where our engineers embedded with the team, found where AI fits, built it
             in production and measured whether people used it. Clients stay anonymous until they
