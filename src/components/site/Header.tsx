@@ -28,54 +28,61 @@ export function Header() {
     };
   }, [open]);
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/85">
-      <Container>
-        <nav aria-label="Main" className="flex h-16 items-center justify-between gap-6">
-          <Logo priority />
-
-          <ul className="hidden items-center gap-8 lg:flex">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={cn(
-                    "text-[0.9375rem] transition-colors",
-                    isActive(item.href)
-                      ? "text-ink underline decoration-green decoration-2 underline-offset-[10px]"
-                      : "text-ink-muted hover:text-ink",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="hidden lg:block">
-            <BookButton className="min-h-10 px-5 text-sm" />
-          </div>
-
-          <button
-            type="button"
-            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? "Close menu" : "Open menu"}
+    <>
+      <header className="border-rule bg-paper/95 supports-[backdrop-filter]:bg-paper/85 sticky top-0 z-50 border-b backdrop-blur">
+        <Container>
+          <nav
+            aria-label="Main"
+            className="flex h-16 items-center justify-between gap-6"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </nav>
-      </Container>
+            <Logo priority />
 
+            <ul className="hidden items-center gap-8 lg:flex">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={cn(
+                      "text-[0.9375rem] transition-colors",
+                      isActive(item.href)
+                        ? "text-ink decoration-green underline decoration-2 underline-offset-[10px]"
+                        : "text-ink-muted hover:text-ink",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="hidden lg:block">
+              <BookButton className="min-h-10 px-5 text-sm" />
+            </div>
+
+            <button
+              type="button"
+              className="text-ink -mr-2 flex h-11 w-11 items-center justify-center rounded-full lg:hidden"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </nav>
+        </Container>
+      </header>
+
+      {/* Outside the header: its backdrop blur would make it the containing block for this fixed panel, collapsing it to the header's height. */}
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto border-t border-rule bg-paper lg:hidden"
+        className="border-rule bg-paper fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
       >
         <Container className="flex flex-col py-6">
           {[...NAV, { label: "Contact", href: "/contact" }].map((item) => (
@@ -85,7 +92,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={cn(
-                "border-b border-rule-soft py-4 font-display text-2xl font-semibold tracking-[-0.02em]",
+                "border-rule-soft font-display border-b py-4 text-2xl font-semibold tracking-[-0.02em]",
                 isActive(item.href) ? "text-green" : "text-ink",
               )}
             >
@@ -95,6 +102,6 @@ export function Header() {
           <BookButton className="mt-8 w-full" />
         </Container>
       </div>
-    </header>
+    </>
   );
 }
