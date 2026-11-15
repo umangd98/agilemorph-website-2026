@@ -4,11 +4,9 @@ import Link from "next/link";
 import { StructuredData } from "@/components/StructuredData";
 import { Adoption } from "@/components/site/Adoption";
 import {
-  CaseStudyRows,
   Comparison,
   CtaBand,
   FaqList,
-  Founders,
   FunctionExplorer,
   GapStatement,
   LoopPipeline,
@@ -75,19 +73,6 @@ export default function HomePage() {
 
       <Section title={OWNERSHIP.heading}>
         <TermList items={OWNERSHIP.items} />
-      </Section>
-
-      <Section title="Who you'll work with">
-        <Founders />
-      </Section>
-
-      <Section title="Some of our work" intro="Clients stay anonymous until they approve being named.">
-        <CaseStudyRows limit={3} />
-        <p className="mt-10">
-          <Link href="/case-studies" className={textLink}>
-            All case studies
-          </Link>
-        </p>
       </Section>
 
       <Section title="Who we work with">
