@@ -102,8 +102,9 @@ export function EngineLive({ embedded = false }: { embedded?: boolean }) {
         if (FH * s > H * 0.66) s = (H * 0.66) / FH;
         fit = { s, x: (W - FW * s) / 2, y: 0 };
       } else {
-        // Desktop: cover the stage and shift the engine right, so the copy has the left
-        const s = Math.max(W / FW, H / FH);
+        // Desktop: never taller than 75% of the stage, so wide screens don't blow the engine up;
+        // shifted right so the copy has the left, with the frame's edges feathered into the stage
+        const s = Math.min(Math.max(W / FW, H / FH), (H / FH) * 0.75);
         fit = { s, x: (W - FW * s) / 2 + W * 0.14, y: (H - FH * s) / 2 };
       }
       // The canvas covers the film's frame exactly, so its pixels line up with the film's
@@ -299,7 +300,7 @@ export function EngineLive({ embedded = false }: { embedded?: boolean }) {
             "absolute top-0 left-0",
             mobile
               ? "[mask-image:linear-gradient(to_bottom,#000_78%,transparent)]"
-              : "[mask-image:linear-gradient(to_right,transparent,#000_90px)]",
+              : "[mask-composite:intersect] [mask-image:linear-gradient(to_right,transparent,#000_90px,#000_calc(100%-90px),transparent),linear-gradient(to_bottom,transparent,#000_90px,#000_calc(100%-90px),transparent)]",
           )}
           aria-hidden
         />

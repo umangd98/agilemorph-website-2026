@@ -143,8 +143,9 @@ export function EngineFilm({ embedded = false }: { embedded?: boolean }) {
         if (FH * s > H * 0.66) s = (H * 0.66) / FH;
         fit = { s, x: (W - FW * s) / 2, y: 0 };
       } else {
-        // Desktop: cover the stage and shift the engine right, so the copy has the left
-        const s = Math.max(W / FW, H / FH);
+        // Desktop: never taller than 75% of the stage, so wide screens don't blow the engine up;
+        // shifted right so the copy has the left, with the frame's edges feathered into the stage
+        const s = Math.min(Math.max(W / FW, H / FH), (H / FH) * 0.75);
         fit = { s, x: (W - FW * s) / 2 + W * 0.14, y: (H - FH * s) / 2 };
       }
       lastDrawn = "";
@@ -186,6 +187,25 @@ export function EngineFilm({ embedded = false }: { embedded?: boolean }) {
         const lg = g.createLinearGradient(f.x, 0, f.x + 90, 0);
         lg.addColorStop(0, bg); lg.addColorStop(1, clear(bg));
         g.fillStyle = lg; g.fillRect(f.x, 0, 90, H);
+      }
+      if (!mobile) {
+        // The frame no longer always covers the stage: fade its other edges too
+        const fx = Math.min(W, f.x + dw), fy0 = Math.max(0, f.y), fy1 = Math.min(H, f.y + dh);
+        if (f.x + dw < W) {
+          const rg = g.createLinearGradient(fx - 90, 0, fx, 0);
+          rg.addColorStop(0, clear(bg)); rg.addColorStop(1, bg);
+          g.fillStyle = rg; g.fillRect(fx - 90, 0, W - fx + 90, H);
+        }
+        if (f.y > 0) {
+          const tg = g.createLinearGradient(0, fy0, 0, fy0 + 90);
+          tg.addColorStop(0, bg); tg.addColorStop(1, clear(bg));
+          g.fillStyle = tg; g.fillRect(0, 0, W, fy0 + 90);
+        }
+        if (f.y + dh < H) {
+          const bgr = g.createLinearGradient(0, fy1 - 90, 0, fy1);
+          bgr.addColorStop(0, clear(bg)); bgr.addColorStop(1, bg);
+          g.fillStyle = bgr; g.fillRect(0, fy1 - 90, W, H - fy1 + 90);
+        }
       }
       if (mobile && f.y + dh < H) {
         const bh = dh * 0.22, by = f.y + dh - bh;
