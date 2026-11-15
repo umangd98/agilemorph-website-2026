@@ -405,6 +405,96 @@ if MODE == "still":
                         spot=round(st["spots"][i_], 3)) for i_, tm_ in enumerate(TEAMS)}
     json.dump(dict(layers=[px((R2 * 0.98, -0.5, zz)) for zz in layer_z], left=[px((-R2 * 0.98, -0.5, zz)) for zz in layer_z], hollow=px((0, 0, 0.12)), res=RES, wedges=wedges, bottom=px((0, -R2, 0))), open(os.path.join(OUTDIR, "still.json"), "w"))
     print("DONE"); raise SystemExit
+if MODE == "glbfull":
+    # The whole engine for the live scroll story: one mesh per layer (all six wedges),
+    # the floor dial, and the AI core in parts, with contact shading baked into one atlas.
+    # The bake happens with the layers lifted apart, then each layer is moved back to rest.
+    LIFT = 2.7
+    pose(0.5, 0.0); engine.rotation_euler = (0, 0, 0)
+    core.scale = (1, 1, 1); column.scale = (1, 1, 1)
+    for o in [core, *core.children_recursive, dashes, *dashes.children]: o.hide_render = False
+    bpy.data.objects.remove(glow_ob, do_unlink=True)
+    bpy.context.view_layer.update()
+
+    def merge(objs, name):
+        objs = [o for o in objs if o.type in ("MESH", "FONT")]
+        bpy.ops.object.select_all(action="DESELECT")
+        for o in objs:
+            o.select_set(True)
+        bpy.context.view_layer.objects.active = objs[0]
+        bpy.ops.object.convert(target="MESH")
+        objs = list(bpy.context.selected_objects)
+        for o in [o for o in objs if o.hide_render]:
+            bpy.data.objects.remove(o, do_unlink=True)
+        objs = list(bpy.context.selected_objects)
+        for o in objs:
+            if "UVMap" not in o.data.uv_layers: o.data.uv_layers.new(name="UVMap")
+            mw = o.matrix_world.copy(); o.parent = None; o.matrix_world = mw
+        bpy.context.view_layer.objects.active = objs[0]
+        if len(objs) > 1: bpy.ops.object.join()
+        ob = bpy.context.active_object
+        bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+        ob.name = name; ob.data.name = name
+        return ob
+
+    layers = []
+    for k in range(len(LAYERS)):
+        parts = [c for i in range(6) for c in groups[(i, k)].children_recursive]
+        layers.append(merge(parts, f"L{k}"))
+    dial = merge([c for c in engine.children if c.type in ("MESH", "FONT")], "Dial")
+    corebase = merge([c for c in core.children if c.type == "MESH"], "CoreBase")
+    col = merge(list(column.children_recursive), "Column")
+    dash = merge(list(dashes.children), "Dashes")
+    rings = merge(floor_rings, "FloorRings")
+    every = [*layers, dial, corebase, col, dash]
+    print("TRIS", {o.name: sum(len(p.vertices) - 2 for p in o.data.polygons) for o in every}, flush=True)
+
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in every:
+        o.data.uv_layers.new(name="AO"); o.data.uv_layers.active = o.data.uv_layers["AO"]; o.select_set(True)
+    bpy.context.view_layer.objects.active = every[0]
+    bpy.ops.object.mode_set(mode="EDIT"); bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.uv.smart_project(angle_limit=math.radians(60), island_margin=0.0015)
+    bpy.ops.object.mode_set(mode="OBJECT")
+
+    world.light_settings.distance = 0.5
+    ao = bpy.data.images.new("ao", 4096, 4096)
+    def bake(objs, others, clear):
+        for o in others: o.hide_render = True
+        for o in objs:
+            for slot in o.material_slots:
+                nt = slot.material.node_tree
+                if "BAKE" not in nt.nodes:
+                    n = nt.nodes.new("ShaderNodeTexImage"); n.image = ao; n.name = "BAKE"
+                nt.nodes.active = nt.nodes["BAKE"]
+        bpy.ops.object.select_all(action="DESELECT")
+        for o in objs: o.select_set(True)
+        bpy.context.view_layer.objects.active = objs[0]
+        scene.render.bake.use_clear = clear
+        scene.cycles.samples = 96
+        bpy.ops.object.bake(type="AO", margin=3)
+        for o in others: o.hide_render = False
+    core_parts = [corebase, col]
+    # Layers and dial without the core in the way, then the core on its own
+    bake([*layers, dial, dash], core_parts, True)
+    bake(core_parts, [*layers, dial, dash], False)
+    for m in bpy.data.materials:
+        if m.node_tree and "BAKE" in m.node_tree.nodes: m.node_tree.nodes.remove(m.node_tree.nodes["BAKE"])
+    ao.filepath_raw = os.path.join(OUTDIR, "ao.png"); ao.file_format = "PNG"; ao.save()
+    for o in every: o.data.uv_layers.active = o.data.uv_layers["UVMap"]
+    print("AO DONE", flush=True)
+
+    # Back to rest: each layer drops by its share of the lift; the column pivots at its foot
+    from mathutils import Matrix
+    for k, o in enumerate(layers):
+        o.data.transform(Matrix.Translation((0, 0, -LIFT * k * 0.34)))
+    col.data.transform(Matrix.Translation((0, 0, -0.22))); col.location = (0, 0, 0.22)
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in [*every, rings]: o.select_set(True)
+    bpy.ops.export_scene.gltf(filepath=os.path.join(OUTDIR, "engine.glb"), use_selection=True, export_apply=True,
+        export_draco_mesh_compression_enable=True, export_draco_mesh_compression_level=7, export_lights=False, export_cameras=False,
+        export_image_format="WEBP")
+    print("DONE"); raise SystemExit
 if MODE == "glb":
     # The closed engine for three.js: one rigid mesh with baked contact shading,
     # plus a floor with its light and shadow baked in. The engine is round, so the

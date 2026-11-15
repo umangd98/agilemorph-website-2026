@@ -25,8 +25,8 @@ Rebuild (Blender 5.x):
   `Blender -b -P film.py -- mobile loop film/mobile-loop 60 40`
 - Then `python3 pack.py <path to this repo>` converts the frames to WebP in `public/deconstruction-v3/` and writes `desktop.json` and `mobile.json` (frames, blueprint frames, loop length and label anchors).
 
-## /deconstruction-three: the same engine, live
+## /deconstruction-three: the same story, live in three.js
 
-- `Blender -b -P film.py -- desktop glb <outdir> 1 1` joins the closed engine into one mesh, bakes its contact shading (`ao.png`, on a second UV map) and the floor's light and shadow (`floor.exr`), and exports `engine.glb` with Draco.
-- For the site: `ao.png` goes to `public/deconstruction-three/ao.webp` at 2048 px, grayscale. `floor.exr` is divided by the open floor's brightness, clipped at 1.6, scaled to 0 to 1 and saved as `floor-light.webp` at 1024 px.
-- Lights, the team spotlight and the green spill are live in `src/components/deconstruction-three/engine3d.ts`.
+- `Blender -b -P film.py -- desktop glbfull <outdir> 1 1` exports the engine in parts (one mesh per layer, the floor dial, the core base, the column and the slot), with contact shading baked into one shared atlas while the layers are lifted apart. Each layer is then moved back to rest, and the page lifts it again.
+- For the site: `ao.png` goes to `public/deconstruction-live/` as `ao-4k.webp` and a 2048 px `ao-2k.webp` for phones, both grayscale. `floor-light.webp` comes from `glb` mode: its `floor.exr`, divided by the open floor's brightness, clipped at 1.6, scaled to 0 to 1, 1024 px.
+- The camera path, lift, core and team colours are copied from `film.py` into `src/components/deconstruction-live/scene.ts`. Change them in both.

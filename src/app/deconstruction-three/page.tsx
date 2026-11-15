@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
-import { EngineCompare } from "@/components/deconstruction-three/EngineCompare";
+import { EngineLive } from "@/components/deconstruction-live/EngineLive";
+import { CtaBand } from "@/components/site/blocks";
 import { PageShell } from "@/components/site/PageShell";
 
-// A side-by-side trial of the film against live 3D. Kept out of search.
+// The department engine drawn live in three.js, on trial against the film. Kept out of search.
 export const metadata: Metadata = {
-  title: "Film or live 3D",
-  description: "The department engine's opening turn as a rendered film and as live three.js, side by side.",
+  title: "Deconstruction, live 3D",
+  description: "How Agilemorph takes a business apart, finds where AI fits, builds it into the heart of it, ships it, gets it used and keeps improving it.",
   alternates: { canonical: "/deconstruction-three" },
   robots: { index: false, follow: false },
 };
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
 export default function DeconstructionThreePage() {
   return (
     <PageShell>
-      <EngineCompare />
+      <EngineLive />
+      <CtaBand heading="Let's take your business apart, together." />
     </PageShell>
   );
 }
