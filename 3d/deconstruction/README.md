@@ -15,9 +15,12 @@ Rebuild (Blender 5.x):
 ## /deconstruction-v3: the department engine film
 
 - `film.py` builds the engine once and renders the whole story as a frame sequence, plus the anchor points the page uses for labels and the process ring. `bp.py` turns a scene into the line-drawn blueprint.
-- Render (about 45 minutes on an M1 Max):
-  `Blender -b -P film.py -- desktop solid film/desktop 150 64`
+- Department names sit on a dial ring on the floor, curved along it, with a big icon on each wedge. The team facing the camera lights green. `LABELS=<style>` switches to the other trial styles (top, wall, icons, ring, colour, plain).
+- Render (about an hour on an M1 Max). `loop` is the opening shot: one full turn of the closed engine, played on repeat until the visitor scrolls.
+  `Blender -b -P film.py -- desktop solid film/desktop 150 48`
   `Blender -b -P film.py -- desktop blue film/desktop-blue 150 12`
-  `Blender -b -P film.py -- mobile solid film/mobile 150 48`
+  `Blender -b -P film.py -- desktop loop film/desktop-loop 60 48`
+  `Blender -b -P film.py -- mobile solid film/mobile 150 40`
   `Blender -b -P film.py -- mobile blue film/mobile-blue 150 12`
-- Then `python3 pack.py <path to this repo>` converts the frames to WebP in `public/deconstruction-v3/` and writes `desktop.json` and `mobile.json`.
+  `Blender -b -P film.py -- mobile loop film/mobile-loop 60 40`
+- Then `python3 pack.py <path to this repo>` converts the frames to WebP in `public/deconstruction-v3/` and writes `desktop.json` and `mobile.json` (frames, blueprint frames, loop length and label anchors).

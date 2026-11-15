@@ -14,7 +14,7 @@ argv = sys.argv[sys.argv.index("--") + 1:]
 VARIANT, MODE, OUTDIR = argv[0], argv[1], argv[2]
 FRAMES = int(argv[3]) if len(argv) > 3 else 160
 SAMPLES = int(argv[4]) if len(argv) > 4 else 64
-RES = (1600, 900) if VARIANT == "desktop" else (720, 900)
+RES = (1600, 900) if VARIANT == "desktop" else (960, 1200)
 os.makedirs(OUTDIR, exist_ok=True)
 S = dict(spin=0, green=[0] * 6, out=0, lift=0)
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -124,9 +124,10 @@ def sector(name, r1, r2, a0, a1, h, loc_z, m, parent=None, bevel=0.03, steps=40)
     bm.to_mesh(me); bm.free()
     ob = bpy.data.objects.new(name, me); link(ob, parent); ob.location = (0, 0, loc_z)
     return finish(ob, m, bevel)
-def text(name, body, size, loc, m, parent=None, rot=(0, 0, 0)):
+def text(name, body, size, loc, m, parent=None, rot=(0, 0, 0), font="InterTight.ttf"):
     cu = bpy.data.curves.new(name, "FONT"); cu.body = body; cu.size = size; cu.extrude = 0.006; cu.align_x = "CENTER"; cu.align_y = "CENTER"
-    cu.font = bpy.data.fonts.load(os.path.join(HERE, "InterTight.ttf"), check_existing=True)
+    cu.space_line = 0.9
+    cu.font = bpy.data.fonts.load(os.path.join(HERE, font), check_existing=True)
     ob = bpy.data.objects.new(name, cu); link(ob, parent); ob.location = loc; ob.rotation_euler = rot; cu.materials.append(m); return ob
 
 
@@ -151,6 +152,69 @@ floor = box("floor", (400, 400, 0.02), (0, 0, -0.01), M["floor"], bevel=0)
 floor_rings = [torus("fr", r, 0.006, (0, 0, 0.002), mat("FR", "#07080a", emit="#2a3440", strength=1.0)) for r in (4.6, 6.4, 8.8)]
 groups = {}   # (team, layer) -> empty
 texts = []
+label_mats = []
+LABELS = os.environ.get("LABELS", "iconring")
+TEAM_TINT = {"Sales": "#6aa9ff", "Finance": "#c3a6ff", "Customer support": "#ff9f80", "Operations": "#7fe3e0", "Marketing": "#ff86bd", "People and HR": "#e9d27a"}
+
+def ring_label(team, am, m, rad=3.97, size=0.3):
+    """Set a name flat on the floor along a circle, so it follows the dial's curve."""
+    fnt = bpy.data.fonts.load(os.path.join(HERE, "latin-700-normal.ttf"), check_existing=True)
+    letters = []
+    for ch in team:
+        cu = bpy.data.curves.new("rc", "FONT"); cu.body = ch if ch != " " else "i"; cu.size = size; cu.extrude = 0.003; cu.font = fnt
+        cu.align_x = "CENTER"; cu.align_y = "CENTER"
+        ob = bpy.data.objects.new("rc", cu); link(ob, engine); cu.materials.append(m)
+        bpy.context.view_layer.update()
+        letters.append((ob, max(ob.dimensions.x, size * 0.3) + size * 0.025, ch == " "))
+    total = sum(w for _, w, _ in letters)
+    ang = am - (total / rad) / 2
+    for ob, w, space in letters:
+        mid = ang + (w / 2) / rad
+        ob.location = (math.cos(mid) * rad, math.sin(mid) * rad, 0.012)
+        ob.rotation_euler = (0, 0, mid + math.pi / 2)
+        if space: ob.hide_render = True
+        ang += w / rad
+
+def wall_label(team, a0, a1, parent, m):
+    """Lay a name letter by letter round the outer face of a wedge's base."""
+    fnt = bpy.data.fonts.load(os.path.join(HERE, "latin-700-normal.ttf"), check_existing=True)
+    size, rad, zc = 0.21, R2 + 0.012, -0.17
+    letters = []
+    for ch in team:
+        cu = bpy.data.curves.new("ch", "FONT"); cu.body = ch if ch != " " else "i"; cu.size = size; cu.extrude = 0.004; cu.font = fnt
+        cu.align_x = "CENTER"; cu.align_y = "CENTER"
+        ob = bpy.data.objects.new("ch", cu); link(ob, parent); cu.materials.append(m)
+        bpy.context.view_layer.update()
+        letters.append((ob, max(ob.dimensions.x, size * 0.28) + size * 0.06, ch == " "))
+    total = sum(w for _, w, _ in letters)
+    am = (a0 + a1) / 2
+    ang = am - (total / rad) / 2
+    for ob, w, space in letters:
+        mid = ang + (w / 2) / rad
+        ob.location = (math.cos(mid) * rad, math.sin(mid) * rad, zc)
+        ob.rotation_euler = (math.radians(90), 0, mid + math.pi / 2)
+        if space: ob.hide_render = True
+        ang += w / rad
+
+def icon_sales(p, m):
+    for k, hh in enumerate((0.1, 0.17, 0.26)):
+        box("bar", (0.07, 0.07, hh), (-0.1 + k * 0.1, 0, hh / 2), m, bevel=0.01, parent=p)
+def icon_finance(p, m):
+    box("slip", (0.22, 0.3, 0.025), (0, 0, 0.02), m, bevel=0.008, parent=p)
+    for k in range(3): box("line", (0.14 - (k % 2) * 0.04, 0.02, 0.012), (0, 0.08 - k * 0.07, 0.04), M["dark"], bevel=0, parent=p)
+def icon_support(p, m):
+    torus("band", 0.12, 0.016, (0, 0, 0.12), m, parent=p, rot=(math.radians(90), 0, 0), minor=8)
+    for sx in (-1, 1): cyl("cup", 0.05, 0.05, (sx * 0.12, 0, 0.1), m, parent=p, rot=(0, math.radians(90), 0), bevel=0.008)
+def icon_ops(p, m):
+    box("parcel", (0.22, 0.22, 0.2), (0, 0, 0.1), m, bevel=0.015, parent=p)
+    box("tape", (0.225, 0.05, 0.205), (0, 0, 0.1), M["dark"], bevel=0, parent=p)
+def icon_marketing(p, m):
+    cyl("horn", 0.11, 0.24, (0, 0, 0.11), m, parent=p, rot=(0, math.radians(90), 0), r2=0.035, bevel=0.005)
+def icon_people(p, m):
+    box("badge", (0.2, 0.26, 0.025), (0, 0, 0.02), m, bevel=0.01, parent=p)
+    cyl("head", 0.045, 0.012, (0, 0.04, 0.04), M["dark"], parent=p, bevel=0)
+    box("name", (0.12, 0.025, 0.012), (0, -0.06, 0.04), M["dark"], bevel=0, parent=p)
+ICONS = {"Operations": icon_ops, "Finance": icon_finance, "Customer support": icon_support, "Sales": icon_sales, "Marketing": icon_marketing, "People and HR": icon_people}
 trims = []
 for i, team in enumerate(TEAMS):
     a0 = math.radians(i * 60) + GAP; a1 = math.radians((i + 1) * 60) - GAP; am = (a0 + a1) / 2
@@ -158,6 +222,7 @@ for i, team in enumerate(TEAMS):
     tm = trim_mat(0); trims.append(tm)
     for k, (layer, h) in enumerate(LAYERS):
         grp = empty(f"{team}_{layer}", (0, 0, REST[k]), segm); groups[(i, k)] = grp
+        if layer == "base": grp_base = grp
         if layer == "base":
             sector("plate", R1, R2, a0, a1, h, 0, M["body"], grp)
             sector("trim", R2 - 0.02, R2 + 0.012, a0 + 0.02, a1 - 0.02, 0.02, h * 0.55, tm, grp, bevel=0)
@@ -185,8 +250,41 @@ for i, team in enumerate(TEAMS):
             sector("cap", R1, R2, a0, a1, h, 0, M["cap"], grp)
             sector("rimo", R2 - 0.07, R2 - 0.045, a0 + 0.02, a1 - 0.02, 0.01, h, tm, grp, bevel=0)
             sector("rimi", R1 + 0.045, R1 + 0.07, a0 + 0.03, a1 - 0.03, 0.01, h, tm, grp, bevel=0)
-            p = Vector((math.cos(am), math.sin(am), 0)) * ((R1 + R2) / 2)
-            texts.append(text("name", team, 0.19 if len(team) > 12 else 0.24, (p.x, p.y, h + 0.02), M["text"], grp))
+            lm = mat(f"Label{i}", "#f2f4f1", emit="#f2f4f1", strength=1.2); label_mats.append(lm)
+            if LABELS == "colour":
+                tint = TEAM_TINT[team]
+                lm.node_tree.nodes["Principled BSDF"].inputs["Emission Color"].default_value = (*hexc(tint), 1)
+                tmb = tm.node_tree.nodes["Principled BSDF"]; tmb.inputs["Emission Color"].default_value = (*hexc(tint), 1)
+            name = {"Customer support": "Customer\nsupport", "People and HR": "People\nand HR"}.get(team, team)
+            if LABELS in ("top", "colour"):
+                # One bold name per wedge, upright when the wedge faces the viewer, with a small icon inside it
+                p = Vector((math.cos(am), math.sin(am), 0)) * 2.55
+                texts.append(text("name", name, 0.27 if "\n" in name else 0.33, (p.x, p.y, h + 0.012), lm, grp, rot=(0, 0, am + math.pi / 2), font="latin-700-normal.ttf"))
+            icon_r, icon_s = (2.25, 2.3) if LABELS in ("icons", "iconring") else (1.72, 1.0)
+            ic = empty(f"{team}_icon", (math.cos(am) * icon_r, math.sin(am) * icon_r, h), grp); ic.rotation_euler = (0, 0, am + math.pi / 2)
+            ic.scale = (icon_s, icon_s, icon_s)
+            ICONS[team](ic, lm)
+            if LABELS == "wall":
+                # A band hangs from the outer edge of the top plate, and the name runs round it like lettering on a lens barrel
+                sector("band", R2 - 0.05, R2, a0, a1, 0.34, -0.34, M["cap"], grp, bevel=0.01)
+                wall_label(team, a0, a1, grp, lm)
+            if LABELS == "iconring":
+                # Names set along the curve of a dial ring on the floor, letter by letter, centred on each wedge
+                ring_label(team, am, lm)
+                if i == 0:
+                    torus("dial", 3.62, 0.008, (0, 0, 0.004), M["band"], engine)
+                    torus("dial2", 4.32, 0.006, (0, 0, 0.004), M["band"], engine)
+                for edge in (a0 - GAP, a1 + GAP):
+                    box("tick", (0.5, 0.02, 0.01), (math.cos(edge) * 3.97, math.sin(edge) * 3.97, 0.006), M["band"], bevel=0, parent=engine, rot=(0, 0, edge))
+            if LABELS == "ring":
+                # A fine dial ring on the floor just outside the engine, with each name lined up with its wedge
+                fp = Vector((math.cos(am), math.sin(am), 0)) * 3.85
+                text("ringname", team, 0.34, (fp.x, fp.y, 0.012), lm, engine, rot=(0, 0, am + math.pi / 2), font="latin-700-normal.ttf")
+                if i == 0:
+                    torus("dial", 3.55, 0.008, (0, 0, 0.004), M["band"], engine)
+                    torus("dial2", 4.2, 0.006, (0, 0, 0.004), M["band"], engine)
+                for edge in (a0 - GAP, a1 + GAP):
+                    box("tick", (0.5, 0.02, 0.01), (math.cos(edge) * 3.85, math.sin(edge) * 3.85, 0.006), M["band"], bevel=0, parent=engine, rot=(0, 0, edge))
         if layer in ("data", "tools", "people"):
             sector("band", R2 - 0.1, R2 - 0.07, a0 + 0.02, a1 - 0.02, 0.012, 0.02, tm, grp, bevel=0)
 
@@ -225,7 +323,7 @@ if MODE == "blue":
     from bp import apply_blueprint
     floor.hide_render = True
     for r in floor_rings: r.hide_render = True
-    apply_blueprint(scene, thickness=1.1 if VARIANT == "desktop" else 0.9)
+    apply_blueprint(scene, thickness=1.1 if VARIANT == "desktop" else 1.5)
 
 # ---------------------------------------------------------------- the story as a function of t
 # t 0..0.14 hero, ..0.38 lift apart, ..0.63 hold (blueprint on the page), ..0.84 core rises and it closes, ..1 crane to top-down
@@ -246,10 +344,14 @@ def cam_at(t):
     pos = Vector([lerp(pa[j], pb[j], u) for j in range(3)]); tg = Vector([lerp(ga[j], gb[j], u) for j in range(3)])
     return tg + (pos - tg) * D, tg
 
-def pose(t):
-    spin = 8 + 46 * t
+def pose(t, spin=None):
+    spin = 8 + 46 * t if spin is None else spin
     engine.rotation_euler = (0, 0, math.radians(spin))
-    for tx in texts: tx.rotation_euler = (0, 0, -math.radians(spin))
+    # The wedge facing the viewer gets the spotlight
+    spots = []
+    for i in range(6):
+        world = math.radians(i * 60 + 30 + spin)
+        spots.append(max(0.0, math.cos(world - math.radians(270))) ** 10)
     lift = 2.7 * seg(t, 0.14, 0.38) * (1 - seg(t, 0.66, 0.84))
     for (i, k), g in groups.items():
         g.location.z = REST[k] + lift * k * 0.34
@@ -267,18 +369,50 @@ def pose(t):
         g = seg(t, 0.74, 0.84) if TEAMS[i] == "Sales" else seg(t, 0.88 + i * 0.015, 0.95 + i * 0.015)
         greens.append(g)
         b = tm.node_tree.nodes["Principled BSDF"]
-        w, gr = hexc("#d7e2ee"), hexc("#2fd06a")
+        w, gr = (hexc(TEAM_TINT[TEAMS[i]]) if LABELS == "colour" else hexc("#d7e2ee")), hexc("#2fd06a")
         b.inputs["Emission Color"].default_value = (*[w[j] * (1 - g) + gr[j] * g for j in range(3)], 1)
-        b.inputs["Emission Strength"].default_value = 2.0 + 4.0 * g
+        b.inputs["Emission Strength"].default_value = 2.0 + 4.0 * g + 4.0 * spots[i] * (1 - g)
+        lb = label_mats[i].node_tree.nodes["Principled BSDF"]
+        lw, lg = (hexc(TEAM_TINT[TEAMS[i]]) if LABELS == "colour" else hexc("#f2f4f1")), hexc("#3ee07a")
+        lb.inputs["Emission Color"].default_value = (*[lw[j] * (1 - spots[i]) + lg[j] * spots[i] for j in range(3)], 1)
+        lb.inputs["Emission Strength"].default_value = 1.0 + 1.8 * spots[i]
     pos, tg = cam_at(t)
     cam.location = pos; tgt.location = tg
-    return dict(lift=lift, core=c, greens=greens, spin=spin)
+    return dict(lift=lift, core=c, greens=greens, spin=spin, spots=spots)
 
 from bpy_extras.object_utils import world_to_camera_view
 def px(v):
     q = world_to_camera_view(scene, cam, Vector(v)); return [round(q.x * RES[0], 1), round((1 - q.y) * RES[1], 1)]
 
 # The blueprint is only shown for the middle of the story
+if MODE == "still":
+    # A single preview frame: argv frames=t*1000, samples, then spin in degrees
+    t = FRAMES / 1000; spin = float(argv[5]) if len(argv) > 5 else None
+    if len(argv) > 6 and argv[6] == "blue":
+        from bp import apply_blueprint
+        floor.hide_render = True
+        for r_ in floor_rings: r_.hide_render = True
+        apply_blueprint(scene, thickness=1.1 if VARIANT == "desktop" else 1.5)
+    else:
+        scene.cycles.samples = SAMPLES
+    st = pose(t, spin); bpy.context.view_layer.update()
+    scene.render.filepath = os.path.join(OUTDIR, "still.png"); bpy.ops.render.render(write_still=True)
+    lift = st["lift"]
+    layer_z = [REST[k] + lift * k * 0.34 + LAYERS[k][1] * 0.6 for k in range(len(LAYERS))]
+    sp = st["spin"]
+    wedges = {tm_: dict(top=px((math.cos(math.radians(i_ * 60 + 30 + sp)) * 2.3, math.sin(math.radians(i_ * 60 + 30 + sp)) * 2.3, TOP + 0.05)),
+                        rim=px((math.cos(math.radians(i_ * 60 + 30 + sp)) * R2, math.sin(math.radians(i_ * 60 + 30 + sp)) * R2, TOP * 0.6)),
+                        spot=round(st["spots"][i_], 3)) for i_, tm_ in enumerate(TEAMS)}
+    json.dump(dict(layers=[px((R2 * 0.98, -0.5, zz)) for zz in layer_z], left=[px((-R2 * 0.98, -0.5, zz)) for zz in layer_z], hollow=px((0, 0, 0.12)), res=RES, wedges=wedges, bottom=px((0, -R2, 0))), open(os.path.join(OUTDIR, "still.json"), "w"))
+    print("DONE"); raise SystemExit
+if MODE == "loop":
+    # The opening turn: one full revolution at the hero pose, played on a loop until the visitor scrolls
+    for i in range(FRAMES):
+        pose(0.0, 8 + 360 * i / FRAMES); bpy.context.view_layer.update()
+        scene.cycles.samples = SAMPLES
+        scene.render.filepath = os.path.join(OUTDIR, f"{i:04d}.png"); bpy.ops.render.render(write_still=True)
+        print("FRAME", i, flush=True)
+    print("DONE"); raise SystemExit
 indices = list(range(FRAMES))
 if MODE == "blue":
     indices = [i for i in indices if 0.36 <= i / (FRAMES - 1) <= 0.66]
@@ -296,6 +430,7 @@ for i in indices:
     centre = px((0, 0, REST[-1] + lift * 4 * 0.34 + 0.12))
     anchors[i] = dict(
         layers=[px((R2 * 0.98, -0.5, zz)) for zz in layer_z],
+        left=[px((-R2 * 0.98, -0.5, zz)) for zz in layer_z],
         hollow=px((0, 0, 0.12)),
         core=px((0, 0, 1.9 * st["core"] + 0.2)),
         centre=centre,

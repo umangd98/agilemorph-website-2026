@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { BEATS, blueprintAt, clamp01, FILM_END, LOOP, loopIndex, ringAt, seg } from "./story";
+import { BEATS, blueprintAt, clamp01, ease, FILM_END, LOOP, loopIndex, ringAt, seg } from "./story";
 
 /*
  * The department engine, rendered in Blender as a film (3d/deconstruction/film.py)
@@ -17,8 +17,25 @@ import { BEATS, blueprintAt, clamp01, FILM_END, LOOP, loopIndex, ringAt, seg } f
  * ring with the Ship, Adopt and Iterate demos inside it.
  */
 
-type Anchor = { layers: number[][]; hollow: number[]; core: number[]; centre: number[]; rim: number };
-type Manifest = { frames: number; res: [number, number]; blue: number[]; anchors: Record<string, Anchor> };
+type Anchor = { layers: number[][]; left?: number[][]; hollow: number[]; core: number[]; centre: number[]; rim: number };
+type Manifest = { frames: number; loop?: number; res: [number, number]; blue: number[]; anchors: Record<string, Anchor> };
+
+/** The engine's teams in the order of its wedges, and what each one handles. */
+const WEDGES = [
+  ["Operations", "Orders, inventory, field updates"],
+  ["Finance", "Invoices, payments, month-end"],
+  ["Customer support", "Tickets, calls, refunds"],
+  ["Sales", "Leads, deals, follow-ups"],
+  ["Marketing", "Campaigns, content, enquiries"],
+  ["People and HR", "Hiring, onboarding, policies"],
+] as const;
+/** The opening turn: frames in the loop, played at this rate, starting where the film starts. */
+/** The opening turn stops on each team, then clicks round to the next, like a dial. */
+const LOOP_SPIN0 = 8;
+const LOOP_HOLD = 1.6;
+const LOOP_TURN = 0.9;
+/** Phones: which side of the blueprint each callout sits on, and a nudge so neighbours don't collide. */
+const MOBILE_SIDE: Array<["left" | "right", number]> = [["right", 30], ["left", 0], ["right", 0], ["left", 0], ["right", -12], ["left", 46]];
 
 const LAYER_LABELS = [
   ["Systems of record", "CRM, ERP, helpdesk"],
@@ -98,6 +115,8 @@ export function EngineFilm() {
 
   const film = useLoader(variant ? `/deconstruction-v3/${variant}` : "", manifest?.frames ?? 0);
   const blue = useLoader(variant ? `/deconstruction-v3/${variant}-blue` : "", manifest?.frames ?? 0, manifest?.blue);
+  const loopFrames = useLoader(variant ? `/deconstruction-v3/${variant}-loop` : "", manifest?.loop ?? 0);
+  const captionRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current, stage = stageRef.current, fc = filmRef.current, bc = blueRef.current;
@@ -148,32 +167,39 @@ export function EngineFilm() {
     // Fade to the same colour at zero alpha; fading to transparent black would leave a grey band
     const clear = (bg: string) => (bg.startsWith("rgb(") ? bg.replace("rgb(", "rgba(").replace(")", ",0)") : "rgba(5,6,7,0)");
     paperColour = "";
-    /** Draw a frame, then feather its edges into the stage so no seam shows. */
-    const paint = (c: HTMLCanvasElement, img: HTMLImageElement, bg: string) => {
+    /** Draw frames (with their opacity) over the stage colour, then feather the edges so no seam shows. */
+    const paint = (c: HTMLCanvasElement, layers: Array<[HTMLImageElement, number]>, bg: string, f = fit) => {
       const g = c.getContext("2d");
       if (!g) return;
       g.setTransform(pr, 0, 0, pr, 0, 0);
       g.fillStyle = bg;
       g.fillRect(0, 0, W, H);
-      const dw = FW * fit.s, dh = FH * fit.s;
-      g.drawImage(img, fit.x, fit.y, dw, dh);
-      if (fit.x > 0) {
-        const lg = g.createLinearGradient(fit.x, 0, fit.x + 90, 0);
-        lg.addColorStop(0, bg); lg.addColorStop(1, clear(bg));
-        g.fillStyle = lg; g.fillRect(fit.x, 0, 90, H);
+      const dw = FW * f.s, dh = FH * f.s;
+      for (const [img, alpha] of layers) {
+        if (alpha <= 0.001) continue;
+        g.globalAlpha = Math.min(1, alpha);
+        g.drawImage(img, f.x, f.y, dw, dh);
       }
-      if (mobile && fit.y + dh < H) {
-        const bh = dh * 0.22, by = fit.y + dh - bh;
-        const bgd = g.createLinearGradient(0, by, 0, fit.y + dh);
+      g.globalAlpha = 1;
+      if (f.x > 0) {
+        const lg = g.createLinearGradient(f.x, 0, f.x + 90, 0);
+        lg.addColorStop(0, bg); lg.addColorStop(1, clear(bg));
+        g.fillStyle = lg; g.fillRect(f.x, 0, 90, H);
+      }
+      if (mobile && f.y + dh < H) {
+        const bh = dh * 0.22, by = f.y + dh - bh;
+        const bgd = g.createLinearGradient(0, by, 0, f.y + dh);
         bgd.addColorStop(0, clear(bg)); bgd.addColorStop(1, bg);
         g.fillStyle = bgd; g.fillRect(0, by, W, bh + 1);
       }
     };
-    const draw = (c: HTMLCanvasElement, img: HTMLImageElement | null, key: string) => {
-      if (!img || key === lastDrawn) return;
-      lastDrawn = key;
-      paint(c, img, "rgb(5,6,7)");
+    /** On phones the blueprint eases smaller as it fades in, leaving room for labels on both sides. */
+    const blueFit = (bp: number) => {
+      if (!mobile) return fit;
+      const k = 1 - 0.16 * bp;
+      return { s: fit.s * k, x: fit.x + (FW * fit.s * (1 - k)) / 2, y: fit.y + (FH * fit.s * (1 - k)) / 2 - 8 * bp };
     };
+    let clock = 0, lastNow = performance.now(), lastFront = -1;
 
     const progress = () => {
       const rect = section.getBoundingClientRect();
@@ -190,9 +216,39 @@ export function EngineFilm() {
       const idx = Math.round(t * (manifest.frames - 1));
       const anchor = manifest.anchors[String(idx)] ?? manifest.anchors[String(manifest.frames - 1)];
 
-      // Film and blueprint
+      // Film, with the opening turn playing over it until the visitor scrolls
+      const dt = Math.min(0.05, (now - lastNow) / 1000); lastNow = now;
+      if (!reduced) clock += dt;
       const bp = blueprintAt(p);
-      draw(fc, nearest(film.current, idx), `f${idx}-${W}-${H}`);
+      const hero = 1 - seg(p, 0.035, 0.085);
+      const N = manifest.loop ?? 0;
+      const filmImg = nearest(film.current, idx);
+      if (hero > 0.001 && N) {
+        // Frames 9, 19, 29... face a team square on; hold there, then ease to the next
+        const per = N / 6, cycle = LOOP_HOLD + LOOP_TURN;
+        const k = Math.floor(clock / cycle), u = clock - k * cycle;
+        const pos = (per * (k + 1) - 1 + per * ease(clamp01((u - LOOP_HOLD) / LOOP_TURN))) % N;
+        const a0 = Math.floor(pos), frac = pos - a0;
+        const la = loopFrames.current[a0] ?? nearest(loopFrames.current, a0);
+        const lb = loopFrames.current[(a0 + 1) % N];
+        const layers: Array<[HTMLImageElement, number]> = [];
+        if (filmImg && hero < 0.999) layers.push([filmImg, 1]);
+        if (la) layers.push([la, hero]);
+        if (lb && la) layers.push([lb, hero * frac]);
+        if (layers.length) { paint(fc, layers, "rgb(5,6,7)"); lastDrawn = ""; }
+        // Name the team at the front
+        const spin = LOOP_SPIN0 + (360 * pos) / N;
+        const front = ((Math.round((240 - spin) / 60) % 6) + 6) % 6;
+        if (front !== lastFront && captionRef.current) {
+          lastFront = front;
+          const [team, sub] = WEDGES[front]!;
+          captionRef.current.innerHTML = `<span class="h-2 w-2 shrink-0 rounded-full bg-[#2fd06a]"></span><span class="font-semibold text-white">${team}</span><span class="text-white/60">${sub}</span>`;
+        }
+      } else if (filmImg) {
+        const key = `f${idx}-${W}-${H}`;
+        if (key !== lastDrawn) { lastDrawn = key; paint(fc, [[filmImg, 1]], "rgb(5,6,7)"); }
+      }
+      if (captionRef.current) captionRef.current.style.opacity = hero.toFixed(3);
       if (bp > 0.001) {
         const bimg = nearest(blue.current, idx);
         if (bimg) {
@@ -200,7 +256,7 @@ export function EngineFilm() {
             paperColour = edgeColour(bimg);
             if (paperRef.current) paperRef.current.style.backgroundColor = paperColour;
           }
-          paint(bc, bimg, paperColour);
+          paint(bc, [[bimg, 1]], paperColour, blueFit(bp));
         }
       }
       bc.style.opacity = bp.toFixed(3);
@@ -208,31 +264,45 @@ export function EngineFilm() {
       const isLight = bp > 0.5;
       if (isLight !== lastLight) { lastLight = isLight; setLight(isLight); }
 
-      // Blueprint callouts
+      // Blueprint callouts: a tidy column on desktop, both sides on phones
       if (anchor) {
+        const show = (bp > 0.6 ? clamp01((bp - 0.6) / 0.3) : 0).toFixed(3);
         const pts = [...anchor.layers, anchor.hollow];
-        const order = pts.map((pt, i) => ({ i, y: toScreen(pt)[1] })).sort((a, b) => a.y - b.y);
-        const colX = mobile ? W - 12 : Math.min(W - 230, toScreen([FW * 0.78, 0])[0]);
-        const top = mobile ? H * 0.06 : H * 0.18;
-        const step = mobile ? (H * 0.56) / 6 : (H * 0.64) / 5;
-        order.forEach((o, rank) => {
-          const el = calloutRefs.current[o.i];
+        const place = (i: number, ax: number, ay: number, lx: number, ly: number, align: "left" | "right") => {
+          const el = calloutRefs.current[i];
           if (!el) return;
-          const [ax, ay] = toScreen(pts[o.i]!);
-          const ly = top + rank * step;
-          el.style.opacity = (bp > 0.6 ? clamp01((bp - 0.6) / 0.3) : 0).toFixed(3);
-          el.style.setProperty("--ax", `${ax.toFixed(1)}px`);
-          el.style.setProperty("--ay", `${ay.toFixed(1)}px`);
-          el.style.setProperty("--lx", `${colX.toFixed(1)}px`);
-          el.style.setProperty("--ly", `${ly.toFixed(1)}px`);
-          const line = el.querySelector("svg line");
-          const dot = el.querySelector("svg circle");
+          el.style.opacity = show;
+          const lbl = el.querySelector<HTMLElement>("[data-lbl]");
+          const w = lbl?.offsetWidth ?? 0;
+          if (lbl) lbl.style.transform = `translate(${(align === "right" ? lx - w : lx).toFixed(1)}px, ${ly.toFixed(1)}px) translateY(-50%)`;
+          const line = el.querySelector("svg line"), dot = el.querySelector("svg circle");
           if (dot) { dot.setAttribute("cx", ax.toFixed(1)); dot.setAttribute("cy", ay.toFixed(1)); }
           if (line) {
             line.setAttribute("x1", ax.toFixed(1)); line.setAttribute("y1", ay.toFixed(1));
-            line.setAttribute("x2", (mobile ? colX - 96 : colX - 10).toFixed(1)); line.setAttribute("y2", ly.toFixed(1));
+            const x0 = align === "right" ? lx - w : lx;
+            // Anchor under the label: meet its top or bottom edge instead of a side
+            const under = ax >= x0 - 2 && ax <= x0 + w + 2;
+            line.setAttribute("x2", (under ? ax : ax < x0 ? x0 - 6 : x0 + w + 6).toFixed(1));
+            line.setAttribute("y2", (under ? ly + (ay < ly ? -11 : 11) : ly).toFixed(1));
           }
-        });
+        };
+        if (mobile) {
+          const f = blueFit(bp);
+          const conv = (pt: number[]): [number, number] => [f.x + (pt[0] ?? 0) * f.s, f.y + (pt[1] ?? 0) * f.s];
+          MOBILE_SIDE.forEach(([side, dy], i) => {
+            const src = i < 5 ? (side === "left" ? anchor.left?.[i] ?? anchor.layers[i]! : anchor.layers[i]!) : anchor.hollow;
+            const [ax, ay] = conv(src);
+            place(i, ax, ay, side === "right" ? W - 12 : 12, ay + dy, side);
+          });
+        } else {
+          const order = pts.map((pt, i) => ({ i, y: toScreen(pt)[1] })).sort((a, b) => a.y - b.y);
+          const colX = Math.min(W - 230, toScreen([FW * 0.78, 0])[0]);
+          const step = (H * 0.64) / 5;
+          order.forEach((o, rank) => {
+            const [ax, ay] = toScreen(pts[o.i]!);
+            place(o.i, ax, ay, colX, H * 0.18 + rank * step, "left");
+          });
+        }
       }
 
       // The process ring, centred on the engine once the camera is overhead
@@ -315,7 +385,7 @@ export function EngineFilm() {
       ro.disconnect();
       lenis?.destroy();
     };
-  }, [manifest, variant, film, blue]);
+  }, [manifest, variant, film, blue, loopFrames]);
 
   const mobile = variant === "mobile";
 
@@ -348,10 +418,7 @@ export function EngineFilm() {
                 <line stroke={i === 5 ? "#157f3d" : "#7a8088"} strokeWidth="1" />
                 <circle r="3" fill={i === 5 ? "#157f3d" : "#22262b"} />
               </svg>
-              <div
-                className={cn("absolute top-0 left-0 leading-tight", mobile ? "-translate-x-full text-right" : "")}
-                style={{ transform: `translate(var(--lx), var(--ly)) translateY(-50%)${mobile ? " translateX(-100%)" : ""}` }}
-              >
+              <div data-lbl className={cn("absolute top-0 left-0 leading-tight", mobile ? "rounded-md bg-[#e9eae4] px-1.5 py-0.5" : "")}>
                 <p className={cn("font-display font-semibold", mobile ? "text-[13px]" : "text-[17px]", i === 5 ? "text-[#157f3d]" : "text-[#22262b]")}>{title}</p>
                 {mobile ? null : <p className="text-[13px] text-[#646a71]">{sub}</p>}
               </div>
@@ -361,6 +428,8 @@ export function EngineFilm() {
 
         {/* The process ring with live demos */}
         <div ref={ringRef} className="pointer-events-none absolute top-0 left-0 opacity-0" style={{ visibility: "hidden" }} aria-hidden>
+          {/* Quiet the floor dial so the process ring reads on its own */}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_closest-side,rgba(5,6,7,0)_55%,rgba(5,6,7,.97)_58.5%,rgba(5,6,7,.97)_76%,rgba(5,6,7,0)_81%)]" style={{ width: "calc(var(--R) * 3.4)", height: "calc(var(--R) * 3.4)" }} />
           <div className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(6,8,10,.94)_0,rgba(6,8,10,.9)_70%,rgba(6,8,10,0)_72%)]" style={{ width: "calc(var(--R) * 2.02)", height: "calc(var(--R) * 2.02)" }} />
           <svg className="absolute overflow-visible" style={{ left: 0, top: 0 }} width="1" height="1">
             {LOOP.map((name, i) => {
@@ -447,7 +516,12 @@ export function EngineFilm() {
                 <h2 className="font-display text-[clamp(1.7rem,3.4vw,3rem)] leading-[1.04] font-semibold tracking-[-0.03em] group-data-[tone=light]/tone:text-ink">{beat.title}</h2>
               )}
               <p className="mt-3 max-w-md text-[15px] leading-relaxed text-white/72 group-data-[tone=light]/tone:text-ink-muted sm:mt-4 sm:text-lg">{beat.body}</p>
-              {i === 0 ? <p className="mt-5 text-sm text-white/45">Scroll to take it apart</p> : null}
+              {i === 0 ? (
+                <>
+                  <p ref={captionRef} className="mt-5 inline-flex max-w-full items-center gap-2 rounded-pill bg-black/55 px-3.5 py-2 text-[13px] ring-1 ring-white/12 sm:mt-6 sm:text-sm" aria-live="off" />
+                  <p className="mt-4 text-sm text-white/45">Scroll to take it apart</p>
+                </>
+              ) : null}
             </div>
           ))}
         </div>
