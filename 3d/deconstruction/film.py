@@ -405,6 +405,82 @@ if MODE == "still":
                         spot=round(st["spots"][i_], 3)) for i_, tm_ in enumerate(TEAMS)}
     json.dump(dict(layers=[px((R2 * 0.98, -0.5, zz)) for zz in layer_z], left=[px((-R2 * 0.98, -0.5, zz)) for zz in layer_z], hollow=px((0, 0, 0.12)), res=RES, wedges=wedges, bottom=px((0, -R2, 0))), open(os.path.join(OUTDIR, "still.json"), "w"))
     print("DONE"); raise SystemExit
+if MODE == "glb":
+    # The closed engine for three.js: one rigid mesh with baked contact shading,
+    # plus a floor with its light and shadow baked in. The engine is round, so the
+    # floor bake stays true while it turns. Lights and glow are added live.
+    pose(0.0, 0.0); engine.rotation_euler = (0, 0, 0); bpy.context.view_layer.update()
+    for o in [core, *core.children_recursive, dashes, *dashes.children, glow_ob]:
+        bpy.data.objects.remove(o, do_unlink=True)
+    bpy.ops.object.select_all(action="DESELECT")
+    parts = [o for o in engine.children_recursive if o.type in ("MESH", "FONT")]
+    for o in parts:
+        o.select_set(True)
+        if o.type == "MESH" and "UVMap" not in o.data.uv_layers: o.data.uv_layers.new(name="UVMap")
+    bpy.context.view_layer.objects.active = parts[0]
+    bpy.ops.object.convert(target="MESH")
+    parts = [o for o in bpy.context.selected_objects]
+    for o in parts:
+        if "UVMap" not in o.data.uv_layers: o.data.uv_layers.new(name="UVMap")
+        if o.hide_render: o.select_set(False)
+    hidden = [o for o in parts if o.hide_render]
+    for o in hidden: bpy.data.objects.remove(o, do_unlink=True)
+    parts = [o for o in bpy.context.selected_objects]
+    bpy.context.view_layer.objects.active = parts[0]
+    bpy.ops.object.join()
+    eng = bpy.context.active_object; eng.name = "Engine"
+    mw = eng.matrix_world.copy(); eng.parent = None; eng.matrix_world = mw
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    eng.data.uv_layers.new(name="AO"); eng.data.uv_layers.active = eng.data.uv_layers["AO"]
+    bpy.ops.object.mode_set(mode="EDIT"); bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.uv.smart_project(angle_limit=math.radians(60), island_margin=0.002)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    print("ENGINE TRIS", sum(len(p.vertices) - 2 for p in eng.data.polygons), flush=True)
+
+    def bake_into(ob, img, kind, samples, **kw):
+        for slot in ob.material_slots:
+            nt = slot.material.node_tree
+            n = nt.nodes.new("ShaderNodeTexImage"); n.image = img; n.name = "BAKE"; nt.nodes.active = n
+        bpy.ops.object.select_all(action="DESELECT"); ob.select_set(True); bpy.context.view_layer.objects.active = ob
+        scene.cycles.samples = samples
+        bpy.ops.object.bake(type=kind, margin=4, **kw)
+        for slot in ob.material_slots:
+            nt = slot.material.node_tree; nt.nodes.remove(nt.nodes["BAKE"])
+
+    world.light_settings.distance = 0.5
+    ao = bpy.data.images.new("ao", 4096, 4096)
+    bake_into(eng, ao, "AO", 96)
+    ao.filepath_raw = os.path.join(OUTDIR, "ao.png"); ao.file_format = "PNG"; ao.save()
+    eng.data.uv_layers.active = eng.data.uv_layers["UVMap"]
+    print("AO DONE", flush=True)
+
+    # Floor: a disc with planar UVs, lit only (no colour) so the page can tint it
+    FR = 16.0
+    bpy.data.objects.remove(floor, do_unlink=True)
+    bpy.ops.mesh.primitive_circle_add(vertices=128, radius=FR, fill_type="TRIFAN")
+    fl = bpy.context.active_object; fl.name = "Floor"; fl.data.materials.append(M["floor"])
+    fl.data.uv_layers.new(name="UVMap")
+    for loop in fl.data.loops:
+        v = fl.data.vertices[loop.vertex_index].co
+        fl.data.uv_layers["UVMap"].data[loop.index].uv = (v.x / (2 * FR) + 0.5, v.y / (2 * FR) + 0.5)
+    for r_ in floor_rings: r_.hide_render = True
+    lightmap = bpy.data.images.new("floor", 2048, 2048, float_buffer=True)
+    scene.render.bake.use_pass_color = False
+    bake_into(fl, lightmap, "DIFFUSE", 256, pass_filter={"DIRECT", "INDIRECT"})
+    lightmap.filepath_raw = os.path.join(OUTDIR, "floor.exr"); lightmap.file_format = "OPEN_EXR"; lightmap.save()
+    for r_ in floor_rings: r_.hide_render = False
+    print("FLOOR DONE", flush=True)
+
+    # Floor rings join into one, then export everything but lights and the floor plane
+    bpy.ops.object.select_all(action="DESELECT")
+    for r_ in floor_rings: r_.select_set(True)
+    bpy.context.view_layer.objects.active = floor_rings[0]; bpy.ops.object.join(); rings = bpy.context.active_object; rings.name = "FloorRings"
+    bpy.ops.object.select_all(action="DESELECT")
+    eng.select_set(True); rings.select_set(True)
+    bpy.ops.export_scene.gltf(filepath=os.path.join(OUTDIR, "engine.glb"), use_selection=True, export_apply=True,
+        export_draco_mesh_compression_enable=True, export_draco_mesh_compression_level=7, export_lights=False, export_cameras=False,
+        export_image_format="WEBP")
+    print("DONE"); raise SystemExit
 if MODE == "loop":
     # The opening turn: one full revolution at the hero pose, played on a loop until the visitor scrolls
     for i in range(FRAMES):
