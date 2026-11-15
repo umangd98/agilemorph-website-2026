@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { EngineFilm } from "@/components/deconstruction-v3/EngineFilm";
 import { StructuredData } from "@/components/StructuredData";
 import { Adoption } from "@/components/site/Adoption";
 import {
@@ -12,6 +11,7 @@ import {
   Founders,
   FunctionExplorer,
   GapStatement,
+  LoopPipeline,
 } from "@/components/site/blocks";
 import { Hero } from "@/components/site/Hero";
 import { PageShell } from "@/components/site/PageShell";
@@ -41,8 +41,17 @@ export default function HomePage() {
         <GapStatement />
       </Section>
 
-      {/* The loop, told as the department engine being taken apart and rebuilt */}
-      <EngineFilm embedded />
+      <Section
+        title="Find, build, ship, adopt, iterate"
+        intro="One loop, run with your team. Each stage ends with a decision, and you continue only if the last one delivered."
+      >
+        <LoopPipeline />
+        <p className="mt-10">
+          <Link href="/how-we-work" className={textLink}>
+            The full engagement model
+          </Link>
+        </p>
+      </Section>
 
       <Section
         tone="panel"
