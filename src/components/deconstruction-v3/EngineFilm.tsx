@@ -84,7 +84,8 @@ function nearest(imgs: Array<HTMLImageElement | null>, i: number) {
   return null;
 }
 
-export function EngineFilm() {
+/** `embedded` is for pages that already have their own h1, such as the homepage. */
+export function EngineFilm({ embedded = false }: { embedded?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const filmRef = useRef<HTMLCanvasElement>(null);
@@ -510,7 +511,7 @@ export function EngineFilm() {
               style={{ opacity: i === 0 ? 1 : 0, visibility: i === 0 ? "visible" : "hidden" }}
             >
               {beat.loop ? <p className="mb-2 text-sm font-medium text-[#5cd68b] group-data-[tone=light]/tone:text-green-deep sm:mb-3">{beat.loop}</p> : null}
-              {i === 0 ? (
+              {i === 0 && !embedded ? (
                 <h1 className="font-display text-[clamp(2rem,4.4vw,3.8rem)] leading-[1.02] font-semibold tracking-[-0.035em] group-data-[tone=light]/tone:text-ink">{beat.title}</h1>
               ) : (
                 <h2 className="font-display text-[clamp(1.7rem,3.4vw,3rem)] leading-[1.04] font-semibold tracking-[-0.03em] group-data-[tone=light]/tone:text-ink">{beat.title}</h2>
