@@ -1,130 +1,100 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { SiteNavbar } from "@/components/SiteNavbar";
-import { SiteFooter } from "@/components/SiteFooter";
-import { IntegrationsMarquee } from "@/components/IntegrationsMarquee";
+import { StructuredData } from "@/components/StructuredData";
+import { Adoption } from "@/components/site/Adoption";
 import {
-  CATVideoSection,
-  FaqSection,
-  HeroSection,
-  PartnersSection,
-  ProcessSection,
-  ServicesSection,
-  StatsSection,
-  TestimonialsSection,
-  WhyUsSection,
-} from "@/components/sections";
-import { seoToMetadata } from "@/lib/seo";
-import { resolveStatsSection } from "@/data/site-metrics";
-import { getServicePages } from "@/lib/services";
-import { sanityFetch } from "@/sanity/fetch";
-import {
-  homepageAboveFoldQuery,
-  homepageBelowFoldQuery,
-} from "@/sanity/queries";
-import type { HomepageAboveFold, HomepageBelowFold } from "@/sanity/types";
+  Comparison,
+  CtaBand,
+  FaqList,
+  FunctionExplorer,
+  GapStatement,
+  LoopPipeline,
+} from "@/components/site/blocks";
+import { ClientTypes } from "@/components/site/ClientTypes";
+import { Hero } from "@/components/site/Hero";
+import { PageShell } from "@/components/site/PageShell";
+import { Section, TermList } from "@/components/site/Section";
+import { Faces, PartnerStrip, TeamStrip } from "@/components/site/Trust";
+import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE, TRUST } from "@/content/site";
+import { faqPageSchema } from "@/lib/structured-data";
 
-const fallbackMetadata: Metadata = {
-  title: "AI Automation Agency for Growing SMBs | AgileMorph",
-  description:
-    "AgileMorph builds done-for-you AI automation that has saved clients 500K+ hours. Claude and Make certified. Book a free discovery call.",
+export const metadata: Metadata = {
+  title: { absolute: SITE_TITLE },
+  description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const homepage = await sanityFetch<HomepageAboveFold | null>({
-    query: homepageAboveFoldQuery,
-    tags: ["homepage"],
-  });
+const textLink =
+  "font-medium text-green underline decoration-green/30 underline-offset-4 hover:decoration-green";
 
-  return seoToMetadata(homepage?.seo, fallbackMetadata);
-}
-
-async function BelowFoldSections() {
-  const [homepage, servicePages] = await Promise.all([
-    sanityFetch<HomepageBelowFold | null>({
-      query: homepageBelowFoldQuery,
-      tags: ["homepage"],
-    }),
-    getServicePages(),
-  ]);
-
-  const metrics = resolveStatsSection(homepage?.stats);
+export default function HomePage() {
+  const faqSchema = faqPageSchema(FAQ.map(([question, answer]) => ({ question, answer })));
 
   return (
-    <>
-      <ProcessSection
-        heading={homepage?.process?.heading}
-        subheading={homepage?.process?.subheading}
-        steps={homepage?.process?.steps}
-      />
-      <ServicesSection
-        eyebrow={homepage?.services?.eyebrow}
-        heading={homepage?.services?.heading}
-        pages={servicePages}
-      />
-      <WhyUsSection
-        heading={homepage?.whyUs?.heading}
-        items={homepage?.whyUs?.items}
-        efficiencyCalculator={homepage?.whyUs?.efficiencyCalculator}
-      />
-      <StatsSection
-        eyebrow={metrics.eyebrow}
-        heading={metrics.heading}
-        items={metrics.items}
-      />
-      <TestimonialsSection
-        eyebrow={homepage?.testimonials?.eyebrow}
-        heading={homepage?.testimonials?.heading}
-        items={homepage?.testimonials?.items}
-      />
-      <FaqSection />
-    </>
-  );
-}
+    <PageShell>
+      {faqSchema ? <StructuredData data={faqSchema} /> : null}
 
-export default async function HomePage() {
-  const homepage = await sanityFetch<HomepageAboveFold | null>({
-    query: homepageAboveFoldQuery,
-    tags: ["homepage"],
-  });
+      <Hero />
+      <PartnerStrip />
 
-  if (!homepage) {
-    return (
-      <>
-        <SiteNavbar />
-        <main className="flex flex-1 items-center justify-center px-6 py-24">
-          <p className="font-body text-muted-foreground">
-            Homepage content is not available yet. Add it in Sanity Studio.
+      <Section className="border-t-0">
+        <GapStatement />
+      </Section>
+
+      <Section
+        title="Find, build, ship, adopt, iterate"
+        intro="One loop, run with your team. Each stage ends with a decision, and you continue only if the last one delivered."
+      >
+        <LoopPipeline />
+        <p className="mt-10">
+          <Link href="/how-we-work" className={textLink}>
+            The full engagement model
+          </Link>
+        </p>
+      </Section>
+
+      <Section
+        tone="panel"
+        title="Where AI usually fits"
+        intro="Every business is different, so we start by watching the work. Sometimes AI goes into a system you already run, sometimes we build something new. These are the places we find it most often."
+      >
+        <FunctionExplorer />
+      </Section>
+
+      <Section title="What changes when the engineers sit with you">
+        <Comparison />
+        <TeamStrip />
+      </Section>
+
+      <Section
+        tone="panel"
+        title="Adoption is our job"
+        intro="Shipping is half the work. We measure who uses it, listen to what they tell us, and keep improving it until the numbers prove it works."
+      >
+        <Adoption />
+      </Section>
+
+      <Section title={OWNERSHIP.heading}>
+        <TermList items={OWNERSHIP.items} />
+      </Section>
+
+      <Section title="Who we work with">
+        <ClientTypes />
+      </Section>
+
+      <Section title="Questions buyers ask us">
+        <FaqList />
+      </Section>
+
+      <CtaBand
+        faces={
+          <p className="flex flex-wrap items-center gap-4 text-white/90">
+            <Faces size="sm" ring="border-green" />
+            {TRUST.cta}
           </p>
-        </main>
-        <SiteFooter />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <SiteNavbar />
-
-      <main className="flex-1">
-        <HeroSection hero={homepage.hero} />
-        <PartnersSection
-          heading={homepage.partners?.heading}
-          items={homepage.partners?.items}
-        />
-        <IntegrationsMarquee
-          heading={homepage.integrations?.heading}
-          items={homepage.integrations?.items}
-        />
-        <CATVideoSection />
-        <Suspense fallback={null}>
-          <BelowFoldSections />
-        </Suspense>
-      </main>
-
-      <SiteFooter />
-    </>
+        }
+      />
+    </PageShell>
   );
 }

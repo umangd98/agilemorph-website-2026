@@ -1,102 +1,66 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteNavbar } from "@/components/SiteNavbar";
-import {
-  AboutHeroSection,
-  CompanyStorySection,
-  ProcessSection,
-  TeamLeadsSection,
-  TestimonialsSection,
-  AboutImpactSection,
-  ValuesSection,
-} from "@/components/sections";
-import { seoToMetadata } from "@/lib/seo";
-import { resolveStatsSection } from "@/data/site-metrics";
-import { sanityFetch } from "@/sanity/fetch";
-import { aboutPageQuery } from "@/sanity/queries";
-import type { AboutPage } from "@/sanity/types";
+import { Container } from "@/components/Container";
+import { CtaBand, Explainer, Founders } from "@/components/site/blocks";
+import { PageShell } from "@/components/site/PageShell";
+import { PartnerMark } from "@/components/site/PartnerMark";
+import { Section } from "@/components/site/Section";
+import { CERTIFICATIONS } from "@/content/site";
 
-const fallbackMetadata: Metadata = {
-  title: "About Us",
-  alternates: { canonical: "/about" },
+export const metadata: Metadata = {
+  title: "About",
   description:
-    "Empowering businesses with agile solutions, innovative technology, and a customer-first approach.",
+    "Agilemorph is one of India's first forward deployed engineering firms, based in Nagpur and working with clients wherever they are.",
+  alternates: { canonical: "/about" },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const aboutPage = await sanityFetch<AboutPage | null>({
-    query: aboutPageQuery,
-    tags: ["aboutPage"],
-  });
-
-  return seoToMetadata(aboutPage?.seo, fallbackMetadata);
-}
-
-export default async function AboutPageRoute() {
-  const aboutPage = await sanityFetch<AboutPage | null>({
-    query: aboutPageQuery,
-    tags: ["aboutPage"],
-  });
-
-  if (!aboutPage) {
-    return (
-      <>
-        <SiteNavbar />
-        <main className="flex flex-1 items-center justify-center px-6 py-24">
-          <p className="font-body text-muted-foreground">
-            About page content is not available yet. Add it in Sanity Studio.
-          </p>
-        </main>
-        <SiteFooter />
-      </>
-    );
-  }
-
-  const metrics = resolveStatsSection(aboutPage.stats);
-
+export default function AboutPage() {
   return (
-    <>
-      <SiteNavbar />
-      <main className="flex-1">
-        <AboutHeroSection
-          heading={aboutPage.hero.heading}
-          tagline={aboutPage.hero.tagline}
-          cta={aboutPage.hero.cta}
-        />
-        <CompanyStorySection
-          heading={aboutPage.about?.heading}
-          body={aboutPage.about?.body}
-          promiseHeading={aboutPage.about?.promiseHeading}
-          promise={aboutPage.about?.promise}
-        />
-        <ValuesSection values={aboutPage.values} />
-        <ProcessSection
-          heading={aboutPage.process?.heading}
-          subheading={aboutPage.process?.subheading}
-          steps={aboutPage.process?.steps}
-        />
-        <AboutImpactSection
-          heading={aboutPage.cta?.heading}
-          description={aboutPage.cta?.description}
-          button={aboutPage.cta?.button}
-          statsEyebrow={metrics.eyebrow}
-          statsHeading={metrics.heading}
-          stats={metrics.items}
-        />
-        <TeamLeadsSection
-          eyebrow={aboutPage.teamLeads?.eyebrow}
-          heading={aboutPage.teamLeads?.heading}
-          subheading={aboutPage.teamLeads?.subheading}
-          cardFooter={aboutPage.teamLeads?.cardFooter}
-          members={aboutPage.teamLeads?.members}
-        />
-        <TestimonialsSection
-          heading={aboutPage.testimonials?.heading}
-          items={aboutPage.testimonials?.items}
-        />
-      </main>
-      <SiteFooter />
-    </>
+    <PageShell>
+      <section className="pt-14 pb-16 sm:pt-20 sm:pb-20">
+        <Container>
+          <h1 className="type-display max-w-4xl">One of India&apos;s first forward deployed engineering firms.</h1>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
+            <p className="type-lede max-w-xl text-ink-muted">
+              We find where AI fits in your business, build it into the systems you already run or from scratch,
+              ship it, make sure your people use it, and keep improving it from their feedback.
+            </p>
+            <Explainer className="self-start" />
+          </div>
+        </Container>
+      </section>
+
+      <Section title="Where we come from">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+          <p className="type-lede">
+            We are based in Nagpur, India, and work with clients wherever
+            they are. Our work happens inside client businesses, alongside
+            their teams, on site or remote.
+          </p>
+          <p className="type-lede text-ink-muted">
+            We are a services firm with an R&amp;D arm. What our engineers learn there about new
+            models and tools comes straight back into the work we do for clients.
+          </p>
+        </div>
+      </Section>
+
+      <Section title="The founders">
+        <Founders />
+      </Section>
+
+      <Section title="Certified across the stack" intro="We pick the tool for the workflow, and write the code when no-code is the wrong fit.">
+        <dl className="grid grid-cols-2 border-b border-rule sm:grid-cols-4">
+          {CERTIFICATIONS.map(([name, level]) => (
+            <div key={name} className="border-t border-rule py-6 pr-4">
+              <PartnerMark name={name} className="mb-4" />
+              <dt className="type-heading">{name}</dt>
+              <dd className="mt-1 text-sm text-ink-muted">{level}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      <CtaBand heading="Talk to the people who'll build it." />
+    </PageShell>
   );
 }

@@ -1,1 +1,0 @@
-export { ServiceHeroAnim } from "./ServiceHeroAnim";
