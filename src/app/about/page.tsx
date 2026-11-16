@@ -37,8 +37,8 @@ export default function AboutPage() {
             their teams, on site or remote.
           </p>
           <p className="type-lede text-ink-muted">
-            We are a services firm with an R&amp;D arm. A share of what our engineering work earns
-            funds the products we build, and CAT is the first one we have released.
+            We are a services firm with an R&amp;D arm. What our engineers learn there about new
+            models and tools comes straight back into the work we do for clients.
           </p>
         </div>
       </Section>
