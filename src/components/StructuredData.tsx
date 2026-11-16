@@ -18,7 +18,8 @@ export function StructuredData({ data }: StructuredDataProps) {
         <script
           key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }}
+          // Escape "<" so text from the CMS can never close the script tag.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(node).replace(/</g, "\\u003c") }}
         />
       ))}
     </>

@@ -19,11 +19,10 @@ const STATIC_ROUTES: Array<{
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
+  // Code-built pages carry no lastModified: the build time would claim every
+  // page changed on every deploy, which teaches Google to ignore the field.
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route.path}`,
-    lastModified: now,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
@@ -32,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // still ship a valid sitemap of the static routes rather than fail the build.
   let blogEntries: MetadataRoute.Sitemap = [];
   try {
-    const posts = await sanityFetch<Array<{ slug: string }>>({
+    const posts = await sanityFetch<Array<{ slug: string; updatedAt?: string }>>({
       query: allBlogSlugsQuery,
       tags: ["blogPost"],
     });
@@ -40,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((post) => Boolean(post?.slug))
       .map((post) => ({
         url: `${SITE_URL}/blog/${post.slug}`,
-        lastModified: now,
+        lastModified: post.updatedAt ? new Date(post.updatedAt) : undefined,
         changeFrequency: "monthly",
         priority: 0.6,
       }));
@@ -50,7 +49,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const caseStudyEntries: MetadataRoute.Sitemap = CASE_STUDIES.map((study) => ({
     url: `${SITE_URL}/case-studies/${study.slug}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
   }));

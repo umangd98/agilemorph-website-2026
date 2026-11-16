@@ -5,13 +5,15 @@ import { CaseStudyRows, CtaBand } from "@/components/site/blocks";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
 import { FOUNDER_TRACK } from "@/content/case-studies";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Case studies",
+export const metadata: Metadata = pageMetadata({
+  title: "Forward Deployed Engineering Case Studies",
   description:
     "Engagements where Agilemorph's engineers embedded with the team, found where AI fits, built it in production and measured whether people used it.",
-  alternates: { canonical: "/case-studies" },
-};
+  path: "/case-studies",
+  share: "case-studies",
+});
 
 export default function CaseStudiesPage() {
   return (

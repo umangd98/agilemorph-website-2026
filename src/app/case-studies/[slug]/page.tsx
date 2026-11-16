@@ -3,10 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
+import { StructuredData } from "@/components/StructuredData";
 import { CtaBand } from "@/components/site/blocks";
 import { PageShell } from "@/components/site/PageShell";
 import { CASE_STUDIES, getCaseStudy } from "@/content/case-studies";
 import { PHASES } from "@/content/site";
+import { pageMetadata } from "@/lib/page-metadata";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -19,11 +22,19 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const study = getCaseStudy((await params).slug);
   if (!study) return {};
-  return {
+  return pageMetadata({
     title: `${study.client}: case study`,
-    description: study.headline,
-    alternates: { canonical: `/case-studies/${study.slug}` },
-  };
+    description: clip(`${study.headline} ${study.howWeWorked}`, 158),
+    path: `/case-studies/${study.slug}`,
+    share: `case-${study.slug}`,
+  });
+}
+
+/** Trims to the last whole word that fits, so descriptions never end mid-word. */
+function clip(text: string, max: number) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.]$/, "")}…`;
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
@@ -43,6 +54,12 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <PageShell>
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Case studies", path: "/case-studies" },
+          { name: study.client, path: `/case-studies/${study.slug}` },
+        ])}
+      />
       <section className="pt-14 pb-12 sm:pt-20">
         <Container>
           <Link href="/case-studies" className="text-[0.9375rem] text-ink-muted hover:text-ink">

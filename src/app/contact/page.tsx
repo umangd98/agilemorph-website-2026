@@ -6,13 +6,15 @@ import { BookButton } from "@/components/site/Button";
 import { ContactForm } from "@/components/site/ContactForm";
 import { PageShell } from "@/components/site/PageShell";
 import { COMPANY } from "@/content/site";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Book a Discovery Call About AI in Your Business",
   description:
     "Book a discovery call with Agilemorph, or email info@theagilemorph.com. We'll tell you where AI fits in your operation and what a pilot would take.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+  share: "contact",
+});
 
 const ON_THE_CALL = [
   "You tell us how the work flows today, and where the system falls behind it.",

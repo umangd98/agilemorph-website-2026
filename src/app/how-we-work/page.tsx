@@ -7,6 +7,7 @@ import { Adoption } from "@/components/site/Adoption";
 import { ConsoleDemo } from "@/components/site/ConsoleDemo";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
+import { pageMetadata } from "@/lib/page-metadata";
 import {
   ADOPTION,
   CAPABILITIES,
@@ -17,12 +18,13 @@ import {
   OWNERSHIP,
 } from "@/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "How we work: Forward Deployed Engineering",
   description:
-    "Forward Deployed Engineering, explained. Our engineers embed with your teams, build AI into the systems you already run or from scratch, and stay until it's used.",
-  alternates: { canonical: "/how-we-work" },
-};
+    "Forward Deployed Engineering, explained. Our engineers embed with your teams, build AI into the systems you already run, and stay until it's used.",
+  path: "/how-we-work",
+  share: "how-we-work",
+});
 
 export default function HowWeWorkPage() {
   return (

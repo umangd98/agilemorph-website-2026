@@ -22,13 +22,13 @@ export const COMPANY = {
   ],
 } as const;
 
-export const SITE_TITLE = "Agilemorph | Forward Deployed Engineering for AI";
+export const SITE_TITLE = "Forward Deployed Engineering for AI | Agilemorph";
 
 export const ONE_LINER =
   "We're one of India's first forward deployed engineering firms. We work out where AI fits in your business, build it into the systems you already run or from scratch, ship it, make sure your people use it, and keep improving it from their feedback.";
 
 export const SITE_DESCRIPTION =
-  "Agilemorph is one of India's first forward deployed engineering firms. We find where AI fits in your business, build it into your existing systems or from scratch, ship it, drive adoption and iterate on user feedback.";
+  "Agilemorph is a forward deployed engineering firm in India. Our engineers embed with your teams, build AI into the systems you run, and stay until it's used.";
 
 export const FDE_EXPLAINER =
   "Forward Deployed Engineering means our engineers work inside your business, alongside your teams, instead of building from a requirements document at a distance. We learn how the work really happens, build AI into the systems you already run or build new ones where nothing fits, measure whether people use it, and keep improving it until they do.";

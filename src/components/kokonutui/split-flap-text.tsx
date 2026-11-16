@@ -1,4 +1,4 @@
-// @ts-nocheck -- vendored from the Kokonut UI registry (MIT), which is not written for noUncheckedIndexedAccess. Re-pull with `npx shadcn add @kokonutui/<name>` rather than editing. Local change: FLIP 56 to 38 and STAGGER 40 to 28, so the hero word flips faster.
+// @ts-nocheck -- vendored from the Kokonut UI registry (MIT), which is not written for noUncheckedIndexedAccess. Re-pull with `npx shadcn add @kokonutui/<name>` rather than editing. Local changes: FLIP 56 to 38 and STAGGER 40 to 28, so the hero word flips faster; and Half draws its letter with CSS content instead of a text node, so the flap letters (each printed twice, top and bottom half) do not end up in the hero H1's text for search engines.
 "use client";
 
 /**
@@ -73,11 +73,11 @@ function Half({
       <span
         className={cn(
           "absolute inset-x-0 flex h-[200%] items-center justify-center",
-          half === "top" ? "top-0" : "bottom-0"
+          half === "top" ? "top-0" : "bottom-0",
+          "before:content-[attr(data-char)]"
         )}
-      >
-        {char}
-      </span>
+        data-char={char}
+      />
     </span>
   );
 }
