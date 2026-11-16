@@ -41,7 +41,6 @@ export function organizationSchema(): JsonLdNode {
       addressRegion: "Maharashtra",
       addressCountry: "IN",
     },
-    areaServed: ["India", "United States", "Africa"],
     sameAs: COMPANY.social.map((item) => item.href),
   };
 }

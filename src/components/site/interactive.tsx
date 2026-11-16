@@ -7,7 +7,7 @@ import {
   useInView,
 } from "motion/react";
 import { Plus } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
 import FlowField from "@/components/kokonutui/flow-field";
@@ -105,72 +105,132 @@ export function ComparisonSwitch() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Where AI fits: one business, function by function                           */
+/* Where AI fits: one piece of work, moving through each team                  */
 /* -------------------------------------------------------------------------- */
+
+const flowCard = {
+  hidden: { opacity: 0, y: 12 },
+  shown: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
+  gone: { opacity: 0, transition: { duration: 0.15 } },
+};
+
+function FlowArrow() {
+  return (
+    <motion.div variants={flowCard} aria-hidden className="grid h-8 place-items-center text-ink-faint lg:h-auto">
+      <svg viewBox="0 0 20 20" className="h-5 w-5 rotate-90 lg:rotate-0" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 10h12M11 5l5 5-5 5" />
+      </svg>
+    </motion.div>
+  );
+}
 
 export function FunctionExplorer() {
   const [active, setActive] = useState(0);
+  const tabs = useRef<Array<HTMLButtonElement | null>>([]);
   const fn = FUNCTIONS[active]!;
+
+  const onKeyDown = (event: KeyboardEvent) => {
+    const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    event.preventDefault();
+    const next = (active + step + FUNCTIONS.length) % FUNCTIONS.length;
+    setActive(next);
+    tabs.current[next]?.focus();
+  };
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
-        <div role="tablist" aria-label="Business functions" aria-orientation="vertical" className="flex flex-wrap gap-2 lg:flex-col lg:gap-0 lg:self-start lg:border-b lg:border-rule">
-          {FUNCTIONS.map((f, i) => (
-            <button
-              key={f.name}
-              type="button"
-              role="tab"
-              id={`fn-tab-${i}`}
-              aria-selected={i === active}
-              aria-controls="fn-panel"
-              onClick={() => setActive(i)}
-              onMouseEnter={() => setActive(i)}
-              className={cn(
-                "relative rounded-pill px-4 py-2 text-left text-[0.9375rem] font-medium ring-1 ring-rule transition-colors lg:rounded-none lg:border-t lg:border-rule lg:px-0 lg:py-5 lg:text-xl lg:ring-0",
-                i === active ? "bg-ink text-white lg:bg-transparent lg:text-ink" : "text-ink-muted hover:text-ink",
-              )}
-            >
-              {i === active ? (
-                <motion.span
-                  layoutId="fn-marker"
-                  className="absolute top-1/2 -left-5 hidden h-2 w-2 -translate-y-1/2 rounded-full bg-green lg:block"
-                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                  aria-hidden
-                />
-              ) : null}
-              <span className={cn("relative transition-transform duration-300", i === active && "lg:inline-block lg:translate-x-1")}>
-                {f.name}
-              </span>
-            </button>
-          ))}
-        </div>
+      <div
+        role="tablist"
+        aria-label="Teams"
+        onKeyDown={onKeyDown}
+        className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+      >
+        {FUNCTIONS.map((f, i) => (
+          <button
+            key={f.name}
+            ref={(el) => {
+              tabs.current[i] = el;
+            }}
+            type="button"
+            role="tab"
+            id={`fn-tab-${i}`}
+            aria-selected={i === active}
+            aria-controls="fn-panel"
+            tabIndex={i === active ? 0 : -1}
+            onClick={() => setActive(i)}
+            className={cn(
+              "relative shrink-0 rounded-pill px-4 py-2 text-[0.9375rem] font-medium whitespace-nowrap transition-colors",
+              i === active ? "text-white" : "bg-white text-ink-muted ring-1 ring-rule hover:text-ink",
+            )}
+          >
+            {i === active ? (
+              <motion.span
+                layoutId="fn-pill"
+                className="absolute inset-0 rounded-pill bg-ink"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+              />
+            ) : null}
+            <span className="relative">{f.name}</span>
+          </button>
+        ))}
+      </div>
 
-        <div id="fn-panel" role="tabpanel" aria-labelledby={`fn-tab-${active}`} className="relative min-h-[22rem] overflow-hidden rounded-panel bg-white ring-1 ring-rule">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: EASE }}
-              className="grid h-full"
-            >
-              <div className="border-b border-rule-soft p-7 sm:p-9">
-                <p className="text-sm font-medium text-red">What we usually find</p>
-                <p className="type-heading mt-3">{fn.find}</p>
-              </div>
-              <div className="border-b border-rule-soft bg-green-soft/50 p-7 sm:p-9">
-                <p className="text-sm font-medium text-green-deep">What we build</p>
-                <p className="type-heading mt-3">{fn.build}</p>
-              </div>
-              <div className="p-7 sm:p-9">
-                <p className="text-sm font-medium text-ink-faint">Built into</p>
-                <p className="mt-2 text-ink-muted">{fn.systems}</p>
+      <div id="fn-panel" role="tabpanel" aria-labelledby={`fn-tab-${active}`} className="mt-8">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={active}
+            initial="hidden"
+            animate="shown"
+            exit="gone"
+            transition={{ staggerChildren: 0.09 }}
+            className="grid lg:grid-cols-[minmax(0,1fr)_2.5rem_minmax(0,1fr)_2.5rem_minmax(0,1fr)]"
+          >
+            <motion.div variants={flowCard} className="grid content-start gap-4 rounded-panel bg-white p-6 ring-1 ring-rule">
+              <p className="text-sm font-medium text-ink-faint">What comes in</p>
+              <div className="rounded-[1rem_1rem_1rem_0.25rem] bg-panel px-4 py-3">
+                <p className="text-[0.8125rem] text-ink-faint">{fn.input[0]}</p>
+                <p className="mt-1">{fn.input[1]}</p>
               </div>
             </motion.div>
-          </AnimatePresence>
-        </div>
+
+            <FlowArrow />
+
+            <motion.div variants={flowCard} className="grid content-start gap-4 rounded-panel bg-green-soft p-6 ring-1 ring-[#c7e2d0]">
+              <p className="text-sm font-medium text-green-deep">What the AI does</p>
+              <p className="type-heading">{fn.action}</p>
+              <p className="text-sm text-ink-muted">A person approves anything it isn&apos;t sure of.</p>
+            </motion.div>
+
+            <FlowArrow />
+
+            <motion.div variants={flowCard} className="grid content-start gap-4 rounded-panel bg-white p-6 ring-1 ring-rule">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <p className="text-sm font-medium text-ink-faint">Where it lands</p>
+                <p className={cn("text-[0.8125rem] font-medium", fn.lands.built ? "text-amber" : "text-green-deep")}>
+                  {fn.lands.built ? "Built from scratch" : "A system you already run"}
+                </p>
+              </div>
+              <p className="flex items-baseline gap-2 font-medium">
+                <span aria-hidden className={cn("h-2 w-2 shrink-0 -translate-y-px rounded-full", fn.lands.built ? "bg-amber" : "bg-green")} />
+                {fn.lands.name}
+              </p>
+              <dl className="grid gap-2 text-[0.9375rem]">
+                {fn.record.map(([label, value]) => (
+                  <div key={label} className="flex justify-between gap-4 border-b border-dashed border-rule pb-2 last:border-b-0 last:pb-0">
+                    <dt className="text-ink-faint">{label}</dt>
+                    <dd className="text-right font-medium">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+
+        <p className="mt-8 grid gap-1 border-t border-rule pt-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-6">
+          <span className="font-medium text-red">What we usually find</span>
+          <span className="text-ink-muted">{fn.find}</span>
+        </p>
       </div>
     </MotionConfig>
   );

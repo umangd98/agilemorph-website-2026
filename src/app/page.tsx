@@ -54,7 +54,7 @@ export default function HomePage() {
       <Section
         tone="panel"
         title="Where AI usually fits"
-        intro="Every business is different, so we start by watching the work. These are the places we find it most often."
+        intro="Every business is different, so we start by watching the work. Sometimes AI goes into a system you already run, sometimes we build something new. These are the places we find it most often."
       >
         <FunctionExplorer />
       </Section>
@@ -76,7 +76,7 @@ export default function HomePage() {
       </Section>
 
       <Section title="Who we work with">
-        <TermList items={CLIENT_TYPES} />
+        <TermList items={CLIENT_TYPES} className="md:grid-cols-3" />
       </Section>
 
       <Section title="Questions buyers ask us">

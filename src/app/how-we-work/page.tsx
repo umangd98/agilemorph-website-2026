@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "How we work: Forward Deployed Engineering",
   description:
-    "Forward Deployed Engineering, explained. Our engineers embed with your teams, build AI into the systems you already run, and stay until it's used.",
+    "Forward Deployed Engineering, explained. Our engineers embed with your teams, build AI into the systems you already run or from scratch, and stay until it's used.",
   alternates: { canonical: "/how-we-work" },
 };
 

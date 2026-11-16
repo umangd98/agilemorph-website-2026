@@ -25,16 +25,16 @@ export const COMPANY = {
 export const SITE_TITLE = "Agilemorph | Forward Deployed Engineering for AI";
 
 export const ONE_LINER =
-  "We're one of India's first forward deployed engineering firms. We work out where AI fits in your business, build it into the systems you already run, ship it, make sure your people use it, and keep improving it from their feedback.";
+  "We're one of India's first forward deployed engineering firms. We work out where AI fits in your business, build it into the systems you already run or from scratch, ship it, make sure your people use it, and keep improving it from their feedback.";
 
 export const SITE_DESCRIPTION =
-  "Agilemorph is one of India's first forward deployed engineering firms. We find where AI fits in your business, build it into your existing systems, ship it, drive adoption and iterate on user feedback.";
+  "Agilemorph is one of India's first forward deployed engineering firms. We find where AI fits in your business, build it into your existing systems or from scratch, ship it, drive adoption and iterate on user feedback.";
 
 export const FDE_EXPLAINER =
-  "Forward Deployed Engineering means our engineers work inside your business, alongside your teams, instead of building from a requirements document at a distance. We learn how the work really happens, build AI into the systems you already run, measure whether people use it, and keep improving it until they do.";
+  "Forward Deployed Engineering means our engineers work inside your business, alongside your teams, instead of building from a requirements document at a distance. We learn how the work really happens, build AI into the systems you already run or build new ones where nothing fits, measure whether people use it, and keep improving it until they do.";
 
 export const FOOTER_TAGLINE =
-  "Forward Deployed Engineering, built in India. AI inside your systems, adopted by your people, owned by you.";
+  "Forward Deployed Engineering, built in India. AI built around how you work, adopted by your people, owned by you.";
 
 export const NAV = [
   { label: "How we work", href: "/how-we-work" },
@@ -46,7 +46,7 @@ export const NAV = [
 export const PROOF = [
   "40+ projects delivered",
   "Founders from Amazon and Sixt",
-  "Engagements in India, the US and Africa",
+  "On site or remote, wherever you are",
 ] as const;
 
 /* -------------------------------------------------------------------------- */
@@ -72,7 +72,7 @@ export const COMPARISON = {
   rows: [
     ["Where the team works", "Offsite, from a requirements document", "Inside your business, beside your people"],
     ["How scope is set", "Fixed upfront, before anyone sees the work", "From what we observe with your teams"],
-    ["Where it lives", "A new tool for people to learn", "Inside the systems you already run"],
+    ["What gets built", "A generic tool for people to learn", "Built around the work, in your systems or from scratch"],
     ["Who owns adoption", "Your team, after go-live", "We do, until usage data proves it works"],
     ["What happens after launch", "A handover and a support contract", "Improved every week from user feedback"],
   ],
@@ -83,7 +83,7 @@ export const PHASES = [
   {
     name: "Find",
     verb: "We find where AI fits",
-    summary: "We embed with your teams, see how the work really gets done, and find where AI pays off inside the systems you already run.",
+    summary: "We embed with your teams, see how the work really gets done, and find where AI pays off.",
     details: [
       "A fixed-scope discovery audit with the people who do the work",
       "Opportunities ranked, with success criteria agreed upfront",
@@ -92,8 +92,8 @@ export const PHASES = [
   },
   {
     name: "Build",
-    verb: "We build it into your systems",
-    summary: "Built into your existing stack: your CRM, ERP, helpdesk, inbox or custom software. No parallel tool for people to learn.",
+    verb: "We build what fits",
+    summary: "Built into the stack you already run, like your CRM, ERP, helpdesk or inbox, or built from scratch when nothing you have fits the work.",
     details: [
       "Error handling, monitoring, audit logs and evals from the first build",
       "A person in the loop for anything uncertain",
@@ -187,43 +187,83 @@ export const LOOP_EXAMPLES = [
   },
 ] as const;
 
-/** Where in a business we usually find AI that pays off. Shown on the homepage. */
+/**
+ * Where in a business we usually find AI that pays off, each shown as one piece
+ * of work moving through. Some land in a system the client already runs, some
+ * in something we build new. Illustrative, not client data. Shown on the homepage.
+ */
 export const FUNCTIONS = [
   {
     name: "Sales",
     find: "Reps re-typing calls and emails into the CRM, and leads that wait too long for a reply.",
-    build: "Assistants that update deals, draft follow-ups and qualify inbound leads, inside your CRM.",
-    systems: "Salesforce, HubSpot, Zoho, WhatsApp Business",
+    input: ["Call notes", "Wants a demo for their operations team. Budget is approved. Follow up on Friday."],
+    action: "Updates the deal and drafts Friday's follow-up",
+    lands: { name: "Salesforce", built: false },
+    record: [
+      ["Stage", "Demo booked"],
+      ["Next step", "Follow-up, Friday"],
+      ["Draft", "Ready for the rep"],
+    ],
   },
   {
     name: "Customer support",
     find: "Agents hunting across tools for context, and the same questions answered by hand every day.",
-    build: "Reply drafting with the customer's history attached, routing, and voice agents that log every call.",
-    systems: "Zendesk, Freshdesk, Intercom, Twilio",
+    input: ["Email from a customer", "My order arrived damaged. Can I get a replacement?"],
+    action: "Pulls up the order and drafts a reply for the agent",
+    lands: { name: "Zendesk", built: false },
+    record: [
+      ["Type", "Replacement"],
+      ["Order history", "Attached"],
+      ["Reply", "Waiting for approval"],
+    ],
   },
   {
     name: "Finance",
     find: "Invoices, receipts and statements keyed in by hand, and month-end spent reconciling.",
-    build: "Document capture matched to purchase orders, exception queues and reconciliation checks.",
-    systems: "SAP, Tally, Xero, QuickBooks",
+    input: ["Supplier invoice, PDF", "Last month's packaging invoice, attached to an email."],
+    action: "Reads it and matches it to the purchase order",
+    lands: { name: "SAP", built: false },
+    record: [
+      ["Match", "Purchase order found"],
+      ["Status", "Posted"],
+      ["Exceptions", "None"],
+    ],
   },
   {
     name: "Operations",
     find: "Updates that live in chat and spreadsheets while the official system goes stale.",
-    build: "Capture from WhatsApp, voice notes and photos, validated and written into your system of record.",
-    systems: "SAP, Oracle, Odoo, custom ERPs",
+    input: ["Voice note from the floor", "North warehouse order is loaded, but two pallets short."],
+    action: "Checks it and writes the update into the ERP",
+    lands: { name: "Your ERP", built: false },
+    record: [
+      ["Dispatch", "Loaded"],
+      ["Shortage", "Flagged to the manager"],
+      ["Source", "Voice note, kept"],
+    ],
   },
   {
     name: "People and HR",
-    find: "Onboarding checklists, policy questions and approvals chased by email.",
-    build: "Assistants that answer from your own policies and move requests through approval.",
-    systems: "Microsoft 365, Google Workspace, your HRMS",
+    find: "Policy questions answered by hand, and approvals chased by email because no tool covers them.",
+    input: ["Message from an employee", "Can unused leave carry over to next year?"],
+    action: "Answers from your leave policy and starts the request",
+    lands: { name: "An HR assistant we built for you", built: true },
+    record: [
+      ["Answer", "Sent, with the policy section"],
+      ["Request", "Routed for approval"],
+      ["Owner", "HR team"],
+    ],
   },
   {
     name: "Leadership",
     find: "Reports assembled by hand from several systems, already out of date when they arrive.",
-    build: "Live summaries and questions answered from your own data, with the source for every number.",
-    systems: "Your warehouse, BI tools and systems of record",
+    input: ["Question from the COO", "Which region slipped on collections this month?"],
+    action: "Answers from your own data, with the source",
+    lands: { name: "A reporting assistant we built for you", built: true },
+    record: [
+      ["Answer", "West region"],
+      ["Source", "ERP collections report"],
+      ["Updated", "This morning"],
+    ],
   },
 ] as const;
 
@@ -231,7 +271,7 @@ export const OWNERSHIP = {
   heading: "Yours, not ours",
   items: [
     ["Your infrastructure", "Cloud or on-premise. Models and hosting are agreed with your IT team."],
-    ["Your systems", "We build into your CRM, ERP, helpdesk or custom software. No parallel tool to maintain."],
+    ["Your systems", "Built into your CRM, ERP or helpdesk, or as new software that runs on your stack."],
     ["A full audit trail", "Every write is logged: what changed, where it came from and who confirmed it."],
     ["Your IP", "Code, workflows, documentation and data belong to you."],
   ],
@@ -264,7 +304,7 @@ export const FAQ = [
   ],
   [
     "Do you work on site?",
-    "Yes, for enterprise engagements in India. For clients abroad we work remote-embedded, with daily working sessions with your team.",
+    "Yes, when the work needs it. Otherwise we work remote-embedded, with daily working sessions with your team.",
   ],
   [
     "What systems do you work with?",
@@ -292,10 +332,9 @@ export const FAQ = [
 ] as const;
 
 export const CLIENT_TYPES = [
-  ["Enterprises", "That want AI inside the systems they already run, not another tool beside them."],
-  ["Mid-size businesses", "In India, the US and Africa, with teams ready to work a new way."],
-  ["Growing businesses", "Starting with an AI Audit. Same model, smaller scope."],
-  ["AI-first startups", "That need an embedded engineering partner."],
+  ["Enterprises", "With complex systems and many teams, ready to put AI into real work."],
+  ["Mid-size businesses", "With teams ready to work a new way, whether that means new software or better use of what they have."],
+  ["AI-first startups", "That need an embedded engineering partner to build and ship their product."],
 ] as const;
 
 /* -------------------------------------------------------------------------- */
@@ -305,7 +344,7 @@ export const CLIENT_TYPES = [
 export const OUR_READ = {
   heading: "Your systems aren't the problem. The distance between the work and the system is.",
   paragraphs: [
-    "So we bring AI to where people already work: an email, a WhatsApp message, a call, a document, a form. We validate what it produces, write it into your system of record, and keep a person in the loop for anything uncertain.",
+    "So we bring AI to where people already work: an email, a WhatsApp message, a call, a document, a form. We validate what it produces, write it into your system of record, and keep a person in the loop for anything uncertain. Where no system fits the work, we build one from scratch.",
     "Then we measure usage per team, per person, per week, and keep improving it from what users tell us until the new way is the default.",
   ],
 } as const;
@@ -332,8 +371,8 @@ export const CAPABILITIES = [
     tools: "WhatsApp Business, Claude, n8n, your ERP or CRM API",
   },
   {
-    name: "AI agents inside your systems",
-    body: "Agents that read enquiries, tickets and documents, act through your tools, and hand anything unusual to a person with the context attached.",
+    name: "AI agents and custom software",
+    body: "Agents that read enquiries, tickets and documents, act through your tools, and hand anything unusual to a person. Where nothing you run fits, we build the application from scratch.",
     tools: "Claude, OpenAI, Python, TypeScript",
   },
   {
