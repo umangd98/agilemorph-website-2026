@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { CtaBand, Explainer, Founders } from "@/components/site/blocks";
 import { PageShell } from "@/components/site/PageShell";
+import { PartnerMark } from "@/components/site/PartnerMark";
 import { Section } from "@/components/site/Section";
 import { CERTIFICATIONS } from "@/content/site";
 
@@ -48,9 +49,10 @@ export default function AboutPage() {
       </Section>
 
       <Section title="Certified across the stack" intro="We pick the tool for the workflow, and write the code when no-code is the wrong fit.">
-        <dl className="grid grid-cols-2 border-b border-rule sm:grid-cols-4 lg:grid-cols-7">
+        <dl className="grid grid-cols-2 border-b border-rule sm:grid-cols-4">
           {CERTIFICATIONS.map(([name, level]) => (
-            <div key={name} className="border-t border-rule py-5 pr-4">
+            <div key={name} className="border-t border-rule py-6 pr-4">
+              <PartnerMark name={name} className="mb-4" />
               <dt className="type-heading">{name}</dt>
               <dd className="mt-1 text-sm text-ink-muted">{level}</dd>
             </div>

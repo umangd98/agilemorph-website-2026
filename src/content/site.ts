@@ -3,7 +3,7 @@
  * read and reviewed as one piece. Only the blog lives in Sanity.
  *
  * House rules: spell the name "Agilemorph" (lowercase m). No em dashes. British
- * spelling. No figures beyond the approved ones (40+ projects). Every page
+ * spelling. No figures beyond the approved ones (40+ projects, Toptal's top 3%). Every page
  * that names Forward Deployed Engineering shows FDE_EXPLAINER in its first
  * screen.
  */
@@ -448,4 +448,5 @@ export const CERTIFICATIONS = [
   ["Microsoft", "Partner"],
   ["Shopify", "Partner"],
   ["Upwork", "Top Rated"],
+  ["Toptal", "Top 3% talent"],
 ] as const;
