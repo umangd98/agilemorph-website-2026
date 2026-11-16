@@ -331,10 +331,29 @@ export const FAQ = [
   ["Do you work with smaller businesses?", "Yes, through the AI Audit. Same model, smaller scope."],
 ] as const;
 
+/** Who we work with, and how an engagement usually starts for each. Shown on the homepage. */
 export const CLIENT_TYPES = [
-  ["Enterprises", "With complex systems and many teams, ready to put AI into real work."],
-  ["Mid-size businesses", "With teams ready to work a new way, whether that means new software or better use of what they have."],
-  ["AI-first startups", "That need an embedded engineering partner to build and ship their product."],
+  {
+    name: "Enterprises",
+    line: "Many teams, complex systems.",
+    start: "a discovery audit",
+    cta: "Book a discovery call",
+    href: COMPANY.bookingHref,
+  },
+  {
+    name: "Mid-size businesses",
+    line: "Ready to work a new way.",
+    start: "an AI Audit",
+    cta: "Book an AI Audit call",
+    href: COMPANY.bookingHref,
+  },
+  {
+    name: "AI-first startups",
+    line: "Building an AI product, fast.",
+    start: "embedded engineers",
+    cta: "Talk to us",
+    href: "/contact",
+  },
 ] as const;
 
 /* -------------------------------------------------------------------------- */

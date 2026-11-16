@@ -11,10 +11,11 @@ import {
   GapStatement,
   LoopPipeline,
 } from "@/components/site/blocks";
+import { ClientTypes } from "@/components/site/ClientTypes";
 import { Hero } from "@/components/site/Hero";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
-import { CLIENT_TYPES, FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE } from "@/content/site";
+import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE } from "@/content/site";
 import { faqPageSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function HomePage() {
       </Section>
 
       <Section title="Who we work with">
-        <TermList items={CLIENT_TYPES} className="md:grid-cols-3" />
+        <ClientTypes />
       </Section>
 
       <Section title="Questions buyers ask us">
