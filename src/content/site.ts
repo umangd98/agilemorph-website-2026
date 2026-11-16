@@ -45,7 +45,7 @@ export const NAV = [
 
 export const PROOF = [
   "40+ projects delivered",
-  "Founders from Amazon and Sixt",
+  "Engineers from Amazon and YC-backed startups",
   "On site or remote, wherever you are",
 ] as const;
 
@@ -283,7 +283,7 @@ export const FOUNDERS = [
     name: "Kaustumbh Jaiswal",
     role: "Co-founder and CTO",
     photo: "/team/kaustumbh-jaiswal.png",
-    bio: "Former software engineer at Amazon and Sixt. Has shipped AI products end to end for US startups, including autonomous agents, retrieval systems and real-time voice AI. Works as a forward deployed engineer himself, and leads architecture and on-site engineering.",
+    bio: "Former software engineer at Amazon. Has shipped AI products end to end for YC-backed startups, including autonomous agents, retrieval systems and real-time voice AI. Works as a forward deployed engineer himself, and leads architecture and on-site engineering.",
     stack: "Python, TypeScript and Java. LLM orchestration, evals on Langfuse, voice AI on Retell and Twilio.",
   },
   {
