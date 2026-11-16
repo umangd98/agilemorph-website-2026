@@ -448,5 +448,5 @@ export const CERTIFICATIONS = [
   ["Microsoft", "Partner"],
   ["Shopify", "Partner"],
   ["Upwork", "Top Rated"],
-  ["Toptal", "Top 3% talent"],
+  ["Toptal", "Team vetted as top 3% talent"],
 ] as const;
