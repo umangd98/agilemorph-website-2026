@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { FOUNDERS, PARTNER_STRIP, TRUST } from "@/content/site";
@@ -9,18 +8,17 @@ import { PartnerMark } from "./PartnerMark";
 
 /*
  * Trust points placed down the homepage. Each sits beside the claim it backs:
- * partners under the hero, the team after the comparison, the track record
- * before the questions.
+ * partners under the hero and the team after the comparison.
  */
 
-function Marks({ dark }: { dark?: boolean }) {
+function Marks() {
   return (
     <ul aria-label="Partners" className="grid grid-cols-2 gap-x-6 gap-y-4 sm:flex sm:flex-wrap sm:gap-x-10">
       {PARTNER_STRIP.map(([name, level]) => (
-        <li key={name} className={cn("flex items-center gap-2.5", dark ? "text-white/55" : "text-ink-faint")}>
+        <li key={name} className="flex items-center gap-2.5 text-ink-faint">
           <PartnerMark name={name} mono className="h-5 w-5 shrink-0" />
           <span className="text-[0.8125rem] leading-tight">
-            <span className={cn("block font-medium", dark ? "text-white/90" : "text-ink-muted")}>{name}</span>
+            <span className="block font-medium text-ink-muted">{name}</span>
             {level}
           </span>
         </li>
@@ -32,8 +30,8 @@ function Marks({ dark }: { dark?: boolean }) {
 /** Partner marks in a quiet row directly under the hero. */
 export function PartnerStrip() {
   return (
-    <section className="border-t border-rule">
-      <Container className="flex flex-col gap-4 py-7 lg:flex-row lg:items-center lg:gap-10">
+    <section>
+      <Container className="flex flex-col gap-4 pt-1 pb-10 lg:flex-row lg:items-center lg:gap-10">
         <p className="shrink-0 text-[0.875rem] text-ink-faint">Certified with</p>
         <Marks />
       </Container>
@@ -90,53 +88,5 @@ export function TeamStrip() {
         </span>
       </p>
     </div>
-  );
-}
-
-/** The track record in one bold band before the questions. */
-export function ProofBand() {
-  const track = (
-    <>
-      {TRUST.work.map(([label, slug]) => (
-        <Link key={slug} href={`/case-studies/${slug}`} className="flex items-center gap-2.5 hover:text-white">
-          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#3fbf6e]" />
-          {label}
-        </Link>
-      ))}
-    </>
-  );
-  return (
-    <section className="overflow-hidden bg-ink text-white">
-      <Container className="pt-16 sm:pt-20">
-        <dl className="grid border-b border-white/10 md:grid-cols-3">
-          {TRUST.band.map(([title, note], i) => (
-            <div
-              key={title}
-              className={cn(
-                "pb-8 md:pr-8",
-                i > 0 && "border-t border-white/10 pt-8 md:border-t-0 md:border-l md:pt-0 md:pl-8",
-              )}
-            >
-              <dt className="type-heading">{title}</dt>
-              <dd className="mt-2 text-white/60">{note}</dd>
-            </div>
-          ))}
-        </dl>
-        <div className="py-7">
-          <Marks dark />
-        </div>
-      </Container>
-      <div className="flex overflow-hidden border-t border-white/10 py-4 text-[0.9375rem] text-white/70 [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
-        {[0, 1].map((copy) => (
-          <div
-            key={copy}
-            aria-hidden={copy === 1}
-            className="flex shrink-0 gap-12 pr-12 whitespace-nowrap motion-safe:animate-[marquee_45s_linear_infinite]"
-          >
-            {track}
-          </div>
-        ))}
-      </div>
-    </section>
   );
 }

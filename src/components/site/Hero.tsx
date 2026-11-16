@@ -69,7 +69,7 @@ export function Hero() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <section className="relative isolate overflow-hidden border-b border-rule">
+      <section className="relative isolate overflow-hidden">
         {/* A contour map behind the hero: the cursor raises the ground, a click sends a ripple. */}
         <TopoBackground
           className="absolute inset-0 -z-10 min-h-0 bg-transparent text-[#cfd1c7] [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"

@@ -459,19 +459,6 @@ export const TRUST = {
     heading: "The engineers who sit with your team",
     body: "A team of engineers from Amazon and YC-backed startups, led by the founders. The engineers you meet are the ones who build it.",
   },
-  band: [
-    ["40+ projects delivered", "Read them in our case studies"],
-    ["A team from Amazon and YC-backed startups", "Engineers who embed with you and build it"],
-    ["Top 3% talent", "Team vetted by Toptal"],
-  ],
-  /** Anonymised as in the case studies, without locations. */
-  work: [
-    ["A listed agro-processing company", "listed-agro-processing-company"],
-    ["A manufacturer running its own factories", "manufacturer-africa-factory-floor"],
-    ["A luxury watch marketplace", "luxury-watch-marketplace-ai-sales-agent"],
-    ["A gas piping contractor", "nyc-contractor-referral-rewards"],
-    ["An AI relationship-coaching platform", "ai-coaching-platform-mvp"],
-  ],
   cta: "A call with our engineers, not a sales team.",
 } as const;
 

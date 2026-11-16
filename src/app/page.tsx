@@ -15,7 +15,7 @@ import { ClientTypes } from "@/components/site/ClientTypes";
 import { Hero } from "@/components/site/Hero";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
-import { Faces, PartnerStrip, ProofBand, TeamStrip } from "@/components/site/Trust";
+import { Faces, PartnerStrip, TeamStrip } from "@/components/site/Trust";
 import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE, TRUST } from "@/content/site";
 import { faqPageSchema } from "@/lib/structured-data";
 
@@ -38,7 +38,7 @@ export default function HomePage() {
       <Hero />
       <PartnerStrip />
 
-      <Section>
+      <Section className="border-t-0">
         <GapStatement />
       </Section>
 
@@ -82,8 +82,6 @@ export default function HomePage() {
       <Section title="Who we work with">
         <ClientTypes />
       </Section>
-
-      <ProofBand />
 
       <Section title="Questions buyers ask us">
         <FaqList />
