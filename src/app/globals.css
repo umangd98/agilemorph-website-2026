@@ -353,3 +353,10 @@
   --chart-segment-background: oklch(0.41 0.0127 248.14 / 0.25);
   --chart-segment-line: oklch(1 0 0 / 0.25);
 }
+
+/* The proof band's line of past clients. Two copies of the track scroll together. */
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}

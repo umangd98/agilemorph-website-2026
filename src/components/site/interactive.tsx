@@ -7,7 +7,7 @@ import {
   useInView,
 } from "motion/react";
 import { Plus } from "lucide-react";
-import { type KeyboardEvent, useEffect, useRef, useState } from "react";
+import { type KeyboardEvent, type ReactNode, useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
 import FlowField from "@/components/kokonutui/flow-field";
@@ -299,9 +299,12 @@ export function FaqAccordion() {
 export function CtaBand({
   heading = "Let's find where AI fits in your business.",
   body = "Book a discovery call. We'll tell you where AI would pay off in your systems, and what the first build would take.",
+  faces,
 }: {
   heading?: string;
   body?: string;
+  /** Shows the team's faces and a line under the body. */
+  faces?: ReactNode;
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-green text-white">
@@ -316,6 +319,7 @@ export function CtaBand({
         <div>
           <h2 className="type-title max-w-2xl">{heading}</h2>
           <p className="type-lede mt-5 max-w-xl text-white/85">{body}</p>
+          {faces ? <div className="mt-8">{faces}</div> : null}
         </div>
         <div className="flex flex-col items-start gap-4 lg:items-end">
           <BookButton variant="inverse" />

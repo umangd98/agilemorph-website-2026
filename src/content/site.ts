@@ -339,6 +339,7 @@ export const CLIENT_TYPES = [
     start: "a discovery audit",
     cta: "Book a discovery call",
     href: COMPANY.bookingHref,
+    example: ["A listed agro-processing company", "listed-agro-processing-company"],
   },
   {
     name: "Mid-size businesses",
@@ -346,6 +347,7 @@ export const CLIENT_TYPES = [
     start: "an AI Audit",
     cta: "Book an AI Audit call",
     href: COMPANY.bookingHref,
+    example: ["A manufacturer running its own factories", "manufacturer-africa-factory-floor"],
   },
   {
     name: "AI-first startups",
@@ -353,6 +355,7 @@ export const CLIENT_TYPES = [
     start: "embedded engineers",
     cta: "Talk to us",
     href: "/contact",
+    example: ["An AI relationship-coaching platform", "ai-coaching-platform-mvp"],
   },
 ] as const;
 
@@ -439,6 +442,38 @@ export const ENGAGEMENTS = [
     cta: "Book an AI Audit call",
   },
 ] as const;
+
+/** Partner marks shown in the strip under the homepage hero. The full list is on About. */
+export const PARTNER_STRIP = [
+  ["Claude", "Service Partner"],
+  ["Make", "Platinum Partner"],
+  ["Microsoft", "Partner"],
+  ["n8n", "Integration Partner"],
+  ["Zapier", "Certified Expert"],
+  ["Shopify", "Partner"],
+] as const;
+
+/** Trust points placed down the homepage, each beside the claim it backs. */
+export const TRUST = {
+  team: {
+    heading: "The engineers who sit with your team",
+    body: "A team of engineers from Amazon and YC-backed startups, led by the founders. The engineers you meet are the ones who build it.",
+  },
+  band: [
+    ["40+ projects delivered", "Read them in our case studies"],
+    ["A team from Amazon and YC-backed startups", "Engineers who embed with you and build it"],
+    ["Top 3% talent", "Team vetted by Toptal"],
+  ],
+  /** Anonymised as in the case studies, without locations. */
+  work: [
+    ["A listed agro-processing company", "listed-agro-processing-company"],
+    ["A manufacturer running its own factories", "manufacturer-africa-factory-floor"],
+    ["A luxury watch marketplace", "luxury-watch-marketplace-ai-sales-agent"],
+    ["A gas piping contractor", "nyc-contractor-referral-rewards"],
+    ["An AI relationship-coaching platform", "ai-coaching-platform-mvp"],
+  ],
+  cta: "A call with our engineers, not a sales team.",
+} as const;
 
 export const CERTIFICATIONS = [
   ["Claude", "Service Partner"],

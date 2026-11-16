@@ -15,7 +15,8 @@ import { ClientTypes } from "@/components/site/ClientTypes";
 import { Hero } from "@/components/site/Hero";
 import { PageShell } from "@/components/site/PageShell";
 import { Section, TermList } from "@/components/site/Section";
-import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE } from "@/content/site";
+import { Faces, PartnerStrip, ProofBand, TeamStrip } from "@/components/site/Trust";
+import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE, TRUST } from "@/content/site";
 import { faqPageSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -35,8 +36,9 @@ export default function HomePage() {
       {faqSchema ? <StructuredData data={faqSchema} /> : null}
 
       <Hero />
+      <PartnerStrip />
 
-      <Section className="border-t-0">
+      <Section>
         <GapStatement />
       </Section>
 
@@ -62,6 +64,7 @@ export default function HomePage() {
 
       <Section title="What changes when the engineers sit with you">
         <Comparison />
+        <TeamStrip />
       </Section>
 
       <Section
@@ -80,11 +83,20 @@ export default function HomePage() {
         <ClientTypes />
       </Section>
 
+      <ProofBand />
+
       <Section title="Questions buyers ask us">
         <FaqList />
       </Section>
 
-      <CtaBand />
+      <CtaBand
+        faces={
+          <p className="flex flex-wrap items-center gap-4 text-white/90">
+            <Faces size="sm" ring="border-green" />
+            {TRUST.cta}
+          </p>
+        }
+      />
     </PageShell>
   );
 }

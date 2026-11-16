@@ -137,6 +137,15 @@ export function ClientTypes() {
           >
             {client.cta}
           </Link>
+          <p className="mt-2 border-t border-dashed border-rule pt-3 text-[0.875rem]">
+            <span className="block text-ink-faint">Like our work for</span>
+            <Link
+              href={`/case-studies/${client.example[1]}`}
+              className="text-ink-muted underline decoration-rule underline-offset-4 hover:text-ink hover:decoration-ink-faint"
+            >
+              {client.example[0]}
+            </Link>
+          </p>
         </article>
       ))}
     </div>
