@@ -26,6 +26,8 @@ export function seoToMetadata(
   const resolvedTitle = typeof title === "string" ? title : undefined;
   const resolvedDescription =
     typeof description === "string" ? description : undefined;
+  const canonical = fallback.alternates?.canonical;
+  const url = typeof canonical === "string" ? canonical : undefined;
 
   return {
     ...fallback,
@@ -34,6 +36,7 @@ export function seoToMetadata(
     openGraph: {
       type: "website",
       siteName: "Agilemorph",
+      url,
       title: resolvedTitle,
       description: resolvedDescription,
       images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,

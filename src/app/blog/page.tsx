@@ -14,13 +14,15 @@ import {
   buildPagedBlogPostsQuery,
 } from "@/sanity/queries";
 import type { BlogPostSummary } from "@/sanity/types";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  alternates: { canonical: "/blog" },
+export const metadata: Metadata = pageMetadata({
+  title: "Blog: Notes on AI Adoption and Engineering",
   description:
     "Notes from embedding with teams: where AI fits in a business, how to build it into existing systems, and how to get it used.",
-};
+  path: "/blog",
+  share: "blog",
+});
 
 const POSTS_PER_PAGE = 9;
 

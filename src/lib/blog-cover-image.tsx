@@ -16,7 +16,7 @@ const SIZES: Record<CoverFormat, { width: number; height: number }> = {
 
 type CoverPost = { title?: string };
 
-type CoverFont = {
+export type CoverFont = {
   name: string;
   data: ArrayBuffer;
   weight: 500 | 700;
@@ -28,7 +28,7 @@ type CoverFont = {
  * subset to the glyphs actually drawn. If Google Fonts is unreachable the
  * cover still renders, in the bundled regular weight.
  */
-async function loadGeist(weight: 500 | 700, text: string): Promise<CoverFont | null> {
+export async function loadGeist(weight: 500 | 700, text: string): Promise<CoverFont | null> {
   try {
     const css = await fetch(
       `https://fonts.googleapis.com/css2?family=Geist:wght@${weight}&text=${encodeURIComponent(text)}`,

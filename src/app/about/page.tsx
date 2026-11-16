@@ -6,13 +6,15 @@ import { PageShell } from "@/components/site/PageShell";
 import { PartnerMark } from "@/components/site/PartnerMark";
 import { Section } from "@/components/site/Section";
 import { CERTIFICATIONS } from "@/content/site";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About Our Forward Deployed Engineering Team",
   description:
     "Agilemorph is one of India's first forward deployed engineering firms, based in Nagpur and working with clients wherever they are.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+  share: "about",
+});
 
 export default function AboutPage() {
   return (

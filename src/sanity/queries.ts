@@ -26,6 +26,7 @@ export const blogPostQuery = `*[${liveBlogPost} && slug.current == $slug][0]{
   excerpt,
   body,
   publishedAt,
+  _updatedAt,
   categories,
   author,
   coverImage ${imageProjection},
@@ -63,6 +64,13 @@ export function buildPagedBlogPostsQuery(orderBy: string) {
   return `*[${liveBlogPost} && (${blogPostListFilter})] | order(${orderBy}) [$start...$end] ${blogPostSummaryProjection}`;
 }
 
+export const allBlogPostsForLlmsQuery = `*[${liveBlogPost} && defined(slug.current)] | order(publishedAt desc){
+  "slug": slug.current,
+  title,
+  excerpt
+}`;
+
 export const allBlogSlugsQuery = `*[${liveBlogPost} && defined(slug.current)]{
-  "slug": slug.current
+  "slug": slug.current,
+  "updatedAt": _updatedAt
 }`;

@@ -33,6 +33,7 @@ export interface BlogPostSummary {
 }
 
 export interface BlogPost extends BlogPostSummary {
+  _updatedAt?: string;
   body?: unknown[];
   seo?: Seo;
 }

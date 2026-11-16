@@ -18,12 +18,14 @@ import { Section, TermList } from "@/components/site/Section";
 import { Faces, PartnerStrip, TeamStrip } from "@/components/site/Trust";
 import { FAQ, OWNERSHIP, SITE_DESCRIPTION, SITE_TITLE, TRUST } from "@/content/site";
 import { faqPageSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: { absolute: SITE_TITLE },
   description: SITE_DESCRIPTION,
-  alternates: { canonical: "/" },
-};
+  path: "/",
+  share: "home",
+});
 
 const textLink =
   "font-medium text-green underline decoration-green/30 underline-offset-4 hover:decoration-green";
