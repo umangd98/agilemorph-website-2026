@@ -30,7 +30,7 @@ function Marks() {
 /** Partner marks in a quiet row directly under the hero. */
 export function PartnerStrip() {
   return (
-    <section>
+    <section className="border-b border-rule">
       <Container className="flex flex-col gap-4 pt-1 pb-10 lg:flex-row lg:items-center lg:gap-10">
         <p className="shrink-0 text-[0.875rem] text-ink-faint">Certified with</p>
         <Marks />
