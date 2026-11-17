@@ -4,6 +4,15 @@ import type { NextConfig } from "next";
 
 import { RETIRED_BLOG_SLUGS } from "./src/data/retired-blog-posts";
 
+/** Service pages from the old WordPress site, now part of How we work. */
+const WORDPRESS_SERVICE_PAGES = [
+  "website-development",
+  "digital-marketing-services",
+  "book-keeping-services",
+  "virtual-assistance-services",
+  "ai-automation-development",
+];
+
 const nextConfig: NextConfig = {
   // A stray lockfile in the home directory otherwise makes Turbopack pick the
   // wrong workspace root.
@@ -34,6 +43,26 @@ const nextConfig: NextConfig = {
         destination: "/blog",
         statusCode: 301 as const,
       })),
+      // The WordPress site that ran here until August 2026. Google still shows
+      // some of these URLs, so each goes to the closest page instead of a 404.
+      // Old posts sat at the root rather than under /blog.
+      ...RETIRED_BLOG_SLUGS.map((slug) => ({
+        source: `/${slug}`,
+        destination: "/blog",
+        statusCode: 301 as const,
+      })),
+      ...WORDPRESS_SERVICE_PAGES.map((slug) => ({
+        source: `/${slug}`,
+        destination: WHAT_WE_BUILD,
+        statusCode: 301 as const,
+      })),
+      { source: "/contact-us", destination: "/contact", statusCode: 301 },
+      { source: "/privacy-policy-2", destination: "/privacy", statusCode: 301 },
+      { source: "/privacy-policy", destination: "/privacy", statusCode: 301 },
+      { source: "/section", destination: "/", statusCode: 301 },
+      { source: "/tag/:path*", destination: "/blog", statusCode: 301 },
+      { source: "/category/:path*", destination: "/blog", statusCode: 301 },
+      { source: "/feed", destination: "/blog", statusCode: 301 },
       // The site lives on theagilemorph.com; agilemorph.in, .dev and .biz are
       // older domains on the same deploy. /api is left out so webhooks still
       // pointed at an old host (Sanity revalidation) keep working: a 301 would
