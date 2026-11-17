@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, MotionConfig } from "motion/react";
-import { useEffect, useState } from "react";
+import { MotionConfig } from "motion/react";
+import { Fragment, useEffect, useState } from "react";
 
 import { Container } from "@/components/Container";
 import SplitFlapText from "@/components/kokonutui/split-flap-text";
@@ -11,8 +11,6 @@ import { ONE_LINER, PROOF } from "@/content/site";
 import { Explainer } from "./Explainer";
 import { BookButton, ButtonLink } from "./Button";
 import { HeroLoop, useLoopCycle } from "./HeroLoop";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Systems the headline flips through, on its own beat, faster than the loop. */
 const SYSTEMS = ["HUBSPOT", "SAP", "SALESFORCE", "ZENDESK", "TALLY", "SHOPIFY", "ZOHO", "ODOO", "XERO", "ERP"];
@@ -30,21 +28,20 @@ function useSystemWord(fallback: string, reduced: boolean | null) {
   return reduced ? fallback : SYSTEMS[i]!;
 }
 
+// The entrance runs in CSS (.hero-rise and .hero-up in globals.css), not
+// Motion: Motion's starting styles are server-rendered, which kept the hero
+// copy invisible until JavaScript loaded and left it blank in Google's render.
 function Words({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
     <>
       {text.split(" ").map((word, i) => (
-        <span key={`${word}-${i}`} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-          <motion.span
-            className="inline-block"
-            initial={{ y: "105%", opacity: 0, filter: "blur(6px)" }}
-            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: delay + i * 0.06, ease: EASE }}
-          >
-            {word}
-          </motion.span>
-          {" "}
-        </span>
+        <Fragment key={`${word}-${i}`}>
+          <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+            <span className="hero-rise" style={{ animationDelay: `${delay + i * 0.05}s` }}>
+              {word}
+            </span>
+          </span>{" "}
+        </Fragment>
       ))}
     </>
   );
@@ -52,14 +49,9 @@ function Words({ text, delay = 0 }: { text: string; delay?: number }) {
 
 function FadeUp({ delay, children, className }: { delay: number; children: React.ReactNode; className?: string }) {
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
-    >
+    <div className={`hero-up ${className ?? ""}`} style={{ animationDelay: `${delay}s` }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -90,37 +82,31 @@ export function Hero() {
               <span aria-hidden className="block">
                 <Words text="AI, built into your" />
               </span>
-              <motion.span
-                aria-hidden
-                className="mt-2 block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.45 }}
-              >
+              <span aria-hidden className="mt-2 block">
                 <SplitFlapText
                   text={system}
                   className="text-[0.62em] font-semibold sm:text-[0.62em]"
                   tileClassName="bg-ink text-paper"
                 />
-              </motion.span>
+              </span>
               <span aria-hidden className="mt-2 block text-ink-muted">
-                <Words text="that gets used." delay={0.55} />
+                <Words text="that gets used." delay={0.3} />
               </span>
             </h1>
 
-            <FadeUp delay={0.75}>
+            <FadeUp delay={0.4}>
               <p className="type-lede mt-8 max-w-xl text-ink-muted">{ONE_LINER}</p>
             </FadeUp>
-            <FadeUp delay={0.85} className="mt-8 flex flex-wrap gap-3">
+            <FadeUp delay={0.45} className="mt-8 flex flex-wrap gap-3">
               <BookButton />
               <ButtonLink href="/how-we-work">See how we work</ButtonLink>
             </FadeUp>
-            <FadeUp delay={0.95}>
+            <FadeUp delay={0.5}>
               <Explainer className="mt-10 max-w-xl" />
             </FadeUp>
           </div>
 
-          <FadeUp delay={0.5}>
+          <FadeUp delay={0.3}>
             <HeroLoop cycle={cycle} />
           </FadeUp>
         </Container>

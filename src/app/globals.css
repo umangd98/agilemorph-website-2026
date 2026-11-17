@@ -186,9 +186,41 @@
   letter-spacing: -0.005em;
 }
 
+/*
+ * Hero entrance. Plain CSS so it starts at first paint, before any script
+ * loads, and only transform and blur move: the copy is never transparent, so
+ * a slow phone or a crawler that snapshots early still sees every word.
+ */
+@keyframes hero-rise {
+  from {
+    transform: translateY(0.35em);
+    filter: blur(4px);
+  }
+}
+
+@keyframes hero-up {
+  from {
+    transform: translateY(12px);
+  }
+}
+
+.hero-rise {
+  display: inline-block;
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-up {
+  animation: hero-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-rise,
+  .hero-up {
+    animation: none;
   }
 }
 

@@ -14,6 +14,7 @@ export const SHARE_CARDS: Record<string, ShareCard> = {
   "case-studies": { eyebrow: "Case studies", headline: "Engineers embedded with the team, building AI people use." },
   contact: { eyebrow: "Book a discovery call", headline: "Let's find where AI fits in your business." },
   blog: { eyebrow: "Blog", headline: "Notes from the work: where AI fits and how it gets used." },
+  privacy: { eyebrow: "Privacy policy", headline: "How we handle the data you share with us." },
   ...Object.fromEntries(
     CASE_STUDIES.map((study) => [`case-${study.slug}`, { eyebrow: "Case study", headline: study.client }]),
   ),

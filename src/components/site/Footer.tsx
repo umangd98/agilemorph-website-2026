@@ -47,8 +47,11 @@ export function Footer() {
           </span>
         </address>
       </Container>
-      <Container className="border-t border-rule-soft py-6 text-sm text-ink-faint">
-        &copy; {year} {COMPANY.legalName}. All rights reserved.
+      <Container className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule-soft py-6 text-sm text-ink-faint">
+        <span>&copy; {year} {COMPANY.legalName}. All rights reserved.</span>
+        <Link href="/privacy" className="hover:text-ink">
+          Privacy policy
+        </Link>
       </Container>
     </footer>
   );
