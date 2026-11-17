@@ -103,7 +103,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "listed-agro-processing-company",
-    client: "A BSE-listed agro-processing company",
+    client: "A listed agro-processing company in India",
     headline: "A sales dashboard and AI assistant that turn a manual sales process into data the owner can forecast from.",
     region: "India",
     status: "In progress",
