@@ -46,4 +46,9 @@ export const RETIRED_BLOG_SLUGS = [
   "data-enrichment-as-a-service",
   "build-vs-buy-marketing-automation",
   "white-label-automation-agency",
+  "lead-follow-up-automation",
+  "prospect-research-automation",
+  "automated-outreach-qualified-meetings",
+  "ai-lead-enrichment",
+  "marketing-agency-automation",
 ] as const;
