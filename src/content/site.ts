@@ -347,7 +347,7 @@ export const CLIENT_TYPES = [
     start: "an AI Audit",
     cta: "Book an AI Audit call",
     href: COMPANY.bookingHref,
-    example: ["A manufacturer running its own factories", "manufacturer-africa-factory-floor"],
+    example: ["A Dubai-based owner with factories in Africa", "manufacturer-africa-factory-floor"],
   },
   {
     name: "AI-first startups",

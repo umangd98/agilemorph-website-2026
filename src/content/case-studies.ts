@@ -89,11 +89,11 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "manufacturer-africa-factory-floor",
-    client: "A manufacturer with factories in Africa",
+    client: "A Dubai-based owner of several businesses, with factories in Africa",
     headline: "Embedded with factory users to find where AI fits into the systems already running.",
-    region: "Africa",
+    region: "UAE and Africa",
     status: "In progress",
-    context: "A manufacturer running factories in Africa.",
+    context: "An entrepreneur based in Dubai who runs several businesses, including factories in Africa.",
     howWeWorked:
       "Our engineers work directly with factory users, gathering requirements on the ground and identifying where AI fits into the existing systems.",
     phases: {
@@ -104,13 +104,21 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "listed-agro-processing-company",
     client: "A BSE-listed agro-processing company",
-    headline: "On-site discovery to find where AI fits into a listed processor's operations.",
+    headline: "A sales dashboard and AI assistant that turn a manual sales process into data the owner can forecast from.",
     region: "India",
-    context: "A publicly listed agro-processing company in India.",
+    status: "In progress",
+    context: "A publicly listed agro-processing company in India whose sales process runs by hand.",
+    gap: "Because sales were tracked manually, the owner had no dependable way to attribute sales or forecast future demand.",
     howWeWorked:
-      "The same embedded model: on-site requirement discovery, identifying where AI integrates into existing operations, then building and measuring.",
+      "The same embedded model: on-site discovery with the people who run sales, then a digital way to track the manual process they already follow. We are still building with them.",
+    built: [
+      "A sales dashboard that tracks the manual sales process in digital form",
+      "An AI chatbot the owner can ask about sales, to attribute them and forecast future demand",
+    ],
     phases: {
-      Find: "On-site requirement discovery with the teams who run operations.",
+      Find: "On-site discovery with the teams who run sales.",
+      Build: "Digitised sales tracking and a dashboard, with an AI chatbot for the owner.",
+      Iterate: "Still building with the client as the system is used.",
     },
   },
 ];
