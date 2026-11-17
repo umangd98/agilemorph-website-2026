@@ -14,7 +14,7 @@ const SIZES: Record<CoverFormat, { width: number; height: number }> = {
   square: { width: 1000, height: 1000 },
 };
 
-type CoverPost = { title?: string };
+type CoverPost = { title?: string; categories?: string[] };
 
 export type CoverFont = {
   name: string;
@@ -137,6 +137,7 @@ function AutomationMotif({ scale }: { scale: number }) {
 function Motif({ kind, scale }: { kind: CoverKind; scale: number }) {
   if (kind === "manufacturing") return <ManufacturingMotif scale={scale} />;
   if (kind === "agency") return <AgencyMotif scale={scale} />;
+  // A hub with spokes: fits both general automation and the FDE cluster.
   return <AutomationMotif scale={scale} />;
 }
 
@@ -147,7 +148,7 @@ function Motif({ kind, scale }: { kind: CoverKind; scale: number }) {
  */
 export async function renderCover(slug: string, format: CoverFormat): Promise<Response> {
   const post = await sanityFetch<CoverPost | null>({
-    query: `*[_type == "blogPost" && slug.current == $slug][0]{ title }`,
+    query: `*[_type == "blogPost" && slug.current == $slug][0]{ title, categories }`,
     params: { slug },
     tags: ["blogPost", `blogPost:${slug}`],
   });
@@ -156,7 +157,7 @@ export async function renderCover(slug: string, format: CoverFormat): Promise<Re
     return new Response("Not found", { status: 404 });
   }
 
-  const theme = coverThemeFor(slug, post.title);
+  const theme = coverThemeFor(slug, post.title, post.categories ?? []);
   const { headline, subline } = splitCoverTitle(post.title);
   const glyphs = `${theme.label.toUpperCase()}${headline}${subline ?? ""}AGILEMORPH`;
   const fonts = (await Promise.all([loadGeist(700, glyphs), loadGeist(500, glyphs)])).filter(

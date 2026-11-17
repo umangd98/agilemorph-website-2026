@@ -1,4 +1,4 @@
-export type CoverKind = "manufacturing" | "agency" | "automation";
+export type CoverKind = "fde" | "manufacturing" | "agency" | "automation";
 
 export type CoverFormat = "landscape" | "square";
 
@@ -14,6 +14,7 @@ const AGENCY =
   /agenc|client|marketing|\blead|outreach|prospect|enrichment|\bseo\b|ga4|gsc|google-business|\bcms\b|white-label|visibility-audit|content-approval|report-summary|newsletter/;
 
 const LABELS: Record<CoverKind, string> = {
+  fde: "Forward Deployed Engineering",
   manufacturing: "Manufacturing",
   agency: "Agency Operations",
   automation: "AI Automation",
@@ -22,6 +23,8 @@ const LABELS: Record<CoverKind, string> = {
 function kindFrom(text: string): CoverKind | null {
   // Explicit cluster words decide first. The broad lists overlap: an agency
   // article about "content production" also matches the manufacturing list.
+  // The Forward Deployed Engineering cluster wins over its industry spokes.
+  if (/forward-deployed|forward deployed|\bfde\b/.test(text)) return "fde";
   if (/manufactur/.test(text)) return "manufacturing";
   if (/agenc/.test(text)) return "agency";
 
@@ -37,7 +40,12 @@ function kindFrom(text: string): CoverKind | null {
  * on-theme cover without anyone tagging them. The slug is checked before the
  * title because slugs come from the planned queue and titles are free text.
  */
-export function coverThemeFor(slug: string, title: string): CoverTheme {
+export function coverThemeFor(slug: string, title: string, categories: string[] = []): CoverTheme {
+  // A post filed under Forward Deployed Engineering belongs to that cluster
+  // even when its slug and title don't say so, such as the adoption spoke.
+  if (categories.some((category) => /forward deployed/i.test(category))) {
+    return { kind: "fde", label: LABELS.fde };
+  }
   const kind = kindFrom(slug.toLowerCase()) ?? kindFrom(title.toLowerCase()) ?? "automation";
   return { kind, label: LABELS[kind] };
 }
